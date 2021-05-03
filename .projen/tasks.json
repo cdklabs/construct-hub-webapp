@@ -83,6 +83,9 @@
       "description": "Creates an optimized production build of your React application",
       "steps": [
         {
+          "exec": "npx projen"
+        },
+        {
           "exec": "react-scripts build"
         }
       ]

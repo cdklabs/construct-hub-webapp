@@ -6,4 +6,8 @@ const project = new web.ReactTypeScriptProject({
   projenUpgradeSecret: 'CDK_AUTOMATION_GITHUB_TOKEN',
 });
 
+// synthesize project files before build
+// see https://github.com/projen/projen/issues/754
+project.tasks.tryFind('build').prependExec('npx projen');
+
 project.synth();
