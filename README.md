@@ -1,11 +1,8 @@
-## My Project
+## Cosntruct Hub Web App
 
-TODO: Fill this README out!
+This project maintains the React web app for the [Construct Hub].
 
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+[Construct Hub]: https://github.com/cdklabs/construct-hub
 
 ## Security
 
