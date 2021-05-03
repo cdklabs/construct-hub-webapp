@@ -10,6 +10,8 @@
 .eslintcache
 .nyc_output
 .yarn-integrity
+/.changelog.tmp.md
+/.version.tmp.json
 /build
 /dist
 /lib
@@ -25,9 +27,11 @@ pids
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 yarn-debug.log*
 yarn-error.log*
+!/.gitattributes
 !/.github/dependabot.yml
 !/.github/pull_request_template.md
 !/.github/workflows/build.yml
+!/.github/workflows/projenupgrade.yml
 !/.mergify.yml
 !/.npmignore
 !/.projen/deps.json
@@ -40,4 +44,3 @@ yarn-error.log*
 !/src
 !/test
 !/tsconfig.json
-!version.json
