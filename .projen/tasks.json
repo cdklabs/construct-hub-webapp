@@ -121,6 +121,25 @@
         }
       ]
     },
+    "package": {
+      "name": "package",
+      "category": "20.release",
+      "description": "Create an npm tarball",
+      "steps": [
+        {
+          "exec": "rm -fr dist"
+        },
+        {
+          "exec": "mkdir -p dist/js"
+        },
+        {
+          "exec": "yarn pack"
+        },
+        {
+          "exec": "mv *.tgz dist/js/"
+        }
+      ]
+    },
     "dev": {
       "name": "dev",
       "category": "00.build",

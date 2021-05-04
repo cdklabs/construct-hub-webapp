@@ -11,6 +11,7 @@
     "projen:upgrade": "npx projen projen:upgrade",
     "default": "npx projen default",
     "watch": "npx projen watch",
+    "package": "npx projen package",
     "dev": "npx projen dev",
     "eject": "npx projen eject",
     "projen": "npx projen",
