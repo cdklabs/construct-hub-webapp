@@ -5,11 +5,12 @@
 /.projen
 /.projenrc.js
 /.vscode
-/build
+/public
 /src
 /test
 /tsconfig.json
 dist
+!/build
 !/lib
 !/lib/**/*.d.ts
 !/lib/**/*.js
