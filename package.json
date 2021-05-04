@@ -1,5 +1,9 @@
 {
   "name": "construct-hub-webapp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdklabs/construct-hub-webapp.git"
+  },
   "scripts": {
     "clobber": "npx projen clobber",
     "bump": "npx projen bump",
@@ -16,6 +20,11 @@
     "eject": "npx projen eject",
     "projen": "npx projen",
     "start": "npx projen start"
+  },
+  "author": {
+    "name": "Amazon Web Services, Inc.",
+    "email": "construct-ecosystem-team@amazon.com",
+    "organization": false
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.10",
