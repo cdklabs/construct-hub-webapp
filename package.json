@@ -11,6 +11,7 @@
     "projen:upgrade": "npx projen projen:upgrade",
     "default": "npx projen default",
     "watch": "npx projen watch",
+    "package": "npx projen package",
     "dev": "npx projen dev",
     "eject": "npx projen eject",
     "projen": "npx projen",
@@ -28,6 +29,7 @@
     "standard-version": "^9",
     "typescript": "^4.0.3"
   },
+  "peerDependencies": {},
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
