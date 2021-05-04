@@ -4,6 +4,9 @@ const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: 'main',
   name: 'construct-hub-webapp',
   projenUpgradeSecret: 'CDK_AUTOMATION_GITHUB_TOKEN',
+
+  // since this is an app project, we need to enable these explicitly 
+  // in order to be able to publish this as an npm module.
   releaseToNpm: true,
   releaseWorkflow: true,
   package: true,
