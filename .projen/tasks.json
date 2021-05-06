@@ -143,6 +143,16 @@
         }
       ]
     },
+    "eslint": {
+      "name": "eslint",
+      "category": "10.test",
+      "description": "Runs eslint against the codebase",
+      "steps": [
+        {
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools .projenrc.js"
+        }
+      ]
+    },
     "dev": {
       "name": "dev",
       "category": "00.build",
