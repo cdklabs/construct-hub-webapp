@@ -18,25 +18,20 @@ We want to make sure users have a productive experience with the hub. Given it i
 
 - A user visits the main page and installs a construct library. We call this the *Install* journey. More concretely, it has the following stops:
 
-    1. **Visit**: User visits the main page of the site.
-    2. **Search**: User inputs a search term.
-    3. **Browse**: User browses through the search results.
-    4. **Navigate**: User navigates to a specific package page.
-    5. **Install**: User installs the construct library.
+  **Visit** --> **Search** --> **Browse** --> **Navigate** --> **Install**
 
-        Since package installation doesn't happen via the hub, there is no bulletproof way for us to determine whether a user actually installed a package or not. Nevertheless, we try to approximate by making the following assertions:
+  Since package installation doesn't happen via the hub, there is no bulletproof way for us to determine whether a user actually installed a package or not. Nevertheless, we try to approximate by making the following assertions:
 
-        - A user who clicked on the *Copy installation instructions* button, installed the package.
-        - A user who spent more than X time on the package page, installed the package.
+  - A user who clicked on the *Copy installation instructions* button, installed the package.
+  - A user who spent more than X time on the package page, installed the package.
 
 - A user visits a specific package page, and stays there to read documenation. We call this the *Operate* journey. More concretely, it has the following stops:
 
-    1. **Visit**: User visits a specific package page.
-    2. **Operate**: User interacts with the page since it helps to operate the construct.
+  **Visit** --> **Operate**
 
-        User interaction with the package is hard to determine because most of it will probably be looking at documentation. To that end, we make the following assertion:
+  User interaction with the package is hard to determine because most of it will probably be looking at documentation. To that end, we make the following assertion:
 
-        - A user who spent more than X time on the package page, used it to operate the construct.
+  - A user who spent more than X time on the package page, used it to operate the construct.
 
 Quality traffic is defined by the success rate of these journeys.
 
