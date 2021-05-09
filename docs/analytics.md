@@ -14,14 +14,14 @@ For each question, we explain why are we asking it, and which measurements are n
 
 ### Are users satisfied with the hub?
 
-We need to make sure users are happy with the overall experience of the application.
+We need to make sure users are happy with the overall experience of the hub.
 To answer this, we need to understand whether existing users are abandoning the hub, or keep using it.
 
 Since we don't identify individual users, the only thing we can do is measure total hub visits, and make sure this value doesn't decrease over time.
 
 **Required metrics:**
 
-- `visits`: Number of distinct visits. (i.e main page + package pages)
+- `visits.hub`: Number of distinct visits. (main page + package pages)
 
 ### Are people aware of the hub?
 
@@ -31,7 +31,7 @@ it keeps increasing.
 
 **Required metrics:**
 
-- `visits`: Number of distinct visits. (i.e main page + package pages)
+- `visits.hub`: Number of distinct visits. (main page + package pages)
 
 ### Are users satisfied with the search experience?
 
@@ -88,7 +88,7 @@ To ensure this, we look at the direct visits to package pages, and make sure its
 
 **Required metrics:**
 
-- `packages.<package>.visits`: Number of distinct visits to specific package pages.
+- `visits.packages.<package>`: Number of distinct visits to specific package pages.
 
 ### Which constructs are missing from the ecosystem?
 
@@ -100,7 +100,7 @@ as these will likely not manifest as feature requests in any of the existing CDK
 
 **Required metrics:**
 
-- `terms.<term>`: Number of search queries for `term`.
+- `search.terms.<term>`: Number of search queries for `term`.
 
 ## High Level Design
 
