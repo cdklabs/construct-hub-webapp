@@ -9,20 +9,29 @@ This document describes that mechanism, detailing how, why, and what can be reco
 
 ## Recorded Data
 
-To understand which data should be recorded, we introduce questions we'd like to ask.
+To understand which data should be recorded, we introduce a few questions we'd like to ask.
 For each question, we explain why are we asking it, and which measurements are needed in order to answer it.
 
 ### Are users satisfied with the hub?
 
-This is the holy grail of questions, and most likely cannot be answered with a simple measurement. Nevertheless, we want get a
-general sense as to whether existing users are overall satisfied with the hub or not. To a first approximation, we can answer this by
-looking at the overall visits to the hub, and making sure we don't see a decline over time.
+We need to make sure users are happy with the overall experience of the application.
+To answer this, we need to understand whether existing users are abandoning the hub, or keep using it.
+
+Since we don't identify individual users, the only thing we can do is measure total hub visits, and make sure this value doesn't decrease over time.
+
+**Required metrics:**
+
+- `visits`: Number of distinct visits. (i.e main page + package pages)
 
 ### Are people aware of the hub?
 
-We want the construct hub to serve as many users as possible, which means making sure it is constantly being exposed to new people.
+The construct hub should serve as many users as possible, which means making sure it is constantly being exposed to new people.
 Since we don't attribute traffic to any specific user, the only thing we can do is look at overall visits over time, and ensure that
 it keeps increasing.
+
+**Required metrics:**
+
+- `visits`: Number of distinct visits. (i.e main page + package pages)
 
 ### Are users satisfied with the search experience?
 
@@ -45,6 +54,10 @@ This means we need to track user sessions as a whole. Specifically, we want to d
 
 If we see that most search journeys terminate at the *install* phase, we conclude users are finding what they're looking.
 
+**Required metrics:**
+
+- `journeys.search.success`: Number of journeys that start with a search query, and end in an install.
+
 ### Are users satisfied with the package pages?
 
 Continuous operation of construct libraries requires a reliable and clear source of documentation. This is offered by the specific package pages of the hub.
@@ -62,12 +75,20 @@ during a search journey. Specifically, we want to detect the following user jour
 
 If we see that most of these journeys are successful, we conclude users are satisfied with it.
 
+**Required metrics:**
+
+- `journeys.operate.success`: Number of journeys that start with a direct package page, and end in a successful interaction.
+
 ### Are people aware of package pages?
 
 As already mentioned, we want package pages to be the go to place for users operating construct libraries.
 For that to happen, package pages should be exposed to as many people as possible.
 
 To ensure this, we look at the direct visits to package pages, and make sure its value is increasing over time.
+
+**Required metrics:**
+
+- `packages.<package>.visits`: Number of distinct visits to specific package pages.
 
 ### Which constructs are missing from the ecosystem?
 
@@ -76,6 +97,10 @@ By detecting missing constructs, we can either explicitly act, or encourage the 
 To answer this, we want to identify hot search items that don't return any hits. For example, if we see `docker-compose` is being searched a lot,
 we can conclude that the community is looking for a `docker-compose` CDK. This can help detect entirely new domains that aren't being covered but should,
 as these will likely not manifest as feature requests in any of the existing CDKs.
+
+**Required metrics:**
+
+- `terms.<term>`: Number of search queries for `term`.
 
 ## High Level Design
 
