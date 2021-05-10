@@ -7,6 +7,11 @@ mechanism to extract insights from the traffic it sees.
 
 This document describes that mechanism, detailing how, why, and what can be recorded.
 
+## Declaration of Intent
+
+As a general tenet, we are not interested in identifying individual user traffic. That is, it will not be possible to say which user
+searched or interacted with which construct. All we are interested in is aggregative stats to help improve the experience as a whole.
+
 ## Recorded Data
 
 To understand which data should be recorded, we work backwards from the questions we'd like to ask it.
