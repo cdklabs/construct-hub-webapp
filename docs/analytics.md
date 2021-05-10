@@ -9,8 +9,8 @@ This document describes that mechanism, detailing how, why, and what can be reco
 
 ## Recorded Data
 
-To understand which data should be recorded, we introduce a few questions we'd like to ask.
-For each question, we explain why are we asking it, and which measurements are needed in order to answer it.
+To understand which data should be recorded, we work backwards from the questions we'd like to ask it.
+For each question, we explain why are we asking it, and which metrics are needed in order to answer it.
 
 ### Are users satisfied with the hub?
 
@@ -23,11 +23,11 @@ that individual user traffic doesn't have a large variance.
 
 **Required metrics:**
 
-- `visits.hub`: Number of distinct visits. (main page + package pages)
+- `visits.hub`: Number of distinct visits to the hub. (main page + package pages)
 
 ### Are people aware of the hub?
 
-The hub should serve the entire ecosystem, as well as consistently attract new users.
+The hub should serve the entire ecosystem and consistently attract new users.
 
 To answer this, we need to understand whether new people are discovering the hub.
 Normally this is done by making sure that the amount of daily active users increases over time.
@@ -36,12 +36,12 @@ that individual user traffic doesn't have a large variance.
 
 **Required metrics:**
 
-- `visits.hub`: Number of distinct visits. (main page + package pages)
+- `visits.hub`: Number of distinct visits to the hub. (main page + package pages)
 
 ### Are users satisfied with the package pages?
 
 Continuous operation of construct libraries requires a reliable and clear source of documentation. This is offered by the specific package pages of the hub.
-We want to get a sense whether users find it helpful.
+We want to make sure users find it helpful.
 
 To answer this, we need to understand whether existing users are abandoning the package pages, or keep using it.
 Normally this is done by making sure that the amount of daily active users doesn't decrease over time.
@@ -53,11 +53,11 @@ page to help them operate the construct library.
 
 **Required metrics:**
 
-- `visits.packages.<package>`: Number of distinct and direct visits to the `<package>` page.
+- `visits.packages.<package>`: Number of distinct and direct visits to a `<package>` page.
 
 ### Are people aware of package pages?
 
-Package pages should serve the entire ecosystem, as well as consistently attract new users.
+Package pages should serve the entire ecosystem and consistently attract new users.
 
 To answer this, we need to understand whether new people are discovering the package pages.
 Normally this is done by making sure that the amount of daily active users increases over time.
@@ -69,7 +69,7 @@ page to help them operate the construct library.
 
 **Required metrics:**
 
-- `visits.packages.<package>`: Number of distinct and direct visits to the `<package>` page.
+- `visits.packages.<package>`: Number of distinct and direct visits to a `<package>` page.
 
 ### Are users satisfied with the search experience?
 
@@ -90,9 +90,8 @@ This means we need to track user sessions as a whole. Specifically, we want to d
 
 *search* --> *select* --> *install*
 
-If we see that most search journeys terminate at the *install* phase, we conclude users are finding what they're looking.
-
-To improve the search experience, we want to identify which search phrases didn't result in an installation.
+If we see that a significant percentage of search journeys don't end in an install, we need to take corrective actions.
+For that, we also want to identify which search phrases didn't result in an installation so we can investigate why.
 
 **Required metrics:**
 
@@ -101,11 +100,12 @@ To improve the search experience, we want to identify which search phrases didn'
 
 ### Which constructs are missing from the ecosystem?
 
+We want to make sure users are able to use construct libraries for all their application needs.
 By detecting missing constructs, we can either explicitly act, or encourage the community to act in order to fill those gaps.
 
-To answer this, we want to identify hot search phrases that don't return any hits. For example, if we see `docker-compose` is being searched a lot,
-we can conclude that the community is looking for a `docker-compose` related constructs. This can help detect entirely new domains that aren't being covered but should,
-as these will likely not manifest as feature requests in any of the existing construct repositories.
+To answer this, we want to identify hot search phrases that don't return any hits. This can help detect entirely new domains that aren't being covered but should,
+as these will likely not manifest as feature requests in any of the existing construct repositories. For example, if we see `docker-compose` is being searched a lot,
+we can conclude that the community is looking for `docker-compose` related constructs.
 
 **Required metrics:**
 
