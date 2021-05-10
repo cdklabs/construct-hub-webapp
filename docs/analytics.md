@@ -14,7 +14,7 @@ For each question, we explain why are we asking it, and which metrics are needed
 
 ### Are users satisfied with the hub?
 
-The overall experience with the hub should be positive.
+**Why:** The overall experience with the hub should be positive.
 
 To answer this, we need to understand whether existing users are abandoning the hub, or keep using it.
 Normally this is done by making sure that the amount of daily active users doesn't decrease over time.
@@ -27,7 +27,7 @@ that individual user traffic doesn't have a large variance.
 
 ### Are people aware of the hub?
 
-The hub should serve the entire ecosystem and consistently attract new users.
+**Why:** The hub should serve the entire ecosystem and consistently attract new users.
 
 To answer this, we need to understand whether new people are discovering the hub.
 Normally this is done by making sure that the amount of daily active users increases over time.
@@ -40,7 +40,7 @@ that individual user traffic doesn't have a large variance.
 
 ### Are users satisfied with the package pages?
 
-Continuous operation of construct libraries requires a reliable and clear source of documentation. This is offered by the specific package pages of the hub.
+**Why:** Continuous operation of construct libraries requires a reliable and clear source of documentation. This is offered by the specific package pages of the hub.
 We want to make sure users find it helpful.
 
 To answer this, we need to understand whether existing users are abandoning the package pages, or keep using it.
@@ -57,7 +57,7 @@ page to help them operate the construct library.
 
 ### Are people aware of package pages?
 
-Package pages should serve the entire ecosystem and consistently attract new users.
+**Why:** Package pages should serve the entire ecosystem and consistently attract new users.
 
 To answer this, we need to understand whether new people are discovering the package pages.
 Normally this is done by making sure that the amount of daily active users increases over time.
@@ -73,11 +73,11 @@ page to help them operate the construct library.
 
 ### Are users satisfied with the search experience?
 
-Search is one of the core capabilities the hub offers. A poor search experience will likely cause users to discover less construct libraries,
-and will hurt the ecosystem. To answer this question, we first need to define what a good experience is.
+**Why:** Search is one of the core capabilities the hub offers. A poor search experience will likely cause users to discover less construct libraries,
+and will hurt the ecosystem.
 
-Effectiveness of search engines is measured by the engagement of users with the search results.
-In our case, a successful engagement will result in the installation of a construct library.
+To answer this question, we first need to define what a good experience is. Effectiveness of search engines is measured by the
+engagement of users with the search results. In our case, a successful engagement will result in the installation of a construct library.
 
 Since package installation doesn't happen via the hub, this is impossible to deterministically detect.
 Nevertheless, we approximate by making the following assertions:
@@ -100,7 +100,7 @@ For that, we also want to identify which search phrases didn't result in an inst
 
 ### Which constructs are missing from the ecosystem?
 
-We want to make sure users are able to use construct libraries for all their application needs.
+**Why:** We want to make sure users are able to use construct libraries for all their application needs.
 By detecting missing constructs, we can either explicitly act, or encourage the community to act in order to fill those gaps.
 
 To answer this, we want to identify hot search phrases that don't return any hits. This can help detect entirely new domains that aren't being covered but should,
