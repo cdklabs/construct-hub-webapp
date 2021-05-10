@@ -17,6 +17,9 @@ searched or interacted with which construct. All we are interested in is aggrega
 To understand which data should be recorded, we work backwards from the questions we'd like to ask it.
 For each question, we explain why are we asking it, and which metrics are needed in order to answer it.
 
+> Metrics are denoted using the common dot notation. It merely serves as a concise way to refer to measurements,
+> and does not infer any technical meaning. 
+
 ### Are users satisfied with the hub?
 
 **Why:** The overall experience with the hub should be positive.
