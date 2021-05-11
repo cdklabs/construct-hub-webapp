@@ -12,6 +12,7 @@
 /tsconfig.eslint.json
 /tsconfig.json
 dist
+tsconfig.tsbuildinfo
 !/build
 !/lib
 !/lib/**/*.d.ts
