@@ -22,6 +22,10 @@ const project = new web.ReactTypeScriptProject({
   eslintOptions: {
     prettier: true,
   },
+
+  deps: ["react-router-dom"],
+
+  devDeps: ["@types/react-router-dom"],
 });
 
 // synthesize project files before build
