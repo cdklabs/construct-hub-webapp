@@ -23,7 +23,13 @@ const project = new web.ReactTypeScriptProject({
     prettier: true,
   },
 
-  deps: ["react-router-dom"],
+  deps: [
+    "react-router-dom",
+    "semantic-ui-react",
+    "semantic-ui-css",
+    "react-markdown",
+    "remark-gfm",
+  ],
 
   devDeps: ["@types/react-router-dom"],
 });
@@ -36,8 +42,8 @@ build.spawn(project.packageTask);
 
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
-project.npmignore?.addPatterns("!/build");
-project.npmignore?.addPatterns("/public");
+project.npmignore.addPatterns("!/build");
+project.npmignore.addPatterns("/public");
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({

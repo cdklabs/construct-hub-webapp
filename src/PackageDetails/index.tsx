@@ -1,3 +1,5 @@
+import { Grid } from "semantic-ui-react";
+
 interface PackageDetailsProps {
   name: string;
   scope?: string;
@@ -10,10 +12,19 @@ export default function PackageDetails({
   version,
 }: PackageDetailsProps) {
   return (
-    <div>
-      <p>Name: {name}</p>
-      <p>Scope: {scope ?? "none"}</p>
-      <p>Version: {version}</p>
-    </div>
+    <Grid celled>
+      <Grid.Row>
+        <Grid.Column>
+          {scope}/{name}@{version}asdasdasdasdadsadsadsasd
+        </Grid.Column>
+        <Grid.Column>Getting Started</Grid.Column>
+      </Grid.Row>
+
+      <Grid.Row>
+        <Grid.Column>Navigation</Grid.Column>
+        <Grid.Column>Content</Grid.Column>
+        <Grid.Column>Metadata</Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 }
