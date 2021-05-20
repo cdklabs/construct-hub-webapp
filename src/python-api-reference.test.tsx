@@ -278,7 +278,6 @@ export class PythonClassInitializer {
     );
 
     if (kwargs) {
-      md.lines("**kwargs**");
       for (const parameter of structParameters) {
         if (!parameter.type.fqn) {
           throw new Error("asdasd");
@@ -368,7 +367,7 @@ export class PythonArgument {
       md.lines(this.argument.docs.summary);
     }
     if (this.argument.docs.remarks) {
-      md.lines(`> ${this.argument.docs.remarks}`);
+      md.lines(this.argument.docs.remarks);
     }
 
     return md;

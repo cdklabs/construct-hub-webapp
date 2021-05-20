@@ -15,8 +15,6 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 ```
 
 
-**kwargs**
-
 ##### resourcePolicy <a name="resourcePolicy"></a>
 
 - *Type: any | **Required** | Default: undefined*
@@ -58,8 +56,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: string, **kwargs)
 ```
 
-
-**kwargs**
 
 ##### secretId <a name="secretId"></a>
 
@@ -111,8 +107,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **kwargs)
 ```
 
-
-**kwargs**
 
 ##### description <a name="description"></a>
 
@@ -192,8 +186,6 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 ```
 
 
-**kwargs**
-
 ##### secretId <a name="secretId"></a>
 
 - *Type: string | **Required** | Default: undefined*
@@ -236,8 +228,6 @@ aws_cdk.aws_secretsmanager.ResourcePolicy(scope: constructs.Construct, id: strin
 ```
 
 
-**kwargs**
-
 ##### secret <a name="secret"></a>
 
 - *Type: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret) | **Required** | Default: undefined*
@@ -261,8 +251,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.RotationSchedule(scope: constructs.Construct, id: string, **kwargs)
 ```
 
-
-**kwargs**
 
 ##### automaticallyAfter <a name="automaticallyAfter"></a>
 
@@ -297,7 +285,7 @@ A Lambda function that can rotate the secret.
 
 The secret to rotate.
 
-> If hosted rotation is used, this must be a JSON string with the following format:
+If hosted rotation is used, this must be a JSON string with the following format:
 
 ```
 {
@@ -331,8 +319,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, id: string, **kwargs)
 ```
 
-
-**kwargs**
 
 ##### description <a name="description"></a>
 
@@ -386,7 +372,7 @@ A list of regions where to replicate this secret.
 
 A name for the secret.
 
-> Note that deleting secrets from SecretsManager does not happen immediately, but after a 7 to
+Note that deleting secrets from SecretsManager does not happen immediately, but after a 7 to
 30 days blackout period. During that period, it is not possible to create another secret that shares the same name.
 
 
@@ -407,8 +393,6 @@ aws_cdk.aws_secretsmanager.SecretRotation(scope: constructs.Construct, id: strin
 ```
 
 
-**kwargs**
-
 ##### application <a name="application"></a>
 
 - *Type: [aws-cdk-lib.aws_secretsmanager.SecretRotationApplication](#aws-cdk-lib.aws_secretsmanager.SecretRotationApplication) | **Required** | Default: undefined*
@@ -424,7 +408,7 @@ The serverless application for the rotation.
 
 The secret to rotate. It must be a JSON string with the following format:.
 
-> ```
+```
 {
    "engine": <required: database engine>,
    "host": <required: instance host name>,
@@ -519,8 +503,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.SecretTargetAttachment(scope: constructs.Construct, id: string, **kwargs)
 ```
 
-
-**kwargs**
 
 ##### secret <a name="secret"></a>
 
