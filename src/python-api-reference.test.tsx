@@ -35,8 +35,7 @@ export class ApiReference {
   }
 
   private inSubmodule(type: reflect.ReferenceType, submodule: string): boolean {
-    const module = type.fqn.split(".").slice(0, -1).join(".");
-    return module === submodule;
+    return type.fqn.startsWith(submodule);
   }
 
   public fetchAssemblies(name: string, version: string): spec.Assembly[] {
@@ -98,7 +97,7 @@ export class PythonClass {
   public get markdown(): string[] {
     const lines = new Array<string>();
 
-    lines.push(`<h2 id="${this.klass.fqn}">blabla${this.klass.name}</h2>`);
+    lines.push(`<h2 id="${this.klass.fqn}">${this.klass.name}</h2>`);
     // lines.push(`## \`${this.klass.name}\` <a id="${this.klass.fqn}"></a>`);
     lines.push("");
 
