@@ -13,9 +13,45 @@ export interface AssemblyFetcher {
 export class Markdown {
   private readonly _lines = new Array<string>();
 
+  public readonly headerSize: number;
+
+  constructor(
+    public readonly title: string,
+    headerSize?: number,
+    public readonly id?: string,
+    code?: boolean,
+    deprecated?: boolean
+  ) {
+    this.headerSize = headerSize ?? 1;
+
+    if (this.headerSize > 6) {
+      throw new Error(
+        `Unable to create markdown '${this.title}': Header limit reached`
+      );
+    }
+
+    let caption = this.title;
+
+    if (code) {
+      caption = `\`${title}\``;
+    }
+
+    if (deprecated) {
+      caption = `~~${title}~~`;
+    }
+    const heading = "#".repeat(this.headerSize);
+    this.lines(`${heading} ${caption} <a name="${id ?? this.title}"></a>`);
+  }
+
   public lines(...lines: string[]) {
     this._lines.push(...lines);
     this._lines.push("");
+  }
+
+  public sections(...sections: Markdown[]) {
+    for (const section of sections) {
+      this.lines(section.toString());
+    }
   }
 
   public toString() {
@@ -28,6 +64,7 @@ export class ApiReference {
   private readonly constructs: Constructs;
   private readonly structs: Structs;
   private readonly assemblyFetcher: AssemblyFetcher;
+  private reference: Markdown;
 
   constructor(
     assemblyName: string,
@@ -44,15 +81,18 @@ export class ApiReference {
       this.ts.addAssembly(new reflect.Assembly(this.ts, assembly));
     }
 
-    this.constructs = new Constructs(this.ts, submodule);
-    this.structs = new Structs(this.ts, submodule);
+    this.reference = new Markdown("API Reference");
+
+    this.constructs = new Constructs(this.ts, this.reference, submodule);
+    this.structs = new Structs(this.ts, this.reference, submodule);
   }
 
-  public get pythonMarkdown(): string {
-    const md = new Markdown();
-    md.lines(this.constructs.pythonMarkdown);
-    md.lines(this.structs.pythonMarkdown);
-    return md.toString();
+  public get pythonMarkdown(): Markdown {
+    this.reference.sections(
+      this.constructs.pythonMarkdown,
+      this.structs.pythonMarkdown
+    );
+    return this.reference;
   }
 
   public fetchAssemblies(name: string, version: string): spec.Assembly[] {
@@ -74,21 +114,29 @@ export class ApiReference {
 
 export class Constructs {
   private readonly constructs: reflect.ClassType[];
-  constructor(ts: reflect.TypeSystem, submodule?: string) {
+  constructor(
+    ts: reflect.TypeSystem,
+    private readonly parentMarkdown: Markdown,
+    submodule?: string
+  ) {
     this.constructs = ts.classes
       .filter((c) => this.isConstruct(c))
       .filter((c) => (submodule ? inSubmodule(c, submodule) : true));
   }
 
-  public get pythonMarkdown(): string {
-    const md = new Markdown();
-    if (this.constructs.length > 0) {
-      md.lines("# Constructs");
-      for (const construct of this.constructs) {
-        md.lines(...new PythonClass(construct).markdown);
-      }
+  public get pythonMarkdown(): Markdown {
+    const md = new Markdown("Constructs", this.parentMarkdown.headerSize + 1);
+
+    if (this.constructs.length === 0) {
+      md.lines("This library does not provide any constructs");
     }
-    return md.toString();
+
+    for (const construct of this.constructs) {
+      const klass = new Class(construct, md);
+      md.lines(klass.pythonMarkdown);
+    }
+
+    return md;
   }
 
   public isConstruct(klass: reflect.ClassType): boolean {
@@ -104,106 +152,100 @@ export class Constructs {
 
 export class Structs {
   private readonly structs: reflect.InterfaceType[];
-  constructor(ts: reflect.TypeSystem, submodule?: string) {
+  constructor(
+    ts: reflect.TypeSystem,
+    private readonly parentMarkdown: Markdown,
+    submodule?: string
+  ) {
     this.structs = ts.interfaces
       .filter((i) => i.datatype)
       .filter((i) => (submodule ? inSubmodule(i, submodule) : true));
   }
 
-  public get pythonMarkdown(): string {
-    const md = new Markdown();
+  public get pythonMarkdown(): Markdown {
+    const md = new Markdown("Structs", this.parentMarkdown.headerSize + 1);
 
-    if (this.structs.length > 0) {
-      md.lines("# Structs");
-      for (const struct of this.structs) {
-        md.lines(...new PythonStruct(struct).markdown);
-      }
+    if (this.structs.length === 0) {
+      md.lines("This library does not provide any structs");
     }
 
+    for (const struct of this.structs) {
+      md.sections(new Struct(struct, md).pythonMarkdown);
+    }
+
+    return md;
+  }
+}
+
+export class Class {
+  constructor(
+    private readonly klass: reflect.ClassType,
+    private readonly parentMarkdown: Markdown
+  ) {}
+  public get pythonMarkdown(): string {
+    const md = new Markdown(
+      this.klass.name,
+      this.parentMarkdown.headerSize + 1,
+      this.klass.fqn
+    );
+
+    if (this.klass.docs.summary) {
+      md.lines(this.klass.docs.summary);
+    }
+
+    if (this.klass.docs.remarks) {
+      md.lines(this.klass.docs.remarks);
+    }
+
+    if (this.klass.docs.link) {
+      md.lines(`See ${this.klass.docs.link}`);
+    }
+
+    if (this.klass.initializer) {
+      md.sections(
+        new PythonClassInitializer(this.klass.initializer, md).pythonMarkdown
+      );
+    }
     return md.toString();
   }
 }
 
-export class PythonClass {
-  constructor(private readonly klass: reflect.ClassType) {}
-  public get markdown(): string[] {
-    const lines = new Array<string>();
-
-    lines.push(`<h2 id="${this.klass.fqn}">${this.klass.name}</h2>`);
-    // lines.push(`## \`${this.klass.name}\` <a id="${this.klass.fqn}"></a>`);
-    lines.push("");
-
-    if (this.klass.docs.summary) {
-      lines.push(this.klass.docs.summary);
-      lines.push("");
-    }
-
-    if (this.klass.docs.remarks) {
-      lines.push(this.klass.docs.remarks);
-      lines.push("");
-    }
-
-    if (this.klass.docs.link) {
-      lines.push(`See ${this.klass.docs.link}`);
-    }
-
-    if (this.klass.initializer) {
-      lines.push(
-        ...new PythonClassInitializer(this.klass.initializer).markdown
-      );
-    }
-    return lines;
-  }
-}
-
-export class PythonStruct {
-  constructor(private readonly iface: reflect.InterfaceType) {}
-  public get markdown(): string[] {
-    const lines = new Array<string>();
-
-    lines.push(`<h2 id="${this.iface.fqn}">${this.iface.name}</h2>`);
-    lines.push("");
+export class Struct {
+  constructor(
+    private readonly iface: reflect.InterfaceType,
+    private readonly parentMarkdown: Markdown
+  ) {}
+  public get pythonMarkdown(): Markdown {
+    const md = new Markdown(
+      this.iface.name,
+      this.parentMarkdown.headerSize + 1,
+      this.iface.fqn
+    );
 
     if (this.iface.docs.summary) {
-      lines.push(this.iface.docs.summary);
-      lines.push("");
+      md.lines(this.iface.docs.summary);
     }
 
     if (this.iface.docs.remarks) {
-      lines.push(this.iface.docs.remarks);
-      lines.push("");
+      md.lines(this.iface.docs.remarks);
     }
 
     if (this.iface.docs.link) {
-      lines.push(`See ${this.iface.docs.link}`);
-      lines.push("");
+      md.lines(`See ${this.iface.docs.link}`);
     }
 
-    return lines;
+    return md;
   }
 }
 
 export class PythonClassInitializer {
-  constructor(private readonly initializer: reflect.Initializer) {}
+  constructor(
+    private readonly initializer: reflect.Initializer,
+    private readonly parentMarkdown: Markdown
+  ) {}
 
-  public isStruct(parameter: reflect.Parameter): boolean {
-    const named = spec.isNamedTypeReference(parameter.spec.type);
-    if (!named) {
-      return false;
-    }
-
-    if (!parameter.type.fqn) {
-      throw new Error(
-        `Parameter '${parameter.name}' for initializer '${this.initializer.name} has no FQN'`
-      );
-    }
-    return parameter.system.findFqn(parameter.type.fqn).isDataType();
-  }
-
-  public get markdown(): string[] {
-    const lines = new Array<string>();
-    lines.push("### Initializer");
-    lines.push("");
+  public get pythonMarkdown(): Markdown {
+    const md = new Markdown("Initializer", this.parentMarkdown.headerSize + 1);
 
     const module = this.findImport();
 
@@ -224,7 +266,7 @@ export class PythonClassInitializer {
 
     const kwargs = structParameters.length > 0 ? "**kwargs" : "";
 
-    lines.push(
+    md.lines(
       ...[
         "```python",
         `import ${module}`,
@@ -236,8 +278,7 @@ export class PythonClassInitializer {
     );
 
     if (kwargs) {
-      lines.push("#### kwargs");
-      lines.push("");
+      md.lines("**kwargs**");
       for (const parameter of structParameters) {
         if (!parameter.type.fqn) {
           throw new Error("asdasd");
@@ -247,15 +288,27 @@ export class PythonClassInitializer {
           parameter.type.fqn
         );
         for (const property of struct.allProperties) {
-          lines.push(...new PythonArgument(property).markdown);
-          lines.push("");
-          lines.push("---");
-          lines.push("");
+          md.sections(new PythonArgument(property, md).pythonMarkdown);
+          md.lines("---");
         }
       }
     }
 
-    return lines;
+    return md;
+  }
+
+  public isStruct(parameter: reflect.Parameter): boolean {
+    const named = spec.isNamedTypeReference(parameter.spec.type);
+    if (!named) {
+      return false;
+    }
+
+    if (!parameter.type.fqn) {
+      throw new Error(
+        `Parameter '${parameter.name}' for initializer '${this.initializer.name} has no FQN'`
+      );
+    }
+    return parameter.system.findFqn(parameter.type.fqn).isDataType();
   }
 
   private findImport() {
@@ -291,34 +344,34 @@ export class PythonClassProperty {}
 
 export class PythonArgument {
   constructor(
-    private readonly argument: reflect.Parameter | reflect.Property
+    private readonly argument: reflect.Parameter | reflect.Property,
+    private readonly parentMarkdown: Markdown
   ) {}
 
-  public get markdown(): string[] {
-    let title = `##### \`${this.argument.name}\``;
-    const docs = [];
+  public get pythonMarkdown(): Markdown {
+    const md = new Markdown(
+      this.argument.name,
+      this.parentMarkdown.headerSize + 1
+    );
 
-    if (this.argument.docs.summary) {
-      docs.push(this.argument.docs.summary);
-      docs.push("");
-    }
-    if (this.argument.docs.remarks) {
-      docs.push(`> ${this.argument.docs.remarks}`);
-      docs.push("");
-    }
-
-    const metadata = [
+    md.lines(
       `- *Type: ${this.link(this.argument.type)} | **${
         this.argument.optional ? "Optional" : "Required"
-      }** | Default: ${this.argument.spec.docs?.default}*`,
-    ];
+      }** | Default: ${this.argument.spec.docs?.default}*`
+    );
 
     if (this.argument.docs.deprecated) {
-      title = `~~${title}~~`;
-      metadata.push(`- *Depracated: ${this.argument.docs.deprecationReason}`);
+      md.lines(`- *Deprecated: ${this.argument.docs.deprecationReason}`);
     }
 
-    return [title, "", ...metadata, "", ...docs];
+    if (this.argument.docs.summary) {
+      md.lines(this.argument.docs.summary);
+    }
+    if (this.argument.docs.remarks) {
+      md.lines(`> ${this.argument.docs.remarks}`);
+    }
+
+    return md;
   }
 
   private link(type: reflect.TypeReference): string {
@@ -345,10 +398,13 @@ test("basic", () => {
     "aws-cdk-lib",
     "2.0.0-rc4",
     fetcher,
-    "aws-cdk-lib.aws_eks"
+    "aws-cdk-lib.aws_secretsmanager"
   );
 
-  fs.writeFileSync(`${__dirname}/readme.md`, reference.pythonMarkdown);
+  fs.writeFileSync(
+    `${__dirname}/readme.md`,
+    reference.pythonMarkdown.toString()
+  );
   // expect(reference.pythonMarkdown).toMatchSnapshot();
 });
 
