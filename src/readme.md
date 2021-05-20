@@ -26,6 +26,7 @@ The EKS cluster to apply this configuration to.
 
 ---
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnAddon">CfnAddon</h2>
 
 A CloudFormation `AWS::EKS::Addon`.
@@ -93,6 +94,7 @@ aws_cdk.aws_eks.CfnAddon(scope: constructs.Construct, id: string, **kwargs)
 
 
 ---
+
 
 <h2 id="aws-cdk-lib.aws_eks.CfnCluster">CfnCluster</h2>
 
@@ -162,6 +164,7 @@ aws_cdk.aws_eks.CfnCluster(scope: constructs.Construct, id: string, **kwargs)
 
 ---
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnFargateProfile">CfnFargateProfile</h2>
 
 A CloudFormation `AWS::EKS::FargateProfile`.
@@ -229,6 +232,7 @@ aws_cdk.aws_eks.CfnFargateProfile(scope: constructs.Construct, id: string, **kwa
 
 
 ---
+
 
 <h2 id="aws-cdk-lib.aws_eks.CfnNodegroup">CfnNodegroup</h2>
 
@@ -396,6 +400,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 
 ---
+
 
 <h2 id="aws-cdk-lib.aws_eks.Cluster">Cluster</h2>
 
@@ -659,6 +664,7 @@ The default capacity type for the cluster.
 
 ---
 
+
 <h2 id="aws-cdk-lib.aws_eks.FargateCluster">FargateCluster</h2>
 
 Defines an EKS cluster that runs entirely on AWS Fargate.
@@ -896,6 +902,7 @@ Fargate Profile to create along with the cluster.
 
 ---
 
+
 <h2 id="aws-cdk-lib.aws_eks.FargateProfile">FargateProfile</h2>
 
 Fargate profiles allows an administrator to declare which pods run on Fargate.
@@ -999,6 +1006,7 @@ The EKS cluster to apply the Fargate profile to.
 
 
 ---
+
 
 <h2 id="aws-cdk-lib.aws_eks.HelmChart">HelmChart</h2>
 
@@ -1112,6 +1120,7 @@ The EKS cluster to apply this configuration to.
 
 ---
 
+
 <h2 id="aws-cdk-lib.aws_eks.KubernetesManifest">KubernetesManifest</h2>
 
 Represents a manifest within the Kubernetes system.
@@ -1203,6 +1212,7 @@ in the cluster with the same name, the operation will fail.
 
 ---
 
+
 <h2 id="aws-cdk-lib.aws_eks.KubernetesObjectValue">KubernetesObjectValue</h2>
 
 Represents a value of a specific object deployed in the cluster.
@@ -1277,6 +1287,7 @@ Timeout for waiting on a value.
 
 ---
 
+
 <h2 id="aws-cdk-lib.aws_eks.KubernetesPatch">KubernetesPatch</h2>
 
 A CloudFormation resource which applies/restores a JSON patch into a Kubernetes resource.
@@ -1349,6 +1360,7 @@ The kubernetes API namespace.
 
 
 ---
+
 
 <h2 id="aws-cdk-lib.aws_eks.Nodegroup">Nodegroup</h2>
 
@@ -1546,6 +1558,7 @@ Cluster resource.
 
 ---
 
+
 <h2 id="aws-cdk-lib.aws_eks.OpenIdConnectProvider">OpenIdConnectProvider</h2>
 
 IAM OIDC identity providers are entities in IAM that describe an external identity provider (IdP) service that supports the OpenID Connect (OIDC) standard, such as Google or Salesforce.
@@ -1585,6 +1598,7 @@ aws eks describe-cluster --name %cluster_name% --query "cluster.identity.oidc.is
 
 
 ---
+
 
 <h2 id="aws-cdk-lib.aws_eks.ServiceAccount">ServiceAccount</h2>
 
@@ -1627,131 +1641,169 @@ The cluster to apply the patch to.
 
 ---
 
+
+
 # Structs
 
 <h2 id="aws-cdk-lib.aws_eks.AutoScalingGroupCapacityOptions">AutoScalingGroupCapacityOptions</h2>
 
 Options for adding worker nodes.
 
+
 <h2 id="aws-cdk-lib.aws_eks.AutoScalingGroupOptions">AutoScalingGroupOptions</h2>
 
 Options for adding an AutoScalingGroup as capacity.
+
 
 <h2 id="aws-cdk-lib.aws_eks.AwsAuthMapping">AwsAuthMapping</h2>
 
 AwsAuth mapping.
 
+
 <h2 id="aws-cdk-lib.aws_eks.AwsAuthProps">AwsAuthProps</h2>
 
 Configuration props for the AwsAuth construct.
+
 
 <h2 id="aws-cdk-lib.aws_eks.BootstrapOptions">BootstrapOptions</h2>
 
 EKS node bootstrapping options.
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnAddonProps">CfnAddonProps</h2>
 
 Properties for defining a `AWS::EKS::Addon`.
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnCluster.EncryptionConfigProperty">EncryptionConfigProperty</h2>
+
 
 <h2 id="aws-cdk-lib.aws_eks.CfnCluster.KubernetesNetworkConfigProperty">KubernetesNetworkConfigProperty</h2>
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnCluster.ProviderProperty">ProviderProperty</h2>
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnCluster.ResourcesVpcConfigProperty">ResourcesVpcConfigProperty</h2>
+
 
 <h2 id="aws-cdk-lib.aws_eks.CfnClusterProps">CfnClusterProps</h2>
 
 Properties for defining a `AWS::EKS::Cluster`.
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnFargateProfile.LabelProperty">LabelProperty</h2>
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnFargateProfile.SelectorProperty">SelectorProperty</h2>
+
 
 <h2 id="aws-cdk-lib.aws_eks.CfnFargateProfileProps">CfnFargateProfileProps</h2>
 
 Properties for defining a `AWS::EKS::FargateProfile`.
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty">LaunchTemplateSpecificationProperty</h2>
+
 
 <h2 id="aws-cdk-lib.aws_eks.CfnNodegroup.RemoteAccessProperty">RemoteAccessProperty</h2>
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnNodegroup.ScalingConfigProperty">ScalingConfigProperty</h2>
 
+
 <h2 id="aws-cdk-lib.aws_eks.CfnNodegroup.TaintProperty">TaintProperty</h2>
+
 
 <h2 id="aws-cdk-lib.aws_eks.CfnNodegroupProps">CfnNodegroupProps</h2>
 
 Properties for defining a `AWS::EKS::Nodegroup`.
 
+
 <h2 id="aws-cdk-lib.aws_eks.ClusterAttributes">ClusterAttributes</h2>
 
 Attributes for EKS clusters.
+
 
 <h2 id="aws-cdk-lib.aws_eks.ClusterOptions">ClusterOptions</h2>
 
 Options for EKS clusters.
 
+
 <h2 id="aws-cdk-lib.aws_eks.ClusterProps">ClusterProps</h2>
 
 Common configuration props for EKS clusters.
+
 
 <h2 id="aws-cdk-lib.aws_eks.CommonClusterOptions">CommonClusterOptions</h2>
 
 Options for configuring an EKS cluster.
 
+
 <h2 id="aws-cdk-lib.aws_eks.EksOptimizedImageProps">EksOptimizedImageProps</h2>
 
 Properties for EksOptimizedImage.
+
 
 <h2 id="aws-cdk-lib.aws_eks.FargateClusterProps">FargateClusterProps</h2>
 
 Configuration props for EKS Fargate.
 
+
 <h2 id="aws-cdk-lib.aws_eks.FargateProfileOptions">FargateProfileOptions</h2>
 
 Options for defining EKS Fargate Profiles.
+
 
 <h2 id="aws-cdk-lib.aws_eks.FargateProfileProps">FargateProfileProps</h2>
 
 Configuration props for EKS Fargate Profiles.
 
+
 <h2 id="aws-cdk-lib.aws_eks.HelmChartOptions">HelmChartOptions</h2>
 
 Helm Chart options.
+
 
 <h2 id="aws-cdk-lib.aws_eks.HelmChartProps">HelmChartProps</h2>
 
 Helm Chart properties.
 
+
 <h2 id="aws-cdk-lib.aws_eks.KubernetesManifestOptions">KubernetesManifestOptions</h2>
 
 Options for `KubernetesManifest`.
+
 
 <h2 id="aws-cdk-lib.aws_eks.KubernetesManifestProps">KubernetesManifestProps</h2>
 
 Properties for KubernetesManifest.
 
+
 <h2 id="aws-cdk-lib.aws_eks.KubernetesObjectValueProps">KubernetesObjectValueProps</h2>
 
 Properties for KubernetesObjectValue.
+
 
 <h2 id="aws-cdk-lib.aws_eks.KubernetesPatchProps">KubernetesPatchProps</h2>
 
 Properties for KubernetesPatch.
 
+
 <h2 id="aws-cdk-lib.aws_eks.LaunchTemplateSpec">LaunchTemplateSpec</h2>
 
 Launch template property specification.
+
 
 <h2 id="aws-cdk-lib.aws_eks.NodegroupOptions">NodegroupOptions</h2>
 
 The Nodegroup Options for addNodeGroup() method.
 
+
 <h2 id="aws-cdk-lib.aws_eks.NodegroupProps">NodegroupProps</h2>
 
 NodeGroup properties interface.
+
 
 <h2 id="aws-cdk-lib.aws_eks.NodegroupRemoteAccess">NodegroupRemoteAccess</h2>
 
@@ -1759,22 +1811,29 @@ The remote access (SSH) configuration to use with your node group.
 
 See https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-nodegroup-remoteaccess.html
 
+
 <h2 id="aws-cdk-lib.aws_eks.OpenIdConnectProviderProps">OpenIdConnectProviderProps</h2>
 
 Initialization properties for `OpenIdConnectProvider`.
+
 
 <h2 id="aws-cdk-lib.aws_eks.Selector">Selector</h2>
 
 Fargate profile selector.
 
+
 <h2 id="aws-cdk-lib.aws_eks.ServiceAccountOptions">ServiceAccountOptions</h2>
 
 Options for `ServiceAccount`.
+
 
 <h2 id="aws-cdk-lib.aws_eks.ServiceAccountProps">ServiceAccountProps</h2>
 
 Properties for defining service accounts.
 
+
 <h2 id="aws-cdk-lib.aws_eks.ServiceLoadBalancerAddressOptions">ServiceLoadBalancerAddressOptions</h2>
 
 Options for fetching a ServiceLoadBalancerAddress.
+
+

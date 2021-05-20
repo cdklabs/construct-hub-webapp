@@ -2,18 +2,35 @@ import * as fs from "fs";
 import * as spec from "@jsii/spec";
 import * as reflect from "jsii-reflect";
 
+function inSubmodule(type: reflect.ReferenceType, submodule: string): boolean {
+  return type.fqn.startsWith(submodule);
+}
+
 export interface AssemblyFetcher {
   fetchAssembly(name: string, version: string): spec.Assembly;
 }
 
+export class Markdown {
+  private readonly _lines = new Array<string>();
+
+  public lines(...lines: string[]) {
+    this._lines.push(...lines);
+    this._lines.push("");
+  }
+
+  public toString() {
+    return this._lines.join("\n");
+  }
+}
+
 export class ApiReference {
   private readonly ts: reflect.TypeSystem;
-  private readonly constructs: reflect.ClassType[];
-  private readonly structs: reflect.InterfaceType[];
+  private readonly constructs: Constructs;
+  private readonly structs: Structs;
   private readonly assemblyFetcher: AssemblyFetcher;
 
   constructor(
-    private readonly assemblyName: string,
+    assemblyName: string,
     assemblyVersion: string,
     fetcher: AssemblyFetcher,
     submodule?: string
@@ -26,16 +43,16 @@ export class ApiReference {
     for (const assembly of assemblies) {
       this.ts.addAssembly(new reflect.Assembly(this.ts, assembly));
     }
-    this.constructs = this.ts.classes
-      .filter((c) => this.isConstruct(c))
-      .filter((c) => (submodule ? this.inSubmodule(c, submodule) : true));
-    this.structs = this.ts.interfaces
-      .filter((i) => i.datatype)
-      .filter((i) => (submodule ? this.inSubmodule(i, submodule) : true));
+
+    this.constructs = new Constructs(this.ts, submodule);
+    this.structs = new Structs(this.ts, submodule);
   }
 
-  private inSubmodule(type: reflect.ReferenceType, submodule: string): boolean {
-    return type.fqn.startsWith(submodule);
+  public get pythonMarkdown(): string {
+    const md = new Markdown();
+    md.lines(this.constructs.pythonMarkdown);
+    md.lines(this.structs.pythonMarkdown);
+    return md.toString();
   }
 
   public fetchAssemblies(name: string, version: string): spec.Assembly[] {
@@ -53,6 +70,26 @@ export class ApiReference {
     recurse(name, version);
     return assemblies;
   }
+}
+
+export class Constructs {
+  private readonly constructs: reflect.ClassType[];
+  constructor(ts: reflect.TypeSystem, submodule?: string) {
+    this.constructs = ts.classes
+      .filter((c) => this.isConstruct(c))
+      .filter((c) => (submodule ? inSubmodule(c, submodule) : true));
+  }
+
+  public get pythonMarkdown(): string {
+    const md = new Markdown();
+    if (this.constructs.length > 0) {
+      md.lines("# Constructs");
+      for (const construct of this.constructs) {
+        md.lines(...new PythonClass(construct).markdown);
+      }
+    }
+    return md.toString();
+  }
 
   public isConstruct(klass: reflect.ClassType): boolean {
     if (klass.fqn === "constructs.Construct") return true;
@@ -63,32 +100,27 @@ export class ApiReference {
 
     return this.isConstruct(klass.base);
   }
+}
+
+export class Structs {
+  private readonly structs: reflect.InterfaceType[];
+  constructor(ts: reflect.TypeSystem, submodule?: string) {
+    this.structs = ts.interfaces
+      .filter((i) => i.datatype)
+      .filter((i) => (submodule ? inSubmodule(i, submodule) : true));
+  }
 
   public get pythonMarkdown(): string {
-    const assembly = this.ts.findAssembly(this.assemblyName);
-    if (!assembly.targets?.python) {
-      throw new Error(`Python target not found for assembly: ${assembly.name}`);
-    }
-
-    const lines = new Array<string>();
-
-    if (this.constructs.length > 0) {
-      lines.push("# Constructs");
-      lines.push("");
-      for (const construct of this.constructs) {
-        lines.push(...new PythonClass(construct).markdown);
-      }
-    }
+    const md = new Markdown();
 
     if (this.structs.length > 0) {
-      lines.push("# Structs");
-      lines.push("");
+      md.lines("# Structs");
       for (const struct of this.structs) {
-        lines.push(...new PythonStruct(struct).markdown);
+        md.lines(...new PythonStruct(struct).markdown);
       }
     }
 
-    return lines.join("\n");
+    return md.toString();
   }
 }
 
