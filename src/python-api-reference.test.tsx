@@ -98,7 +98,8 @@ export class PythonClass {
   public get markdown(): string[] {
     const lines = new Array<string>();
 
-    lines.push(`## \`${this.klass.name}\` <a id="${this.klass.fqn}"></a>`);
+    lines.push(`<h2 id="${this.klass.fqn}">${this.klass.name}</h2>`);
+    // lines.push(`## \`${this.klass.name}\` <a id="${this.klass.fqn}"></a>`);
     lines.push("");
 
     lines.push(this.klass.docs.summary);
@@ -288,8 +289,8 @@ test("basic", () => {
   const reference = new ApiReference(
     "aws-cdk-lib",
     "2.0.0-rc4",
-    fetcher,
-    "aws-cdk-lib.aws_eks"
+    fetcher
+    // "aws-cdk-lib.aws_eks"
   );
 
   fs.writeFileSync(`${__dirname}/readme.md`, reference.pythonMarkdown);
