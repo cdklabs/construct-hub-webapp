@@ -8,7 +8,8 @@ export interface AssemblyFetcher {
 
 export class ApiReference {
   private readonly ts: reflect.TypeSystem;
-  private readonly constructs: Array<reflect.ClassType>;
+  private readonly constructs: reflect.ClassType[];
+  private readonly structs: reflect.InterfaceType[];
   private readonly assemblyFetcher: AssemblyFetcher;
 
   constructor(
@@ -25,6 +26,7 @@ export class ApiReference {
       this.ts.addAssembly(new reflect.Assembly(this.ts, assembly));
     }
     this.constructs = this.ts.classes.filter((c) => this.isConstruct(c));
+    this.structs = this.ts.interfaces.filter((c) => c.datatype);
   }
 
   public fetchAssemblies(name: string, version: string): spec.Assembly[] {
@@ -61,10 +63,20 @@ export class ApiReference {
 
     const lines = new Array<string>();
 
-    lines.push("# Constructs");
-    lines.push("");
-    for (const construct of this.constructs) {
-      lines.push(...new PythonClass(construct).markdown);
+    if (this.constructs.length > 0) {
+      lines.push("# Constructs");
+      lines.push("");
+      for (const construct of this.constructs) {
+        lines.push(...new PythonClass(construct).markdown);
+      }
+    }
+
+    if (this.structs.length > 0) {
+      lines.push("# Structs");
+      lines.push("");
+      for (const struct of this.structs) {
+        lines.push(...new PythonStruct(struct).markdown);
+      }
     }
 
     return lines.join("\n");
@@ -89,6 +101,23 @@ export class PythonClass {
         ...new PythonClassInitializer(this.klass.initializer).markdown
       );
     }
+    return lines;
+  }
+}
+
+export class PythonStruct {
+  constructor(private readonly iface: reflect.InterfaceType) {}
+  public get markdown(): string[] {
+    const lines = new Array<string>();
+
+    lines.push(`## \`${this.iface.name}\` <a id="${this.iface.fqn}"></a>`);
+    lines.push("");
+
+    lines.push(this.iface.docs.summary);
+    lines.push("");
+    lines.push(this.iface.docs.remarks);
+    lines.push("");
+
     return lines;
   }
 }
@@ -205,21 +234,42 @@ export class PythonArgument {
   ) {}
 
   public get markdown(): string[] {
-    const title = `##### \`${this.argument.name}\``;
+    let title = `##### \`${this.argument.name}\``;
     const docs = [this.argument.docs.summary];
     if (this.argument.docs.remarks) {
       docs.push("");
       docs.push(`> ${this.argument.docs.remarks}`);
     }
-    return [
-      this.argument.docs.deprecated ? `~~${title}~~` : title,
-      "",
-      `- *Type: ${this.argument.type} | **${
+
+    const metadata = [
+      `- *Type: ${this.link(this.argument.type)} | **${
         this.argument.optional ? "Optional" : "Required"
       }** | Default: ${this.argument.spec.docs?.default}*`,
-      "",
-      ...docs,
     ];
+
+    if (this.argument.docs.deprecated) {
+      title = `~~${title}~~`;
+      metadata.push(`- *Depracated: ${this.argument.docs.deprecationReason}`);
+    }
+
+    return [title, "", ...metadata, "", ...docs];
+  }
+
+  private link(type: reflect.TypeReference): string {
+    if (spec.isNamedTypeReference(type.spec)) {
+      return `[${type.toString()}](#${type.fqn})`;
+    }
+
+    if (spec.isUnionTypeReference(type.spec)) {
+      const types = type.unionOfTypes!;
+      return types
+        .map((t) => {
+          return `[${t.toString()}](#${t.fqn})`;
+        })
+        .join(" | ");
+    }
+
+    return type.toString();
   }
 }
 
