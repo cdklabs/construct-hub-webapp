@@ -97,8 +97,7 @@ export class PythonClass {
   public get markdown(): string[] {
     const lines = new Array<string>();
 
-    lines.push(`## <a name="${this.klass.fqn}"></a>${this.klass.name}`);
-    // lines.push(`<h2 id="${this.klass.fqn}">${this.klass.name}</h2>`);
+    lines.push(`<h2 id="${this.klass.fqn}">${this.klass.name}</h2>`);
     // lines.push(`## \`${this.klass.name}\` <a id="${this.klass.fqn}"></a>`);
     lines.push("");
 
