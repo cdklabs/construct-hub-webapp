@@ -289,8 +289,8 @@ test("basic", () => {
   const reference = new ApiReference(
     "aws-cdk-lib",
     "2.0.0-rc4",
-    fetcher
-    // "aws-cdk-lib.aws_eks"
+    fetcher,
+    "aws-cdk-lib.aws_eks"
   );
 
   fs.writeFileSync(`${__dirname}/readme.md`, reference.pythonMarkdown);
