@@ -135,7 +135,8 @@ export class Constructs {
   constructor(ts: reflect.TypeSystem, submodule?: string) {
     this.constructs = ts.classes
       .filter((c) => this.isConstruct(c))
-      .filter((c) => (submodule ? inSubmodule(c, submodule) : true));
+      .filter((c) => (submodule ? inSubmodule(c, submodule) : true))
+      .sort((c1, c2) => c1.name.localeCompare(c2.name));
   }
 
   public get pythonMarkdown(): Markdown {
@@ -168,7 +169,8 @@ export class Structs {
   constructor(ts: reflect.TypeSystem, submodule?: string) {
     this.structs = ts.interfaces
       .filter((i) => i.datatype)
-      .filter((i) => (submodule ? inSubmodule(i, submodule) : true));
+      .filter((i) => (submodule ? inSubmodule(i, submodule) : true))
+      .sort((s1, s2) => s1.name.localeCompare(s2.name));
   }
 
   public get pythonMarkdown(): Markdown {
