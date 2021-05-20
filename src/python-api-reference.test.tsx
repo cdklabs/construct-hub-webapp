@@ -129,7 +129,7 @@ export class PythonStruct {
   public get markdown(): string[] {
     const lines = new Array<string>();
 
-    lines.push(`## \`${this.iface.name}\` <a id="${this.iface.fqn}"></a>`);
+    lines.push(`<h2 id="${this.iface.fqn}">${this.iface.name}</h2>`);
     lines.push("");
 
     if (this.iface.docs.summary) {
