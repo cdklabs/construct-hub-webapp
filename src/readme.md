@@ -1,6 +1,6 @@
 # Constructs
 
-<h2 id="aws-cdk-lib.aws_eks.AwsAuth">AwsAuth</h2>
+<h2 id="aws-cdk-lib.aws_eks.AwsAuth">blablaAwsAuth</h2>
 
 Manages mapping between IAM users and roles to Kubernetes RBAC configuration.
 
@@ -26,7 +26,7 @@ The EKS cluster to apply this configuration to.
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.CfnAddon">CfnAddon</h2>
+<h2 id="aws-cdk-lib.aws_eks.CfnAddon">blablaCfnAddon</h2>
 
 A CloudFormation `AWS::EKS::Addon`.
 
@@ -90,7 +90,7 @@ aws_cdk.aws_eks.CfnAddon(scope: constructs.Construct, id: string, **kwargs)
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.CfnCluster">CfnCluster</h2>
+<h2 id="aws-cdk-lib.aws_eks.CfnCluster">blablaCfnCluster</h2>
 
 A CloudFormation `AWS::EKS::Cluster`.
 
@@ -154,7 +154,7 @@ aws_cdk.aws_eks.CfnCluster(scope: constructs.Construct, id: string, **kwargs)
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.CfnFargateProfile">CfnFargateProfile</h2>
+<h2 id="aws-cdk-lib.aws_eks.CfnFargateProfile">blablaCfnFargateProfile</h2>
 
 A CloudFormation `AWS::EKS::FargateProfile`.
 
@@ -218,7 +218,7 @@ aws_cdk.aws_eks.CfnFargateProfile(scope: constructs.Construct, id: string, **kwa
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.CfnNodegroup">CfnNodegroup</h2>
+<h2 id="aws-cdk-lib.aws_eks.CfnNodegroup">blablaCfnNodegroup</h2>
 
 A CloudFormation `AWS::EKS::Nodegroup`.
 
@@ -370,7 +370,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.Cluster">Cluster</h2>
+<h2 id="aws-cdk-lib.aws_eks.Cluster">blablaCluster</h2>
 
 A Cluster represents a managed Kubernetes Service (EKS).
 
@@ -610,7 +610,7 @@ The default capacity type for the cluster.
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.FargateCluster">FargateCluster</h2>
+<h2 id="aws-cdk-lib.aws_eks.FargateCluster">blablaFargateCluster</h2>
 
 Defines an EKS cluster that runs entirely on AWS Fargate.
 
@@ -827,7 +827,7 @@ Fargate Profile to create along with the cluster.
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.FargateProfile">FargateProfile</h2>
+<h2 id="aws-cdk-lib.aws_eks.FargateProfile">blablaFargateProfile</h2>
 
 Fargate profiles allows an administrator to declare which pods run on Fargate.
 
@@ -925,7 +925,7 @@ The EKS cluster to apply the Fargate profile to.
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.HelmChart">HelmChart</h2>
+<h2 id="aws-cdk-lib.aws_eks.HelmChart">blablaHelmChart</h2>
 
 Represents a helm chart within the Kubernetes system.
 
@@ -1027,7 +1027,7 @@ The EKS cluster to apply this configuration to.
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.KubernetesManifest">KubernetesManifest</h2>
+<h2 id="aws-cdk-lib.aws_eks.KubernetesManifest">blablaKubernetesManifest</h2>
 
 Represents a manifest within the Kubernetes system.
 
@@ -1113,7 +1113,7 @@ in the cluster with the same name, the operation will fail.
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.KubernetesObjectValue">KubernetesObjectValue</h2>
+<h2 id="aws-cdk-lib.aws_eks.KubernetesObjectValue">blablaKubernetesObjectValue</h2>
 
 Represents a value of a specific object deployed in the cluster.
 
@@ -1181,7 +1181,7 @@ Timeout for waiting on a value.
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.KubernetesPatch">KubernetesPatch</h2>
+<h2 id="aws-cdk-lib.aws_eks.KubernetesPatch">blablaKubernetesPatch</h2>
 
 A CloudFormation resource which applies/restores a JSON patch into a Kubernetes resource.
 
@@ -1249,7 +1249,7 @@ The kubernetes API namespace.
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.Nodegroup">Nodegroup</h2>
+<h2 id="aws-cdk-lib.aws_eks.Nodegroup">blablaNodegroup</h2>
 
 The Nodegroup resource class.
 
@@ -1430,7 +1430,7 @@ Cluster resource.
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.OpenIdConnectProvider">OpenIdConnectProvider</h2>
+<h2 id="aws-cdk-lib.aws_eks.OpenIdConnectProvider">blablaOpenIdConnectProvider</h2>
 
 IAM OIDC identity providers are entities in IAM that describe an external identity provider (IdP) service that supports the OpenID Connect (OIDC) standard, such as Google or Salesforce.
 
@@ -1468,7 +1468,7 @@ aws eks describe-cluster --name %cluster_name% --query "cluster.identity.oidc.is
 
 ---
 
-<h2 id="aws-cdk-lib.aws_eks.ServiceAccount">ServiceAccount</h2>
+<h2 id="aws-cdk-lib.aws_eks.ServiceAccount">blablaServiceAccount</h2>
 
 Service Account.
 
