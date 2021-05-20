@@ -29,6 +29,8 @@ const project = new web.ReactTypeScriptProject({
     "semantic-ui-css",
     "react-markdown",
     "remark-gfm",
+    "jsii-reflect",
+    "@jsii/spec",
   ],
 
   devDeps: ["@types/react-router-dom"],

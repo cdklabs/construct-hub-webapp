@@ -93,6 +93,14 @@
       "type": "build"
     },
     {
+      "name": "@jsii/spec",
+      "type": "runtime"
+    },
+    {
+      "name": "jsii-reflect",
+      "type": "runtime"
+    },
+    {
       "name": "react",
       "type": "runtime"
     },
