@@ -101,10 +101,19 @@ export class PythonClass {
     // lines.push(`## \`${this.klass.name}\` <a id="${this.klass.fqn}"></a>`);
     lines.push("");
 
-    lines.push(this.klass.docs.summary);
-    lines.push("");
-    lines.push(this.klass.docs.remarks);
-    lines.push("");
+    if (this.klass.docs.summary) {
+      lines.push(this.klass.docs.summary);
+      lines.push("");
+    }
+
+    if (this.klass.docs.remarks) {
+      lines.push(this.klass.docs.remarks);
+      lines.push("");
+    }
+
+    if (this.klass.docs.link) {
+      lines.push(`See ${this.klass.docs.link}`);
+    }
 
     if (this.klass.initializer) {
       lines.push(
@@ -123,10 +132,19 @@ export class PythonStruct {
     lines.push(`## \`${this.iface.name}\` <a id="${this.iface.fqn}"></a>`);
     lines.push("");
 
-    lines.push(this.iface.docs.summary);
-    lines.push("");
-    lines.push(this.iface.docs.remarks);
-    lines.push("");
+    if (this.iface.docs.summary) {
+      lines.push(this.iface.docs.summary);
+      lines.push("");
+    }
+
+    if (this.iface.docs.remarks) {
+      lines.push(this.iface.docs.remarks);
+      lines.push("");
+    }
+
+    if (this.iface.docs.link) {
+      lines.push(`See ${this.iface.docs.link}`);
+    }
 
     return lines;
   }
@@ -245,10 +263,15 @@ export class PythonArgument {
 
   public get markdown(): string[] {
     let title = `##### \`${this.argument.name}\``;
-    const docs = [this.argument.docs.summary];
-    if (this.argument.docs.remarks) {
+    const docs = [];
+
+    if (this.argument.docs.summary) {
+      docs.push(this.argument.docs.summary);
       docs.push("");
+    }
+    if (this.argument.docs.remarks) {
       docs.push(`> ${this.argument.docs.remarks}`);
+      docs.push("");
     }
 
     const metadata = [

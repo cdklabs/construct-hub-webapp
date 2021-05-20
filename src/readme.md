@@ -4,8 +4,7 @@
 
 Manages mapping between IAM users and roles to Kubernetes RBAC configuration.
 
-
-
+See https://docs.aws.amazon.com/en_us/eks/latest/userguide/add-user-role.html
 ### Initializer
 
 ```python
@@ -24,13 +23,12 @@ The EKS cluster to apply this configuration to.
 
 > [disable-awslint:ref-via-interface]
 
+
 ---
 
 <h2 id="aws-cdk-lib.aws_eks.CfnAddon">CfnAddon</h2>
 
 A CloudFormation `AWS::EKS::Addon`.
-
-
 
 ### Initializer
 
@@ -48,6 +46,7 @@ aws_cdk.aws_eks.CfnAddon(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Addon.AddonName`.
 
+
 ---
 
 ##### `clusterName`
@@ -55,6 +54,7 @@ aws_cdk.aws_eks.CfnAddon(scope: constructs.Construct, id: string, **kwargs)
 - *Type: string | **Required** | Default: undefined*
 
 `AWS::EKS::Addon.ClusterName`.
+
 
 ---
 
@@ -64,6 +64,7 @@ aws_cdk.aws_eks.CfnAddon(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Addon.AddonVersion`.
 
+
 ---
 
 ##### `resolveConflicts`
@@ -71,6 +72,7 @@ aws_cdk.aws_eks.CfnAddon(scope: constructs.Construct, id: string, **kwargs)
 - *Type: string | **Optional** | Default: undefined*
 
 `AWS::EKS::Addon.ResolveConflicts`.
+
 
 ---
 
@@ -80,6 +82,7 @@ aws_cdk.aws_eks.CfnAddon(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Addon.ServiceAccountRoleArn`.
 
+
 ---
 
 ##### `tags`
@@ -88,13 +91,12 @@ aws_cdk.aws_eks.CfnAddon(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Addon.Tags`.
 
+
 ---
 
 <h2 id="aws-cdk-lib.aws_eks.CfnCluster">CfnCluster</h2>
 
 A CloudFormation `AWS::EKS::Cluster`.
-
-
 
 ### Initializer
 
@@ -112,6 +114,7 @@ aws_cdk.aws_eks.CfnCluster(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Cluster.ResourcesVpcConfig`.
 
+
 ---
 
 ##### `roleArn`
@@ -119,6 +122,7 @@ aws_cdk.aws_eks.CfnCluster(scope: constructs.Construct, id: string, **kwargs)
 - *Type: string | **Required** | Default: undefined*
 
 `AWS::EKS::Cluster.RoleArn`.
+
 
 ---
 
@@ -128,6 +132,7 @@ aws_cdk.aws_eks.CfnCluster(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Cluster.EncryptionConfig`.
 
+
 ---
 
 ##### `kubernetesNetworkConfig`
@@ -135,6 +140,7 @@ aws_cdk.aws_eks.CfnCluster(scope: constructs.Construct, id: string, **kwargs)
 - *Type: [aws-cdk-lib.aws_eks.CfnCluster.KubernetesNetworkConfigProperty](#aws-cdk-lib.aws_eks.CfnCluster.KubernetesNetworkConfigProperty) | [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable) | **Optional** | Default: undefined*
 
 `AWS::EKS::Cluster.KubernetesNetworkConfig`.
+
 
 ---
 
@@ -144,6 +150,7 @@ aws_cdk.aws_eks.CfnCluster(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Cluster.Name`.
 
+
 ---
 
 ##### `version`
@@ -152,13 +159,12 @@ aws_cdk.aws_eks.CfnCluster(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Cluster.Version`.
 
+
 ---
 
 <h2 id="aws-cdk-lib.aws_eks.CfnFargateProfile">CfnFargateProfile</h2>
 
 A CloudFormation `AWS::EKS::FargateProfile`.
-
-
 
 ### Initializer
 
@@ -176,6 +182,7 @@ aws_cdk.aws_eks.CfnFargateProfile(scope: constructs.Construct, id: string, **kwa
 
 `AWS::EKS::FargateProfile.ClusterName`.
 
+
 ---
 
 ##### `podExecutionRoleArn`
@@ -183,6 +190,7 @@ aws_cdk.aws_eks.CfnFargateProfile(scope: constructs.Construct, id: string, **kwa
 - *Type: string | **Required** | Default: undefined*
 
 `AWS::EKS::FargateProfile.PodExecutionRoleArn`.
+
 
 ---
 
@@ -192,6 +200,7 @@ aws_cdk.aws_eks.CfnFargateProfile(scope: constructs.Construct, id: string, **kwa
 
 `AWS::EKS::FargateProfile.Selectors`.
 
+
 ---
 
 ##### `fargateProfileName`
@@ -199,6 +208,7 @@ aws_cdk.aws_eks.CfnFargateProfile(scope: constructs.Construct, id: string, **kwa
 - *Type: string | **Optional** | Default: undefined*
 
 `AWS::EKS::FargateProfile.FargateProfileName`.
+
 
 ---
 
@@ -208,6 +218,7 @@ aws_cdk.aws_eks.CfnFargateProfile(scope: constructs.Construct, id: string, **kwa
 
 `AWS::EKS::FargateProfile.Subnets`.
 
+
 ---
 
 ##### `tags`
@@ -216,13 +227,12 @@ aws_cdk.aws_eks.CfnFargateProfile(scope: constructs.Construct, id: string, **kwa
 
 `AWS::EKS::FargateProfile.Tags`.
 
+
 ---
 
 <h2 id="aws-cdk-lib.aws_eks.CfnNodegroup">CfnNodegroup</h2>
 
 A CloudFormation `AWS::EKS::Nodegroup`.
-
-
 
 ### Initializer
 
@@ -240,6 +250,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Nodegroup.ClusterName`.
 
+
 ---
 
 ##### `nodeRole`
@@ -247,6 +258,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 - *Type: string | **Required** | Default: undefined*
 
 `AWS::EKS::Nodegroup.NodeRole`.
+
 
 ---
 
@@ -256,6 +268,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Nodegroup.Subnets`.
 
+
 ---
 
 ##### `amiType`
@@ -263,6 +276,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 - *Type: string | **Optional** | Default: undefined*
 
 `AWS::EKS::Nodegroup.AmiType`.
+
 
 ---
 
@@ -272,6 +286,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Nodegroup.CapacityType`.
 
+
 ---
 
 ##### `diskSize`
@@ -279,6 +294,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 - *Type: number | **Optional** | Default: undefined*
 
 `AWS::EKS::Nodegroup.DiskSize`.
+
 
 ---
 
@@ -288,6 +304,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Nodegroup.ForceUpdateEnabled`.
 
+
 ---
 
 ##### `instanceTypes`
@@ -295,6 +312,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 - *Type: Array<string> | **Optional** | Default: undefined*
 
 `AWS::EKS::Nodegroup.InstanceTypes`.
+
 
 ---
 
@@ -304,6 +322,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Nodegroup.Labels`.
 
+
 ---
 
 ##### `launchTemplate`
@@ -311,6 +330,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 - *Type: [aws-cdk-lib.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty](#aws-cdk-lib.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty) | [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable) | **Optional** | Default: undefined*
 
 `AWS::EKS::Nodegroup.LaunchTemplate`.
+
 
 ---
 
@@ -320,6 +340,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Nodegroup.NodegroupName`.
 
+
 ---
 
 ##### `releaseVersion`
@@ -327,6 +348,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 - *Type: string | **Optional** | Default: undefined*
 
 `AWS::EKS::Nodegroup.ReleaseVersion`.
+
 
 ---
 
@@ -336,6 +358,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Nodegroup.RemoteAccess`.
 
+
 ---
 
 ##### `scalingConfig`
@@ -343,6 +366,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 - *Type: [aws-cdk-lib.aws_eks.CfnNodegroup.ScalingConfigProperty](#aws-cdk-lib.aws_eks.CfnNodegroup.ScalingConfigProperty) | [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable) | **Optional** | Default: undefined*
 
 `AWS::EKS::Nodegroup.ScalingConfig`.
+
 
 ---
 
@@ -352,6 +376,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Nodegroup.Tags`.
 
+
 ---
 
 ##### `taints`
@@ -360,6 +385,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 `AWS::EKS::Nodegroup.Taints`.
 
+
 ---
 
 ##### `version`
@@ -367,6 +393,7 @@ aws_cdk.aws_eks.CfnNodegroup(scope: constructs.Construct, id: string, **kwargs)
 - *Type: string | **Optional** | Default: undefined*
 
 `AWS::EKS::Nodegroup.Version`.
+
 
 ---
 
@@ -393,6 +420,7 @@ aws_cdk.aws_eks.Cluster(scope: constructs.Construct, id: string, **kwargs)
 
 The Kubernetes version to run in the cluster.
 
+
 ---
 
 ##### `clusterName`
@@ -401,6 +429,7 @@ The Kubernetes version to run in the cluster.
 
 Name for the cluster.
 
+
 ---
 
 ##### `outputClusterName`
@@ -408,6 +437,7 @@ Name for the cluster.
 - *Type: boolean | **Optional** | Default: false*
 
 Determines whether a CloudFormation output with the name of the cluster will be synthesized.
+
 
 ---
 
@@ -420,6 +450,7 @@ Determines whether a CloudFormation output with the `aws eks update-kubeconfig` 
 > This command will include
 the cluster name and, if applicable, the ARN of the masters IAM role.
 
+
 ---
 
 ##### `role`
@@ -427,6 +458,7 @@ the cluster name and, if applicable, the ARN of the masters IAM role.
 - *Type: [aws-cdk-lib.aws_iam.IRole](#aws-cdk-lib.aws_iam.IRole) | **Optional** | Default: - A role is automatically created for you*
 
 Role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf.
+
 
 ---
 
@@ -436,6 +468,7 @@ Role that provides permissions for the Kubernetes control plane to make calls to
 
 Security Group to use for Control Plane ENIs.
 
+
 ---
 
 ##### `vpc`
@@ -443,6 +476,7 @@ Security Group to use for Control Plane ENIs.
 - *Type: [aws-cdk-lib.aws_ec2.IVpc](#aws-cdk-lib.aws_ec2.IVpc) | **Optional** | Default: - a VPC with default configuration will be created and can be accessed through `cluster.vpc`.*
 
 The VPC in which to create the Cluster.
+
 
 ---
 
@@ -462,6 +496,7 @@ vpcSubnets: [
 ]
 ```
 
+
 ---
 
 ##### `clusterHandlerEnvironment`
@@ -469,6 +504,7 @@ vpcSubnets: [
 - *Type: Map<string => string> | **Optional** | Default: - No environment variables.*
 
 Custom environment variables when interacting with the EKS endpoint to manage the cluster lifecycle.
+
 
 ---
 
@@ -478,6 +514,7 @@ Custom environment variables when interacting with the EKS endpoint to manage th
 
 Controls the "eks.amazonaws.com/compute-type" annotation in the CoreDNS configuration on your cluster to determine which compute type to use for CoreDNS.
 
+
 ---
 
 ##### `endpointAccess`
@@ -485,6 +522,7 @@ Controls the "eks.amazonaws.com/compute-type" annotation in the CoreDNS configur
 - *Type: [aws-cdk-lib.aws_eks.EndpointAccess](#aws-cdk-lib.aws_eks.EndpointAccess) | **Optional** | Default: EndpointAccess.PUBLIC_AND_PRIVATE*
 
 Configure access to the Kubernetes API server endpoint..
+
 
 ---
 
@@ -495,6 +533,7 @@ Configure access to the Kubernetes API server endpoint..
 Environment variables for the kubectl execution.
 
 > Only relevant for kubectl enabled clusters.
+
 
 ---
 
@@ -520,6 +559,7 @@ const layer = new lambda.LayerVersion(this, 'kubectl-layer', {
 })
 ```
 
+
 ---
 
 ##### `kubectlMemory`
@@ -527,6 +567,7 @@ const layer = new lambda.LayerVersion(this, 'kubectl-layer', {
 - *Type: [aws-cdk-lib.Size](#aws-cdk-lib.Size) | **Optional** | Default: Size.gibibytes(1)*
 
 Amount of memory to allocate to the provider's lambda function.
+
 
 ---
 
@@ -537,6 +578,7 @@ account will automatically be defined*
 
 An IAM role that will be added to the `system:masters` Kubernetes RBAC group.
 
+
 ---
 
 ##### `outputMastersRoleArn`
@@ -545,6 +587,7 @@ An IAM role that will be added to the `system:masters` Kubernetes RBAC group.
 
 Determines whether a CloudFormation output with the ARN of the "masters" IAM role will be synthesized (if `mastersRole` is specified).
 
+
 ---
 
 ##### `placeClusterHandlerInVpc`
@@ -552,6 +595,7 @@ Determines whether a CloudFormation output with the ARN of the "masters" IAM rol
 - *Type: boolean | **Optional** | Default: false*
 
 If set to true, the cluster handler functions will be placed in the private subnets of the cluster vpc, subject to the `vpcSubnets` selection strategy.
+
 
 ---
 
@@ -565,6 +609,7 @@ Indicates whether Kubernetes resources added through `addManifest()` can be auto
 allocated and injected to each resource. These labels will then be used
 when issuing the `kubectl apply` operation with the `--prune` switch.
 
+
 ---
 
 ##### `secretsEncryptionKey`
@@ -574,6 +619,7 @@ when issuing the `kubectl apply` operation with the `--prune` switch.
   using AWS-Managed encryption keys.*
 
 KMS secret for envelope encryption for Kubernetes secrets.
+
 
 ---
 
@@ -589,6 +635,7 @@ which defaults to `m5.large`.
 Use `cluster.addAutoScalingGroupCapacity` to add additional customized capacity. Set this
 to `0` is you wish to avoid the initial capacity allocation.
 
+
 ---
 
 ##### `defaultCapacityInstance`
@@ -600,6 +647,7 @@ The instance type to use for the default capacity.
 > This will only be taken
 into account if `defaultCapacity` is > 0.
 
+
 ---
 
 ##### `defaultCapacityType`
@@ -607,6 +655,7 @@ into account if `defaultCapacity` is > 0.
 - *Type: [aws-cdk-lib.aws_eks.DefaultCapacityType](#aws-cdk-lib.aws_eks.DefaultCapacityType) | **Optional** | Default: NODEGROUP*
 
 The default capacity type for the cluster.
+
 
 ---
 
@@ -634,6 +683,7 @@ aws_cdk.aws_eks.FargateCluster(scope: constructs.Construct, id: string, **kwargs
 
 The Kubernetes version to run in the cluster.
 
+
 ---
 
 ##### `clusterName`
@@ -642,6 +692,7 @@ The Kubernetes version to run in the cluster.
 
 Name for the cluster.
 
+
 ---
 
 ##### `outputClusterName`
@@ -649,6 +700,7 @@ Name for the cluster.
 - *Type: boolean | **Optional** | Default: false*
 
 Determines whether a CloudFormation output with the name of the cluster will be synthesized.
+
 
 ---
 
@@ -661,6 +713,7 @@ Determines whether a CloudFormation output with the `aws eks update-kubeconfig` 
 > This command will include
 the cluster name and, if applicable, the ARN of the masters IAM role.
 
+
 ---
 
 ##### `role`
@@ -668,6 +721,7 @@ the cluster name and, if applicable, the ARN of the masters IAM role.
 - *Type: [aws-cdk-lib.aws_iam.IRole](#aws-cdk-lib.aws_iam.IRole) | **Optional** | Default: - A role is automatically created for you*
 
 Role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf.
+
 
 ---
 
@@ -677,6 +731,7 @@ Role that provides permissions for the Kubernetes control plane to make calls to
 
 Security Group to use for Control Plane ENIs.
 
+
 ---
 
 ##### `vpc`
@@ -684,6 +739,7 @@ Security Group to use for Control Plane ENIs.
 - *Type: [aws-cdk-lib.aws_ec2.IVpc](#aws-cdk-lib.aws_ec2.IVpc) | **Optional** | Default: - a VPC with default configuration will be created and can be accessed through `cluster.vpc`.*
 
 The VPC in which to create the Cluster.
+
 
 ---
 
@@ -703,6 +759,7 @@ vpcSubnets: [
 ]
 ```
 
+
 ---
 
 ##### `clusterHandlerEnvironment`
@@ -710,6 +767,7 @@ vpcSubnets: [
 - *Type: Map<string => string> | **Optional** | Default: - No environment variables.*
 
 Custom environment variables when interacting with the EKS endpoint to manage the cluster lifecycle.
+
 
 ---
 
@@ -719,6 +777,7 @@ Custom environment variables when interacting with the EKS endpoint to manage th
 
 Controls the "eks.amazonaws.com/compute-type" annotation in the CoreDNS configuration on your cluster to determine which compute type to use for CoreDNS.
 
+
 ---
 
 ##### `endpointAccess`
@@ -726,6 +785,7 @@ Controls the "eks.amazonaws.com/compute-type" annotation in the CoreDNS configur
 - *Type: [aws-cdk-lib.aws_eks.EndpointAccess](#aws-cdk-lib.aws_eks.EndpointAccess) | **Optional** | Default: EndpointAccess.PUBLIC_AND_PRIVATE*
 
 Configure access to the Kubernetes API server endpoint..
+
 
 ---
 
@@ -736,6 +796,7 @@ Configure access to the Kubernetes API server endpoint..
 Environment variables for the kubectl execution.
 
 > Only relevant for kubectl enabled clusters.
+
 
 ---
 
@@ -761,6 +822,7 @@ const layer = new lambda.LayerVersion(this, 'kubectl-layer', {
 })
 ```
 
+
 ---
 
 ##### `kubectlMemory`
@@ -768,6 +830,7 @@ const layer = new lambda.LayerVersion(this, 'kubectl-layer', {
 - *Type: [aws-cdk-lib.Size](#aws-cdk-lib.Size) | **Optional** | Default: Size.gibibytes(1)*
 
 Amount of memory to allocate to the provider's lambda function.
+
 
 ---
 
@@ -778,6 +841,7 @@ account will automatically be defined*
 
 An IAM role that will be added to the `system:masters` Kubernetes RBAC group.
 
+
 ---
 
 ##### `outputMastersRoleArn`
@@ -786,6 +850,7 @@ An IAM role that will be added to the `system:masters` Kubernetes RBAC group.
 
 Determines whether a CloudFormation output with the ARN of the "masters" IAM role will be synthesized (if `mastersRole` is specified).
 
+
 ---
 
 ##### `placeClusterHandlerInVpc`
@@ -793,6 +858,7 @@ Determines whether a CloudFormation output with the ARN of the "masters" IAM rol
 - *Type: boolean | **Optional** | Default: false*
 
 If set to true, the cluster handler functions will be placed in the private subnets of the cluster vpc, subject to the `vpcSubnets` selection strategy.
+
 
 ---
 
@@ -806,6 +872,7 @@ Indicates whether Kubernetes resources added through `addManifest()` can be auto
 allocated and injected to each resource. These labels will then be used
 when issuing the `kubectl apply` operation with the `--prune` switch.
 
+
 ---
 
 ##### `secretsEncryptionKey`
@@ -816,6 +883,7 @@ when issuing the `kubectl apply` operation with the `--prune` switch.
 
 KMS secret for envelope encryption for Kubernetes secrets.
 
+
 ---
 
 ##### `defaultProfile`
@@ -824,6 +892,7 @@ KMS secret for envelope encryption for Kubernetes secrets.
   selectors will be created if this is left undefined.*
 
 Fargate Profile to create along with the cluster.
+
 
 ---
 
@@ -870,6 +939,7 @@ for a namespace.
 
 At least one selector is required and you may specify up to five selectors.
 
+
 ---
 
 ##### `fargateProfileName`
@@ -877,6 +947,7 @@ At least one selector is required and you may specify up to five selectors.
 - *Type: string | **Optional** | Default: - generated*
 
 The name of the Fargate profile.
+
 
 ---
 
@@ -890,6 +961,7 @@ The pod execution role to use for pods that match the selectors in the Fargate p
 register with your cluster as a node, and it provides read access to Amazon
 ECR image repositories.
 
+
 ---
 
 ##### `subnetSelection`
@@ -902,6 +974,7 @@ Select which subnets to launch your pods into.
 on Fargate are not assigned public IP addresses, so only private subnets
 (with no direct route to an Internet Gateway) are allowed.
 
+
 ---
 
 ##### `vpc`
@@ -913,6 +986,7 @@ The VPC from which to select subnets to launch your pods into.
 > By default, all private subnets are selected. You can customize this using
 `subnetSelection`.
 
+
 ---
 
 ##### `cluster`
@@ -922,6 +996,7 @@ The VPC from which to select subnets to launch your pods into.
 The EKS cluster to apply the Fargate profile to.
 
 > [disable-awslint:ref-via-interface]
+
 
 ---
 
@@ -947,6 +1022,7 @@ aws_cdk.aws_eks.HelmChart(scope: constructs.Construct, id: string, **kwargs)
 
 The name of the chart.
 
+
 ---
 
 ##### `createNamespace`
@@ -954,6 +1030,7 @@ The name of the chart.
 - *Type: boolean | **Optional** | Default: true*
 
 create namespace if not exist.
+
 
 ---
 
@@ -963,6 +1040,7 @@ create namespace if not exist.
 
 The Kubernetes namespace scope of the requests.
 
+
 ---
 
 ##### `release`
@@ -970,6 +1048,7 @@ The Kubernetes namespace scope of the requests.
 - *Type: string | **Optional** | Default: - If no release name is given, it will use the last 53 characters of the node's unique id.*
 
 The name of the release.
+
 
 ---
 
@@ -981,6 +1060,7 @@ The repository which contains the chart.
 
 > For example: https://kubernetes-charts.storage.googleapis.com/
 
+
 ---
 
 ##### `timeout`
@@ -991,6 +1071,7 @@ Amount of time to wait for any individual Kubernetes operation.
 
 > Maximum 15 minutes.
 
+
 ---
 
 ##### `values`
@@ -998,6 +1079,7 @@ Amount of time to wait for any individual Kubernetes operation.
 - *Type: Map<string => any> | **Optional** | Default: - No values are provided to the chart.*
 
 The values to be used by the chart.
+
 
 ---
 
@@ -1007,6 +1089,7 @@ The values to be used by the chart.
 
 The chart version to install.
 
+
 ---
 
 ##### `wait`
@@ -1014,6 +1097,7 @@ The chart version to install.
 - *Type: boolean | **Optional** | Default: - Helm will not wait before marking release as successful*
 
 Whether or not Helm should wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment, StatefulSet, or ReplicaSet are in a ready state before marking the release as successful.
+
 
 ---
 
@@ -1024,6 +1108,7 @@ Whether or not Helm should wait until all Pods, PVCs, Services, and minimum numb
 The EKS cluster to apply this configuration to.
 
 > [disable-awslint:ref-via-interface]
+
 
 ---
 
@@ -1067,6 +1152,7 @@ The label name will be `aws.cdk.eks/prune-<ADDR>` where `<ADDR>` is the
 42-char unique address of this construct in the construct tree. Value is
 empty.
 
+
 ---
 
 ##### `skipValidation`
@@ -1074,6 +1160,7 @@ empty.
 - *Type: boolean | **Optional** | Default: false*
 
 A flag to signify if the manifest validation should be skipped.
+
 
 ---
 
@@ -1084,6 +1171,7 @@ A flag to signify if the manifest validation should be skipped.
 The EKS cluster to apply this manifest to.
 
 > [disable-awslint:ref-via-interface]
+
 
 ---
 
@@ -1099,6 +1187,7 @@ When the resources are created/updated, this manifest will be applied to the
 cluster through `kubectl apply` and when the resources or the stack is
 deleted, the resources in the manifest will be deleted through `kubectl delete`.
 
+
 ---
 
 ##### `overwrite`
@@ -1110,6 +1199,7 @@ Overwrite any existing resources.
 > If this is set, we will use `kubectl apply` instead of `kubectl create`
 when the resource is created. Otherwise, if there is already a resource
 in the cluster with the same name, the operation will fail.
+
 
 ---
 
@@ -1137,6 +1227,7 @@ The EKS cluster to fetch attributes from.
 
 > [disable-awslint:ref-via-interface]
 
+
 ---
 
 ##### `jsonPath`
@@ -1145,6 +1236,7 @@ The EKS cluster to fetch attributes from.
 
 JSONPath to the specific value.
 
+
 ---
 
 ##### `objectName`
@@ -1152,6 +1244,7 @@ JSONPath to the specific value.
 - *Type: string | **Required** | Default: undefined*
 
 The name of the object to query.
+
 
 ---
 
@@ -1163,6 +1256,7 @@ The object type to query.
 
 > (e.g 'service', 'pod'...)
 
+
 ---
 
 ##### `objectNamespace`
@@ -1170,6 +1264,7 @@ The object type to query.
 - *Type: string | **Optional** | Default: 'default'*
 
 The namespace the object belongs to.
+
 
 ---
 
@@ -1179,14 +1274,14 @@ The namespace the object belongs to.
 
 Timeout for waiting on a value.
 
+
 ---
 
 <h2 id="aws-cdk-lib.aws_eks.KubernetesPatch">KubernetesPatch</h2>
 
 A CloudFormation resource which applies/restores a JSON patch into a Kubernetes resource.
 
-
-
+See https://kubernetes.io/docs/tasks/run-application/update-api-object-kubectl-patch/
 ### Initializer
 
 ```python
@@ -1203,6 +1298,7 @@ aws_cdk.aws_eks.KubernetesPatch(scope: constructs.Construct, id: string, **kwarg
 
 The JSON object to pass to `kubectl patch` when the resource is created/updated.
 
+
 ---
 
 ##### `cluster`
@@ -1213,6 +1309,7 @@ The cluster to apply the patch to.
 
 > [disable-awslint:ref-via-interface]
 
+
 ---
 
 ##### `resourceName`
@@ -1221,6 +1318,7 @@ The cluster to apply the patch to.
 
 The full name of the resource to patch (e.g. `deployment/coredns`).
 
+
 ---
 
 ##### `restorePatch`
@@ -1228,6 +1326,7 @@ The full name of the resource to patch (e.g. `deployment/coredns`).
 - *Type: Map<string => any> | **Required** | Default: undefined*
 
 The JSON object to pass to `kubectl patch` when the resource is removed.
+
 
 ---
 
@@ -1239,6 +1338,7 @@ The patch type to pass to `kubectl patch`.
 
 > The default type used by `kubectl patch` is "strategic".
 
+
 ---
 
 ##### `resourceNamespace`
@@ -1247,13 +1347,12 @@ The patch type to pass to `kubectl patch`.
 
 The kubernetes API namespace.
 
+
 ---
 
 <h2 id="aws-cdk-lib.aws_eks.Nodegroup">Nodegroup</h2>
 
 The Nodegroup resource class.
-
-
 
 ### Initializer
 
@@ -1271,6 +1370,7 @@ aws_cdk.aws_eks.Nodegroup(scope: constructs.Construct, id: string, **kwargs)
 
 The AMI type for your node group.
 
+
 ---
 
 ##### `capacityType`
@@ -1278,6 +1378,7 @@ The AMI type for your node group.
 - *Type: [aws-cdk-lib.aws_eks.CapacityType](#aws-cdk-lib.aws_eks.CapacityType) | **Optional** | Default: - ON_DEMAND*
 
 The capacity type of the nodegroup.
+
 
 ---
 
@@ -1290,6 +1391,7 @@ The current number of worker nodes that the managed node group should maintain.
 > If not specified,
 the nodewgroup will initially create `minSize` instances.
 
+
 ---
 
 ##### `diskSize`
@@ -1297,6 +1399,7 @@ the nodewgroup will initially create `minSize` instances.
 - *Type: number | **Optional** | Default: 20*
 
 The root device disk size (in GiB) for your node group instances.
+
 
 ---
 
@@ -1310,6 +1413,7 @@ Force the update if the existing node group's pods are unable to be drained due 
 node whether or not any pods are
 running on the node.
 
+
 ---
 
 ##### `instanceTypes`
@@ -1317,6 +1421,7 @@ running on the node.
 - *Type: Array<aws-cdk-lib.aws_ec2.InstanceType> | **Optional** | Default: t3.medium will be used according to the cloudformation document.*
 
 The instance types to use for your node group.
+
 
 ---
 
@@ -1326,6 +1431,7 @@ The instance types to use for your node group.
 
 The Kubernetes labels to be applied to the nodes in the node group when they are created.
 
+
 ---
 
 ##### `launchTemplateSpec`
@@ -1333,6 +1439,7 @@ The Kubernetes labels to be applied to the nodes in the node group when they are
 - *Type: [aws-cdk-lib.aws_eks.LaunchTemplateSpec](#aws-cdk-lib.aws_eks.LaunchTemplateSpec) | **Optional** | Default: - no launch template*
 
 Launch template specification used for the nodegroup.
+
 
 ---
 
@@ -1344,6 +1451,7 @@ The maximum number of worker nodes that the managed node group can scale out to.
 
 > Managed node groups can support up to 100 nodes by default.
 
+
 ---
 
 ##### `minSize`
@@ -1354,6 +1462,7 @@ The minimum number of worker nodes that the managed node group can scale in to.
 
 > This number must be greater than zero.
 
+
 ---
 
 ##### `nodegroupName`
@@ -1361,6 +1470,7 @@ The minimum number of worker nodes that the managed node group can scale in to.
 - *Type: string | **Optional** | Default: - resource ID*
 
 Name of the Nodegroup.
+
 
 ---
 
@@ -1375,6 +1485,7 @@ makes calls to AWS APIs on your behalf. Worker nodes receive permissions for the
 an IAM instance profile and associated policies. Before you can launch worker nodes and register them
 into a cluster, you must create an IAM role for those worker nodes to use when they are launched.
 
+
 ---
 
 ##### `releaseVersion`
@@ -1382,6 +1493,7 @@ into a cluster, you must create an IAM role for those worker nodes to use when t
 - *Type: string | **Optional** | Default: - The latest available AMI version for the node group's current Kubernetes version is used.*
 
 The AMI version of the Amazon EKS-optimized AMI to use with your node group (for example, `1.14.7-YYYYMMDD`).
+
 
 ---
 
@@ -1394,6 +1506,7 @@ The remote access (SSH) configuration to use with your node group.
 > Disabled by default, however, if you
 specify an Amazon EC2 SSH key but do not specify a source security group when you create a managed node group,
 then port 22 on the worker nodes is opened to the internet (0.0.0.0/0)
+
 
 ---
 
@@ -1408,6 +1521,7 @@ SubnetSelection, the selected subnets will automatically apply required tags i.e
 `kubernetes.io/cluster/CLUSTER_NAME` with a value of `shared`, where `CLUSTER_NAME` is replaced with
 the name of your cluster.
 
+
 ---
 
 ##### `tags`
@@ -1420,6 +1534,7 @@ The metadata to apply to the node group to assist with categorization and organi
 a key and an optional value, both of which you define. Node group tags do not propagate to any other resources
 associated with the node group, such as the Amazon EC2 instances or subnets.
 
+
 ---
 
 ##### `cluster`
@@ -1427,6 +1542,7 @@ associated with the node group, such as the Amazon EC2 instances or subnets.
 - *Type: [aws-cdk-lib.aws_eks.ICluster](#aws-cdk-lib.aws_eks.ICluster) | **Required** | Default: undefined*
 
 Cluster resource.
+
 
 ---
 
@@ -1441,6 +1557,7 @@ account.
 This implementation has default values for thumbprints and clientIds props
 that will be compatible with the eks cluster
 
+See https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html
 ### Initializer
 
 ```python
@@ -1466,13 +1583,12 @@ https://server.example.org or https://example.com.
 You can find your OIDC Issuer URL by:
 aws eks describe-cluster --name %cluster_name% --query "cluster.identity.oidc.issuer" --output text
 
+
 ---
 
 <h2 id="aws-cdk-lib.aws_eks.ServiceAccount">ServiceAccount</h2>
 
 Service Account.
-
-
 
 ### Initializer
 
@@ -1490,6 +1606,7 @@ aws_cdk.aws_eks.ServiceAccount(scope: constructs.Construct, id: string, **kwargs
 
 The name of the service account.
 
+
 ---
 
 ##### `namespace`
@@ -1497,6 +1614,7 @@ The name of the service account.
 - *Type: string | **Optional** | Default: "default"*
 
 The namespace of the service account.
+
 
 ---
 
@@ -1506,6 +1624,7 @@ The namespace of the service account.
 
 The cluster to apply the patch to.
 
+
 ---
 
 # Structs
@@ -1514,250 +1633,147 @@ The cluster to apply the patch to.
 
 Options for adding worker nodes.
 
-
-
 ## `AutoScalingGroupOptions` <a id="aws-cdk-lib.aws_eks.AutoScalingGroupOptions"></a>
 
 Options for adding an AutoScalingGroup as capacity.
-
-
 
 ## `AwsAuthMapping` <a id="aws-cdk-lib.aws_eks.AwsAuthMapping"></a>
 
 AwsAuth mapping.
 
-
-
 ## `AwsAuthProps` <a id="aws-cdk-lib.aws_eks.AwsAuthProps"></a>
 
 Configuration props for the AwsAuth construct.
-
-
 
 ## `BootstrapOptions` <a id="aws-cdk-lib.aws_eks.BootstrapOptions"></a>
 
 EKS node bootstrapping options.
 
-
-
 ## `CfnAddonProps` <a id="aws-cdk-lib.aws_eks.CfnAddonProps"></a>
 
 Properties for defining a `AWS::EKS::Addon`.
 
-
-
 ## `EncryptionConfigProperty` <a id="aws-cdk-lib.aws_eks.CfnCluster.EncryptionConfigProperty"></a>
-
-
-
-
 
 ## `KubernetesNetworkConfigProperty` <a id="aws-cdk-lib.aws_eks.CfnCluster.KubernetesNetworkConfigProperty"></a>
 
-
-
-
-
 ## `ProviderProperty` <a id="aws-cdk-lib.aws_eks.CfnCluster.ProviderProperty"></a>
 
-
-
-
-
 ## `ResourcesVpcConfigProperty` <a id="aws-cdk-lib.aws_eks.CfnCluster.ResourcesVpcConfigProperty"></a>
-
-
-
-
 
 ## `CfnClusterProps` <a id="aws-cdk-lib.aws_eks.CfnClusterProps"></a>
 
 Properties for defining a `AWS::EKS::Cluster`.
 
-
-
 ## `LabelProperty` <a id="aws-cdk-lib.aws_eks.CfnFargateProfile.LabelProperty"></a>
 
-
-
-
-
 ## `SelectorProperty` <a id="aws-cdk-lib.aws_eks.CfnFargateProfile.SelectorProperty"></a>
-
-
-
-
 
 ## `CfnFargateProfileProps` <a id="aws-cdk-lib.aws_eks.CfnFargateProfileProps"></a>
 
 Properties for defining a `AWS::EKS::FargateProfile`.
 
-
-
 ## `LaunchTemplateSpecificationProperty` <a id="aws-cdk-lib.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty"></a>
-
-
-
-
 
 ## `RemoteAccessProperty` <a id="aws-cdk-lib.aws_eks.CfnNodegroup.RemoteAccessProperty"></a>
 
-
-
-
-
 ## `ScalingConfigProperty` <a id="aws-cdk-lib.aws_eks.CfnNodegroup.ScalingConfigProperty"></a>
 
-
-
-
-
 ## `TaintProperty` <a id="aws-cdk-lib.aws_eks.CfnNodegroup.TaintProperty"></a>
-
-
-
-
 
 ## `CfnNodegroupProps` <a id="aws-cdk-lib.aws_eks.CfnNodegroupProps"></a>
 
 Properties for defining a `AWS::EKS::Nodegroup`.
 
-
-
 ## `ClusterAttributes` <a id="aws-cdk-lib.aws_eks.ClusterAttributes"></a>
 
 Attributes for EKS clusters.
-
-
 
 ## `ClusterOptions` <a id="aws-cdk-lib.aws_eks.ClusterOptions"></a>
 
 Options for EKS clusters.
 
-
-
 ## `ClusterProps` <a id="aws-cdk-lib.aws_eks.ClusterProps"></a>
 
 Common configuration props for EKS clusters.
-
-
 
 ## `CommonClusterOptions` <a id="aws-cdk-lib.aws_eks.CommonClusterOptions"></a>
 
 Options for configuring an EKS cluster.
 
-
-
 ## `EksOptimizedImageProps` <a id="aws-cdk-lib.aws_eks.EksOptimizedImageProps"></a>
 
 Properties for EksOptimizedImage.
-
-
 
 ## `FargateClusterProps` <a id="aws-cdk-lib.aws_eks.FargateClusterProps"></a>
 
 Configuration props for EKS Fargate.
 
-
-
 ## `FargateProfileOptions` <a id="aws-cdk-lib.aws_eks.FargateProfileOptions"></a>
 
 Options for defining EKS Fargate Profiles.
-
-
 
 ## `FargateProfileProps` <a id="aws-cdk-lib.aws_eks.FargateProfileProps"></a>
 
 Configuration props for EKS Fargate Profiles.
 
-
-
 ## `HelmChartOptions` <a id="aws-cdk-lib.aws_eks.HelmChartOptions"></a>
 
 Helm Chart options.
-
-
 
 ## `HelmChartProps` <a id="aws-cdk-lib.aws_eks.HelmChartProps"></a>
 
 Helm Chart properties.
 
-
-
 ## `KubernetesManifestOptions` <a id="aws-cdk-lib.aws_eks.KubernetesManifestOptions"></a>
 
 Options for `KubernetesManifest`.
-
-
 
 ## `KubernetesManifestProps` <a id="aws-cdk-lib.aws_eks.KubernetesManifestProps"></a>
 
 Properties for KubernetesManifest.
 
-
-
 ## `KubernetesObjectValueProps` <a id="aws-cdk-lib.aws_eks.KubernetesObjectValueProps"></a>
 
 Properties for KubernetesObjectValue.
-
-
 
 ## `KubernetesPatchProps` <a id="aws-cdk-lib.aws_eks.KubernetesPatchProps"></a>
 
 Properties for KubernetesPatch.
 
-
-
 ## `LaunchTemplateSpec` <a id="aws-cdk-lib.aws_eks.LaunchTemplateSpec"></a>
 
 Launch template property specification.
-
-
 
 ## `NodegroupOptions` <a id="aws-cdk-lib.aws_eks.NodegroupOptions"></a>
 
 The Nodegroup Options for addNodeGroup() method.
 
-
-
 ## `NodegroupProps` <a id="aws-cdk-lib.aws_eks.NodegroupProps"></a>
 
 NodeGroup properties interface.
-
-
 
 ## `NodegroupRemoteAccess` <a id="aws-cdk-lib.aws_eks.NodegroupRemoteAccess"></a>
 
 The remote access (SSH) configuration to use with your node group.
 
-
-
+See https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-nodegroup-remoteaccess.html
 ## `OpenIdConnectProviderProps` <a id="aws-cdk-lib.aws_eks.OpenIdConnectProviderProps"></a>
 
 Initialization properties for `OpenIdConnectProvider`.
-
-
 
 ## `Selector` <a id="aws-cdk-lib.aws_eks.Selector"></a>
 
 Fargate profile selector.
 
-
-
 ## `ServiceAccountOptions` <a id="aws-cdk-lib.aws_eks.ServiceAccountOptions"></a>
 
 Options for `ServiceAccount`.
-
-
 
 ## `ServiceAccountProps` <a id="aws-cdk-lib.aws_eks.ServiceAccountProps"></a>
 
 Properties for defining service accounts.
 
-
-
 ## `ServiceLoadBalancerAddressOptions` <a id="aws-cdk-lib.aws_eks.ServiceLoadBalancerAddressOptions"></a>
 
 Options for fetching a ServiceLoadBalancerAddress.
-
-
