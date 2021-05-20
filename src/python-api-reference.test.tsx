@@ -10,19 +10,20 @@ export interface AssemblyFetcher {
   fetchAssembly(name: string, version: string): spec.Assembly;
 }
 
+export interface MarkdownOptions {
+  readonly headerSize?: number;
+  readonly id?: string;
+  readonly code?: boolean;
+  readonly deprecated?: boolean;
+}
+
 export class Markdown {
   private readonly _lines = new Array<string>();
 
   public readonly headerSize: number;
 
-  constructor(
-    public readonly title: string,
-    headerSize?: number,
-    public readonly id?: string,
-    code?: boolean,
-    deprecated?: boolean
-  ) {
-    this.headerSize = headerSize ?? 1;
+  constructor(public readonly title: string, options: MarkdownOptions = {}) {
+    this.headerSize = options.headerSize ?? 1;
 
     if (this.headerSize > 6) {
       throw new Error(
@@ -32,15 +33,17 @@ export class Markdown {
 
     let caption = this.title;
 
-    if (code) {
+    if (options.code ?? false) {
       caption = `\`${title}\``;
     }
 
-    if (deprecated) {
+    if (options.deprecated ?? false) {
       caption = `~~${title}~~`;
     }
     const heading = "#".repeat(this.headerSize);
-    this.lines(`${heading} ${caption} <a name="${id ?? this.title}"></a>`);
+    this.lines(
+      `${heading} ${caption} <a name="${options.id ?? this.title}"></a>`
+    );
   }
 
   public lines(...lines: string[]) {
@@ -125,7 +128,9 @@ export class Constructs {
   }
 
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown("Constructs", this.parentMarkdown.headerSize + 1);
+    const md = new Markdown("Constructs", {
+      headerSize: this.parentMarkdown.headerSize + 1,
+    });
 
     if (this.constructs.length === 0) {
       md.lines("This library does not provide any constructs");
@@ -163,7 +168,9 @@ export class Structs {
   }
 
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown("Structs", this.parentMarkdown.headerSize + 1);
+    const md = new Markdown("Structs", {
+      headerSize: this.parentMarkdown.headerSize + 1,
+    });
 
     if (this.structs.length === 0) {
       md.lines("This library does not provide any structs");
@@ -183,11 +190,10 @@ export class Class {
     private readonly parentMarkdown: Markdown
   ) {}
   public get pythonMarkdown(): string {
-    const md = new Markdown(
-      this.klass.name,
-      this.parentMarkdown.headerSize + 1,
-      this.klass.fqn
-    );
+    const md = new Markdown(this.klass.name, {
+      headerSize: this.parentMarkdown.headerSize + 1,
+      id: this.klass.fqn,
+    });
 
     if (this.klass.docs.summary) {
       md.lines(this.klass.docs.summary);
@@ -216,11 +222,10 @@ export class Struct {
     private readonly parentMarkdown: Markdown
   ) {}
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown(
-      this.iface.name,
-      this.parentMarkdown.headerSize + 1,
-      this.iface.fqn
-    );
+    const md = new Markdown(this.iface.name, {
+      headerSize: this.parentMarkdown.headerSize + 1,
+      id: this.iface.fqn,
+    });
 
     if (this.iface.docs.summary) {
       md.lines(this.iface.docs.summary);
@@ -245,7 +250,9 @@ export class PythonClassInitializer {
   ) {}
 
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown("Initializer", this.parentMarkdown.headerSize + 1);
+    const md = new Markdown("Initializer", {
+      headerSize: this.parentMarkdown.headerSize + 1,
+    });
 
     const module = this.findImport();
 
@@ -348,10 +355,11 @@ export class PythonArgument {
   ) {}
 
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown(
-      this.argument.name,
-      this.parentMarkdown.headerSize + 1
-    );
+    const md = new Markdown(this.argument.name, {
+      headerSize: this.parentMarkdown.headerSize + 1,
+      code: true,
+      deprecated: this.argument.docs.deprecated,
+    });
 
     md.lines(
       `- *Type: ${this.link(this.argument.type)} | **${
