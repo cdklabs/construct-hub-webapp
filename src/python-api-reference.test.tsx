@@ -15,7 +15,8 @@ export class ApiReference {
   constructor(
     private readonly assemblyName: string,
     assemblyVersion: string,
-    fetcher: AssemblyFetcher
+    fetcher: AssemblyFetcher,
+    submodule?: string
   ) {
     this.ts = new reflect.TypeSystem();
     this.assemblyFetcher = fetcher;
@@ -25,8 +26,17 @@ export class ApiReference {
     for (const assembly of assemblies) {
       this.ts.addAssembly(new reflect.Assembly(this.ts, assembly));
     }
-    this.constructs = this.ts.classes.filter((c) => this.isConstruct(c));
-    this.structs = this.ts.interfaces.filter((c) => c.datatype);
+    this.constructs = this.ts.classes
+      .filter((c) => this.isConstruct(c))
+      .filter((c) => (submodule ? this.inSubmodule(c, submodule) : true));
+    this.structs = this.ts.interfaces
+      .filter((i) => i.datatype)
+      .filter((i) => (submodule ? this.inSubmodule(i, submodule) : true));
+  }
+
+  private inSubmodule(type: reflect.ReferenceType, submodule: string): boolean {
+    const module = type.fqn.split(".").slice(0, -1).join(".");
+    return module === submodule;
   }
 
   public fetchAssemblies(name: string, version: string): spec.Assembly[] {
@@ -275,7 +285,12 @@ export class PythonArgument {
 
 test("basic", () => {
   const fetcher = new AssemblyFetcherForTests();
-  const reference = new ApiReference("aws-cdk-lib", "2.0.0-rc4", fetcher);
+  const reference = new ApiReference(
+    "aws-cdk-lib",
+    "2.0.0-rc4",
+    fetcher,
+    "aws-cdk-lib.aws_eks"
+  );
 
   fs.writeFileSync(`${__dirname}/readme.md`, reference.pythonMarkdown);
   // expect(reference.pythonMarkdown).toMatchSnapshot();
