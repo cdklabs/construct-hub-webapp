@@ -295,7 +295,7 @@ export class PythonClassInitializer {
         );
         for (const property of struct.allProperties) {
           md.sections(new PythonArgument(property, md).pythonMarkdown);
-          md.lines("---");
+          // md.lines("---");
         }
       }
     }
