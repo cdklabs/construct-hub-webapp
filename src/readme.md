@@ -216,7 +216,7 @@ secret.addReplicaRegion('eu-west-1');
 
 A CloudFormation `AWS::SecretsManager::ResourcePolicy`.
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html
 
 #### Initializer <a name="Initializer"></a>
 
@@ -260,7 +260,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 A CloudFormation `AWS::SecretsManager::RotationSchedule`.
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html
 
 #### Initializer <a name="Initializer"></a>
 
@@ -314,7 +314,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 A CloudFormation `AWS::SecretsManager::Secret`.
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html
 
 #### Initializer <a name="Initializer"></a>
 
@@ -398,7 +398,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 A CloudFormation `AWS::SecretsManager::SecretTargetAttachment`.
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
 
 #### Initializer <a name="Initializer"></a>
 
@@ -712,7 +712,7 @@ The secret to attach to the target.
 
 Properties for defining a `AWS::SecretsManager::ResourcePolicy`.
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html
 
 #### `resourcePolicy` <a name="resourcePolicy"></a>
 
@@ -748,7 +748,7 @@ Properties for defining a `AWS::SecretsManager::ResourcePolicy`.
 
 Properties for defining a `AWS::SecretsManager::RotationSchedule`.
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html
 
 #### `secretId` <a name="secretId"></a>
 
@@ -794,7 +794,7 @@ Properties for defining a `AWS::SecretsManager::RotationSchedule`.
 
 Properties for defining a `AWS::SecretsManager::Secret`.
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html
 
 #### `description` <a name="description"></a>
 
@@ -870,7 +870,7 @@ Properties for defining a `AWS::SecretsManager::Secret`.
 
 Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
 
 #### `secretId` <a name="secretId"></a>
 
@@ -904,7 +904,7 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 ### GenerateSecretStringProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty"></a>
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html
 
 #### `excludeCharacters` <a name="excludeCharacters"></a>
 
@@ -1008,7 +1008,7 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 ### HostedRotationLambdaProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty"></a>
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html
 
 #### `rotationType` <a name="rotationType"></a>
 
@@ -1146,7 +1146,7 @@ The customer-managed encryption key to use for encrypting the secret value.
 
 ### ReplicaRegionProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty"></a>
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html
 
 #### `region` <a name="region"></a>
 
@@ -1182,7 +1182,7 @@ The secret to attach a resource-based permissions policy.
 
 ### RotationRulesProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty"></a>
 
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-rotationrules.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-rotationrules.html)
+> http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-rotationrules.html
 
 #### `automaticallyAfterDays` <a name="automaticallyAfterDays"></a>
 

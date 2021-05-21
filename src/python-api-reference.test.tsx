@@ -274,19 +274,14 @@ export class Class {
       md.lines("");
     }
 
-    if (this.klass.docs.link) {
-      md.lines(`Link: [${this.klass.docs.link}](${this.klass.docs.link})`);
-      md.lines("");
-    }
-
     if (this.klass.spec.docs?.see) {
-      md.lines(`See ${this.klass.spec.docs.see}`);
+      md.lines(`> ${this.klass.spec.docs.see}`);
       md.lines("");
     }
 
     const customLink = this.klass.docs.customTag("link");
     if (customLink) {
-      md.lines(`> [${customLink}](${customLink})`);
+      md.lines(`> ${customLink}`);
       md.lines("");
     }
 
@@ -316,19 +311,14 @@ export class Struct {
       md.lines("");
     }
 
-    if (this.iface.docs.link) {
-      md.lines(`Link [${this.iface.docs.link}](${this.iface.docs.link})`);
-      md.lines("");
-    }
-
     if (this.iface.spec.docs?.see) {
-      md.lines(`See ${this.iface.spec.docs.see}`);
+      md.lines(`> ${this.iface.spec.docs.see}`);
       md.lines("");
     }
 
     const customLink = this.iface.docs.customTag("link");
     if (customLink) {
-      md.lines(`> [${customLink}](${customLink})`);
+      md.lines(`> ${customLink}`);
       md.lines("");
     }
 
