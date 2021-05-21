@@ -624,9 +624,7 @@ The secret to rotate. It must be a JSON string with the following format:.
 This is typically the case for a secret referenced from an `AWS::SecretsManager::SecretTargetAttachment`
 or an `ISecret` returned by the `attach()` method of `Secret`.
 
-Link: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html)
-
-See https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
+> https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
 
 ---
 
@@ -1432,9 +1430,7 @@ The secret to rotate. It must be a JSON string with the following format:.
 This is typically the case for a secret referenced from an `AWS::SecretsManager::SecretTargetAttachment`
 or an `ISecret` returned by the `attach()` method of `Secret`.
 
-Link: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html)
-
-See https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
+> https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
 
 ---
 

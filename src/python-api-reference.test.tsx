@@ -462,15 +462,8 @@ export class PythonArgument {
       md.lines("");
     }
 
-    if (this.argument.docs.link) {
-      md.lines(
-        `Link: [${this.argument.docs.link}](${this.argument.docs.link})`
-      );
-      md.lines("");
-    }
-
     if (this.argument.spec.docs?.see) {
-      md.lines(`See ${this.argument.spec.docs.see}`);
+      md.lines(`> ${this.argument.spec.docs.see}`);
       md.lines("");
     }
 
