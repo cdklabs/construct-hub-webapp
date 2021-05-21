@@ -23,7 +23,8 @@ export interface MarkdownOptions {
 
 export class Markdown {
   private readonly _lines = new Array<string>();
-  private readonly _sections = new Array<Markdown>();
+  private readonly _children = new Array<Markdown>();
+  private readonly _siblings = new Array<Markdown>();
 
   private headerSize: number;
   private id?: string;
@@ -71,8 +72,12 @@ export class Markdown {
     this._lines.push(...lines);
   }
 
-  public section(section: Markdown) {
-    this._sections.push(section);
+  public child(child: Markdown) {
+    this._children.push(child);
+  }
+
+  public sibling(sibling: Markdown) {
+    this._siblings.push(sibling);
   }
 
   public toString(): string {
@@ -87,9 +92,12 @@ export class Markdown {
     }
 
     content.push(...this._lines);
-    for (const section of this._sections) {
-      section.setHeaderSize(this.headerSize + 1);
-      content.push(section.toString());
+    for (const child of this._children) {
+      child.setHeaderSize(this.headerSize + 1);
+      content.push(child.toString());
+    }
+    for (const sibling of this._siblings) {
+      content.push(sibling.toString());
     }
     return content.join("\n");
   }
@@ -131,13 +139,13 @@ export class ApiReference {
     if (this.submodule.readme) {
       const readme = new Markdown();
       readme.lines(this.submodule.readme.markdown);
-      documentation.section(readme);
+      documentation.sibling(readme);
     }
 
     const apiReference = new Markdown({ title: "API Reference" });
-    apiReference.section(this.constructs.pythonMarkdown);
-    apiReference.section(this.structs.pythonMarkdown);
-    documentation.section(apiReference);
+    apiReference.child(this.constructs.pythonMarkdown);
+    apiReference.child(this.structs.pythonMarkdown);
+    documentation.sibling(apiReference);
 
     return documentation;
   }
@@ -176,7 +184,7 @@ export class Constructs {
 
     for (const construct of this.constructs) {
       const klass = new Class(construct);
-      md.section(klass.pythonMarkdown);
+      md.child(klass.pythonMarkdown);
     }
 
     return md;
@@ -209,7 +217,7 @@ export class Structs {
     }
 
     for (const struct of this.structs) {
-      md.section(new Struct(struct).pythonMarkdown);
+      md.child(new Struct(struct).pythonMarkdown);
     }
 
     return md;
@@ -247,7 +255,7 @@ export class Class {
     }
 
     if (this.klass.initializer) {
-      md.section(
+      md.child(
         new PythonClassInitializer(this.klass.initializer).pythonMarkdown
       );
     }
@@ -332,7 +340,7 @@ export class PythonClassInitializer {
           parameter.type.fqn
         );
         for (const property of struct.allProperties) {
-          md.section(new PythonArgument(property).pythonMarkdown);
+          md.child(new PythonArgument(property).pythonMarkdown);
         }
       }
     }
