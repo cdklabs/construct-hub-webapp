@@ -3,7 +3,7 @@ import * as spec from "@jsii/spec";
 import * as reflect from "jsii-reflect";
 
 function inSubmodule(type: reflect.ReferenceType, submodule: string): boolean {
-  return type.fqn.startsWith(submodule);
+  return type.fqn.includes(submodule);
 }
 
 export interface AssemblyFetcher {
@@ -16,6 +16,7 @@ export interface MarkdownCaptionOptions {
 }
 
 export interface MarkdownOptions {
+  readonly title?: string;
   readonly caption?: MarkdownCaptionOptions;
   readonly id?: string;
 }
@@ -25,17 +26,19 @@ export class Markdown {
   private readonly _sections = new Array<Markdown>();
 
   private headerSize: number;
-  private id: string;
-  private caption: string;
+  private id?: string;
+  private caption?: string;
 
-  constructor(title: string, options: MarkdownOptions = {}) {
+  constructor(options: MarkdownOptions = {}) {
     this.headerSize = 1;
-    this.id = options.id ?? title;
-    this.caption = this.formatCaption(
-      title,
-      options.caption?.code ?? false,
-      options.caption?.deprecated ?? false
-    );
+    this.id = options.id ?? options.title;
+    this.caption = options.title
+      ? this.formatCaption(
+          options.title,
+          options.caption?.code ?? false,
+          options.caption?.deprecated ?? false
+        )
+      : undefined;
   }
 
   private formatCaption(
@@ -73,16 +76,22 @@ export class Markdown {
   }
 
   public toString(): string {
-    const header = `${"#".repeat(this.headerSize)} ${this.caption} <a name="${
-      this.id
-    }"></a>`;
+    const content = [];
+    if (this.caption) {
+      content.push(
+        `${"#".repeat(this.headerSize)} ${this.caption} <a name="${
+          this.id
+        }"></a>`
+      );
+      content.push("");
+    }
 
-    const body = [...this._lines];
+    content.push(...this._lines);
     for (const section of this._sections) {
       section.setHeaderSize(this.headerSize + 1);
-      body.push(section.toString());
+      content.push(section.toString());
     }
-    return [header, "", ...body].join("\n");
+    return content.join("\n");
   }
 }
 
@@ -91,12 +100,13 @@ export class ApiReference {
   private readonly constructs: Constructs;
   private readonly structs: Structs;
   private readonly assemblyFetcher: AssemblyFetcher;
+  private readonly submodule: reflect.Submodule;
 
   constructor(
     assemblyName: string,
     assemblyVersion: string,
     fetcher: AssemblyFetcher,
-    submodule?: string
+    submoduleName?: string
   ) {
     this.ts = new reflect.TypeSystem();
     this.assemblyFetcher = fetcher;
@@ -107,15 +117,29 @@ export class ApiReference {
       this.ts.addAssembly(new reflect.Assembly(this.ts, assembly));
     }
 
-    this.constructs = new Constructs(this.ts, submodule);
-    this.structs = new Structs(this.ts, submodule);
+    this.submodule = this.ts
+      .findAssembly(assemblyName)
+      .submodules.filter((s) => s.name === submoduleName)[0];
+
+    this.constructs = new Constructs(this.ts, submoduleName);
+    this.structs = new Structs(this.ts, submoduleName);
   }
 
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown("API Reference");
-    md.section(this.constructs.pythonMarkdown);
-    md.section(this.structs.pythonMarkdown);
-    return md;
+    const documentation = new Markdown();
+
+    if (this.submodule.readme) {
+      const readme = new Markdown();
+      readme.lines(this.submodule.readme.markdown);
+      documentation.section(readme);
+    }
+
+    const apiReference = new Markdown({ title: "API Reference" });
+    apiReference.section(this.constructs.pythonMarkdown);
+    apiReference.section(this.structs.pythonMarkdown);
+    documentation.section(apiReference);
+
+    return documentation;
   }
 
   public fetchAssemblies(name: string, version: string): spec.Assembly[] {
@@ -145,7 +169,7 @@ export class Constructs {
   }
 
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown("Constructs");
+    const md = new Markdown({ title: "Constructs" });
     if (this.constructs.length === 0) {
       md.lines("This library does not provide any constructs");
     }
@@ -179,7 +203,7 @@ export class Structs {
   }
 
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown("Structs");
+    const md = new Markdown({ title: "Structs" });
     if (this.structs.length === 0) {
       md.lines("This library does not provide any structs");
     }
@@ -195,7 +219,7 @@ export class Structs {
 export class Class {
   constructor(private readonly klass: reflect.ClassType) {}
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown(this.klass.name, { id: this.klass.fqn });
+    const md = new Markdown({ title: this.klass.name, id: this.klass.fqn });
     if (this.klass.docs.summary) {
       md.lines(this.klass.docs.summary);
       md.lines("");
@@ -234,7 +258,7 @@ export class Class {
 export class Struct {
   constructor(private readonly iface: reflect.InterfaceType) {}
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown(this.iface.name, { id: this.iface.fqn });
+    const md = new Markdown({ title: this.iface.name, id: this.iface.fqn });
     if (this.iface.docs.summary) {
       md.lines(this.iface.docs.summary);
       md.lines("");
@@ -269,7 +293,7 @@ export class PythonClassInitializer {
   constructor(private readonly initializer: reflect.Initializer) {}
 
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown("Initializer");
+    const md = new Markdown({ title: "Initializer" });
     const module = this.findImport();
 
     const nonStructParameters = this.initializer.parameters.filter(
@@ -367,7 +391,8 @@ export class PythonArgument {
   ) {}
 
   public get pythonMarkdown(): Markdown {
-    const md = new Markdown(this.argument.name, {
+    const md = new Markdown({
+      title: this.argument.name,
       caption: {
         code: true,
         deprecated: this.argument.docs.deprecated,
@@ -426,7 +451,7 @@ test("basic", () => {
     "aws-cdk-lib",
     "2.0.0-rc4",
     fetcher,
-    "aws-cdk-lib.aws_secretsmanager"
+    "aws_secretsmanager"
   );
 
   fs.writeFileSync(
