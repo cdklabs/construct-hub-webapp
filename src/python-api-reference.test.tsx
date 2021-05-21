@@ -523,7 +523,7 @@ export class PythonArgument {
       md.lines("");
     }
 
-    const metadata = [`Type: ${this.type(this.argument.type)}`];
+    const metadata = [`Type: \`${this.type(this.argument.type)}\``];
 
     if (this.argument.spec.docs?.default) {
       metadata.push(`Default: ${this.argument.spec.docs?.default}`);
