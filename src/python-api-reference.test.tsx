@@ -14,6 +14,7 @@ export interface AssemblyFetcher {
 }
 
 export interface MarkdownHeaderOptions {
+  readonly size?: number;
   readonly title?: string;
   readonly code?: boolean;
   readonly deprecated?: boolean;
