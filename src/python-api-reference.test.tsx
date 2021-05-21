@@ -322,12 +322,60 @@ export class Struct {
       md.lines("");
     }
 
+    const pythonFqn = this.findImport();
+    const kwargs = this.iface.allProperties.length > 0 ? "**kwargs" : "";
+
+    md.lines(
+      "```python",
+      `import ${pythonFqn.module}`,
+      "",
+      `${pythonFqn.fqn}(${kwargs})`,
+      "```",
+      ""
+    );
+
     for (const property of this.iface.allProperties) {
       md.sections(new PythonArgument(property).pythonMarkdown);
     }
 
     return md;
   }
+
+  private findSubmodule(): reflect.Submodule | undefined {
+    for (const submodule of this.iface.assembly.submodules) {
+      if (this.iface.fqn.startsWith(submodule.fqn)) {
+        return submodule;
+      }
+    }
+    return undefined;
+  }
+
+  private findImport(): PythonFqn {
+    const submodule = this.findSubmodule();
+
+    let pythonModule = undefined;
+    let moduleFqn = undefined;
+    if (submodule) {
+      moduleFqn = submodule.fqn;
+      pythonModule = submodule.targets?.python?.module;
+    } else {
+      moduleFqn = this.iface.assembly.name;
+      pythonModule = this.iface.assembly.targets?.python?.module;
+    }
+
+    if (!pythonModule) {
+      throw new Error("asdas");
+    }
+
+    const pythonFqn = this.iface.fqn.replace(moduleFqn, pythonModule);
+
+    return { module: pythonModule, fqn: pythonFqn };
+  }
+}
+
+export interface PythonFqn {
+  module: string;
+  fqn: string;
 }
 
 export class PythonClassInitializer {

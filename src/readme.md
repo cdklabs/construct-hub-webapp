@@ -712,6 +712,12 @@ Properties for defining a `AWS::SecretsManager::ResourcePolicy`.
 
 > http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html
 
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(**kwargs)
+```
+
 #### `resourcePolicy` <a name="resourcePolicy"></a>
 
 - *Type: [typing.Any](https://docs.python.org/3/library/typing.html#typing.Any) | **Required** | Default: undefined*
@@ -747,6 +753,12 @@ Properties for defining a `AWS::SecretsManager::ResourcePolicy`.
 Properties for defining a `AWS::SecretsManager::RotationSchedule`.
 
 > http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(**kwargs)
+```
 
 #### `secretId` <a name="secretId"></a>
 
@@ -793,6 +805,12 @@ Properties for defining a `AWS::SecretsManager::RotationSchedule`.
 Properties for defining a `AWS::SecretsManager::Secret`.
 
 > http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.CfnSecretProps(**kwargs)
+```
 
 #### `description` <a name="description"></a>
 
@@ -870,6 +888,12 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 > http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
 
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(**kwargs)
+```
+
 #### `secretId` <a name="secretId"></a>
 
 - *Type: builtins.str | **Required** | Default: undefined*
@@ -903,6 +927,12 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 ### GenerateSecretStringProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty"></a>
 
 > http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
+```
 
 #### `excludeCharacters` <a name="excludeCharacters"></a>
 
@@ -1008,6 +1038,12 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 > http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html
 
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kwargs)
+```
+
 #### `rotationType` <a name="rotationType"></a>
 
 - *Type: builtins.str | **Required** | Default: undefined*
@@ -1082,6 +1118,12 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 Multi user hosted rotation options.
 
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.MultiUserHostedRotationOptions(**kwargs)
+```
+
 #### `functionName` <a name="functionName"></a>
 
 - *Type: builtins.str | **Optional** | Default: - a CloudFormation generated name*
@@ -1126,6 +1168,12 @@ The master secret for a multi user rotation scheme.
 
 Secret replica region.
 
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.ReplicaRegion(**kwargs)
+```
+
 #### `region` <a name="region"></a>
 
 - *Type: builtins.str | **Required** | Default: undefined*
@@ -1145,6 +1193,12 @@ The customer-managed encryption key to use for encrypting the secret value.
 ### ReplicaRegionProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty"></a>
 
 > http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty(**kwargs)
+```
 
 #### `region` <a name="region"></a>
 
@@ -1170,6 +1224,12 @@ The customer-managed encryption key to use for encrypting the secret value.
 
 Construction properties for a ResourcePolicy.
 
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.ResourcePolicyProps(**kwargs)
+```
+
 #### `secret` <a name="secret"></a>
 
 - *Type: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret) | **Required** | Default: undefined*
@@ -1181,6 +1241,12 @@ The secret to attach a resource-based permissions policy.
 ### RotationRulesProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty"></a>
 
 > http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-rotationrules.html
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty(**kwargs)
+```
 
 #### `automaticallyAfterDays` <a name="automaticallyAfterDays"></a>
 
@@ -1195,6 +1261,12 @@ The secret to attach a resource-based permissions policy.
 ### RotationScheduleOptions <a name="aws-cdk-lib.aws_secretsmanager.RotationScheduleOptions"></a>
 
 Options to add a rotation schedule to a secret.
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.RotationScheduleOptions(**kwargs)
+```
 
 #### `automaticallyAfter` <a name="automaticallyAfter"></a>
 
@@ -1223,6 +1295,12 @@ A Lambda function that can rotate the secret.
 ### RotationScheduleProps <a name="aws-cdk-lib.aws_secretsmanager.RotationScheduleProps"></a>
 
 Construction properties for a RotationSchedule.
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.RotationScheduleProps(**kwargs)
+```
 
 #### `automaticallyAfter` <a name="automaticallyAfter"></a>
 
@@ -1277,6 +1355,12 @@ or an `ISecret` returned by the `attach()` method of `Secret`.
 
 Attachment target specifications.
 
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.SecretAttachmentTargetProps(**kwargs)
+```
+
 #### `targetId` <a name="targetId"></a>
 
 - *Type: builtins.str | **Required** | Default: undefined*
@@ -1298,6 +1382,12 @@ The type of the target to attach the secret to.
 Attributes required to import an existing secret into the Stack.
 
 One ARN format (`secretArn`, `secretCompleteArn`, `secretPartialArn`) must be provided.
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.SecretAttributes(**kwargs)
+```
 
 #### `encryptionKey` <a name="encryptionKey"></a>
 
@@ -1332,6 +1422,12 @@ Cannot be used with `secretArn` or `secretCompleteArn`.
 ### SecretProps <a name="aws-cdk-lib.aws_secretsmanager.SecretProps"></a>
 
 The properties required to create a new secret in AWS Secrets Manager.
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.SecretProps(**kwargs)
+```
 
 #### `description` <a name="description"></a>
 
@@ -1389,6 +1485,12 @@ Note that deleting secrets from SecretsManager does not happen immediately, but 
 
 Options for a SecretRotationApplication.
 
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.SecretRotationApplicationOptions(**kwargs)
+```
+
 #### `isMultiUser` <a name="isMultiUser"></a>
 
 - *Type: builtins.bool | **Optional** | Default: false*
@@ -1400,6 +1502,12 @@ Whether the rotation application uses the mutli user scheme.
 ### SecretRotationProps <a name="aws-cdk-lib.aws_secretsmanager.SecretRotationProps"></a>
 
 Construction properties for a SecretRotation.
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.SecretRotationProps(**kwargs)
+```
 
 #### `application` <a name="application"></a>
 
@@ -1493,6 +1601,12 @@ The type of subnets in the VPC where the Lambda rotation function will run.
 ### SecretStringGenerator <a name="aws-cdk-lib.aws_secretsmanager.SecretStringGenerator"></a>
 
 Configuration to generate secrets such as passwords automatically.
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.SecretStringGenerator(**kwargs)
+```
 
 #### `excludeCharacters` <a name="excludeCharacters"></a>
 
@@ -1589,6 +1703,12 @@ then ``generateStringKey`` must be also be specified.
 
 Construction properties for an AttachedSecret.
 
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.SecretTargetAttachmentProps(**kwargs)
+```
+
 #### `secret` <a name="secret"></a>
 
 - *Type: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret) | **Required** | Default: undefined*
@@ -1600,6 +1720,12 @@ The secret to attach to the target.
 ### SingleUserHostedRotationOptions <a name="aws-cdk-lib.aws_secretsmanager.SingleUserHostedRotationOptions"></a>
 
 Single user hosted rotation options.
+
+```python
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.SingleUserHostedRotationOptions(**kwargs)
+```
 
 #### `functionName` <a name="functionName"></a>
 
