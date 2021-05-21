@@ -523,13 +523,15 @@ export class PythonArgument {
       md.lines("");
     }
 
-    const metadata = [`Type: ${this.type(this.argument.type)}`];
+    const metadata: any = { Type: this.type(this.argument.type) };
 
     if (this.argument.spec.docs?.default) {
-      metadata.push(`Default: ${this.argument.spec.docs?.default}`);
+      metadata.Default = this.argument.spec.docs?.default;
     }
 
-    md.lines(`- *${metadata.join(" | ")}*`);
+    for (const [key, value] of Object.entries(metadata)) {
+      md.lines(`- *${key}*: ${value}`);
+    }
     md.lines("");
 
     if (this.argument.docs.summary) {
