@@ -53,6 +53,15 @@ export class Markdown {
     return caption;
   }
 
+  public python(...snippet: string[]) {
+    this.code("python", ...snippet);
+  }
+
+  public code(language: string, ...snippet: string[]) {
+    this.lines(`\`\`\`${language}`, ...snippet, "```");
+    this.lines("");
+  }
+
   public lines(...lines: string[]) {
     this._lines.push(...lines);
   }
@@ -325,14 +334,7 @@ export class Struct {
     const pythonFqn = this.findImport();
     const kwargs = this.iface.allProperties.length > 0 ? "**kwargs" : "";
 
-    md.lines(
-      "```python",
-      `import ${pythonFqn.module}`,
-      "",
-      `${pythonFqn.fqn}(${kwargs})`,
-      "```",
-      ""
-    );
+    md.python(`import ${pythonFqn.module}`, "", `${pythonFqn.fqn}(${kwargs})`);
 
     for (const property of this.iface.allProperties) {
       md.sections(new PythonArgument(property).pythonMarkdown);
