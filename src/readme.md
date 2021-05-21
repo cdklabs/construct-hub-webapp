@@ -718,6 +718,16 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(**kwargs)
 ```
 
+#### `blockPublicPolicy`<sup>Optional</sup> <a name="blockPublicPolicy"></a>
+
+- *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[builtins.bool, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | Default: undefined*
+
+`AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy)
+
+---
+
 #### `resourcePolicy`<sup>Required</sup> <a name="resourcePolicy"></a>
 
 - *Type: [typing.Any](https://docs.python.org/3/library/typing.html#typing.Any) | Default: undefined*
@@ -738,16 +748,6 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(**kwargs)
 
 ---
 
-#### `blockPublicPolicy`<sup>Optional</sup> <a name="blockPublicPolicy"></a>
-
-- *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[builtins.bool, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | Default: undefined*
-
-`AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
-
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy)
-
----
-
 ### CfnRotationScheduleProps <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationScheduleProps"></a>
 
 Properties for defining a `AWS::SecretsManager::RotationSchedule`.
@@ -759,16 +759,6 @@ import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(**kwargs)
 ```
-
-#### `secretId`<sup>Required</sup> <a name="secretId"></a>
-
-- *Type: builtins.str | Default: undefined*
-
-`AWS::SecretsManager::RotationSchedule.SecretId`.
-
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid)
-
----
 
 #### `hostedRotationLambda`<sup>Optional</sup> <a name="hostedRotationLambda"></a>
 
@@ -797,6 +787,16 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(**kwargs)
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules)
+
+---
+
+#### `secretId`<sup>Required</sup> <a name="secretId"></a>
+
+- *Type: builtins.str | Default: undefined*
+
+`AWS::SecretsManager::RotationSchedule.SecretId`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid)
 
 ---
 
@@ -1044,16 +1044,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kwargs)
 ```
 
-#### `rotationType`<sup>Required</sup> <a name="rotationType"></a>
-
-- *Type: builtins.str | Default: undefined*
-
-`CfnRotationSchedule.HostedRotationLambdaProperty.RotationType`.
-
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationtype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationtype)
-
----
-
 #### `kmsKeyArn`<sup>Optional</sup> <a name="kmsKeyArn"></a>
 
 - *Type: builtins.str | Default: undefined*
@@ -1114,6 +1104,16 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kw
 
 ---
 
+#### `rotationType`<sup>Required</sup> <a name="rotationType"></a>
+
+- *Type: builtins.str | Default: undefined*
+
+`CfnRotationSchedule.HostedRotationLambdaProperty.RotationType`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationtype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationtype)
+
+---
+
 ### MultiUserHostedRotationOptions <a name="aws-cdk-lib.aws_secretsmanager.MultiUserHostedRotationOptions"></a>
 
 Multi user hosted rotation options.
@@ -1123,6 +1123,14 @@ import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.MultiUserHostedRotationOptions(**kwargs)
 ```
+
+#### `masterSecret`<sup>Required</sup> <a name="masterSecret"></a>
+
+- *Type: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret) | Default: undefined*
+
+The master secret for a multi user rotation scheme.
+
+---
 
 #### `functionName`<sup>Optional</sup> <a name="functionName"></a>
 
@@ -1156,14 +1164,6 @@ The type of subnets in the VPC where the Lambda rotation function will run.
 
 ---
 
-#### `masterSecret`<sup>Required</sup> <a name="masterSecret"></a>
-
-- *Type: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret) | Default: undefined*
-
-The master secret for a multi user rotation scheme.
-
----
-
 ### ReplicaRegion <a name="aws-cdk-lib.aws_secretsmanager.ReplicaRegion"></a>
 
 Secret replica region.
@@ -1174,19 +1174,19 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.ReplicaRegion(**kwargs)
 ```
 
-#### `region`<sup>Required</sup> <a name="region"></a>
-
-- *Type: builtins.str | Default: undefined*
-
-The name of the region.
-
----
-
 #### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
 
 - *Type: [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey) | Default: - A default KMS key for the account and region is used.*
 
 The customer-managed encryption key to use for encrypting the secret value.
+
+---
+
+#### `region`<sup>Required</sup> <a name="region"></a>
+
+- *Type: builtins.str | Default: undefined*
+
+The name of the region.
 
 ---
 
@@ -1200,16 +1200,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty(**kwargs)
 ```
 
-#### `region`<sup>Required</sup> <a name="region"></a>
-
-- *Type: builtins.str | Default: undefined*
-
-`CfnSecret.ReplicaRegionProperty.Region`.
-
-> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-region](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-region)
-
----
-
 #### `kmsKeyId`<sup>Optional</sup> <a name="kmsKeyId"></a>
 
 - *Type: builtins.str | Default: undefined*
@@ -1217,6 +1207,16 @@ aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty(**kwargs)
 `CfnSecret.ReplicaRegionProperty.KmsKeyId`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-kmskeyid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-kmskeyid)
+
+---
+
+#### `region`<sup>Required</sup> <a name="region"></a>
+
+- *Type: builtins.str | Default: undefined*
+
+`CfnSecret.ReplicaRegionProperty.Region`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-region](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-region)
 
 ---
 
@@ -1302,30 +1302,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.RotationScheduleProps(**kwargs)
 ```
 
-#### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
-
-- *Type: [aws-cdk-lib.Duration](#aws-cdk-lib.Duration) | Default: Duration.days(30)*
-
-Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
-
----
-
-#### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
-
-- *Type: [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation) | Default: - either `rotationLambda` or `hostedRotation` must be specified*
-
-Hosted rotation.
-
----
-
-#### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
-
-- *Type: [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction) | Default: - either `rotationLambda` or `hostedRotation` must be specified*
-
-A Lambda function that can rotate the secret.
-
----
-
 #### `secret`<sup>Required</sup> <a name="secret"></a>
 
 - *Type: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret) | Default: undefined*
@@ -1348,6 +1324,30 @@ If hosted rotation is used, this must be a JSON string with the following format
 
 This is typically the case for a secret referenced from an `AWS::SecretsManager::SecretTargetAttachment`
 or an `ISecret` returned by the `attach()` method of `Secret`.
+
+---
+
+#### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+
+- *Type: [aws-cdk-lib.Duration](#aws-cdk-lib.Duration) | Default: Duration.days(30)*
+
+Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
+
+---
+
+#### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
+
+- *Type: [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation) | Default: - either `rotationLambda` or `hostedRotation` must be specified*
+
+Hosted rotation.
+
+---
+
+#### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
+
+- *Type: [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction) | Default: - either `rotationLambda` or `hostedRotation` must be specified*
+
+A Lambda function that can rotate the secret.
 
 ---
 
@@ -1509,6 +1509,46 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.SecretRotationProps(**kwargs)
 ```
 
+#### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+
+- *Type: [aws-cdk-lib.Duration](#aws-cdk-lib.Duration) | Default: Duration.days(30)*
+
+Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
+
+---
+
+#### `excludeCharacters`<sup>Optional</sup> <a name="excludeCharacters"></a>
+
+- *Type: builtins.str | Default: - no additional characters are explicitly excluded*
+
+Characters which should not appear in the generated password.
+
+---
+
+#### `masterSecret`<sup>Optional</sup> <a name="masterSecret"></a>
+
+- *Type: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret) | Default: - single user rotation scheme*
+
+The master secret for a multi user rotation scheme.
+
+---
+
+#### `securityGroup`<sup>Optional</sup> <a name="securityGroup"></a>
+
+- *Type: [aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup) | Default: - a new security group is created*
+
+The security group for the Lambda rotation function.
+
+---
+
+#### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets"></a>
+
+- *Type: [aws-cdk-lib.aws_ec2.SubnetSelection](#aws-cdk-lib.aws_ec2.SubnetSelection) | Default: - the Vpc default strategy if not specified.*
+
+The type of subnets in the VPC where the Lambda rotation function will run.
+
+---
+
 #### `application`<sup>Required</sup> <a name="application"></a>
 
 - *Type: [aws-cdk-lib.aws_secretsmanager.SecretRotationApplication](#aws-cdk-lib.aws_secretsmanager.SecretRotationApplication) | Default: undefined*
@@ -1555,46 +1595,6 @@ The target service or database.
 - *Type: [aws-cdk-lib.aws_ec2.IVpc](#aws-cdk-lib.aws_ec2.IVpc) | Default: undefined*
 
 The VPC where the Lambda rotation function will run.
-
----
-
-#### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
-
-- *Type: [aws-cdk-lib.Duration](#aws-cdk-lib.Duration) | Default: Duration.days(30)*
-
-Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
-
----
-
-#### `excludeCharacters`<sup>Optional</sup> <a name="excludeCharacters"></a>
-
-- *Type: builtins.str | Default: - no additional characters are explicitly excluded*
-
-Characters which should not appear in the generated password.
-
----
-
-#### `masterSecret`<sup>Optional</sup> <a name="masterSecret"></a>
-
-- *Type: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret) | Default: - single user rotation scheme*
-
-The master secret for a multi user rotation scheme.
-
----
-
-#### `securityGroup`<sup>Optional</sup> <a name="securityGroup"></a>
-
-- *Type: [aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup) | Default: - a new security group is created*
-
-The security group for the Lambda rotation function.
-
----
-
-#### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets"></a>
-
-- *Type: [aws-cdk-lib.aws_ec2.SubnetSelection](#aws-cdk-lib.aws_ec2.SubnetSelection) | Default: - the Vpc default strategy if not specified.*
-
-The type of subnets in the VPC where the Lambda rotation function will run.
 
 ---
 

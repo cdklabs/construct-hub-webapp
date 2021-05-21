@@ -342,7 +342,19 @@ export class Struct {
 
     md.python(`import ${pythonFqn.module}`, "", `${pythonFqn.fqn}(${kwargs})`);
 
-    for (const property of this.iface.allProperties) {
+    const properties = this.iface.allProperties.sort((p1, p2) => {
+      if (!p1.optional && p2.optional) {
+        return 1;
+      }
+
+      if (!p2.optional && p1.optional) {
+        return 2;
+      }
+
+      return 0;
+    });
+
+    for (const property of properties) {
       md.sections(new PythonArgument(property).pythonMarkdown);
     }
 
@@ -397,9 +409,19 @@ export class PythonClassInitializer {
       (p) => !this.isStruct(p)
     );
 
-    const structParameters = this.initializer.parameters.filter((p) =>
-      this.isStruct(p)
-    );
+    const structParameters = this.initializer.parameters
+      .filter((p) => this.isStruct(p))
+      .sort((s1, s2) => {
+        if (!s1.optional && s2.optional) {
+          return 1;
+        }
+
+        if (!s2.optional && s1.optional) {
+          return 2;
+        }
+
+        return 0;
+      });
 
     const positional =
       nonStructParameters.length > 0
