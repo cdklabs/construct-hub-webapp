@@ -1138,14 +1138,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.MultiUserHostedRotationOptions(**kwargs)
 ```
 
-#### `masterSecret`<sup>Required</sup> <a name="masterSecret"></a>
-
-- *Type*: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
-
-The master secret for a multi user rotation scheme.
-
----
-
 #### `functionName`<sup>Optional</sup> <a name="functionName"></a>
 
 - *Type*: `builtins.str`
@@ -1179,6 +1171,14 @@ The VPC where the Lambda rotation function will run.
 - *Default*: - the Vpc default strategy if not specified.
 
 The type of subnets in the VPC where the Lambda rotation function will run.
+
+---
+
+#### `masterSecret`<sup>Required</sup> <a name="masterSecret"></a>
+
+- *Type*: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
+
+The master secret for a multi user rotation scheme.
 
 ---
 
@@ -1324,31 +1324,6 @@ import aws_cdk.aws_secretsmanager
 aws_cdk.aws_secretsmanager.RotationScheduleProps(**kwargs)
 ```
 
-#### `secret`<sup>Required</sup> <a name="secret"></a>
-
-- *Type*: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
-
-The secret to rotate.
-
-If hosted rotation is used, this must be a JSON string with the following format:
-
-```
-{
-   "engine": <required: database engine>,
-   "host": <required: instance host name>,
-   "username": <required: username>,
-   "password": <required: password>,
-   "dbname": <optional: database name>,
-   "port": <optional: if not specified, default port will be used>,
-   "masterarn": <required for multi user rotation: the arn of the master secret which will be used to create users/change passwords>
-}
-```
-
-This is typically the case for a secret referenced from an `AWS::SecretsManager::SecretTargetAttachment`
-or an `ISecret` returned by the `attach()` method of `Secret`.
-
----
-
 #### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
 
 - *Type*: [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
@@ -1373,6 +1348,31 @@ Hosted rotation.
 - *Default*: - either `rotationLambda` or `hostedRotation` must be specified
 
 A Lambda function that can rotate the secret.
+
+---
+
+#### `secret`<sup>Required</sup> <a name="secret"></a>
+
+- *Type*: [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
+
+The secret to rotate.
+
+If hosted rotation is used, this must be a JSON string with the following format:
+
+```
+{
+   "engine": <required: database engine>,
+   "host": <required: instance host name>,
+   "username": <required: username>,
+   "password": <required: password>,
+   "dbname": <optional: database name>,
+   "port": <optional: if not specified, default port will be used>,
+   "masterarn": <required for multi user rotation: the arn of the master secret which will be used to create users/change passwords>
+}
+```
+
+This is typically the case for a secret referenced from an `AWS::SecretsManager::SecretTargetAttachment`
+or an `ISecret` returned by the `attach()` method of `Secret`.
 
 ---
 

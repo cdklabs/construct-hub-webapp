@@ -348,7 +348,7 @@ export class Struct {
       }
 
       if (!p2.optional && p1.optional) {
-        return 2;
+        return -1;
       }
 
       return 0;
@@ -417,7 +417,7 @@ export class PythonClassInitializer {
         }
 
         if (!s2.optional && s1.optional) {
-          return 2;
+          return -1;
         }
 
         return 0;
