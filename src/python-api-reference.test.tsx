@@ -344,11 +344,11 @@ export class Struct {
 
     const properties = this.iface.allProperties.sort((p1, p2) => {
       if (!p1.optional && p2.optional) {
-        return 1;
+        return -1;
       }
 
       if (!p2.optional && p1.optional) {
-        return -1;
+        return 1;
       }
 
       return 0;
@@ -413,11 +413,11 @@ export class PythonClassInitializer {
       .filter((p) => this.isStruct(p))
       .sort((s1, s2) => {
         if (!s1.optional && s2.optional) {
-          return 1;
+          return -1;
         }
 
         if (!s2.optional && s1.optional) {
-          return -1;
+          return 1;
         }
 
         return 0;
