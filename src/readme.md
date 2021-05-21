@@ -228,7 +228,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 ##### `resourcePolicy` <a name="resourcePolicy"></a>
 
-- *Type: any | **Required** | Default: undefined*
+- *Type: [typing.Any](https://docs.python.org/3/library/typing.html#typing.Any) | **Required** | Default: undefined*
 
 `AWS::SecretsManager::ResourcePolicy.ResourcePolicy`.
 
@@ -236,7 +236,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 ##### `secretId` <a name="secretId"></a>
 
-- *Type: string | **Required** | Default: undefined*
+- *Type: builtins.str | **Required** | Default: undefined*
 
 `AWS::SecretsManager::ResourcePolicy.SecretId`.
 
@@ -244,7 +244,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 ##### `blockPublicPolicy` <a name="blockPublicPolicy"></a>
 
-- *Type: [boolean](#undefined) | [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable) | **Optional** | Default: undefined*
+- *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[builtins.bool, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
 
@@ -266,7 +266,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 ##### `secretId` <a name="secretId"></a>
 
-- *Type: string | **Required** | Default: undefined*
+- *Type: builtins.str | **Required** | Default: undefined*
 
 `AWS::SecretsManager::RotationSchedule.SecretId`.
 
@@ -274,7 +274,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 ##### `hostedRotationLambda` <a name="hostedRotationLambda"></a>
 
-- *Type: [aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty) | [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable) | **Optional** | Default: undefined*
+- *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::RotationSchedule.HostedRotationLambda`.
 
@@ -282,7 +282,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 ##### `rotationLambdaArn` <a name="rotationLambdaArn"></a>
 
-- *Type: string | **Optional** | Default: undefined*
+- *Type: builtins.str | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::RotationSchedule.RotationLambdaARN`.
 
@@ -290,7 +290,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 ##### `rotationRules` <a name="rotationRules"></a>
 
-- *Type: [aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty) | [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable) | **Optional** | Default: undefined*
+- *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
 
@@ -312,7 +312,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 ##### `description` <a name="description"></a>
 
-- *Type: string | **Optional** | Default: undefined*
+- *Type: builtins.str | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.Description`.
 
@@ -320,7 +320,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 ##### `generateSecretString` <a name="generateSecretString"></a>
 
-- *Type: [aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty) | [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable) | **Optional** | Default: undefined*
+- *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.GenerateSecretString`.
 
@@ -328,7 +328,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 ##### `kmsKeyId` <a name="kmsKeyId"></a>
 
-- *Type: string | **Optional** | Default: undefined*
+- *Type: builtins.str | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.KmsKeyId`.
 
@@ -336,7 +336,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 ##### `name` <a name="name"></a>
 
-- *Type: string | **Optional** | Default: undefined*
+- *Type: builtins.str | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.Name`.
 
@@ -344,7 +344,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 ##### `replicaRegions` <a name="replicaRegions"></a>
 
-- *Type: [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable) | [Array<aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty | aws-cdk-lib.IResolvable>](#undefined) | **Optional** | Default: undefined*
+- *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable), [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]]] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.ReplicaRegions`.
 
@@ -352,7 +352,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 ##### `secretString` <a name="secretString"></a>
 
-- *Type: string | **Optional** | Default: undefined*
+- *Type: builtins.str | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.SecretString`.
 
@@ -360,7 +360,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 ##### `tags` <a name="tags"></a>
 
-- *Type: Array<aws-cdk-lib.CfnTag> | **Optional** | Default: undefined*
+- *Type: [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.CfnTag](#aws-cdk-lib.CfnTag)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.Tags`.
 
@@ -382,7 +382,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 ##### `secretId` <a name="secretId"></a>
 
-- *Type: string | **Required** | Default: undefined*
+- *Type: builtins.str | **Required** | Default: undefined*
 
 `AWS::SecretsManager::SecretTargetAttachment.SecretId`.
 
@@ -390,7 +390,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 ##### `targetId` <a name="targetId"></a>
 
-- *Type: string | **Required** | Default: undefined*
+- *Type: builtins.str | **Required** | Default: undefined*
 
 `AWS::SecretsManager::SecretTargetAttachment.TargetId`.
 
@@ -398,7 +398,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 ##### `targetType` <a name="targetType"></a>
 
-- *Type: string | **Required** | Default: undefined*
+- *Type: builtins.str | **Required** | Default: undefined*
 
 `AWS::SecretsManager::SecretTargetAttachment.TargetType`.
 
@@ -499,7 +499,7 @@ aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, id: string, **kwa
 
 ##### `description` <a name="description"></a>
 
-- *Type: string | **Optional** | Default: - No description.*
+- *Type: builtins.str | **Optional** | Default: - No description.*
 
 An optional, human-friendly description of the secret.
 
@@ -532,7 +532,7 @@ Policy to apply when the secret is removed from this stack.
 
 ##### `replicaRegions` <a name="replicaRegions"></a>
 
-- *Type: Array<aws-cdk-lib.aws_secretsmanager.ReplicaRegion> | **Optional** | Default: - Secret is not replicated*
+- *Type: [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_secretsmanager.ReplicaRegion](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)] | **Optional** | Default: - Secret is not replicated*
 
 A list of regions where to replicate this secret.
 
@@ -540,7 +540,7 @@ A list of regions where to replicate this secret.
 
 ##### `secretName` <a name="secretName"></a>
 
-- *Type: string | **Optional** | Default: - A name is generated by CloudFormation.*
+- *Type: builtins.str | **Optional** | Default: - A name is generated by CloudFormation.*
 
 A name for the secret.
 
@@ -618,7 +618,7 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 ##### `excludeCharacters` <a name="excludeCharacters"></a>
 
-- *Type: string | **Optional** | Default: - no additional characters are explicitly excluded*
+- *Type: builtins.str | **Optional** | Default: - no additional characters are explicitly excluded*
 
 Characters which should not appear in the generated password.
 
