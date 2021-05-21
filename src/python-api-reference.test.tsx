@@ -523,7 +523,7 @@ export class PythonArgument {
       md.lines("");
     }
 
-    const metadata = [`Type: \`${this.type(this.argument.type)}\``];
+    const metadata = [`Type: ${this.type(this.argument.type)}`];
 
     if (this.argument.spec.docs?.default) {
       metadata.push(`Default: ${this.argument.spec.docs?.default}`);
@@ -596,7 +596,7 @@ export class PythonArgument {
       }
     }
 
-    return type.toString();
+    throw new Error(`Unsupported type: ${type.toString()}`);
   }
 
   private typing(type: "List" | "Mapping" | "Any" | "Union"): string {
@@ -605,7 +605,7 @@ export class PythonArgument {
 
   private builtins(type: "bool" | "str") {
     // TODO - find a nice link
-    return `builtins.${type}`;
+    return `\`builtins.${type}\``;
   }
 }
 
