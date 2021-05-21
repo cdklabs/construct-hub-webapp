@@ -523,12 +523,13 @@ export class PythonArgument {
       md.lines("");
     }
 
-    md.lines(
-      `- *Type: ${this.type(this.argument.type)} | Default: ${
-        this.argument.spec.docs?.default
-      }*`
-    );
+    const metadata = [`Type: ${this.type(this.argument.type)}`];
 
+    if (this.argument.spec.docs?.default) {
+      metadata.push(`Default: ${this.argument.spec.docs?.default}`);
+    }
+
+    md.lines(`- *${metadata.join(" | ")}*`);
     md.lines("");
 
     if (this.argument.docs.summary) {
