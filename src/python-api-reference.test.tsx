@@ -16,6 +16,7 @@ export interface AssemblyFetcher {
 export interface MarkdownHeaderOptions {
   readonly size?: number;
   readonly title?: string;
+  readonly sup?: string;
   readonly code?: boolean;
   readonly deprecated?: boolean;
 }
@@ -50,6 +51,11 @@ export class Markdown {
     if (this.options.header?.deprecated ?? false) {
       caption = `~~${caption}~~`;
     }
+
+    if (this.options.header?.sup) {
+      caption = `${caption}<sup>${this.options.header?.sup}</sup>`;
+    }
+
     return caption;
   }
 
@@ -72,7 +78,7 @@ export class Markdown {
 
   public render(headerSize: number = 0): string {
     if (headerSize > 6) {
-      throw new Error(`Unable to render markdown. Header limit reached.`);
+      throw new Error(`Unable to render markdown. Header limit (6) reached.`);
     }
 
     const content = [];
@@ -404,13 +410,10 @@ export class PythonClassInitializer {
 
     const kwargs = structParameters.length > 0 ? "**kwargs" : "";
 
-    md.lines(
-      "```python",
+    md.python(
       `import ${module}`,
       "",
-      `${module}.${this.initializer.parentType.name}(${positional}${kwargs})`,
-      "```",
-      ""
+      `${module}.${this.initializer.parentType.name}(${positional}${kwargs})`
     );
 
     if (kwargs) {
@@ -482,9 +485,12 @@ export class PythonArgument {
   ) {}
 
   public get pythonMarkdown(): Markdown {
+    const optionality = this.argument.optional ? "Optional" : "Required";
+
     const md = new Markdown({
       header: {
         title: this.argument.name,
+        sup: optionality,
         code: true,
         deprecated: this.argument.docs.deprecated,
       },
@@ -496,9 +502,9 @@ export class PythonArgument {
     }
 
     md.lines(
-      `- *Type: ${this.type(this.argument.type)} | **${
-        this.argument.optional ? "Optional" : "Required"
-      }** | Default: ${this.argument.spec.docs?.default}*`
+      `- *Type: ${this.type(this.argument.type)} | Default: ${
+        this.argument.spec.docs?.default
+      }*`
     );
 
     md.lines("");
