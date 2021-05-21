@@ -62,6 +62,10 @@ export class Markdown {
   }
 
   public render(headerSize: number = 0): string {
+    if (headerSize > 6) {
+      throw new Error(`Unable to render markdown. Header limit reached.`);
+    }
+
     const content = [];
     if (this.header) {
       const heading = `${"#".repeat(headerSize)} ${this.header}`;
@@ -326,6 +330,10 @@ export class Struct {
     if (customLink) {
       md.lines(`> [${customLink}](${customLink})`);
       md.lines("");
+    }
+
+    for (const property of this.iface.allProperties) {
+      md.sections(new PythonArgument(property).pythonMarkdown);
     }
 
     return md;
