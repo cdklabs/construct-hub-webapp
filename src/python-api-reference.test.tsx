@@ -10,28 +10,31 @@ export interface AssemblyFetcher {
   fetchAssembly(name: string, version: string): spec.Assembly;
 }
 
-export interface MarkdownOptions {
+export interface MarkdownCaptionOptions {
   readonly code?: boolean;
   readonly deprecated?: boolean;
+}
+
+export interface MarkdownOptions {
+  readonly caption?: MarkdownCaptionOptions;
   readonly id?: string;
 }
 
 export class Markdown {
   private readonly _lines = new Array<string>();
+  private readonly _sections = new Array<Markdown>();
 
-  public headerSize: number;
-  public caption: string;
-  public title: string;
-  public id: string;
+  private headerSize: number;
+  private id: string;
+  private caption: string;
 
   constructor(title: string, options: MarkdownOptions = {}) {
     this.headerSize = 1;
-    this.title = title;
-    this.id = options.id ?? this.title;
+    this.id = options.id ?? title;
     this.caption = this.formatCaption(
-      this.title,
-      options.code ?? false,
-      options.deprecated ?? false
+      title,
+      options.caption?.code ?? false,
+      options.caption?.deprecated ?? false
     );
   }
 
@@ -40,7 +43,7 @@ export class Markdown {
     code: boolean,
     deprecated: boolean
   ): string {
-    let caption = this.title;
+    let caption = title;
 
     if (code ?? false) {
       caption = `\`${title}\``;
@@ -55,7 +58,7 @@ export class Markdown {
   public setHeaderSize(size: number) {
     if (size > 6) {
       throw new Error(
-        `Unable to set header size for '${this.title}': Header limit reached`
+        `Unable to set header size for '${this.id}': Header limit reached`
       );
     }
     this.headerSize = size;
@@ -65,19 +68,21 @@ export class Markdown {
     this._lines.push(...lines);
   }
 
-  public section(header: number, section: Markdown) {
-    section.setHeaderSize(header);
-    this.lines(section.toString());
-    this._lines.push("");
+  public section(section: Markdown) {
+    this._sections.push(section);
   }
 
   public toString(): string {
-    const heading = "#".repeat(this.headerSize);
-    return [
-      `${heading} ${this.caption} <a name="${this.id}"></a>`,
-      "",
-      ...this._lines,
-    ].join("\n");
+    const header = `${"#".repeat(this.headerSize)} ${this.caption} <a name="${
+      this.id
+    }"></a>`;
+
+    const body = [...this._lines];
+    for (const section of this._sections) {
+      section.setHeaderSize(this.headerSize + 1);
+      body.push(section.toString());
+    }
+    return [header, "", ...body].join("\n");
   }
 }
 
@@ -108,8 +113,8 @@ export class ApiReference {
 
   public get pythonMarkdown(): Markdown {
     const md = new Markdown("API Reference");
-    md.section(2, this.constructs.pythonMarkdown);
-    md.section(2, this.structs.pythonMarkdown);
+    md.section(this.constructs.pythonMarkdown);
+    md.section(this.structs.pythonMarkdown);
     return md;
   }
 
@@ -147,7 +152,7 @@ export class Constructs {
 
     for (const construct of this.constructs) {
       const klass = new Class(construct);
-      md.section(3, klass.pythonMarkdown);
+      md.section(klass.pythonMarkdown);
     }
 
     return md;
@@ -180,7 +185,7 @@ export class Structs {
     }
 
     for (const struct of this.structs) {
-      md.section(3, new Struct(struct).pythonMarkdown);
+      md.section(new Struct(struct).pythonMarkdown);
     }
 
     return md;
@@ -193,28 +198,32 @@ export class Class {
     const md = new Markdown(this.klass.name, { id: this.klass.fqn });
     if (this.klass.docs.summary) {
       md.lines(this.klass.docs.summary);
+      md.lines("");
     }
 
     if (this.klass.docs.remarks) {
       md.lines(this.klass.docs.remarks);
+      md.lines("");
     }
 
     if (this.klass.docs.link) {
       md.lines(`Link: [${this.klass.docs.link}](${this.klass.docs.link})`);
+      md.lines("");
     }
 
     if (this.klass.spec.docs?.see) {
       md.lines(`See ${this.klass.spec.docs.see}`);
+      md.lines("");
     }
 
     const customLink = this.klass.docs.customTag("link");
     if (customLink) {
       md.lines(`> [${customLink}](${customLink})`);
+      md.lines("");
     }
 
     if (this.klass.initializer) {
       md.section(
-        4,
         new PythonClassInitializer(this.klass.initializer).pythonMarkdown
       );
     }
@@ -228,23 +237,28 @@ export class Struct {
     const md = new Markdown(this.iface.name, { id: this.iface.fqn });
     if (this.iface.docs.summary) {
       md.lines(this.iface.docs.summary);
+      md.lines("");
     }
 
     if (this.iface.docs.remarks) {
       md.lines(this.iface.docs.remarks);
+      md.lines("");
     }
 
     if (this.iface.docs.link) {
       md.lines(`Link [${this.iface.docs.link}](${this.iface.docs.link})`);
+      md.lines("");
     }
 
     if (this.iface.spec.docs?.see) {
       md.lines(`See ${this.iface.spec.docs.see}`);
+      md.lines("");
     }
 
     const customLink = this.iface.docs.customTag("link");
     if (customLink) {
       md.lines(`> [${customLink}](${customLink})`);
+      md.lines("");
     }
 
     return md;
@@ -276,14 +290,12 @@ export class PythonClassInitializer {
     const kwargs = structParameters.length > 0 ? "**kwargs" : "";
 
     md.lines(
-      ...[
-        "```python",
-        `import ${module}`,
-        "",
-        `${module}.${this.initializer.parentType.name}(${positional}${kwargs})`,
-        "```",
-        "",
-      ]
+      "```python",
+      `import ${module}`,
+      "",
+      `${module}.${this.initializer.parentType.name}(${positional}${kwargs})`,
+      "```",
+      ""
     );
 
     if (kwargs) {
@@ -296,8 +308,7 @@ export class PythonClassInitializer {
           parameter.type.fqn
         );
         for (const property of struct.allProperties) {
-          md.section(5, new PythonArgument(property).pythonMarkdown);
-          md.lines("---");
+          md.section(new PythonArgument(property).pythonMarkdown);
         }
       }
     }
@@ -357,25 +368,36 @@ export class PythonArgument {
 
   public get pythonMarkdown(): Markdown {
     const md = new Markdown(this.argument.name, {
-      code: true,
-      deprecated: this.argument.docs.deprecated,
+      caption: {
+        code: true,
+        deprecated: this.argument.docs.deprecated,
+      },
     });
+
+    if (this.argument.docs.deprecated) {
+      md.lines(`- *Deprecated: ${this.argument.docs.deprecationReason}`);
+      md.lines("");
+    }
+
     md.lines(
       `- *Type: ${this.link(this.argument.type)} | **${
         this.argument.optional ? "Optional" : "Required"
       }** | Default: ${this.argument.spec.docs?.default}*`
     );
 
-    if (this.argument.docs.deprecated) {
-      md.lines(`- *Deprecated: ${this.argument.docs.deprecationReason}`);
-    }
+    md.lines("");
 
     if (this.argument.docs.summary) {
       md.lines(this.argument.docs.summary);
+      md.lines("");
     }
     if (this.argument.docs.remarks) {
       md.lines(this.argument.docs.remarks);
+      md.lines("");
     }
+
+    md.lines("---");
+    md.lines("");
 
     return md;
   }
