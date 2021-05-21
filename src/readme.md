@@ -232,6 +232,8 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 `AWS::SecretsManager::ResourcePolicy.ResourcePolicy`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-resourcepolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-resourcepolicy)
+
 ---
 
 ##### `secretId` <a name="secretId"></a>
@@ -240,6 +242,8 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 `AWS::SecretsManager::ResourcePolicy.SecretId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-secretid)
+
 ---
 
 ##### `blockPublicPolicy` <a name="blockPublicPolicy"></a>
@@ -247,6 +251,8 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[builtins.bool, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy)
 
 ---
 
@@ -270,6 +276,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 `AWS::SecretsManager::RotationSchedule.SecretId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid)
+
 ---
 
 ##### `hostedRotationLambda` <a name="hostedRotationLambda"></a>
@@ -277,6 +285,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::RotationSchedule.HostedRotationLambda`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda)
 
 ---
 
@@ -286,6 +296,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 `AWS::SecretsManager::RotationSchedule.RotationLambdaARN`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationlambdaarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationlambdaarn)
+
 ---
 
 ##### `rotationRules` <a name="rotationRules"></a>
@@ -293,6 +305,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules)
 
 ---
 
@@ -316,6 +330,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 `AWS::SecretsManager::Secret.Description`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-description](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-description)
+
 ---
 
 ##### `generateSecretString` <a name="generateSecretString"></a>
@@ -323,6 +339,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.GenerateSecretString`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-generatesecretstring](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-generatesecretstring)
 
 ---
 
@@ -332,6 +350,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 `AWS::SecretsManager::Secret.KmsKeyId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-kmskeyid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-kmskeyid)
+
 ---
 
 ##### `name` <a name="name"></a>
@@ -339,6 +359,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 - *Type: builtins.str | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.Name`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-name](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-name)
 
 ---
 
@@ -348,6 +370,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 `AWS::SecretsManager::Secret.ReplicaRegions`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-replicaregions](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-replicaregions)
+
 ---
 
 ##### `secretString` <a name="secretString"></a>
@@ -356,6 +380,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 `AWS::SecretsManager::Secret.SecretString`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-secretstring](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-secretstring)
+
 ---
 
 ##### `tags` <a name="tags"></a>
@@ -363,6 +389,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 - *Type: [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.CfnTag](#aws-cdk-lib.CfnTag)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.Tags`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-tags](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-tags)
 
 ---
 
@@ -386,6 +414,8 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 `AWS::SecretsManager::SecretTargetAttachment.SecretId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-secretid)
+
 ---
 
 ##### `targetId` <a name="targetId"></a>
@@ -394,6 +424,8 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 `AWS::SecretsManager::SecretTargetAttachment.TargetId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targetid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targetid)
+
 ---
 
 ##### `targetType` <a name="targetType"></a>
@@ -401,6 +433,8 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 - *Type: builtins.str | **Required** | Default: undefined*
 
 `AWS::SecretsManager::SecretTargetAttachment.TargetType`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targettype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targettype)
 
 ---
 
@@ -590,6 +624,10 @@ The secret to rotate. It must be a JSON string with the following format:.
 This is typically the case for a secret referenced from an `AWS::SecretsManager::SecretTargetAttachment`
 or an `ISecret` returned by the `attach()` method of `Secret`.
 
+Link: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html)
+
+See https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
+
 ---
 
 ##### `target` <a name="target"></a>
@@ -682,6 +720,8 @@ Properties for defining a `AWS::SecretsManager::ResourcePolicy`.
 
 `AWS::SecretsManager::ResourcePolicy.ResourcePolicy`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-resourcepolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-resourcepolicy)
+
 ---
 
 #### `secretId` <a name="secretId"></a>
@@ -690,6 +730,8 @@ Properties for defining a `AWS::SecretsManager::ResourcePolicy`.
 
 `AWS::SecretsManager::ResourcePolicy.SecretId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-secretid)
+
 ---
 
 #### `blockPublicPolicy` <a name="blockPublicPolicy"></a>
@@ -697,6 +739,8 @@ Properties for defining a `AWS::SecretsManager::ResourcePolicy`.
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[builtins.bool, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy)
 
 ---
 
@@ -712,6 +756,8 @@ Properties for defining a `AWS::SecretsManager::RotationSchedule`.
 
 `AWS::SecretsManager::RotationSchedule.SecretId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid)
+
 ---
 
 #### `hostedRotationLambda` <a name="hostedRotationLambda"></a>
@@ -719,6 +765,8 @@ Properties for defining a `AWS::SecretsManager::RotationSchedule`.
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::RotationSchedule.HostedRotationLambda`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda)
 
 ---
 
@@ -728,6 +776,8 @@ Properties for defining a `AWS::SecretsManager::RotationSchedule`.
 
 `AWS::SecretsManager::RotationSchedule.RotationLambdaARN`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationlambdaarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationlambdaarn)
+
 ---
 
 #### `rotationRules` <a name="rotationRules"></a>
@@ -735,6 +785,8 @@ Properties for defining a `AWS::SecretsManager::RotationSchedule`.
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules)
 
 ---
 
@@ -750,6 +802,8 @@ Properties for defining a `AWS::SecretsManager::Secret`.
 
 `AWS::SecretsManager::Secret.Description`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-description](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-description)
+
 ---
 
 #### `generateSecretString` <a name="generateSecretString"></a>
@@ -757,6 +811,8 @@ Properties for defining a `AWS::SecretsManager::Secret`.
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.GenerateSecretString`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-generatesecretstring](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-generatesecretstring)
 
 ---
 
@@ -766,6 +822,8 @@ Properties for defining a `AWS::SecretsManager::Secret`.
 
 `AWS::SecretsManager::Secret.KmsKeyId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-kmskeyid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-kmskeyid)
+
 ---
 
 #### `name` <a name="name"></a>
@@ -773,6 +831,8 @@ Properties for defining a `AWS::SecretsManager::Secret`.
 - *Type: builtins.str | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.Name`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-name](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-name)
 
 ---
 
@@ -782,6 +842,8 @@ Properties for defining a `AWS::SecretsManager::Secret`.
 
 `AWS::SecretsManager::Secret.ReplicaRegions`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-replicaregions](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-replicaregions)
+
 ---
 
 #### `secretString` <a name="secretString"></a>
@@ -790,6 +852,8 @@ Properties for defining a `AWS::SecretsManager::Secret`.
 
 `AWS::SecretsManager::Secret.SecretString`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-secretstring](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-secretstring)
+
 ---
 
 #### `tags` <a name="tags"></a>
@@ -797,6 +861,8 @@ Properties for defining a `AWS::SecretsManager::Secret`.
 - *Type: [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.CfnTag](#aws-cdk-lib.CfnTag)] | **Optional** | Default: undefined*
 
 `AWS::SecretsManager::Secret.Tags`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-tags](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-tags)
 
 ---
 
@@ -812,6 +878,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `AWS::SecretsManager::SecretTargetAttachment.SecretId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-secretid)
+
 ---
 
 #### `targetId` <a name="targetId"></a>
@@ -820,6 +888,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `AWS::SecretsManager::SecretTargetAttachment.TargetId`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targetid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targetid)
+
 ---
 
 #### `targetType` <a name="targetType"></a>
@@ -827,6 +897,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 - *Type: builtins.str | **Required** | Default: undefined*
 
 `AWS::SecretsManager::SecretTargetAttachment.TargetType`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targettype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targettype)
 
 ---
 
@@ -840,6 +912,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeCharacters`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludecharacters](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludecharacters)
+
 ---
 
 #### `excludeLowercase` <a name="excludeLowercase"></a>
@@ -847,6 +921,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[builtins.bool, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeLowercase`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludelowercase](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludelowercase)
 
 ---
 
@@ -856,6 +932,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeNumbers`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludenumbers](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludenumbers)
+
 ---
 
 #### `excludePunctuation` <a name="excludePunctuation"></a>
@@ -863,6 +941,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[builtins.bool, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)] | **Optional** | Default: undefined*
 
 `CfnSecret.GenerateSecretStringProperty.ExcludePunctuation`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludepunctuation](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludepunctuation)
 
 ---
 
@@ -872,6 +952,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeUppercase`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludeuppercase](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludeuppercase)
+
 ---
 
 #### `generateStringKey` <a name="generateStringKey"></a>
@@ -879,6 +961,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 - *Type: builtins.str | **Optional** | Default: undefined*
 
 `CfnSecret.GenerateSecretStringProperty.GenerateStringKey`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-generatestringkey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-generatestringkey)
 
 ---
 
@@ -888,6 +972,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `CfnSecret.GenerateSecretStringProperty.IncludeSpace`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-includespace](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-includespace)
+
 ---
 
 #### `passwordLength` <a name="passwordLength"></a>
@@ -895,6 +981,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[int, float] | **Optional** | Default: undefined*
 
 `CfnSecret.GenerateSecretStringProperty.PasswordLength`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-passwordlength](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-passwordlength)
 
 ---
 
@@ -904,6 +992,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `CfnSecret.GenerateSecretStringProperty.RequireEachIncludedType`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-requireeachincludedtype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-requireeachincludedtype)
+
 ---
 
 #### `secretStringTemplate` <a name="secretStringTemplate"></a>
@@ -911,6 +1001,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 - *Type: builtins.str | **Optional** | Default: undefined*
 
 `CfnSecret.GenerateSecretStringProperty.SecretStringTemplate`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-secretstringtemplate](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-secretstringtemplate)
 
 ---
 
@@ -924,6 +1016,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `CfnRotationSchedule.HostedRotationLambdaProperty.RotationType`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationtype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationtype)
+
 ---
 
 #### `kmsKeyArn` <a name="kmsKeyArn"></a>
@@ -931,6 +1025,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 - *Type: builtins.str | **Optional** | Default: undefined*
 
 `CfnRotationSchedule.HostedRotationLambdaProperty.KmsKeyArn`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-kmskeyarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-kmskeyarn)
 
 ---
 
@@ -940,6 +1036,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `CfnRotationSchedule.HostedRotationLambdaProperty.MasterSecretArn`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-mastersecretarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-mastersecretarn)
+
 ---
 
 #### `masterSecretKmsKeyArn` <a name="masterSecretKmsKeyArn"></a>
@@ -947,6 +1045,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 - *Type: builtins.str | **Optional** | Default: undefined*
 
 `CfnRotationSchedule.HostedRotationLambdaProperty.MasterSecretKmsKeyArn`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-mastersecretkmskeyarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-mastersecretkmskeyarn)
 
 ---
 
@@ -956,6 +1056,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `CfnRotationSchedule.HostedRotationLambdaProperty.RotationLambdaName`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationlambdaname](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationlambdaname)
+
 ---
 
 #### `vpcSecurityGroupIds` <a name="vpcSecurityGroupIds"></a>
@@ -964,6 +1066,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 
 `CfnRotationSchedule.HostedRotationLambdaProperty.VpcSecurityGroupIds`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-vpcsecuritygroupids](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-vpcsecuritygroupids)
+
 ---
 
 #### `vpcSubnetIds` <a name="vpcSubnetIds"></a>
@@ -971,6 +1075,8 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 - *Type: builtins.str | **Optional** | Default: undefined*
 
 `CfnRotationSchedule.HostedRotationLambdaProperty.VpcSubnetIds`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-vpcsubnetids](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-vpcsubnetids)
 
 ---
 
@@ -1048,6 +1154,8 @@ The customer-managed encryption key to use for encrypting the secret value.
 
 `CfnSecret.ReplicaRegionProperty.Region`.
 
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-region](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-region)
+
 ---
 
 #### `kmsKeyId` <a name="kmsKeyId"></a>
@@ -1055,6 +1163,8 @@ The customer-managed encryption key to use for encrypting the secret value.
 - *Type: builtins.str | **Optional** | Default: undefined*
 
 `CfnSecret.ReplicaRegionProperty.KmsKeyId`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-kmskeyid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-kmskeyid)
 
 ---
 
@@ -1079,6 +1189,8 @@ The secret to attach a resource-based permissions policy.
 - *Type: [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[int, float] | **Optional** | Default: undefined*
 
 `CfnRotationSchedule.RotationRulesProperty.AutomaticallyAfterDays`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-rotationrules.html#cfn-secretsmanager-rotationschedule-rotationrules-automaticallyafterdays](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-rotationrules.html#cfn-secretsmanager-rotationschedule-rotationrules-automaticallyafterdays)
 
 ---
 
@@ -1319,6 +1431,10 @@ The secret to rotate. It must be a JSON string with the following format:.
 
 This is typically the case for a secret referenced from an `AWS::SecretsManager::SecretTargetAttachment`
 or an `ISecret` returned by the `attach()` method of `Secret`.
+
+Link: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html)
+
+See https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
 
 ---
 
