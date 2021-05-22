@@ -279,6 +279,13 @@ export class Class {
       id: this.klass.fqn,
       header: { title: this.klass.name },
     });
+
+    if (this.klass.interfaces.length > 0) {
+      md.lines(
+        `- *Implements:* ${this.klass.interfaces.map((i) => i.fqn).join(", ")}`
+      );
+      md.lines("");
+    }
     if (this.klass.docs.summary) {
       md.lines(this.klass.docs.summary);
       md.lines("");
@@ -519,7 +526,7 @@ export class PythonArgument {
     });
 
     if (this.argument.docs.deprecated) {
-      md.lines(`- *Deprecated: ${this.argument.docs.deprecationReason}`);
+      md.lines(`- *Deprecated:* ${this.argument.docs.deprecationReason}`);
       md.lines("");
     }
 
@@ -530,7 +537,7 @@ export class PythonArgument {
     }
 
     for (const [key, value] of Object.entries(metadata)) {
-      md.lines(`- *${key}*: ${value}`);
+      md.lines(`- *${key}:* ${value}`);
     }
     md.lines("");
 
