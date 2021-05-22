@@ -473,8 +473,6 @@ export class PythonClassInitializer extends Function {
     if (kwargs) {
       md.lines("**kwargs**");
       md.lines("");
-      md.lines("---");
-      md.lines("");
       for (const parameter of this.structParameters) {
         if (!parameter.type.fqn) {
           throw new Error("asdasd");
@@ -642,8 +640,8 @@ export class PythonArgument {
       md.lines("");
     }
 
-    // md.lines("---");
-    // md.lines("");
+    md.lines("---");
+    md.lines("");
 
     return md;
   }

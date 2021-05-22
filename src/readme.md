@@ -230,8 +230,6 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 **kwargs**
 
----
-
 ##### `resourcePolicy`<sup>Required</sup> <a name="resourcePolicy"></a>
 
 - *Type:* [typing.Any](https://docs.python.org/3/library/typing.html#typing.Any)
@@ -239,6 +237,8 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 `AWS::SecretsManager::ResourcePolicy.ResourcePolicy`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-resourcepolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-resourcepolicy)
+
+---
 
 ##### `secretId`<sup>Required</sup> <a name="secretId"></a>
 
@@ -248,6 +248,8 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-secretid)
 
+---
+
 ##### `blockPublicPolicy`<sup>Optional</sup> <a name="blockPublicPolicy"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
@@ -255,6 +257,8 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 `AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy)
+
+---
 
 #### Methods <a name="Methods"></a>
 
@@ -288,8 +292,6 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 **kwargs**
 
----
-
 ##### `secretId`<sup>Required</sup> <a name="secretId"></a>
 
 - *Type:* `builtins.str`
@@ -297,6 +299,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 `AWS::SecretsManager::RotationSchedule.SecretId`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid)
+
+---
 
 ##### `hostedRotationLambda`<sup>Optional</sup> <a name="hostedRotationLambda"></a>
 
@@ -306,6 +310,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda)
 
+---
+
 ##### `rotationLambdaArn`<sup>Optional</sup> <a name="rotationLambdaArn"></a>
 
 - *Type:* `builtins.str`
@@ -314,6 +320,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationlambdaarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationlambdaarn)
 
+---
+
 ##### `rotationRules`<sup>Optional</sup> <a name="rotationRules"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
@@ -321,6 +329,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules)
+
+---
 
 #### Methods <a name="Methods"></a>
 
@@ -354,8 +364,6 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 **kwargs**
 
----
-
 ##### `description`<sup>Optional</sup> <a name="description"></a>
 
 - *Type:* `builtins.str`
@@ -363,6 +371,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 `AWS::SecretsManager::Secret.Description`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-description](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-description)
+
+---
 
 ##### `generateSecretString`<sup>Optional</sup> <a name="generateSecretString"></a>
 
@@ -372,6 +382,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-generatesecretstring](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-generatesecretstring)
 
+---
+
 ##### `kmsKeyId`<sup>Optional</sup> <a name="kmsKeyId"></a>
 
 - *Type:* `builtins.str`
@@ -379,6 +391,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 `AWS::SecretsManager::Secret.KmsKeyId`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-kmskeyid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-kmskeyid)
+
+---
 
 ##### `name`<sup>Optional</sup> <a name="name"></a>
 
@@ -388,6 +402,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-name](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-name)
 
+---
+
 ##### `replicaRegions`<sup>Optional</sup> <a name="replicaRegions"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable), [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]]]
@@ -395,6 +411,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 `AWS::SecretsManager::Secret.ReplicaRegions`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-replicaregions](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-replicaregions)
+
+---
 
 ##### `secretString`<sup>Optional</sup> <a name="secretString"></a>
 
@@ -404,6 +422,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-secretstring](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-secretstring)
 
+---
+
 ##### `tags`<sup>Optional</sup> <a name="tags"></a>
 
 - *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.CfnTag](#aws-cdk-lib.CfnTag)]
@@ -411,6 +431,8 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 `AWS::SecretsManager::Secret.Tags`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-tags](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-tags)
+
+---
 
 #### Methods <a name="Methods"></a>
 
@@ -444,8 +466,6 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 **kwargs**
 
----
-
 ##### `secretId`<sup>Required</sup> <a name="secretId"></a>
 
 - *Type:* `builtins.str`
@@ -453,6 +473,8 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 `AWS::SecretsManager::SecretTargetAttachment.SecretId`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-secretid)
+
+---
 
 ##### `targetId`<sup>Required</sup> <a name="targetId"></a>
 
@@ -462,6 +484,8 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targetid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targetid)
 
+---
+
 ##### `targetType`<sup>Required</sup> <a name="targetType"></a>
 
 - *Type:* `builtins.str`
@@ -469,6 +493,8 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 `AWS::SecretsManager::SecretTargetAttachment.TargetType`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targettype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targettype)
+
+---
 
 #### Methods <a name="Methods"></a>
 
@@ -498,13 +524,13 @@ aws_cdk.aws_secretsmanager.ResourcePolicy(scope: constructs.Construct, id: strin
 
 **kwargs**
 
----
-
 ##### `secret`<sup>Required</sup> <a name="secret"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
 
 The secret to attach a resource-based permissions policy.
+
+---
 
 #### Methods <a name="Methods"></a>
 
@@ -524,14 +550,14 @@ aws_cdk.aws_secretsmanager.RotationSchedule(scope: constructs.Construct, id: str
 
 **kwargs**
 
----
-
 ##### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
 
 - *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
 - *Default:* Duration.days(30)
 
 Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
+
+---
 
 ##### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
 
@@ -540,12 +566,16 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 Hosted rotation.
 
+---
+
 ##### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
 
 A Lambda function that can rotate the secret.
+
+---
 
 ##### `secret`<sup>Required</sup> <a name="secret"></a>
 
@@ -570,6 +600,8 @@ If hosted rotation is used, this must be a JSON string with the following format
 This is typically the case for a secret referenced from an `AWS::SecretsManager::SecretTargetAttachment`
 or an `ISecret` returned by the `attach()` method of `Secret`.
 
+---
+
 #### Methods <a name="Methods"></a>
 
 This class does not provide any methods
@@ -590,8 +622,6 @@ aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, id: string, **kwa
 
 **kwargs**
 
----
-
 ##### `description`<sup>Optional</sup> <a name="description"></a>
 
 - *Type:* `builtins.str`
@@ -599,12 +629,16 @@ aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, id: string, **kwa
 
 An optional, human-friendly description of the secret.
 
+---
+
 ##### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
 
 - *Type:* [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey)
 - *Default:* - A default KMS key for the account and region is used.
 
 The customer-managed encryption key to use for encrypting the secret value.
+
+---
 
 ##### `generateSecretString`<sup>Optional</sup> <a name="generateSecretString"></a>
 
@@ -614,6 +648,8 @@ category), per the default values of ``SecretStringGenerator``.
 
 Configuration for how to generate a secret value.
 
+---
+
 ##### `removalPolicy`<sup>Optional</sup> <a name="removalPolicy"></a>
 
 - *Type:* [aws-cdk-lib.RemovalPolicy](#aws-cdk-lib.RemovalPolicy)
@@ -621,12 +657,16 @@ Configuration for how to generate a secret value.
 
 Policy to apply when the secret is removed from this stack.
 
+---
+
 ##### `replicaRegions`<sup>Optional</sup> <a name="replicaRegions"></a>
 
 - *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_secretsmanager.ReplicaRegion](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
 - *Default:* - Secret is not replicated
 
 A list of regions where to replicate this secret.
+
+---
 
 ##### `secretName`<sup>Optional</sup> <a name="secretName"></a>
 
@@ -637,6 +677,8 @@ A name for the secret.
 
 Note that deleting secrets from SecretsManager does not happen immediately, but after a 7 to
 30 days blackout period. During that period, it is not possible to create another secret that shares the same name.
+
+---
 
 #### Methods <a name="Methods"></a>
 
@@ -659,6 +701,8 @@ secret.addRotationSchedule(id: string, **kwargs)
 
 Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
 
+---
+
 ###### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
@@ -666,12 +710,16 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 Hosted rotation.
 
+---
+
 ###### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
 
 A Lambda function that can rotate the secret.
+
+---
 
 ##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
 
@@ -723,13 +771,13 @@ aws_cdk.aws_secretsmanager.SecretRotation(scope: constructs.Construct, id: strin
 
 **kwargs**
 
----
-
 ##### `application`<sup>Required</sup> <a name="application"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.SecretRotationApplication](#aws-cdk-lib.aws_secretsmanager.SecretRotationApplication)
 
 The serverless application for the rotation.
+
+---
 
 ##### `secret`<sup>Required</sup> <a name="secret"></a>
 
@@ -754,17 +802,23 @@ or an `ISecret` returned by the `attach()` method of `Secret`.
 
 > https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
 
+---
+
 ##### `target`<sup>Required</sup> <a name="target"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.IConnectable](#aws-cdk-lib.aws_ec2.IConnectable)
 
 The target service or database.
 
+---
+
 ##### `vpc`<sup>Required</sup> <a name="vpc"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.IVpc](#aws-cdk-lib.aws_ec2.IVpc)
 
 The VPC where the Lambda rotation function will run.
+
+---
 
 ##### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
 
@@ -773,12 +827,16 @@ The VPC where the Lambda rotation function will run.
 
 Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
 
+---
+
 ##### `excludeCharacters`<sup>Optional</sup> <a name="excludeCharacters"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - no additional characters are explicitly excluded
 
 Characters which should not appear in the generated password.
+
+---
 
 ##### `masterSecret`<sup>Optional</sup> <a name="masterSecret"></a>
 
@@ -787,6 +845,8 @@ Characters which should not appear in the generated password.
 
 The master secret for a multi user rotation scheme.
 
+---
+
 ##### `securityGroup`<sup>Optional</sup> <a name="securityGroup"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup)
@@ -794,12 +854,16 @@ The master secret for a multi user rotation scheme.
 
 The security group for the Lambda rotation function.
 
+---
+
 ##### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.SubnetSelection](#aws-cdk-lib.aws_ec2.SubnetSelection)
 - *Default:* - the Vpc default strategy if not specified.
 
 The type of subnets in the VPC where the Lambda rotation function will run.
+
+---
 
 #### Methods <a name="Methods"></a>
 
@@ -821,13 +885,13 @@ aws_cdk.aws_secretsmanager.SecretTargetAttachment(scope: constructs.Construct, i
 
 **kwargs**
 
----
-
 ##### `secret`<sup>Required</sup> <a name="secret"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
 
 The secret to attach to the target.
+
+---
 
 #### Methods <a name="Methods"></a>
 
@@ -844,6 +908,8 @@ secrettargetattachment.addRotationSchedule(id: string, **kwargs)
 
 Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
 
+---
+
 ###### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
@@ -851,12 +917,16 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 Hosted rotation.
 
+---
+
 ###### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
 
 A Lambda function that can rotate the secret.
+
+---
 
 ##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
 
@@ -916,6 +986,8 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-resourcepolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-resourcepolicy)
 
+---
+
 #### `secretId`<sup>Required</sup> <a name="secretId"></a>
 
 - *Type:* `builtins.str`
@@ -924,6 +996,8 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-secretid)
 
+---
+
 #### `blockPublicPolicy`<sup>Optional</sup> <a name="blockPublicPolicy"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
@@ -931,6 +1005,8 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(**kwargs)
 `AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-resourcepolicy.html#cfn-secretsmanager-resourcepolicy-blockpublicpolicy)
+
+---
 
 ### CfnRotationScheduleProps <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationScheduleProps"></a>
 
@@ -952,6 +1028,8 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-secretid)
 
+---
+
 #### `hostedRotationLambda`<sup>Optional</sup> <a name="hostedRotationLambda"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
@@ -959,6 +1037,8 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(**kwargs)
 `AWS::SecretsManager::RotationSchedule.HostedRotationLambda`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda)
+
+---
 
 #### `rotationLambdaArn`<sup>Optional</sup> <a name="rotationLambdaArn"></a>
 
@@ -968,6 +1048,8 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationlambdaarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationlambdaarn)
 
+---
+
 #### `rotationRules`<sup>Optional</sup> <a name="rotationRules"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
@@ -975,6 +1057,8 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(**kwargs)
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules)
+
+---
 
 ### CfnSecretProps <a name="aws-cdk-lib.aws_secretsmanager.CfnSecretProps"></a>
 
@@ -996,6 +1080,8 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-description](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-description)
 
+---
+
 #### `generateSecretString`<sup>Optional</sup> <a name="generateSecretString"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
@@ -1003,6 +1089,8 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(**kwargs)
 `AWS::SecretsManager::Secret.GenerateSecretString`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-generatesecretstring](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-generatesecretstring)
+
+---
 
 #### `kmsKeyId`<sup>Optional</sup> <a name="kmsKeyId"></a>
 
@@ -1012,6 +1100,8 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-kmskeyid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-kmskeyid)
 
+---
+
 #### `name`<sup>Optional</sup> <a name="name"></a>
 
 - *Type:* `builtins.str`
@@ -1019,6 +1109,8 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(**kwargs)
 `AWS::SecretsManager::Secret.Name`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-name](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-name)
+
+---
 
 #### `replicaRegions`<sup>Optional</sup> <a name="replicaRegions"></a>
 
@@ -1028,6 +1120,8 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-replicaregions](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-replicaregions)
 
+---
+
 #### `secretString`<sup>Optional</sup> <a name="secretString"></a>
 
 - *Type:* `builtins.str`
@@ -1036,6 +1130,8 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-secretstring](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-secretstring)
 
+---
+
 #### `tags`<sup>Optional</sup> <a name="tags"></a>
 
 - *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.CfnTag](#aws-cdk-lib.CfnTag)]
@@ -1043,6 +1139,8 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(**kwargs)
 `AWS::SecretsManager::Secret.Tags`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-tags](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html#cfn-secretsmanager-secret-tags)
+
+---
 
 ### CfnSecretTargetAttachmentProps <a name="aws-cdk-lib.aws_secretsmanager.CfnSecretTargetAttachmentProps"></a>
 
@@ -1064,6 +1162,8 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-secretid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-secretid)
 
+---
+
 #### `targetId`<sup>Required</sup> <a name="targetId"></a>
 
 - *Type:* `builtins.str`
@@ -1072,6 +1172,8 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targetid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targetid)
 
+---
+
 #### `targetType`<sup>Required</sup> <a name="targetType"></a>
 
 - *Type:* `builtins.str`
@@ -1079,6 +1181,8 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(**kwargs)
 `AWS::SecretsManager::SecretTargetAttachment.TargetType`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targettype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html#cfn-secretsmanager-secrettargetattachment-targettype)
+
+---
 
 ### GenerateSecretStringProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty"></a>
 
@@ -1098,6 +1202,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludecharacters](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludecharacters)
 
+---
+
 #### `excludeLowercase`<sup>Optional</sup> <a name="excludeLowercase"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
@@ -1105,6 +1211,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 `CfnSecret.GenerateSecretStringProperty.ExcludeLowercase`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludelowercase](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludelowercase)
+
+---
 
 #### `excludeNumbers`<sup>Optional</sup> <a name="excludeNumbers"></a>
 
@@ -1114,6 +1222,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludenumbers](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludenumbers)
 
+---
+
 #### `excludePunctuation`<sup>Optional</sup> <a name="excludePunctuation"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
@@ -1121,6 +1231,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 `CfnSecret.GenerateSecretStringProperty.ExcludePunctuation`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludepunctuation](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludepunctuation)
+
+---
 
 #### `excludeUppercase`<sup>Optional</sup> <a name="excludeUppercase"></a>
 
@@ -1130,6 +1242,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludeuppercase](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-excludeuppercase)
 
+---
+
 #### `generateStringKey`<sup>Optional</sup> <a name="generateStringKey"></a>
 
 - *Type:* `builtins.str`
@@ -1137,6 +1251,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 `CfnSecret.GenerateSecretStringProperty.GenerateStringKey`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-generatestringkey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-generatestringkey)
+
+---
 
 #### `includeSpace`<sup>Optional</sup> <a name="includeSpace"></a>
 
@@ -1146,6 +1262,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-includespace](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-includespace)
 
+---
+
 #### `passwordLength`<sup>Optional</sup> <a name="passwordLength"></a>
 
 - *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[int, float]
@@ -1153,6 +1271,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 `CfnSecret.GenerateSecretStringProperty.PasswordLength`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-passwordlength](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-passwordlength)
+
+---
 
 #### `requireEachIncludedType`<sup>Optional</sup> <a name="requireEachIncludedType"></a>
 
@@ -1162,6 +1282,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-requireeachincludedtype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-requireeachincludedtype)
 
+---
+
 #### `secretStringTemplate`<sup>Optional</sup> <a name="secretStringTemplate"></a>
 
 - *Type:* `builtins.str`
@@ -1169,6 +1291,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(**kwargs)
 `CfnSecret.GenerateSecretStringProperty.SecretStringTemplate`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-secretstringtemplate](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-generatesecretstring.html#cfn-secretsmanager-secret-generatesecretstring-secretstringtemplate)
+
+---
 
 ### HostedRotationLambdaProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty"></a>
 
@@ -1188,6 +1312,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kw
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationtype](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationtype)
 
+---
+
 #### `kmsKeyArn`<sup>Optional</sup> <a name="kmsKeyArn"></a>
 
 - *Type:* `builtins.str`
@@ -1195,6 +1321,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kw
 `CfnRotationSchedule.HostedRotationLambdaProperty.KmsKeyArn`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-kmskeyarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-kmskeyarn)
+
+---
 
 #### `masterSecretArn`<sup>Optional</sup> <a name="masterSecretArn"></a>
 
@@ -1204,6 +1332,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kw
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-mastersecretarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-mastersecretarn)
 
+---
+
 #### `masterSecretKmsKeyArn`<sup>Optional</sup> <a name="masterSecretKmsKeyArn"></a>
 
 - *Type:* `builtins.str`
@@ -1211,6 +1341,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kw
 `CfnRotationSchedule.HostedRotationLambdaProperty.MasterSecretKmsKeyArn`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-mastersecretkmskeyarn](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-mastersecretkmskeyarn)
+
+---
 
 #### `rotationLambdaName`<sup>Optional</sup> <a name="rotationLambdaName"></a>
 
@@ -1220,6 +1352,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kw
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationlambdaname](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-rotationlambdaname)
 
+---
+
 #### `vpcSecurityGroupIds`<sup>Optional</sup> <a name="vpcSecurityGroupIds"></a>
 
 - *Type:* `builtins.str`
@@ -1228,6 +1362,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kw
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-vpcsecuritygroupids](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-vpcsecuritygroupids)
 
+---
+
 #### `vpcSubnetIds`<sup>Optional</sup> <a name="vpcSubnetIds"></a>
 
 - *Type:* `builtins.str`
@@ -1235,6 +1371,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(**kw
 `CfnRotationSchedule.HostedRotationLambdaProperty.VpcSubnetIds`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-vpcsubnetids](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-hostedrotationlambda.html#cfn-secretsmanager-rotationschedule-hostedrotationlambda-vpcsubnetids)
+
+---
 
 ### MultiUserHostedRotationOptions <a name="aws-cdk-lib.aws_secretsmanager.MultiUserHostedRotationOptions"></a>
 
@@ -1252,12 +1390,16 @@ aws_cdk.aws_secretsmanager.MultiUserHostedRotationOptions(**kwargs)
 
 The master secret for a multi user rotation scheme.
 
+---
+
 #### `functionName`<sup>Optional</sup> <a name="functionName"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - a CloudFormation generated name
 
 A name for the Lambda created to rotate the secret.
+
+---
 
 #### `securityGroups`<sup>Optional</sup> <a name="securityGroups"></a>
 
@@ -1266,6 +1408,8 @@ A name for the Lambda created to rotate the secret.
 
 A list of security groups for the Lambda created to rotate the secret.
 
+---
+
 #### `vpc`<sup>Optional</sup> <a name="vpc"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.IVpc](#aws-cdk-lib.aws_ec2.IVpc)
@@ -1273,12 +1417,16 @@ A list of security groups for the Lambda created to rotate the secret.
 
 The VPC where the Lambda rotation function will run.
 
+---
+
 #### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.SubnetSelection](#aws-cdk-lib.aws_ec2.SubnetSelection)
 - *Default:* - the Vpc default strategy if not specified.
 
 The type of subnets in the VPC where the Lambda rotation function will run.
+
+---
 
 ### ReplicaRegion <a name="aws-cdk-lib.aws_secretsmanager.ReplicaRegion"></a>
 
@@ -1296,12 +1444,16 @@ aws_cdk.aws_secretsmanager.ReplicaRegion(**kwargs)
 
 The name of the region.
 
+---
+
 #### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
 
 - *Type:* [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey)
 - *Default:* - A default KMS key for the account and region is used.
 
 The customer-managed encryption key to use for encrypting the secret value.
+
+---
 
 ### ReplicaRegionProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty"></a>
 
@@ -1321,6 +1473,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-region](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-region)
 
+---
+
 #### `kmsKeyId`<sup>Optional</sup> <a name="kmsKeyId"></a>
 
 - *Type:* `builtins.str`
@@ -1328,6 +1482,8 @@ aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty(**kwargs)
 `CfnSecret.ReplicaRegionProperty.KmsKeyId`.
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-kmskeyid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-secret-replicaregion.html#cfn-secretsmanager-secret-replicaregion-kmskeyid)
+
+---
 
 ### ResourcePolicyProps <a name="aws-cdk-lib.aws_secretsmanager.ResourcePolicyProps"></a>
 
@@ -1344,6 +1500,8 @@ aws_cdk.aws_secretsmanager.ResourcePolicyProps(**kwargs)
 - *Type:* [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
 
 The secret to attach a resource-based permissions policy.
+
+---
 
 ### RotationRulesProperty <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty"></a>
 
@@ -1363,6 +1521,8 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty(**kwargs)
 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-rotationrules.html#cfn-secretsmanager-rotationschedule-rotationrules-automaticallyafterdays](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-secretsmanager-rotationschedule-rotationrules.html#cfn-secretsmanager-rotationschedule-rotationrules-automaticallyafterdays)
 
+---
+
 ### RotationScheduleOptions <a name="aws-cdk-lib.aws_secretsmanager.RotationScheduleOptions"></a>
 
 Options to add a rotation schedule to a secret.
@@ -1380,6 +1540,8 @@ aws_cdk.aws_secretsmanager.RotationScheduleOptions(**kwargs)
 
 Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
 
+---
+
 #### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
@@ -1387,12 +1549,16 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 Hosted rotation.
 
+---
+
 #### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
 
 A Lambda function that can rotate the secret.
+
+---
 
 ### RotationScheduleProps <a name="aws-cdk-lib.aws_secretsmanager.RotationScheduleProps"></a>
 
@@ -1427,12 +1593,16 @@ If hosted rotation is used, this must be a JSON string with the following format
 This is typically the case for a secret referenced from an `AWS::SecretsManager::SecretTargetAttachment`
 or an `ISecret` returned by the `attach()` method of `Secret`.
 
+---
+
 #### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
 
 - *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
 - *Default:* Duration.days(30)
 
 Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
+
+---
 
 #### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
 
@@ -1441,12 +1611,16 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 Hosted rotation.
 
+---
+
 #### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
 
 A Lambda function that can rotate the secret.
+
+---
 
 ### SecretAttachmentTargetProps <a name="aws-cdk-lib.aws_secretsmanager.SecretAttachmentTargetProps"></a>
 
@@ -1464,11 +1638,15 @@ aws_cdk.aws_secretsmanager.SecretAttachmentTargetProps(**kwargs)
 
 The id of the target to attach the secret to.
 
+---
+
 #### `targetType`<sup>Required</sup> <a name="targetType"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.AttachmentTargetType](#aws-cdk-lib.aws_secretsmanager.AttachmentTargetType)
 
 The type of the target to attach the secret to.
+
+---
 
 ### SecretAttributes <a name="aws-cdk-lib.aws_secretsmanager.SecretAttributes"></a>
 
@@ -1488,6 +1666,8 @@ aws_cdk.aws_secretsmanager.SecretAttributes(**kwargs)
 
 The encryption key that is used to encrypt the secret, unless the default SecretsManager key is used.
 
+---
+
 #### `secretCompleteArn`<sup>Optional</sup> <a name="secretCompleteArn"></a>
 
 - *Type:* `builtins.str`
@@ -1497,6 +1677,8 @@ The complete ARN of the secret in SecretsManager.
 This is the ARN including the Secrets Manager 6-character suffix.
 Cannot be used with `secretArn` or `secretPartialArn`.
 
+---
+
 #### `secretPartialArn`<sup>Optional</sup> <a name="secretPartialArn"></a>
 
 - *Type:* `builtins.str`
@@ -1505,6 +1687,8 @@ The partial ARN of the secret in SecretsManager.
 
 This is the ARN without the Secrets Manager 6-character suffix.
 Cannot be used with `secretArn` or `secretCompleteArn`.
+
+---
 
 ### SecretProps <a name="aws-cdk-lib.aws_secretsmanager.SecretProps"></a>
 
@@ -1523,12 +1707,16 @@ aws_cdk.aws_secretsmanager.SecretProps(**kwargs)
 
 An optional, human-friendly description of the secret.
 
+---
+
 #### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
 
 - *Type:* [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey)
 - *Default:* - A default KMS key for the account and region is used.
 
 The customer-managed encryption key to use for encrypting the secret value.
+
+---
 
 #### `generateSecretString`<sup>Optional</sup> <a name="generateSecretString"></a>
 
@@ -1538,6 +1726,8 @@ category), per the default values of ``SecretStringGenerator``.
 
 Configuration for how to generate a secret value.
 
+---
+
 #### `removalPolicy`<sup>Optional</sup> <a name="removalPolicy"></a>
 
 - *Type:* [aws-cdk-lib.RemovalPolicy](#aws-cdk-lib.RemovalPolicy)
@@ -1545,12 +1735,16 @@ Configuration for how to generate a secret value.
 
 Policy to apply when the secret is removed from this stack.
 
+---
+
 #### `replicaRegions`<sup>Optional</sup> <a name="replicaRegions"></a>
 
 - *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_secretsmanager.ReplicaRegion](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
 - *Default:* - Secret is not replicated
 
 A list of regions where to replicate this secret.
+
+---
 
 #### `secretName`<sup>Optional</sup> <a name="secretName"></a>
 
@@ -1561,6 +1755,8 @@ A name for the secret.
 
 Note that deleting secrets from SecretsManager does not happen immediately, but after a 7 to
 30 days blackout period. During that period, it is not possible to create another secret that shares the same name.
+
+---
 
 ### SecretRotationApplicationOptions <a name="aws-cdk-lib.aws_secretsmanager.SecretRotationApplicationOptions"></a>
 
@@ -1579,6 +1775,8 @@ aws_cdk.aws_secretsmanager.SecretRotationApplicationOptions(**kwargs)
 
 Whether the rotation application uses the mutli user scheme.
 
+---
+
 ### SecretRotationProps <a name="aws-cdk-lib.aws_secretsmanager.SecretRotationProps"></a>
 
 Construction properties for a SecretRotation.
@@ -1594,6 +1792,8 @@ aws_cdk.aws_secretsmanager.SecretRotationProps(**kwargs)
 - *Type:* [aws-cdk-lib.aws_secretsmanager.SecretRotationApplication](#aws-cdk-lib.aws_secretsmanager.SecretRotationApplication)
 
 The serverless application for the rotation.
+
+---
 
 #### `secret`<sup>Required</sup> <a name="secret"></a>
 
@@ -1618,17 +1818,23 @@ or an `ISecret` returned by the `attach()` method of `Secret`.
 
 > https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secrettargetattachment.html
 
+---
+
 #### `target`<sup>Required</sup> <a name="target"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.IConnectable](#aws-cdk-lib.aws_ec2.IConnectable)
 
 The target service or database.
 
+---
+
 #### `vpc`<sup>Required</sup> <a name="vpc"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.IVpc](#aws-cdk-lib.aws_ec2.IVpc)
 
 The VPC where the Lambda rotation function will run.
+
+---
 
 #### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
 
@@ -1637,12 +1843,16 @@ The VPC where the Lambda rotation function will run.
 
 Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
 
+---
+
 #### `excludeCharacters`<sup>Optional</sup> <a name="excludeCharacters"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - no additional characters are explicitly excluded
 
 Characters which should not appear in the generated password.
+
+---
 
 #### `masterSecret`<sup>Optional</sup> <a name="masterSecret"></a>
 
@@ -1651,6 +1861,8 @@ Characters which should not appear in the generated password.
 
 The master secret for a multi user rotation scheme.
 
+---
+
 #### `securityGroup`<sup>Optional</sup> <a name="securityGroup"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup)
@@ -1658,12 +1870,16 @@ The master secret for a multi user rotation scheme.
 
 The security group for the Lambda rotation function.
 
+---
+
 #### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.SubnetSelection](#aws-cdk-lib.aws_ec2.SubnetSelection)
 - *Default:* - the Vpc default strategy if not specified.
 
 The type of subnets in the VPC where the Lambda rotation function will run.
+
+---
 
 ### SecretStringGenerator <a name="aws-cdk-lib.aws_secretsmanager.SecretStringGenerator"></a>
 
@@ -1685,12 +1901,16 @@ A string that includes characters that shouldn't be included in the generated pa
 The string can be a minimum
 of ``0`` and a maximum of ``4096`` characters long.
 
+---
+
 #### `excludeLowercase`<sup>Optional</sup> <a name="excludeLowercase"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
 
 Specifies that the generated password shouldn't include lowercase letters.
+
+---
 
 #### `excludeNumbers`<sup>Optional</sup> <a name="excludeNumbers"></a>
 
@@ -1699,6 +1919,8 @@ Specifies that the generated password shouldn't include lowercase letters.
 
 Specifies that the generated password shouldn't include digits.
 
+---
+
 #### `excludePunctuation`<sup>Optional</sup> <a name="excludePunctuation"></a>
 
 - *Type:* `builtins.bool`
@@ -1706,12 +1928,16 @@ Specifies that the generated password shouldn't include digits.
 
 Specifies that the generated password shouldn't include punctuation characters.
 
+---
+
 #### `excludeUppercase`<sup>Optional</sup> <a name="excludeUppercase"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
 
 Specifies that the generated password shouldn't include uppercase letters.
+
+---
 
 #### `generateStringKey`<sup>Optional</sup> <a name="generateStringKey"></a>
 
@@ -1722,12 +1948,16 @@ The JSON key name that's used to add the generated password to the JSON structur
 If you specify ``generateStringKey`` then ``secretStringTemplate``
 must be also be specified.
 
+---
+
 #### `includeSpace`<sup>Optional</sup> <a name="includeSpace"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
 
 Specifies that the generated password can include the space character.
+
+---
 
 #### `passwordLength`<sup>Optional</sup> <a name="passwordLength"></a>
 
@@ -1736,12 +1966,16 @@ Specifies that the generated password can include the space character.
 
 The desired length of the generated password.
 
+---
+
 #### `requireEachIncludedType`<sup>Optional</sup> <a name="requireEachIncludedType"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* true
 
 Specifies whether the generated password must include at least one of every allowed character type.
+
+---
 
 #### `secretStringTemplate`<sup>Optional</sup> <a name="secretStringTemplate"></a>
 
@@ -1753,6 +1987,8 @@ The ``generateStringKey`` is
 combined with the generated random string and inserted into the JSON structure that's specified by this parameter.
 The merged JSON string is returned as the completed SecretString of the secret. If you specify ``secretStringTemplate``
 then ``generateStringKey`` must be also be specified.
+
+---
 
 ### SecretTargetAttachmentProps <a name="aws-cdk-lib.aws_secretsmanager.SecretTargetAttachmentProps"></a>
 
@@ -1769,6 +2005,8 @@ aws_cdk.aws_secretsmanager.SecretTargetAttachmentProps(**kwargs)
 - *Type:* [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
 
 The secret to attach to the target.
+
+---
 
 ### SingleUserHostedRotationOptions <a name="aws-cdk-lib.aws_secretsmanager.SingleUserHostedRotationOptions"></a>
 
@@ -1787,12 +2025,16 @@ aws_cdk.aws_secretsmanager.SingleUserHostedRotationOptions(**kwargs)
 
 A name for the Lambda created to rotate the secret.
 
+---
+
 #### `securityGroups`<sup>Optional</sup> <a name="securityGroups"></a>
 
 - *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup)]
 - *Default:* - a new security group is created
 
 A list of security groups for the Lambda created to rotate the secret.
+
+---
 
 #### `vpc`<sup>Optional</sup> <a name="vpc"></a>
 
@@ -1801,9 +2043,13 @@ A list of security groups for the Lambda created to rotate the secret.
 
 The VPC where the Lambda rotation function will run.
 
+---
+
 #### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.SubnetSelection](#aws-cdk-lib.aws_ec2.SubnetSelection)
 - *Default:* - the Vpc default strategy if not specified.
 
 The type of subnets in the VPC where the Lambda rotation function will run.
+
+---
