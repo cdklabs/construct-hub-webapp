@@ -470,8 +470,17 @@ export class PythonClassInitializer extends Function {
       `${module}.${this.initializer.parentType.name}(${positional}${kwargs})`
     );
 
+    if (positional) {
+      md.lines("**positional:**");
+      md.lines("");
+      for (const parameter of this.nonStructParameters) {
+        md.lines(`- **${parameter.name}:** ${parameter.type}`);
+      }
+      md.lines("");
+    }
+
     if (kwargs) {
-      md.lines("**kwargs**");
+      md.lines("**kwargs:**");
       md.lines("");
       for (const parameter of this.structParameters) {
         if (!parameter.type.fqn) {
@@ -564,6 +573,15 @@ export class Method extends Function {
         this.method.name
       }(${positional}${kwargs})`
     );
+
+    if (positional) {
+      md.lines("**positional:**");
+      md.lines("");
+      for (const parameter of this.nonStructParameters) {
+        md.lines(`- **${parameter.name}:** ${parameter.type}`);
+      }
+      md.lines("");
+    }
 
     if (kwargs) {
       for (const parameter of this.structParameters) {
