@@ -225,7 +225,7 @@ A CloudFormation `AWS::SecretsManager::ResourcePolicy`.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: string, **kwargs)
+aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: string**kwargs)
 ```
 
 ##### `resourcePolicy`<sup>Required</sup> <a name="resourcePolicy"></a>
@@ -262,7 +262,15 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 ##### `inspect` <a name="inspect"></a>
 
+```python
+cfnresourcepolicy.inspect(inspector: aws-cdk-lib.TreeInspector)
+```
+
 ##### `renderProperties` <a name="renderProperties"></a>
+
+```python
+cfnresourcepolicy.renderProperties(props: Map<string => any>)
+```
 
 ### CfnRotationSchedule <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule"></a>
 
@@ -277,7 +285,7 @@ A CloudFormation `AWS::SecretsManager::RotationSchedule`.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: string, **kwargs)
+aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: string**kwargs)
 ```
 
 ##### `secretId`<sup>Required</sup> <a name="secretId"></a>
@@ -324,7 +332,15 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 
 ##### `inspect` <a name="inspect"></a>
 
+```python
+cfnrotationschedule.inspect(inspector: aws-cdk-lib.TreeInspector)
+```
+
 ##### `renderProperties` <a name="renderProperties"></a>
+
+```python
+cfnrotationschedule.renderProperties(props: Map<string => any>)
+```
 
 ### CfnSecret <a name="aws-cdk-lib.aws_secretsmanager.CfnSecret"></a>
 
@@ -339,7 +355,7 @@ A CloudFormation `AWS::SecretsManager::Secret`.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **kwargs)
+aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string**kwargs)
 ```
 
 ##### `description`<sup>Optional</sup> <a name="description"></a>
@@ -416,7 +432,15 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 ##### `inspect` <a name="inspect"></a>
 
+```python
+cfnsecret.inspect(inspector: aws-cdk-lib.TreeInspector)
+```
+
 ##### `renderProperties` <a name="renderProperties"></a>
+
+```python
+cfnsecret.renderProperties(props: Map<string => any>)
+```
 
 ### CfnSecretTargetAttachment <a name="aws-cdk-lib.aws_secretsmanager.CfnSecretTargetAttachment"></a>
 
@@ -431,7 +455,7 @@ A CloudFormation `AWS::SecretsManager::SecretTargetAttachment`.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct, id: string, **kwargs)
+aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct, id: string**kwargs)
 ```
 
 ##### `secretId`<sup>Required</sup> <a name="secretId"></a>
@@ -468,7 +492,15 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 ##### `inspect` <a name="inspect"></a>
 
+```python
+cfnsecrettargetattachment.inspect(inspector: aws-cdk-lib.TreeInspector)
+```
+
 ##### `renderProperties` <a name="renderProperties"></a>
+
+```python
+cfnsecrettargetattachment.renderProperties(props: Map<string => any>)
+```
 
 ### ResourcePolicy <a name="aws-cdk-lib.aws_secretsmanager.ResourcePolicy"></a>
 
@@ -479,7 +511,7 @@ Secret Resource Policy.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.ResourcePolicy(scope: constructs.Construct, id: string, **kwargs)
+aws_cdk.aws_secretsmanager.ResourcePolicy(scope: constructs.Construct, id: string**kwargs)
 ```
 
 ##### `secret`<sup>Required</sup> <a name="secret"></a>
@@ -503,7 +535,7 @@ A rotation schedule.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.RotationSchedule(scope: constructs.Construct, id: string, **kwargs)
+aws_cdk.aws_secretsmanager.RotationSchedule(scope: constructs.Construct, id: string**kwargs)
 ```
 
 ##### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
@@ -573,7 +605,7 @@ Creates a new secret in AWS SecretsManager.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, id: string, **kwargs)
+aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, id: string**kwargs)
 ```
 
 ##### `description`<sup>Optional</sup> <a name="description"></a>
@@ -638,19 +670,78 @@ Note that deleting secrets from SecretsManager does not happen immediately, but 
 
 ##### `addReplicaRegion` <a name="addReplicaRegion"></a>
 
+```python
+secret.addReplicaRegion(region: string, encryptionKey: aws-cdk-lib.aws_kms.IKey)
+```
+
 ##### `addRotationSchedule` <a name="addRotationSchedule"></a>
+
+```python
+secret.addRotationSchedule(id: string, **kwargs)
+```
+
+###### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+
+- *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
+- *Default:* Duration.days(30)
+
+Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
+
+---
+
+###### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
+
+- *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
+- *Default:* - either `rotationLambda` or `hostedRotation` must be specified
+
+Hosted rotation.
+
+---
+
+###### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
+
+- *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
+- *Default:* - either `rotationLambda` or `hostedRotation` must be specified
+
+A Lambda function that can rotate the secret.
+
+---
 
 ##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
 
+```python
+secret.addToResourcePolicy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
+```
+
 ##### `attach` <a name="attach"></a>
+
+```python
+secret.attach(target: aws-cdk-lib.aws_secretsmanager.ISecretAttachmentTarget)
+```
 
 ##### `denyAccountRootDelete` <a name="denyAccountRootDelete"></a>
 
+```python
+secret.denyAccountRootDelete()
+```
+
 ##### `grantRead` <a name="grantRead"></a>
+
+```python
+secret.grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable, versionStages: Array<string>)
+```
 
 ##### `grantWrite` <a name="grantWrite"></a>
 
+```python
+secret.grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
+```
+
 ##### `secretValueFromJson` <a name="secretValueFromJson"></a>
+
+```python
+secret.secretValueFromJson(jsonField: string)
+```
 
 ### SecretRotation <a name="aws-cdk-lib.aws_secretsmanager.SecretRotation"></a>
 
@@ -661,7 +752,7 @@ Secret rotation for a service or database.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.SecretRotation(scope: constructs.Construct, id: string, **kwargs)
+aws_cdk.aws_secretsmanager.SecretRotation(scope: constructs.Construct, id: string**kwargs)
 ```
 
 ##### `application`<sup>Required</sup> <a name="application"></a>
@@ -773,7 +864,7 @@ An attached secret.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.SecretTargetAttachment(scope: constructs.Construct, id: string, **kwargs)
+aws_cdk.aws_secretsmanager.SecretTargetAttachment(scope: constructs.Construct, id: string**kwargs)
 ```
 
 ##### `secret`<sup>Required</sup> <a name="secret"></a>
@@ -788,17 +879,72 @@ The secret to attach to the target.
 
 ##### `addRotationSchedule` <a name="addRotationSchedule"></a>
 
+```python
+secrettargetattachment.addRotationSchedule(id: string, **kwargs)
+```
+
+###### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+
+- *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
+- *Default:* Duration.days(30)
+
+Specifies the number of days after the previous rotation before Secrets Manager triggers the next automatic rotation.
+
+---
+
+###### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
+
+- *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
+- *Default:* - either `rotationLambda` or `hostedRotation` must be specified
+
+Hosted rotation.
+
+---
+
+###### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
+
+- *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
+- *Default:* - either `rotationLambda` or `hostedRotation` must be specified
+
+A Lambda function that can rotate the secret.
+
+---
+
 ##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
+
+```python
+secrettargetattachment.addToResourcePolicy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
+```
 
 ##### `attach` <a name="attach"></a>
 
+```python
+secrettargetattachment.attach(target: aws-cdk-lib.aws_secretsmanager.ISecretAttachmentTarget)
+```
+
 ##### `denyAccountRootDelete` <a name="denyAccountRootDelete"></a>
+
+```python
+secrettargetattachment.denyAccountRootDelete()
+```
 
 ##### `grantRead` <a name="grantRead"></a>
 
+```python
+secrettargetattachment.grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable, versionStages: Array<string>)
+```
+
 ##### `grantWrite` <a name="grantWrite"></a>
 
+```python
+secrettargetattachment.grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
+```
+
 ##### `secretValueFromJson` <a name="secretValueFromJson"></a>
+
+```python
+secrettargetattachment.secretValueFromJson(jsonField: string)
+```
 
 ## Structs <a name="Structs"></a>
 

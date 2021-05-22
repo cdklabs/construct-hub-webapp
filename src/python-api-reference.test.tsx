@@ -459,10 +459,10 @@ export class PythonClassInitializer extends Function {
       this.nonStructParameters.length > 0
         ? `${this.nonStructParameters
             .map((p) => `${p.name}: ${p.type}`)
-            .join(", ")}, `
+            .join(", ")}`
         : "";
 
-    const kwargs = this.structParameters.length > 0 ? "**kwargs" : "";
+    const kwargs = this.structParameters.length > 0 ? ", **kwargs" : "";
 
     md.python(
       `import ${module}`,
@@ -547,6 +547,35 @@ export class Method extends Function {
         deprecated: this.method.docs.deprecated,
       },
     });
+
+    const positional =
+      this.nonStructParameters.length > 0
+        ? `${this.nonStructParameters
+            .map((p) => `${p.name}: ${p.type}`)
+            .join(", ")}`
+        : "";
+
+    const kwargs = this.structParameters.length > 0 ? ", **kwargs" : "";
+
+    md.python(
+      `${this.method.parentType.name.toLowerCase()}.${
+        this.method.name
+      }(${positional}${kwargs})`
+    );
+
+    if (kwargs) {
+      for (const parameter of this.structParameters) {
+        if (!parameter.type.fqn) {
+          throw new Error("asdasd");
+        }
+
+        const struct = this.method.system.findInterface(parameter.type.fqn);
+        for (const property of struct.allProperties) {
+          md.sections(new PythonArgument(property).pythonMarkdown);
+        }
+      }
+    }
+
     return md;
   }
 }
