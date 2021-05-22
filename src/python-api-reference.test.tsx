@@ -22,6 +22,7 @@ export interface MarkdownHeaderOptions {
 }
 
 export interface MarkdownOptions {
+  readonly bullet?: boolean;
   readonly header?: MarkdownHeaderOptions;
   readonly id?: string;
 }
@@ -81,14 +82,22 @@ export class Markdown {
       throw new Error(`Unable to render markdown. Header limit (6) reached.`);
     }
 
-    const content = [];
+    const indent = this.options.bullet ? "  " : "";
+    const content: string[] = [];
     if (this.header) {
       const heading = `${"#".repeat(headerSize)} ${this.header}`;
-      content.push(`${heading} <a name="${this.id}"></a>`);
+      content.push(
+        `${this.options.bullet ? "- " : ""}${heading} <a name="${this.id}"></a>`
+      );
       content.push("");
     }
 
-    content.push(...this._lines);
+    for (const line of this._lines) {
+      for (const subline of line.split("\n")) {
+        content.push(`${indent}${subline}`);
+      }
+    }
+
     for (const section of this._sections) {
       content.push(section.render(headerSize + 1));
     }
@@ -470,15 +479,6 @@ export class PythonClassInitializer extends Function {
       `${module}.${this.initializer.parentType.name}(${positional}${kwargs})`
     );
 
-    if (positional) {
-      md.lines("**positional:**");
-      md.lines("");
-      for (const parameter of this.nonStructParameters) {
-        md.lines(`- **${parameter.name}:** ${parameter.type}`);
-      }
-      md.lines("");
-    }
-
     if (kwargs) {
       md.lines("**kwargs:**");
       md.lines("");
@@ -574,16 +574,9 @@ export class Method extends Function {
       }(${positional}${kwargs})`
     );
 
-    if (positional) {
-      md.lines("**positional:**");
-      md.lines("");
-      for (const parameter of this.nonStructParameters) {
-        md.lines(`- **${parameter.name}:** ${parameter.type}`);
-      }
-      md.lines("");
-    }
-
     if (kwargs) {
+      md.lines("**kwargs:**");
+      md.lines("");
       for (const parameter of this.structParameters) {
         if (!parameter.type.fqn) {
           throw new Error("asdasd");
@@ -614,6 +607,7 @@ export class PythonArgument {
     const optionality = this.argument.optional ? "Optional" : "Required";
 
     const md = new Markdown({
+      bullet: true,
       header: {
         title: this.argument.name,
         sup: optionality,
