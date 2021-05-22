@@ -258,6 +258,12 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, id: st
 
 ---
 
+#### Methods <a name="Methods"></a>
+
+##### `inspect` <a name="inspect"></a>
+
+##### `renderProperties` <a name="renderProperties"></a>
+
 ### CfnRotationSchedule <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule"></a>
 
 - *Implements:* [aws-cdk-lib.IInspectable](aws-cdk-lib.IInspectable)
@@ -313,6 +319,12 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, id: 
 > [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html#cfn-secretsmanager-rotationschedule-rotationrules)
 
 ---
+
+#### Methods <a name="Methods"></a>
+
+##### `inspect` <a name="inspect"></a>
+
+##### `renderProperties` <a name="renderProperties"></a>
 
 ### CfnSecret <a name="aws-cdk-lib.aws_secretsmanager.CfnSecret"></a>
 
@@ -400,6 +412,12 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, id: string, **
 
 ---
 
+#### Methods <a name="Methods"></a>
+
+##### `inspect` <a name="inspect"></a>
+
+##### `renderProperties` <a name="renderProperties"></a>
+
 ### CfnSecretTargetAttachment <a name="aws-cdk-lib.aws_secretsmanager.CfnSecretTargetAttachment"></a>
 
 - *Implements:* [aws-cdk-lib.IInspectable](aws-cdk-lib.IInspectable)
@@ -446,6 +464,12 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 ---
 
+#### Methods <a name="Methods"></a>
+
+##### `inspect` <a name="inspect"></a>
+
+##### `renderProperties` <a name="renderProperties"></a>
+
 ### ResourcePolicy <a name="aws-cdk-lib.aws_secretsmanager.ResourcePolicy"></a>
 
 Secret Resource Policy.
@@ -465,6 +489,10 @@ aws_cdk.aws_secretsmanager.ResourcePolicy(scope: constructs.Construct, id: strin
 The secret to attach a resource-based permissions policy.
 
 ---
+
+#### Methods <a name="Methods"></a>
+
+This class does not provide any methods
 
 ### RotationSchedule <a name="aws-cdk-lib.aws_secretsmanager.RotationSchedule"></a>
 
@@ -529,6 +557,10 @@ This is typically the case for a secret referenced from an `AWS::SecretsManager:
 or an `ISecret` returned by the `attach()` method of `Secret`.
 
 ---
+
+#### Methods <a name="Methods"></a>
+
+This class does not provide any methods
 
 ### Secret <a name="aws-cdk-lib.aws_secretsmanager.Secret"></a>
 
@@ -601,6 +633,24 @@ Note that deleting secrets from SecretsManager does not happen immediately, but 
 30 days blackout period. During that period, it is not possible to create another secret that shares the same name.
 
 ---
+
+#### Methods <a name="Methods"></a>
+
+##### `addReplicaRegion` <a name="addReplicaRegion"></a>
+
+##### `addRotationSchedule` <a name="addRotationSchedule"></a>
+
+##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
+
+##### `attach` <a name="attach"></a>
+
+##### `denyAccountRootDelete` <a name="denyAccountRootDelete"></a>
+
+##### `grantRead` <a name="grantRead"></a>
+
+##### `grantWrite` <a name="grantWrite"></a>
+
+##### `secretValueFromJson` <a name="secretValueFromJson"></a>
 
 ### SecretRotation <a name="aws-cdk-lib.aws_secretsmanager.SecretRotation"></a>
 
@@ -708,6 +758,10 @@ The type of subnets in the VPC where the Lambda rotation function will run.
 
 ---
 
+#### Methods <a name="Methods"></a>
+
+This class does not provide any methods
+
 ### SecretTargetAttachment <a name="aws-cdk-lib.aws_secretsmanager.SecretTargetAttachment"></a>
 
 - *Implements:* [aws-cdk-lib.aws_secretsmanager.ISecretTargetAttachment](aws-cdk-lib.aws_secretsmanager.ISecretTargetAttachment), [aws-cdk-lib.aws_secretsmanager.ISecret](aws-cdk-lib.aws_secretsmanager.ISecret)
@@ -729,6 +783,22 @@ aws_cdk.aws_secretsmanager.SecretTargetAttachment(scope: constructs.Construct, i
 The secret to attach to the target.
 
 ---
+
+#### Methods <a name="Methods"></a>
+
+##### `addRotationSchedule` <a name="addRotationSchedule"></a>
+
+##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
+
+##### `attach` <a name="attach"></a>
+
+##### `denyAccountRootDelete` <a name="denyAccountRootDelete"></a>
+
+##### `grantRead` <a name="grantRead"></a>
+
+##### `grantWrite` <a name="grantWrite"></a>
+
+##### `secretValueFromJson` <a name="secretValueFromJson"></a>
 
 ## Structs <a name="Structs"></a>
 

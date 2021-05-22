@@ -228,6 +228,7 @@ export class Constructs {
     const md = new Markdown({ header: { title: "Constructs" } });
     if (this.constructs.length === 0) {
       md.lines("This library does not provide any constructs");
+      md.lines("");
     }
 
     for (const construct of this.constructs) {
@@ -262,6 +263,7 @@ export class Structs {
     const md = new Markdown({ header: { title: "Structs" } });
     if (this.structs.length === 0) {
       md.lines("This library does not provide any structs");
+      md.lines("");
     }
 
     for (const struct of this.structs) {
@@ -314,6 +316,8 @@ export class Class {
         new PythonClassInitializer(this.klass.initializer).pythonMarkdown
       );
     }
+
+    md.sections(new Methods(this.klass).pythonMarkdown);
     return md;
   }
 }
@@ -402,23 +406,14 @@ export class Struct {
   }
 }
 
-export interface PythonFqn {
-  module: string;
-  fqn: string;
-}
+export abstract class Function {
+  protected readonly structParameters: reflect.Parameter[];
+  protected readonly nonStructParameters: reflect.Parameter[];
 
-export class PythonClassInitializer {
-  constructor(private readonly initializer: reflect.Initializer) {}
+  constructor(parameters: reflect.Parameter[]) {
+    this.nonStructParameters = parameters.filter((p) => !this.isStruct(p));
 
-  public get pythonMarkdown(): Markdown {
-    const md = new Markdown({ header: { title: "Initializer" } });
-    const module = this.findImport();
-
-    const nonStructParameters = this.initializer.parameters.filter(
-      (p) => !this.isStruct(p)
-    );
-
-    const structParameters = this.initializer.parameters
+    this.structParameters = parameters
       .filter((p) => this.isStruct(p))
       .sort((s1, s2) => {
         if (!s1.optional && s2.optional) {
@@ -431,15 +426,43 @@ export class PythonClassInitializer {
 
         return 0;
       });
+  }
+
+  private isStruct(parameter: reflect.Parameter): boolean {
+    const named = spec.isNamedTypeReference(parameter.spec.type);
+    if (!named) {
+      return false;
+    }
+
+    if (!parameter.type.fqn) {
+      throw new Error(`Empty fqn for type of parameter '${parameter.name}'`);
+    }
+    return parameter.system.findFqn(parameter.type.fqn).isDataType();
+  }
+}
+
+export interface PythonFqn {
+  module: string;
+  fqn: string;
+}
+
+export class PythonClassInitializer extends Function {
+  constructor(private readonly initializer: reflect.Initializer) {
+    super(initializer.parameters);
+  }
+
+  public get pythonMarkdown(): Markdown {
+    const md = new Markdown({ header: { title: "Initializer" } });
+    const module = this.findImport();
 
     const positional =
-      nonStructParameters.length > 0
-        ? `${nonStructParameters
+      this.nonStructParameters.length > 0
+        ? `${this.nonStructParameters
             .map((p) => `${p.name}: ${p.type}`)
             .join(", ")}, `
         : "";
 
-    const kwargs = structParameters.length > 0 ? "**kwargs" : "";
+    const kwargs = this.structParameters.length > 0 ? "**kwargs" : "";
 
     md.python(
       `import ${module}`,
@@ -448,7 +471,7 @@ export class PythonClassInitializer {
     );
 
     if (kwargs) {
-      for (const parameter of structParameters) {
+      for (const parameter of this.structParameters) {
         if (!parameter.type.fqn) {
           throw new Error("asdasd");
         }
@@ -463,20 +486,6 @@ export class PythonClassInitializer {
     }
 
     return md;
-  }
-
-  public isStruct(parameter: reflect.Parameter): boolean {
-    const named = spec.isNamedTypeReference(parameter.spec.type);
-    if (!named) {
-      return false;
-    }
-
-    if (!parameter.type.fqn) {
-      throw new Error(
-        `Parameter '${parameter.name}' for initializer '${this.initializer.name} has no FQN'`
-      );
-    }
-    return parameter.system.findFqn(parameter.type.fqn).isDataType();
   }
 
   private findImport() {
@@ -502,8 +511,45 @@ export class PythonClassInitializer {
   }
 }
 
-export class PythonClassMethods {}
+export class Methods {
+  private readonly methods: reflect.Method[];
+  constructor(klass: reflect.ClassType) {
+    this.methods = klass.ownMethods
+      .filter((m) => !m.static)
+      .sort((m1, m2) => m1.name.localeCompare(m2.name));
+  }
 
+  public get pythonMarkdown(): Markdown {
+    const md = new Markdown({ header: { title: "Methods" } });
+
+    if (this.methods.length === 0) {
+      md.lines("This class does not provide any methods");
+      md.lines("");
+    } else {
+      for (const method of this.methods) {
+        md.sections(new Method(method).pythonMarkdown);
+      }
+    }
+    return md;
+  }
+}
+
+export class Method extends Function {
+  constructor(private readonly method: reflect.Method) {
+    super(method.parameters);
+  }
+
+  public get pythonMarkdown(): Markdown {
+    const md = new Markdown({
+      header: {
+        title: this.method.name,
+        code: true,
+        deprecated: this.method.docs.deprecated,
+      },
+    });
+    return md;
+  }
+}
 export class PythonClassProperties {}
 
 export class PythonClassStaticMembers {}
