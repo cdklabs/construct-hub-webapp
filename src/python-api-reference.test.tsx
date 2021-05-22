@@ -282,7 +282,9 @@ export class Class {
 
     if (this.klass.interfaces.length > 0) {
       md.lines(
-        `- *Implements:* ${this.klass.interfaces.map((i) => i.fqn).join(", ")}`
+        `- *Implements:* ${this.klass.interfaces
+          .map((i) => `[${i.fqn}](${i.fqn})`)
+          .join(", ")}`
       );
       md.lines("");
     }
