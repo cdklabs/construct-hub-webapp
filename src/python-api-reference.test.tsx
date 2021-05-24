@@ -583,11 +583,7 @@ export class PythonMethod extends PythonFunction {
       },
     });
 
-    md.python(
-      `${this.method.parentType.name.toLowerCase()}.${this.method.name}(${
-        this.signature
-      })`
-    );
+    md.python(`def ${this.method.name}(${this.signature})`);
 
     for (const arg of this.args) {
       md.sections(new PythonArgument(arg).pythonMarkdown);

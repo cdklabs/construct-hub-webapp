@@ -283,7 +283,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct,
 ##### `inspect` <a name="inspect"></a>
 
 ```python
-cfnresourcepolicy.inspect(inspector: aws-cdk-lib.TreeInspector)
+def inspect(inspector: aws-cdk-lib.TreeInspector)
 ```
 
 ###### `inspector`<sup>Required</sup> <a name="inspector"></a>
@@ -297,7 +297,7 @@ cfnresourcepolicy.inspect(inspector: aws-cdk-lib.TreeInspector)
 ##### `renderProperties` <a name="renderProperties"></a>
 
 ```python
-cfnresourcepolicy.renderProperties(props: Map<string => any>)
+def renderProperties(props: Map<string => any>)
 ```
 
 ###### `props`<sup>Required</sup> <a name="props"></a>
@@ -388,7 +388,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct,
 ##### `inspect` <a name="inspect"></a>
 
 ```python
-cfnrotationschedule.inspect(inspector: aws-cdk-lib.TreeInspector)
+def inspect(inspector: aws-cdk-lib.TreeInspector)
 ```
 
 ###### `inspector`<sup>Required</sup> <a name="inspector"></a>
@@ -402,7 +402,7 @@ cfnrotationschedule.inspect(inspector: aws-cdk-lib.TreeInspector)
 ##### `renderProperties` <a name="renderProperties"></a>
 
 ```python
-cfnrotationschedule.renderProperties(props: Map<string => any>)
+def renderProperties(props: Map<string => any>)
 ```
 
 ###### `props`<sup>Required</sup> <a name="props"></a>
@@ -526,7 +526,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct,
 ##### `inspect` <a name="inspect"></a>
 
 ```python
-cfnsecret.inspect(inspector: aws-cdk-lib.TreeInspector)
+def inspect(inspector: aws-cdk-lib.TreeInspector)
 ```
 
 ###### `inspector`<sup>Required</sup> <a name="inspector"></a>
@@ -540,7 +540,7 @@ cfnsecret.inspect(inspector: aws-cdk-lib.TreeInspector)
 ##### `renderProperties` <a name="renderProperties"></a>
 
 ```python
-cfnsecret.renderProperties(props: Map<string => any>)
+def renderProperties(props: Map<string => any>)
 ```
 
 ###### `props`<sup>Required</sup> <a name="props"></a>
@@ -620,7 +620,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 ##### `inspect` <a name="inspect"></a>
 
 ```python
-cfnsecrettargetattachment.inspect(inspector: aws-cdk-lib.TreeInspector)
+def inspect(inspector: aws-cdk-lib.TreeInspector)
 ```
 
 ###### `inspector`<sup>Required</sup> <a name="inspector"></a>
@@ -634,7 +634,7 @@ cfnsecrettargetattachment.inspect(inspector: aws-cdk-lib.TreeInspector)
 ##### `renderProperties` <a name="renderProperties"></a>
 
 ```python
-cfnsecrettargetattachment.renderProperties(props: Map<string => any>)
+def renderProperties(props: Map<string => any>)
 ```
 
 ###### `props`<sup>Required</sup> <a name="props"></a>
@@ -856,7 +856,7 @@ Note that deleting secrets from SecretsManager does not happen immediately, but 
 ##### `addReplicaRegion` <a name="addReplicaRegion"></a>
 
 ```python
-secret.addReplicaRegion(region: string, 
+def addReplicaRegion(region: string, 
     encryptionKey: aws-cdk-lib.aws_kms.IKey = None)
 ```
 
@@ -879,7 +879,7 @@ The customer-managed encryption key to use for encrypting the secret value.
 ##### `addRotationSchedule` <a name="addRotationSchedule"></a>
 
 ```python
-secret.addRotationSchedule(id: string, 
+def addRotationSchedule(id: string, 
     automaticallyAfter: aws-cdk-lib.Duration = None, 
     hostedRotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
     rotationLambda: aws-cdk-lib.aws_lambda.IFunction = None)
@@ -921,7 +921,7 @@ A Lambda function that can rotate the secret.
 ##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
 
 ```python
-secret.addToResourcePolicy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
+def addToResourcePolicy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
 ```
 
 ###### `statement`<sup>Required</sup> <a name="statement"></a>
@@ -933,7 +933,7 @@ secret.addToResourcePolicy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
 ##### `attach` <a name="attach"></a>
 
 ```python
-secret.attach(target: aws-cdk-lib.aws_secretsmanager.ISecretAttachmentTarget)
+def attach(target: aws-cdk-lib.aws_secretsmanager.ISecretAttachmentTarget)
 ```
 
 ###### `target`<sup>Required</sup> <a name="target"></a>
@@ -947,13 +947,13 @@ The target to attach.
 ##### `denyAccountRootDelete` <a name="denyAccountRootDelete"></a>
 
 ```python
-secret.denyAccountRootDelete()
+def denyAccountRootDelete()
 ```
 
 ##### `grantRead` <a name="grantRead"></a>
 
 ```python
-secret.grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable, 
+def grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable, 
     versionStages: Array<string> = None)
 ```
 
@@ -972,7 +972,7 @@ secret.grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable,
 ##### `grantWrite` <a name="grantWrite"></a>
 
 ```python
-secret.grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
+def grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
 ```
 
 ###### `grantee`<sup>Required</sup> <a name="grantee"></a>
@@ -984,7 +984,7 @@ secret.grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
 ##### `secretValueFromJson` <a name="secretValueFromJson"></a>
 
 ```python
-secret.secretValueFromJson(jsonField: string)
+def secretValueFromJson(jsonField: string)
 ```
 
 ###### `jsonField`<sup>Required</sup> <a name="jsonField"></a>
@@ -1163,7 +1163,7 @@ The secret to attach to the target.
 ##### `addRotationSchedule` <a name="addRotationSchedule"></a>
 
 ```python
-secrettargetattachment.addRotationSchedule(id: string, 
+def addRotationSchedule(id: string, 
     automaticallyAfter: aws-cdk-lib.Duration = None, 
     hostedRotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
     rotationLambda: aws-cdk-lib.aws_lambda.IFunction = None)
@@ -1205,7 +1205,7 @@ A Lambda function that can rotate the secret.
 ##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
 
 ```python
-secrettargetattachment.addToResourcePolicy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
+def addToResourcePolicy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
 ```
 
 ###### `statement`<sup>Required</sup> <a name="statement"></a>
@@ -1217,7 +1217,7 @@ secrettargetattachment.addToResourcePolicy(statement: aws-cdk-lib.aws_iam.Policy
 ##### `attach` <a name="attach"></a>
 
 ```python
-secrettargetattachment.attach(target: aws-cdk-lib.aws_secretsmanager.ISecretAttachmentTarget)
+def attach(target: aws-cdk-lib.aws_secretsmanager.ISecretAttachmentTarget)
 ```
 
 ###### `target`<sup>Required</sup> <a name="target"></a>
@@ -1231,13 +1231,13 @@ The target to attach.
 ##### `denyAccountRootDelete` <a name="denyAccountRootDelete"></a>
 
 ```python
-secrettargetattachment.denyAccountRootDelete()
+def denyAccountRootDelete()
 ```
 
 ##### `grantRead` <a name="grantRead"></a>
 
 ```python
-secrettargetattachment.grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable, 
+def grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable, 
     versionStages: Array<string> = None)
 ```
 
@@ -1256,7 +1256,7 @@ secrettargetattachment.grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable,
 ##### `grantWrite` <a name="grantWrite"></a>
 
 ```python
-secrettargetattachment.grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
+def grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
 ```
 
 ###### `grantee`<sup>Required</sup> <a name="grantee"></a>
@@ -1268,7 +1268,7 @@ secrettargetattachment.grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
 ##### `secretValueFromJson` <a name="secretValueFromJson"></a>
 
 ```python
-secrettargetattachment.secretValueFromJson(jsonField: string)
+def secretValueFromJson(jsonField: string)
 ```
 
 ###### `jsonField`<sup>Required</sup> <a name="jsonField"></a>
