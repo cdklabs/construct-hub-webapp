@@ -507,7 +507,7 @@ export class PythonClassInitializer extends PythonFunction {
     md.python(
       `import ${module}`,
       "",
-      `${module}.${this.initializer.parentType.name}(${this.signature})`
+      `${module}.${this.initializer.parentType.name}(${this.signature}\n)`
     );
 
     for (const arg of this.args) {
@@ -583,7 +583,7 @@ export class PythonMethod extends PythonFunction {
       },
     });
 
-    md.python(`def ${this.method.name}(${this.signature})`);
+    md.python(`def ${this.method.name}(${this.signature}\n)`);
 
     for (const arg of this.args) {
       md.sections(new PythonArgument(arg).pythonMarkdown);
