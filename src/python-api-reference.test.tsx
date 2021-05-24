@@ -354,7 +354,7 @@ export class PythonFunction extends Function {
         `${arg.name}: ${arg.type}${arg.optional ? " = None" : ""}`
       );
     }
-    return signature.join(", \n    ");
+    return signature.join(", \n      ");
   }
 }
 
