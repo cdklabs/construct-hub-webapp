@@ -331,7 +331,6 @@ export class PythonFunction extends Function {
     // non struct parameters are kept as is
     for (const parameter of this.nonStructParameters) {
       this._args.push(parameter);
-      this._signature.push(`${parameter.name}: ${parameter.type}`);
     }
 
     // struct parameters are expanded to the individual struct properties
@@ -341,11 +340,6 @@ export class PythonFunction extends Function {
       );
       for (const property of struct.allProperties) {
         this._args.push(property);
-        this._signature.push(
-          `\n    ${property.name}: ${property.type}${
-            property.optional ? " = None" : ""
-          }`
-        );
       }
     }
   }
@@ -355,7 +349,14 @@ export class PythonFunction extends Function {
   }
 
   public get signature(): string {
-    return this._signature.join(", ");
+    const signature = [];
+
+    for (const arg of this.args) {
+      signature.push(
+        `${arg.name}: ${arg.type}${arg.optional ? " = None" : ""}`
+      );
+    }
+    return this._signature.join(", \n");
   }
 }
 
