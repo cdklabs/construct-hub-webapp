@@ -289,10 +289,10 @@ export abstract class Function {
   protected readonly structParameters: reflect.Parameter[];
   protected readonly nonStructParameters: reflect.Parameter[];
 
-  constructor(parameters: reflect.Parameter[]) {
-    this.nonStructParameters = parameters.filter((p) => !this.isStruct(p));
+  constructor(protected readonly func: reflect.Method | reflect.Initializer) {
+    this.nonStructParameters = func.parameters.filter((p) => !this.isStruct(p));
 
-    this.structParameters = parameters
+    this.structParameters = func.parameters
       .filter((p) => this.isStruct(p))
       .sort((s1, s2) => {
         if (!s1.optional && s2.optional) {
@@ -323,8 +323,8 @@ export abstract class Function {
 export class PythonFunction extends Function {
   private readonly _args: Array<reflect.Parameter | reflect.Property> = [];
 
-  constructor(parameters: reflect.Parameter[]) {
-    super(parameters);
+  constructor(protected readonly func: reflect.Method | reflect.Initializer) {
+    super(func);
 
     // non struct parameters are kept as is
     for (const parameter of this.nonStructParameters) {
@@ -354,7 +354,9 @@ export class PythonFunction extends Function {
         `${arg.name}: ${arg.type}${arg.optional ? " = None" : ""}`
       );
     }
-    return signature.join(", \n      ");
+    return signature.join(
+      `, \n${" ".repeat(3 + 1 + 1 + this.func.name.length)}`
+    );
   }
 }
 
@@ -497,7 +499,7 @@ export interface PythonFqn {
 
 export class PythonClassInitializer extends PythonFunction {
   constructor(private readonly initializer: reflect.Initializer) {
-    super(initializer.parameters);
+    super(initializer);
   }
 
   public get pythonMarkdown(): Markdown {
@@ -507,7 +509,7 @@ export class PythonClassInitializer extends PythonFunction {
     md.python(
       `import ${module}`,
       "",
-      `${module}.${this.initializer.parentType.name}(${this.signature}\n)`
+      `${module}.${this.initializer.parentType.name}(${this.signature})`
     );
 
     for (const arg of this.args) {
@@ -571,7 +573,7 @@ export class Methods {
 
 export class PythonMethod extends PythonFunction {
   constructor(private readonly method: reflect.Method) {
-    super(method.parameters);
+    super(method);
   }
 
   public get pythonMarkdown(): Markdown {
@@ -583,7 +585,7 @@ export class PythonMethod extends PythonFunction {
       },
     });
 
-    md.python(`def ${this.method.name}(${this.signature}\n)`);
+    md.python(`def ${this.method.name}(${this.signature})`);
 
     for (const arg of this.args) {
       md.sections(new PythonArgument(arg).pythonMarkdown);
