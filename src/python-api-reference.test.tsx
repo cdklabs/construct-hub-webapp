@@ -28,6 +28,8 @@ export interface MarkdownOptions {
 }
 
 export class Markdown {
+  public static readonly EMPTY = new Markdown();
+
   private readonly _lines = new Array<string>();
   private readonly _sections = new Array<Markdown>();
 
@@ -283,6 +285,80 @@ export class Structs {
   }
 }
 
+export abstract class Function {
+  protected readonly structParameters: reflect.Parameter[];
+  protected readonly nonStructParameters: reflect.Parameter[];
+
+  constructor(parameters: reflect.Parameter[]) {
+    this.nonStructParameters = parameters.filter((p) => !this.isStruct(p));
+
+    this.structParameters = parameters
+      .filter((p) => this.isStruct(p))
+      .sort((s1, s2) => {
+        if (!s1.optional && s2.optional) {
+          return -1;
+        }
+
+        if (!s2.optional && s1.optional) {
+          return 1;
+        }
+
+        return 0;
+      });
+  }
+
+  private isStruct(parameter: reflect.Parameter): boolean {
+    const named = spec.isNamedTypeReference(parameter.spec.type);
+    if (!named) {
+      return false;
+    }
+
+    if (!parameter.type.fqn) {
+      throw new Error(`Empty fqn for type of parameter '${parameter.name}'`);
+    }
+    return parameter.system.findFqn(parameter.type.fqn).isDataType();
+  }
+}
+
+export class PythonFunction extends Function {
+  private readonly _args: Array<reflect.Parameter | reflect.Property> = [];
+
+  private readonly _signature: string[] = [];
+
+  constructor(parameters: reflect.Parameter[]) {
+    super(parameters);
+
+    // non struct parameters are kept as is
+    for (const parameter of this.nonStructParameters) {
+      this._args.push(parameter);
+      this._signature.push(`${parameter.name}: ${parameter.type}`);
+    }
+
+    // struct parameters are expanded to the individual struct properties
+    for (const parameter of this.structParameters) {
+      const struct = parameter.parentType.system.findInterface(
+        parameter.type.fqn!
+      );
+      for (const property of struct.allProperties) {
+        this._args.push(property);
+        this._signature.push(
+          `\n    ${property.name}: ${property.type}${
+            property.optional ? " = None" : ""
+          }`
+        );
+      }
+    }
+  }
+
+  public get args(): Array<reflect.Parameter | reflect.Property> {
+    return this._args;
+  }
+
+  public get signature(): string {
+    return this._signature.join(", ");
+  }
+}
+
 export class Class {
   constructor(private readonly klass: reflect.ClassType) {}
   public get pythonMarkdown(): Markdown {
@@ -415,47 +491,12 @@ export class Struct {
   }
 }
 
-export abstract class Function {
-  protected readonly structParameters: reflect.Parameter[];
-  protected readonly nonStructParameters: reflect.Parameter[];
-
-  constructor(parameters: reflect.Parameter[]) {
-    this.nonStructParameters = parameters.filter((p) => !this.isStruct(p));
-
-    this.structParameters = parameters
-      .filter((p) => this.isStruct(p))
-      .sort((s1, s2) => {
-        if (!s1.optional && s2.optional) {
-          return -1;
-        }
-
-        if (!s2.optional && s1.optional) {
-          return 1;
-        }
-
-        return 0;
-      });
-  }
-
-  private isStruct(parameter: reflect.Parameter): boolean {
-    const named = spec.isNamedTypeReference(parameter.spec.type);
-    if (!named) {
-      return false;
-    }
-
-    if (!parameter.type.fqn) {
-      throw new Error(`Empty fqn for type of parameter '${parameter.name}'`);
-    }
-    return parameter.system.findFqn(parameter.type.fqn).isDataType();
-  }
-}
-
 export interface PythonFqn {
   module: string;
   fqn: string;
 }
 
-export class PythonClassInitializer extends Function {
+export class PythonClassInitializer extends PythonFunction {
   constructor(private readonly initializer: reflect.Initializer) {
     super(initializer.parameters);
   }
@@ -464,36 +505,14 @@ export class PythonClassInitializer extends Function {
     const md = new Markdown({ header: { title: "Initializer" } });
     const module = this.findImport();
 
-    const positional =
-      this.nonStructParameters.length > 0
-        ? `${this.nonStructParameters
-            .map((p) => `${p.name}: ${p.type}`)
-            .join(", ")}`
-        : "";
-
-    const kwargs = this.structParameters.length > 0 ? ", **kwargs" : "";
-
     md.python(
       `import ${module}`,
       "",
-      `${module}.${this.initializer.parentType.name}(${positional}${kwargs})`
+      `${module}.${this.initializer.parentType.name}(${this.signature})`
     );
 
-    if (kwargs) {
-      md.lines("**kwargs:**");
-      md.lines("");
-      for (const parameter of this.structParameters) {
-        if (!parameter.type.fqn) {
-          throw new Error("asdasd");
-        }
-
-        const struct = this.initializer.system.findInterface(
-          parameter.type.fqn
-        );
-        for (const property of struct.allProperties) {
-          md.sections(new PythonArgument(property).pythonMarkdown);
-        }
-      }
+    for (const arg of this.args) {
+      md.sections(new PythonArgument(arg).pythonMarkdown);
     }
 
     return md;
@@ -522,6 +541,12 @@ export class PythonClassInitializer extends Function {
   }
 }
 
+export interface Kwarg {
+  readonly name: string;
+  readonly type: string;
+  readonly optional: boolean;
+}
+
 export class Methods {
   private readonly methods: reflect.Method[];
   constructor(klass: reflect.ClassType) {
@@ -534,18 +559,18 @@ export class Methods {
     const md = new Markdown({ header: { title: "Methods" } });
 
     if (this.methods.length === 0) {
-      md.lines("This class does not provide any methods");
-      md.lines("");
-    } else {
-      for (const method of this.methods) {
-        md.sections(new Method(method).pythonMarkdown);
-      }
+      return Markdown.EMPTY;
     }
+
+    for (const method of this.methods) {
+      md.sections(new PythonMethod(method).pythonMarkdown);
+    }
+
     return md;
   }
 }
 
-export class Method extends Function {
+export class PythonMethod extends PythonFunction {
   constructor(private readonly method: reflect.Method) {
     super(method.parameters);
   }
@@ -559,39 +584,20 @@ export class Method extends Function {
       },
     });
 
-    const positional =
-      this.nonStructParameters.length > 0
-        ? `${this.nonStructParameters
-            .map((p) => `${p.name}: ${p.type}`)
-            .join(", ")}`
-        : "";
-
-    const kwargs = this.structParameters.length > 0 ? ", **kwargs" : "";
-
     md.python(
-      `${this.method.parentType.name.toLowerCase()}.${
-        this.method.name
-      }(${positional}${kwargs})`
+      `${this.method.parentType.name.toLowerCase()}.${this.method.name}(${
+        this.signature
+      })`
     );
 
-    if (kwargs) {
-      md.lines("**kwargs:**");
-      md.lines("");
-      for (const parameter of this.structParameters) {
-        if (!parameter.type.fqn) {
-          throw new Error("asdasd");
-        }
-
-        const struct = this.method.system.findInterface(parameter.type.fqn);
-        for (const property of struct.allProperties) {
-          md.sections(new PythonArgument(property).pythonMarkdown);
-        }
-      }
+    for (const arg of this.args) {
+      md.sections(new PythonArgument(arg).pythonMarkdown);
     }
 
     return md;
   }
 }
+
 export class PythonClassProperties {}
 
 export class PythonClassStaticMembers {}
@@ -607,7 +613,6 @@ export class PythonArgument {
     const optionality = this.argument.optional ? "Optional" : "Required";
 
     const md = new Markdown({
-      bullet: true,
       header: {
         title: this.argument.name,
         sup: optionality,
