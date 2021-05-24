@@ -323,8 +323,6 @@ export abstract class Function {
 export class PythonFunction extends Function {
   private readonly _args: Array<reflect.Parameter | reflect.Property> = [];
 
-  private readonly _signature: string[] = [];
-
   constructor(parameters: reflect.Parameter[]) {
     super(parameters);
 
@@ -356,7 +354,7 @@ export class PythonFunction extends Function {
         `${arg.name}: ${arg.type}${arg.optional ? " = None" : ""}`
       );
     }
-    return this._signature.join(", \n");
+    return signature.join(", \n");
   }
 }
 
