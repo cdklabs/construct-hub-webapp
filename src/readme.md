@@ -226,10 +226,10 @@ A CloudFormation `AWS::SecretsManager::ResourcePolicy`.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct, 
-                  id: string, 
-                  resourcePolicy: any, 
-                  secretId: string, 
-                  blockPublicPolicy: boolean | aws-cdk-lib.IResolvable = None)
+                                             id: builtins.str, 
+                                             resource_policy: typing.Any, 
+                                             secret_id: builtins.str, 
+                                             block_public_policy: typing.Union[builtins.bool, aws-cdk-lib.IResolvable] = None)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -248,9 +248,9 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct,
 
 ---
 
-##### `resourcePolicy`<sup>Required</sup> <a name="resourcePolicy"></a>
+##### `resource_policy`<sup>Required</sup> <a name="resource_policy"></a>
 
-- *Type:* [typing.Any](https://docs.python.org/3/library/typing.html#typing.Any)
+- *Type:* `typing.Any`
 
 `AWS::SecretsManager::ResourcePolicy.ResourcePolicy`.
 
@@ -258,7 +258,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct,
 
 ---
 
-##### `secretId`<sup>Required</sup> <a name="secretId"></a>
+##### `secret_id`<sup>Required</sup> <a name="secret_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -268,9 +268,9 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct,
 
 ---
 
-##### `blockPublicPolicy`<sup>Optional</sup> <a name="blockPublicPolicy"></a>
+##### `block_public_policy`<sup>Optional</sup> <a name="block_public_policy"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
 
@@ -309,11 +309,11 @@ A CloudFormation `AWS::SecretsManager::RotationSchedule`.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct, 
-                  id: string, 
-                  secretId: string, 
-                  hostedRotationLambda: aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty | aws-cdk-lib.IResolvable = None, 
-                  rotationLambdaArn: string = None, 
-                  rotationRules: aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty | aws-cdk-lib.IResolvable = None)
+                                               id: builtins.str, 
+                                               secret_id: builtins.str, 
+                                               hosted_rotation_lambda: typing.Union[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty, aws-cdk-lib.IResolvable] = None, 
+                                               rotation_lambda_arn: builtins.str = None, 
+                                               rotation_rules: typing.Union[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty, aws-cdk-lib.IResolvable] = None)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -332,7 +332,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct,
 
 ---
 
-##### `secretId`<sup>Required</sup> <a name="secretId"></a>
+##### `secret_id`<sup>Required</sup> <a name="secret_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -342,9 +342,9 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct,
 
 ---
 
-##### `hostedRotationLambda`<sup>Optional</sup> <a name="hostedRotationLambda"></a>
+##### `hosted_rotation_lambda`<sup>Optional</sup> <a name="hosted_rotation_lambda"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::RotationSchedule.HostedRotationLambda`.
 
@@ -352,7 +352,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct,
 
 ---
 
-##### `rotationLambdaArn`<sup>Optional</sup> <a name="rotationLambdaArn"></a>
+##### `rotation_lambda_arn`<sup>Optional</sup> <a name="rotation_lambda_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -362,9 +362,9 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct,
 
 ---
 
-##### `rotationRules`<sup>Optional</sup> <a name="rotationRules"></a>
+##### `rotation_rules`<sup>Optional</sup> <a name="rotation_rules"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
 
@@ -403,14 +403,14 @@ A CloudFormation `AWS::SecretsManager::Secret`.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct, 
-                  id: string, 
-                  description: string = None, 
-                  generateSecretString: aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty | aws-cdk-lib.IResolvable = None, 
-                  kmsKeyId: string = None, 
-                  name: string = None, 
-                  replicaRegions: aws-cdk-lib.IResolvable | Array<aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty | aws-cdk-lib.IResolvable> = None, 
-                  secretString: string = None, 
-                  tags: Array<aws-cdk-lib.CfnTag> = None)
+                                     id: builtins.str, 
+                                     description: builtins.str = None, 
+                                     generate_secret_string: typing.Union[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty, aws-cdk-lib.IResolvable] = None, 
+                                     kms_key_id: builtins.str = None, 
+                                     name: builtins.str = None, 
+                                     replica_regions: typing.Union[aws-cdk-lib.IResolvable, typing.List[typing.Union[aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty, aws-cdk-lib.IResolvable]]] = None, 
+                                     secret_string: builtins.str = None, 
+                                     tags: typing.List[aws-cdk-lib.CfnTag] = None)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -439,9 +439,9 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct,
 
 ---
 
-##### `generateSecretString`<sup>Optional</sup> <a name="generateSecretString"></a>
+##### `generate_secret_string`<sup>Optional</sup> <a name="generate_secret_string"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::Secret.GenerateSecretString`.
 
@@ -449,7 +449,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct,
 
 ---
 
-##### `kmsKeyId`<sup>Optional</sup> <a name="kmsKeyId"></a>
+##### `kms_key_id`<sup>Optional</sup> <a name="kms_key_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -469,9 +469,9 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct,
 
 ---
 
-##### `replicaRegions`<sup>Optional</sup> <a name="replicaRegions"></a>
+##### `replica_regions`<sup>Optional</sup> <a name="replica_regions"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable), [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]]]
+- *Type:* `typing.Union`[[aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable), `typing.List`[`typing.Union`[[aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]]]
 
 `AWS::SecretsManager::Secret.ReplicaRegions`.
 
@@ -479,7 +479,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct,
 
 ---
 
-##### `secretString`<sup>Optional</sup> <a name="secretString"></a>
+##### `secret_string`<sup>Optional</sup> <a name="secret_string"></a>
 
 - *Type:* `builtins.str`
 
@@ -491,7 +491,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct,
 
 ##### `tags`<sup>Optional</sup> <a name="tags"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.CfnTag](#aws-cdk-lib.CfnTag)]
+- *Type:* `typing.List`[[aws-cdk-lib.CfnTag](#aws-cdk-lib.CfnTag)]
 
 `AWS::SecretsManager::Secret.Tags`.
 
@@ -530,10 +530,10 @@ A CloudFormation `AWS::SecretsManager::SecretTargetAttachment`.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct, 
-                  id: string, 
-                  secretId: string, 
-                  targetId: string, 
-                  targetType: string)
+                                                     id: builtins.str, 
+                                                     secret_id: builtins.str, 
+                                                     target_id: builtins.str, 
+                                                     target_type: builtins.str)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -552,7 +552,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 ---
 
-##### `secretId`<sup>Required</sup> <a name="secretId"></a>
+##### `secret_id`<sup>Required</sup> <a name="secret_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -562,7 +562,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 ---
 
-##### `targetId`<sup>Required</sup> <a name="targetId"></a>
+##### `target_id`<sup>Required</sup> <a name="target_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -572,7 +572,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 ---
 
-##### `targetType`<sup>Required</sup> <a name="targetType"></a>
+##### `target_type`<sup>Required</sup> <a name="target_type"></a>
 
 - *Type:* `builtins.str`
 
@@ -609,8 +609,8 @@ Secret Resource Policy.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.ResourcePolicy(scope: constructs.Construct, 
-                  id: string, 
-                  secret: aws-cdk-lib.aws_secretsmanager.ISecret)
+                                          id: builtins.str, 
+                                          secret: aws-cdk-lib.aws_secretsmanager.ISecret)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -645,11 +645,11 @@ A rotation schedule.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.RotationSchedule(scope: constructs.Construct, 
-                  id: string, 
-                  automaticallyAfter: aws-cdk-lib.Duration = None, 
-                  hostedRotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
-                  rotationLambda: aws-cdk-lib.aws_lambda.IFunction = None, 
-                  secret: aws-cdk-lib.aws_secretsmanager.ISecret)
+                                            id: builtins.str, 
+                                            automatically_after: aws-cdk-lib.Duration = None, 
+                                            hosted_rotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
+                                            rotation_lambda: aws-cdk-lib.aws_lambda.IFunction = None, 
+                                            secret: aws-cdk-lib.aws_secretsmanager.ISecret)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -664,7 +664,7 @@ aws_cdk.aws_secretsmanager.RotationSchedule(scope: constructs.Construct,
 
 ---
 
-##### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+##### `automatically_after`<sup>Optional</sup> <a name="automatically_after"></a>
 
 - *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
 - *Default:* Duration.days(30)
@@ -673,7 +673,7 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 ---
 
-##### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
+##### `hosted_rotation`<sup>Optional</sup> <a name="hosted_rotation"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -682,7 +682,7 @@ Hosted rotation.
 
 ---
 
-##### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
+##### `rotation_lambda`<sup>Optional</sup> <a name="rotation_lambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -730,13 +730,13 @@ Creates a new secret in AWS SecretsManager.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, 
-                  id: string, 
-                  description: string = None, 
-                  encryptionKey: aws-cdk-lib.aws_kms.IKey = None, 
-                  generateSecretString: aws-cdk-lib.aws_secretsmanager.SecretStringGenerator = None, 
-                  removalPolicy: aws-cdk-lib.RemovalPolicy = None, 
-                  replicaRegions: Array<aws-cdk-lib.aws_secretsmanager.ReplicaRegion> = None, 
-                  secretName: string = None)
+                                  id: builtins.str, 
+                                  description: builtins.str = None, 
+                                  encryption_key: aws-cdk-lib.aws_kms.IKey = None, 
+                                  generate_secret_string: aws-cdk-lib.aws_secretsmanager.SecretStringGenerator = None, 
+                                  removal_policy: aws-cdk-lib.RemovalPolicy = None, 
+                                  replica_regions: typing.List[aws-cdk-lib.aws_secretsmanager.ReplicaRegion] = None, 
+                                  secret_name: builtins.str = None)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -760,7 +760,7 @@ An optional, human-friendly description of the secret.
 
 ---
 
-##### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
+##### `encryption_key`<sup>Optional</sup> <a name="encryption_key"></a>
 
 - *Type:* [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey)
 - *Default:* - A default KMS key for the account and region is used.
@@ -769,7 +769,7 @@ The customer-managed encryption key to use for encrypting the secret value.
 
 ---
 
-##### `generateSecretString`<sup>Optional</sup> <a name="generateSecretString"></a>
+##### `generate_secret_string`<sup>Optional</sup> <a name="generate_secret_string"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.SecretStringGenerator](#aws-cdk-lib.aws_secretsmanager.SecretStringGenerator)
 - *Default:* - 32 characters with upper-case letters, lower-case letters, punctuation and numbers (at least one from each
@@ -779,7 +779,7 @@ Configuration for how to generate a secret value.
 
 ---
 
-##### `removalPolicy`<sup>Optional</sup> <a name="removalPolicy"></a>
+##### `removal_policy`<sup>Optional</sup> <a name="removal_policy"></a>
 
 - *Type:* [aws-cdk-lib.RemovalPolicy](#aws-cdk-lib.RemovalPolicy)
 - *Default:* - Not set.
@@ -788,16 +788,16 @@ Policy to apply when the secret is removed from this stack.
 
 ---
 
-##### `replicaRegions`<sup>Optional</sup> <a name="replicaRegions"></a>
+##### `replica_regions`<sup>Optional</sup> <a name="replica_regions"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_secretsmanager.ReplicaRegion](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_secretsmanager.ReplicaRegion](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
 - *Default:* - Secret is not replicated
 
 A list of regions where to replicate this secret.
 
 ---
 
-##### `secretName`<sup>Optional</sup> <a name="secretName"></a>
+##### `secret_name`<sup>Optional</sup> <a name="secret_name"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - A name is generated by CloudFormation.
@@ -811,11 +811,11 @@ Note that deleting secrets from SecretsManager does not happen immediately, but 
 
 #### Methods <a name="Methods"></a>
 
-##### `addReplicaRegion` <a name="addReplicaRegion"></a>
+##### `add_replica_region` <a name="add_replica_region"></a>
 
 ```python
-def addReplicaRegion(region: string, 
-                     encryptionKey: aws-cdk-lib.aws_kms.IKey = None)
+def add_replica_region(region: builtins.str, 
+                       encryption_key: aws-cdk-lib.aws_kms.IKey = None)
 ```
 
 ###### `region`<sup>Required</sup> <a name="region"></a>
@@ -826,7 +826,7 @@ The name of the region.
 
 ---
 
-###### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
+###### `encryption_key`<sup>Optional</sup> <a name="encryption_key"></a>
 
 - *Type:* [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey)
 
@@ -834,13 +834,13 @@ The customer-managed encryption key to use for encrypting the secret value.
 
 ---
 
-##### `addRotationSchedule` <a name="addRotationSchedule"></a>
+##### `add_rotation_schedule` <a name="add_rotation_schedule"></a>
 
 ```python
-def addRotationSchedule(id: string, 
-                        automaticallyAfter: aws-cdk-lib.Duration = None, 
-                        hostedRotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
-                        rotationLambda: aws-cdk-lib.aws_lambda.IFunction = None)
+def add_rotation_schedule(id: builtins.str, 
+                          automatically_after: aws-cdk-lib.Duration = None, 
+                          hosted_rotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
+                          rotation_lambda: aws-cdk-lib.aws_lambda.IFunction = None)
 ```
 
 ###### `id`<sup>Required</sup> <a name="id"></a>
@@ -849,7 +849,7 @@ def addRotationSchedule(id: string,
 
 ---
 
-###### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+###### `automatically_after`<sup>Optional</sup> <a name="automatically_after"></a>
 
 - *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
 - *Default:* Duration.days(30)
@@ -858,7 +858,7 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 ---
 
-###### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
+###### `hosted_rotation`<sup>Optional</sup> <a name="hosted_rotation"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -867,7 +867,7 @@ Hosted rotation.
 
 ---
 
-###### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
+###### `rotation_lambda`<sup>Optional</sup> <a name="rotation_lambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -876,10 +876,10 @@ A Lambda function that can rotate the secret.
 
 ---
 
-##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
+##### `add_to_resource_policy` <a name="add_to_resource_policy"></a>
 
 ```python
-def addToResourcePolicy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
+def add_to_resource_policy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
 ```
 
 ###### `statement`<sup>Required</sup> <a name="statement"></a>
@@ -902,35 +902,17 @@ The target to attach.
 
 ---
 
-##### `denyAccountRootDelete` <a name="denyAccountRootDelete"></a>
+##### `deny_account_root_delete` <a name="deny_account_root_delete"></a>
 
 ```python
-def denyAccountRootDelete()
+def deny_account_root_delete()
 ```
 
-##### `grantRead` <a name="grantRead"></a>
+##### `grant_read` <a name="grant_read"></a>
 
 ```python
-def grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable, 
-              versionStages: Array<string> = None)
-```
-
-###### `grantee`<sup>Required</sup> <a name="grantee"></a>
-
-- *Type:* [aws-cdk-lib.aws_iam.IGrantable](#aws-cdk-lib.aws_iam.IGrantable)
-
----
-
-###### `versionStages`<sup>Optional</sup> <a name="versionStages"></a>
-
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[`builtins.str`]
-
----
-
-##### `grantWrite` <a name="grantWrite"></a>
-
-```python
-def grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
+def grant_read(grantee: aws-cdk-lib.aws_iam.IGrantable, 
+               version_stages: typing.List[builtins.str] = None)
 ```
 
 ###### `grantee`<sup>Required</sup> <a name="grantee"></a>
@@ -939,13 +921,31 @@ def grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
 
 ---
 
-##### `secretValueFromJson` <a name="secretValueFromJson"></a>
+###### `version_stages`<sup>Optional</sup> <a name="version_stages"></a>
+
+- *Type:* `typing.List`[`builtins.str`]
+
+---
+
+##### `grant_write` <a name="grant_write"></a>
 
 ```python
-def secretValueFromJson(jsonField: string)
+def grant_write(grantee: aws-cdk-lib.aws_iam.IGrantable)
 ```
 
-###### `jsonField`<sup>Required</sup> <a name="jsonField"></a>
+###### `grantee`<sup>Required</sup> <a name="grantee"></a>
+
+- *Type:* [aws-cdk-lib.aws_iam.IGrantable](#aws-cdk-lib.aws_iam.IGrantable)
+
+---
+
+##### `secret_value_from_json` <a name="secret_value_from_json"></a>
+
+```python
+def secret_value_from_json(json_field: builtins.str)
+```
+
+###### `json_field`<sup>Required</sup> <a name="json_field"></a>
 
 - *Type:* `builtins.str`
 
@@ -958,11 +958,11 @@ def secretValueFromJson(jsonField: string)
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.Secret.fromSecretAttributes(scope: constructs.Construct, 
-                         id: string, 
-                         encryptionKey: aws-cdk-lib.aws_kms.IKey = None, 
-                         secretCompleteArn: string = None, 
-                         secretPartialArn: string = None)
+aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, 
+                                  id: builtins.str, 
+                                  encryption_key: aws-cdk-lib.aws_kms.IKey = None, 
+                                  secret_complete_arn: builtins.str = None, 
+                                  secret_partial_arn: builtins.str = None)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -981,7 +981,7 @@ the ID of the imported Secret in the construct tree.
 
 ---
 
-###### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
+###### `encryption_key`<sup>Optional</sup> <a name="encryption_key"></a>
 
 - *Type:* [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey)
 
@@ -989,7 +989,7 @@ The encryption key that is used to encrypt the secret, unless the default Secret
 
 ---
 
-###### `secretCompleteArn`<sup>Optional</sup> <a name="secretCompleteArn"></a>
+###### `secret_complete_arn`<sup>Optional</sup> <a name="secret_complete_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -1000,7 +1000,7 @@ Cannot be used with `secretArn` or `secretPartialArn`.
 
 ---
 
-###### `secretPartialArn`<sup>Optional</sup> <a name="secretPartialArn"></a>
+###### `secret_partial_arn`<sup>Optional</sup> <a name="secret_partial_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -1016,9 +1016,9 @@ Cannot be used with `secretArn` or `secretCompleteArn`.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.Secret.fromSecretCompleteArn(scope: constructs.Construct, 
-                          id: string, 
-                          secretCompleteArn: string)
+aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, 
+                                  id: builtins.str, 
+                                  secret_complete_arn: builtins.str)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -1033,7 +1033,7 @@ aws_cdk.aws_secretsmanager.Secret.fromSecretCompleteArn(scope: constructs.Constr
 
 ---
 
-###### `secretCompleteArn`<sup>Required</sup> <a name="secretCompleteArn"></a>
+###### `secret_complete_arn`<sup>Required</sup> <a name="secret_complete_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -1044,9 +1044,9 @@ aws_cdk.aws_secretsmanager.Secret.fromSecretCompleteArn(scope: constructs.Constr
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.Secret.fromSecretNameV2(scope: constructs.Construct, 
-                     id: string, 
-                     secretName: string)
+aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, 
+                                  id: builtins.str, 
+                                  secret_name: builtins.str)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -1061,7 +1061,7 @@ aws_cdk.aws_secretsmanager.Secret.fromSecretNameV2(scope: constructs.Construct,
 
 ---
 
-###### `secretName`<sup>Required</sup> <a name="secretName"></a>
+###### `secret_name`<sup>Required</sup> <a name="secret_name"></a>
 
 - *Type:* `builtins.str`
 
@@ -1072,9 +1072,9 @@ aws_cdk.aws_secretsmanager.Secret.fromSecretNameV2(scope: constructs.Construct,
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.Secret.fromSecretPartialArn(scope: constructs.Construct, 
-                         id: string, 
-                         secretPartialArn: string)
+aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct, 
+                                  id: builtins.str, 
+                                  secret_partial_arn: builtins.str)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -1089,7 +1089,7 @@ aws_cdk.aws_secretsmanager.Secret.fromSecretPartialArn(scope: constructs.Constru
 
 ---
 
-###### `secretPartialArn`<sup>Required</sup> <a name="secretPartialArn"></a>
+###### `secret_partial_arn`<sup>Required</sup> <a name="secret_partial_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -1105,16 +1105,16 @@ Secret rotation for a service or database.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.SecretRotation(scope: constructs.Construct, 
-                  id: string, 
-                  application: aws-cdk-lib.aws_secretsmanager.SecretRotationApplication, 
-                  secret: aws-cdk-lib.aws_secretsmanager.ISecret, 
-                  target: aws-cdk-lib.aws_ec2.IConnectable, 
-                  vpc: aws-cdk-lib.aws_ec2.IVpc, 
-                  automaticallyAfter: aws-cdk-lib.Duration = None, 
-                  excludeCharacters: string = None, 
-                  masterSecret: aws-cdk-lib.aws_secretsmanager.ISecret = None, 
-                  securityGroup: aws-cdk-lib.aws_ec2.ISecurityGroup = None, 
-                  vpcSubnets: aws-cdk-lib.aws_ec2.SubnetSelection = None)
+                                          id: builtins.str, 
+                                          application: aws-cdk-lib.aws_secretsmanager.SecretRotationApplication, 
+                                          secret: aws-cdk-lib.aws_secretsmanager.ISecret, 
+                                          target: aws-cdk-lib.aws_ec2.IConnectable, 
+                                          vpc: aws-cdk-lib.aws_ec2.IVpc, 
+                                          automatically_after: aws-cdk-lib.Duration = None, 
+                                          exclude_characters: builtins.str = None, 
+                                          master_secret: aws-cdk-lib.aws_secretsmanager.ISecret = None, 
+                                          security_group: aws-cdk-lib.aws_ec2.ISecurityGroup = None, 
+                                          vpc_subnets: aws-cdk-lib.aws_ec2.SubnetSelection = None)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -1178,7 +1178,7 @@ The VPC where the Lambda rotation function will run.
 
 ---
 
-##### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+##### `automatically_after`<sup>Optional</sup> <a name="automatically_after"></a>
 
 - *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
 - *Default:* Duration.days(30)
@@ -1187,7 +1187,7 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 ---
 
-##### `excludeCharacters`<sup>Optional</sup> <a name="excludeCharacters"></a>
+##### `exclude_characters`<sup>Optional</sup> <a name="exclude_characters"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - no additional characters are explicitly excluded
@@ -1196,7 +1196,7 @@ Characters which should not appear in the generated password.
 
 ---
 
-##### `masterSecret`<sup>Optional</sup> <a name="masterSecret"></a>
+##### `master_secret`<sup>Optional</sup> <a name="master_secret"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
 - *Default:* - single user rotation scheme
@@ -1205,7 +1205,7 @@ The master secret for a multi user rotation scheme.
 
 ---
 
-##### `securityGroup`<sup>Optional</sup> <a name="securityGroup"></a>
+##### `security_group`<sup>Optional</sup> <a name="security_group"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup)
 - *Default:* - a new security group is created
@@ -1214,7 +1214,7 @@ The security group for the Lambda rotation function.
 
 ---
 
-##### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets"></a>
+##### `vpc_subnets`<sup>Optional</sup> <a name="vpc_subnets"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.SubnetSelection](#aws-cdk-lib.aws_ec2.SubnetSelection)
 - *Default:* - the Vpc default strategy if not specified.
@@ -1237,8 +1237,8 @@ An attached secret.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.SecretTargetAttachment(scope: constructs.Construct, 
-                  id: string, 
-                  secret: aws-cdk-lib.aws_secretsmanager.ISecret)
+                                                  id: builtins.str, 
+                                                  secret: aws-cdk-lib.aws_secretsmanager.ISecret)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -1263,13 +1263,13 @@ The secret to attach to the target.
 
 #### Methods <a name="Methods"></a>
 
-##### `addRotationSchedule` <a name="addRotationSchedule"></a>
+##### `add_rotation_schedule` <a name="add_rotation_schedule"></a>
 
 ```python
-def addRotationSchedule(id: string, 
-                        automaticallyAfter: aws-cdk-lib.Duration = None, 
-                        hostedRotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
-                        rotationLambda: aws-cdk-lib.aws_lambda.IFunction = None)
+def add_rotation_schedule(id: builtins.str, 
+                          automatically_after: aws-cdk-lib.Duration = None, 
+                          hosted_rotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
+                          rotation_lambda: aws-cdk-lib.aws_lambda.IFunction = None)
 ```
 
 ###### `id`<sup>Required</sup> <a name="id"></a>
@@ -1278,7 +1278,7 @@ def addRotationSchedule(id: string,
 
 ---
 
-###### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+###### `automatically_after`<sup>Optional</sup> <a name="automatically_after"></a>
 
 - *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
 - *Default:* Duration.days(30)
@@ -1287,7 +1287,7 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 ---
 
-###### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
+###### `hosted_rotation`<sup>Optional</sup> <a name="hosted_rotation"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -1296,7 +1296,7 @@ Hosted rotation.
 
 ---
 
-###### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
+###### `rotation_lambda`<sup>Optional</sup> <a name="rotation_lambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -1305,10 +1305,10 @@ A Lambda function that can rotate the secret.
 
 ---
 
-##### `addToResourcePolicy` <a name="addToResourcePolicy"></a>
+##### `add_to_resource_policy` <a name="add_to_resource_policy"></a>
 
 ```python
-def addToResourcePolicy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
+def add_to_resource_policy(statement: aws-cdk-lib.aws_iam.PolicyStatement)
 ```
 
 ###### `statement`<sup>Required</sup> <a name="statement"></a>
@@ -1331,35 +1331,17 @@ The target to attach.
 
 ---
 
-##### `denyAccountRootDelete` <a name="denyAccountRootDelete"></a>
+##### `deny_account_root_delete` <a name="deny_account_root_delete"></a>
 
 ```python
-def denyAccountRootDelete()
+def deny_account_root_delete()
 ```
 
-##### `grantRead` <a name="grantRead"></a>
+##### `grant_read` <a name="grant_read"></a>
 
 ```python
-def grantRead(grantee: aws-cdk-lib.aws_iam.IGrantable, 
-              versionStages: Array<string> = None)
-```
-
-###### `grantee`<sup>Required</sup> <a name="grantee"></a>
-
-- *Type:* [aws-cdk-lib.aws_iam.IGrantable](#aws-cdk-lib.aws_iam.IGrantable)
-
----
-
-###### `versionStages`<sup>Optional</sup> <a name="versionStages"></a>
-
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[`builtins.str`]
-
----
-
-##### `grantWrite` <a name="grantWrite"></a>
-
-```python
-def grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
+def grant_read(grantee: aws-cdk-lib.aws_iam.IGrantable, 
+               version_stages: typing.List[builtins.str] = None)
 ```
 
 ###### `grantee`<sup>Required</sup> <a name="grantee"></a>
@@ -1368,13 +1350,31 @@ def grantWrite(grantee: aws-cdk-lib.aws_iam.IGrantable)
 
 ---
 
-##### `secretValueFromJson` <a name="secretValueFromJson"></a>
+###### `version_stages`<sup>Optional</sup> <a name="version_stages"></a>
+
+- *Type:* `typing.List`[`builtins.str`]
+
+---
+
+##### `grant_write` <a name="grant_write"></a>
 
 ```python
-def secretValueFromJson(jsonField: string)
+def grant_write(grantee: aws-cdk-lib.aws_iam.IGrantable)
 ```
 
-###### `jsonField`<sup>Required</sup> <a name="jsonField"></a>
+###### `grantee`<sup>Required</sup> <a name="grantee"></a>
+
+- *Type:* [aws-cdk-lib.aws_iam.IGrantable](#aws-cdk-lib.aws_iam.IGrantable)
+
+---
+
+##### `secret_value_from_json` <a name="secret_value_from_json"></a>
+
+```python
+def secret_value_from_json(json_field: builtins.str)
+```
+
+###### `json_field`<sup>Required</sup> <a name="json_field"></a>
 
 - *Type:* `builtins.str`
 
@@ -1387,9 +1387,9 @@ def secretValueFromJson(jsonField: string)
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.SecretTargetAttachment.fromSecretTargetAttachmentSecretArn(scope: constructs.Construct, 
-                                        id: string, 
-                                        secretTargetAttachmentSecretArn: string)
+aws_cdk.aws_secretsmanager.SecretTargetAttachment(scope: constructs.Construct, 
+                                                  id: builtins.str, 
+                                                  secret_target_attachment_secret_arn: builtins.str)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope"></a>
@@ -1404,7 +1404,7 @@ aws_cdk.aws_secretsmanager.SecretTargetAttachment.fromSecretTargetAttachmentSecr
 
 ---
 
-###### `secretTargetAttachmentSecretArn`<sup>Required</sup> <a name="secretTargetAttachmentSecretArn"></a>
+###### `secret_target_attachment_secret_arn`<sup>Required</sup> <a name="secret_target_attachment_secret_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -1423,14 +1423,14 @@ Properties for defining a `AWS::SecretsManager::ResourcePolicy`.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(resourcePolicy: any, 
-                  secretId: string, 
-                  blockPublicPolicy: boolean | aws-cdk-lib.IResolvable = None)
+aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(resource_policy: typing.Any, 
+                                                  secret_id: builtins.str, 
+                                                  block_public_policy: typing.Union[builtins.bool, aws-cdk-lib.IResolvable] = None)
 ```
 
-##### `resourcePolicy`<sup>Required</sup> <a name="resourcePolicy"></a>
+##### `resource_policy`<sup>Required</sup> <a name="resource_policy"></a>
 
-- *Type:* [typing.Any](https://docs.python.org/3/library/typing.html#typing.Any)
+- *Type:* `typing.Any`
 
 `AWS::SecretsManager::ResourcePolicy.ResourcePolicy`.
 
@@ -1438,7 +1438,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(resourcePolicy: any,
 
 ---
 
-##### `secretId`<sup>Required</sup> <a name="secretId"></a>
+##### `secret_id`<sup>Required</sup> <a name="secret_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -1448,9 +1448,9 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(resourcePolicy: any,
 
 ---
 
-##### `blockPublicPolicy`<sup>Optional</sup> <a name="blockPublicPolicy"></a>
+##### `block_public_policy`<sup>Optional</sup> <a name="block_public_policy"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
 
@@ -1469,13 +1469,13 @@ Properties for defining a `AWS::SecretsManager::RotationSchedule`.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(secretId: string, 
-                  hostedRotationLambda: aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty | aws-cdk-lib.IResolvable = None, 
-                  rotationLambdaArn: string = None, 
-                  rotationRules: aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty | aws-cdk-lib.IResolvable = None)
+aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(secret_id: builtins.str, 
+                                                    hosted_rotation_lambda: typing.Union[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty, aws-cdk-lib.IResolvable] = None, 
+                                                    rotation_lambda_arn: builtins.str = None, 
+                                                    rotation_rules: typing.Union[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty, aws-cdk-lib.IResolvable] = None)
 ```
 
-##### `secretId`<sup>Required</sup> <a name="secretId"></a>
+##### `secret_id`<sup>Required</sup> <a name="secret_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -1485,9 +1485,9 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(secretId: string,
 
 ---
 
-##### `hostedRotationLambda`<sup>Optional</sup> <a name="hostedRotationLambda"></a>
+##### `hosted_rotation_lambda`<sup>Optional</sup> <a name="hosted_rotation_lambda"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::RotationSchedule.HostedRotationLambda`.
 
@@ -1495,7 +1495,7 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(secretId: string,
 
 ---
 
-##### `rotationLambdaArn`<sup>Optional</sup> <a name="rotationLambdaArn"></a>
+##### `rotation_lambda_arn`<sup>Optional</sup> <a name="rotation_lambda_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -1505,9 +1505,9 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(secretId: string,
 
 ---
 
-##### `rotationRules`<sup>Optional</sup> <a name="rotationRules"></a>
+##### `rotation_rules`<sup>Optional</sup> <a name="rotation_rules"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[[aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
 
@@ -1526,13 +1526,13 @@ Properties for defining a `AWS::SecretsManager::Secret`.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnSecretProps(description: string = None, 
-                  generateSecretString: aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty | aws-cdk-lib.IResolvable = None, 
-                  kmsKeyId: string = None, 
-                  name: string = None, 
-                  replicaRegions: aws-cdk-lib.IResolvable | Array<aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty | aws-cdk-lib.IResolvable> = None, 
-                  secretString: string = None, 
-                  tags: Array<aws-cdk-lib.CfnTag> = None)
+aws_cdk.aws_secretsmanager.CfnSecretProps(description: builtins.str = None, 
+                                          generate_secret_string: typing.Union[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty, aws-cdk-lib.IResolvable] = None, 
+                                          kms_key_id: builtins.str = None, 
+                                          name: builtins.str = None, 
+                                          replica_regions: typing.Union[aws-cdk-lib.IResolvable, typing.List[typing.Union[aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty, aws-cdk-lib.IResolvable]]] = None, 
+                                          secret_string: builtins.str = None, 
+                                          tags: typing.List[aws-cdk-lib.CfnTag] = None)
 ```
 
 ##### `description`<sup>Optional</sup> <a name="description"></a>
@@ -1545,9 +1545,9 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(description: string = None,
 
 ---
 
-##### `generateSecretString`<sup>Optional</sup> <a name="generateSecretString"></a>
+##### `generate_secret_string`<sup>Optional</sup> <a name="generate_secret_string"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[[aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::Secret.GenerateSecretString`.
 
@@ -1555,7 +1555,7 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(description: string = None,
 
 ---
 
-##### `kmsKeyId`<sup>Optional</sup> <a name="kmsKeyId"></a>
+##### `kms_key_id`<sup>Optional</sup> <a name="kms_key_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -1575,9 +1575,9 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(description: string = None,
 
 ---
 
-##### `replicaRegions`<sup>Optional</sup> <a name="replicaRegions"></a>
+##### `replica_regions`<sup>Optional</sup> <a name="replica_regions"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable), [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[[aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]]]
+- *Type:* `typing.Union`[[aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable), `typing.List`[`typing.Union`[[aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]]]
 
 `AWS::SecretsManager::Secret.ReplicaRegions`.
 
@@ -1585,7 +1585,7 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(description: string = None,
 
 ---
 
-##### `secretString`<sup>Optional</sup> <a name="secretString"></a>
+##### `secret_string`<sup>Optional</sup> <a name="secret_string"></a>
 
 - *Type:* `builtins.str`
 
@@ -1597,7 +1597,7 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(description: string = None,
 
 ##### `tags`<sup>Optional</sup> <a name="tags"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.CfnTag](#aws-cdk-lib.CfnTag)]
+- *Type:* `typing.List`[[aws-cdk-lib.CfnTag](#aws-cdk-lib.CfnTag)]
 
 `AWS::SecretsManager::Secret.Tags`.
 
@@ -1616,12 +1616,12 @@ Properties for defining a `AWS::SecretsManager::SecretTargetAttachment`.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(secretId: string, 
-                  targetId: string, 
-                  targetType: string)
+aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(secret_id: builtins.str, 
+                                                          target_id: builtins.str, 
+                                                          target_type: builtins.str)
 ```
 
-##### `secretId`<sup>Required</sup> <a name="secretId"></a>
+##### `secret_id`<sup>Required</sup> <a name="secret_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -1631,7 +1631,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(secretId: string,
 
 ---
 
-##### `targetId`<sup>Required</sup> <a name="targetId"></a>
+##### `target_id`<sup>Required</sup> <a name="target_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -1641,7 +1641,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(secretId: string,
 
 ---
 
-##### `targetType`<sup>Required</sup> <a name="targetType"></a>
+##### `target_type`<sup>Required</sup> <a name="target_type"></a>
 
 - *Type:* `builtins.str`
 
@@ -1660,19 +1660,19 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(secretId: string,
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharacters: string = None, 
-                  excludeLowercase: boolean | aws-cdk-lib.IResolvable = None, 
-                  excludeNumbers: boolean | aws-cdk-lib.IResolvable = None, 
-                  excludePunctuation: boolean | aws-cdk-lib.IResolvable = None, 
-                  excludeUppercase: boolean | aws-cdk-lib.IResolvable = None, 
-                  generateStringKey: string = None, 
-                  includeSpace: boolean | aws-cdk-lib.IResolvable = None, 
-                  passwordLength: number = None, 
-                  requireEachIncludedType: boolean | aws-cdk-lib.IResolvable = None, 
-                  secretStringTemplate: string = None)
+aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(exclude_characters: builtins.str = None, 
+                                                                  exclude_lowercase: typing.Union[builtins.bool, aws-cdk-lib.IResolvable] = None, 
+                                                                  exclude_numbers: typing.Union[builtins.bool, aws-cdk-lib.IResolvable] = None, 
+                                                                  exclude_punctuation: typing.Union[builtins.bool, aws-cdk-lib.IResolvable] = None, 
+                                                                  exclude_uppercase: typing.Union[builtins.bool, aws-cdk-lib.IResolvable] = None, 
+                                                                  generate_string_key: builtins.str = None, 
+                                                                  include_space: typing.Union[builtins.bool, aws-cdk-lib.IResolvable] = None, 
+                                                                  password_length: typing.Union[int, float] = None, 
+                                                                  require_each_included_type: typing.Union[builtins.bool, aws-cdk-lib.IResolvable] = None, 
+                                                                  secret_string_template: builtins.str = None)
 ```
 
-##### `excludeCharacters`<sup>Optional</sup> <a name="excludeCharacters"></a>
+##### `exclude_characters`<sup>Optional</sup> <a name="exclude_characters"></a>
 
 - *Type:* `builtins.str`
 
@@ -1682,9 +1682,9 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 
 ---
 
-##### `excludeLowercase`<sup>Optional</sup> <a name="excludeLowercase"></a>
+##### `exclude_lowercase`<sup>Optional</sup> <a name="exclude_lowercase"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeLowercase`.
 
@@ -1692,9 +1692,9 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 
 ---
 
-##### `excludeNumbers`<sup>Optional</sup> <a name="excludeNumbers"></a>
+##### `exclude_numbers`<sup>Optional</sup> <a name="exclude_numbers"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeNumbers`.
 
@@ -1702,9 +1702,9 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 
 ---
 
-##### `excludePunctuation`<sup>Optional</sup> <a name="excludePunctuation"></a>
+##### `exclude_punctuation`<sup>Optional</sup> <a name="exclude_punctuation"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.ExcludePunctuation`.
 
@@ -1712,9 +1712,9 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 
 ---
 
-##### `excludeUppercase`<sup>Optional</sup> <a name="excludeUppercase"></a>
+##### `exclude_uppercase`<sup>Optional</sup> <a name="exclude_uppercase"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeUppercase`.
 
@@ -1722,7 +1722,7 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 
 ---
 
-##### `generateStringKey`<sup>Optional</sup> <a name="generateStringKey"></a>
+##### `generate_string_key`<sup>Optional</sup> <a name="generate_string_key"></a>
 
 - *Type:* `builtins.str`
 
@@ -1732,9 +1732,9 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 
 ---
 
-##### `includeSpace`<sup>Optional</sup> <a name="includeSpace"></a>
+##### `include_space`<sup>Optional</sup> <a name="include_space"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.IncludeSpace`.
 
@@ -1742,9 +1742,9 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 
 ---
 
-##### `passwordLength`<sup>Optional</sup> <a name="passwordLength"></a>
+##### `password_length`<sup>Optional</sup> <a name="password_length"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[int, float]
+- *Type:* `typing.Union`[int, float]
 
 `CfnSecret.GenerateSecretStringProperty.PasswordLength`.
 
@@ -1752,9 +1752,9 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 
 ---
 
-##### `requireEachIncludedType`<sup>Optional</sup> <a name="requireEachIncludedType"></a>
+##### `require_each_included_type`<sup>Optional</sup> <a name="require_each_included_type"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
+- *Type:* `typing.Union`[`builtins.bool`, [aws-cdk-lib.IResolvable](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.RequireEachIncludedType`.
 
@@ -1762,7 +1762,7 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 
 ---
 
-##### `secretStringTemplate`<sup>Optional</sup> <a name="secretStringTemplate"></a>
+##### `secret_string_template`<sup>Optional</sup> <a name="secret_string_template"></a>
 
 - *Type:* `builtins.str`
 
@@ -1781,16 +1781,16 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharact
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(rotationType: string, 
-                  kmsKeyArn: string = None, 
-                  masterSecretArn: string = None, 
-                  masterSecretKmsKeyArn: string = None, 
-                  rotationLambdaName: string = None, 
-                  vpcSecurityGroupIds: string = None, 
-                  vpcSubnetIds: string = None)
+aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(rotation_type: builtins.str, 
+                                                                            kms_key_arn: builtins.str = None, 
+                                                                            master_secret_arn: builtins.str = None, 
+                                                                            master_secret_kms_key_arn: builtins.str = None, 
+                                                                            rotation_lambda_name: builtins.str = None, 
+                                                                            vpc_security_group_ids: builtins.str = None, 
+                                                                            vpc_subnet_ids: builtins.str = None)
 ```
 
-##### `rotationType`<sup>Required</sup> <a name="rotationType"></a>
+##### `rotation_type`<sup>Required</sup> <a name="rotation_type"></a>
 
 - *Type:* `builtins.str`
 
@@ -1800,7 +1800,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(rota
 
 ---
 
-##### `kmsKeyArn`<sup>Optional</sup> <a name="kmsKeyArn"></a>
+##### `kms_key_arn`<sup>Optional</sup> <a name="kms_key_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -1810,7 +1810,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(rota
 
 ---
 
-##### `masterSecretArn`<sup>Optional</sup> <a name="masterSecretArn"></a>
+##### `master_secret_arn`<sup>Optional</sup> <a name="master_secret_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -1820,7 +1820,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(rota
 
 ---
 
-##### `masterSecretKmsKeyArn`<sup>Optional</sup> <a name="masterSecretKmsKeyArn"></a>
+##### `master_secret_kms_key_arn`<sup>Optional</sup> <a name="master_secret_kms_key_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -1830,7 +1830,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(rota
 
 ---
 
-##### `rotationLambdaName`<sup>Optional</sup> <a name="rotationLambdaName"></a>
+##### `rotation_lambda_name`<sup>Optional</sup> <a name="rotation_lambda_name"></a>
 
 - *Type:* `builtins.str`
 
@@ -1840,7 +1840,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(rota
 
 ---
 
-##### `vpcSecurityGroupIds`<sup>Optional</sup> <a name="vpcSecurityGroupIds"></a>
+##### `vpc_security_group_ids`<sup>Optional</sup> <a name="vpc_security_group_ids"></a>
 
 - *Type:* `builtins.str`
 
@@ -1850,7 +1850,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(rota
 
 ---
 
-##### `vpcSubnetIds`<sup>Optional</sup> <a name="vpcSubnetIds"></a>
+##### `vpc_subnet_ids`<sup>Optional</sup> <a name="vpc_subnet_ids"></a>
 
 - *Type:* `builtins.str`
 
@@ -1869,19 +1869,19 @@ Multi user hosted rotation options.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.MultiUserHostedRotationOptions(masterSecret: aws-cdk-lib.aws_secretsmanager.ISecret, 
-                  functionName: string = None, 
-                  securityGroups: Array<aws-cdk-lib.aws_ec2.ISecurityGroup> = None, 
-                  vpc: aws-cdk-lib.aws_ec2.IVpc = None, 
-                  availabilityZones: Array<string> = None, 
-                  onePerAz: boolean = None, 
-                  subnetFilters: Array<aws-cdk-lib.aws_ec2.SubnetFilter> = None, 
-                  subnetGroupName: string = None, 
-                  subnets: Array<aws-cdk-lib.aws_ec2.ISubnet> = None, 
-                  subnetType: aws-cdk-lib.aws_ec2.SubnetType = None)
+aws_cdk.aws_secretsmanager.MultiUserHostedRotationOptions(master_secret: aws-cdk-lib.aws_secretsmanager.ISecret, 
+                                                          function_name: builtins.str = None, 
+                                                          security_groups: typing.List[aws-cdk-lib.aws_ec2.ISecurityGroup] = None, 
+                                                          vpc: aws-cdk-lib.aws_ec2.IVpc = None, 
+                                                          availability_zones: typing.List[builtins.str] = None, 
+                                                          one_per_az: builtins.bool = None, 
+                                                          subnet_filters: typing.List[aws-cdk-lib.aws_ec2.SubnetFilter] = None, 
+                                                          subnet_group_name: builtins.str = None, 
+                                                          subnets: typing.List[aws-cdk-lib.aws_ec2.ISubnet] = None, 
+                                                          subnet_type: aws-cdk-lib.aws_ec2.SubnetType = None)
 ```
 
-##### `masterSecret`<sup>Required</sup> <a name="masterSecret"></a>
+##### `master_secret`<sup>Required</sup> <a name="master_secret"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
 
@@ -1889,7 +1889,7 @@ The master secret for a multi user rotation scheme.
 
 ---
 
-##### `functionName`<sup>Optional</sup> <a name="functionName"></a>
+##### `function_name`<sup>Optional</sup> <a name="function_name"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - a CloudFormation generated name
@@ -1898,9 +1898,9 @@ A name for the Lambda created to rotate the secret.
 
 ---
 
-##### `securityGroups`<sup>Optional</sup> <a name="securityGroups"></a>
+##### `security_groups`<sup>Optional</sup> <a name="security_groups"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup)]
 - *Default:* - a new security group is created
 
 A list of security groups for the Lambda created to rotate the secret.
@@ -1916,16 +1916,16 @@ The VPC where the Lambda rotation function will run.
 
 ---
 
-##### `availabilityZones`<sup>Optional</sup> <a name="availabilityZones"></a>
+##### `availability_zones`<sup>Optional</sup> <a name="availability_zones"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[`builtins.str`]
+- *Type:* `typing.List`[`builtins.str`]
 - *Default:* no filtering on AZs is done
 
 Select subnets only in the given AZs.
 
 ---
 
-##### `onePerAz`<sup>Optional</sup> <a name="onePerAz"></a>
+##### `one_per_az`<sup>Optional</sup> <a name="one_per_az"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -1934,16 +1934,16 @@ If true, return at most one subnet per AZ.
 
 ---
 
-##### `subnetFilters`<sup>Optional</sup> <a name="subnetFilters"></a>
+##### `subnet_filters`<sup>Optional</sup> <a name="subnet_filters"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_ec2.SubnetFilter](#aws-cdk-lib.aws_ec2.SubnetFilter)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_ec2.SubnetFilter](#aws-cdk-lib.aws_ec2.SubnetFilter)]
 - *Default:* - none
 
 List of provided subnet filters.
 
 ---
 
-##### `subnetGroupName`<sup>Optional</sup> <a name="subnetGroupName"></a>
+##### `subnet_group_name`<sup>Optional</sup> <a name="subnet_group_name"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - Selection by type instead of by name
@@ -1965,7 +1965,7 @@ At most one of `subnetType` and `subnetGroupName` can be supplied.
 
 ##### `subnets`<sup>Optional</sup> <a name="subnets"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_ec2.ISubnet](#aws-cdk-lib.aws_ec2.ISubnet)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_ec2.ISubnet](#aws-cdk-lib.aws_ec2.ISubnet)]
 - *Default:* - Use all subnets in a selected group (all private subnets by default)
 
 Explicitly select individual subnets.
@@ -1978,7 +1978,7 @@ Cannot be specified together with `subnetType` or `subnetGroupName`.
 
 ---
 
-##### `subnetType`<sup>Optional</sup> <a name="subnetType"></a>
+##### `subnet_type`<sup>Optional</sup> <a name="subnet_type"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.SubnetType](#aws-cdk-lib.aws_ec2.SubnetType)
 - *Default:* SubnetType.PRIVATE (or ISOLATED or PUBLIC if there are no PRIVATE subnets)
@@ -1998,8 +1998,8 @@ Secret replica region.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.ReplicaRegion(region: string, 
-                  encryptionKey: aws-cdk-lib.aws_kms.IKey = None)
+aws_cdk.aws_secretsmanager.ReplicaRegion(region: builtins.str, 
+                                         encryption_key: aws-cdk-lib.aws_kms.IKey = None)
 ```
 
 ##### `region`<sup>Required</sup> <a name="region"></a>
@@ -2010,7 +2010,7 @@ The name of the region.
 
 ---
 
-##### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
+##### `encryption_key`<sup>Optional</sup> <a name="encryption_key"></a>
 
 - *Type:* [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey)
 - *Default:* - A default KMS key for the account and region is used.
@@ -2028,8 +2028,8 @@ The customer-managed encryption key to use for encrypting the secret value.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty(region: string, 
-                  kmsKeyId: string = None)
+aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty(region: builtins.str, 
+                                                           kms_key_id: builtins.str = None)
 ```
 
 ##### `region`<sup>Required</sup> <a name="region"></a>
@@ -2042,7 +2042,7 @@ aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty(region: string,
 
 ---
 
-##### `kmsKeyId`<sup>Optional</sup> <a name="kmsKeyId"></a>
+##### `kms_key_id`<sup>Optional</sup> <a name="kms_key_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -2081,12 +2081,12 @@ The secret to attach a resource-based permissions policy.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty(automaticallyAfterDays: number = None)
+aws_cdk.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty(automatically_after_days: typing.Union[int, float] = None)
 ```
 
-##### `automaticallyAfterDays`<sup>Optional</sup> <a name="automaticallyAfterDays"></a>
+##### `automatically_after_days`<sup>Optional</sup> <a name="automatically_after_days"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[int, float]
+- *Type:* `typing.Union`[int, float]
 
 `CfnRotationSchedule.RotationRulesProperty.AutomaticallyAfterDays`.
 
@@ -2103,12 +2103,12 @@ Options to add a rotation schedule to a secret.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.RotationScheduleOptions(automaticallyAfter: aws-cdk-lib.Duration = None, 
-                  hostedRotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
-                  rotationLambda: aws-cdk-lib.aws_lambda.IFunction = None)
+aws_cdk.aws_secretsmanager.RotationScheduleOptions(automatically_after: aws-cdk-lib.Duration = None, 
+                                                   hosted_rotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
+                                                   rotation_lambda: aws-cdk-lib.aws_lambda.IFunction = None)
 ```
 
-##### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+##### `automatically_after`<sup>Optional</sup> <a name="automatically_after"></a>
 
 - *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
 - *Default:* Duration.days(30)
@@ -2117,7 +2117,7 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 ---
 
-##### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
+##### `hosted_rotation`<sup>Optional</sup> <a name="hosted_rotation"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -2126,7 +2126,7 @@ Hosted rotation.
 
 ---
 
-##### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
+##### `rotation_lambda`<sup>Optional</sup> <a name="rotation_lambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -2145,9 +2145,9 @@ Construction properties for a RotationSchedule.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.RotationScheduleProps(secret: aws-cdk-lib.aws_secretsmanager.ISecret, 
-                  automaticallyAfter: aws-cdk-lib.Duration = None, 
-                  hostedRotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
-                  rotationLambda: aws-cdk-lib.aws_lambda.IFunction = None)
+                                                 automatically_after: aws-cdk-lib.Duration = None, 
+                                                 hosted_rotation: aws-cdk-lib.aws_secretsmanager.HostedRotation = None, 
+                                                 rotation_lambda: aws-cdk-lib.aws_lambda.IFunction = None)
 ```
 
 ##### `secret`<sup>Required</sup> <a name="secret"></a>
@@ -2175,7 +2175,7 @@ or an `ISecret` returned by the `attach()` method of `Secret`.
 
 ---
 
-##### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+##### `automatically_after`<sup>Optional</sup> <a name="automatically_after"></a>
 
 - *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
 - *Default:* Duration.days(30)
@@ -2184,7 +2184,7 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 ---
 
-##### `hostedRotation`<sup>Optional</sup> <a name="hostedRotation"></a>
+##### `hosted_rotation`<sup>Optional</sup> <a name="hosted_rotation"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.HostedRotation](#aws-cdk-lib.aws_secretsmanager.HostedRotation)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -2193,7 +2193,7 @@ Hosted rotation.
 
 ---
 
-##### `rotationLambda`<sup>Optional</sup> <a name="rotationLambda"></a>
+##### `rotation_lambda`<sup>Optional</sup> <a name="rotation_lambda"></a>
 
 - *Type:* [aws-cdk-lib.aws_lambda.IFunction](#aws-cdk-lib.aws_lambda.IFunction)
 - *Default:* - either `rotationLambda` or `hostedRotation` must be specified
@@ -2211,11 +2211,11 @@ Attachment target specifications.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.SecretAttachmentTargetProps(targetId: string, 
-                  targetType: aws-cdk-lib.aws_secretsmanager.AttachmentTargetType)
+aws_cdk.aws_secretsmanager.SecretAttachmentTargetProps(target_id: builtins.str, 
+                                                       target_type: aws-cdk-lib.aws_secretsmanager.AttachmentTargetType)
 ```
 
-##### `targetId`<sup>Required</sup> <a name="targetId"></a>
+##### `target_id`<sup>Required</sup> <a name="target_id"></a>
 
 - *Type:* `builtins.str`
 
@@ -2223,7 +2223,7 @@ The id of the target to attach the secret to.
 
 ---
 
-##### `targetType`<sup>Required</sup> <a name="targetType"></a>
+##### `target_type`<sup>Required</sup> <a name="target_type"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.AttachmentTargetType](#aws-cdk-lib.aws_secretsmanager.AttachmentTargetType)
 
@@ -2242,12 +2242,12 @@ One ARN format (`secretArn`, `secretCompleteArn`, `secretPartialArn`) must be pr
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.SecretAttributes(encryptionKey: aws-cdk-lib.aws_kms.IKey = None, 
-                  secretCompleteArn: string = None, 
-                  secretPartialArn: string = None)
+aws_cdk.aws_secretsmanager.SecretAttributes(encryption_key: aws-cdk-lib.aws_kms.IKey = None, 
+                                            secret_complete_arn: builtins.str = None, 
+                                            secret_partial_arn: builtins.str = None)
 ```
 
-##### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
+##### `encryption_key`<sup>Optional</sup> <a name="encryption_key"></a>
 
 - *Type:* [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey)
 
@@ -2255,7 +2255,7 @@ The encryption key that is used to encrypt the secret, unless the default Secret
 
 ---
 
-##### `secretCompleteArn`<sup>Optional</sup> <a name="secretCompleteArn"></a>
+##### `secret_complete_arn`<sup>Optional</sup> <a name="secret_complete_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -2266,7 +2266,7 @@ Cannot be used with `secretArn` or `secretPartialArn`.
 
 ---
 
-##### `secretPartialArn`<sup>Optional</sup> <a name="secretPartialArn"></a>
+##### `secret_partial_arn`<sup>Optional</sup> <a name="secret_partial_arn"></a>
 
 - *Type:* `builtins.str`
 
@@ -2286,21 +2286,21 @@ The properties required to create a new secret in AWS Secrets Manager.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.SecretProps(description: string = None, 
-                  encryptionKey: aws-cdk-lib.aws_kms.IKey = None, 
-                  excludeCharacters: string = None, 
-                  excludeLowercase: boolean = None, 
-                  excludeNumbers: boolean = None, 
-                  excludePunctuation: boolean = None, 
-                  excludeUppercase: boolean = None, 
-                  generateStringKey: string = None, 
-                  includeSpace: boolean = None, 
-                  passwordLength: number = None, 
-                  requireEachIncludedType: boolean = None, 
-                  secretStringTemplate: string = None, 
-                  removalPolicy: aws-cdk-lib.RemovalPolicy = None, 
-                  replicaRegions: Array<aws-cdk-lib.aws_secretsmanager.ReplicaRegion> = None, 
-                  secretName: string = None)
+aws_cdk.aws_secretsmanager.SecretProps(description: builtins.str = None, 
+                                       encryption_key: aws-cdk-lib.aws_kms.IKey = None, 
+                                       exclude_characters: builtins.str = None, 
+                                       exclude_lowercase: builtins.bool = None, 
+                                       exclude_numbers: builtins.bool = None, 
+                                       exclude_punctuation: builtins.bool = None, 
+                                       exclude_uppercase: builtins.bool = None, 
+                                       generate_string_key: builtins.str = None, 
+                                       include_space: builtins.bool = None, 
+                                       password_length: typing.Union[int, float] = None, 
+                                       require_each_included_type: builtins.bool = None, 
+                                       secret_string_template: builtins.str = None, 
+                                       removal_policy: aws-cdk-lib.RemovalPolicy = None, 
+                                       replica_regions: typing.List[aws-cdk-lib.aws_secretsmanager.ReplicaRegion] = None, 
+                                       secret_name: builtins.str = None)
 ```
 
 ##### `description`<sup>Optional</sup> <a name="description"></a>
@@ -2312,7 +2312,7 @@ An optional, human-friendly description of the secret.
 
 ---
 
-##### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey"></a>
+##### `encryption_key`<sup>Optional</sup> <a name="encryption_key"></a>
 
 - *Type:* [aws-cdk-lib.aws_kms.IKey](#aws-cdk-lib.aws_kms.IKey)
 - *Default:* - A default KMS key for the account and region is used.
@@ -2321,7 +2321,7 @@ The customer-managed encryption key to use for encrypting the secret value.
 
 ---
 
-##### `excludeCharacters`<sup>Optional</sup> <a name="excludeCharacters"></a>
+##### `exclude_characters`<sup>Optional</sup> <a name="exclude_characters"></a>
 
 - *Type:* `builtins.str`
 - *Default:* no exclusions
@@ -2333,7 +2333,7 @@ of ``0`` and a maximum of ``4096`` characters long.
 
 ---
 
-##### `excludeLowercase`<sup>Optional</sup> <a name="excludeLowercase"></a>
+##### `exclude_lowercase`<sup>Optional</sup> <a name="exclude_lowercase"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2342,7 +2342,7 @@ Specifies that the generated password shouldn't include lowercase letters.
 
 ---
 
-##### `excludeNumbers`<sup>Optional</sup> <a name="excludeNumbers"></a>
+##### `exclude_numbers`<sup>Optional</sup> <a name="exclude_numbers"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2351,7 +2351,7 @@ Specifies that the generated password shouldn't include digits.
 
 ---
 
-##### `excludePunctuation`<sup>Optional</sup> <a name="excludePunctuation"></a>
+##### `exclude_punctuation`<sup>Optional</sup> <a name="exclude_punctuation"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2360,7 +2360,7 @@ Specifies that the generated password shouldn't include punctuation characters.
 
 ---
 
-##### `excludeUppercase`<sup>Optional</sup> <a name="excludeUppercase"></a>
+##### `exclude_uppercase`<sup>Optional</sup> <a name="exclude_uppercase"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2369,7 +2369,7 @@ Specifies that the generated password shouldn't include uppercase letters.
 
 ---
 
-##### `generateStringKey`<sup>Optional</sup> <a name="generateStringKey"></a>
+##### `generate_string_key`<sup>Optional</sup> <a name="generate_string_key"></a>
 
 - *Type:* `builtins.str`
 
@@ -2380,7 +2380,7 @@ must be also be specified.
 
 ---
 
-##### `includeSpace`<sup>Optional</sup> <a name="includeSpace"></a>
+##### `include_space`<sup>Optional</sup> <a name="include_space"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2389,16 +2389,16 @@ Specifies that the generated password can include the space character.
 
 ---
 
-##### `passwordLength`<sup>Optional</sup> <a name="passwordLength"></a>
+##### `password_length`<sup>Optional</sup> <a name="password_length"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[int, float]
+- *Type:* `typing.Union`[int, float]
 - *Default:* 32
 
 The desired length of the generated password.
 
 ---
 
-##### `requireEachIncludedType`<sup>Optional</sup> <a name="requireEachIncludedType"></a>
+##### `require_each_included_type`<sup>Optional</sup> <a name="require_each_included_type"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* true
@@ -2407,7 +2407,7 @@ Specifies whether the generated password must include at least one of every allo
 
 ---
 
-##### `secretStringTemplate`<sup>Optional</sup> <a name="secretStringTemplate"></a>
+##### `secret_string_template`<sup>Optional</sup> <a name="secret_string_template"></a>
 
 - *Type:* `builtins.str`
 
@@ -2420,7 +2420,7 @@ then ``generateStringKey`` must be also be specified.
 
 ---
 
-##### `removalPolicy`<sup>Optional</sup> <a name="removalPolicy"></a>
+##### `removal_policy`<sup>Optional</sup> <a name="removal_policy"></a>
 
 - *Type:* [aws-cdk-lib.RemovalPolicy](#aws-cdk-lib.RemovalPolicy)
 - *Default:* - Not set.
@@ -2429,16 +2429,16 @@ Policy to apply when the secret is removed from this stack.
 
 ---
 
-##### `replicaRegions`<sup>Optional</sup> <a name="replicaRegions"></a>
+##### `replica_regions`<sup>Optional</sup> <a name="replica_regions"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_secretsmanager.ReplicaRegion](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_secretsmanager.ReplicaRegion](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
 - *Default:* - Secret is not replicated
 
 A list of regions where to replicate this secret.
 
 ---
 
-##### `secretName`<sup>Optional</sup> <a name="secretName"></a>
+##### `secret_name`<sup>Optional</sup> <a name="secret_name"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - A name is generated by CloudFormation.
@@ -2459,10 +2459,10 @@ Options for a SecretRotationApplication.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.SecretRotationApplicationOptions(isMultiUser: boolean = None)
+aws_cdk.aws_secretsmanager.SecretRotationApplicationOptions(is_multi_user: builtins.bool = None)
 ```
 
-##### `isMultiUser`<sup>Optional</sup> <a name="isMultiUser"></a>
+##### `is_multi_user`<sup>Optional</sup> <a name="is_multi_user"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2481,19 +2481,19 @@ Construction properties for a SecretRotation.
 import aws_cdk.aws_secretsmanager
 
 aws_cdk.aws_secretsmanager.SecretRotationProps(application: aws-cdk-lib.aws_secretsmanager.SecretRotationApplication, 
-                  secret: aws-cdk-lib.aws_secretsmanager.ISecret, 
-                  target: aws-cdk-lib.aws_ec2.IConnectable, 
-                  vpc: aws-cdk-lib.aws_ec2.IVpc, 
-                  automaticallyAfter: aws-cdk-lib.Duration = None, 
-                  excludeCharacters: string = None, 
-                  masterSecret: aws-cdk-lib.aws_secretsmanager.ISecret = None, 
-                  securityGroup: aws-cdk-lib.aws_ec2.ISecurityGroup = None, 
-                  availabilityZones: Array<string> = None, 
-                  onePerAz: boolean = None, 
-                  subnetFilters: Array<aws-cdk-lib.aws_ec2.SubnetFilter> = None, 
-                  subnetGroupName: string = None, 
-                  subnets: Array<aws-cdk-lib.aws_ec2.ISubnet> = None, 
-                  subnetType: aws-cdk-lib.aws_ec2.SubnetType = None)
+                                               secret: aws-cdk-lib.aws_secretsmanager.ISecret, 
+                                               target: aws-cdk-lib.aws_ec2.IConnectable, 
+                                               vpc: aws-cdk-lib.aws_ec2.IVpc, 
+                                               automatically_after: aws-cdk-lib.Duration = None, 
+                                               exclude_characters: builtins.str = None, 
+                                               master_secret: aws-cdk-lib.aws_secretsmanager.ISecret = None, 
+                                               security_group: aws-cdk-lib.aws_ec2.ISecurityGroup = None, 
+                                               availability_zones: typing.List[builtins.str] = None, 
+                                               one_per_az: builtins.bool = None, 
+                                               subnet_filters: typing.List[aws-cdk-lib.aws_ec2.SubnetFilter] = None, 
+                                               subnet_group_name: builtins.str = None, 
+                                               subnets: typing.List[aws-cdk-lib.aws_ec2.ISubnet] = None, 
+                                               subnet_type: aws-cdk-lib.aws_ec2.SubnetType = None)
 ```
 
 ##### `application`<sup>Required</sup> <a name="application"></a>
@@ -2545,7 +2545,7 @@ The VPC where the Lambda rotation function will run.
 
 ---
 
-##### `automaticallyAfter`<sup>Optional</sup> <a name="automaticallyAfter"></a>
+##### `automatically_after`<sup>Optional</sup> <a name="automatically_after"></a>
 
 - *Type:* [aws-cdk-lib.Duration](#aws-cdk-lib.Duration)
 - *Default:* Duration.days(30)
@@ -2554,7 +2554,7 @@ Specifies the number of days after the previous rotation before Secrets Manager 
 
 ---
 
-##### `excludeCharacters`<sup>Optional</sup> <a name="excludeCharacters"></a>
+##### `exclude_characters`<sup>Optional</sup> <a name="exclude_characters"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - no additional characters are explicitly excluded
@@ -2563,7 +2563,7 @@ Characters which should not appear in the generated password.
 
 ---
 
-##### `masterSecret`<sup>Optional</sup> <a name="masterSecret"></a>
+##### `master_secret`<sup>Optional</sup> <a name="master_secret"></a>
 
 - *Type:* [aws-cdk-lib.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
 - *Default:* - single user rotation scheme
@@ -2572,7 +2572,7 @@ The master secret for a multi user rotation scheme.
 
 ---
 
-##### `securityGroup`<sup>Optional</sup> <a name="securityGroup"></a>
+##### `security_group`<sup>Optional</sup> <a name="security_group"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup)
 - *Default:* - a new security group is created
@@ -2581,16 +2581,16 @@ The security group for the Lambda rotation function.
 
 ---
 
-##### `availabilityZones`<sup>Optional</sup> <a name="availabilityZones"></a>
+##### `availability_zones`<sup>Optional</sup> <a name="availability_zones"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[`builtins.str`]
+- *Type:* `typing.List`[`builtins.str`]
 - *Default:* no filtering on AZs is done
 
 Select subnets only in the given AZs.
 
 ---
 
-##### `onePerAz`<sup>Optional</sup> <a name="onePerAz"></a>
+##### `one_per_az`<sup>Optional</sup> <a name="one_per_az"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2599,16 +2599,16 @@ If true, return at most one subnet per AZ.
 
 ---
 
-##### `subnetFilters`<sup>Optional</sup> <a name="subnetFilters"></a>
+##### `subnet_filters`<sup>Optional</sup> <a name="subnet_filters"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_ec2.SubnetFilter](#aws-cdk-lib.aws_ec2.SubnetFilter)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_ec2.SubnetFilter](#aws-cdk-lib.aws_ec2.SubnetFilter)]
 - *Default:* - none
 
 List of provided subnet filters.
 
 ---
 
-##### `subnetGroupName`<sup>Optional</sup> <a name="subnetGroupName"></a>
+##### `subnet_group_name`<sup>Optional</sup> <a name="subnet_group_name"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - Selection by type instead of by name
@@ -2630,7 +2630,7 @@ At most one of `subnetType` and `subnetGroupName` can be supplied.
 
 ##### `subnets`<sup>Optional</sup> <a name="subnets"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_ec2.ISubnet](#aws-cdk-lib.aws_ec2.ISubnet)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_ec2.ISubnet](#aws-cdk-lib.aws_ec2.ISubnet)]
 - *Default:* - Use all subnets in a selected group (all private subnets by default)
 
 Explicitly select individual subnets.
@@ -2643,7 +2643,7 @@ Cannot be specified together with `subnetType` or `subnetGroupName`.
 
 ---
 
-##### `subnetType`<sup>Optional</sup> <a name="subnetType"></a>
+##### `subnet_type`<sup>Optional</sup> <a name="subnet_type"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.SubnetType](#aws-cdk-lib.aws_ec2.SubnetType)
 - *Default:* SubnetType.PRIVATE (or ISOLATED or PUBLIC if there are no PRIVATE subnets)
@@ -2663,19 +2663,19 @@ Configuration to generate secrets such as passwords automatically.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.SecretStringGenerator(excludeCharacters: string = None, 
-                  excludeLowercase: boolean = None, 
-                  excludeNumbers: boolean = None, 
-                  excludePunctuation: boolean = None, 
-                  excludeUppercase: boolean = None, 
-                  generateStringKey: string = None, 
-                  includeSpace: boolean = None, 
-                  passwordLength: number = None, 
-                  requireEachIncludedType: boolean = None, 
-                  secretStringTemplate: string = None)
+aws_cdk.aws_secretsmanager.SecretStringGenerator(exclude_characters: builtins.str = None, 
+                                                 exclude_lowercase: builtins.bool = None, 
+                                                 exclude_numbers: builtins.bool = None, 
+                                                 exclude_punctuation: builtins.bool = None, 
+                                                 exclude_uppercase: builtins.bool = None, 
+                                                 generate_string_key: builtins.str = None, 
+                                                 include_space: builtins.bool = None, 
+                                                 password_length: typing.Union[int, float] = None, 
+                                                 require_each_included_type: builtins.bool = None, 
+                                                 secret_string_template: builtins.str = None)
 ```
 
-##### `excludeCharacters`<sup>Optional</sup> <a name="excludeCharacters"></a>
+##### `exclude_characters`<sup>Optional</sup> <a name="exclude_characters"></a>
 
 - *Type:* `builtins.str`
 - *Default:* no exclusions
@@ -2687,7 +2687,7 @@ of ``0`` and a maximum of ``4096`` characters long.
 
 ---
 
-##### `excludeLowercase`<sup>Optional</sup> <a name="excludeLowercase"></a>
+##### `exclude_lowercase`<sup>Optional</sup> <a name="exclude_lowercase"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2696,7 +2696,7 @@ Specifies that the generated password shouldn't include lowercase letters.
 
 ---
 
-##### `excludeNumbers`<sup>Optional</sup> <a name="excludeNumbers"></a>
+##### `exclude_numbers`<sup>Optional</sup> <a name="exclude_numbers"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2705,7 +2705,7 @@ Specifies that the generated password shouldn't include digits.
 
 ---
 
-##### `excludePunctuation`<sup>Optional</sup> <a name="excludePunctuation"></a>
+##### `exclude_punctuation`<sup>Optional</sup> <a name="exclude_punctuation"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2714,7 +2714,7 @@ Specifies that the generated password shouldn't include punctuation characters.
 
 ---
 
-##### `excludeUppercase`<sup>Optional</sup> <a name="excludeUppercase"></a>
+##### `exclude_uppercase`<sup>Optional</sup> <a name="exclude_uppercase"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2723,7 +2723,7 @@ Specifies that the generated password shouldn't include uppercase letters.
 
 ---
 
-##### `generateStringKey`<sup>Optional</sup> <a name="generateStringKey"></a>
+##### `generate_string_key`<sup>Optional</sup> <a name="generate_string_key"></a>
 
 - *Type:* `builtins.str`
 
@@ -2734,7 +2734,7 @@ must be also be specified.
 
 ---
 
-##### `includeSpace`<sup>Optional</sup> <a name="includeSpace"></a>
+##### `include_space`<sup>Optional</sup> <a name="include_space"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2743,16 +2743,16 @@ Specifies that the generated password can include the space character.
 
 ---
 
-##### `passwordLength`<sup>Optional</sup> <a name="passwordLength"></a>
+##### `password_length`<sup>Optional</sup> <a name="password_length"></a>
 
-- *Type:* [typing.Union](https://docs.python.org/3/library/typing.html#typing.Union)[int, float]
+- *Type:* `typing.Union`[int, float]
 - *Default:* 32
 
 The desired length of the generated password.
 
 ---
 
-##### `requireEachIncludedType`<sup>Optional</sup> <a name="requireEachIncludedType"></a>
+##### `require_each_included_type`<sup>Optional</sup> <a name="require_each_included_type"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* true
@@ -2761,7 +2761,7 @@ Specifies whether the generated password must include at least one of every allo
 
 ---
 
-##### `secretStringTemplate`<sup>Optional</sup> <a name="secretStringTemplate"></a>
+##### `secret_string_template`<sup>Optional</sup> <a name="secret_string_template"></a>
 
 - *Type:* `builtins.str`
 
@@ -2803,18 +2803,18 @@ Single user hosted rotation options.
 ```python
 import aws_cdk.aws_secretsmanager
 
-aws_cdk.aws_secretsmanager.SingleUserHostedRotationOptions(functionName: string = None, 
-                  securityGroups: Array<aws-cdk-lib.aws_ec2.ISecurityGroup> = None, 
-                  vpc: aws-cdk-lib.aws_ec2.IVpc = None, 
-                  availabilityZones: Array<string> = None, 
-                  onePerAz: boolean = None, 
-                  subnetFilters: Array<aws-cdk-lib.aws_ec2.SubnetFilter> = None, 
-                  subnetGroupName: string = None, 
-                  subnets: Array<aws-cdk-lib.aws_ec2.ISubnet> = None, 
-                  subnetType: aws-cdk-lib.aws_ec2.SubnetType = None)
+aws_cdk.aws_secretsmanager.SingleUserHostedRotationOptions(function_name: builtins.str = None, 
+                                                           security_groups: typing.List[aws-cdk-lib.aws_ec2.ISecurityGroup] = None, 
+                                                           vpc: aws-cdk-lib.aws_ec2.IVpc = None, 
+                                                           availability_zones: typing.List[builtins.str] = None, 
+                                                           one_per_az: builtins.bool = None, 
+                                                           subnet_filters: typing.List[aws-cdk-lib.aws_ec2.SubnetFilter] = None, 
+                                                           subnet_group_name: builtins.str = None, 
+                                                           subnets: typing.List[aws-cdk-lib.aws_ec2.ISubnet] = None, 
+                                                           subnet_type: aws-cdk-lib.aws_ec2.SubnetType = None)
 ```
 
-##### `functionName`<sup>Optional</sup> <a name="functionName"></a>
+##### `function_name`<sup>Optional</sup> <a name="function_name"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - a CloudFormation generated name
@@ -2823,9 +2823,9 @@ A name for the Lambda created to rotate the secret.
 
 ---
 
-##### `securityGroups`<sup>Optional</sup> <a name="securityGroups"></a>
+##### `security_groups`<sup>Optional</sup> <a name="security_groups"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_ec2.ISecurityGroup](#aws-cdk-lib.aws_ec2.ISecurityGroup)]
 - *Default:* - a new security group is created
 
 A list of security groups for the Lambda created to rotate the secret.
@@ -2841,16 +2841,16 @@ The VPC where the Lambda rotation function will run.
 
 ---
 
-##### `availabilityZones`<sup>Optional</sup> <a name="availabilityZones"></a>
+##### `availability_zones`<sup>Optional</sup> <a name="availability_zones"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[`builtins.str`]
+- *Type:* `typing.List`[`builtins.str`]
 - *Default:* no filtering on AZs is done
 
 Select subnets only in the given AZs.
 
 ---
 
-##### `onePerAz`<sup>Optional</sup> <a name="onePerAz"></a>
+##### `one_per_az`<sup>Optional</sup> <a name="one_per_az"></a>
 
 - *Type:* `builtins.bool`
 - *Default:* false
@@ -2859,16 +2859,16 @@ If true, return at most one subnet per AZ.
 
 ---
 
-##### `subnetFilters`<sup>Optional</sup> <a name="subnetFilters"></a>
+##### `subnet_filters`<sup>Optional</sup> <a name="subnet_filters"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_ec2.SubnetFilter](#aws-cdk-lib.aws_ec2.SubnetFilter)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_ec2.SubnetFilter](#aws-cdk-lib.aws_ec2.SubnetFilter)]
 - *Default:* - none
 
 List of provided subnet filters.
 
 ---
 
-##### `subnetGroupName`<sup>Optional</sup> <a name="subnetGroupName"></a>
+##### `subnet_group_name`<sup>Optional</sup> <a name="subnet_group_name"></a>
 
 - *Type:* `builtins.str`
 - *Default:* - Selection by type instead of by name
@@ -2890,7 +2890,7 @@ At most one of `subnetType` and `subnetGroupName` can be supplied.
 
 ##### `subnets`<sup>Optional</sup> <a name="subnets"></a>
 
-- *Type:* [typing.List](https://docs.python.org/3/library/typing.html#typing.List)[[aws-cdk-lib.aws_ec2.ISubnet](#aws-cdk-lib.aws_ec2.ISubnet)]
+- *Type:* `typing.List`[[aws-cdk-lib.aws_ec2.ISubnet](#aws-cdk-lib.aws_ec2.ISubnet)]
 - *Default:* - Use all subnets in a selected group (all private subnets by default)
 
 Explicitly select individual subnets.
@@ -2903,7 +2903,7 @@ Cannot be specified together with `subnetType` or `subnetGroupName`.
 
 ---
 
-##### `subnetType`<sup>Optional</sup> <a name="subnetType"></a>
+##### `subnet_type`<sup>Optional</sup> <a name="subnet_type"></a>
 
 - *Type:* [aws-cdk-lib.aws_ec2.SubnetType](#aws-cdk-lib.aws_ec2.SubnetType)
 - *Default:* SubnetType.PRIVATE (or ISOLATED or PUBLIC if there are no PRIVATE subnets)
