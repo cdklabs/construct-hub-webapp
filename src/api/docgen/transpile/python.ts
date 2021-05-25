@@ -17,8 +17,10 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     refs: transpile.TranspiledTypeReference[]
   ): transpile.TranspiledTypeReference {
     return {
-      raw: `${this.typing("Union")}[${refs.map((tf) => tf.raw).join(", ")}]`,
-      linked: `${this.typing("Union")}[${refs.map((r) => r.linked)}]`,
+      raw: `${this.typing("Union")}[${refs.map((r) => r.raw).join(", ")}]`,
+      linked: `${this.typing("Union")}[${refs
+        .map((r) => r.linked)
+        .join(", ")}]`,
     };
   }
 
