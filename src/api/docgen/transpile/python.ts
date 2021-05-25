@@ -18,7 +18,7 @@ export class PythonTranspile extends transpile.AbstractTranspile {
   ): transpile.TranspiledTypeReference {
     return {
       raw: `${this.typing("Union")}[${refs.map((r) => r.raw).join(", ")}]`,
-      linked: `${this.typing("Union")}[${refs
+      linked: `**${this.typing("Union")}**[${refs
         .map((r) => r.linked)
         .join(", ")}]`,
     };
@@ -29,7 +29,7 @@ export class PythonTranspile extends transpile.AbstractTranspile {
   ): transpile.TranspiledTypeReference {
     return {
       raw: `${this.typing("List")}[${ref.raw}]`,
-      linked: `${this.typing("List")}[${ref.linked}]`,
+      linked: `**${this.typing("List")}**[${ref.linked}]`,
     };
   }
 
@@ -38,7 +38,7 @@ export class PythonTranspile extends transpile.AbstractTranspile {
   ): transpile.TranspiledTypeReference {
     return {
       raw: `${this.typing("Mapping")}[#${ref.raw}]`,
-      linked: `${this.typing("Mapping")}[${ref.linked}]`,
+      linked: `**${this.typing("Mapping")}**[${ref.linked}]`,
     };
   }
 

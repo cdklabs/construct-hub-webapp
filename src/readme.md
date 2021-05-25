@@ -270,7 +270,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs..Construct,
 
 ##### `block_public_policy`<sup>Optional</sup> <a name="block_public_policy"></a>
 
-- *Type:* typing.Union[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
 
@@ -344,7 +344,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs..Construct,
 
 ##### `hosted_rotation_lambda`<sup>Optional</sup> <a name="hosted_rotation_lambda"></a>
 
-- *Type:* typing.Union[[`aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty`](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[[`aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty`](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::RotationSchedule.HostedRotationLambda`.
 
@@ -364,7 +364,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs..Construct,
 
 ##### `rotation_rules`<sup>Optional</sup> <a name="rotation_rules"></a>
 
-- *Type:* typing.Union[[`aws_cdk.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty`](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[[`aws_cdk.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty`](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
 
@@ -441,7 +441,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs..Construct,
 
 ##### `generate_secret_string`<sup>Optional</sup> <a name="generate_secret_string"></a>
 
-- *Type:* typing.Union[[`aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty`](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[[`aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty`](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::Secret.GenerateSecretString`.
 
@@ -471,7 +471,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs..Construct,
 
 ##### `replica_regions`<sup>Optional</sup> <a name="replica_regions"></a>
 
-- *Type:* typing.Union[[`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable), typing.List[typing.Union[[`aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty`](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]]]
+- *Type:* **typing.Union**[[`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable), **typing.List**[**typing.Union**[[`aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty`](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]]]
 
 `AWS::SecretsManager::Secret.ReplicaRegions`.
 
@@ -491,7 +491,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs..Construct,
 
 ##### `tags`<sup>Optional</sup> <a name="tags"></a>
 
-- *Type:* typing.List[[`aws_cdk..CfnTag`](#aws-cdk-lib.CfnTag)]
+- *Type:* **typing.List**[[`aws_cdk..CfnTag`](#aws-cdk-lib.CfnTag)]
 
 `AWS::SecretsManager::Secret.Tags`.
 
@@ -790,7 +790,7 @@ Policy to apply when the secret is removed from this stack.
 
 ##### `replica_regions`<sup>Optional</sup> <a name="replica_regions"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_secretsmanager.ReplicaRegion`](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
+- *Type:* **typing.List**[[`aws_cdk.aws_secretsmanager.ReplicaRegion`](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
 - *Default:*  Secret is not replicated
 
 A list of regions where to replicate this secret.
@@ -923,7 +923,7 @@ def grant_read(grantee: aws_cdk.aws_iam.IGrantable,
 
 ###### `version_stages`<sup>Optional</sup> <a name="version_stages"></a>
 
-- *Type:* typing.List[`builtins.str`]
+- *Type:* **typing.List**[`builtins.str`]
 
 ---
 
@@ -1352,7 +1352,7 @@ def grant_read(grantee: aws_cdk.aws_iam.IGrantable,
 
 ###### `version_stages`<sup>Optional</sup> <a name="version_stages"></a>
 
-- *Type:* typing.List[`builtins.str`]
+- *Type:* **typing.List**[`builtins.str`]
 
 ---
 
@@ -1450,7 +1450,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicyProps(resource_policy: typing.Any,
 
 ##### `block_public_policy`<sup>Optional</sup> <a name="block_public_policy"></a>
 
-- *Type:* typing.Union[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::ResourcePolicy.BlockPublicPolicy`.
 
@@ -1487,7 +1487,7 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(secret_id: builtins.str,
 
 ##### `hosted_rotation_lambda`<sup>Optional</sup> <a name="hosted_rotation_lambda"></a>
 
-- *Type:* typing.Union[[`aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty`](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[[`aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty`](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::RotationSchedule.HostedRotationLambda`.
 
@@ -1507,7 +1507,7 @@ aws_cdk.aws_secretsmanager.CfnRotationScheduleProps(secret_id: builtins.str,
 
 ##### `rotation_rules`<sup>Optional</sup> <a name="rotation_rules"></a>
 
-- *Type:* typing.Union[[`aws_cdk.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty`](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[[`aws_cdk.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty`](#aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::RotationSchedule.RotationRules`.
 
@@ -1547,7 +1547,7 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(description: builtins.str = None,
 
 ##### `generate_secret_string`<sup>Optional</sup> <a name="generate_secret_string"></a>
 
-- *Type:* typing.Union[[`aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty`](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[[`aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty`](#aws-cdk-lib.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `AWS::SecretsManager::Secret.GenerateSecretString`.
 
@@ -1577,7 +1577,7 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(description: builtins.str = None,
 
 ##### `replica_regions`<sup>Optional</sup> <a name="replica_regions"></a>
 
-- *Type:* typing.Union[[`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable), typing.List[typing.Union[[`aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty`](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]]]
+- *Type:* **typing.Union**[[`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable), **typing.List**[**typing.Union**[[`aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty`](#aws-cdk-lib.aws_secretsmanager.CfnSecret.ReplicaRegionProperty), [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]]]
 
 `AWS::SecretsManager::Secret.ReplicaRegions`.
 
@@ -1597,7 +1597,7 @@ aws_cdk.aws_secretsmanager.CfnSecretProps(description: builtins.str = None,
 
 ##### `tags`<sup>Optional</sup> <a name="tags"></a>
 
-- *Type:* typing.List[[`aws_cdk..CfnTag`](#aws-cdk-lib.CfnTag)]
+- *Type:* **typing.List**[[`aws_cdk..CfnTag`](#aws-cdk-lib.CfnTag)]
 
 `AWS::SecretsManager::Secret.Tags`.
 
@@ -1684,7 +1684,7 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(exclude_charac
 
 ##### `exclude_lowercase`<sup>Optional</sup> <a name="exclude_lowercase"></a>
 
-- *Type:* typing.Union[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeLowercase`.
 
@@ -1694,7 +1694,7 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(exclude_charac
 
 ##### `exclude_numbers`<sup>Optional</sup> <a name="exclude_numbers"></a>
 
-- *Type:* typing.Union[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeNumbers`.
 
@@ -1704,7 +1704,7 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(exclude_charac
 
 ##### `exclude_punctuation`<sup>Optional</sup> <a name="exclude_punctuation"></a>
 
-- *Type:* typing.Union[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.ExcludePunctuation`.
 
@@ -1714,7 +1714,7 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(exclude_charac
 
 ##### `exclude_uppercase`<sup>Optional</sup> <a name="exclude_uppercase"></a>
 
-- *Type:* typing.Union[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.ExcludeUppercase`.
 
@@ -1734,7 +1734,7 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(exclude_charac
 
 ##### `include_space`<sup>Optional</sup> <a name="include_space"></a>
 
-- *Type:* typing.Union[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.IncludeSpace`.
 
@@ -1754,7 +1754,7 @@ aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(exclude_charac
 
 ##### `require_each_included_type`<sup>Optional</sup> <a name="require_each_included_type"></a>
 
-- *Type:* typing.Union[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
+- *Type:* **typing.Union**[`builtins.bool`, [`aws_cdk..IResolvable`](#aws-cdk-lib.IResolvable)]
 
 `CfnSecret.GenerateSecretStringProperty.RequireEachIncludedType`.
 
@@ -1900,7 +1900,7 @@ A name for the Lambda created to rotate the secret.
 
 ##### `security_groups`<sup>Optional</sup> <a name="security_groups"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_ec2.ISecurityGroup`](#aws-cdk-lib.aws_ec2.ISecurityGroup)]
+- *Type:* **typing.List**[[`aws_cdk.aws_ec2.ISecurityGroup`](#aws-cdk-lib.aws_ec2.ISecurityGroup)]
 - *Default:*  a new security group is created
 
 A list of security groups for the Lambda created to rotate the secret.
@@ -1918,7 +1918,7 @@ The VPC where the Lambda rotation function will run.
 
 ##### `availability_zones`<sup>Optional</sup> <a name="availability_zones"></a>
 
-- *Type:* typing.List[`builtins.str`]
+- *Type:* **typing.List**[`builtins.str`]
 - *Default:* no filtering on AZs is done
 
 Select subnets only in the given AZs.
@@ -1936,7 +1936,7 @@ If true, return at most one subnet per AZ.
 
 ##### `subnet_filters`<sup>Optional</sup> <a name="subnet_filters"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_ec2.SubnetFilter`](#aws-cdk-lib.aws_ec2.SubnetFilter)]
+- *Type:* **typing.List**[[`aws_cdk.aws_ec2.SubnetFilter`](#aws-cdk-lib.aws_ec2.SubnetFilter)]
 - *Default:*  none
 
 List of provided subnet filters.
@@ -1965,7 +1965,7 @@ At most one of `subnetType` and `subnetGroupName` can be supplied.
 
 ##### `subnets`<sup>Optional</sup> <a name="subnets"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_ec2.ISubnet`](#aws-cdk-lib.aws_ec2.ISubnet)]
+- *Type:* **typing.List**[[`aws_cdk.aws_ec2.ISubnet`](#aws-cdk-lib.aws_ec2.ISubnet)]
 - *Default:*  Use all subnets in a selected group (all private subnets by default)
 
 Explicitly select individual subnets.
@@ -2431,7 +2431,7 @@ Policy to apply when the secret is removed from this stack.
 
 ##### `replica_regions`<sup>Optional</sup> <a name="replica_regions"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_secretsmanager.ReplicaRegion`](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
+- *Type:* **typing.List**[[`aws_cdk.aws_secretsmanager.ReplicaRegion`](#aws-cdk-lib.aws_secretsmanager.ReplicaRegion)]
 - *Default:*  Secret is not replicated
 
 A list of regions where to replicate this secret.
@@ -2583,7 +2583,7 @@ The security group for the Lambda rotation function.
 
 ##### `availability_zones`<sup>Optional</sup> <a name="availability_zones"></a>
 
-- *Type:* typing.List[`builtins.str`]
+- *Type:* **typing.List**[`builtins.str`]
 - *Default:* no filtering on AZs is done
 
 Select subnets only in the given AZs.
@@ -2601,7 +2601,7 @@ If true, return at most one subnet per AZ.
 
 ##### `subnet_filters`<sup>Optional</sup> <a name="subnet_filters"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_ec2.SubnetFilter`](#aws-cdk-lib.aws_ec2.SubnetFilter)]
+- *Type:* **typing.List**[[`aws_cdk.aws_ec2.SubnetFilter`](#aws-cdk-lib.aws_ec2.SubnetFilter)]
 - *Default:*  none
 
 List of provided subnet filters.
@@ -2630,7 +2630,7 @@ At most one of `subnetType` and `subnetGroupName` can be supplied.
 
 ##### `subnets`<sup>Optional</sup> <a name="subnets"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_ec2.ISubnet`](#aws-cdk-lib.aws_ec2.ISubnet)]
+- *Type:* **typing.List**[[`aws_cdk.aws_ec2.ISubnet`](#aws-cdk-lib.aws_ec2.ISubnet)]
 - *Default:*  Use all subnets in a selected group (all private subnets by default)
 
 Explicitly select individual subnets.
@@ -2825,7 +2825,7 @@ A name for the Lambda created to rotate the secret.
 
 ##### `security_groups`<sup>Optional</sup> <a name="security_groups"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_ec2.ISecurityGroup`](#aws-cdk-lib.aws_ec2.ISecurityGroup)]
+- *Type:* **typing.List**[[`aws_cdk.aws_ec2.ISecurityGroup`](#aws-cdk-lib.aws_ec2.ISecurityGroup)]
 - *Default:*  a new security group is created
 
 A list of security groups for the Lambda created to rotate the secret.
@@ -2843,7 +2843,7 @@ The VPC where the Lambda rotation function will run.
 
 ##### `availability_zones`<sup>Optional</sup> <a name="availability_zones"></a>
 
-- *Type:* typing.List[`builtins.str`]
+- *Type:* **typing.List**[`builtins.str`]
 - *Default:* no filtering on AZs is done
 
 Select subnets only in the given AZs.
@@ -2861,7 +2861,7 @@ If true, return at most one subnet per AZ.
 
 ##### `subnet_filters`<sup>Optional</sup> <a name="subnet_filters"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_ec2.SubnetFilter`](#aws-cdk-lib.aws_ec2.SubnetFilter)]
+- *Type:* **typing.List**[[`aws_cdk.aws_ec2.SubnetFilter`](#aws-cdk-lib.aws_ec2.SubnetFilter)]
 - *Default:*  none
 
 List of provided subnet filters.
@@ -2890,7 +2890,7 @@ At most one of `subnetType` and `subnetGroupName` can be supplied.
 
 ##### `subnets`<sup>Optional</sup> <a name="subnets"></a>
 
-- *Type:* typing.List[[`aws_cdk.aws_ec2.ISubnet`](#aws-cdk-lib.aws_ec2.ISubnet)]
+- *Type:* **typing.List**[[`aws_cdk.aws_ec2.ISubnet`](#aws-cdk-lib.aws_ec2.ISubnet)]
 - *Default:*  Use all subnets in a selected group (all private subnets by default)
 
 Explicitly select individual subnets.
