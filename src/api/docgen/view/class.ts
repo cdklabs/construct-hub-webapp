@@ -47,7 +47,7 @@ export class Class implements View {
     if (this.klass.interfaces.length > 0) {
       const ifaces = [];
       for (const iface of this.klass.interfaces) {
-        ifaces.push(`[${this.transpile.type(iface).fqn}](#${iface.fqn})`);
+        ifaces.push(`[\`${this.transpile.type(iface).fqn}\`](#${iface.fqn})`);
       }
       md.lines(`- *Implements:* ${ifaces.join(", ")}`);
       md.lines("");

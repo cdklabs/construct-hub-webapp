@@ -214,7 +214,7 @@ secret.addReplicaRegion('eu-west-1');
 
 ### CfnResourcePolicy <a name="aws-cdk-lib.aws_secretsmanager.CfnResourcePolicy"></a>
 
-- *Implements:* [aws_cdk..IInspectable](#aws-cdk-lib.IInspectable)
+- *Implements:* [`aws_cdk..IInspectable`](#aws-cdk-lib.IInspectable)
 
 A CloudFormation `AWS::SecretsManager::ResourcePolicy`.
 
@@ -297,7 +297,7 @@ def inspect(inspector: aws_cdk..TreeInspector)
 
 ### CfnRotationSchedule <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule"></a>
 
-- *Implements:* [aws_cdk..IInspectable](#aws-cdk-lib.IInspectable)
+- *Implements:* [`aws_cdk..IInspectable`](#aws-cdk-lib.IInspectable)
 
 A CloudFormation `AWS::SecretsManager::RotationSchedule`.
 
@@ -391,7 +391,7 @@ def inspect(inspector: aws_cdk..TreeInspector)
 
 ### CfnSecret <a name="aws-cdk-lib.aws_secretsmanager.CfnSecret"></a>
 
-- *Implements:* [aws_cdk..IInspectable](#aws-cdk-lib.IInspectable)
+- *Implements:* [`aws_cdk..IInspectable`](#aws-cdk-lib.IInspectable)
 
 A CloudFormation `AWS::SecretsManager::Secret`.
 
@@ -518,7 +518,7 @@ def inspect(inspector: aws_cdk..TreeInspector)
 
 ### CfnSecretTargetAttachment <a name="aws-cdk-lib.aws_secretsmanager.CfnSecretTargetAttachment"></a>
 
-- *Implements:* [aws_cdk..IInspectable](#aws-cdk-lib.IInspectable)
+- *Implements:* [`aws_cdk..IInspectable`](#aws-cdk-lib.IInspectable)
 
 A CloudFormation `AWS::SecretsManager::SecretTargetAttachment`.
 
@@ -720,7 +720,7 @@ or an `ISecret` returned by the `attach()` method of `Secret`.
 
 ### Secret <a name="aws-cdk-lib.aws_secretsmanager.Secret"></a>
 
-- *Implements:* [aws_cdk.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
+- *Implements:* [`aws_cdk.aws_secretsmanager.ISecret`](#aws-cdk-lib.aws_secretsmanager.ISecret)
 
 Creates a new secret in AWS SecretsManager.
 
@@ -1227,7 +1227,7 @@ The type of subnets in the VPC where the Lambda rotation function will run.
 
 ### SecretTargetAttachment <a name="aws-cdk-lib.aws_secretsmanager.SecretTargetAttachment"></a>
 
-- *Implements:* [aws_cdk.aws_secretsmanager.ISecretTargetAttachment](#aws-cdk-lib.aws_secretsmanager.ISecretTargetAttachment), [aws_cdk.aws_secretsmanager.ISecret](#aws-cdk-lib.aws_secretsmanager.ISecret)
+- *Implements:* [`aws_cdk.aws_secretsmanager.ISecretTargetAttachment`](#aws-cdk-lib.aws_secretsmanager.ISecretTargetAttachment), [`aws_cdk.aws_secretsmanager.ISecret`](#aws-cdk-lib.aws_secretsmanager.ISecret)
 
 An attached secret.
 
