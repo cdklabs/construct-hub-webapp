@@ -21,6 +21,7 @@ export class ApiReference {
     const md = new Markdown({ header: { title: "API Reference" } });
     md.section(this.renderConstructs());
     md.section(this.renderStructs());
+    md.section(this.renderClasses());
     return md;
   }
 
@@ -38,8 +39,7 @@ export class ApiReference {
     }
 
     for (const construct of constructs) {
-      const klass = new Class(this.transpile, construct);
-      md.section(klass.markdown);
+      md.section(new Class(this.transpile, construct).markdown);
     }
 
     return md;
@@ -60,6 +60,27 @@ export class ApiReference {
 
     for (const struct of structs) {
       md.section(new Struct(this.transpile, struct).markdown);
+    }
+
+    return md;
+  }
+
+  private renderClasses(): Markdown {
+    const md = new Markdown({ header: { title: "Classes" } });
+
+    const classes = this.ts.classes
+      .filter((c) => !this.isConstruct(c))
+      .filter((c) =>
+        this.submodule ? this.insideSubmodule(c, this.submodule) : true
+      )
+      .sort((c1, c2) => c1.name.localeCompare(c2.name));
+
+    if (classes.length === 0) {
+      return Markdown.EMPTY;
+    }
+
+    for (const klass of classes) {
+      md.section(new Class(this.transpile, klass).markdown);
     }
 
     return md;

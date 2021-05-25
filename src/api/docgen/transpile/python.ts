@@ -124,7 +124,7 @@ export class PythonTranspile extends transpile.AbstractTranspile {
       `, \n${" ".repeat(3 + 1 + 1 + name.length)}`
     )})`;
 
-    const invocation = `${transpiledType.fqn}(${types.join(
+    const invocation = `${transpiledType.fqn}.${name}(${types.join(
       `, \n${" ".repeat(1 + transpiledType.fqn.length)}`
     )})`;
 
