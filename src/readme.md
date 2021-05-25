@@ -953,7 +953,7 @@ def secret_value_from_json(json_field: builtins.str)
 
 #### Functions <a name="Functions"></a>
 
-##### `fromSecretAttributes` <a name="fromSecretAttributes"></a>
+##### `from_secret_attributes` <a name="from_secret_attributes"></a>
 
 ```python
 import aws_cdk.aws_secretsmanager
@@ -1011,7 +1011,7 @@ Cannot be used with `secretArn` or `secretCompleteArn`.
 
 ---
 
-##### `fromSecretCompleteArn` <a name="fromSecretCompleteArn"></a>
+##### `from_secret_complete_arn` <a name="from_secret_complete_arn"></a>
 
 ```python
 import aws_cdk.aws_secretsmanager
@@ -1039,7 +1039,7 @@ aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct,
 
 ---
 
-##### `fromSecretNameV2` <a name="fromSecretNameV2"></a>
+##### `from_secret_name_v2` <a name="from_secret_name_v2"></a>
 
 ```python
 import aws_cdk.aws_secretsmanager
@@ -1067,7 +1067,7 @@ aws_cdk.aws_secretsmanager.Secret(scope: constructs.Construct,
 
 ---
 
-##### `fromSecretPartialArn` <a name="fromSecretPartialArn"></a>
+##### `from_secret_partial_arn` <a name="from_secret_partial_arn"></a>
 
 ```python
 import aws_cdk.aws_secretsmanager
@@ -1382,7 +1382,7 @@ def secret_value_from_json(json_field: builtins.str)
 
 #### Functions <a name="Functions"></a>
 
-##### `fromSecretTargetAttachmentSecretArn` <a name="fromSecretTargetAttachmentSecretArn"></a>
+##### `from_secret_target_attachment_secret_arn` <a name="from_secret_target_attachment_secret_arn"></a>
 
 ```python
 import aws_cdk.aws_secretsmanager
