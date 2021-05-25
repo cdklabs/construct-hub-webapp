@@ -29,6 +29,11 @@ export interface TranspiledProperty {
   readonly typeReference: TranspiledTypeReference;
 }
 
+export interface TranspiledEnum {
+  readonly name: string;
+  readonly members: string[];
+}
+
 export interface Transpile {
   language: string;
 
@@ -37,6 +42,8 @@ export interface Transpile {
   parameter(parameter: reflect.Parameter): TranspiledParameter;
 
   property(property: reflect.Property): TranspiledProperty;
+
+  enum(enu: reflect.EnumType): TranspiledEnum;
 
   type(type: reflect.Type): TranspiledType;
 
@@ -61,6 +68,10 @@ export interface Transpile {
 
 export abstract class AbstractTranspile implements Transpile {
   constructor(public readonly language: string) {}
+
+  public enum(_: reflect.EnumType): TranspiledEnum {
+    throw new Error("Method not implemented.");
+  }
 
   public property(_: reflect.Property): TranspiledProperty {
     throw new Error("Method not implemented.");

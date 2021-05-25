@@ -2,6 +2,7 @@ import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
 import { Class } from "../view/class";
+import { Enum } from "../view/enum";
 import { Struct } from "../view/struct";
 
 /**
@@ -22,6 +23,7 @@ export class ApiReference {
     md.section(this.renderConstructs());
     md.section(this.renderStructs());
     md.section(this.renderClasses());
+    md.section(this.renderEnums());
     return md;
   }
 
@@ -86,6 +88,26 @@ export class ApiReference {
     return md;
   }
 
+  private renderEnums(): Markdown {
+    const md = new Markdown({ header: { title: "Enums" } });
+
+    const enums = this.ts.enums
+      .filter((c) =>
+        this.submodule ? this.insideSubmodule(c, this.submodule) : true
+      )
+      .sort((c1, c2) => c1.name.localeCompare(c2.name));
+
+    if (enums.length === 0) {
+      return Markdown.EMPTY;
+    }
+
+    for (const enu of enums) {
+      md.section(new Enum(this.transpile, enu).markdown);
+    }
+
+    return md;
+  }
+
   private isConstruct(klass: reflect.ClassType): boolean {
     if (klass.fqn === "constructs.Construct") return true;
 
@@ -97,7 +119,7 @@ export class ApiReference {
   }
 
   private insideSubmodule(
-    type: reflect.ReferenceType,
+    type: reflect.Type,
     submodule: reflect.Submodule
   ): boolean {
     return type.fqn.includes(submodule.name);

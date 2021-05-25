@@ -1224,8 +1224,8 @@ Manages mapping between IAM users and roles to Kubernetes RBAC configuration.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.AwsAuth.<initializer>(scope: constructs..Construct,
-                        id: builtins.str,
+aws_cdk.aws_eks.AwsAuth(scope: constructs..Construct, 
+                        id: builtins.str, 
                         cluster: aws_cdk.aws_eks.Cluster)
 ```
 
@@ -1270,7 +1270,7 @@ account number.
 ##### `add_masters_role` <a name="add_masters_role"></a>
 
 ```python
-def add_masters_role(role: aws_cdk.aws_iam.IRole,
+def add_masters_role(role: aws_cdk.aws_iam.IRole, 
                      username: builtins.str = None)
 ```
 
@@ -1293,8 +1293,8 @@ Optional user (defaults to the role ARN).
 ##### `add_role_mapping` <a name="add_role_mapping"></a>
 
 ```python
-def add_role_mapping(role: aws_cdk.aws_iam.IRole,
-                     groups: typing.List[builtins.str],
+def add_role_mapping(role: aws_cdk.aws_iam.IRole, 
+                     groups: typing.List[builtins.str], 
                      username: builtins.str = None)
 ```
 
@@ -1328,8 +1328,8 @@ The user name within Kubernetes to map to the IAM role.
 ##### `add_user_mapping` <a name="add_user_mapping"></a>
 
 ```python
-def add_user_mapping(user: aws_cdk.aws_iam.IUser,
-                     groups: typing.List[builtins.str],
+def add_user_mapping(user: aws_cdk.aws_iam.IUser, 
+                     groups: typing.List[builtins.str], 
                      username: builtins.str = None)
 ```
 
@@ -1375,13 +1375,13 @@ A CloudFormation `AWS::EKS::Addon`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnAddon.<initializer>(scope: constructs..Construct,
-                         id: builtins.str,
-                         addon_name: builtins.str,
-                         cluster_name: builtins.str,
-                         addon_version: builtins.str = None,
-                         resolve_conflicts: builtins.str = None,
-                         service_account_role_arn: builtins.str = None,
+aws_cdk.aws_eks.CfnAddon(scope: constructs..Construct, 
+                         id: builtins.str, 
+                         addon_name: builtins.str, 
+                         cluster_name: builtins.str, 
+                         addon_version: builtins.str = None, 
+                         resolve_conflicts: builtins.str = None, 
+                         service_account_role_arn: builtins.str = None, 
                          tags: typing.List[aws_cdk..CfnTag] = None)
 ```
 
@@ -1501,13 +1501,13 @@ A CloudFormation `AWS::EKS::Cluster`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnCluster.<initializer>(scope: constructs..Construct,
-                           id: builtins.str,
-                           resources_vpc_config: typing.Union[aws_cdk.aws_eks.CfnCluster.ResourcesVpcConfigProperty, aws_cdk..IResolvable],
-                           role_arn: builtins.str,
-                           encryption_config: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnCluster.EncryptionConfigProperty, aws_cdk..IResolvable]]] = None,
-                           kubernetes_network_config: typing.Union[aws_cdk.aws_eks.CfnCluster.KubernetesNetworkConfigProperty, aws_cdk..IResolvable] = None,
-                           name: builtins.str = None,
+aws_cdk.aws_eks.CfnCluster(scope: constructs..Construct, 
+                           id: builtins.str, 
+                           resources_vpc_config: typing.Union[aws_cdk.aws_eks.CfnCluster.ResourcesVpcConfigProperty, aws_cdk..IResolvable], 
+                           role_arn: builtins.str, 
+                           encryption_config: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnCluster.EncryptionConfigProperty, aws_cdk..IResolvable]]] = None, 
+                           kubernetes_network_config: typing.Union[aws_cdk.aws_eks.CfnCluster.KubernetesNetworkConfigProperty, aws_cdk..IResolvable] = None, 
+                           name: builtins.str = None, 
                            version: builtins.str = None)
 ```
 
@@ -1627,13 +1627,13 @@ A CloudFormation `AWS::EKS::FargateProfile`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnFargateProfile.<initializer>(scope: constructs..Construct,
-                                  id: builtins.str,
-                                  cluster_name: builtins.str,
-                                  pod_execution_role_arn: builtins.str,
-                                  selectors: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnFargateProfile.SelectorProperty, aws_cdk..IResolvable]]],
-                                  fargate_profile_name: builtins.str = None,
-                                  subnets: typing.List[builtins.str] = None,
+aws_cdk.aws_eks.CfnFargateProfile(scope: constructs..Construct, 
+                                  id: builtins.str, 
+                                  cluster_name: builtins.str, 
+                                  pod_execution_role_arn: builtins.str, 
+                                  selectors: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnFargateProfile.SelectorProperty, aws_cdk..IResolvable]]], 
+                                  fargate_profile_name: builtins.str = None, 
+                                  subnets: typing.List[builtins.str] = None, 
                                   tags: typing.List[aws_cdk..CfnTag] = None)
 ```
 
@@ -1753,24 +1753,24 @@ A CloudFormation `AWS::EKS::Nodegroup`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup.<initializer>(scope: constructs..Construct,
-                             id: builtins.str,
-                             cluster_name: builtins.str,
-                             node_role: builtins.str,
-                             subnets: typing.List[builtins.str],
-                             ami_type: builtins.str = None,
-                             capacity_type: builtins.str = None,
-                             disk_size: typing.Union[int, float] = None,
-                             force_update_enabled: typing.Union[builtins.bool, aws_cdk..IResolvable] = None,
-                             instance_types: typing.List[builtins.str] = None,
-                             labels: typing.Any = None,
-                             launch_template: typing.Union[aws_cdk.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty, aws_cdk..IResolvable] = None,
-                             nodegroup_name: builtins.str = None,
-                             release_version: builtins.str = None,
-                             remote_access: typing.Union[aws_cdk.aws_eks.CfnNodegroup.RemoteAccessProperty, aws_cdk..IResolvable] = None,
-                             scaling_config: typing.Union[aws_cdk.aws_eks.CfnNodegroup.ScalingConfigProperty, aws_cdk..IResolvable] = None,
-                             tags: typing.Any = None,
-                             taints: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnNodegroup.TaintProperty, aws_cdk..IResolvable]]] = None,
+aws_cdk.aws_eks.CfnNodegroup(scope: constructs..Construct, 
+                             id: builtins.str, 
+                             cluster_name: builtins.str, 
+                             node_role: builtins.str, 
+                             subnets: typing.List[builtins.str], 
+                             ami_type: builtins.str = None, 
+                             capacity_type: builtins.str = None, 
+                             disk_size: typing.Union[int, float] = None, 
+                             force_update_enabled: typing.Union[builtins.bool, aws_cdk..IResolvable] = None, 
+                             instance_types: typing.List[builtins.str] = None, 
+                             labels: typing.Any = None, 
+                             launch_template: typing.Union[aws_cdk.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty, aws_cdk..IResolvable] = None, 
+                             nodegroup_name: builtins.str = None, 
+                             release_version: builtins.str = None, 
+                             remote_access: typing.Union[aws_cdk.aws_eks.CfnNodegroup.RemoteAccessProperty, aws_cdk..IResolvable] = None, 
+                             scaling_config: typing.Union[aws_cdk.aws_eks.CfnNodegroup.ScalingConfigProperty, aws_cdk..IResolvable] = None, 
+                             tags: typing.Any = None, 
+                             taints: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnNodegroup.TaintProperty, aws_cdk..IResolvable]]] = None, 
                              version: builtins.str = None)
 ```
 
@@ -2001,29 +2001,29 @@ The user is still required to create the worker nodes.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.Cluster.<initializer>(scope: constructs..Construct,
-                        id: builtins.str,
-                        version: aws_cdk.aws_eks.KubernetesVersion,
-                        cluster_name: builtins.str = None,
-                        output_cluster_name: builtins.bool = None,
-                        output_config_command: builtins.bool = None,
-                        role: aws_cdk.aws_iam.IRole = None,
-                        security_group: aws_cdk.aws_ec2.ISecurityGroup = None,
-                        vpc: aws_cdk.aws_ec2.IVpc = None,
-                        vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None,
-                        cluster_handler_environment: typing.Mapping[#builtins.str] = None,
-                        core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None,
-                        endpoint_access: aws_cdk.aws_eks.EndpointAccess = None,
-                        kubectl_environment: typing.Mapping[#builtins.str] = None,
-                        kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None,
-                        kubectl_memory: aws_cdk..Size = None,
-                        masters_role: aws_cdk.aws_iam.IRole = None,
-                        output_masters_role_arn: builtins.bool = None,
-                        place_cluster_handler_in_vpc: builtins.bool = None,
-                        prune: builtins.bool = None,
-                        secrets_encryption_key: aws_cdk.aws_kms.IKey = None,
-                        default_capacity: typing.Union[int, float] = None,
-                        default_capacity_instance: aws_cdk.aws_ec2.InstanceType = None,
+aws_cdk.aws_eks.Cluster(scope: constructs..Construct, 
+                        id: builtins.str, 
+                        version: aws_cdk.aws_eks.KubernetesVersion, 
+                        cluster_name: builtins.str = None, 
+                        output_cluster_name: builtins.bool = None, 
+                        output_config_command: builtins.bool = None, 
+                        role: aws_cdk.aws_iam.IRole = None, 
+                        security_group: aws_cdk.aws_ec2.ISecurityGroup = None, 
+                        vpc: aws_cdk.aws_ec2.IVpc = None, 
+                        vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None, 
+                        cluster_handler_environment: typing.Mapping[#builtins.str] = None, 
+                        core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None, 
+                        endpoint_access: aws_cdk.aws_eks.EndpointAccess = None, 
+                        kubectl_environment: typing.Mapping[#builtins.str] = None, 
+                        kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None, 
+                        kubectl_memory: aws_cdk..Size = None, 
+                        masters_role: aws_cdk.aws_iam.IRole = None, 
+                        output_masters_role_arn: builtins.bool = None, 
+                        place_cluster_handler_in_vpc: builtins.bool = None, 
+                        prune: builtins.bool = None, 
+                        secrets_encryption_key: aws_cdk.aws_kms.IKey = None, 
+                        default_capacity: typing.Union[int, float] = None, 
+                        default_capacity_instance: aws_cdk.aws_ec2.InstanceType = None, 
                         default_capacity_type: aws_cdk.aws_eks.DefaultCapacityType = None)
 ```
 
@@ -2298,32 +2298,32 @@ The default capacity type for the cluster.
 ##### `add_auto_scaling_group_capacity` <a name="add_auto_scaling_group_capacity"></a>
 
 ```python
-def add_auto_scaling_group_capacity(id: builtins.str,
-                                    allow_all_outbound: builtins.bool = None,
-                                    associate_public_ip_address: builtins.bool = None,
-                                    auto_scaling_group_name: builtins.str = None,
-                                    block_devices: typing.List[aws_cdk.aws_autoscaling.BlockDevice] = None,
-                                    cooldown: aws_cdk..Duration = None,
-                                    desired_capacity: typing.Union[int, float] = None,
-                                    group_metrics: typing.List[aws_cdk.aws_autoscaling.GroupMetrics] = None,
-                                    health_check: aws_cdk.aws_autoscaling.HealthCheck = None,
-                                    ignore_unmodified_size_properties: builtins.bool = None,
-                                    instance_monitoring: aws_cdk.aws_autoscaling.Monitoring = None,
-                                    key_name: builtins.str = None,
-                                    max_capacity: typing.Union[int, float] = None,
-                                    max_instance_lifetime: aws_cdk..Duration = None,
-                                    min_capacity: typing.Union[int, float] = None,
-                                    new_instances_protected_from_scale_in: builtins.bool = None,
-                                    notifications: typing.List[aws_cdk.aws_autoscaling.NotificationConfiguration] = None,
-                                    signals: aws_cdk.aws_autoscaling.Signals = None,
-                                    spot_price: builtins.str = None,
-                                    update_policy: aws_cdk.aws_autoscaling.UpdatePolicy = None,
-                                    vpc_subnets: aws_cdk.aws_ec2.SubnetSelection = None,
-                                    instance_type: aws_cdk.aws_ec2.InstanceType,
-                                    bootstrap_enabled: builtins.bool = None,
-                                    bootstrap_options: aws_cdk.aws_eks.BootstrapOptions = None,
-                                    machine_image_type: aws_cdk.aws_eks.MachineImageType = None,
-                                    map_role: builtins.bool = None,
+def add_auto_scaling_group_capacity(id: builtins.str, 
+                                    allow_all_outbound: builtins.bool = None, 
+                                    associate_public_ip_address: builtins.bool = None, 
+                                    auto_scaling_group_name: builtins.str = None, 
+                                    block_devices: typing.List[aws_cdk.aws_autoscaling.BlockDevice] = None, 
+                                    cooldown: aws_cdk..Duration = None, 
+                                    desired_capacity: typing.Union[int, float] = None, 
+                                    group_metrics: typing.List[aws_cdk.aws_autoscaling.GroupMetrics] = None, 
+                                    health_check: aws_cdk.aws_autoscaling.HealthCheck = None, 
+                                    ignore_unmodified_size_properties: builtins.bool = None, 
+                                    instance_monitoring: aws_cdk.aws_autoscaling.Monitoring = None, 
+                                    key_name: builtins.str = None, 
+                                    max_capacity: typing.Union[int, float] = None, 
+                                    max_instance_lifetime: aws_cdk..Duration = None, 
+                                    min_capacity: typing.Union[int, float] = None, 
+                                    new_instances_protected_from_scale_in: builtins.bool = None, 
+                                    notifications: typing.List[aws_cdk.aws_autoscaling.NotificationConfiguration] = None, 
+                                    signals: aws_cdk.aws_autoscaling.Signals = None, 
+                                    spot_price: builtins.str = None, 
+                                    update_policy: aws_cdk.aws_autoscaling.UpdatePolicy = None, 
+                                    vpc_subnets: aws_cdk.aws_ec2.SubnetSelection = None, 
+                                    instance_type: aws_cdk.aws_ec2.InstanceType, 
+                                    bootstrap_enabled: builtins.bool = None, 
+                                    bootstrap_options: aws_cdk.aws_eks.BootstrapOptions = None, 
+                                    machine_image_type: aws_cdk.aws_eks.MachineImageType = None, 
+                                    map_role: builtins.bool = None, 
                                     spot_interrupt_handler: builtins.bool = None)
 ```
 
@@ -2649,7 +2649,7 @@ Only relevant if `spotPrice` is used.
 ##### `add_cdk8s_chart` <a name="add_cdk8s_chart"></a>
 
 ```python
-def add_cdk8s_chart(id: builtins.str,
+def add_cdk8s_chart(id: builtins.str, 
                     chart: constructs..Construct)
 ```
 
@@ -2672,11 +2672,11 @@ the cdk8s chart.
 ##### `add_fargate_profile` <a name="add_fargate_profile"></a>
 
 ```python
-def add_fargate_profile(id: builtins.str,
-                        selectors: typing.List[aws_cdk.aws_eks.Selector],
-                        fargate_profile_name: builtins.str = None,
-                        pod_execution_role: aws_cdk.aws_iam.IRole = None,
-                        subnet_selection: aws_cdk.aws_ec2.SubnetSelection = None,
+def add_fargate_profile(id: builtins.str, 
+                        selectors: typing.List[aws_cdk.aws_eks.Selector], 
+                        fargate_profile_name: builtins.str = None, 
+                        pod_execution_role: aws_cdk.aws_iam.IRole = None, 
+                        subnet_selection: aws_cdk.aws_ec2.SubnetSelection = None, 
                         vpc: aws_cdk.aws_ec2.IVpc = None)
 ```
 
@@ -2754,15 +2754,15 @@ By default, all private subnets are selected. You can customize this using
 ##### `add_helm_chart` <a name="add_helm_chart"></a>
 
 ```python
-def add_helm_chart(id: builtins.str,
-                   chart: builtins.str,
-                   create_namespace: builtins.bool = None,
-                   namespace: builtins.str = None,
-                   release: builtins.str = None,
-                   repository: builtins.str = None,
-                   timeout: aws_cdk..Duration = None,
-                   values: typing.Mapping[#typing.Any] = None,
-                   version: builtins.str = None,
+def add_helm_chart(id: builtins.str, 
+                   chart: builtins.str, 
+                   create_namespace: builtins.bool = None, 
+                   namespace: builtins.str = None, 
+                   release: builtins.str = None, 
+                   repository: builtins.str = None, 
+                   timeout: aws_cdk..Duration = None, 
+                   values: typing.Mapping[#typing.Any] = None, 
+                   version: builtins.str = None, 
                    wait: builtins.bool = None)
 ```
 
@@ -2861,7 +2861,7 @@ Whether or not Helm should wait until all Pods, PVCs, Services, and minimum numb
 ##### `add_manifest` <a name="add_manifest"></a>
 
 ```python
-def add_manifest(id: builtins.str,
+def add_manifest(id: builtins.str, 
                  manifest: typing.Mapping[#typing.Any])
 ```
 
@@ -2884,22 +2884,22 @@ a list of Kubernetes resource specifications.
 ##### `add_nodegroup_capacity` <a name="add_nodegroup_capacity"></a>
 
 ```python
-def add_nodegroup_capacity(id: builtins.str,
-                           ami_type: aws_cdk.aws_eks.NodegroupAmiType = None,
-                           capacity_type: aws_cdk.aws_eks.CapacityType = None,
-                           desired_size: typing.Union[int, float] = None,
-                           disk_size: typing.Union[int, float] = None,
-                           force_update: builtins.bool = None,
-                           instance_types: typing.List[aws_cdk.aws_ec2.InstanceType] = None,
-                           labels: typing.Mapping[#builtins.str] = None,
-                           launch_template_spec: aws_cdk.aws_eks.LaunchTemplateSpec = None,
-                           max_size: typing.Union[int, float] = None,
-                           min_size: typing.Union[int, float] = None,
-                           nodegroup_name: builtins.str = None,
-                           node_role: aws_cdk.aws_iam.IRole = None,
-                           release_version: builtins.str = None,
-                           remote_access: aws_cdk.aws_eks.NodegroupRemoteAccess = None,
-                           subnets: aws_cdk.aws_ec2.SubnetSelection = None,
+def add_nodegroup_capacity(id: builtins.str, 
+                           ami_type: aws_cdk.aws_eks.NodegroupAmiType = None, 
+                           capacity_type: aws_cdk.aws_eks.CapacityType = None, 
+                           desired_size: typing.Union[int, float] = None, 
+                           disk_size: typing.Union[int, float] = None, 
+                           force_update: builtins.bool = None, 
+                           instance_types: typing.List[aws_cdk.aws_ec2.InstanceType] = None, 
+                           labels: typing.Mapping[#builtins.str] = None, 
+                           launch_template_spec: aws_cdk.aws_eks.LaunchTemplateSpec = None, 
+                           max_size: typing.Union[int, float] = None, 
+                           min_size: typing.Union[int, float] = None, 
+                           nodegroup_name: builtins.str = None, 
+                           node_role: aws_cdk.aws_iam.IRole = None, 
+                           release_version: builtins.str = None, 
+                           remote_access: aws_cdk.aws_eks.NodegroupRemoteAccess = None, 
+                           subnets: aws_cdk.aws_ec2.SubnetSelection = None, 
                            tags: typing.Mapping[#builtins.str] = None)
 ```
 
@@ -3091,8 +3091,8 @@ associated with the node group, such as the Amazon EC2 instances or subnets.
 ##### `add_service_account` <a name="add_service_account"></a>
 
 ```python
-def add_service_account(id: builtins.str,
-                        name: builtins.str = None,
+def add_service_account(id: builtins.str, 
+                        name: builtins.str = None, 
                         namespace: builtins.str = None)
 ```
 
@@ -3123,11 +3123,11 @@ The namespace of the service account.
 ##### `connect_auto_scaling_group_capacity` <a name="connect_auto_scaling_group_capacity"></a>
 
 ```python
-def connect_auto_scaling_group_capacity(auto_scaling_group: aws_cdk.aws_autoscaling.AutoScalingGroup,
-                                        bootstrap_enabled: builtins.bool = None,
-                                        bootstrap_options: aws_cdk.aws_eks.BootstrapOptions = None,
-                                        machine_image_type: aws_cdk.aws_eks.MachineImageType = None,
-                                        map_role: builtins.bool = None,
+def connect_auto_scaling_group_capacity(auto_scaling_group: aws_cdk.aws_autoscaling.AutoScalingGroup, 
+                                        bootstrap_enabled: builtins.bool = None, 
+                                        bootstrap_options: aws_cdk.aws_eks.BootstrapOptions = None, 
+                                        machine_image_type: aws_cdk.aws_eks.MachineImageType = None, 
+                                        map_role: builtins.bool = None, 
                                         spot_interrupt_handler: builtins.bool = None)
 ```
 
@@ -3194,8 +3194,8 @@ Only relevant if `spotPrice` is configured on the auto-scaling group.
 ##### `get_service_load_balancer_address` <a name="get_service_load_balancer_address"></a>
 
 ```python
-def get_service_load_balancer_address(service_name: builtins.str,
-                                      namespace: builtins.str = None,
+def get_service_load_balancer_address(service_name: builtins.str, 
+                                      namespace: builtins.str = None, 
                                       timeout: aws_cdk..Duration = None)
 ```
 
@@ -3232,22 +3232,22 @@ Timeout for waiting on the load balancer address.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.Cluster.from_cluster_attributes(scope: constructs..Construct,
-                        id: builtins.str,
-                        cluster_name: builtins.str,
-                        cluster_certificate_authority_data: builtins.str = None,
-                        cluster_encryption_config_key_arn: builtins.str = None,
-                        cluster_endpoint: builtins.str = None,
-                        cluster_security_group_id: builtins.str = None,
-                        kubectl_environment: typing.Mapping[#builtins.str] = None,
-                        kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None,
-                        kubectl_memory: aws_cdk..Size = None,
-                        kubectl_private_subnet_ids: typing.List[builtins.str] = None,
-                        kubectl_role_arn: builtins.str = None,
-                        kubectl_security_group_id: builtins.str = None,
-                        open_id_connect_provider: aws_cdk.aws_iam.IOpenIdConnectProvider = None,
-                        prune: builtins.bool = None,
-                        security_group_ids: typing.List[builtins.str] = None,
+aws_cdk.aws_eks.Clusterfrom_cluster_attributes(scope: constructs..Construct, 
+                        id: builtins.str, 
+                        cluster_name: builtins.str, 
+                        cluster_certificate_authority_data: builtins.str = None, 
+                        cluster_encryption_config_key_arn: builtins.str = None, 
+                        cluster_endpoint: builtins.str = None, 
+                        cluster_security_group_id: builtins.str = None, 
+                        kubectl_environment: typing.Mapping[#builtins.str] = None, 
+                        kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None, 
+                        kubectl_memory: aws_cdk..Size = None, 
+                        kubectl_private_subnet_ids: typing.List[builtins.str] = None, 
+                        kubectl_role_arn: builtins.str = None, 
+                        kubectl_security_group_id: builtins.str = None, 
+                        open_id_connect_provider: aws_cdk.aws_iam.IOpenIdConnectProvider = None, 
+                        prune: builtins.bool = None, 
+                        security_group_ids: typing.List[builtins.str] = None, 
                         vpc: aws_cdk.aws_ec2.IVpc = None)
 ```
 
@@ -3442,27 +3442,27 @@ The cluster is created with a default Fargate Profile that matches the
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.FargateCluster.<initializer>(scope: constructs..Construct,
-                               id: builtins.str,
-                               version: aws_cdk.aws_eks.KubernetesVersion,
-                               cluster_name: builtins.str = None,
-                               output_cluster_name: builtins.bool = None,
-                               output_config_command: builtins.bool = None,
-                               role: aws_cdk.aws_iam.IRole = None,
-                               security_group: aws_cdk.aws_ec2.ISecurityGroup = None,
-                               vpc: aws_cdk.aws_ec2.IVpc = None,
-                               vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None,
-                               cluster_handler_environment: typing.Mapping[#builtins.str] = None,
-                               core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None,
-                               endpoint_access: aws_cdk.aws_eks.EndpointAccess = None,
-                               kubectl_environment: typing.Mapping[#builtins.str] = None,
-                               kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None,
-                               kubectl_memory: aws_cdk..Size = None,
-                               masters_role: aws_cdk.aws_iam.IRole = None,
-                               output_masters_role_arn: builtins.bool = None,
-                               place_cluster_handler_in_vpc: builtins.bool = None,
-                               prune: builtins.bool = None,
-                               secrets_encryption_key: aws_cdk.aws_kms.IKey = None,
+aws_cdk.aws_eks.FargateCluster(scope: constructs..Construct, 
+                               id: builtins.str, 
+                               version: aws_cdk.aws_eks.KubernetesVersion, 
+                               cluster_name: builtins.str = None, 
+                               output_cluster_name: builtins.bool = None, 
+                               output_config_command: builtins.bool = None, 
+                               role: aws_cdk.aws_iam.IRole = None, 
+                               security_group: aws_cdk.aws_ec2.ISecurityGroup = None, 
+                               vpc: aws_cdk.aws_ec2.IVpc = None, 
+                               vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None, 
+                               cluster_handler_environment: typing.Mapping[#builtins.str] = None, 
+                               core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None, 
+                               endpoint_access: aws_cdk.aws_eks.EndpointAccess = None, 
+                               kubectl_environment: typing.Mapping[#builtins.str] = None, 
+                               kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None, 
+                               kubectl_memory: aws_cdk..Size = None, 
+                               masters_role: aws_cdk.aws_iam.IRole = None, 
+                               output_masters_role_arn: builtins.bool = None, 
+                               place_cluster_handler_in_vpc: builtins.bool = None, 
+                               prune: builtins.bool = None, 
+                               secrets_encryption_key: aws_cdk.aws_kms.IKey = None, 
                                default_profile: aws_cdk.aws_eks.FargateProfileOptions = None)
 ```
 
@@ -3733,13 +3733,13 @@ match a selector in that profile in order to be scheduled onto Fargate.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.FargateProfile.<initializer>(scope: constructs..Construct,
-                               id: builtins.str,
-                               selectors: typing.List[aws_cdk.aws_eks.Selector],
-                               fargate_profile_name: builtins.str = None,
-                               pod_execution_role: aws_cdk.aws_iam.IRole = None,
-                               subnet_selection: aws_cdk.aws_ec2.SubnetSelection = None,
-                               vpc: aws_cdk.aws_ec2.IVpc = None,
+aws_cdk.aws_eks.FargateProfile(scope: constructs..Construct, 
+                               id: builtins.str, 
+                               selectors: typing.List[aws_cdk.aws_eks.Selector], 
+                               fargate_profile_name: builtins.str = None, 
+                               pod_execution_role: aws_cdk.aws_iam.IRole = None, 
+                               subnet_selection: aws_cdk.aws_ec2.SubnetSelection = None, 
+                               vpc: aws_cdk.aws_ec2.IVpc = None, 
                                cluster: aws_cdk.aws_eks.Cluster)
 ```
 
@@ -3842,17 +3842,17 @@ Applies/deletes the resources using `kubectl` in sync with the resource.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.HelmChart.<initializer>(scope: constructs..Construct,
-                          id: builtins.str,
-                          chart: builtins.str,
-                          create_namespace: builtins.bool = None,
-                          namespace: builtins.str = None,
-                          release: builtins.str = None,
-                          repository: builtins.str = None,
-                          timeout: aws_cdk..Duration = None,
-                          values: typing.Mapping[#typing.Any] = None,
-                          version: builtins.str = None,
-                          wait: builtins.bool = None,
+aws_cdk.aws_eks.HelmChart(scope: constructs..Construct, 
+                          id: builtins.str, 
+                          chart: builtins.str, 
+                          create_namespace: builtins.bool = None, 
+                          namespace: builtins.str = None, 
+                          release: builtins.str = None, 
+                          repository: builtins.str = None, 
+                          timeout: aws_cdk..Duration = None, 
+                          values: typing.Mapping[#typing.Any] = None, 
+                          version: builtins.str = None, 
+                          wait: builtins.bool = None, 
                           cluster: aws_cdk.aws_eks.ICluster)
 ```
 
@@ -3988,12 +3988,12 @@ Applies/deletes the manifest using `kubectl`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.KubernetesManifest.<initializer>(scope: constructs..Construct,
-                                   id: builtins.str,
-                                   prune: builtins.bool = None,
-                                   skip_validation: builtins.bool = None,
-                                   cluster: aws_cdk.aws_eks.ICluster,
-                                   manifest: typing.List[typing.Mapping[#typing.Any]],
+aws_cdk.aws_eks.KubernetesManifest(scope: constructs..Construct, 
+                                   id: builtins.str, 
+                                   prune: builtins.bool = None, 
+                                   skip_validation: builtins.bool = None, 
+                                   cluster: aws_cdk.aws_eks.ICluster, 
+                                   manifest: typing.List[typing.Mapping[#typing.Any]], 
                                    overwrite: builtins.bool = None)
 ```
 
@@ -4104,13 +4104,13 @@ Use this to fetch any information available by the `kubectl get` command.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.KubernetesObjectValue.<initializer>(scope: constructs..Construct,
-                                      id: builtins.str,
-                                      cluster: aws_cdk.aws_eks.ICluster,
-                                      json_path: builtins.str,
-                                      object_name: builtins.str,
-                                      object_type: builtins.str,
-                                      object_namespace: builtins.str = None,
+aws_cdk.aws_eks.KubernetesObjectValue(scope: constructs..Construct, 
+                                      id: builtins.str, 
+                                      cluster: aws_cdk.aws_eks.ICluster, 
+                                      json_path: builtins.str, 
+                                      object_name: builtins.str, 
+                                      object_type: builtins.str, 
+                                      object_namespace: builtins.str = None, 
                                       timeout: aws_cdk..Duration = None)
 ```
 
@@ -4205,13 +4205,13 @@ A CloudFormation resource which applies/restores a JSON patch into a Kubernetes 
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.KubernetesPatch.<initializer>(scope: constructs..Construct,
-                                id: builtins.str,
-                                apply_patch: typing.Mapping[#typing.Any],
-                                cluster: aws_cdk.aws_eks.ICluster,
-                                resource_name: builtins.str,
-                                restore_patch: typing.Mapping[#typing.Any],
-                                patch_type: aws_cdk.aws_eks.PatchType = None,
+aws_cdk.aws_eks.KubernetesPatch(scope: constructs..Construct, 
+                                id: builtins.str, 
+                                apply_patch: typing.Mapping[#typing.Any], 
+                                cluster: aws_cdk.aws_eks.ICluster, 
+                                resource_name: builtins.str, 
+                                restore_patch: typing.Mapping[#typing.Any], 
+                                patch_type: aws_cdk.aws_eks.PatchType = None, 
                                 resource_namespace: builtins.str = None)
 ```
 
@@ -4295,24 +4295,24 @@ The Nodegroup resource class.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.Nodegroup.<initializer>(scope: constructs..Construct,
-                          id: builtins.str,
-                          ami_type: aws_cdk.aws_eks.NodegroupAmiType = None,
-                          capacity_type: aws_cdk.aws_eks.CapacityType = None,
-                          desired_size: typing.Union[int, float] = None,
-                          disk_size: typing.Union[int, float] = None,
-                          force_update: builtins.bool = None,
-                          instance_types: typing.List[aws_cdk.aws_ec2.InstanceType] = None,
-                          labels: typing.Mapping[#builtins.str] = None,
-                          launch_template_spec: aws_cdk.aws_eks.LaunchTemplateSpec = None,
-                          max_size: typing.Union[int, float] = None,
-                          min_size: typing.Union[int, float] = None,
-                          nodegroup_name: builtins.str = None,
-                          node_role: aws_cdk.aws_iam.IRole = None,
-                          release_version: builtins.str = None,
-                          remote_access: aws_cdk.aws_eks.NodegroupRemoteAccess = None,
-                          subnets: aws_cdk.aws_ec2.SubnetSelection = None,
-                          tags: typing.Mapping[#builtins.str] = None,
+aws_cdk.aws_eks.Nodegroup(scope: constructs..Construct, 
+                          id: builtins.str, 
+                          ami_type: aws_cdk.aws_eks.NodegroupAmiType = None, 
+                          capacity_type: aws_cdk.aws_eks.CapacityType = None, 
+                          desired_size: typing.Union[int, float] = None, 
+                          disk_size: typing.Union[int, float] = None, 
+                          force_update: builtins.bool = None, 
+                          instance_types: typing.List[aws_cdk.aws_ec2.InstanceType] = None, 
+                          labels: typing.Mapping[#builtins.str] = None, 
+                          launch_template_spec: aws_cdk.aws_eks.LaunchTemplateSpec = None, 
+                          max_size: typing.Union[int, float] = None, 
+                          min_size: typing.Union[int, float] = None, 
+                          nodegroup_name: builtins.str = None, 
+                          node_role: aws_cdk.aws_iam.IRole = None, 
+                          release_version: builtins.str = None, 
+                          remote_access: aws_cdk.aws_eks.NodegroupRemoteAccess = None, 
+                          subnets: aws_cdk.aws_ec2.SubnetSelection = None, 
+                          tags: typing.Mapping[#builtins.str] = None, 
                           cluster: aws_cdk.aws_eks.ICluster)
 ```
 
@@ -4521,8 +4521,8 @@ Cluster resource.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.Nodegroup.from_nodegroup_name(scope: constructs..Construct,
-                          id: builtins.str,
+aws_cdk.aws_eks.Nodegroupfrom_nodegroup_name(scope: constructs..Construct, 
+                          id: builtins.str, 
                           nodegroup_name: builtins.str)
 ```
 
@@ -4563,8 +4563,8 @@ that will be compatible with the eks cluster
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.OpenIdConnectProvider.<initializer>(scope: constructs..Construct,
-                                      id: builtins.str,
+aws_cdk.aws_eks.OpenIdConnectProvider(scope: constructs..Construct, 
+                                      id: builtins.str, 
                                       url: builtins.str)
 ```
 
@@ -4615,10 +4615,10 @@ Service Account.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.ServiceAccount.<initializer>(scope: constructs..Construct,
-                               id: builtins.str,
-                               name: builtins.str = None,
-                               namespace: builtins.str = None,
+aws_cdk.aws_eks.ServiceAccount(scope: constructs..Construct, 
+                               id: builtins.str, 
+                               name: builtins.str = None, 
+                               namespace: builtins.str = None, 
                                cluster: aws_cdk.aws_eks.ICluster)
 ```
 
@@ -4687,42 +4687,42 @@ Options for adding worker nodes.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.AutoScalingGroupCapacityOptions.<initializer>(min_capacity: typing.Union[int, float] = None,
-                                                allow_all_outbound: builtins.bool = None,
-                                                auto_scaling_group_name: builtins.str = None,
-                                                block_devices: typing.List[aws_cdk.aws_autoscaling.BlockDevice] = None,
-                                                cooldown: aws_cdk..Duration = None,
-                                                desired_capacity: typing.Union[int, float] = None,
-                                                group_metrics: typing.List[aws_cdk.aws_autoscaling.GroupMetrics] = None,
-                                                health_check: aws_cdk.aws_autoscaling.HealthCheck = None,
-                                                ignore_unmodified_size_properties: builtins.bool = None,
-                                                instance_monitoring: aws_cdk.aws_autoscaling.Monitoring = None,
-                                                key_name: builtins.str = None,
-                                                max_capacity: typing.Union[int, float] = None,
-                                                max_instance_lifetime: aws_cdk..Duration = None,
-                                                associate_public_ip_address: builtins.bool = None,
-                                                new_instances_protected_from_scale_in: builtins.bool = None,
-                                                notifications: typing.List[aws_cdk.aws_autoscaling.NotificationConfiguration] = None,
-                                                signals: aws_cdk.aws_autoscaling.Signals = None,
-                                                spot_price: builtins.str = None,
-                                                update_policy: aws_cdk.aws_autoscaling.UpdatePolicy = None,
-                                                availability_zones: typing.List[builtins.str] = None,
-                                                one_per_az: builtins.bool = None,
-                                                subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None,
-                                                subnet_group_name: builtins.str = None,
-                                                subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None,
-                                                subnet_type: aws_cdk.aws_ec2.SubnetType = None,
-                                                instance_type: aws_cdk.aws_ec2.InstanceType,
-                                                bootstrap_enabled: builtins.bool = None,
-                                                additional_args: builtins.str = None,
-                                                aws_api_retry_attempts: typing.Union[int, float] = None,
-                                                dns_cluster_ip: builtins.str = None,
-                                                docker_config_json: builtins.str = None,
-                                                enable_docker_bridge: builtins.bool = None,
-                                                kubelet_extra_args: builtins.str = None,
-                                                use_max_pods: builtins.bool = None,
-                                                machine_image_type: aws_cdk.aws_eks.MachineImageType = None,
-                                                map_role: builtins.bool = None,
+aws_cdk.aws_eks.AutoScalingGroupCapacityOptions(min_capacity: typing.Union[int, float] = None, 
+                                                allow_all_outbound: builtins.bool = None, 
+                                                auto_scaling_group_name: builtins.str = None, 
+                                                block_devices: typing.List[aws_cdk.aws_autoscaling.BlockDevice] = None, 
+                                                cooldown: aws_cdk..Duration = None, 
+                                                desired_capacity: typing.Union[int, float] = None, 
+                                                group_metrics: typing.List[aws_cdk.aws_autoscaling.GroupMetrics] = None, 
+                                                health_check: aws_cdk.aws_autoscaling.HealthCheck = None, 
+                                                ignore_unmodified_size_properties: builtins.bool = None, 
+                                                instance_monitoring: aws_cdk.aws_autoscaling.Monitoring = None, 
+                                                key_name: builtins.str = None, 
+                                                max_capacity: typing.Union[int, float] = None, 
+                                                max_instance_lifetime: aws_cdk..Duration = None, 
+                                                associate_public_ip_address: builtins.bool = None, 
+                                                new_instances_protected_from_scale_in: builtins.bool = None, 
+                                                notifications: typing.List[aws_cdk.aws_autoscaling.NotificationConfiguration] = None, 
+                                                signals: aws_cdk.aws_autoscaling.Signals = None, 
+                                                spot_price: builtins.str = None, 
+                                                update_policy: aws_cdk.aws_autoscaling.UpdatePolicy = None, 
+                                                availability_zones: typing.List[builtins.str] = None, 
+                                                one_per_az: builtins.bool = None, 
+                                                subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None, 
+                                                subnet_group_name: builtins.str = None, 
+                                                subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None, 
+                                                subnet_type: aws_cdk.aws_ec2.SubnetType = None, 
+                                                instance_type: aws_cdk.aws_ec2.InstanceType, 
+                                                bootstrap_enabled: builtins.bool = None, 
+                                                additional_args: builtins.str = None, 
+                                                aws_api_retry_attempts: typing.Union[int, float] = None, 
+                                                dns_cluster_ip: builtins.str = None, 
+                                                docker_config_json: builtins.str = None, 
+                                                enable_docker_bridge: builtins.bool = None, 
+                                                kubelet_extra_args: builtins.str = None, 
+                                                use_max_pods: builtins.bool = None, 
+                                                machine_image_type: aws_cdk.aws_eks.MachineImageType = None, 
+                                                map_role: builtins.bool = None, 
                                                 spot_interrupt_handler: builtins.bool = None)
 ```
 
@@ -5171,16 +5171,16 @@ Options for adding an AutoScalingGroup as capacity.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.AutoScalingGroupOptions.<initializer>(bootstrap_enabled: builtins.bool = None,
-                                        additional_args: builtins.str = None,
-                                        aws_api_retry_attempts: typing.Union[int, float] = None,
-                                        dns_cluster_ip: builtins.str = None,
-                                        docker_config_json: builtins.str = None,
-                                        enable_docker_bridge: builtins.bool = None,
-                                        kubelet_extra_args: builtins.str = None,
-                                        use_max_pods: builtins.bool = None,
-                                        machine_image_type: aws_cdk.aws_eks.MachineImageType = None,
-                                        map_role: builtins.bool = None,
+aws_cdk.aws_eks.AutoScalingGroupOptions(bootstrap_enabled: builtins.bool = None, 
+                                        additional_args: builtins.str = None, 
+                                        aws_api_retry_attempts: typing.Union[int, float] = None, 
+                                        dns_cluster_ip: builtins.str = None, 
+                                        docker_config_json: builtins.str = None, 
+                                        enable_docker_bridge: builtins.bool = None, 
+                                        kubelet_extra_args: builtins.str = None, 
+                                        use_max_pods: builtins.bool = None, 
+                                        machine_image_type: aws_cdk.aws_eks.MachineImageType = None, 
+                                        map_role: builtins.bool = None, 
                                         spot_interrupt_handler: builtins.bool = None)
 ```
 
@@ -5304,7 +5304,7 @@ AwsAuth mapping.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.AwsAuthMapping.<initializer>(groups: typing.List[builtins.str],
+aws_cdk.aws_eks.AwsAuthMapping(groups: typing.List[builtins.str], 
                                username: builtins.str = None)
 ```
 
@@ -5336,7 +5336,7 @@ Configuration props for the AwsAuth construct.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.AwsAuthProps.<initializer>(cluster: aws_cdk.aws_eks.Cluster)
+aws_cdk.aws_eks.AwsAuthProps(cluster: aws_cdk.aws_eks.Cluster)
 ```
 
 ##### `cluster`<sup>Required</sup> <a name="cluster"></a>
@@ -5358,12 +5358,12 @@ EKS node bootstrapping options.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.BootstrapOptions.<initializer>(additional_args: builtins.str = None,
-                                 aws_api_retry_attempts: typing.Union[int, float] = None,
-                                 dns_cluster_ip: builtins.str = None,
-                                 docker_config_json: builtins.str = None,
-                                 enable_docker_bridge: builtins.bool = None,
-                                 kubelet_extra_args: builtins.str = None,
+aws_cdk.aws_eks.BootstrapOptions(additional_args: builtins.str = None, 
+                                 aws_api_retry_attempts: typing.Union[int, float] = None, 
+                                 dns_cluster_ip: builtins.str = None, 
+                                 docker_config_json: builtins.str = None, 
+                                 enable_docker_bridge: builtins.bool = None, 
+                                 kubelet_extra_args: builtins.str = None, 
                                  use_max_pods: builtins.bool = None)
 ```
 
@@ -5446,11 +5446,11 @@ Properties for defining a `AWS::EKS::Addon`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnAddonProps.<initializer>(addon_name: builtins.str,
-                              cluster_name: builtins.str,
-                              addon_version: builtins.str = None,
-                              resolve_conflicts: builtins.str = None,
-                              service_account_role_arn: builtins.str = None,
+aws_cdk.aws_eks.CfnAddonProps(addon_name: builtins.str, 
+                              cluster_name: builtins.str, 
+                              addon_version: builtins.str = None, 
+                              resolve_conflicts: builtins.str = None, 
+                              service_account_role_arn: builtins.str = None, 
                               tags: typing.List[aws_cdk..CfnTag] = None)
 ```
 
@@ -5525,11 +5525,11 @@ Properties for defining a `AWS::EKS::Cluster`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnClusterProps.<initializer>(resources_vpc_config: typing.Union[aws_cdk.aws_eks.CfnCluster.ResourcesVpcConfigProperty, aws_cdk..IResolvable],
-                                role_arn: builtins.str,
-                                encryption_config: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnCluster.EncryptionConfigProperty, aws_cdk..IResolvable]]] = None,
-                                kubernetes_network_config: typing.Union[aws_cdk.aws_eks.CfnCluster.KubernetesNetworkConfigProperty, aws_cdk..IResolvable] = None,
-                                name: builtins.str = None,
+aws_cdk.aws_eks.CfnClusterProps(resources_vpc_config: typing.Union[aws_cdk.aws_eks.CfnCluster.ResourcesVpcConfigProperty, aws_cdk..IResolvable], 
+                                role_arn: builtins.str, 
+                                encryption_config: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnCluster.EncryptionConfigProperty, aws_cdk..IResolvable]]] = None, 
+                                kubernetes_network_config: typing.Union[aws_cdk.aws_eks.CfnCluster.KubernetesNetworkConfigProperty, aws_cdk..IResolvable] = None, 
+                                name: builtins.str = None, 
                                 version: builtins.str = None)
 ```
 
@@ -5604,11 +5604,11 @@ Properties for defining a `AWS::EKS::FargateProfile`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnFargateProfileProps.<initializer>(cluster_name: builtins.str,
-                                       pod_execution_role_arn: builtins.str,
-                                       selectors: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnFargateProfile.SelectorProperty, aws_cdk..IResolvable]]],
-                                       fargate_profile_name: builtins.str = None,
-                                       subnets: typing.List[builtins.str] = None,
+aws_cdk.aws_eks.CfnFargateProfileProps(cluster_name: builtins.str, 
+                                       pod_execution_role_arn: builtins.str, 
+                                       selectors: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnFargateProfile.SelectorProperty, aws_cdk..IResolvable]]], 
+                                       fargate_profile_name: builtins.str = None, 
+                                       subnets: typing.List[builtins.str] = None, 
                                        tags: typing.List[aws_cdk..CfnTag] = None)
 ```
 
@@ -5683,22 +5683,22 @@ Properties for defining a `AWS::EKS::Nodegroup`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnNodegroupProps.<initializer>(labels: typing.Any = None,
-                                  cluster_name: builtins.str,
-                                  subnets: typing.List[builtins.str],
-                                  node_role: builtins.str,
-                                  nodegroup_name: builtins.str = None,
-                                  capacity_type: builtins.str = None,
-                                  force_update_enabled: typing.Union[builtins.bool, aws_cdk..IResolvable] = None,
-                                  instance_types: typing.List[builtins.str] = None,
-                                  ami_type: builtins.str = None,
-                                  launch_template: typing.Union[aws_cdk.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty, aws_cdk..IResolvable] = None,
-                                  disk_size: typing.Union[int, float] = None,
-                                  release_version: builtins.str = None,
-                                  remote_access: typing.Union[aws_cdk.aws_eks.CfnNodegroup.RemoteAccessProperty, aws_cdk..IResolvable] = None,
-                                  scaling_config: typing.Union[aws_cdk.aws_eks.CfnNodegroup.ScalingConfigProperty, aws_cdk..IResolvable] = None,
-                                  tags: typing.Any = None,
-                                  taints: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnNodegroup.TaintProperty, aws_cdk..IResolvable]]] = None,
+aws_cdk.aws_eks.CfnNodegroupProps(labels: typing.Any = None, 
+                                  cluster_name: builtins.str, 
+                                  subnets: typing.List[builtins.str], 
+                                  node_role: builtins.str, 
+                                  nodegroup_name: builtins.str = None, 
+                                  capacity_type: builtins.str = None, 
+                                  force_update_enabled: typing.Union[builtins.bool, aws_cdk..IResolvable] = None, 
+                                  instance_types: typing.List[builtins.str] = None, 
+                                  ami_type: builtins.str = None, 
+                                  launch_template: typing.Union[aws_cdk.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty, aws_cdk..IResolvable] = None, 
+                                  disk_size: typing.Union[int, float] = None, 
+                                  release_version: builtins.str = None, 
+                                  remote_access: typing.Union[aws_cdk.aws_eks.CfnNodegroup.RemoteAccessProperty, aws_cdk..IResolvable] = None, 
+                                  scaling_config: typing.Union[aws_cdk.aws_eks.CfnNodegroup.ScalingConfigProperty, aws_cdk..IResolvable] = None, 
+                                  tags: typing.Any = None, 
+                                  taints: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnNodegroup.TaintProperty, aws_cdk..IResolvable]]] = None, 
                                   version: builtins.str = None)
 ```
 
@@ -5881,20 +5881,20 @@ Attributes for EKS clusters.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.ClusterAttributes.<initializer>(kubectl_memory: aws_cdk..Size = None,
-                                  cluster_name: builtins.str,
-                                  kubectl_private_subnet_ids: typing.List[builtins.str] = None,
-                                  cluster_encryption_config_key_arn: builtins.str = None,
-                                  cluster_security_group_id: builtins.str = None,
-                                  kubectl_environment: typing.Mapping[#builtins.str] = None,
-                                  kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None,
-                                  cluster_certificate_authority_data: builtins.str = None,
-                                  cluster_endpoint: builtins.str = None,
-                                  kubectl_role_arn: builtins.str = None,
-                                  kubectl_security_group_id: builtins.str = None,
-                                  open_id_connect_provider: aws_cdk.aws_iam.IOpenIdConnectProvider = None,
-                                  prune: builtins.bool = None,
-                                  security_group_ids: typing.List[builtins.str] = None,
+aws_cdk.aws_eks.ClusterAttributes(kubectl_memory: aws_cdk..Size = None, 
+                                  cluster_name: builtins.str, 
+                                  kubectl_private_subnet_ids: typing.List[builtins.str] = None, 
+                                  cluster_encryption_config_key_arn: builtins.str = None, 
+                                  cluster_security_group_id: builtins.str = None, 
+                                  kubectl_environment: typing.Mapping[#builtins.str] = None, 
+                                  kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None, 
+                                  cluster_certificate_authority_data: builtins.str = None, 
+                                  cluster_endpoint: builtins.str = None, 
+                                  kubectl_role_arn: builtins.str = None, 
+                                  kubectl_security_group_id: builtins.str = None, 
+                                  open_id_connect_provider: aws_cdk.aws_iam.IOpenIdConnectProvider = None, 
+                                  prune: builtins.bool = None, 
+                                  security_group_ids: typing.List[builtins.str] = None, 
                                   vpc: aws_cdk.aws_ec2.IVpc = None)
 ```
 
@@ -6068,24 +6068,24 @@ Options for EKS clusters.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.ClusterOptions.<initializer>(core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None,
-                               version: aws_cdk.aws_eks.KubernetesVersion,
-                               endpoint_access: aws_cdk.aws_eks.EndpointAccess = None,
-                               output_cluster_name: builtins.bool = None,
-                               role: aws_cdk.aws_iam.IRole = None,
-                               security_group: aws_cdk.aws_ec2.ISecurityGroup = None,
-                               vpc: aws_cdk.aws_ec2.IVpc = None,
-                               vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None,
-                               cluster_handler_environment: typing.Mapping[#builtins.str] = None,
-                               cluster_name: builtins.str = None,
-                               output_config_command: builtins.bool = None,
-                               kubectl_environment: typing.Mapping[#builtins.str] = None,
-                               kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None,
-                               kubectl_memory: aws_cdk..Size = None,
-                               masters_role: aws_cdk.aws_iam.IRole = None,
-                               output_masters_role_arn: builtins.bool = None,
-                               place_cluster_handler_in_vpc: builtins.bool = None,
-                               prune: builtins.bool = None,
+aws_cdk.aws_eks.ClusterOptions(core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None, 
+                               version: aws_cdk.aws_eks.KubernetesVersion, 
+                               endpoint_access: aws_cdk.aws_eks.EndpointAccess = None, 
+                               output_cluster_name: builtins.bool = None, 
+                               role: aws_cdk.aws_iam.IRole = None, 
+                               security_group: aws_cdk.aws_ec2.ISecurityGroup = None, 
+                               vpc: aws_cdk.aws_ec2.IVpc = None, 
+                               vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None, 
+                               cluster_handler_environment: typing.Mapping[#builtins.str] = None, 
+                               cluster_name: builtins.str = None, 
+                               output_config_command: builtins.bool = None, 
+                               kubectl_environment: typing.Mapping[#builtins.str] = None, 
+                               kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None, 
+                               kubectl_memory: aws_cdk..Size = None, 
+                               masters_role: aws_cdk.aws_iam.IRole = None, 
+                               output_masters_role_arn: builtins.bool = None, 
+                               place_cluster_handler_in_vpc: builtins.bool = None, 
+                               prune: builtins.bool = None, 
                                secrets_encryption_key: aws_cdk.aws_kms.IKey = None)
 ```
 
@@ -6312,27 +6312,27 @@ Common configuration props for EKS clusters.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.ClusterProps.<initializer>(kubectl_environment: typing.Mapping[#builtins.str] = None,
-                             version: aws_cdk.aws_eks.KubernetesVersion,
-                             kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None,
-                             output_cluster_name: builtins.bool = None,
-                             role: aws_cdk.aws_iam.IRole = None,
-                             security_group: aws_cdk.aws_ec2.ISecurityGroup = None,
-                             vpc: aws_cdk.aws_ec2.IVpc = None,
-                             vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None,
-                             cluster_handler_environment: typing.Mapping[#builtins.str] = None,
-                             core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None,
-                             endpoint_access: aws_cdk.aws_eks.EndpointAccess = None,
-                             cluster_name: builtins.str = None,
-                             output_config_command: builtins.bool = None,
-                             kubectl_memory: aws_cdk..Size = None,
-                             masters_role: aws_cdk.aws_iam.IRole = None,
-                             output_masters_role_arn: builtins.bool = None,
-                             place_cluster_handler_in_vpc: builtins.bool = None,
-                             prune: builtins.bool = None,
-                             secrets_encryption_key: aws_cdk.aws_kms.IKey = None,
-                             default_capacity: typing.Union[int, float] = None,
-                             default_capacity_instance: aws_cdk.aws_ec2.InstanceType = None,
+aws_cdk.aws_eks.ClusterProps(kubectl_environment: typing.Mapping[#builtins.str] = None, 
+                             version: aws_cdk.aws_eks.KubernetesVersion, 
+                             kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None, 
+                             output_cluster_name: builtins.bool = None, 
+                             role: aws_cdk.aws_iam.IRole = None, 
+                             security_group: aws_cdk.aws_ec2.ISecurityGroup = None, 
+                             vpc: aws_cdk.aws_ec2.IVpc = None, 
+                             vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None, 
+                             cluster_handler_environment: typing.Mapping[#builtins.str] = None, 
+                             core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None, 
+                             endpoint_access: aws_cdk.aws_eks.EndpointAccess = None, 
+                             cluster_name: builtins.str = None, 
+                             output_config_command: builtins.bool = None, 
+                             kubectl_memory: aws_cdk..Size = None, 
+                             masters_role: aws_cdk.aws_iam.IRole = None, 
+                             output_masters_role_arn: builtins.bool = None, 
+                             place_cluster_handler_in_vpc: builtins.bool = None, 
+                             prune: builtins.bool = None, 
+                             secrets_encryption_key: aws_cdk.aws_kms.IKey = None, 
+                             default_capacity: typing.Union[int, float] = None, 
+                             default_capacity_instance: aws_cdk.aws_ec2.InstanceType = None, 
                              default_capacity_type: aws_cdk.aws_eks.DefaultCapacityType = None)
 ```
 
@@ -6595,13 +6595,13 @@ Options for configuring an EKS cluster.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CommonClusterOptions.<initializer>(version: aws_cdk.aws_eks.KubernetesVersion,
-                                     cluster_name: builtins.str = None,
-                                     output_cluster_name: builtins.bool = None,
-                                     output_config_command: builtins.bool = None,
-                                     role: aws_cdk.aws_iam.IRole = None,
-                                     security_group: aws_cdk.aws_ec2.ISecurityGroup = None,
-                                     vpc: aws_cdk.aws_ec2.IVpc = None,
+aws_cdk.aws_eks.CommonClusterOptions(version: aws_cdk.aws_eks.KubernetesVersion, 
+                                     cluster_name: builtins.str = None, 
+                                     output_cluster_name: builtins.bool = None, 
+                                     output_config_command: builtins.bool = None, 
+                                     role: aws_cdk.aws_iam.IRole = None, 
+                                     security_group: aws_cdk.aws_ec2.ISecurityGroup = None, 
+                                     vpc: aws_cdk.aws_ec2.IVpc = None, 
                                      vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None)
 ```
 
@@ -6698,8 +6698,8 @@ Properties for EksOptimizedImage.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.EksOptimizedImageProps.<initializer>(cpu_arch: aws_cdk.aws_eks.CpuArch = None,
-                                       kubernetes_version: builtins.str = None,
+aws_cdk.aws_eks.EksOptimizedImageProps(cpu_arch: aws_cdk.aws_eks.CpuArch = None, 
+                                       kubernetes_version: builtins.str = None, 
                                        node_type: aws_cdk.aws_eks.NodeType = None)
 ```
 
@@ -6739,7 +6739,7 @@ What instance type to retrieve the image for (standard or GPU-optimized).
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnCluster.EncryptionConfigProperty.<initializer>(provider: typing.Union[aws_cdk.aws_eks.CfnCluster.ProviderProperty, aws_cdk..IResolvable] = None,
+aws_cdk.aws_eks.CfnCluster.EncryptionConfigProperty(provider: typing.Union[aws_cdk.aws_eks.CfnCluster.ProviderProperty, aws_cdk..IResolvable] = None, 
                                                     resources: typing.List[builtins.str] = None)
 ```
 
@@ -6772,29 +6772,29 @@ Configuration props for EKS Fargate.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.FargateClusterProps.<initializer>(endpoint_access: aws_cdk.aws_eks.EndpointAccess = None,
-                                    version: aws_cdk.aws_eks.KubernetesVersion,
-                                    kubectl_environment: typing.Mapping[#builtins.str] = None,
-                                    output_cluster_name: builtins.bool = None,
-                                    role: aws_cdk.aws_iam.IRole = None,
-                                    security_group: aws_cdk.aws_ec2.ISecurityGroup = None,
-                                    vpc: aws_cdk.aws_ec2.IVpc = None,
-                                    vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None,
-                                    cluster_handler_environment: typing.Mapping[#builtins.str] = None,
-                                    core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None,
-                                    cluster_name: builtins.str = None,
-                                    output_config_command: builtins.bool = None,
-                                    kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None,
-                                    kubectl_memory: aws_cdk..Size = None,
-                                    masters_role: aws_cdk.aws_iam.IRole = None,
-                                    output_masters_role_arn: builtins.bool = None,
-                                    place_cluster_handler_in_vpc: builtins.bool = None,
-                                    prune: builtins.bool = None,
-                                    secrets_encryption_key: aws_cdk.aws_kms.IKey = None,
-                                    selectors: typing.List[aws_cdk.aws_eks.Selector],
-                                    fargate_profile_name: builtins.str = None,
-                                    pod_execution_role: aws_cdk.aws_iam.IRole = None,
-                                    subnet_selection: aws_cdk.aws_ec2.SubnetSelection = None,
+aws_cdk.aws_eks.FargateClusterProps(endpoint_access: aws_cdk.aws_eks.EndpointAccess = None, 
+                                    version: aws_cdk.aws_eks.KubernetesVersion, 
+                                    kubectl_environment: typing.Mapping[#builtins.str] = None, 
+                                    output_cluster_name: builtins.bool = None, 
+                                    role: aws_cdk.aws_iam.IRole = None, 
+                                    security_group: aws_cdk.aws_ec2.ISecurityGroup = None, 
+                                    vpc: aws_cdk.aws_ec2.IVpc = None, 
+                                    vpc_subnets: typing.List[aws_cdk.aws_ec2.SubnetSelection] = None, 
+                                    cluster_handler_environment: typing.Mapping[#builtins.str] = None, 
+                                    core_dns_compute_type: aws_cdk.aws_eks.CoreDnsComputeType = None, 
+                                    cluster_name: builtins.str = None, 
+                                    output_config_command: builtins.bool = None, 
+                                    kubectl_layer: aws_cdk.aws_lambda.ILayerVersion = None, 
+                                    kubectl_memory: aws_cdk..Size = None, 
+                                    masters_role: aws_cdk.aws_iam.IRole = None, 
+                                    output_masters_role_arn: builtins.bool = None, 
+                                    place_cluster_handler_in_vpc: builtins.bool = None, 
+                                    prune: builtins.bool = None, 
+                                    secrets_encryption_key: aws_cdk.aws_kms.IKey = None, 
+                                    selectors: typing.List[aws_cdk.aws_eks.Selector], 
+                                    fargate_profile_name: builtins.str = None, 
+                                    pod_execution_role: aws_cdk.aws_iam.IRole = None, 
+                                    subnet_selection: aws_cdk.aws_ec2.SubnetSelection = None, 
                                     vpc: aws_cdk.aws_ec2.IVpc = None)
 ```
 
@@ -7084,15 +7084,15 @@ Options for defining EKS Fargate Profiles.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.FargateProfileOptions.<initializer>(selectors: typing.List[aws_cdk.aws_eks.Selector],
-                                      fargate_profile_name: builtins.str = None,
-                                      pod_execution_role: aws_cdk.aws_iam.IRole = None,
-                                      availability_zones: typing.List[builtins.str] = None,
-                                      one_per_az: builtins.bool = None,
-                                      subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None,
-                                      subnet_group_name: builtins.str = None,
-                                      subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None,
-                                      subnet_type: aws_cdk.aws_ec2.SubnetType = None,
+aws_cdk.aws_eks.FargateProfileOptions(selectors: typing.List[aws_cdk.aws_eks.Selector], 
+                                      fargate_profile_name: builtins.str = None, 
+                                      pod_execution_role: aws_cdk.aws_iam.IRole = None, 
+                                      availability_zones: typing.List[builtins.str] = None, 
+                                      one_per_az: builtins.bool = None, 
+                                      subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None, 
+                                      subnet_group_name: builtins.str = None, 
+                                      subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None, 
+                                      subnet_type: aws_cdk.aws_ec2.SubnetType = None, 
                                       vpc: aws_cdk.aws_ec2.IVpc = None)
 ```
 
@@ -7228,16 +7228,16 @@ Configuration props for EKS Fargate Profiles.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.FargateProfileProps.<initializer>(selectors: typing.List[aws_cdk.aws_eks.Selector],
-                                    cluster: aws_cdk.aws_eks.Cluster,
-                                    fargate_profile_name: builtins.str = None,
-                                    pod_execution_role: aws_cdk.aws_iam.IRole = None,
-                                    availability_zones: typing.List[builtins.str] = None,
-                                    one_per_az: builtins.bool = None,
-                                    subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None,
-                                    subnet_group_name: builtins.str = None,
-                                    subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None,
-                                    subnet_type: aws_cdk.aws_ec2.SubnetType = None,
+aws_cdk.aws_eks.FargateProfileProps(selectors: typing.List[aws_cdk.aws_eks.Selector], 
+                                    cluster: aws_cdk.aws_eks.Cluster, 
+                                    fargate_profile_name: builtins.str = None, 
+                                    pod_execution_role: aws_cdk.aws_iam.IRole = None, 
+                                    availability_zones: typing.List[builtins.str] = None, 
+                                    one_per_az: builtins.bool = None, 
+                                    subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None, 
+                                    subnet_group_name: builtins.str = None, 
+                                    subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None, 
+                                    subnet_type: aws_cdk.aws_ec2.SubnetType = None, 
                                     vpc: aws_cdk.aws_ec2.IVpc = None)
 ```
 
@@ -7383,14 +7383,14 @@ Helm Chart options.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.HelmChartOptions.<initializer>(chart: builtins.str,
-                                 create_namespace: builtins.bool = None,
-                                 namespace: builtins.str = None,
-                                 release: builtins.str = None,
-                                 repository: builtins.str = None,
-                                 timeout: aws_cdk..Duration = None,
-                                 values: typing.Mapping[#typing.Any] = None,
-                                 version: builtins.str = None,
+aws_cdk.aws_eks.HelmChartOptions(chart: builtins.str, 
+                                 create_namespace: builtins.bool = None, 
+                                 namespace: builtins.str = None, 
+                                 release: builtins.str = None, 
+                                 repository: builtins.str = None, 
+                                 timeout: aws_cdk..Duration = None, 
+                                 values: typing.Mapping[#typing.Any] = None, 
+                                 version: builtins.str = None, 
                                  wait: builtins.bool = None)
 ```
 
@@ -7487,15 +7487,15 @@ Helm Chart properties.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.HelmChartProps.<initializer>(chart: builtins.str,
-                               cluster: aws_cdk.aws_eks.ICluster,
-                               create_namespace: builtins.bool = None,
-                               namespace: builtins.str = None,
-                               release: builtins.str = None,
-                               repository: builtins.str = None,
-                               timeout: aws_cdk..Duration = None,
-                               values: typing.Mapping[#typing.Any] = None,
-                               version: builtins.str = None,
+aws_cdk.aws_eks.HelmChartProps(chart: builtins.str, 
+                               cluster: aws_cdk.aws_eks.ICluster, 
+                               create_namespace: builtins.bool = None, 
+                               namespace: builtins.str = None, 
+                               release: builtins.str = None, 
+                               repository: builtins.str = None, 
+                               timeout: aws_cdk..Duration = None, 
+                               values: typing.Mapping[#typing.Any] = None, 
+                               version: builtins.str = None, 
                                wait: builtins.bool = None)
 ```
 
@@ -7602,7 +7602,7 @@ Options for `KubernetesManifest`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.KubernetesManifestOptions.<initializer>(prune: builtins.bool = None,
+aws_cdk.aws_eks.KubernetesManifestOptions(prune: builtins.bool = None, 
                                           skip_validation: builtins.bool = None)
 ```
 
@@ -7650,10 +7650,10 @@ Properties for KubernetesManifest.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.KubernetesManifestProps.<initializer>(cluster: aws_cdk.aws_eks.ICluster,
-                                        manifest: typing.List[typing.Mapping[#typing.Any]],
-                                        prune: builtins.bool = None,
-                                        skip_validation: builtins.bool = None,
+aws_cdk.aws_eks.KubernetesManifestProps(cluster: aws_cdk.aws_eks.ICluster, 
+                                        manifest: typing.List[typing.Mapping[#typing.Any]], 
+                                        prune: builtins.bool = None, 
+                                        skip_validation: builtins.bool = None, 
                                         overwrite: builtins.bool = None)
 ```
 
@@ -7738,7 +7738,7 @@ in the cluster with the same name, the operation will fail.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnCluster.KubernetesNetworkConfigProperty.<initializer>(service_ipv4_cidr: builtins.str = None)
+aws_cdk.aws_eks.CfnCluster.KubernetesNetworkConfigProperty(service_ipv4_cidr: builtins.str = None)
 ```
 
 ##### `service_ipv4_cidr`<sup>Optional</sup> <a name="service_ipv4_cidr"></a>
@@ -7760,11 +7760,11 @@ Properties for KubernetesObjectValue.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.KubernetesObjectValueProps.<initializer>(cluster: aws_cdk.aws_eks.ICluster,
-                                           json_path: builtins.str,
-                                           object_name: builtins.str,
-                                           object_type: builtins.str,
-                                           object_namespace: builtins.str = None,
+aws_cdk.aws_eks.KubernetesObjectValueProps(cluster: aws_cdk.aws_eks.ICluster, 
+                                           json_path: builtins.str, 
+                                           object_name: builtins.str, 
+                                           object_type: builtins.str, 
+                                           object_namespace: builtins.str = None, 
                                            timeout: aws_cdk..Duration = None)
 ```
 
@@ -7833,11 +7833,11 @@ Properties for KubernetesPatch.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.KubernetesPatchProps.<initializer>(apply_patch: typing.Mapping[#typing.Any],
-                                     cluster: aws_cdk.aws_eks.ICluster,
-                                     resource_name: builtins.str,
-                                     restore_patch: typing.Mapping[#typing.Any],
-                                     patch_type: aws_cdk.aws_eks.PatchType = None,
+aws_cdk.aws_eks.KubernetesPatchProps(apply_patch: typing.Mapping[#typing.Any], 
+                                     cluster: aws_cdk.aws_eks.ICluster, 
+                                     resource_name: builtins.str, 
+                                     restore_patch: typing.Mapping[#typing.Any], 
+                                     patch_type: aws_cdk.aws_eks.PatchType = None, 
                                      resource_namespace: builtins.str = None)
 ```
 
@@ -7904,7 +7904,7 @@ The kubernetes API namespace.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnFargateProfile.LabelProperty.<initializer>(key: builtins.str,
+aws_cdk.aws_eks.CfnFargateProfile.LabelProperty(key: builtins.str, 
                                                 value: builtins.str)
 ```
 
@@ -7937,7 +7937,7 @@ Launch template property specification.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.LaunchTemplateSpec.<initializer>(id: builtins.str,
+aws_cdk.aws_eks.LaunchTemplateSpec(id: builtins.str, 
                                    version: builtins.str = None)
 ```
 
@@ -7967,8 +7967,8 @@ The launch template version to be used (optional).
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty.<initializer>(id: builtins.str = None,
-                                                                 name: builtins.str = None,
+aws_cdk.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty(id: builtins.str = None, 
+                                                                 name: builtins.str = None, 
                                                                  version: builtins.str = None)
 ```
 
@@ -8011,28 +8011,28 @@ The Nodegroup Options for addNodeGroup() method.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.NodegroupOptions.<initializer>(max_size: typing.Union[int, float] = None,
-                                 ami_type: aws_cdk.aws_eks.NodegroupAmiType = None,
-                                 desired_size: typing.Union[int, float] = None,
-                                 disk_size: typing.Union[int, float] = None,
-                                 force_update: builtins.bool = None,
-                                 instance_types: typing.List[aws_cdk.aws_ec2.InstanceType] = None,
-                                 labels: typing.Mapping[#builtins.str] = None,
-                                 id: builtins.str,
-                                 version: builtins.str = None,
-                                 capacity_type: aws_cdk.aws_eks.CapacityType = None,
-                                 min_size: typing.Union[int, float] = None,
-                                 nodegroup_name: builtins.str = None,
-                                 node_role: aws_cdk.aws_iam.IRole = None,
-                                 release_version: builtins.str = None,
-                                 ssh_key_name: builtins.str,
-                                 source_security_groups: typing.List[aws_cdk.aws_ec2.ISecurityGroup] = None,
-                                 availability_zones: typing.List[builtins.str] = None,
-                                 one_per_az: builtins.bool = None,
-                                 subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None,
-                                 subnet_group_name: builtins.str = None,
-                                 subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None,
-                                 subnet_type: aws_cdk.aws_ec2.SubnetType = None,
+aws_cdk.aws_eks.NodegroupOptions(max_size: typing.Union[int, float] = None, 
+                                 ami_type: aws_cdk.aws_eks.NodegroupAmiType = None, 
+                                 desired_size: typing.Union[int, float] = None, 
+                                 disk_size: typing.Union[int, float] = None, 
+                                 force_update: builtins.bool = None, 
+                                 instance_types: typing.List[aws_cdk.aws_ec2.InstanceType] = None, 
+                                 labels: typing.Mapping[#builtins.str] = None, 
+                                 id: builtins.str, 
+                                 version: builtins.str = None, 
+                                 capacity_type: aws_cdk.aws_eks.CapacityType = None, 
+                                 min_size: typing.Union[int, float] = None, 
+                                 nodegroup_name: builtins.str = None, 
+                                 node_role: aws_cdk.aws_iam.IRole = None, 
+                                 release_version: builtins.str = None, 
+                                 ssh_key_name: builtins.str, 
+                                 source_security_groups: typing.List[aws_cdk.aws_ec2.ISecurityGroup] = None, 
+                                 availability_zones: typing.List[builtins.str] = None, 
+                                 one_per_az: builtins.bool = None, 
+                                 subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None, 
+                                 subnet_group_name: builtins.str = None, 
+                                 subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None, 
+                                 subnet_type: aws_cdk.aws_ec2.SubnetType = None, 
                                  tags: typing.Mapping[#builtins.str] = None)
 ```
 
@@ -8295,29 +8295,29 @@ NodeGroup properties interface.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.NodegroupProps.<initializer>(max_size: typing.Union[int, float] = None,
-                               cluster: aws_cdk.aws_eks.ICluster,
-                               min_size: typing.Union[int, float] = None,
-                               desired_size: typing.Union[int, float] = None,
-                               force_update: builtins.bool = None,
-                               instance_types: typing.List[aws_cdk.aws_ec2.InstanceType] = None,
-                               labels: typing.Mapping[#builtins.str] = None,
-                               id: builtins.str,
-                               version: builtins.str = None,
-                               capacity_type: aws_cdk.aws_eks.CapacityType = None,
-                               disk_size: typing.Union[int, float] = None,
-                               nodegroup_name: builtins.str = None,
-                               node_role: aws_cdk.aws_iam.IRole = None,
-                               release_version: builtins.str = None,
-                               ssh_key_name: builtins.str,
-                               source_security_groups: typing.List[aws_cdk.aws_ec2.ISecurityGroup] = None,
-                               availability_zones: typing.List[builtins.str] = None,
-                               one_per_az: builtins.bool = None,
-                               subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None,
-                               subnet_group_name: builtins.str = None,
-                               subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None,
-                               subnet_type: aws_cdk.aws_ec2.SubnetType = None,
-                               tags: typing.Mapping[#builtins.str] = None,
+aws_cdk.aws_eks.NodegroupProps(max_size: typing.Union[int, float] = None, 
+                               cluster: aws_cdk.aws_eks.ICluster, 
+                               min_size: typing.Union[int, float] = None, 
+                               desired_size: typing.Union[int, float] = None, 
+                               force_update: builtins.bool = None, 
+                               instance_types: typing.List[aws_cdk.aws_ec2.InstanceType] = None, 
+                               labels: typing.Mapping[#builtins.str] = None, 
+                               id: builtins.str, 
+                               version: builtins.str = None, 
+                               capacity_type: aws_cdk.aws_eks.CapacityType = None, 
+                               disk_size: typing.Union[int, float] = None, 
+                               nodegroup_name: builtins.str = None, 
+                               node_role: aws_cdk.aws_iam.IRole = None, 
+                               release_version: builtins.str = None, 
+                               ssh_key_name: builtins.str, 
+                               source_security_groups: typing.List[aws_cdk.aws_ec2.ISecurityGroup] = None, 
+                               availability_zones: typing.List[builtins.str] = None, 
+                               one_per_az: builtins.bool = None, 
+                               subnet_filters: typing.List[aws_cdk.aws_ec2.SubnetFilter] = None, 
+                               subnet_group_name: builtins.str = None, 
+                               subnets: typing.List[aws_cdk.aws_ec2.ISubnet] = None, 
+                               subnet_type: aws_cdk.aws_ec2.SubnetType = None, 
+                               tags: typing.Mapping[#builtins.str] = None, 
                                ami_type: aws_cdk.aws_eks.NodegroupAmiType = None)
 ```
 
@@ -8590,7 +8590,7 @@ The remote access (SSH) configuration to use with your node group.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.NodegroupRemoteAccess.<initializer>(ssh_key_name: builtins.str,
+aws_cdk.aws_eks.NodegroupRemoteAccess(ssh_key_name: builtins.str, 
                                       source_security_groups: typing.List[aws_cdk.aws_ec2.ISecurityGroup] = None)
 ```
 
@@ -8624,7 +8624,7 @@ Initialization properties for `OpenIdConnectProvider`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.OpenIdConnectProviderProps.<initializer>(url: builtins.str)
+aws_cdk.aws_eks.OpenIdConnectProviderProps(url: builtins.str)
 ```
 
 ##### `url`<sup>Required</sup> <a name="url"></a>
@@ -8653,7 +8653,7 @@ aws eks describe-cluster --name %cluster_name% --query "cluster.identity.oidc.is
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnCluster.ProviderProperty.<initializer>(key_arn: builtins.str = None)
+aws_cdk.aws_eks.CfnCluster.ProviderProperty(key_arn: builtins.str = None)
 ```
 
 ##### `key_arn`<sup>Optional</sup> <a name="key_arn"></a>
@@ -8675,7 +8675,7 @@ aws_cdk.aws_eks.CfnCluster.ProviderProperty.<initializer>(key_arn: builtins.str 
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup.RemoteAccessProperty.<initializer>(ec2_ssh_key: builtins.str,
+aws_cdk.aws_eks.CfnNodegroup.RemoteAccessProperty(ec2_ssh_key: builtins.str, 
                                                   source_security_groups: typing.List[builtins.str] = None)
 ```
 
@@ -8708,7 +8708,7 @@ aws_cdk.aws_eks.CfnNodegroup.RemoteAccessProperty.<initializer>(ec2_ssh_key: bui
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnCluster.ResourcesVpcConfigProperty.<initializer>(subnet_ids: typing.List[builtins.str],
+aws_cdk.aws_eks.CfnCluster.ResourcesVpcConfigProperty(subnet_ids: typing.List[builtins.str], 
                                                       security_group_ids: typing.List[builtins.str] = None)
 ```
 
@@ -8741,8 +8741,8 @@ aws_cdk.aws_eks.CfnCluster.ResourcesVpcConfigProperty.<initializer>(subnet_ids: 
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup.ScalingConfigProperty.<initializer>(desired_size: typing.Union[int, float] = None,
-                                                   max_size: typing.Union[int, float] = None,
+aws_cdk.aws_eks.CfnNodegroup.ScalingConfigProperty(desired_size: typing.Union[int, float] = None, 
+                                                   max_size: typing.Union[int, float] = None, 
                                                    min_size: typing.Union[int, float] = None)
 ```
 
@@ -8785,7 +8785,7 @@ Fargate profile selector.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.Selector.<initializer>(namespace: builtins.str,
+aws_cdk.aws_eks.Selector(namespace: builtins.str, 
                          labels: typing.Mapping[#builtins.str] = None)
 ```
 
@@ -8823,7 +8823,7 @@ considered a match.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnFargateProfile.SelectorProperty.<initializer>(namespace: builtins.str,
+aws_cdk.aws_eks.CfnFargateProfile.SelectorProperty(namespace: builtins.str, 
                                                    labels: typing.Union[aws_cdk..IResolvable, typing.List[typing.Union[aws_cdk.aws_eks.CfnFargateProfile.LabelProperty, aws_cdk..IResolvable]]] = None)
 ```
 
@@ -8856,7 +8856,7 @@ Options for `ServiceAccount`.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.ServiceAccountOptions.<initializer>(name: builtins.str = None,
+aws_cdk.aws_eks.ServiceAccountOptions(name: builtins.str = None, 
                                       namespace: builtins.str = None)
 ```
 
@@ -8887,8 +8887,8 @@ Properties for defining service accounts.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.ServiceAccountProps.<initializer>(cluster: aws_cdk.aws_eks.ICluster,
-                                    name: builtins.str = None,
+aws_cdk.aws_eks.ServiceAccountProps(cluster: aws_cdk.aws_eks.ICluster, 
+                                    name: builtins.str = None, 
                                     namespace: builtins.str = None)
 ```
 
@@ -8927,7 +8927,7 @@ Options for fetching a ServiceLoadBalancerAddress.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.ServiceLoadBalancerAddressOptions.<initializer>(namespace: builtins.str = None,
+aws_cdk.aws_eks.ServiceLoadBalancerAddressOptions(namespace: builtins.str = None, 
                                                   timeout: aws_cdk..Duration = None)
 ```
 
@@ -8958,8 +8958,8 @@ Timeout for waiting on the load balancer address.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup.TaintProperty.<initializer>(effect: builtins.str = None,
-                                           key: builtins.str = None,
+aws_cdk.aws_eks.CfnNodegroup.TaintProperty(effect: builtins.str = None, 
+                                           key: builtins.str = None, 
                                            value: builtins.str = None)
 ```
 
@@ -9006,8 +9006,8 @@ Construct an Amazon Linux 2 image from the latest EKS Optimized AMI published in
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.EksOptimizedImage.<initializer>(cpu_arch: aws_cdk.aws_eks.CpuArch = None,
-                                  kubernetes_version: builtins.str = None,
+aws_cdk.aws_eks.EksOptimizedImage(cpu_arch: aws_cdk.aws_eks.CpuArch = None, 
+                                  kubernetes_version: builtins.str = None, 
                                   node_type: aws_cdk.aws_eks.NodeType = None)
 ```
 
@@ -9131,7 +9131,7 @@ Kubernetes cluster version.
 ```python
 import aws_cdk.aws_eks
 
-aws_cdk.aws_eks.KubernetesVersion.of(version: builtins.str)
+aws_cdk.aws_eks.KubernetesVersionof(version: builtins.str)
 ```
 
 ###### `version`<sup>Required</sup> <a name="version"></a>
@@ -9191,3 +9191,198 @@ Kubernetes version 1.18.
 Kubernetes version 1.19.
 
 ---
+
+## Enums <a name="Enums"></a>
+
+### CapacityType <a name="CapacityType"></a>
+
+Capacity type of the managed node group.
+
+---
+
+
+#### `SPOT` <a name="SPOT"></a>
+
+spot instances.
+
+---
+
+
+#### `ON_DEMAND` <a name="ON_DEMAND"></a>
+
+on-demand instances.
+
+---
+
+
+### CoreDnsComputeType <a name="CoreDnsComputeType"></a>
+
+The type of compute resources to use for CoreDNS.
+
+---
+
+
+#### `EC2` <a name="EC2"></a>
+
+Deploy CoreDNS on EC2 instances.
+
+---
+
+
+#### `FARGATE` <a name="FARGATE"></a>
+
+Deploy CoreDNS on Fargate-managed instances.
+
+---
+
+
+### CpuArch <a name="CpuArch"></a>
+
+CPU architecture.
+
+---
+
+
+#### `ARM_64` <a name="ARM_64"></a>
+
+arm64 CPU type.
+
+---
+
+
+#### `X86_64` <a name="X86_64"></a>
+
+x86_64 CPU type.
+
+---
+
+
+### DefaultCapacityType <a name="DefaultCapacityType"></a>
+
+The default capacity type for the cluster.
+
+---
+
+
+#### `NODEGROUP` <a name="NODEGROUP"></a>
+
+managed node group.
+
+---
+
+
+#### `EC2` <a name="EC2"></a>
+
+EC2 autoscaling group.
+
+---
+
+
+### MachineImageType <a name="MachineImageType"></a>
+
+The machine image type.
+
+---
+
+
+#### `AMAZON_LINUX_2` <a name="AMAZON_LINUX_2"></a>
+
+Amazon EKS-optimized Linux AMI.
+
+---
+
+
+#### `BOTTLEROCKET` <a name="BOTTLEROCKET"></a>
+
+Bottlerocket AMI.
+
+---
+
+
+### NodegroupAmiType <a name="NodegroupAmiType"></a>
+
+The AMI type for your node group.
+
+GPU instance types should use the `AL2_x86_64_GPU` AMI type, which uses the
+Amazon EKS-optimized Linux AMI with GPU support. Non-GPU instances should use the `AL2_x86_64` AMI type, which
+uses the Amazon EKS-optimized Linux AMI.
+
+---
+
+
+#### `AL2_X86_64` <a name="AL2_X86_64"></a>
+
+Amazon Linux 2 (x86-64).
+
+---
+
+
+#### `AL2_X86_64_GPU` <a name="AL2_X86_64_GPU"></a>
+
+Amazon Linux 2 with GPU support.
+
+---
+
+
+#### `AL2_ARM_64` <a name="AL2_ARM_64"></a>
+
+Amazon Linux 2 (ARM-64).
+
+---
+
+
+### NodeType <a name="NodeType"></a>
+
+Whether the worker nodes should support GPU or just standard instances.
+
+---
+
+
+#### `STANDARD` <a name="STANDARD"></a>
+
+Standard instances.
+
+---
+
+
+#### `GPU` <a name="GPU"></a>
+
+GPU instances.
+
+---
+
+
+#### `INFERENTIA` <a name="INFERENTIA"></a>
+
+Inferentia instances.
+
+---
+
+
+### PatchType <a name="PatchType"></a>
+
+Values for `kubectl patch` --type argument.
+
+---
+
+
+#### `JSON` <a name="JSON"></a>
+
+JSON Patch, RFC 6902.
+
+---
+
+
+#### `MERGE` <a name="MERGE"></a>
+
+JSON Merge patch.
+
+---
+
+
+#### `STRATEGIC` <a name="STRATEGIC"></a>
+
+Strategic merge patch.
+
+---
+

@@ -72,6 +72,13 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     };
   }
 
+  public enum(enu: reflect.EnumType): transpile.TranspiledEnum {
+    return {
+      name: enu.name,
+      members: enu.members.map((e) => e.name),
+    };
+  }
+
   public property(property: reflect.Property): transpile.TranspiledProperty {
     return {
       name: property.const ? property.name : toSnakeCase(property.name),
@@ -124,7 +131,8 @@ export class PythonTranspile extends transpile.AbstractTranspile {
       `, \n${" ".repeat(3 + 1 + 1 + name.length)}`
     )})`;
 
-    const invocation = `${transpiledType.fqn}.${name}(${types.join(
+    const invocationTarget = name === "<initializer>" ? "" : name;
+    const invocation = `${transpiledType.fqn}${invocationTarget}(${types.join(
       `, \n${" ".repeat(1 + transpiledType.fqn.length)}`
     )})`;
 
