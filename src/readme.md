@@ -294,18 +294,6 @@ def inspect(inspector: aws-cdk-lib.TreeInspector)
 
 ---
 
-##### `renderProperties` <a name="renderProperties"></a>
-
-```python
-def renderProperties(props: Map<string => any>)
-```
-
-###### `props`<sup>Required</sup> <a name="props"></a>
-
-- *Type:* [typing.Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping)[[typing.Any](https://docs.python.org/3/library/typing.html#typing.Any)]
-
----
-
 
 ### CfnRotationSchedule <a name="aws-cdk-lib.aws_secretsmanager.CfnRotationSchedule"></a>
 
@@ -397,18 +385,6 @@ def inspect(inspector: aws-cdk-lib.TreeInspector)
 - *Type:* [aws-cdk-lib.TreeInspector](#aws-cdk-lib.TreeInspector)
 
 - tree inspector to collect and process attributes.
-
----
-
-##### `renderProperties` <a name="renderProperties"></a>
-
-```python
-def renderProperties(props: Map<string => any>)
-```
-
-###### `props`<sup>Required</sup> <a name="props"></a>
-
-- *Type:* [typing.Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping)[[typing.Any](https://docs.python.org/3/library/typing.html#typing.Any)]
 
 ---
 
@@ -539,18 +515,6 @@ def inspect(inspector: aws-cdk-lib.TreeInspector)
 
 ---
 
-##### `renderProperties` <a name="renderProperties"></a>
-
-```python
-def renderProperties(props: Map<string => any>)
-```
-
-###### `props`<sup>Required</sup> <a name="props"></a>
-
-- *Type:* [typing.Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping)[[typing.Any](https://docs.python.org/3/library/typing.html#typing.Any)]
-
----
-
 
 ### CfnSecretTargetAttachment <a name="aws-cdk-lib.aws_secretsmanager.CfnSecretTargetAttachment"></a>
 
@@ -631,18 +595,6 @@ def inspect(inspector: aws-cdk-lib.TreeInspector)
 - *Type:* [aws-cdk-lib.TreeInspector](#aws-cdk-lib.TreeInspector)
 
 - tree inspector to collect and process attributes.
-
----
-
-##### `renderProperties` <a name="renderProperties"></a>
-
-```python
-def renderProperties(props: Map<string => any>)
-```
-
-###### `props`<sup>Required</sup> <a name="props"></a>
-
-- *Type:* [typing.Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping)[[typing.Any](https://docs.python.org/3/library/typing.html#typing.Any)]
 
 ---
 
@@ -1004,7 +956,9 @@ def secretValueFromJson(jsonField: string)
 ##### `fromSecretAttributes` <a name="fromSecretAttributes"></a>
 
 ```python
-class aws-cdk-lib.aws_secretsmanager.Secret.fromSecretAttributes(scope: constructs.Construct, 
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.Secret.fromSecretAttributes(scope: constructs.Construct, 
                          id: string, 
                          encryptionKey: aws-cdk-lib.aws_kms.IKey = None, 
                          secretCompleteArn: string = None, 
@@ -1060,7 +1014,9 @@ Cannot be used with `secretArn` or `secretCompleteArn`.
 ##### `fromSecretCompleteArn` <a name="fromSecretCompleteArn"></a>
 
 ```python
-class aws-cdk-lib.aws_secretsmanager.Secret.fromSecretCompleteArn(scope: constructs.Construct, 
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.Secret.fromSecretCompleteArn(scope: constructs.Construct, 
                           id: string, 
                           secretCompleteArn: string)
 ```
@@ -1086,7 +1042,9 @@ class aws-cdk-lib.aws_secretsmanager.Secret.fromSecretCompleteArn(scope: constru
 ##### `fromSecretNameV2` <a name="fromSecretNameV2"></a>
 
 ```python
-class aws-cdk-lib.aws_secretsmanager.Secret.fromSecretNameV2(scope: constructs.Construct, 
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.Secret.fromSecretNameV2(scope: constructs.Construct, 
                      id: string, 
                      secretName: string)
 ```
@@ -1112,7 +1070,9 @@ class aws-cdk-lib.aws_secretsmanager.Secret.fromSecretNameV2(scope: constructs.C
 ##### `fromSecretPartialArn` <a name="fromSecretPartialArn"></a>
 
 ```python
-class aws-cdk-lib.aws_secretsmanager.Secret.fromSecretPartialArn(scope: constructs.Construct, 
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.Secret.fromSecretPartialArn(scope: constructs.Construct, 
                          id: string, 
                          secretPartialArn: string)
 ```
@@ -1425,7 +1385,9 @@ def secretValueFromJson(jsonField: string)
 ##### `fromSecretTargetAttachmentSecretArn` <a name="fromSecretTargetAttachmentSecretArn"></a>
 
 ```python
-class aws-cdk-lib.aws_secretsmanager.SecretTargetAttachment.fromSecretTargetAttachmentSecretArn(scope: constructs.Construct, 
+import aws_cdk.aws_secretsmanager
+
+aws_cdk.aws_secretsmanager.SecretTargetAttachment.fromSecretTargetAttachmentSecretArn(scope: constructs.Construct, 
                                         id: string, 
                                         secretTargetAttachmentSecretArn: string)
 ```
@@ -1696,9 +1658,9 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachmentProps(secretId: string,
 #### Initializer <a name="Initializer"></a>
 
 ```python
-import aws_cdk
+import aws_cdk.aws_secretsmanager
 
-aws_cdk.GenerateSecretStringProperty(excludeCharacters: string = None, 
+aws_cdk.aws_secretsmanager.CfnSecret.GenerateSecretStringProperty(excludeCharacters: string = None, 
                   excludeLowercase: boolean | aws-cdk-lib.IResolvable = None, 
                   excludeNumbers: boolean | aws-cdk-lib.IResolvable = None, 
                   excludePunctuation: boolean | aws-cdk-lib.IResolvable = None, 
@@ -1817,9 +1779,9 @@ aws_cdk.GenerateSecretStringProperty(excludeCharacters: string = None,
 #### Initializer <a name="Initializer"></a>
 
 ```python
-import aws_cdk
+import aws_cdk.aws_secretsmanager
 
-aws_cdk.HostedRotationLambdaProperty(rotationType: string, 
+aws_cdk.aws_secretsmanager.CfnRotationSchedule.HostedRotationLambdaProperty(rotationType: string, 
                   kmsKeyArn: string = None, 
                   masterSecretArn: string = None, 
                   masterSecretKmsKeyArn: string = None, 
@@ -2064,9 +2026,9 @@ The customer-managed encryption key to use for encrypting the secret value.
 #### Initializer <a name="Initializer"></a>
 
 ```python
-import aws_cdk
+import aws_cdk.aws_secretsmanager
 
-aws_cdk.ReplicaRegionProperty(region: string, 
+aws_cdk.aws_secretsmanager.CfnSecret.ReplicaRegionProperty(region: string, 
                   kmsKeyId: string = None)
 ```
 
@@ -2117,9 +2079,9 @@ The secret to attach a resource-based permissions policy.
 #### Initializer <a name="Initializer"></a>
 
 ```python
-import aws_cdk
+import aws_cdk.aws_secretsmanager
 
-aws_cdk.RotationRulesProperty(automaticallyAfterDays: number = None)
+aws_cdk.aws_secretsmanager.CfnRotationSchedule.RotationRulesProperty(automaticallyAfterDays: number = None)
 ```
 
 ##### `automaticallyAfterDays`<sup>Optional</sup> <a name="automaticallyAfterDays"></a>

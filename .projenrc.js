@@ -31,6 +31,7 @@ const project = new web.ReactTypeScriptProject({
     "remark-gfm",
     "jsii-reflect",
     "@jsii/spec",
+    "codemaker",
   ],
 
   devDeps: ["@types/react-router-dom"],
