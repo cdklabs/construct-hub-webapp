@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as spec from "@jsii/spec";
-import { Documentation } from "./api/docgen/docs";
+import { Documentation, Language } from "./api/docgen/docs/documentation";
 
 test("basic", () => {
   const documentation = new Documentation(
@@ -11,13 +11,11 @@ test("basic", () => {
       submoduleName: "aws_secretsmanager",
       readme: true,
       apiReference: true,
+      language: Language.PYTHON,
     }
   );
 
-  fs.writeFileSync(
-    `${__dirname}/readme.md`,
-    documentation.pythonMarkdown.render()
-  );
+  fs.writeFileSync(`${__dirname}/readme.md`, documentation.markdown.render());
   // expect(reference.pythonMarkdown).toMatchSnapshot();
 });
 
