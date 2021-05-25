@@ -21,7 +21,7 @@ export class StaticFunction implements View {
       },
     });
 
-    md.code(
+    md.snippet(
       this.transpile.language,
       `${transpiled.requirement}`,
       "",

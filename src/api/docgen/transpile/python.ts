@@ -2,6 +2,7 @@ import * as spec from "@jsii/spec";
 import { toSnakeCase } from "codemaker";
 import * as reflect from "jsii-reflect";
 import { propertyToParameter } from "../helpers";
+import { Markdown } from "../render/markdown";
 import * as transpile from "./transpile";
 
 export class PythonTranspile extends transpile.AbstractTranspile {
@@ -16,10 +17,11 @@ export class PythonTranspile extends transpile.AbstractTranspile {
   public unionOfTypes(
     refs: transpile.TranspiledTypeReference[]
   ): transpile.TranspiledTypeReference {
+    const typing = this.typing("Union");
     return {
-      raw: `${this.typing("Union")}[${refs.map((r) => r.raw).join(", ")}]`,
-      linked: `**${this.typing("Union")}**[${refs
-        .map((r) => r.linked)
+      raw: `${typing}[${refs.map((r) => r.raw).join(", ")}]`,
+      markdown: `${Markdown.bold(typing)}[${refs
+        .map((r) => r.markdown)
         .join(", ")}]`,
     };
   }
@@ -27,46 +29,53 @@ export class PythonTranspile extends transpile.AbstractTranspile {
   public listOfType(
     ref: transpile.TranspiledTypeReference
   ): transpile.TranspiledTypeReference {
+    const typing = this.typing("List");
     return {
-      raw: `${this.typing("List")}[${ref.raw}]`,
-      linked: `**${this.typing("List")}**[${ref.linked}]`,
+      raw: `${typing}[${ref.raw}]`,
+      markdown: `${Markdown.bold(typing)}[${ref.markdown}]`,
     };
   }
 
   public mapOfType(
     ref: transpile.TranspiledTypeReference
   ): transpile.TranspiledTypeReference {
+    const typing = this.typing("Mapping");
     return {
-      raw: `${this.typing("Mapping")}[#${ref.raw}]`,
-      linked: `**${this.typing("Mapping")}**[${ref.linked}]`,
+      raw: `${typing}[#${ref.raw}]`,
+      markdown: `${Markdown.bold(this.typing("Mapping"))}[${ref.markdown}]`,
     };
   }
 
   public any(): transpile.TranspiledTypeReference {
-    return {
-      raw: this.typing("Any"),
-      linked: `\`${this.typing("Any")}\``,
-    };
+    const typing = this.typing("Any");
+    return { raw: typing, markdown: Markdown.code(typing) };
   }
 
   public boolean(): transpile.TranspiledTypeReference {
-    return {
-      raw: this.builtins("bool"),
-      linked: `\`${this.builtins("bool")}\``,
-    };
+    const typing = this.builtins("bool");
+    return { raw: typing, markdown: Markdown.code(typing) };
   }
 
   public str(): transpile.TranspiledTypeReference {
-    return {
-      raw: this.builtins("str"),
-      linked: `\`${this.builtins("str")}\``,
-    };
+    const typing = this.builtins("str");
+    return { raw: typing, markdown: Markdown.code(typing) };
   }
 
   public number(): transpile.TranspiledTypeReference {
+    const types = ["int", "float"];
+    const typing = this.typing("Union");
     return {
-      raw: `${this.typing("Union")}[int, float]`,
-      linked: `${this.typing("Union")}[\`int\`, \`float\`]`,
+      raw: `${typing}[${types.join(", ")}]`,
+      markdown: `${Markdown.bold(this.typing("Union"))}[${types
+        .map((t) => Markdown.code(t))
+        .join(", ")}]`,
+    };
+  }
+
+  public property(property: reflect.Property): transpile.TranspiledProperty {
+    return {
+      name: property.const ? property.name : toSnakeCase(property.name),
+      typeReference: this.typeReference(property.type),
     };
   }
 

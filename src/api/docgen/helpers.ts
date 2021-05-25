@@ -12,14 +12,12 @@ export function renderDocs(docs: reflect.Docs, md: Markdown) {
   }
 
   if (docs.docs.see) {
-    md.lines(`> ${docs.docs.see}`);
-    md.lines("");
+    md.quote(docs.docs.see);
   }
 
   const customLink = docs.customTag("link");
   if (customLink) {
-    md.lines(`> [${customLink}](${customLink})`);
-    md.lines("");
+    md.quote(`[${customLink}](${customLink})`);
   }
 }
 

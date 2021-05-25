@@ -4,6 +4,7 @@ import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
 import { Initializer } from "./initializer";
 import { InstanceMethod } from "./instance-method";
+import { Property } from "./property";
 import { StaticFunction } from "./static-function";
 import { View } from "./view";
 
@@ -15,6 +16,8 @@ export class Class implements View {
     new Array<reflect.Method>();
   private readonly staticFunctions: reflect.Method[] =
     new Array<reflect.Method>();
+  private readonly constants: reflect.Property[] =
+    new Array<reflect.Property>();
 
   constructor(
     private readonly transpile: Transpile,
@@ -33,6 +36,12 @@ export class Class implements View {
         this.instanceMethods.push(method);
       }
     }
+
+    for (const property of klass.ownProperties) {
+      if (property.const) {
+        this.constants.push(property);
+      }
+    }
   }
 
   /**
@@ -47,9 +56,11 @@ export class Class implements View {
     if (this.klass.interfaces.length > 0) {
       const ifaces = [];
       for (const iface of this.klass.interfaces) {
-        ifaces.push(`[\`${this.transpile.type(iface).fqn}\`](#${iface.fqn})`);
+        ifaces.push(
+          `[${Markdown.code(this.transpile.type(iface).fqn)}](#${iface.fqn})`
+        );
       }
-      md.lines(`- *Implements:* ${ifaces.join(", ")}`);
+      md.bullet(`${Markdown.emphasis("Implements:")} ${ifaces.join(", ")}`);
       md.lines("");
     }
 
@@ -60,6 +71,7 @@ export class Class implements View {
     md.section(this.renderInitializer());
     md.section(this.renderMethods());
     md.section(this.renderStaticFunctions());
+    md.section(this.renderConstants());
     return md;
   }
 
@@ -85,7 +97,7 @@ export class Class implements View {
   }
 
   private renderStaticFunctions(): Markdown {
-    const md = new Markdown({ header: { title: "Functions" } });
+    const md = new Markdown({ header: { title: "Static Functions" } });
 
     if (this.staticFunctions.length === 0) {
       return Markdown.EMPTY;
@@ -95,6 +107,19 @@ export class Class implements View {
       md.section(new StaticFunction(this.transpile, method).markdown);
     }
 
+    return md;
+  }
+
+  private renderConstants(): Markdown {
+    const md = new Markdown({ header: { title: "Constants" } });
+
+    if (this.constants.length === 0) {
+      return Markdown.EMPTY;
+    }
+
+    for (const constant of this.constants) {
+      md.section(new Property(this.transpile, constant).markdown);
+    }
     return md;
   }
 }

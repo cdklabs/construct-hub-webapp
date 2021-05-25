@@ -21,7 +21,7 @@ export class InstanceMethod implements View {
       },
     });
 
-    md.code(this.transpile.language, transpiled.signature);
+    md.snippet(this.transpile.language, transpiled.signature);
 
     for (const parameter of transpiled.parameters) {
       md.section(new Parameter(this.transpile, parameter).markdown);

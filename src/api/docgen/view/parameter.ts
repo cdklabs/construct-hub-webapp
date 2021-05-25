@@ -11,7 +11,7 @@ export class Parameter implements View {
   ) {}
 
   public get markdown(): Markdown {
-    const transpiled = this.transpile.parameter(this.parameter, false);
+    const transpiled = this.transpile.parameter(this.parameter);
     const optionality = this.parameter.optional ? "Optional" : "Required";
 
     const md = new Markdown({
@@ -24,12 +24,16 @@ export class Parameter implements View {
     });
 
     if (this.parameter.docs.deprecated) {
-      md.lines(`- *Deprecated:* ${this.parameter.docs.deprecationReason}`);
+      md.bullet(
+        `${Markdown.emphasis("Deprecated:")} ${
+          this.parameter.docs.deprecationReason
+        }`
+      );
       md.lines("");
     }
 
     const metadata: any = {
-      Type: transpiled.typeReference.linked,
+      Type: transpiled.typeReference.markdown,
     };
 
     if (this.parameter.spec.docs?.default) {
@@ -37,7 +41,7 @@ export class Parameter implements View {
     }
 
     for (const [key, value] of Object.entries(metadata)) {
-      md.lines(`- *${key}:* ${value}`);
+      md.bullet(`${Markdown.emphasis(`${key}:`)} ${value}`);
     }
     md.lines("");
 
@@ -45,8 +49,7 @@ export class Parameter implements View {
       renderDocs(this.parameter.docs, md);
     }
 
-    md.lines("---");
-    md.lines("");
+    md.split();
 
     return md;
   }

@@ -20,7 +20,7 @@ export class Initializer implements View {
 
     const transpiled = this.transpile.callable(this.initializer);
 
-    md.code(
+    md.snippet(
       this.transpile.language,
       `${transpiled.requirement}`,
       "",

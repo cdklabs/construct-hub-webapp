@@ -1,4 +1,5 @@
 import * as reflect from "jsii-reflect";
+import { Markdown } from "../render/markdown";
 
 export interface TranspiledCallable {
   readonly signature: string;
@@ -20,7 +21,12 @@ export interface TranspiledType {
 
 export interface TranspiledTypeReference {
   readonly raw: string;
-  readonly linked: string;
+  readonly markdown: string;
+}
+
+export interface TranspiledProperty {
+  readonly name: string;
+  readonly typeReference: TranspiledTypeReference;
 }
 
 export interface Transpile {
@@ -28,7 +34,9 @@ export interface Transpile {
 
   callable(callable: reflect.Callable): TranspiledCallable;
 
-  parameter(parameter: reflect.Parameter, code: boolean): TranspiledParameter;
+  parameter(parameter: reflect.Parameter): TranspiledParameter;
+
+  property(property: reflect.Property): TranspiledProperty;
 
   type(type: reflect.Type): TranspiledType;
 
@@ -48,18 +56,64 @@ export interface Transpile {
 
   boolean(): TranspiledTypeReference;
 
-  moduleFqn(moduleFqn: string): string;
-
   readme(readme: string): string;
 }
 
 export abstract class AbstractTranspile implements Transpile {
   constructor(public readonly language: string) {}
 
+  public property(_: reflect.Property): TranspiledProperty {
+    throw new Error("Method not implemented.");
+  }
+
+  public callable(_: reflect.Callable): TranspiledCallable {
+    throw new Error("Method not implemented.");
+  }
+
+  public parameter(_: reflect.Parameter): TranspiledParameter {
+    throw new Error("Method not implemented.");
+  }
+
+  public type(_: reflect.Type): TranspiledType {
+    throw new Error("Method not implemented.");
+  }
+
+  public unionOfTypes(_: TranspiledTypeReference[]): TranspiledTypeReference {
+    throw new Error("Method not implemented.");
+  }
+
+  public listOfType(_: TranspiledTypeReference): TranspiledTypeReference {
+    throw new Error("Method not implemented.");
+  }
+
+  public mapOfType(_: TranspiledTypeReference): TranspiledTypeReference {
+    throw new Error("Method not implemented.");
+  }
+
+  public any(): TranspiledTypeReference {
+    throw new Error("Method not implemented.");
+  }
+
+  public str(): TranspiledTypeReference {
+    throw new Error("Method not implemented.");
+  }
+
+  public number(): TranspiledTypeReference {
+    throw new Error("Method not implemented.");
+  }
+
+  public boolean(): TranspiledTypeReference {
+    throw new Error("Method not implemented.");
+  }
+
+  public readme(_: string): string {
+    throw new Error("Method not implemented.");
+  }
+
   public typeReference(type: reflect.TypeReference): TranspiledTypeReference {
     if (type.fqn && type.type) {
       const raw = this.type(type.type).fqn;
-      return { raw: raw, linked: `[\`${raw}\`](#${type.fqn})` };
+      return { raw: raw, markdown: `[${Markdown.code(raw)}](#${type.fqn})` };
     }
 
     if (type.unionOfTypes) {
@@ -99,4 +153,4 @@ export abstract class AbstractTranspile implements Transpile {
 }
 
 // https://github.com/microsoft/TypeScript/issues/22815#issuecomment-375766197
-export interface AbstractTranspile extends Transpile {}
+// export interface AbstractTranspile extends Transpile {}

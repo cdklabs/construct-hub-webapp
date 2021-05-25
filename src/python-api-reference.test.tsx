@@ -8,7 +8,7 @@ test("basic", () => {
     "2.0.0-rc4",
     fetchAssembly,
     {
-      submoduleName: "aws_secretsmanager",
+      submoduleName: "aws_eks",
       readme: true,
       apiReference: true,
       language: Language.PYTHON,

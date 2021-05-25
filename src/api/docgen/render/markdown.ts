@@ -25,6 +25,18 @@ export class Markdown {
     return sanitized;
   }
 
+  public static bold(text: string): string {
+    return `**${text}**`;
+  }
+
+  public static code(text: string): string {
+    return `\`${text}\``;
+  }
+
+  public static emphasis(text: string) {
+    return `*${text}*`;
+  }
+
   private readonly _lines = new Array<string>();
   private readonly _sections = new Array<Markdown>();
 
@@ -36,13 +48,27 @@ export class Markdown {
     this.header = this.formatHeader();
   }
 
-  public code(language: string, ...snippet: string[]) {
+  public quote(line: string) {
+    this.lines(`> ${line}`);
+    this.lines("");
+  }
+
+  public bullet(line: string) {
+    this.lines(`- ${line}`);
+  }
+
+  public snippet(language: string, ...snippet: string[]) {
     this.lines(`\`\`\`${language}`, ...snippet, "```");
     this.lines("");
   }
 
   public lines(...lines: string[]) {
     this._lines.push(...lines);
+  }
+
+  public split() {
+    this.lines("---");
+    this.lines("");
   }
 
   public section(section: Markdown) {
