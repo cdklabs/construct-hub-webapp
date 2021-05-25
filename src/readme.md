@@ -236,7 +236,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct,
 
 - *Type:* [constructs.Construct](#constructs.Construct)
 
-- scope in which this resource is defined.
+ scope in which this resource is defined.
 
 ---
 
@@ -244,7 +244,7 @@ aws_cdk.aws_secretsmanager.CfnResourcePolicy(scope: constructs.Construct,
 
 - *Type:* `builtins.str`
 
-- scoped id of the resource.
+ scoped id of the resource.
 
 ---
 
@@ -290,7 +290,7 @@ def inspect(inspector: aws-cdk-lib.TreeInspector)
 
 - *Type:* [aws-cdk-lib.TreeInspector](#aws-cdk-lib.TreeInspector)
 
-- tree inspector to collect and process attributes.
+ tree inspector to collect and process attributes.
 
 ---
 
@@ -320,7 +320,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct,
 
 - *Type:* [constructs.Construct](#constructs.Construct)
 
-- scope in which this resource is defined.
+ scope in which this resource is defined.
 
 ---
 
@@ -328,7 +328,7 @@ aws_cdk.aws_secretsmanager.CfnRotationSchedule(scope: constructs.Construct,
 
 - *Type:* `builtins.str`
 
-- scoped id of the resource.
+ scoped id of the resource.
 
 ---
 
@@ -384,7 +384,7 @@ def inspect(inspector: aws-cdk-lib.TreeInspector)
 
 - *Type:* [aws-cdk-lib.TreeInspector](#aws-cdk-lib.TreeInspector)
 
-- tree inspector to collect and process attributes.
+ tree inspector to collect and process attributes.
 
 ---
 
@@ -417,7 +417,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct,
 
 - *Type:* [constructs.Construct](#constructs.Construct)
 
-- scope in which this resource is defined.
+ scope in which this resource is defined.
 
 ---
 
@@ -425,7 +425,7 @@ aws_cdk.aws_secretsmanager.CfnSecret(scope: constructs.Construct,
 
 - *Type:* `builtins.str`
 
-- scoped id of the resource.
+ scoped id of the resource.
 
 ---
 
@@ -511,7 +511,7 @@ def inspect(inspector: aws-cdk-lib.TreeInspector)
 
 - *Type:* [aws-cdk-lib.TreeInspector](#aws-cdk-lib.TreeInspector)
 
-- tree inspector to collect and process attributes.
+ tree inspector to collect and process attributes.
 
 ---
 
@@ -540,7 +540,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 - *Type:* [constructs.Construct](#constructs.Construct)
 
-- scope in which this resource is defined.
+ scope in which this resource is defined.
 
 ---
 
@@ -548,7 +548,7 @@ aws_cdk.aws_secretsmanager.CfnSecretTargetAttachment(scope: constructs.Construct
 
 - *Type:* `builtins.str`
 
-- scoped id of the resource.
+ scoped id of the resource.
 
 ---
 
@@ -594,7 +594,7 @@ def inspect(inspector: aws-cdk-lib.TreeInspector)
 
 - *Type:* [aws-cdk-lib.TreeInspector](#aws-cdk-lib.TreeInspector)
 
-- tree inspector to collect and process attributes.
+ tree inspector to collect and process attributes.
 
 ---
 
