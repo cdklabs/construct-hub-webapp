@@ -25,7 +25,16 @@ const project = new web.ReactTypeScriptProject({
 
   deps: ["react-router-dom"],
 
-  devDeps: ["@types/react-router-dom"],
+  devDeps: [
+    "@types/react-router-dom",
+    "@storybook/addon-actions",
+    "@storybook/addon-essentials",
+    "@storybook/addon-links",
+    "@storybook/node-logger",
+    "@storybook/preset-create-react-app",
+    "@storybook/react",
+    "babel-loader@8.1.0",
+  ],
 });
 
 // synthesize project files before build
@@ -44,11 +53,32 @@ project.eslint.addRules({
   "import/no-extraneous-dependencies": [
     "error",
     {
-      devDependencies: ["**/setupTests.ts", "**/*.test.tsx", "**/*.test.ts"],
+      devDependencies: [
+        "**/setupTests.ts",
+        "**/*.test.tsx",
+        "**/*.test.ts",
+        "**/*.stories.*",
+      ],
       optionalDependencies: false,
       peerDependencies: true,
     },
   ],
+});
+
+// Add tasks and config for storybook
+project.addTask("storybook", {
+  exec: "start-storybook -p 6006 -s public",
+});
+
+project.addTask("build-storybook", {
+  exec: "build-storybook -s public",
+});
+
+project.eslint.addOverride({
+  files: ["**/*.stories.*"],
+  rules: {
+    "import/no-anonymous-default-export": "off",
+  },
 });
 
 project.synth();

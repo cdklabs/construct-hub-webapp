@@ -1,6 +1,30 @@
 {
   "dependencies": [
     {
+      "name": "@storybook/addon-actions",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/addon-essentials",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/addon-links",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/node-logger",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/preset-create-react-app",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/react",
+      "type": "build"
+    },
+    {
       "name": "@testing-library/jest-dom",
       "type": "build"
     },
@@ -43,6 +67,11 @@
     },
     {
       "name": "@typescript-eslint/parser",
+      "type": "build"
+    },
+    {
+      "name": "babel-loader",
+      "version": "8.1.0",
       "type": "build"
     },
     {
@@ -89,7 +118,7 @@
     },
     {
       "name": "projen",
-      "version": "^0.18.10",
+      "version": "^0.17.95",
       "type": "build"
     },
     {

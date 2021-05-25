@@ -1,6 +1,6 @@
 import PackageDetails from "../PackageDetails";
 
-interface PackageDocsHomeProps {
+export interface PackageDocsHomeProps {
   name: string;
   scope?: string;
   version: string;

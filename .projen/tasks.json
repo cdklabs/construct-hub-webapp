@@ -98,7 +98,6 @@
     },
     "upgrade-dependencies": {
       "name": "upgrade-dependencies",
-      "description": "upgrade dependencies",
       "env": {
         "CI": "0"
       },
@@ -107,25 +106,18 @@
           "exec": "npm-check-updates --upgrade --target=minor --reject='projen'"
         },
         {
-          "exec": "yarn install --check-files"
-        },
-        {
           "exec": "npx projen"
         }
       ]
     },
     "upgrade-projen": {
       "name": "upgrade-projen",
-      "description": "upgrade projen",
       "env": {
         "CI": "0"
       },
       "steps": [
         {
           "exec": "npm-check-updates --upgrade --target=minor --filter='projen'"
-        },
-        {
-          "exec": "yarn install --check-files"
         },
         {
           "exec": "npx projen"
@@ -196,6 +188,22 @@
       "steps": [
         {
           "exec": "react-scripts eject"
+        }
+      ]
+    },
+    "storybook": {
+      "name": "storybook",
+      "steps": [
+        {
+          "exec": "start-storybook -p 6006 -s public"
+        }
+      ]
+    },
+    "build-storybook": {
+      "name": "build-storybook",
+      "steps": [
+        {
+          "exec": "build-storybook -s public"
         }
       ]
     }

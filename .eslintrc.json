@@ -55,7 +55,8 @@
         "devDependencies": [
           "**/setupTests.ts",
           "**/*.test.tsx",
-          "**/*.test.ts"
+          "**/*.test.ts",
+          "**/*.stories.*"
         ],
         "optionalDependencies": false,
         "peerDependencies": true
@@ -135,6 +136,14 @@
       "rules": {
         "@typescript-eslint/no-require-imports": "off",
         "import/no-extraneous-dependencies": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.stories.*"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
       }
     }
   ]
