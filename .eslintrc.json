@@ -55,8 +55,7 @@
         "devDependencies": [
           "**/setupTests.ts",
           "**/*.test.tsx",
-          "**/*.test.ts",
-          "**/*.stories.*"
+          "**/*.test.ts"
         ],
         "optionalDependencies": false,
         "peerDependencies": true
@@ -143,7 +142,17 @@
         "**/*.stories.*"
       ],
       "rules": {
-        "import/no-anonymous-default-export": "off"
+        "import/no-anonymous-default-export": "off",
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": [
+              "**/*.stories.*"
+            ],
+            "optionalDependencies": false,
+            "peerDependencies": true
+          }
+        ]
       }
     }
   ]
