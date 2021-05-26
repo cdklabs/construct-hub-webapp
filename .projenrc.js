@@ -25,13 +25,10 @@ const project = new web.ReactTypeScriptProject({
 
   deps: [
     "react-router-dom",
-    "semantic-ui-react",
-    "semantic-ui-css",
-    "react-markdown",
-    "remark-gfm",
     "jsii-reflect",
     "@jsii/spec",
     "codemaker",
+    "@uiw/react-markdown-preview",
   ],
 
   devDeps: ["@types/react-router-dom"],
@@ -47,6 +44,11 @@ build.spawn(project.packageTask);
 // directory, which is the output of our static website.
 project.npmignore.addPatterns("!/build");
 project.npmignore.addPatterns("/public");
+
+const dev = project.tasks.tryFind("dev");
+// TODO - maybe generate this script with projen...?
+dev.prependExec("./scripts/fetch-dev-assemblies.sh");
+project.gitignore.exclude("public/packages");
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({

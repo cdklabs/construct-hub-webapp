@@ -72,6 +72,11 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     };
   }
 
+  public date(): transpile.TranspiledTypeReference {
+    const d = "datetime.datetime";
+    return { raw: d, markdown: `\`${d}\`` };
+  }
+
   public enum(enu: reflect.EnumType): transpile.TranspiledEnum {
     return {
       name: enu.name,

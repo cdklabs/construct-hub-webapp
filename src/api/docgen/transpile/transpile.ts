@@ -63,11 +63,17 @@ export interface Transpile {
 
   boolean(): TranspiledTypeReference;
 
+  date(): TranspiledTypeReference;
+
   readme(readme: string): string;
 }
 
 export abstract class AbstractTranspile implements Transpile {
   constructor(public readonly language: string) {}
+
+  public date(): TranspiledTypeReference {
+    throw new Error("Method not implemented.");
+  }
 
   public enum(_: reflect.EnumType): TranspiledEnum {
     throw new Error("Method not implemented.");
@@ -154,6 +160,8 @@ export abstract class AbstractTranspile implements Transpile {
           return this.boolean();
         case "number":
           return this.number();
+        case "date":
+          return this.date();
         default:
           throw new Error(`Unsupported primitive type '${type.primitive}'`);
       }

@@ -67,17 +67,10 @@ export class Documentation {
 
   constructor(
     packageName: string,
-    packageVersion: string,
-    assemblyFetcher: (name: string, version: string) => spec.Assembly,
+    assemblies: spec.Assembly[],
     options: DocumentationOptions
   ) {
     this.ts = new reflect.TypeSystem();
-
-    const assemblies = this.fetchAssemblies(
-      packageName,
-      packageVersion,
-      assemblyFetcher
-    );
 
     switch (options.language) {
       case Language.PYTHON:
@@ -139,24 +132,5 @@ export class Documentation {
     }
 
     return submodules[0];
-  }
-
-  private fetchAssemblies(
-    name: string,
-    version: string,
-    assemblyFetcher: (name: string, version: string) => spec.Assembly
-  ): spec.Assembly[] {
-    const assemblies: spec.Assembly[] = new Array<spec.Assembly>();
-
-    function recurse(_name: string, _version: string) {
-      const assembly = assemblyFetcher(_name, _version);
-      assemblies.push(assembly);
-      for (const [d, v] of Object.entries(assembly.dependencies ?? {})) {
-        recurse(d, v);
-      }
-    }
-
-    recurse(name, version);
-    return assemblies;
   }
 }

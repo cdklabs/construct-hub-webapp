@@ -97,6 +97,10 @@
       "type": "runtime"
     },
     {
+      "name": "@uiw/react-markdown-preview",
+      "type": "runtime"
+    },
+    {
       "name": "codemaker",
       "type": "runtime"
     },
@@ -113,28 +117,12 @@
       "type": "runtime"
     },
     {
-      "name": "react-markdown",
-      "type": "runtime"
-    },
-    {
       "name": "react-router-dom",
       "type": "runtime"
     },
     {
       "name": "react-scripts",
       "version": "^4.0.0",
-      "type": "runtime"
-    },
-    {
-      "name": "remark-gfm",
-      "type": "runtime"
-    },
-    {
-      "name": "semantic-ui-css",
-      "type": "runtime"
-    },
-    {
-      "name": "semantic-ui-react",
       "type": "runtime"
     },
     {
