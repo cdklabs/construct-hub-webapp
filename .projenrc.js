@@ -1,4 +1,4 @@
-const { web } = require("projen");
+const { tasks, web } = require("projen");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -28,7 +28,7 @@ const project = new web.ReactTypeScriptProject({
   devDeps: ["@types/react-router-dom"],
 });
 
-function addStorybook() {
+(function addStorybook() {
   project.addDevDeps(
     "@storybook/addon-actions",
     "@storybook/addon-essentials",
@@ -45,10 +45,11 @@ function addStorybook() {
     description: "run local storybook server",
   });
 
-  project.addTask("build:storybook", {
+  const buildTask = project.addTask("storybook:build", {
     exec: "build-storybook -s public",
     description: "build storybook static site assets",
   });
+  project.compileTask.prependSpawn(buildTask);
 
   project.eslint.addOverride({
     files: ["**/*.stories.*"],
@@ -64,13 +65,16 @@ function addStorybook() {
       ],
     },
   });
-}
+
+  project.gitignore?.addPatterns("/storybook-static/");
+})();
 
 // synthesize project files before build
 // see https://github.com/projen/projen/issues/754
-const build = project.tasks.tryFind("build");
-build.prependExec("npx projen");
-build.spawn(project.packageTask);
+const buildTask = project.tasks.tryFind("build");
+buildTask.prependSpawn(project.compileTask);
+buildTask.prependExec("npx projen");
+buildTask.spawn(project.packageTask);
 
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
@@ -88,6 +92,5 @@ project.eslint.addRules({
     },
   ],
 });
-addStorybook();
 
 project.synth();

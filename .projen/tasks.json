@@ -63,7 +63,12 @@
     "compile": {
       "name": "compile",
       "category": "00.build",
-      "description": "Only compile"
+      "description": "Only compile",
+      "steps": [
+        {
+          "spawn": "storybook:build"
+        }
+      ]
     },
     "test:compile": {
       "name": "test:compile",
@@ -87,6 +92,9 @@
       "steps": [
         {
           "exec": "npx projen"
+        },
+        {
+          "spawn": "compile"
         },
         {
           "exec": "react-scripts build"
@@ -208,8 +216,8 @@
         }
       ]
     },
-    "build:storybook": {
-      "name": "build:storybook",
+    "storybook:build": {
+      "name": "storybook:build",
       "description": "build storybook static site assets",
       "steps": [
         {
