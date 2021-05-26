@@ -1,4 +1,4 @@
-const { web } = require("projen");
+const { tasks, web } = require("projen");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -28,11 +28,53 @@ const project = new web.ReactTypeScriptProject({
   devDeps: ["@types/react-router-dom"],
 });
 
+(function addStorybook() {
+  project.addDevDeps(
+    "@storybook/addon-actions",
+    "@storybook/addon-essentials",
+    "@storybook/addon-links",
+    "@storybook/node-logger",
+    "@storybook/preset-create-react-app",
+    "@storybook/react",
+    "babel-loader@8.1.0"
+  );
+
+  // Add tasks and config for storybook
+  project.addTask("storybook", {
+    exec: "start-storybook -p 6006 -s public",
+    description: "run local storybook server",
+  });
+
+  const buildTask = project.addTask("storybook:build", {
+    exec: "build-storybook -s public",
+    description: "build storybook static site assets",
+  });
+  project.compileTask.prependSpawn(buildTask);
+
+  project.eslint.addOverride({
+    files: ["**/*.stories.*"],
+    rules: {
+      "import/no-anonymous-default-export": "off",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          devDependencies: ["**/*.stories.*"],
+          optionalDependencies: false,
+          peerDependencies: true,
+        },
+      ],
+    },
+  });
+
+  project.gitignore?.addPatterns("/storybook-static/");
+})();
+
 // synthesize project files before build
 // see https://github.com/projen/projen/issues/754
-const build = project.tasks.tryFind("build");
-build.prependExec("npx projen");
-build.spawn(project.packageTask);
+const buildTask = project.tasks.tryFind("build");
+buildTask.prependSpawn(project.compileTask);
+buildTask.prependExec("npx projen");
+buildTask.spawn(project.packageTask);
 
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
