@@ -201,14 +201,16 @@
     },
     "storybook": {
       "name": "storybook",
+      "description": "run local storybook server",
       "steps": [
         {
           "exec": "start-storybook -p 6006 -s public"
         }
       ]
     },
-    "build-storybook": {
-      "name": "build-storybook",
+    "build:storybook": {
+      "name": "build:storybook",
+      "description": "build storybook static site assets",
       "steps": [
         {
           "exec": "build-storybook -s public"

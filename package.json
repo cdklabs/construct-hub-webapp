@@ -21,7 +21,7 @@
     "dev": "npx projen dev",
     "eject": "npx projen eject",
     "storybook": "npx projen storybook",
-    "build-storybook": "npx projen build-storybook",
+    "build:storybook": "npx projen build:storybook",
     "projen": "npx projen",
     "start": "npx projen start"
   },

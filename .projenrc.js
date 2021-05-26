@@ -42,10 +42,12 @@ function addStorybook() {
   // Add tasks and config for storybook
   project.addTask("storybook", {
     exec: "start-storybook -p 6006 -s public",
+    description: "run local storybook server",
   });
 
-  project.addTask("build-storybook", {
+  project.addTask("build:storybook", {
     exec: "build-storybook -s public",
+    description: "build storybook static site assets",
   });
 
   project.eslint.addOverride({
