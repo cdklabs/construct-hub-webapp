@@ -1,0 +1,24 @@
+import * as reflect from "jsii-reflect";
+import { PythonTranspile } from "../transpile/python";
+import { StaticFunction } from "./static-function";
+
+const assembly: reflect.Assembly = (global as any).assembly;
+
+describe("python", () => {
+  const transpile = new PythonTranspile(assembly.system);
+  test("snapshot", () => {
+    const staticFunction = new StaticFunction(transpile, findStaticFunction());
+    expect(staticFunction.markdown.render()).toMatchSnapshot();
+  });
+});
+
+function findStaticFunction(): reflect.Method {
+  for (const klass of assembly.system.classes) {
+    for (const method of klass.ownMethods) {
+      if (method.static) {
+        return method;
+      }
+    }
+  }
+  throw new Error("Assembly does not contain a static function");
+}

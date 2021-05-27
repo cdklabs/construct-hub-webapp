@@ -1,0 +1,39 @@
+function fetchAssembly(packageName, packageVersion, packagesPath) {
+  const exec = require("child_process").exec;
+  const fs = require("fs");
+  const os = require("os");
+  const path = require("path");
+
+  if (packageVersion.startsWith("^")) {
+    packageVersion = packageVersion.substring(1, packageVersion.length);
+  }
+
+  const output = `${packagesPath}/${packageName}@${packageVersion}/jsii.json`;
+
+  const tempDir = fs.mkdtempSync(`${os.tmpdir()}/assembly`);
+  const assemblyPath = `${__dirname}/../${output}`;
+  const package = `${packageName}@${packageVersion}`;
+
+  if (fs.existsSync(assemblyPath)) {
+    console.log(`Assembly for ${package} already exists locally`);
+    return;
+  }
+
+  console.log(`Fetching assembly for ${package}`);
+  fs.mkdirSync(path.dirname(assemblyPath), { recursive: true });
+  exec(
+    `cd ${tempDir} && npm v ${packageName}@${packageVersion} dist.tarball | xargs curl | tar -xz`,
+    (error, stdout, stderr) => {
+      fs.copyFileSync(path.join(tempDir, "package", ".jsii"), assemblyPath);
+      const packageJson = JSON.parse(
+        fs.readFileSync(path.join(tempDir, "package", "package.json"))
+      );
+      for (const [n, v] of Object.entries(
+        packageJson.peerDependencies ? packageJson.peerDependencies : {}
+      )) {
+        fetchAssembly(n, v, packagesPath);
+      }
+    }
+  );
+}
+fetchAssembly('@aws-cdk/aws-ecr', '1.106.0', 'public/packages')

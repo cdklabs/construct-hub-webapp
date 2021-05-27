@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`python snapshot 1`] = `
+" \`inspect\` <a name=\\"inspect\\"></a>
+
+\`\`\`python
+def inspect(inspector: aws_cdk.core.TreeInspector)
+\`\`\`
+
+# \`inspector\`<sup>Required</sup> <a name=\\"inspector\\"></a>
+
+- *Type:* [\`aws_cdk.core.TreeInspector\`](#@aws-cdk/core.TreeInspector)
+
+tree inspector to collect and process attributes.
+
+---
+"
+`;
