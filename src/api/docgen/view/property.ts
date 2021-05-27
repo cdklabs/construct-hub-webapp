@@ -1,10 +1,8 @@
 import * as reflect from "jsii-reflect";
-import { renderDocs } from "../helpers";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
-import { View } from "./view";
 
-export class Property implements View {
+export class Property {
   constructor(
     private readonly transpile: Transpile,
     private readonly property: reflect.Property
@@ -51,7 +49,7 @@ export class Property implements View {
     md.lines("");
 
     if (this.property.docs) {
-      renderDocs(this.property.docs, md);
+      md.docs(this.property.docs);
     }
 
     md.split();

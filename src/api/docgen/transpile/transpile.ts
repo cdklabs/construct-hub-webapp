@@ -1,6 +1,11 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 
+export interface TranspiledStruct {
+  readonly requirement: string;
+  readonly invocation: string;
+}
+
 export interface TranspiledCallable {
   readonly signature: string;
   readonly name: string;
@@ -27,6 +32,7 @@ export interface TranspiledTypeReference {
 export interface TranspiledProperty {
   readonly name: string;
   readonly typeReference: TranspiledTypeReference;
+  readonly optional: boolean;
 }
 
 export interface TranspiledEnum {
@@ -38,6 +44,8 @@ export interface Transpile {
   language: string;
 
   callable(callable: reflect.Callable): TranspiledCallable;
+
+  struct(struct: reflect.InterfaceType): TranspiledStruct;
 
   parameter(parameter: reflect.Parameter): TranspiledParameter;
 
@@ -63,69 +71,17 @@ export interface Transpile {
 
   boolean(): TranspiledTypeReference;
 
+  json(): TranspiledTypeReference;
+
   date(): TranspiledTypeReference;
 
   readme(readme: string): string;
 }
 
+export interface AbstractTranspile extends Transpile {}
+
 export abstract class AbstractTranspile implements Transpile {
   constructor(public readonly language: string) {}
-
-  public date(): TranspiledTypeReference {
-    throw new Error("Method not implemented.");
-  }
-
-  public enum(_: reflect.EnumType): TranspiledEnum {
-    throw new Error("Method not implemented.");
-  }
-
-  public property(_: reflect.Property): TranspiledProperty {
-    throw new Error("Method not implemented.");
-  }
-
-  public callable(_: reflect.Callable): TranspiledCallable {
-    throw new Error("Method not implemented.");
-  }
-
-  public parameter(_: reflect.Parameter): TranspiledParameter {
-    throw new Error("Method not implemented.");
-  }
-
-  public type(_: reflect.Type): TranspiledType {
-    throw new Error("Method not implemented.");
-  }
-
-  public unionOfTypes(_: TranspiledTypeReference[]): TranspiledTypeReference {
-    throw new Error("Method not implemented.");
-  }
-
-  public listOfType(_: TranspiledTypeReference): TranspiledTypeReference {
-    throw new Error("Method not implemented.");
-  }
-
-  public mapOfType(_: TranspiledTypeReference): TranspiledTypeReference {
-    throw new Error("Method not implemented.");
-  }
-
-  public any(): TranspiledTypeReference {
-    throw new Error("Method not implemented.");
-  }
-
-  public str(): TranspiledTypeReference {
-    throw new Error("Method not implemented.");
-  }
-
-  public number(): TranspiledTypeReference {
-    throw new Error("Method not implemented.");
-  }
-
-  public boolean(): TranspiledTypeReference {
-    throw new Error("Method not implemented.");
-  }
-
-  public readme(_: string): string {
-    throw new Error("Method not implemented.");
-  }
 
   public typeReference(type: reflect.TypeReference): TranspiledTypeReference {
     if (type.fqn && type.type) {
@@ -162,6 +118,8 @@ export abstract class AbstractTranspile implements Transpile {
           return this.number();
         case "date":
           return this.date();
+        case "json":
+          return this.json();
         default:
           throw new Error(`Unsupported primitive type '${type.primitive}'`);
       }
@@ -170,6 +128,3 @@ export abstract class AbstractTranspile implements Transpile {
     throw new Error(`Unsupported type: ${type.toString()}`);
   }
 }
-
-// https://github.com/microsoft/TypeScript/issues/22815#issuecomment-375766197
-// export interface AbstractTranspile extends Transpile {}

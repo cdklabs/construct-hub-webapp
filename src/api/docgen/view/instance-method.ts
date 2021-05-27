@@ -2,9 +2,8 @@ import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
 import { Parameter } from "./parameter";
-import { View } from "./view";
 
-export class InstanceMethod implements View {
+export class InstanceMethod {
   constructor(
     private readonly transpile: Transpile,
     private readonly method: reflect.Method

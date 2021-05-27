@@ -162,7 +162,7 @@
       "description": "Starts the react application",
       "steps": [
         {
-          "exec": "./scripts/fetch-dev-assemblies.sh"
+          "spawn": "dev:fetch-assemblies"
         },
         {
           "exec": "react-scripts start"
@@ -176,6 +176,14 @@
       "steps": [
         {
           "exec": "react-scripts eject"
+        }
+      ]
+    },
+    "dev:fetch-assemblies": {
+      "name": "dev:fetch-assemblies",
+      "steps": [
+        {
+          "exec": "node scripts/fetch-dev-assemblies.js"
         }
       ]
     }

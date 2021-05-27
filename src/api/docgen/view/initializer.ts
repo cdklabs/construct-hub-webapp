@@ -2,9 +2,8 @@ import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
 import { Parameter } from "./parameter";
-import { View } from "./view";
 
-export class Initializer implements View {
+export class Initializer {
   constructor(
     private readonly transpile: Transpile,
     private readonly initializer: reflect.Initializer

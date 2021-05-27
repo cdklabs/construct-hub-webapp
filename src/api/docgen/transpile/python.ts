@@ -1,7 +1,5 @@
-import * as spec from "@jsii/spec";
 import { toSnakeCase } from "codemaker";
 import * as reflect from "jsii-reflect";
-import { propertyToParameter } from "../helpers";
 import { Markdown } from "../render/markdown";
 import * as transpile from "./transpile";
 
@@ -74,7 +72,7 @@ export class PythonTranspile extends transpile.AbstractTranspile {
 
   public date(): transpile.TranspiledTypeReference {
     const d = "datetime.datetime";
-    return { raw: d, markdown: `\`${d}\`` };
+    return { raw: d, markdown: Markdown.code(d) };
   }
 
   public enum(enu: reflect.EnumType): transpile.TranspiledEnum {
@@ -84,10 +82,16 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     };
   }
 
+  public json(): transpile.TranspiledTypeReference {
+    const a = "any";
+    return { raw: a, markdown: Markdown.code(a) };
+  }
+
   public property(property: reflect.Property): transpile.TranspiledProperty {
     return {
       name: property.const ? property.name : toSnakeCase(property.name),
       typeReference: this.typeReference(property.type),
+      optional: property.optional,
     };
   }
 
@@ -101,17 +105,42 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     };
   }
 
+  public struct(struct: reflect.InterfaceType): transpile.TranspiledStruct {
+    const requirement = `import ${this.moduleFqn(struct.fqn)}`;
+    const transpiledType = this.type(struct);
+
+    const types = [];
+
+    for (const property of struct.allProperties) {
+      const transpiledProperty = this.property(property);
+      types.push(
+        `${transpiledProperty.name}: ${transpiledProperty.typeReference.raw}${
+          transpiledProperty.optional ? " = None" : ""
+        }`
+      );
+    }
+
+    const invocation = `${transpiledType.fqn}(${types.join(
+      `, \n${" ".repeat(1 + transpiledType.fqn.length)}`
+    )})`;
+    return {
+      requirement,
+      invocation,
+    };
+  }
+
   public callable(callable: reflect.Callable): transpile.TranspiledCallable {
     const requirement = `import ${this.moduleFqn(callable.parentType.fqn)}`;
 
-    const parameters: reflect.Parameter[] = new Array<reflect.Parameter>();
+    const parameters = new Array<reflect.Parameter>();
 
     for (const p of callable.parameters.sort(this.optionalityCompare)) {
       if (this.isStruct(p)) {
         // struct parameters are expanded to the individual struct properties
         const struct = p.parentType.system.findInterface(p.type.fqn!);
         for (const property of struct.allProperties) {
-          parameters.push(propertyToParameter(callable, property));
+          const parameter = propertyToParameter(callable, property);
+          parameters.push(parameter);
         }
       } else {
         // non struct parameters are kept as is
@@ -124,10 +153,10 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     const types = [];
 
     for (const parameter of parameters) {
-      const transpiledParameter = this.parameter(parameter);
+      const transpiled = this.parameter(parameter);
       types.push(
-        `${transpiledParameter.name}: ${transpiledParameter.typeReference.raw}${
-          transpiledParameter.optional ? " = None" : ""
+        `${transpiled.name}: ${transpiled.typeReference.raw}${
+          transpiled.optional ? " = None" : ""
         }`
       );
     }
@@ -136,9 +165,11 @@ export class PythonTranspile extends transpile.AbstractTranspile {
       `, \n${" ".repeat(3 + 1 + 1 + name.length)}`
     )})`;
 
-    const invocationTarget = name === "<initializer>" ? "" : name;
-    const invocation = `${transpiledType.fqn}${invocationTarget}(${types.join(
-      `, \n${" ".repeat(1 + transpiledType.fqn.length)}`
+    const invocationTarget = `${transpiledType.fqn}${
+      name === "<initializer>" ? "" : `.${name}`
+    }`;
+    const invocation = `${invocationTarget}(${types.join(
+      `, \n${" ".repeat(1 + invocationTarget.length)}`
     )})`;
 
     return {
@@ -151,25 +182,34 @@ export class PythonTranspile extends transpile.AbstractTranspile {
   }
 
   public type(type: reflect.Type): transpile.TranspiledType {
-    const submodule = this.findSubmodule(type);
-    const module = submodule
-      ? this.extractPythonModule(submodule.targets!).split(".")[0]
-      : this.extractPythonModule(type.assembly.targets!);
+    const module = this.moduleFqn(type.fqn);
 
-    return {
-      fqn: [module, ...([type.namespace] ?? []), type.name].join("."),
-    };
+    const fqn = [module];
+
+    if (type.namespace) {
+      fqn.push(type.namespace);
+    }
+
+    fqn.push(type.name);
+
+    return { fqn: fqn.join(".") };
   }
 
-  public moduleFqn(fqn: string): string {
+  private moduleFqn(fqn: string): string {
     const type = this.ts.findFqn(fqn);
     const submodule = this.findSubmodule(type);
 
-    if (submodule) {
-      return this.extractPythonModule(submodule.targets!);
+    const targets = submodule ? submodule.targets : type.assembly.targets;
+
+    if (!targets) {
+      throw new Error(`Unable to find 'targets' for fqn ${type.fqn}`);
     }
 
-    return this.extractPythonModule(type.assembly.targets!);
+    if (!targets.python) {
+      throw new Error(`Python is not a supported target for fqn ${type.fqn}`);
+    }
+
+    return targets.python.module;
   }
 
   private optionalityCompare(
@@ -212,10 +252,6 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     return submodules[0];
   }
 
-  private extractPythonModule(targets: spec.AssemblyTargets) {
-    return targets.python!.module;
-  }
-
   private typing(type: "List" | "Mapping" | "Any" | "Union"): string {
     return `typing.${type}`;
   }
@@ -223,4 +259,21 @@ export class PythonTranspile extends transpile.AbstractTranspile {
   private builtins(type: "bool" | "str") {
     return `builtins.${type}`;
   }
+}
+
+export function propertyToParameter(
+  callable: reflect.Callable,
+  property: reflect.Property
+): reflect.Parameter {
+  return {
+    docs: property.docs,
+    method: callable,
+    name: property.name,
+    optional: property.optional,
+    parentType: property.parentType,
+    spec: property.spec,
+    system: property.system,
+    type: property.type,
+    variadic: false,
+  };
 }

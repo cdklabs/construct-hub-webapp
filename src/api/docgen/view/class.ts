@@ -1,17 +1,15 @@
 import * as reflect from "jsii-reflect";
-import { renderDocs } from "../helpers";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
 import { Initializer } from "./initializer";
 import { InstanceMethod } from "./instance-method";
 import { Property } from "./property";
 import { StaticFunction } from "./static-function";
-import { View } from "./view";
 
 /**
  * Reflects on a jsii class to generate a view.
  */
-export class Class implements View {
+export class Class {
   private readonly instanceMethods: reflect.Method[] =
     new Array<reflect.Method>();
   private readonly staticFunctions: reflect.Method[] =
@@ -65,7 +63,7 @@ export class Class implements View {
     }
 
     if (this.klass.docs) {
-      renderDocs(this.klass.docs, md);
+      md.docs(this.klass.docs);
     }
 
     md.section(this.renderInitializer());

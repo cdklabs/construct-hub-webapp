@@ -1,11 +1,9 @@
 import * as reflect from "jsii-reflect";
-import { propertyToParameter, renderDocs } from "../helpers";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
-import { Initializer } from "./initializer";
-import { View } from "./view";
+import { Property } from "./property";
 
-export class Struct implements View {
+export class Struct {
   constructor(
     private readonly transpile: Transpile,
     private readonly iface: reflect.InterfaceType
@@ -18,34 +16,34 @@ export class Struct implements View {
     });
 
     if (this.iface.docs) {
-      renderDocs(this.iface.docs, md);
+      md.docs(this.iface.docs);
     }
 
-    const parameters: reflect.Parameter[] = [];
-    const initializer: reflect.Initializer = {
-      abstract: false,
-      parameters,
-      docs: this.iface.docs,
-      parentType: this.iface,
-      system: this.iface.system,
-      variadic: false,
-      assembly: this.iface.assembly,
-      spec: this.iface.spec,
-      kind: reflect.MemberKind.Initializer,
-      name: "<initializer>",
-      overrides: undefined,
-      protected: false,
-      locationInModule: this.iface.locationInModule,
-      locationInRepository: this.iface.locationInRepository,
-    };
+    md.section(this.renderInitializer());
+    return md;
+  }
 
-    initializer.parameters.push(
-      ...this.iface.allProperties.map((p) =>
-        propertyToParameter(initializer, p)
-      )
+  private renderInitializer(): Markdown {
+    const md = new Markdown({
+      id: `${this.iface.fqn}.Initializer`,
+      header: {
+        title: "Initializer",
+      },
+    });
+
+    const transpiled = this.transpile.struct(this.iface);
+
+    md.snippet(
+      this.transpile.language,
+      `${transpiled.requirement}`,
+      "",
+      `${transpiled.invocation}`
     );
 
-    md.section(new Initializer(this.transpile, initializer).markdown);
+    for (const property of this.iface.allProperties) {
+      md.section(new Property(this.transpile, property).markdown);
+    }
+
     return md;
   }
 }

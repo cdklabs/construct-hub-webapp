@@ -24,7 +24,7 @@ logs
 node_modules/
 npm-debug.log*
 pids
-public/packages/**
+public/packages
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 yarn-debug.log*
 yarn-error.log*
@@ -44,6 +44,7 @@ yarn-error.log*
 !/LICENSE
 !/package.json
 !/react-app-env.d.ts
+!/scripts/fetch-dev-assemblies.js
 !/src
 !/test
 !/tsconfig.eslint.json

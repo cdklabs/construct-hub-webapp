@@ -1,4 +1,3 @@
-import * as spec from "@jsii/spec";
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { PythonTranspile } from "../transpile/python";
@@ -25,6 +24,11 @@ export enum Language {
  * Options for rendering documentation pages.
  */
 export interface DocumentationOptions {
+  /**
+   * The assembly to generate from.
+   */
+  readonly assembly: reflect.Assembly;
+
   /**
    * Which language to generate docs for.
    */
@@ -56,7 +60,6 @@ export interface DocumentationOptions {
  * Render documentation pages for a jsii library.
  */
 export class Documentation {
-  private readonly ts: reflect.TypeSystem;
   private readonly assembly: reflect.Assembly;
   private readonly submodule?: reflect.Submodule;
 
@@ -65,28 +68,18 @@ export class Documentation {
 
   private readonly transpile: Transpile;
 
-  constructor(
-    packageName: string,
-    assemblies: spec.Assembly[],
-    options: DocumentationOptions
-  ) {
-    this.ts = new reflect.TypeSystem();
+  constructor(options: DocumentationOptions) {
+    this.assembly = options.assembly;
 
     switch (options.language) {
       case Language.PYTHON:
-        this.transpile = new PythonTranspile(this.ts);
+        this.transpile = new PythonTranspile(this.assembly.system);
         break;
       default:
         throw new Error(
           `Generating documentation for ${options.language} is not supported`
         );
     }
-
-    for (const assembly of assemblies) {
-      this.ts.addAssembly(new reflect.Assembly(this.ts, assembly));
-    }
-
-    this.assembly = this.ts.findAssembly(packageName);
 
     if (options.submoduleName) {
       this.submodule = this.findSubmodule(options.submoduleName);
@@ -109,7 +102,7 @@ export class Documentation {
     if (this.includeApiReference) {
       const apiReference = new ApiReference(
         this.transpile,
-        this.ts,
+        this.assembly,
         this.submodule
       );
       documentation.section(apiReference.markdown);

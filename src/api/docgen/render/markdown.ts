@@ -1,3 +1,5 @@
+import * as reflect from "jsii-reflect";
+
 export interface MarkdownHeaderOptions {
   readonly size?: number;
   readonly title?: string;
@@ -19,7 +21,7 @@ export class Markdown {
     let sanitized = line.trim();
 
     if (line.startsWith("-")) {
-      sanitized = sanitized.substring(1, line.length);
+      sanitized = sanitized.substring(1, line.length).trim();
     }
 
     return sanitized;
@@ -46,6 +48,26 @@ export class Markdown {
   constructor(private readonly options: MarkdownOptions = {}) {
     this.id = options.id ?? options.header?.title;
     this.header = this.formatHeader();
+  }
+
+  public docs(docs: reflect.Docs) {
+    if (docs.summary) {
+      this.lines(Markdown.sanitize(docs.summary));
+      this.lines("");
+    }
+    if (docs.remarks) {
+      this.lines(Markdown.sanitize(docs.remarks));
+      this.lines("");
+    }
+
+    if (docs.docs.see) {
+      this.quote(docs.docs.see);
+    }
+
+    const customLink = docs.customTag("link");
+    if (customLink) {
+      this.quote(`[${customLink}](${customLink})`);
+    }
   }
 
   public quote(line: string) {

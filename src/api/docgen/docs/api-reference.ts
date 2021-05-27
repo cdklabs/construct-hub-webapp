@@ -11,7 +11,7 @@ import { Struct } from "../view/struct";
 export class ApiReference {
   constructor(
     private readonly transpile: Transpile,
-    private readonly ts: reflect.TypeSystem,
+    private readonly assembly: reflect.Assembly,
     private readonly submodule?: reflect.Submodule
   ) {}
 
@@ -28,7 +28,7 @@ export class ApiReference {
   }
 
   private renderConstructs(): Markdown {
-    const constructs = this.ts.classes
+    const constructs = this.assembly.classes
       .filter((c) => this.isConstruct(c))
       .filter((c) =>
         this.submodule ? this.insideSubmodule(c, this.submodule) : true
@@ -48,7 +48,7 @@ export class ApiReference {
   }
 
   private renderStructs(): Markdown {
-    const structs = this.ts.interfaces
+    const structs = this.assembly.interfaces
       .filter((i) => i.datatype)
       .filter((i) =>
         this.submodule ? this.insideSubmodule(i, this.submodule) : true
@@ -70,7 +70,7 @@ export class ApiReference {
   private renderClasses(): Markdown {
     const md = new Markdown({ header: { title: "Classes" } });
 
-    const classes = this.ts.classes
+    const classes = this.assembly.classes
       .filter((c) => !this.isConstruct(c))
       .filter((c) =>
         this.submodule ? this.insideSubmodule(c, this.submodule) : true
@@ -91,7 +91,7 @@ export class ApiReference {
   private renderEnums(): Markdown {
     const md = new Markdown({ header: { title: "Enums" } });
 
-    const enums = this.ts.enums
+    const enums = this.assembly.enums
       .filter((c) =>
         this.submodule ? this.insideSubmodule(c, this.submodule) : true
       )

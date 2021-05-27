@@ -1,10 +1,8 @@
 import * as reflect from "jsii-reflect";
-import { renderDocs } from "../helpers";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
-import { View } from "./view";
 
-export class Enum implements View {
+export class Enum {
   constructor(
     private readonly transpile: Transpile,
     private readonly enu: reflect.EnumType
@@ -15,7 +13,7 @@ export class Enum implements View {
     const md = new Markdown({ header: { title: transpiled.name } });
 
     if (this.enu.docs) {
-      renderDocs(this.enu.docs, md);
+      md.docs(this.enu.docs);
     }
 
     for (const m of this.enu.members) {
@@ -35,7 +33,7 @@ export class Enum implements View {
       }
 
       if (m.docs) {
-        renderDocs(m.docs, member);
+        member.docs(m.docs);
       }
 
       member.split();

@@ -1,4 +1,10 @@
-const { web } = require("projen");
+const { web, SourceCode } = require("projen");
+
+// some assemblies we fetch during development
+// so we'll have data to work with on the package page.
+const devAssemblies = {
+  "@aws-cdk/aws-ecr": ["1.106.0"],
+};
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -45,10 +51,7 @@ build.spawn(project.packageTask);
 project.npmignore.addPatterns("!/build");
 project.npmignore.addPatterns("/public");
 
-const dev = project.tasks.tryFind("dev");
-// TODO - maybe generate this script with projen...?
-dev.prependExec("./scripts/fetch-dev-assemblies.sh");
-project.gitignore.exclude("public/packages");
+codeGenFetchAssemblies();
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
@@ -63,3 +66,67 @@ project.eslint.addRules({
 });
 
 project.synth();
+
+function codeGenFetchAssemblies() {
+  const scriptPath = "scripts/fetch-dev-assemblies.js";
+
+  const packagesPath = "public/packages";
+
+  const script = new SourceCode(project, scriptPath);
+  script.line(fetchAssembly.toString());
+
+  for (const [name, versions] of Object.entries(devAssemblies)) {
+    for (const version of versions) {
+      script.line(
+        `${fetchAssembly.name}('${name}', '${version}', '${packagesPath}')`
+      );
+    }
+  }
+
+  project.gitignore.exclude(packagesPath);
+
+  const task = project.addTask("dev:fetch-assemblies");
+  task.exec(`node ${scriptPath}`);
+
+  const dev = project.tasks.tryFind("dev");
+  dev.prependSpawn(task);
+}
+
+function fetchAssembly(packageName, packageVersion, packagesPath) {
+  const exec = require("child_process").exec;
+  const fs = require("fs");
+  const os = require("os");
+  const path = require("path");
+
+  if (packageVersion.startsWith("^")) {
+    packageVersion = packageVersion.substring(1, packageVersion.length);
+  }
+
+  const output = `${packagesPath}/${packageName}@${packageVersion}/jsii.json`;
+
+  const tempDir = fs.mkdtempSync(`${os.tmpdir()}/assembly`);
+  const assemblyPath = `${__dirname}/../${output}`;
+  const package = `${packageName}@${packageVersion}`;
+
+  if (fs.existsSync(assemblyPath)) {
+    console.log(`Assembly for ${package} already exists locally`);
+    return;
+  }
+
+  console.log(`Fetching assembly for ${package}`);
+  fs.mkdirSync(path.dirname(assemblyPath), { recursive: true });
+  exec(
+    `cd ${tempDir} && npm v ${packageName}@${packageVersion} dist.tarball | xargs curl | tar -xz`,
+    (error, stdout, stderr) => {
+      fs.copyFileSync(path.join(tempDir, "package", ".jsii"), assemblyPath);
+      const packageJson = JSON.parse(
+        fs.readFileSync(path.join(tempDir, "package", "package.json"))
+      );
+      for (const [n, v] of Object.entries(
+        packageJson.peerDependencies ? packageJson.peerDependencies : {}
+      )) {
+        fetchAssembly(n, v, packagesPath);
+      }
+    }
+  );
+}

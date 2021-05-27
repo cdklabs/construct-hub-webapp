@@ -1,10 +1,8 @@
 import * as reflect from "jsii-reflect";
-import { renderDocs } from "../helpers";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
-import { View } from "./view";
 
-export class Parameter implements View {
+export class Parameter {
   constructor(
     private readonly transpile: Transpile,
     private readonly parameter: reflect.Parameter
@@ -46,7 +44,7 @@ export class Parameter implements View {
     md.lines("");
 
     if (this.parameter.docs) {
-      renderDocs(this.parameter.docs, md);
+      md.docs(this.parameter.docs);
     }
 
     md.split();
