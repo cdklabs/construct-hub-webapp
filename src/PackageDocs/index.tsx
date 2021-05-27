@@ -1,23 +1,15 @@
-import { Switch, Route, useRouteMatch } from "react-router-dom";
-import PackageDocsHome from "../PackageDocsHome";
-import TypeDocs from "../TypeDocs";
+import { Box } from "@chakra-ui/react";
+import ReactMarkdown from "@uiw/react-markdown-preview";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 
-interface PackageDocsProps {
-  name: string;
-  scope?: string;
-  version: string;
+export interface PackageDocsProps {
+  readme: string;
 }
 
-export default function PackageDocs(props: PackageDocsProps) {
-  const { path } = useRouteMatch();
+export default function PackageDocs({ readme }: PackageDocsProps) {
   return (
-    <Switch>
-      <Route exact path={path}>
-        <PackageDocsHome {...props} />
-      </Route>
-      <Route path={`${path}/:fqn`}>
-        <TypeDocs {...props} />
-      </Route>
-    </Switch>
+    <Box width="100%">
+      <ReactMarkdown skipHtml components={ChakraUIRenderer()} source={readme} />
+    </Box>
   );
 }

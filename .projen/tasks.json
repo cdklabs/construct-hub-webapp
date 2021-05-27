@@ -63,7 +63,12 @@
     "compile": {
       "name": "compile",
       "category": "00.build",
-      "description": "Only compile"
+      "description": "Only compile",
+      "steps": [
+        {
+          "spawn": "storybook:build"
+        }
+      ]
     },
     "test:compile": {
       "name": "test:compile",
@@ -89,6 +94,9 @@
           "exec": "npx projen"
         },
         {
+          "spawn": "compile"
+        },
+        {
           "exec": "react-scripts build"
         },
         {
@@ -96,16 +104,31 @@
         }
       ]
     },
-    "projen:upgrade": {
-      "name": "projen:upgrade",
-      "category": "30.maintain",
-      "description": "upgrades projen to the latest version",
+    "upgrade-dependencies": {
+      "name": "upgrade-dependencies",
+      "env": {
+        "CI": "0"
+      },
       "steps": [
         {
-          "exec": "yarn upgrade -L projen"
+          "exec": "npm-check-updates --upgrade --target=minor --reject='projen'"
         },
         {
-          "exec": "CI=\"\" yarn projen"
+          "exec": "npx projen"
+        }
+      ]
+    },
+    "upgrade-projen": {
+      "name": "upgrade-projen",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "npm-check-updates --upgrade --target=minor --filter='projen'"
+        },
+        {
+          "exec": "npx projen"
         }
       ]
     },
@@ -176,6 +199,24 @@
       "steps": [
         {
           "exec": "react-scripts eject"
+        }
+      ]
+    },
+    "storybook": {
+      "name": "storybook",
+      "description": "run local storybook server",
+      "steps": [
+        {
+          "exec": "start-storybook -p 6006 -s public"
+        }
+      ]
+    },
+    "storybook:build": {
+      "name": "storybook:build",
+      "description": "build storybook static site assets",
+      "steps": [
+        {
+          "exec": "build-storybook -s public"
         }
       ]
     },
