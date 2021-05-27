@@ -23,7 +23,15 @@ const project = new web.ReactTypeScriptProject({
     prettier: true,
   },
 
-  deps: ["react-router-dom"],
+  deps: [
+    "@chakra-ui/react",
+    "@emotion/react@^11",
+    "@emotion/styled@^11",
+    "chakra-ui-markdown-renderer",
+    "framer-motion@^4",
+    "@uiw/react-markdown-preview",
+    "react-router-dom",
+  ],
 
   devDeps: ["@types/react-router-dom"],
 });
@@ -80,6 +88,9 @@ buildTask.spawn(project.packageTask);
 // directory, which is the output of our static website.
 project.npmignore?.addPatterns("!/build");
 project.npmignore?.addPatterns("/public");
+
+// Proxy requests to awscdk.io for local testing
+project.package.addField("proxy", "https://awscdk.io");
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
