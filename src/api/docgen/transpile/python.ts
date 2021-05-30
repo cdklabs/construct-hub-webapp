@@ -289,7 +289,12 @@ function formatImport(type: transpile.TranspiledType) {
 }
 
 function formatSignature(name: string, inputs: string[]) {
-  return `def ${name}(${formatInputs(inputs, 3 + 1 + 1 + name.length)})`;
+  const def = "def ";
+  // length of the word 'def' +
+  // length of the method name +
+  // 1 opening paranthesis
+  const indent = def.length + name.length + 1;
+  return `${def}${name}(${formatInputs(inputs, indent)})`;
 }
 
 function formatInputs(inputs: string[], indent: number) {

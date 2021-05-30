@@ -71,7 +71,7 @@ export class Documentation {
     }
 
     this.includeApiReference = options.apiReference ?? true;
-    this.includeReadme = options.readme ?? false;
+    this.includeReadme = options.readme ?? true;
   }
 
   /**
@@ -96,6 +96,9 @@ export class Documentation {
     return documentation;
   }
 
+  /**
+   * Lookup a submodule by a submodule name given by the caller.
+   */
   private findSubmodule(submoduleName: string): reflect.Submodule {
     const submodules = this.assembly.submodules.filter(
       (s) => s.name === submoduleName

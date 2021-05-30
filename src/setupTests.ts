@@ -31,14 +31,11 @@ function collectAssebmlies(p: string, ts: reflect.TypeSystem) {
   if (stat.isDirectory()) {
     fs.readdirSync(p).map((f) => collectAssebmlies(path.join(p, f), ts));
   } else {
-    if (!p.endsWith("jsii.json")) {
-      throw new Error(
-        `Unexpected file in packages: '${p}' (should contain only jsii.json files)`
-      );
+    if (p.endsWith("jsii.json")) {
+      const assembly = JSON.parse(
+        fs.readFileSync(p, { encoding: "utf8" })
+      ) as jsii.Assembly;
+      ts.addAssembly(new reflect.Assembly(ts, assembly));
     }
-    const assembly = JSON.parse(
-      fs.readFileSync(p, { encoding: "utf8" })
-    ) as jsii.Assembly;
-    ts.addAssembly(new reflect.Assembly(ts, assembly));
   }
 }

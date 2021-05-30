@@ -15,7 +15,6 @@ export function PackageDocs(props: PackageDocsProps) {
     assembly: props.assembly,
     language: props.language,
     submoduleName: props.submodule,
-    readme: true,
   });
 
   const source = doc.markdown.render();

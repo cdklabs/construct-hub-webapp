@@ -20,5 +20,5 @@ function findParameter(): reflect.Parameter {
       }
     }
   }
-  throw new Error("Assembly does not contain a paramter");
+  throw new Error("Assembly does not contain a parameter");
 }
