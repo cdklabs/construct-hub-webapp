@@ -31,7 +31,7 @@ export class Markdown {
     return `**${text}**`;
   }
 
-  public static code(text: string): string {
+  public static pre(text: string): string {
     return `\`${text}\``;
   }
 
@@ -79,7 +79,7 @@ export class Markdown {
     this.lines(`- ${line}`);
   }
 
-  public snippet(language: string, ...snippet: string[]) {
+  public code(language: string, ...snippet: string[]) {
     this.lines(`\`\`\`${language}`, ...snippet, "```");
     this.lines("");
   }

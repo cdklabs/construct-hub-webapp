@@ -45,7 +45,6 @@ function collectAssebmlies(p: string, ts: reflect.TypeSystem) {
     const assembly = JSON.parse(
       fs.readFileSync(p, { encoding: "utf8" })
     ) as jsii.Assembly;
-    console.log(`Adding assembly ${assembly.name}`);
     ts.addAssembly(new reflect.Assembly(ts, assembly));
   }
 }

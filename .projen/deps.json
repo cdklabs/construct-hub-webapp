@@ -154,10 +154,6 @@
       "type": "runtime"
     },
     {
-      "name": "@uiw/react-markdown-preview",
-      "type": "runtime"
-    },
-    {
       "name": "chakra-ui-markdown-renderer",
       "type": "runtime"
     },

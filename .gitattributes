@@ -14,7 +14,7 @@
 /LICENSE                                   	linguist-generated
 /package.json                              	linguist-generated
 /react-app-env.d.ts                        	linguist-generated
-/scripts/fetch-dev-assemblies.js           	linguist-generated
+/scripts/fetch-assemblies.js               	linguist-generated
 /tsconfig.eslint.json                      	linguist-generated
 /tsconfig.json                             	linguist-generated
 /yarn.lock                                 	linguist-generated

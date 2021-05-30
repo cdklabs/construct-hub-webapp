@@ -2,11 +2,19 @@ import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 
 export interface TranspiledStruct {
+  readonly type: TranspiledType;
+  readonly name: string;
   readonly requirement: string;
   readonly invocation: string;
 }
 
+export interface TranspiledClass {
+  readonly type: TranspiledType;
+  readonly name: string;
+}
+
 export interface TranspiledCallable {
+  readonly parentType: TranspiledType;
   readonly signature: string;
   readonly name: string;
   readonly requirement: string;
@@ -16,12 +24,19 @@ export interface TranspiledCallable {
 
 export interface TranspiledParameter {
   readonly name: string;
+  readonly parentType: TranspiledType;
   readonly typeReference: TranspiledTypeReference;
   readonly optional: boolean;
 }
 
+export interface TranspiledInterface {
+  readonly type: TranspiledType;
+  readonly name: string;
+}
+
 export interface TranspiledType {
   readonly fqn: string;
+  readonly moduleFqn: string;
 }
 
 export interface TranspiledTypeReference {
@@ -31,13 +46,20 @@ export interface TranspiledTypeReference {
 
 export interface TranspiledProperty {
   readonly name: string;
+  readonly parentType: TranspiledType;
   readonly typeReference: TranspiledTypeReference;
   readonly optional: boolean;
 }
 
 export interface TranspiledEnum {
+  readonly fqn: string;
   readonly name: string;
   readonly members: string[];
+}
+
+export interface TranspiledEnumMember {
+  readonly fqn: string;
+  readonly name: string;
 }
 
 export interface Transpile {
@@ -45,13 +67,19 @@ export interface Transpile {
 
   callable(callable: reflect.Callable): TranspiledCallable;
 
+  class(klass: reflect.ClassType): TranspiledClass;
+
   struct(struct: reflect.InterfaceType): TranspiledStruct;
+
+  interface(iface: reflect.InterfaceType): TranspiledInterface;
 
   parameter(parameter: reflect.Parameter): TranspiledParameter;
 
   property(property: reflect.Property): TranspiledProperty;
 
   enum(enu: reflect.EnumType): TranspiledEnum;
+
+  enumMember(em: reflect.EnumMember): TranspiledEnumMember;
 
   type(type: reflect.Type): TranspiledType;
 
@@ -85,8 +113,11 @@ export abstract class AbstractTranspile implements Transpile {
 
   public typeReference(type: reflect.TypeReference): TranspiledTypeReference {
     if (type.fqn && type.type) {
-      const raw = this.type(type.type).fqn;
-      return { raw: raw, markdown: `[${Markdown.code(raw)}](#${type.fqn})` };
+      const transpiled = this.type(type.type);
+      return {
+        raw: transpiled.fqn,
+        markdown: `[${Markdown.pre(transpiled.fqn)}](#${transpiled.fqn})`,
+      };
     }
 
     if (type.unionOfTypes) {

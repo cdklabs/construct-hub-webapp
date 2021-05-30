@@ -185,9 +185,6 @@
       "description": "Starts the react application",
       "steps": [
         {
-          "spawn": "dev:fetch-assemblies"
-        },
-        {
           "exec": "react-scripts start"
         }
       ]
@@ -224,7 +221,7 @@
       "name": "dev:fetch-assemblies",
       "steps": [
         {
-          "exec": "node scripts/fetch-dev-assemblies.js"
+          "exec": "node scripts/fetch-assemblies.js"
         }
       ]
     }

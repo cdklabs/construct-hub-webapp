@@ -1,33 +1,38 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
-import { Transpile } from "../transpile/transpile";
+import { Transpile, TranspiledCallable } from "../transpile/transpile";
 import { Parameter } from "./parameter";
 
 export class Initializer {
+  private readonly transpiled: TranspiledCallable;
+  private readonly parameters: Parameter[];
   constructor(
     private readonly transpile: Transpile,
-    private readonly initializer: reflect.Initializer
-  ) {}
+    initializer: reflect.Initializer
+  ) {
+    this.transpiled = transpile.callable(initializer);
+    this.parameters = this.transpiled.parameters.map(
+      (p) => new Parameter(this.transpile, p)
+    );
+  }
 
   public get markdown(): Markdown {
     const md = new Markdown({
-      id: `${this.initializer.parentType.fqn}.Initializer`,
+      id: `${this.transpiled.parentType.fqn}.Initializer`,
       header: {
         title: "Initializer",
       },
     });
 
-    const transpiled = this.transpile.callable(this.initializer);
-
-    md.snippet(
+    md.code(
       this.transpile.language,
-      `${transpiled.requirement}`,
+      `${this.transpiled.requirement}`,
       "",
-      `${transpiled.invocation}`
+      `${this.transpiled.invocation}`
     );
 
-    for (const parameter of transpiled.parameters) {
-      md.section(new Parameter(this.transpile, parameter).markdown);
+    for (const parameter of this.parameters) {
+      md.section(parameter.markdown);
     }
 
     return md;

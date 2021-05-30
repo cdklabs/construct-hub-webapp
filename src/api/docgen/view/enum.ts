@@ -1,12 +1,16 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
+import { EnumMember } from "./enum-member";
 
 export class Enum {
+  private readonly members: EnumMember[];
   constructor(
     private readonly transpile: Transpile,
     private readonly enu: reflect.EnumType
-  ) {}
+  ) {
+    this.members = enu.members.map((em) => new EnumMember(transpile, em));
+  }
 
   public get markdown(): Markdown {
     const transpiled = this.transpile.enum(this.enu);
@@ -16,34 +20,10 @@ export class Enum {
       md.docs(this.enu.docs);
     }
 
-    for (const m of this.enu.members) {
-      const member = new Markdown({
-        header: {
-          title: m.name,
-          code: true,
-          deprecated: m.docs.deprecated,
-        },
-      });
-
-      if (m.docs.deprecated) {
-        md.bullet(
-          `${Markdown.emphasis("Deprecated:")} ${m.docs.deprecationReason}`
-        );
-        md.lines("");
-      }
-
-      if (m.docs) {
-        member.docs(m.docs);
-      }
-
-      member.split();
-      member.lines("");
-
-      md.section(member);
+    for (const m of this.members) {
+      md.section(m.markdown);
     }
 
-    md.split();
-    md.lines("");
     return md;
   }
 }

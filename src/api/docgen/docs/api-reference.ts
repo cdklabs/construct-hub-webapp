@@ -1,127 +1,56 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
-import { Class } from "../view/class";
-import { Enum } from "../view/enum";
-import { Struct } from "../view/struct";
+import { Classes } from "../view/classes";
+import { Constructs } from "../view/constructs";
+import { Enums } from "../view/enums";
+import { Interfaces } from "../view/interfaces";
+import { Structs } from "../view/structs";
 
 /**
  * Render an API reference based on the jsii assembly.
  */
 export class ApiReference {
+  private readonly constructs: Constructs;
+  private readonly structs: Structs;
+  private readonly interfaces: Interfaces;
+  private readonly classes: Classes;
+  private readonly enums: Enums;
   constructor(
-    private readonly transpile: Transpile,
-    private readonly assembly: reflect.Assembly,
-    private readonly submodule?: reflect.Submodule
-  ) {}
+    transpile: Transpile,
+    assembly: reflect.Assembly,
+    submodule?: reflect.Submodule
+  ) {
+    const classes = this.filterSubmodule(assembly.classes, submodule);
+    const interfaces = this.filterSubmodule(assembly.interfaces, submodule);
+    const enums = this.filterSubmodule(assembly.enums, submodule);
+
+    this.constructs = new Constructs(transpile, classes);
+    this.classes = new Classes(transpile, classes);
+    this.structs = new Structs(transpile, interfaces);
+    this.interfaces = new Interfaces(transpile, interfaces);
+    this.enums = new Enums(transpile, enums);
+  }
 
   /**
    * Generate markdown.
    */
   public get markdown(): Markdown {
     const md = new Markdown({ header: { title: "API Reference" } });
-    md.section(this.renderConstructs());
-    md.section(this.renderStructs());
-    md.section(this.renderClasses());
-    md.section(this.renderEnums());
+    md.section(this.constructs.markdown);
+    md.section(this.structs.markdown);
+    md.section(this.classes.markdown);
+    md.section(this.interfaces.markdown);
+    md.section(this.enums.markdown);
     return md;
   }
 
-  private renderConstructs(): Markdown {
-    const constructs = this.assembly.classes
-      .filter((c) => this.isConstruct(c))
-      .filter((c) =>
-        this.submodule ? this.insideSubmodule(c, this.submodule) : true
-      )
-      .sort((c1, c2) => c1.name.localeCompare(c2.name));
-
-    const md = new Markdown({ header: { title: "Constructs" } });
-    if (constructs.length === 0) {
-      return Markdown.EMPTY;
-    }
-
-    for (const construct of constructs) {
-      md.section(new Class(this.transpile, construct).markdown);
-    }
-
-    return md;
-  }
-
-  private renderStructs(): Markdown {
-    const structs = this.assembly.interfaces
-      .filter((i) => i.datatype)
-      .filter((i) =>
-        this.submodule ? this.insideSubmodule(i, this.submodule) : true
-      )
+  private filterSubmodule<Type extends reflect.Type>(
+    arr: readonly Type[],
+    submodule?: reflect.Submodule
+  ): Type[] {
+    return arr
+      .filter((e) => (submodule ? e.fqn.includes(submodule.name) : true))
       .sort((s1, s2) => s1.name.localeCompare(s2.name));
-
-    const md = new Markdown({ header: { title: "Structs" } });
-    if (structs.length === 0) {
-      return Markdown.EMPTY;
-    }
-
-    for (const struct of structs) {
-      md.section(new Struct(this.transpile, struct).markdown);
-    }
-
-    return md;
-  }
-
-  private renderClasses(): Markdown {
-    const md = new Markdown({ header: { title: "Classes" } });
-
-    const classes = this.assembly.classes
-      .filter((c) => !this.isConstruct(c))
-      .filter((c) =>
-        this.submodule ? this.insideSubmodule(c, this.submodule) : true
-      )
-      .sort((c1, c2) => c1.name.localeCompare(c2.name));
-
-    if (classes.length === 0) {
-      return Markdown.EMPTY;
-    }
-
-    for (const klass of classes) {
-      md.section(new Class(this.transpile, klass).markdown);
-    }
-
-    return md;
-  }
-
-  private renderEnums(): Markdown {
-    const md = new Markdown({ header: { title: "Enums" } });
-
-    const enums = this.assembly.enums
-      .filter((c) =>
-        this.submodule ? this.insideSubmodule(c, this.submodule) : true
-      )
-      .sort((c1, c2) => c1.name.localeCompare(c2.name));
-
-    if (enums.length === 0) {
-      return Markdown.EMPTY;
-    }
-
-    for (const enu of enums) {
-      md.section(new Enum(this.transpile, enu).markdown);
-    }
-
-    return md;
-  }
-
-  private isConstruct(klass: reflect.ClassType): boolean {
-    if (klass.fqn === "constructs.Construct") return true;
-
-    if (!klass.base) {
-      return false;
-    }
-
-    return this.isConstruct(klass.base);
-  }
-
-  private insideSubmodule(
-    type: reflect.Type,
-    submodule: reflect.Submodule
-  ): boolean {
-    return type.fqn.includes(submodule.name);
   }
 }

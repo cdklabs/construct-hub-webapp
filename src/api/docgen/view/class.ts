@@ -1,45 +1,46 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
-import { Transpile } from "../transpile/transpile";
+import { Transpile, TranspiledClass } from "../transpile/transpile";
+import { Attributes } from "./attributes";
+import { Constants } from "./constants";
 import { Initializer } from "./initializer";
-import { InstanceMethod } from "./instance-method";
-import { Property } from "./property";
-import { StaticFunction } from "./static-function";
+import { InstanceMethods } from "./instance-methods";
+import { StaticFunctions } from "./static-functions";
 
 /**
  * Reflects on a jsii class to generate a view.
  */
 export class Class {
-  private readonly instanceMethods: reflect.Method[] =
-    new Array<reflect.Method>();
-  private readonly staticFunctions: reflect.Method[] =
-    new Array<reflect.Method>();
-  private readonly constants: reflect.Property[] =
-    new Array<reflect.Property>();
+  public static isConstruct(klass: reflect.ClassType): boolean {
+    if (klass.fqn === "constructs.Construct") return true;
+
+    if (!klass.base) {
+      return false;
+    }
+
+    return this.isConstruct(klass.base);
+  }
+
+  private readonly transpiled: TranspiledClass;
+
+  private readonly initializer?: Initializer;
+  private readonly instanceMethods: InstanceMethods;
+  private readonly staticFunctions: StaticFunctions;
+  private readonly constants: Constants;
+  private readonly attributes: Attributes;
 
   constructor(
     private readonly transpile: Transpile,
     private readonly klass: reflect.ClassType
   ) {
-    for (const method of klass.ownMethods.sort((m1, m2) =>
-      m1.name.localeCompare(m2.name)
-    )) {
-      if (method.protected) {
-        // TODO - is this right?
-        continue;
-      }
-      if (method.static) {
-        this.staticFunctions.push(method);
-      } else {
-        this.instanceMethods.push(method);
-      }
+    if (klass.initializer) {
+      this.initializer = new Initializer(transpile, klass.initializer);
     }
-
-    for (const property of klass.ownProperties) {
-      if (property.const) {
-        this.constants.push(property);
-      }
-    }
+    this.instanceMethods = new InstanceMethods(transpile, klass.ownMethods);
+    this.staticFunctions = new StaticFunctions(transpile, klass.ownMethods);
+    this.constants = new Constants(transpile, klass.ownProperties);
+    this.attributes = new Attributes(transpile, klass.ownProperties);
+    this.transpiled = transpile.class(klass);
   }
 
   /**
@@ -47,16 +48,15 @@ export class Class {
    */
   public get markdown(): Markdown {
     const md = new Markdown({
-      id: this.klass.fqn,
-      header: { title: this.klass.name },
+      id: this.transpiled.type.fqn,
+      header: { title: this.transpiled.name },
     });
 
     if (this.klass.interfaces.length > 0) {
       const ifaces = [];
       for (const iface of this.klass.interfaces) {
-        ifaces.push(
-          `[${Markdown.code(this.transpile.type(iface).fqn)}](#${iface.fqn})`
-        );
+        const transpiled = this.transpile.type(iface);
+        ifaces.push(`[${Markdown.pre(transpiled.fqn)}](#${transpiled.fqn})`);
       }
       md.bullet(`${Markdown.emphasis("Implements:")} ${ifaces.join(", ")}`);
       md.lines("");
@@ -66,58 +66,13 @@ export class Class {
       md.docs(this.klass.docs);
     }
 
-    md.section(this.renderInitializer());
-    md.section(this.renderMethods());
-    md.section(this.renderStaticFunctions());
-    md.section(this.renderConstants());
-    return md;
-  }
-
-  private renderInitializer(): Markdown {
-    if (!this.klass.initializer) {
-      return Markdown.EMPTY;
+    if (this.initializer) {
+      md.section(this.initializer.markdown);
     }
-    return new Initializer(this.transpile, this.klass.initializer).markdown;
-  }
-
-  private renderMethods(): Markdown {
-    const md = new Markdown({ header: { title: "Methods" } });
-
-    if (this.instanceMethods.length === 0) {
-      return Markdown.EMPTY;
-    }
-
-    for (const method of this.instanceMethods) {
-      md.section(new InstanceMethod(this.transpile, method).markdown);
-    }
-
-    return md;
-  }
-
-  private renderStaticFunctions(): Markdown {
-    const md = new Markdown({ header: { title: "Static Functions" } });
-
-    if (this.staticFunctions.length === 0) {
-      return Markdown.EMPTY;
-    }
-
-    for (const method of this.staticFunctions) {
-      md.section(new StaticFunction(this.transpile, method).markdown);
-    }
-
-    return md;
-  }
-
-  private renderConstants(): Markdown {
-    const md = new Markdown({ header: { title: "Constants" } });
-
-    if (this.constants.length === 0) {
-      return Markdown.EMPTY;
-    }
-
-    for (const constant of this.constants) {
-      md.section(new Property(this.transpile, constant).markdown);
-    }
+    md.section(this.instanceMethods.markdown);
+    md.section(this.staticFunctions.markdown);
+    md.section(this.attributes.markdown);
+    md.section(this.constants.markdown);
     return md;
   }
 }

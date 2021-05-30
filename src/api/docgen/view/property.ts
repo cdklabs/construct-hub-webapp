@@ -1,16 +1,17 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
-import { Transpile } from "../transpile/transpile";
+import { Transpile, TranspiledProperty } from "../transpile/transpile";
 
 export class Property {
+  private readonly transpiled: TranspiledProperty;
   constructor(
-    private readonly transpile: Transpile,
+    transpile: Transpile,
     private readonly property: reflect.Property
-  ) {}
+  ) {
+    this.transpiled = transpile.property(property);
+  }
 
   public get markdown(): Markdown {
-    const transpiled = this.transpile.property(this.property);
-
     const optionality = this.property.const
       ? undefined
       : this.property.optional
@@ -18,8 +19,9 @@ export class Property {
       : "Required";
 
     const md = new Markdown({
+      id: `${this.transpiled.parentType.fqn}.${this.transpiled.name}`,
       header: {
-        title: transpiled.name,
+        title: this.transpiled.name,
         sup: optionality,
         code: true,
         deprecated: this.property.docs.deprecated,
@@ -36,7 +38,7 @@ export class Property {
     }
 
     const metadata: any = {
-      Type: transpiled.typeReference.markdown,
+      Type: this.transpiled.typeReference.markdown,
     };
 
     if (this.property.spec.docs?.default) {

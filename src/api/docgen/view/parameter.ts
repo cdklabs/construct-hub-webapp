@@ -1,20 +1,23 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
-import { Transpile } from "../transpile/transpile";
+import { Transpile, TranspiledParameter } from "../transpile/transpile";
 
 export class Parameter {
+  private readonly transpiled: TranspiledParameter;
   constructor(
-    private readonly transpile: Transpile,
+    transpile: Transpile,
     private readonly parameter: reflect.Parameter
-  ) {}
+  ) {
+    this.transpiled = transpile.parameter(parameter);
+  }
 
   public get markdown(): Markdown {
-    const transpiled = this.transpile.parameter(this.parameter);
     const optionality = this.parameter.optional ? "Optional" : "Required";
 
     const md = new Markdown({
+      id: `${this.transpiled.parentType.fqn}.${this.transpiled.name}`,
       header: {
-        title: transpiled.name,
+        title: this.transpiled.name,
         sup: optionality,
         code: true,
         deprecated: this.parameter.docs.deprecated,
@@ -31,7 +34,7 @@ export class Parameter {
     }
 
     const metadata: any = {
-      Type: transpiled.typeReference.markdown,
+      Type: this.transpiled.typeReference.markdown,
     };
 
     if (this.parameter.spec.docs?.default) {

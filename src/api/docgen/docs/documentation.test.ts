@@ -1,12 +1,12 @@
 import * as reflect from "jsii-reflect";
-import { Documentation, Language } from "./documentation";
+import { Documentation } from "./documentation";
 
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
   test("snapshot", () => {
     const docs = new Documentation({
-      language: Language.PYTHON,
+      language: "python",
       assembly: assembly,
       readme: true,
     });

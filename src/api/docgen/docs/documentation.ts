@@ -6,21 +6,6 @@ import { ApiReference } from "./api-reference";
 import { Readme } from "./readme";
 
 /**
- * Languages supported by jsii.
- */
-export enum Language {
-  /**
-   * Python
-   */
-  PYTHON = "python",
-
-  /**
-   * Typescript
-   */
-  TYPESCRIPT = "typescript",
-}
-
-/**
  * Options for rendering documentation pages.
  */
 export interface DocumentationOptions {
@@ -32,7 +17,7 @@ export interface DocumentationOptions {
   /**
    * Which language to generate docs for.
    */
-  readonly language: Language;
+  readonly language: string;
 
   /**
    * Include a generated api reference in the documentation.
@@ -72,7 +57,7 @@ export class Documentation {
     this.assembly = options.assembly;
 
     switch (options.language) {
-      case Language.PYTHON:
+      case "python":
         this.transpile = new PythonTranspile(this.assembly.system);
         break;
       default:

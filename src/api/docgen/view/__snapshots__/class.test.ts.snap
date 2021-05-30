@@ -11,7 +11,7 @@ Authorization token to access private ECR repositories in the current environmen
 
 # Static Functions <a name=\\"Static Functions\\"></a>
 
-## \`grant_read\` <a name=\\"grant_read\\"></a>
+## \`grant_read\` <a name=\\"@aws-cdk/aws-ecr.AuthorizationToken.grantRead\\"></a>
 
 \`\`\`python
 import aws_cdk.aws_ecr
@@ -24,6 +24,7 @@ aws_cdk.aws_ecr.AuthorizationToken.grant_read(grantee: aws_cdk.aws_iam.IGrantabl
 - *Type:* [\`aws_cdk.aws_iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
 
 ---
+
 
 "
 `;

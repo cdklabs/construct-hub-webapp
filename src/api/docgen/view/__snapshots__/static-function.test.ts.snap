@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`python snapshot 1`] = `
-" \`grant_read\` <a name=\\"grant_read\\"></a>
+" \`grant_read\` <a name=\\"@aws-cdk/aws-ecr.AuthorizationToken.grantRead\\"></a>
 
 \`\`\`python
 import aws_cdk.aws_ecr

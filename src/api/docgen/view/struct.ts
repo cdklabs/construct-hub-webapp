@@ -1,49 +1,48 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
-import { Transpile } from "../transpile/transpile";
+import { Transpile, TranspiledStruct } from "../transpile/transpile";
 import { Property } from "./property";
 
 export class Struct {
+  private readonly transpiled: TranspiledStruct;
+  private readonly properties: Property[] = new Array<Property>();
   constructor(
     private readonly transpile: Transpile,
     private readonly iface: reflect.InterfaceType
-  ) {}
+  ) {
+    this.transpiled = transpile.struct(iface);
+    for (const property of this.iface.allProperties) {
+      this.properties.push(new Property(this.transpile, property));
+    }
+  }
 
   public get markdown(): Markdown {
     const md = new Markdown({
-      id: this.iface.fqn,
-      header: { title: this.iface.name },
+      id: this.transpiled.type.fqn,
+      header: { title: this.transpiled.name },
     });
 
     if (this.iface.docs) {
       md.docs(this.iface.docs);
     }
 
-    md.section(this.renderInitializer());
-    return md;
-  }
-
-  private renderInitializer(): Markdown {
-    const md = new Markdown({
-      id: `${this.iface.fqn}.Initializer`,
-      header: {
-        title: "Initializer",
-      },
+    const initializer = new Markdown({
+      id: `${this.transpiled.type}.Initializer`,
+      header: { title: "Initializer" },
     });
 
-    const transpiled = this.transpile.struct(this.iface);
-
-    md.snippet(
+    initializer.code(
       this.transpile.language,
-      `${transpiled.requirement}`,
+      `${this.transpiled.requirement}`,
       "",
-      `${transpiled.invocation}`
+      `${this.transpiled.invocation}`
     );
 
-    for (const property of this.iface.allProperties) {
-      md.section(new Property(this.transpile, property).markdown);
+    for (const property of this.properties) {
+      initializer.section(property.markdown);
     }
 
+    md.section(initializer);
     return md;
   }
 }

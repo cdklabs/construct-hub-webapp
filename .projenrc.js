@@ -1,10 +1,4 @@
-const { web, SourceCode } = require("projen");
-
-// some assemblies we fetch during development
-// so we'll have data to work with on the package page.
-const devAssemblies = {
-  "@aws-cdk/aws-ecr": ["1.106.0"],
-};
+const { web, SourceCode, FileBase } = require("projen");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -35,12 +29,11 @@ const project = new web.ReactTypeScriptProject({
     "@emotion/styled@^11",
     "chakra-ui-markdown-renderer",
     "framer-motion@^4",
-    "@uiw/react-markdown-preview",
     "react-router-dom",
+    "@uiw/react-markdown-preview",
     "jsii-reflect",
     "@jsii/spec",
     "codemaker",
-    "@uiw/react-markdown-preview",
   ],
 
   devDeps: ["@types/react-router-dom"],
@@ -102,7 +95,7 @@ project.npmignore.addPatterns("/public");
 codeGenFetchAssemblies();
 
 // Proxy requests to awscdk.io for local testing
-project.package.addField("proxy", "https://awscdk.io");
+// project.package.addField("proxy", "https://awscdk.io");
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
@@ -119,28 +112,29 @@ project.eslint.addRules({
 project.synth();
 
 function codeGenFetchAssemblies() {
-  const scriptPath = "scripts/fetch-dev-assemblies.js";
+  const scriptPath = "scripts/fetch-assemblies.js";
 
   const packagesPath = "public/packages";
 
   const script = new SourceCode(project, scriptPath);
+  script.line(`// ${FileBase.PROJEN_MARKER}`);
   script.line(fetchAssembly.toString());
-
-  for (const [name, versions] of Object.entries(devAssemblies)) {
-    for (const version of versions) {
-      script.line(
-        `${fetchAssembly.name}('${name}', '${version}', '${packagesPath}')`
-      );
-    }
-  }
+  script.line(
+    `${fetchAssembly.name}(process.env.PACKAGE_NAME, process.env.PACKAGE_VERSION, '${packagesPath}')`
+  );
 
   project.gitignore.exclude(packagesPath);
 
   const task = project.addTask("dev:fetch-assemblies");
   task.exec(`node ${scriptPath}`);
 
-  const dev = project.tasks.tryFind("dev");
-  dev.prependSpawn(task);
+  const test = project.tasks.tryFind("test");
+
+  // we use ecr for our tests so we fetch the necessary assemblies
+  // before executing the tests.
+  test.prependSpawn(
+    `PACKAGE_NAME=@aws-cdk/aws-ecr PACKAGE_VERSION=1.106.0 ${task.toShellCommand()}`
+  );
 }
 
 function fetchAssembly(packageName, packageVersion, packagesPath) {

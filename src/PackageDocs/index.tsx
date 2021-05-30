@@ -1,15 +1,28 @@
 import { Box } from "@chakra-ui/react";
 import ReactMarkdown from "@uiw/react-markdown-preview";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
+import * as reflect from "jsii-reflect";
+import { Documentation } from "../api/docgen/docs/documentation";
 
 export interface PackageDocsProps {
-  readme: string;
+  assembly: reflect.Assembly;
+  language: string;
+  submodule?: string;
 }
 
-export default function PackageDocs({ readme }: PackageDocsProps) {
+export default function PackageDocs(props: PackageDocsProps) {
+  const doc = new Documentation({
+    assembly: props.assembly,
+    language: props.language,
+    submoduleName: props.submodule,
+    readme: true,
+  });
+
+  const source = doc.markdown.render();
+
   return (
     <Box width="100%">
-      <ReactMarkdown skipHtml components={ChakraUIRenderer()} source={readme} />
+      <ReactMarkdown skipHtml components={ChakraUIRenderer()} source={source} />
     </Box>
   );
 }
