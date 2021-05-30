@@ -12,14 +12,14 @@ export class EnumMember {
       id: `${this.transpiled.fqn}`,
       header: {
         title: this.transpiled.name,
-        code: true,
-        deprecated: this.em.docs.deprecated,
+        pre: true,
+        strike: this.em.docs.deprecated,
       },
     });
 
     if (this.em.docs.deprecated) {
       md.bullet(
-        `${Markdown.emphasis("Deprecated:")} ${this.em.docs.deprecationReason}`
+        `${Markdown.italic("Deprecated:")} ${this.em.docs.deprecationReason}`
       );
       md.lines("");
     }

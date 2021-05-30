@@ -33,9 +33,9 @@ export class Struct {
 
     initializer.code(
       this.transpile.language,
-      `${this.transpiled.requirement}`,
+      `${this.transpiled.import}`,
       "",
-      `${this.transpiled.invocation}`
+      `${this.transpiled.initialization}`
     );
 
     for (const property of this.properties) {

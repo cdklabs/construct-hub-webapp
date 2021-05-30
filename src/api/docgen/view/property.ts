@@ -23,14 +23,14 @@ export class Property {
       header: {
         title: this.transpiled.name,
         sup: optionality,
-        code: true,
-        deprecated: this.property.docs.deprecated,
+        pre: true,
+        strike: this.property.docs.deprecated,
       },
     });
 
     if (this.property.docs.deprecated) {
       md.bullet(
-        `${Markdown.emphasis("Deprecated:")} ${
+        `${Markdown.italic("Deprecated:")} ${
           this.property.docs.deprecationReason
         }`
       );
@@ -46,7 +46,7 @@ export class Property {
     }
 
     for (const [key, value] of Object.entries(metadata)) {
-      md.bullet(`${Markdown.emphasis(`${key}:`)} ${value}`);
+      md.bullet(`${Markdown.italic(`${key}:`)} ${value}`);
     }
     md.lines("");
 

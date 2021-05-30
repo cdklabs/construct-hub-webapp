@@ -19,14 +19,14 @@ export class Parameter {
       header: {
         title: this.transpiled.name,
         sup: optionality,
-        code: true,
-        deprecated: this.parameter.docs.deprecated,
+        pre: true,
+        strike: this.parameter.docs.deprecated,
       },
     });
 
     if (this.parameter.docs.deprecated) {
       md.bullet(
-        `${Markdown.emphasis("Deprecated:")} ${
+        `${Markdown.italic("Deprecated:")} ${
           this.parameter.docs.deprecationReason
         }`
       );
@@ -42,7 +42,7 @@ export class Parameter {
     }
 
     for (const [key, value] of Object.entries(metadata)) {
-      md.bullet(`${Markdown.emphasis(`${key}:`)} ${value}`);
+      md.bullet(`${Markdown.italic(`${key}:`)} ${value}`);
     }
     md.lines("");
 

@@ -7,9 +7,6 @@ import { Initializer } from "./initializer";
 import { InstanceMethods } from "./instance-methods";
 import { StaticFunctions } from "./static-functions";
 
-/**
- * Reflects on a jsii class to generate a view.
- */
 export class Class {
   public static isConstruct(klass: reflect.ClassType): boolean {
     if (klass.fqn === "constructs.Construct") return true;
@@ -43,9 +40,6 @@ export class Class {
     this.transpiled = transpile.class(klass);
   }
 
-  /**
-   * Generate markdown.
-   */
   public get markdown(): Markdown {
     const md = new Markdown({
       id: this.transpiled.type.fqn,
@@ -58,7 +52,7 @@ export class Class {
         const transpiled = this.transpile.type(iface);
         ifaces.push(`[${Markdown.pre(transpiled.fqn)}](#${transpiled.fqn})`);
       }
-      md.bullet(`${Markdown.emphasis("Implements:")} ${ifaces.join(", ")}`);
+      md.bullet(`${Markdown.italic("Implements:")} ${ifaces.join(", ")}`);
       md.lines("");
     }
 

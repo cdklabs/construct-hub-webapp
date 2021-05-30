@@ -3,6 +3,9 @@ import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import * as transpile from "./transpile";
 
+/**
+ * A python transpiler.
+ */
 export class PythonTranspile extends transpile.AbstractTranspile {
   constructor(private readonly ts: reflect.TypeSystem) {
     super("python");
@@ -79,7 +82,6 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     return {
       fqn: this.type(enu).fqn,
       name: enu.name,
-      members: enu.members.map((e) => e.name),
     };
   }
 
@@ -129,8 +131,8 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     return {
       type: type,
       name: struct.name,
-      requirement: formatRequirement(type),
-      invocation: formatInvocation(type, inputs),
+      import: formatImport(type),
+      initialization: formatInvocation(type, inputs),
     };
   }
 
@@ -158,7 +160,7 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     return {
       name,
       parentType: type,
-      requirement: formatRequirement(type),
+      import: formatImport(type),
       parameters,
       signature: formatSignature(name, inputs),
       invocation: formatInvocation(
@@ -278,7 +280,7 @@ function formatInvocation(
   return `${target}(${formatInputs(inputs, 1 + target.length)})`;
 }
 
-function formatRequirement(type: transpile.TranspiledType) {
+function formatImport(type: transpile.TranspiledType) {
   return `import ${type.moduleFqn}`;
 }
 
@@ -290,6 +292,10 @@ function formatInputs(inputs: string[], indent: number) {
   return inputs.join(`, \n${" ".repeat(indent)}`);
 }
 
+/**
+ * Hack to convert a jsii property to a parameter for
+ * python specific parameter expansion.
+ */
 function propertyToParameter(
   callable: reflect.Callable,
   property: reflect.Property

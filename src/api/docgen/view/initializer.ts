@@ -26,7 +26,7 @@ export class Initializer {
 
     md.code(
       this.transpile.language,
-      `${this.transpiled.requirement}`,
+      `${this.transpiled.import}`,
       "",
       `${this.transpiled.invocation}`
     );

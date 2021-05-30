@@ -1,22 +1,67 @@
 import * as reflect from "jsii-reflect";
 
+/**
+ * Options for defining a markdown header.
+ */
 export interface MarkdownHeaderOptions {
-  readonly size?: number;
+  /**
+   * Title to be displayed.
+   */
   readonly title?: string;
+
+  /**
+   * Superscript.
+   *
+   * @default - No superscript
+   */
   readonly sup?: string;
-  readonly code?: boolean;
-  readonly deprecated?: boolean;
+
+  /**
+   * Preformat the header.
+   *
+   * @default false
+   */
+  readonly pre?: boolean;
+
+  /**
+   * Strikethough the title.
+   *
+   * @default false
+   */
+  readonly strike?: boolean;
 }
 
+/**
+ * Options for defining a markdown element.
+ */
 export interface MarkdownOptions {
-  readonly bullet?: boolean;
+  /**
+   * Markdown header.
+   *
+   * @default - No header.
+   */
   readonly header?: MarkdownHeaderOptions;
+
+  /**
+   * Id of the element.
+   *
+   * @default - The title will be used.
+   */
   readonly id?: string;
 }
 
+/**
+ * Markdown element.
+ */
 export class Markdown {
+  /**
+   * An empty markdown element.
+   */
   public static readonly EMPTY = new Markdown();
 
+  /**
+   * Sanitize markdown reserved characters from external input.
+   */
   public static sanitize(line: string): string {
     let sanitized = line.trim();
 
@@ -35,7 +80,7 @@ export class Markdown {
     return `\`${text}\``;
   }
 
-  public static emphasis(text: string) {
+  public static italic(text: string) {
     return `*${text}*`;
   }
 
@@ -50,6 +95,9 @@ export class Markdown {
     this.header = this.formatHeader();
   }
 
+  /**
+   * Render a `jsii-reflect.Docs` element into the markdown.
+   */
   public docs(docs: reflect.Docs) {
     if (docs.summary) {
       this.lines(Markdown.sanitize(docs.summary));
@@ -102,20 +150,15 @@ export class Markdown {
       throw new Error(`Unable to render markdown. Header limit (6) reached.`);
     }
 
-    const indent = this.options.bullet ? "  " : "";
     const content: string[] = [];
     if (this.header) {
       const heading = `${"#".repeat(headerSize)} ${this.header}`;
-      content.push(
-        `${this.options.bullet ? "- " : ""}${heading} <a name="${this.id}"></a>`
-      );
+      content.push(`${heading} <a name="${this.id}"></a>`);
       content.push("");
     }
 
     for (const line of this._lines) {
-      for (const subline of line.split("\n")) {
-        content.push(`${indent}${subline}`);
-      }
+      content.push(`${line}`);
     }
 
     for (const section of this._sections) {
@@ -130,11 +173,11 @@ export class Markdown {
     }
     let caption = this.options.header.title;
 
-    if (this.options.header?.code ?? false) {
+    if (this.options.header?.pre ?? false) {
       caption = `\`${caption}\``;
     }
 
-    if (this.options.header?.deprecated ?? false) {
+    if (this.options.header?.strike ?? false) {
       caption = `~~${caption}~~`;
     }
 

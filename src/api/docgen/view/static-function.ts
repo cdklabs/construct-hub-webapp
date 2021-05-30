@@ -21,14 +21,14 @@ export class StaticFunction {
       id: `${this.transpiled.parentType.fqn}.${this.transpiled.name}`,
       header: {
         title: this.transpiled.name,
-        code: true,
-        deprecated: this.method.docs.deprecated,
+        pre: true,
+        strike: this.method.docs.deprecated,
       },
     });
 
     md.code(
       this.transpile.language,
-      `${this.transpiled.requirement}`,
+      `${this.transpiled.import}`,
       "",
       `${this.transpiled.invocation}`
     );

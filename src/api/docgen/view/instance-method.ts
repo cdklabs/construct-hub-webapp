@@ -21,8 +21,8 @@ export class InstanceMethod {
       id: `${this.transpiled.parentType.fqn}.${this.transpiled.name}`,
       header: {
         title: this.transpiled.name,
-        code: true,
-        deprecated: this.method.docs.deprecated,
+        pre: true,
+        strike: this.method.docs.deprecated,
       },
     });
 

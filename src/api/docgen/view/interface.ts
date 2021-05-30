@@ -4,9 +4,6 @@ import { Transpile, TranspiledInterface } from "../transpile/transpile";
 import { Attributes } from "./attributes";
 import { InstanceMethods } from "./instance-methods";
 
-/**
- * Reflects on a jsii class to generate a view.
- */
 export class Interface {
   public static isStruct(iface: reflect.InterfaceType): boolean {
     return iface.datatype;
@@ -26,9 +23,6 @@ export class Interface {
     this.attributes = new Attributes(transpile, iface.allProperties);
   }
 
-  /**
-   * Generate markdown.
-   */
   public get markdown(): Markdown {
     const md = new Markdown({
       id: this.transpiled.type.fqn,
@@ -41,7 +35,7 @@ export class Interface {
         const transpiled = this.transpile.type(iface);
         ifaces.push(`[${Markdown.pre(transpiled.fqn)}](#${transpiled.fqn})`);
       }
-      md.bullet(`${Markdown.emphasis("Extends:")} ${ifaces.join(", ")}`);
+      md.bullet(`${Markdown.italic("Extends:")} ${ifaces.join(", ")}`);
       md.lines("");
     }
 
@@ -51,7 +45,7 @@ export class Interface {
         const transpiled = this.transpile.type(impl);
         impls.push(`[${Markdown.pre(transpiled.fqn)}](#${transpiled.fqn})`);
       }
-      md.bullet(`${Markdown.emphasis("Implemented By:")} ${impls.join(", ")}`);
+      md.bullet(`${Markdown.italic("Implemented By:")} ${impls.join(", ")}`);
       md.lines("");
     }
 

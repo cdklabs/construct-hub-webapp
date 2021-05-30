@@ -75,7 +75,7 @@ export class Documentation {
   }
 
   /**
-   * Generate the documentation for python in markdown format.
+   * Generate markdown.
    */
   public get markdown(): Markdown {
     const documentation = new Markdown();
