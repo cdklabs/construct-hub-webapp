@@ -102,7 +102,7 @@ repository.addLifecycleRule({ maxImageAge: cdk.Duration.days(30) });
 
 ## Constructs <a name=\\"Constructs\\"></a>
 
-### cfn_public_repository <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository\\"></a>
+### CfnPublicRepository <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository\\"></a>
 
 - *Implements:* [\`aws_cdk.core.IInspectable\`](#aws_cdk.core.IInspectable)
 
@@ -254,7 +254,7 @@ The CloudFormation resource type name for this resource class.
 
 ---
 
-### cfn_registry_policy <a name=\\"aws_cdk.aws_ecr.CfnRegistryPolicy\\"></a>
+### CfnRegistryPolicy <a name=\\"aws_cdk.aws_ecr.CfnRegistryPolicy\\"></a>
 
 - *Implements:* [\`aws_cdk.core.IInspectable\`](#aws_cdk.core.IInspectable)
 
@@ -343,7 +343,7 @@ The CloudFormation resource type name for this resource class.
 
 ---
 
-### cfn_replication_configuration <a name=\\"aws_cdk.aws_ecr.CfnReplicationConfiguration\\"></a>
+### CfnReplicationConfiguration <a name=\\"aws_cdk.aws_ecr.CfnReplicationConfiguration\\"></a>
 
 - *Implements:* [\`aws_cdk.core.IInspectable\`](#aws_cdk.core.IInspectable)
 
@@ -432,7 +432,7 @@ The CloudFormation resource type name for this resource class.
 
 ---
 
-### cfn_repository <a name=\\"aws_cdk.aws_ecr.CfnRepository\\"></a>
+### CfnRepository <a name=\\"aws_cdk.aws_ecr.CfnRepository\\"></a>
 
 - *Implements:* [\`aws_cdk.core.IInspectable\`](#aws_cdk.core.IInspectable)
 
@@ -653,7 +653,7 @@ The CloudFormation resource type name for this resource class.
 
 ---
 
-### repository <a name=\\"aws_cdk.aws_ecr.Repository\\"></a>
+### Repository <a name=\\"aws_cdk.aws_ecr.Repository\\"></a>
 
 Define an ECR repository.
 
@@ -976,7 +976,7 @@ The name of the repository.
 ---
 
 
-### repository_base <a name=\\"aws_cdk.aws_ecr.RepositoryBase\\"></a>
+### RepositoryBase <a name=\\"aws_cdk.aws_ecr.RepositoryBase\\"></a>
 
 - *Implements:* [\`aws_cdk.aws_ecr.IRepository\`](#aws_cdk.aws_ecr.IRepository)
 
@@ -2058,7 +2058,7 @@ Name for this repository.
 
 ## Classes <a name=\\"Classes\\"></a>
 
-### authorization_token <a name=\\"aws_cdk.aws_ecr.AuthorizationToken\\"></a>
+### AuthorizationToken <a name=\\"aws_cdk.aws_ecr.AuthorizationToken\\"></a>
 
 Authorization token to access private ECR repositories in the current environment via Docker CLI.
 
@@ -2083,7 +2083,7 @@ aws_cdk.aws_ecr.AuthorizationToken.grant_read(grantee: aws_cdk.aws_iam.IGrantabl
 
 
 
-### public_gallery_authorization_token <a name=\\"aws_cdk.aws_ecr.PublicGalleryAuthorizationToken\\"></a>
+### PublicGalleryAuthorizationToken <a name=\\"aws_cdk.aws_ecr.PublicGalleryAuthorizationToken\\"></a>
 
 Authorization token to access the global public ECR Gallery via Docker CLI.
 

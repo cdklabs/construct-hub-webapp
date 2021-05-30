@@ -107,7 +107,7 @@ export class PythonTranspile extends transpile.AbstractTranspile {
 
   public class(klass: reflect.ClassType): transpile.TranspiledClass {
     return {
-      name: toSnakeCase(klass.name),
+      name: klass.name,
       type: this.type(klass),
     };
   }

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`python snapshot 1`] = `
-" authorization_token <a name=\\"aws_cdk.aws_ecr.AuthorizationToken\\"></a>
+" AuthorizationToken <a name=\\"aws_cdk.aws_ecr.AuthorizationToken\\"></a>
 
 Authorization token to access private ECR repositories in the current environment via Docker CLI.
 
