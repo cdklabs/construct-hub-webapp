@@ -1,7 +1,7 @@
 import logo from "../logo.svg";
 import "./style.css";
 
-function Home() {
+export function Home() {
   return (
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
@@ -19,5 +19,3 @@ function Home() {
     </header>
   );
 }
-
-export default Home;

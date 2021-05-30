@@ -5,7 +5,7 @@ interface RouteParams {
   scope?: string;
 }
 
-export default function PackageLatest() {
+export function PackageLatest() {
   const { name, scope }: RouteParams = useParams();
   const version = "latest"; // read latest version from state here
 
