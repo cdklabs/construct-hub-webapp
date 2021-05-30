@@ -243,7 +243,7 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     );
 
     if (submodules.length > 1) {
-      // hmm...
+      // can never happen, but the array data structure forces this handling.
       throw new Error(`Found multiple submodulues with fqn ${submoduleFqn}`);
     }
 
