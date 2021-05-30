@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import ReactMarkdown from "@uiw/react-markdown-preview";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import * as reflect from "jsii-reflect";
-import { Documentation } from "../api/docgen/docs/documentation";
+import { Documentation } from "../api/docgen/view/documentation";
 
 export interface PackageDocsProps {
   assembly: reflect.Assembly;

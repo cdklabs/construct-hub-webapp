@@ -1,11 +1,11 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
-import { Classes } from "../view/classes";
-import { Constructs } from "../view/constructs";
-import { Enums } from "../view/enums";
-import { Interfaces } from "../view/interfaces";
-import { Structs } from "../view/structs";
+import { Classes } from "./classes";
+import { Constructs } from "./constructs";
+import { Enums } from "./enums";
+import { Interfaces } from "./interfaces";
+import { Structs } from "./structs";
 
 /**
  * Render an API reference based on the jsii assembly.
