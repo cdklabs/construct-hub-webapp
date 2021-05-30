@@ -147,6 +147,9 @@ export class Markdown {
 
   public render(headerSize: number = 0): string {
     if (headerSize > 6) {
+      // headers are mapped to `h1-h6` html elements.
+      // passed that, markdown jsut renders `#` signs.
+      // lets see if and when we'll hit this limit.
       throw new Error(`Unable to render markdown. Header limit (6) reached.`);
     }
 

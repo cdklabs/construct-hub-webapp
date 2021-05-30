@@ -78,6 +78,11 @@ async function fetchAssembly(
   // e.g https://awscdk.io/packages/@aws-cdk/alexa-ask@1.106.0/jsii.json
   const assemblyPath = `${getAssetsPath(name, version, scope)}/jsii.json`;
   const response = await fetch(assemblyPath);
+  if (!response.ok) {
+    throw new Error(
+      `Failed fetching assembly for ${assemblyPath}: ${response.statusText}`
+    );
+  }
   return response.json();
 }
 
