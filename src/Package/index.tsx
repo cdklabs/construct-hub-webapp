@@ -3,10 +3,10 @@ import * as spec from "@jsii/spec";
 import * as reflect from "jsii-reflect";
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import GettingStarted from "../GettingStarted";
-import PackageDocs from "../PackageDocs";
-import PackageHeader from "../PackageHeader";
-import { getAssetsPath, getFullPackageName, parseSearch } from "./util";
+import { GettingStarted } from "../GettingStarted";
+import { PackageDocs } from "../PackageDocs";
+import { PackageHeader } from "../PackageHeader";
+import { getAssetsPath, parseSearch, getFullPackageName } from "./util";
 
 type Assemblies = { [packageName: string]: spec.Assembly };
 
@@ -21,7 +21,7 @@ interface PackageDocsHomeState {
   error?: string;
 }
 
-export default function Package() {
+export function Package() {
   const { name, scope, version }: PathParams = useParams();
   const [{ assembly }, setState] = useState<PackageDocsHomeState>({});
   const q = parseSearch(useLocation().search);

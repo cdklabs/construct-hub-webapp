@@ -1,5 +1,5 @@
 import { Story } from "@storybook/react";
-import PackageHeader, { PackageHeaderProps } from "../PackageHeader";
+import { PackageHeader, PackageHeaderProps } from "../PackageHeader";
 
 export default {
   title: "Package Header",
@@ -14,4 +14,5 @@ export const Primary = Template.bind({});
 Primary.args = {
   title: "AWS CDK Lib",
   description: "aws cdk construct library",
+  tags: [],
 };

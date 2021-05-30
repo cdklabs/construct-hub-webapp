@@ -106,6 +106,7 @@
     },
     "upgrade-dependencies": {
       "name": "upgrade-dependencies",
+      "description": "upgrade dependencies",
       "env": {
         "CI": "0"
       },
@@ -114,18 +115,25 @@
           "exec": "npm-check-updates --upgrade --target=minor --reject='projen'"
         },
         {
+          "exec": "yarn install --check-files"
+        },
+        {
           "exec": "npx projen"
         }
       ]
     },
     "upgrade-projen": {
       "name": "upgrade-projen",
+      "description": "upgrade projen",
       "env": {
         "CI": "0"
       },
       "steps": [
         {
           "exec": "npm-check-updates --upgrade --target=minor --filter='projen'"
+        },
+        {
+          "exec": "yarn install --check-files"
         },
         {
           "exec": "npx projen"

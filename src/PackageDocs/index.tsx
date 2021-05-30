@@ -10,7 +10,7 @@ export interface PackageDocsProps {
   submodule?: string;
 }
 
-export default function PackageDocs(props: PackageDocsProps) {
+export function PackageDocs(props: PackageDocsProps) {
   const doc = new Documentation({
     assembly: props.assembly,
     language: props.language,

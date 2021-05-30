@@ -4,7 +4,7 @@ export interface GettingStartedProps {
   targets: string[];
 }
 
-export default function GettingStarted({ targets }: GettingStartedProps) {
+export function GettingStarted({ targets }: GettingStartedProps) {
   return (
     <Flex bg="gray.200" width="100%">
       {targets.map((targetName) => {
