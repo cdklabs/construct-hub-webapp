@@ -50,7 +50,9 @@ export class ApiReference {
     submodule?: reflect.Submodule
   ): Type[] {
     return arr
-      .filter((e) => (submodule ? e.fqn.includes(submodule.name) : true))
+      .filter((e) =>
+        submodule ? !!e.namespace?.startsWith(submodule.name) : true
+      )
       .sort((s1, s2) => s1.name.localeCompare(s2.name));
   }
 }

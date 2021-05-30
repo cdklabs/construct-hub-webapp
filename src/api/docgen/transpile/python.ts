@@ -232,6 +232,9 @@ export class PythonTranspile extends transpile.AbstractTranspile {
     if (!type.namespace) {
       return undefined;
     }
+
+    // if the type is in a submodule, the submodule name is the first
+    // part of the namespace. we construct the full submodule fqn and seach for it.
     const submoduleFqn = `${type.assembly.name}.${
       type.namespace.split(".")[0]
     }`;
@@ -248,6 +251,7 @@ export class PythonTranspile extends transpile.AbstractTranspile {
       return undefined;
     }
 
+    // type is inside this submodule.
     return submodules[0];
   }
 
