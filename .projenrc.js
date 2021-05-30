@@ -123,8 +123,11 @@ function codeGenFetchAssemblies() {
 
   const script = new SourceCode(project, scriptPath);
   script.line(`// ${FileBase.PROJEN_MARKER}`);
+  script.line(fromEnv.toString());
   script.line(fetchAssembly.toString());
-  script.line(`${fetchAssembly.name}('${packagesPath}')`);
+  script.line(
+    `${fetchAssembly.name}(${fromEnv.name}('PACKAGE_NAME'), ${fromEnv.name}('PACKAGE_VERSION'), '${packagesPath}')`
+  );
 
   project.gitignore.exclude(packagesPath);
 
@@ -132,27 +135,20 @@ function codeGenFetchAssemblies() {
   task.exec(`node ${scriptPath}`);
 }
 
+function fromEnv(name) {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Missing ${name} env variable`);
+  }
+  return value;
+}
+
 /**
  * Fetch an assembly by name and version, accepted via env variable for easier invocation.
  * This fetches all the necessary assemblies into the packages path, which can later be used to instantiate
  * a jsii type system for the specific package.
  */
-function fetchAssembly(packagesPath) {
-  const packageName = process.env.PACKAGE_NAME;
-  const packageVersion = process.env.PACKAGE_VERSION;
-
-  if (!packageName) {
-    throw new Error(
-      `Package name missing. Please provide via 'PACKAGE_NAME' env variable.`
-    );
-  }
-
-  if (!packageVersion) {
-    throw new Error(
-      `Package version missing. Please provide via 'PACKAGE_VERSION' env variable`
-    );
-  }
-
+function fetchAssembly(packageName, packageVersion, packagesPath) {
   const exec = require("child_process").exec;
   const fs = require("fs");
   const os = require("os");
