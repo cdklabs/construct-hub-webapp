@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`python snapshot 1`] = `
-" Initializer <a name=\\"@aws-cdk/aws-ecr.CfnPublicRepository.Initializer\\"></a>
+" Initializer <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.Initializer\\"></a>
 
 \`\`\`python
 import aws_cdk.aws_ecr
@@ -14,15 +14,15 @@ aws_cdk.aws_ecr.CfnPublicRepository(scope: aws_cdk.core.Construct,
                                     tags: typing.List[aws_cdk.core.CfnTag] = None)
 \`\`\`
 
-# \`scope\`<sup>Required</sup> <a name=\\"scope\\"></a>
+# \`scope\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.scope\\"></a>
 
-- *Type:* [\`aws_cdk.core.Construct\`](#@aws-cdk/core.Construct)
+- *Type:* [\`aws_cdk.core.Construct\`](#aws_cdk.core.Construct)
 
 scope in which this resource is defined.
 
 ---
 
-# \`id\`<sup>Required</sup> <a name=\\"id\\"></a>
+# \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.id\\"></a>
 
 - *Type:* \`builtins.str\`
 
@@ -30,7 +30,7 @@ scoped id of the resource.
 
 ---
 
-# \`repository_catalog_data\`<sup>Optional</sup> <a name=\\"repository_catalog_data\\"></a>
+# \`repository_catalog_data\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.repository_catalog_data\\"></a>
 
 - *Type:* \`typing.Any\`
 
@@ -40,7 +40,7 @@ scoped id of the resource.
 
 ---
 
-# \`repository_name\`<sup>Optional</sup> <a name=\\"repository_name\\"></a>
+# \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.repository_name\\"></a>
 
 - *Type:* \`builtins.str\`
 
@@ -50,7 +50,7 @@ scoped id of the resource.
 
 ---
 
-# \`repository_policy_text\`<sup>Optional</sup> <a name=\\"repository_policy_text\\"></a>
+# \`repository_policy_text\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.repository_policy_text\\"></a>
 
 - *Type:* \`typing.Any\`
 
@@ -60,9 +60,9 @@ scoped id of the resource.
 
 ---
 
-# \`tags\`<sup>Optional</sup> <a name=\\"tags\\"></a>
+# \`tags\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.tags\\"></a>
 
-- *Type:* **typing.List**[[\`aws_cdk.core.CfnTag\`](#@aws-cdk/core.CfnTag)]
+- *Type:* **typing.List**[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
 
 \`AWS::ECR::PublicRepository.Tags\`.
 

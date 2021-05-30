@@ -92,6 +92,9 @@ buildTask.spawn(project.packageTask);
 project.npmignore.addPatterns("!/build");
 project.npmignore.addPatterns("/public");
 
+// assemblies used for tests
+project.npmignore.addPatterns("src/__assemblies__");
+
 codeGenFetchAssemblies();
 
 // Proxy requests to awscdk.io for local testing
@@ -119,25 +122,30 @@ function codeGenFetchAssemblies() {
   const script = new SourceCode(project, scriptPath);
   script.line(`// ${FileBase.PROJEN_MARKER}`);
   script.line(fetchAssembly.toString());
-  script.line(
-    `${fetchAssembly.name}(process.env.PACKAGE_NAME, process.env.PACKAGE_VERSION, '${packagesPath}')`
-  );
+  script.line(`${fetchAssembly.name}('${packagesPath}')`);
 
   project.gitignore.exclude(packagesPath);
 
   const task = project.addTask("dev:fetch-assemblies");
   task.exec(`node ${scriptPath}`);
-
-  const test = project.tasks.tryFind("test");
-
-  // we use ecr for our tests so we fetch the necessary assemblies
-  // before executing the tests.
-  test.prependSpawn(
-    `PACKAGE_NAME=@aws-cdk/aws-ecr PACKAGE_VERSION=1.106.0 ${task.toShellCommand()}`
-  );
 }
 
-function fetchAssembly(packageName, packageVersion, packagesPath) {
+function fetchAssembly(packagesPath) {
+  const packageName = process.env.PACKAGE_NAME;
+  const packageVersion = process.env.PACKAGE_VERSION;
+
+  if (!packageName) {
+    throw new Error(
+      `Package name missing. Please provide via 'PACKAGE_NAME' env variable.`
+    );
+  }
+
+  if (!packageVersion) {
+    throw new Error(
+      `Package version missing. Please provide via 'PACKAGE_VERSION' env variable`
+    );
+  }
+
   const exec = require("child_process").exec;
   const fs = require("fs");
   const os = require("os");

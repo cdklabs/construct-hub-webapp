@@ -15,15 +15,9 @@ const ASSEMBLY_UNDER_TEST = "@aws-cdk/aws-ecr";
 function createAssembly(): reflect.Assembly {
   const ts = new reflect.TypeSystem();
 
-  const packages = `${__dirname}/../public/packages`;
+  const packages = `${__dirname}/__assemblies__`;
 
-  if (!fs.existsSync(packages)) {
-    throw new Error(
-      `Development assemblies dont exist. Please run 'yarn dev:fetch-assemblies' before executing tests`
-    );
-  }
-
-  collectAssebmlies(`${__dirname}/../public/packages`, ts);
+  collectAssebmlies(packages, ts);
 
   return ts.findAssembly(ASSEMBLY_UNDER_TEST);
 }

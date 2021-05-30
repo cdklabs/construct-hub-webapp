@@ -12,6 +12,7 @@
 /tsconfig.eslint.json
 /tsconfig.json
 dist
+src/__assemblies__
 tsconfig.tsbuildinfo
 !/build
 !/lib

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`python snapshot 1`] = `
-" \`grantee\`<sup>Required</sup> <a name=\\"grantee\\"></a>
+" \`grantee\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.AuthorizationToken.grantee\\"></a>
 
-- *Type:* [\`aws_cdk.aws_iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+- *Type:* [\`aws_cdk.aws_iam.IGrantable\`](#aws_cdk.aws_iam.IGrantable)
 
 ---
 "

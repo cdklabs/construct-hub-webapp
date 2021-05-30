@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`python snapshot 1`] = `
-" \`inspect\` <a name=\\"@aws-cdk/aws-ecr.CfnPublicRepository.inspect\\"></a>
+" \`inspect\` <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.inspect\\"></a>
 
 \`\`\`python
 def inspect(inspector: aws_cdk.core.TreeInspector)
 \`\`\`
 
-# \`inspector\`<sup>Required</sup> <a name=\\"inspector\\"></a>
+# \`inspector\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.inspector\\"></a>
 
-- *Type:* [\`aws_cdk.core.TreeInspector\`](#@aws-cdk/core.TreeInspector)
+- *Type:* [\`aws_cdk.core.TreeInspector\`](#aws_cdk.core.TreeInspector)
 
 tree inspector to collect and process attributes.
 
