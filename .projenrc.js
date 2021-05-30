@@ -96,6 +96,7 @@ project.npmignore.addPatterns("/public");
 // assemblies used for tests
 project.npmignore.addPatterns("src/__assemblies__");
 
+// generate a script for fetching assemblies for developement.
 codeGenFetchAssemblies();
 
 // Proxy requests to awscdk.io for local testing
@@ -131,6 +132,11 @@ function codeGenFetchAssemblies() {
   task.exec(`node ${scriptPath}`);
 }
 
+/**
+ * Fetch an assembly by name and version, accepted via env variable for easier invocation.
+ * This fetches all the necessary assemblies into the packages path, which can later be used to instantiate
+ * a jsii type system for the specific package.
+ */
 function fetchAssembly(packagesPath) {
   const packageName = process.env.PACKAGE_NAME;
   const packageVersion = process.env.PACKAGE_VERSION;

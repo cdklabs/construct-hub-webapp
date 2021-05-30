@@ -55,8 +55,6 @@ export interface TranspiledCallable {
   readonly name: string;
   /**
    * The import statement needed in order to use this callable.
-   *
-   * @example
    */
   readonly import: string;
   /**
