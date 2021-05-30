@@ -83,9 +83,10 @@ const project = new web.ReactTypeScriptProject({
 // synthesize project files before build
 // see https://github.com/projen/projen/issues/754
 const buildTask = project.tasks.tryFind("build");
+buildTask.spawn(project.packageTask);
+buildTask.prependSpawn(project.testTask);
 buildTask.prependSpawn(project.compileTask);
 buildTask.prependExec("npx projen");
-buildTask.spawn(project.packageTask);
 
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.

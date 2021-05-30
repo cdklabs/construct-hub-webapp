@@ -97,6 +97,9 @@
           "spawn": "compile"
         },
         {
+          "spawn": "test"
+        },
+        {
           "exec": "react-scripts build"
         },
         {
