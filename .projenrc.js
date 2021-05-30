@@ -95,7 +95,7 @@ project.npmignore.addPatterns("/public");
 codeGenFetchAssemblies();
 
 // Proxy requests to awscdk.io for local testing
-// project.package.addField("proxy", "https://awscdk.io");
+project.package.addField("proxy", "https://awscdk.io");
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
