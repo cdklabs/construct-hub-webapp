@@ -6,10 +6,7 @@ export interface PackageHeaderProps {
   tags: string[];
 }
 
-export default function PackageHeader({
-  description,
-  title,
-}: PackageHeaderProps) {
+export function PackageHeader({ description, title }: PackageHeaderProps) {
   return (
     <Flex bg="gray.200" direction="column" width="100%">
       <Box>

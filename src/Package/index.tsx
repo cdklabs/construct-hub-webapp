@@ -1,9 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import GettingStarted from "../GettingStarted";
-import PackageDocs from "../PackageDocs";
-import PackageHeader from "../PackageHeader";
+import { GettingStarted } from "../GettingStarted";
+import { PackageDocs } from "../PackageDocs";
+import { PackageHeader } from "../PackageHeader";
 import { getAssetsPath } from "./util";
 
 interface PathParams {
@@ -18,7 +18,7 @@ interface PackageDocsHomeState {
   error?: string;
 }
 
-export default function Package() {
+export function Package() {
   const { name, scope, version }: PathParams = useParams();
   const [{ assembly, readme }, setState] = useState<PackageDocsHomeState>({});
 

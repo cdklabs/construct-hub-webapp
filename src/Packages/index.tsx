@@ -1,8 +1,8 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Package from "../Package";
-import PackageLatest from "../PackageLatest";
+import { Package } from "../Package";
+import { PackageLatest } from "../PackageLatest";
 
-export default function Packages() {
+export function Packages() {
   const { path } = useRouteMatch();
   return (
     <Switch>

@@ -6,7 +6,7 @@ export interface PackageDocsProps {
   readme: string;
 }
 
-export default function PackageDocs({ readme }: PackageDocsProps) {
+export function PackageDocs({ readme }: PackageDocsProps) {
   return (
     <Box width="100%">
       <ReactMarkdown skipHtml components={ChakraUIRenderer()} source={readme} />
