@@ -23,7 +23,7 @@ export class Interface {
     this.attributes = new Attributes(transpile, iface.allProperties);
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const md = new Markdown({
       id: this.transpiled.type.fqn,
       header: { title: this.transpiled.name },
@@ -53,8 +53,8 @@ export class Interface {
       md.docs(this.iface.docs);
     }
 
-    md.section(this.instanceMethods.markdown);
-    md.section(this.attributes.markdown);
+    md.section(this.instanceMethods.render());
+    md.section(this.attributes.render());
     return md;
   }
 }

@@ -16,7 +16,7 @@ export class Struct {
     }
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const md = new Markdown({
       id: this.transpiled.type.fqn,
       header: { title: this.transpiled.name },
@@ -39,7 +39,7 @@ export class Struct {
     );
 
     for (const property of this.properties) {
-      initializer.section(property.markdown);
+      initializer.section(property.render());
     }
 
     md.section(initializer);

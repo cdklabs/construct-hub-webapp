@@ -277,12 +277,12 @@ export interface Transpile {
 
 // interface merging so we don't have to implement these methods
 // in the abstract class.
-export interface AbstractTranspile extends Transpile {}
+export interface TranspileBase extends Transpile {}
 
 /**
  * Common functionality between different transpilers.
  */
-export abstract class AbstractTranspile implements Transpile {
+export abstract class TranspileBase implements Transpile {
   constructor(public readonly language: string) {}
 
   public typeReference(type: reflect.TypeReference): TranspiledTypeReference {

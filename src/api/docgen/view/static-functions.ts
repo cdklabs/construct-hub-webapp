@@ -11,14 +11,14 @@ export class StaticFunctions {
       .map((m) => new StaticFunction(transpile, m));
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (this.staticFunctions.length === 0) {
       return Markdown.EMPTY;
     }
 
     const md = new Markdown({ header: { title: "Static Functions" } });
     for (const func of this.staticFunctions) {
-      md.section(func.markdown);
+      md.section(func.render());
     }
     return md;
   }

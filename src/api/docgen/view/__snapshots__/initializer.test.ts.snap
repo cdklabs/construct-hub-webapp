@@ -7,9 +7,9 @@ exports[`python snapshot 1`] = `
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.CfnPublicRepository(scope: aws_cdk.core.Construct, 
-                                    id: builtins.str, 
+                                    id: str, 
                                     repository_catalog_data: typing.Any = None, 
-                                    repository_name: builtins.str = None, 
+                                    repository_name: str = None, 
                                     repository_policy_text: typing.Any = None, 
                                     tags: typing.List[aws_cdk.core.CfnTag] = None)
 \`\`\`
@@ -24,7 +24,7 @@ scope in which this resource is defined.
 
 # \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 scoped id of the resource.
 
@@ -42,7 +42,7 @@ scoped id of the resource.
 
 # \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::PublicRepository.RepositoryName\`.
 

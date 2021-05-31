@@ -7,7 +7,7 @@ export class EnumMember {
   constructor(transpile: Transpile, private readonly em: reflect.EnumMember) {
     this.transpiled = transpile.enumMember(em);
   }
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const md = new Markdown({
       id: `${this.transpiled.fqn}`,
       header: {

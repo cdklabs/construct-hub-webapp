@@ -16,7 +16,7 @@ export class StaticFunction {
     );
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const md = new Markdown({
       id: `${this.transpiled.parentType.fqn}.${this.transpiled.name}`,
       header: {
@@ -34,7 +34,7 @@ export class StaticFunction {
     );
 
     for (const parameter of this.parameters) {
-      md.section(parameter.markdown);
+      md.section(parameter.render());
     }
 
     return md;

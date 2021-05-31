@@ -6,7 +6,7 @@ import * as transpile from "./transpile";
 /**
  * A python transpiler.
  */
-export class PythonTranspile extends transpile.AbstractTranspile {
+export class PythonTranspile extends transpile.TranspileBase {
   constructor(private readonly ts: reflect.TypeSystem) {
     super("python");
   }
@@ -53,13 +53,13 @@ export class PythonTranspile extends transpile.AbstractTranspile {
   }
 
   public boolean(): transpile.TranspiledTypeReference {
-    const typing = this.builtins("bool");
-    return { raw: typing, markdown: Markdown.pre(typing) };
+    const b = "bool";
+    return { raw: b, markdown: Markdown.pre(b) };
   }
 
   public str(): transpile.TranspiledTypeReference {
-    const typing = this.builtins("str");
-    return { raw: typing, markdown: Markdown.pre(typing) };
+    const s = "str";
+    return { raw: s, markdown: Markdown.pre(s) };
   }
 
   public number(): transpile.TranspiledTypeReference {
@@ -257,10 +257,6 @@ export class PythonTranspile extends transpile.AbstractTranspile {
 
   private typing(type: "List" | "Mapping" | "Any" | "Union"): string {
     return `typing.${type}`;
-  }
-
-  private builtins(type: "bool" | "str") {
-    return `builtins.${type}`;
   }
 }
 

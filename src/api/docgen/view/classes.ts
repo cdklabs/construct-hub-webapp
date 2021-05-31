@@ -11,14 +11,14 @@ export class Classes {
       .map((c) => new Class(transpile, c));
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (this.classes.length === 0) {
       return Markdown.EMPTY;
     }
 
     const md = new Markdown({ header: { title: "Classes" } });
     for (const klass of this.classes) {
-      md.section(klass.markdown);
+      md.section(klass.render());
     }
     return md;
   }

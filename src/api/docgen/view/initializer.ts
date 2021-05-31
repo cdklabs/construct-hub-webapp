@@ -16,7 +16,7 @@ export class Initializer {
     );
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const md = new Markdown({
       id: `${this.transpiled.parentType.fqn}.Initializer`,
       header: {
@@ -32,7 +32,7 @@ export class Initializer {
     );
 
     for (const parameter of this.parameters) {
-      md.section(parameter.markdown);
+      md.section(parameter.render());
     }
 
     return md;

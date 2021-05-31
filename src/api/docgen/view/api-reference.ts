@@ -35,13 +35,13 @@ export class ApiReference {
   /**
    * Generate markdown.
    */
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const md = new Markdown({ header: { title: "API Reference" } });
-    md.section(this.constructs.markdown);
-    md.section(this.structs.markdown);
-    md.section(this.classes.markdown);
-    md.section(this.interfaces.markdown);
-    md.section(this.enums.markdown);
+    md.section(this.constructs.render());
+    md.section(this.structs.render());
+    md.section(this.classes.render());
+    md.section(this.interfaces.render());
+    md.section(this.enums.render());
     return md;
   }
 

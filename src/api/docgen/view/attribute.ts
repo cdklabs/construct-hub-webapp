@@ -8,7 +8,7 @@ export class Attribute {
   constructor(transpile: Transpile, property: reflect.Property) {
     this.attribute = new Property(transpile, property);
   }
-  public get markdown(): Markdown {
-    return this.attribute.markdown;
+  public render(): Markdown {
+    return this.attribute.render();
   }
 }

@@ -8,7 +8,7 @@ export class Constant {
   constructor(transpile: Transpile, property: reflect.Property) {
     this.constant = new Property(transpile, property);
   }
-  public get markdown(): Markdown {
-    return this.constant.markdown;
+  public render(): Markdown {
+    return this.constant.render();
   }
 }

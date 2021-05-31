@@ -8,7 +8,7 @@ describe("python", () => {
   const transpile = new PythonTranspile(assembly.system);
   test("snapshot", () => {
     const staticFunction = new StaticFunction(transpile, findStaticFunction());
-    expect(staticFunction.markdown.render()).toMatchSnapshot();
+    expect(staticFunction.render().render()).toMatchSnapshot();
   });
 });
 

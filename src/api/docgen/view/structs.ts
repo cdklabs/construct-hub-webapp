@@ -12,14 +12,14 @@ export class Structs {
       .map((i) => new Struct(transpile, i));
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (this.structs.length === 0) {
       return Markdown.EMPTY;
     }
 
     const md = new Markdown({ header: { title: "Structs" } });
     for (const struct of this.structs) {
-      md.section(struct.markdown);
+      md.section(struct.render());
     }
     return md;
   }

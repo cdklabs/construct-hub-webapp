@@ -8,7 +8,7 @@ describe("python", () => {
   const transpile = new PythonTranspile(assembly.system);
   test("snapshot", () => {
     const instanceMethod = new InstanceMethod(transpile, findInstanceMethod());
-    expect(instanceMethod.markdown.render()).toMatchSnapshot();
+    expect(instanceMethod.render().render()).toMatchSnapshot();
   });
 });
 

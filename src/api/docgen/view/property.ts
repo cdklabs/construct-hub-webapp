@@ -11,7 +11,7 @@ export class Property {
     this.transpiled = transpile.property(property);
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const optionality = this.property.const
       ? undefined
       : this.property.optional

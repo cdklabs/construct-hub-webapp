@@ -8,7 +8,7 @@ describe("python", () => {
   const transpile = new PythonTranspile(assembly.system);
   test("snapshot", () => {
     const initializer = new Initializer(transpile, findInitializer());
-    expect(initializer.markdown.render()).toMatchSnapshot();
+    expect(initializer.render().render()).toMatchSnapshot();
   });
 });
 

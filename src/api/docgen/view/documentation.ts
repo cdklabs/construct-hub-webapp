@@ -77,12 +77,12 @@ export class Documentation {
   /**
    * Generate markdown.
    */
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const documentation = new Markdown();
 
     if (this.includeReadme) {
       const readme = new Readme(this.transpile, this.assembly, this.submodule);
-      documentation.section(readme.markdown);
+      documentation.section(readme.render());
     }
     if (this.includeApiReference) {
       const apiReference = new ApiReference(
@@ -90,7 +90,7 @@ export class Documentation {
         this.assembly,
         this.submodule
       );
-      documentation.section(apiReference.markdown);
+      documentation.section(apiReference.render());
     }
 
     return documentation;

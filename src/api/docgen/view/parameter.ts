@@ -11,7 +11,7 @@ export class Parameter {
     this.transpiled = transpile.parameter(parameter);
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const optionality = this.parameter.optional ? "Optional" : "Required";
 
     const md = new Markdown({

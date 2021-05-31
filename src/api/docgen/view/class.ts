@@ -40,7 +40,7 @@ export class Class {
     this.transpiled = transpile.class(klass);
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const md = new Markdown({
       id: this.transpiled.type.fqn,
       header: { title: this.transpiled.name },
@@ -61,12 +61,12 @@ export class Class {
     }
 
     if (this.initializer) {
-      md.section(this.initializer.markdown);
+      md.section(this.initializer.render());
     }
-    md.section(this.instanceMethods.markdown);
-    md.section(this.staticFunctions.markdown);
-    md.section(this.attributes.markdown);
-    md.section(this.constants.markdown);
+    md.section(this.instanceMethods.render());
+    md.section(this.staticFunctions.render());
+    md.section(this.attributes.render());
+    md.section(this.constants.render());
     return md;
   }
 }

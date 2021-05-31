@@ -12,14 +12,14 @@ export class Constructs {
       .map((c) => new Construct(transpile, c));
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (this.constructs.length === 0) {
       return Markdown.EMPTY;
     }
 
     const md = new Markdown({ header: { title: "Constructs" } });
     for (const construct of this.constructs) {
-      md.section(construct.markdown);
+      md.section(construct.render());
     }
     return md;
   }

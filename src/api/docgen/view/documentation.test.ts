@@ -10,6 +10,6 @@ describe("python", () => {
       assembly: assembly,
       readme: true,
     });
-    expect(docs.markdown.render()).toMatchSnapshot();
+    expect(docs.render().render()).toMatchSnapshot();
   });
 });

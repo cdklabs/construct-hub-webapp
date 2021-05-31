@@ -11,14 +11,14 @@ export class Constants {
       .map((p) => new Constant(transpile, p));
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (this.constants.length === 0) {
       return Markdown.EMPTY;
     }
 
     const md = new Markdown({ header: { title: "Constants" } });
     for (const c of this.constants) {
-      md.section(c.markdown);
+      md.section(c.render());
     }
     return md;
   }

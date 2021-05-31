@@ -8,7 +8,7 @@ describe("python", () => {
   const transpile = new PythonTranspile(assembly.system);
   test("snapshot", () => {
     const parameter = new Parameter(transpile, findParameter());
-    expect(parameter.markdown.render()).toMatchSnapshot();
+    expect(parameter.render().render()).toMatchSnapshot();
   });
 });
 

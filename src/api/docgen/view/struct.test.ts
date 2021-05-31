@@ -11,6 +11,6 @@ describe("python", () => {
       transpile,
       assembly.system.interfaces.filter((i) => i.datatype)[0]
     );
-    expect(struct.markdown.render()).toMatchSnapshot();
+    expect(struct.render().render()).toMatchSnapshot();
   });
 });

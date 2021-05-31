@@ -8,7 +8,7 @@ export class Construct {
   constructor(transpile: Transpile, klass: reflect.ClassType) {
     this.construct = new Class(transpile, klass);
   }
-  public get markdown(): Markdown {
-    return this.construct.markdown;
+  public render(): Markdown {
+    return this.construct.render();
   }
 }

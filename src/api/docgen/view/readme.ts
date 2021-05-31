@@ -20,7 +20,7 @@ export class Readme {
   /**
    * Generate markdown.
    */
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (!this.readme) {
       return Markdown.EMPTY;
     }

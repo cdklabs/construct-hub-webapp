@@ -12,7 +12,7 @@ export class Enum {
     this.members = enu.members.map((em) => new EnumMember(transpile, em));
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     const transpiled = this.transpile.enum(this.enu);
     const md = new Markdown({ header: { title: transpiled.name } });
 
@@ -21,7 +21,7 @@ export class Enum {
     }
 
     for (const m of this.members) {
-      md.section(m.markdown);
+      md.section(m.render());
     }
 
     return md;

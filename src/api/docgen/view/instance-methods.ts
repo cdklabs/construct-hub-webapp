@@ -11,14 +11,14 @@ export class InstanceMethods {
       .map((m) => new InstanceMethod(transpile, m));
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (this.instanceMethods.length === 0) {
       return Markdown.EMPTY;
     }
 
     const md = new Markdown({ header: { title: "Methods" } });
     for (const method of this.instanceMethods) {
-      md.section(method.markdown);
+      md.section(method.render());
     }
     return md;
   }

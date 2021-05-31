@@ -9,14 +9,14 @@ export class Enums {
     this.enums = enums.map((e) => new Enum(transpile, e));
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (this.enums.length === 0) {
       return Markdown.EMPTY;
     }
 
     const md = new Markdown({ header: { title: "Enums" } });
     for (const e of this.enums) {
-      md.section(e.markdown);
+      md.section(e.render());
     }
     return md;
   }

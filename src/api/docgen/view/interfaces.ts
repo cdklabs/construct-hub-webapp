@@ -11,7 +11,7 @@ export class Interfaces {
       .filter((i) => !Interface.isStruct(i))
       .map((i) => new Interface(transpile, i));
   }
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (this.interfaces.length === 0) {
       return Markdown.EMPTY;
     }
@@ -19,7 +19,7 @@ export class Interfaces {
     const md = new Markdown({ header: { title: "Protocols" } });
 
     for (const iface of this.interfaces) {
-      md.section(iface.markdown);
+      md.section(iface.render());
     }
 
     return md;

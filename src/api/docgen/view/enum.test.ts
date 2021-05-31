@@ -8,6 +8,6 @@ describe("python", () => {
   const transpile = new PythonTranspile(assembly.system);
   test("snapshot", () => {
     const enu = new Enum(transpile, assembly.enums[0]);
-    expect(enu.markdown.render()).toMatchSnapshot();
+    expect(enu.render().render()).toMatchSnapshot();
   });
 });

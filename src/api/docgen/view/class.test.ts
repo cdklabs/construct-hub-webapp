@@ -8,6 +8,6 @@ describe("python", () => {
   const transpile = new PythonTranspile(assembly.system);
   test("snapshot", () => {
     const klass = new Class(transpile, assembly.classes[0]);
-    expect(klass.markdown.render()).toMatchSnapshot();
+    expect(klass.render().render()).toMatchSnapshot();
   });
 });

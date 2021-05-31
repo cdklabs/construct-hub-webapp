@@ -17,7 +17,7 @@ export function PackageDocs(props: PackageDocsProps) {
     submoduleName: props.submodule,
   });
 
-  const source = doc.markdown.render();
+  const source = doc.render().render();
 
   return (
     <Box width="100%">

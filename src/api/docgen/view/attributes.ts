@@ -11,14 +11,14 @@ export class Attributes {
       .map((p) => new Attribute(transpile, p));
   }
 
-  public get markdown(): Markdown {
+  public render(): Markdown {
     if (this.attributes.length === 0) {
       return Markdown.EMPTY;
     }
 
     const md = new Markdown({ header: { title: "Attributes" } });
     for (const a of this.attributes) {
-      md.section(a.markdown);
+      md.section(a.render());
     }
     return md;
   }

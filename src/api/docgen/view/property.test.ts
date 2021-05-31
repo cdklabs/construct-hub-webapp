@@ -11,6 +11,6 @@ describe("python", () => {
       transpile,
       assembly.system.interfaces[0].allProperties[0]
     );
-    expect(parameter.markdown.render()).toMatchSnapshot();
+    expect(parameter.render().render()).toMatchSnapshot();
   });
 });

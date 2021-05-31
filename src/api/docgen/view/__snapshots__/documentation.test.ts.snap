@@ -116,9 +116,9 @@ A CloudFormation \`AWS::ECR::PublicRepository\`.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.CfnPublicRepository(scope: aws_cdk.core.Construct, 
-                                    id: builtins.str, 
+                                    id: str, 
                                     repository_catalog_data: typing.Any = None, 
-                                    repository_name: builtins.str = None, 
+                                    repository_name: str = None, 
                                     repository_policy_text: typing.Any = None, 
                                     tags: typing.List[aws_cdk.core.CfnTag] = None)
 \`\`\`
@@ -133,7 +133,7 @@ scope in which this resource is defined.
 
 ##### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 scoped id of the resource.
 
@@ -151,7 +151,7 @@ scoped id of the resource.
 
 ##### \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::PublicRepository.RepositoryName\`.
 
@@ -200,7 +200,7 @@ tree inspector to collect and process attributes.
 
 ##### \`attr_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.attr_arn\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -236,7 +236,7 @@ tree inspector to collect and process attributes.
 
 ##### \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::PublicRepository.RepositoryName\`.
 
@@ -248,7 +248,7 @@ tree inspector to collect and process attributes.
 
 ##### \`CFN_RESOURCE_TYPE_NAME\` <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.CFN_RESOURCE_TYPE_NAME\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The CloudFormation resource type name for this resource class.
 
@@ -268,7 +268,7 @@ A CloudFormation \`AWS::ECR::RegistryPolicy\`.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.CfnRegistryPolicy(scope: aws_cdk.core.Construct, 
-                                  id: builtins.str, 
+                                  id: str, 
                                   policy_text: typing.Any)
 \`\`\`
 
@@ -282,7 +282,7 @@ scope in which this resource is defined.
 
 ##### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnRegistryPolicy.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 scoped id of the resource.
 
@@ -319,7 +319,7 @@ tree inspector to collect and process attributes.
 
 ##### \`attr_registry_id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnRegistryPolicy.attr_registry_id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -337,7 +337,7 @@ tree inspector to collect and process attributes.
 
 ##### \`CFN_RESOURCE_TYPE_NAME\` <a name=\\"aws_cdk.aws_ecr.CfnRegistryPolicy.CFN_RESOURCE_TYPE_NAME\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The CloudFormation resource type name for this resource class.
 
@@ -357,7 +357,7 @@ A CloudFormation \`AWS::ECR::ReplicationConfiguration\`.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.CfnReplicationConfiguration(scope: aws_cdk.core.Construct, 
-                                            id: builtins.str, 
+                                            id: str, 
                                             replication_configuration: typing.Union[aws_cdk.core.IResolvable, aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty])
 \`\`\`
 
@@ -371,7 +371,7 @@ scope in which this resource is defined.
 
 ##### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnReplicationConfiguration.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 scoped id of the resource.
 
@@ -408,7 +408,7 @@ tree inspector to collect and process attributes.
 
 ##### \`attr_registry_id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnReplicationConfiguration.attr_registry_id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -426,7 +426,7 @@ tree inspector to collect and process attributes.
 
 ##### \`CFN_RESOURCE_TYPE_NAME\` <a name=\\"aws_cdk.aws_ecr.CfnReplicationConfiguration.CFN_RESOURCE_TYPE_NAME\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The CloudFormation resource type name for this resource class.
 
@@ -446,12 +446,12 @@ A CloudFormation \`AWS::ECR::Repository\`.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.CfnRepository(scope: aws_cdk.core.Construct, 
-                              id: builtins.str, 
+                              id: str, 
                               encryption_configuration: typing.Any = None, 
                               image_scanning_configuration: typing.Any = None, 
-                              image_tag_mutability: builtins.str = None, 
+                              image_tag_mutability: str = None, 
                               lifecycle_policy: typing.Union[aws_cdk.core.IResolvable, aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty] = None, 
-                              repository_name: builtins.str = None, 
+                              repository_name: str = None, 
                               repository_policy_text: typing.Any = None, 
                               tags: typing.List[aws_cdk.core.CfnTag] = None)
 \`\`\`
@@ -466,7 +466,7 @@ scope in which this resource is defined.
 
 ##### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 scoped id of the resource.
 
@@ -494,7 +494,7 @@ scoped id of the resource.
 
 ##### \`image_tag_mutability\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepositoryProps.image_tag_mutability\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::Repository.ImageTagMutability\`.
 
@@ -514,7 +514,7 @@ scoped id of the resource.
 
 ##### \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepositoryProps.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::Repository.RepositoryName\`.
 
@@ -563,13 +563,13 @@ tree inspector to collect and process attributes.
 
 ##### \`attr_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepository.attr_arn\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ##### \`attr_repository_uri\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepository.attr_repository_uri\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -615,7 +615,7 @@ tree inspector to collect and process attributes.
 
 ##### \`image_tag_mutability\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepository.image_tag_mutability\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::Repository.ImageTagMutability\`.
 
@@ -635,7 +635,7 @@ tree inspector to collect and process attributes.
 
 ##### \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepository.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::Repository.RepositoryName\`.
 
@@ -647,7 +647,7 @@ tree inspector to collect and process attributes.
 
 ##### \`CFN_RESOURCE_TYPE_NAME\` <a name=\\"aws_cdk.aws_ecr.CfnRepository.CFN_RESOURCE_TYPE_NAME\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The CloudFormation resource type name for this resource class.
 
@@ -663,13 +663,13 @@ Define an ECR repository.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.Repository(scope: constructs.Construct, 
-                           id: builtins.str, 
-                           image_scan_on_push: builtins.bool = None, 
+                           id: str, 
+                           image_scan_on_push: bool = None, 
                            image_tag_mutability: aws_cdk.aws_ecr.TagMutability = None, 
-                           lifecycle_registry_id: builtins.str = None, 
+                           lifecycle_registry_id: str = None, 
                            lifecycle_rules: typing.List[aws_cdk.aws_ecr.LifecycleRule] = None, 
                            removal_policy: aws_cdk.core.RemovalPolicy = None, 
-                           repository_name: builtins.str = None)
+                           repository_name: str = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.scope\\"></a>
@@ -680,13 +680,13 @@ aws_cdk.aws_ecr.Repository(scope: constructs.Construct,
 
 ##### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ##### \`image_scan_on_push\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryProps.image_scan_on_push\\"></a>
 
-- *Type:* \`builtins.bool\`
+- *Type:* \`bool\`
 - *Default:* false
 
 Enable the scan on push when creating the repository.
@@ -706,7 +706,7 @@ If this parameter is omitted, the default setting of MUTABLE will be used which 
 
 ##### \`lifecycle_registry_id\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryProps.lifecycle_registry_id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* The default registry is assumed.
 
 The AWS account ID associated with the registry that contains the repository.
@@ -735,7 +735,7 @@ Determine what happens to the repository when the resource/stack is deleted.
 
 ##### \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryProps.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* Automatically generated name.
 
 Name for this repository.
@@ -747,17 +747,17 @@ Name for this repository.
 ##### \`add_lifecycle_rule\` <a name=\\"aws_cdk.aws_ecr.Repository.add_lifecycle_rule\\"></a>
 
 \`\`\`python
-def add_lifecycle_rule(description: builtins.str = None, 
+def add_lifecycle_rule(description: str = None, 
                        max_image_age: aws_cdk.core.Duration = None, 
                        max_image_count: typing.Union[int, float] = None, 
                        rule_priority: typing.Union[int, float] = None, 
-                       tag_prefix_list: typing.List[builtins.str] = None, 
+                       tag_prefix_list: typing.List[str] = None, 
                        tag_status: aws_cdk.aws_ecr.TagStatus = None)
 \`\`\`
 
 ###### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.LifecycleRule.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 Describes the purpose of the rule.
@@ -804,7 +804,7 @@ automatically assigned to them, higher than any rules that DO have priorities.
 
 ###### \`tag_prefix_list\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.LifecycleRule.tag_prefix_list\\"></a>
 
-- *Type:* **typing.List**[\`builtins.str\`]
+- *Type:* **typing.List**[\`str\`]
 
 Select images that have ALL the given prefixes in their tag.
 
@@ -843,14 +843,14 @@ def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.Repository.arn_for_local_repository(repository_name: builtins.str, 
+aws_cdk.aws_ecr.Repository.arn_for_local_repository(repository_name: str, 
                                                     scope: constructs.IConstruct, 
-                                                    account: builtins.str = None)
+                                                    account: str = None)
 \`\`\`
 
 ###### \`repository_name\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -862,7 +862,7 @@ aws_cdk.aws_ecr.Repository.arn_for_local_repository(repository_name: builtins.st
 
 ###### \`account\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.Repository.account\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -872,8 +872,8 @@ aws_cdk.aws_ecr.Repository.arn_for_local_repository(repository_name: builtins.st
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.Repository.from_repository_arn(scope: constructs.Construct, 
-                                               id: builtins.str, 
-                                               repository_arn: builtins.str)
+                                               id: str, 
+                                               repository_arn: str)
 \`\`\`
 
 ###### \`scope\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.scope\\"></a>
@@ -884,13 +884,13 @@ aws_cdk.aws_ecr.Repository.from_repository_arn(scope: constructs.Construct,
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ###### \`repository_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.repository_arn\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -900,9 +900,9 @@ aws_cdk.aws_ecr.Repository.from_repository_arn(scope: constructs.Construct,
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.Repository.from_repository_attributes(scope: constructs.Construct, 
-                                                      id: builtins.str, 
-                                                      repository_arn: builtins.str, 
-                                                      repository_name: builtins.str)
+                                                      id: str, 
+                                                      repository_arn: str, 
+                                                      repository_name: str)
 \`\`\`
 
 ###### \`scope\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.scope\\"></a>
@@ -913,19 +913,19 @@ aws_cdk.aws_ecr.Repository.from_repository_attributes(scope: constructs.Construc
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ###### \`repository_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryAttributes.repository_arn\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ###### \`repository_name\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryAttributes.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -935,8 +935,8 @@ aws_cdk.aws_ecr.Repository.from_repository_attributes(scope: constructs.Construc
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.Repository.from_repository_name(scope: constructs.Construct, 
-                                                id: builtins.str, 
-                                                repository_name: builtins.str)
+                                                id: str, 
+                                                repository_name: str)
 \`\`\`
 
 ###### \`scope\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.scope\\"></a>
@@ -947,13 +947,13 @@ aws_cdk.aws_ecr.Repository.from_repository_name(scope: constructs.Construct,
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ###### \`repository_name\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -961,7 +961,7 @@ aws_cdk.aws_ecr.Repository.from_repository_name(scope: constructs.Construct,
 
 ##### \`repository_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.repository_arn\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The ARN of the repository.
 
@@ -969,7 +969,7 @@ The ARN of the repository.
 
 ##### \`repository_name\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The name of the repository.
 
@@ -990,11 +990,11 @@ Reused between imported repositories and owned repositories.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.RepositoryBase(scope: constructs.Construct, 
-                               id: builtins.str, 
-                               account: builtins.str = None, 
-                               environment_from_arn: builtins.str = None, 
-                               physical_name: builtins.str = None, 
-                               region: builtins.str = None)
+                               id: str, 
+                               account: str = None, 
+                               environment_from_arn: str = None, 
+                               physical_name: str = None, 
+                               region: str = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.scope\\"></a>
@@ -1005,13 +1005,13 @@ aws_cdk.aws_ecr.RepositoryBase(scope: constructs.Construct,
 
 ##### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ##### \`account\`<sup>Optional</sup> <a name=\\"aws_cdk.core.ResourceProps.account\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* the resource is in the same account as the stack it belongs to
 
 The AWS account ID this resource belongs to.
@@ -1020,7 +1020,7 @@ The AWS account ID this resource belongs to.
 
 ##### \`environment_from_arn\`<sup>Optional</sup> <a name=\\"aws_cdk.core.ResourceProps.environment_from_arn\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* take environment from \`account\`, \`region\` parameters, or use Stack environment.
 
 ARN to deduce region and account from.
@@ -1034,7 +1034,7 @@ Cannot be supplied together with either \`account\` or \`region\`.
 
 ##### \`physical_name\`<sup>Optional</sup> <a name=\\"aws_cdk.core.ResourceProps.physical_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* The physical name will be allocated by CloudFormation at deployment time
 
 The value passed in by users to the physical name prop of the resource.
@@ -1049,7 +1049,7 @@ The value passed in by users to the physical name prop of the resource.
 
 ##### \`region\`<sup>Optional</sup> <a name=\\"aws_cdk.core.ResourceProps.region\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* the resource is in the same region as the stack it belongs to
 
 The AWS region this resource belongs to.
@@ -1074,7 +1074,7 @@ def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
 
 \`\`\`python
 def grant(grantee: aws_cdk.aws_iam.IGrantable, 
-          actions: builtins.str)
+          actions: str)
 \`\`\`
 
 ###### \`grantee\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.grantee\\"></a>
@@ -1085,7 +1085,7 @@ def grant(grantee: aws_cdk.aws_iam.IGrantable,
 
 ###### \`actions\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.actions\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -1116,16 +1116,16 @@ def grant_pull_push(grantee: aws_cdk.aws_iam.IGrantable)
 ##### \`on_cloud_trail_event\` <a name=\\"aws_cdk.aws_ecr.RepositoryBase.on_cloud_trail_event\\"></a>
 
 \`\`\`python
-def on_cloud_trail_event(id: builtins.str, 
-                         description: builtins.str = None, 
+def on_cloud_trail_event(id: str, 
+                         description: str = None, 
                          event_pattern: aws_cdk.aws_events.EventPattern = None, 
-                         rule_name: builtins.str = None, 
+                         rule_name: str = None, 
                          target: aws_cdk.aws_events.IRuleTarget = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The id of the rule.
 
@@ -1133,7 +1133,7 @@ The id of the rule.
 
 ###### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_events.OnEventOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -1157,7 +1157,7 @@ on top of that filtering.
 
 ###### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_events.OnEventOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -1176,17 +1176,17 @@ The target to register for the event.
 ##### \`on_cloud_trail_image_pushed\` <a name=\\"aws_cdk.aws_ecr.RepositoryBase.on_cloud_trail_image_pushed\\"></a>
 
 \`\`\`python
-def on_cloud_trail_image_pushed(id: builtins.str, 
-                                description: builtins.str = None, 
+def on_cloud_trail_image_pushed(id: str, 
+                                description: str = None, 
                                 event_pattern: aws_cdk.aws_events.EventPattern = None, 
-                                rule_name: builtins.str = None, 
+                                rule_name: str = None, 
                                 target: aws_cdk.aws_events.IRuleTarget = None, 
-                                image_tag: builtins.str = None)
+                                image_tag: str = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The id of the rule.
 
@@ -1194,7 +1194,7 @@ The id of the rule.
 
 ###### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -1218,7 +1218,7 @@ on top of that filtering.
 
 ###### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -1236,7 +1236,7 @@ The target to register for the event.
 
 ###### \`image_tag\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions.image_tag\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* Watch changes to all tags
 
 Only watch changes to this image tag.
@@ -1246,22 +1246,22 @@ Only watch changes to this image tag.
 ##### \`on_event\` <a name=\\"aws_cdk.aws_ecr.RepositoryBase.on_event\\"></a>
 
 \`\`\`python
-def on_event(id: builtins.str, 
-             description: builtins.str = None, 
+def on_event(id: str, 
+             description: str = None, 
              event_pattern: aws_cdk.aws_events.EventPattern = None, 
-             rule_name: builtins.str = None, 
+             rule_name: str = None, 
              target: aws_cdk.aws_events.IRuleTarget = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ###### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_events.OnEventOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -1285,7 +1285,7 @@ on top of that filtering.
 
 ###### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_events.OnEventOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -1304,17 +1304,17 @@ The target to register for the event.
 ##### \`on_image_scan_completed\` <a name=\\"aws_cdk.aws_ecr.RepositoryBase.on_image_scan_completed\\"></a>
 
 \`\`\`python
-def on_image_scan_completed(id: builtins.str, 
-                            description: builtins.str = None, 
+def on_image_scan_completed(id: str, 
+                            description: str = None, 
                             event_pattern: aws_cdk.aws_events.EventPattern = None, 
-                            rule_name: builtins.str = None, 
+                            rule_name: str = None, 
                             target: aws_cdk.aws_events.IRuleTarget = None, 
-                            image_tags: typing.List[builtins.str] = None)
+                            image_tags: typing.List[str] = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The id of the rule.
 
@@ -1322,7 +1322,7 @@ The id of the rule.
 
 ###### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnImageScanCompletedOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -1346,7 +1346,7 @@ on top of that filtering.
 
 ###### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnImageScanCompletedOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -1364,7 +1364,7 @@ The target to register for the event.
 
 ###### \`image_tags\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnImageScanCompletedOptions.image_tags\\"></a>
 
-- *Type:* **typing.List**[\`builtins.str\`]
+- *Type:* **typing.List**[\`str\`]
 - *Default:* Watch the changes to the repository with all image tags
 
 Only watch changes to the image tags spedified.
@@ -1376,12 +1376,12 @@ Leave it undefined to watch the full repository.
 ##### \`repository_uri_for_digest\` <a name=\\"aws_cdk.aws_ecr.RepositoryBase.repository_uri_for_digest\\"></a>
 
 \`\`\`python
-def repository_uri_for_digest(digest: builtins.str = None)
+def repository_uri_for_digest(digest: str = None)
 \`\`\`
 
 ###### \`digest\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.digest\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 Optional image digest.
 
@@ -1390,12 +1390,12 @@ Optional image digest.
 ##### \`repository_uri_for_tag\` <a name=\\"aws_cdk.aws_ecr.RepositoryBase.repository_uri_for_tag\\"></a>
 
 \`\`\`python
-def repository_uri_for_tag(tag: builtins.str = None)
+def repository_uri_for_tag(tag: str = None)
 \`\`\`
 
 ###### \`tag\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.tag\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 Optional image tag.
 
@@ -1406,7 +1406,7 @@ Optional image tag.
 
 ##### \`repository_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.repository_arn\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The ARN of the repository.
 
@@ -1414,7 +1414,7 @@ The ARN of the repository.
 
 ##### \`repository_name\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The name of the repository.
 
@@ -1422,7 +1422,7 @@ The name of the repository.
 
 ##### \`repository_uri\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.repository_uri\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The URI of this repository (represents the latest image):.
 
@@ -1445,7 +1445,7 @@ Properties for defining a \`AWS::ECR::PublicRepository\`.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.CfnPublicRepositoryProps(repository_catalog_data: typing.Any = None, 
-                                         repository_name: builtins.str = None, 
+                                         repository_name: str = None, 
                                          repository_policy_text: typing.Any = None, 
                                          tags: typing.List[aws_cdk.core.CfnTag] = None)
 \`\`\`
@@ -1462,7 +1462,7 @@ aws_cdk.aws_ecr.CfnPublicRepositoryProps(repository_catalog_data: typing.Any = N
 
 ##### \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::PublicRepository.RepositoryName\`.
 
@@ -1551,9 +1551,9 @@ import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.CfnRepositoryProps(encryption_configuration: typing.Any = None, 
                                    image_scanning_configuration: typing.Any = None, 
-                                   image_tag_mutability: builtins.str = None, 
+                                   image_tag_mutability: str = None, 
                                    lifecycle_policy: typing.Union[aws_cdk.core.IResolvable, aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty] = None, 
-                                   repository_name: builtins.str = None, 
+                                   repository_name: str = None, 
                                    repository_policy_text: typing.Any = None, 
                                    tags: typing.List[aws_cdk.core.CfnTag] = None)
 \`\`\`
@@ -1580,7 +1580,7 @@ aws_cdk.aws_ecr.CfnRepositoryProps(encryption_configuration: typing.Any = None,
 
 ##### \`image_tag_mutability\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepositoryProps.image_tag_mutability\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::Repository.ImageTagMutability\`.
 
@@ -1600,7 +1600,7 @@ aws_cdk.aws_ecr.CfnRepositoryProps(encryption_configuration: typing.Any = None,
 
 ##### \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepositoryProps.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`AWS::ECR::Repository.RepositoryName\`.
 
@@ -1637,13 +1637,13 @@ aws_cdk.aws_ecr.CfnRepositoryProps(encryption_configuration: typing.Any = None,
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty(lifecycle_policy_text: builtins.str = None, 
-                                                      registry_id: builtins.str = None)
+aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty(lifecycle_policy_text: str = None, 
+                                                      registry_id: str = None)
 \`\`\`
 
 ##### \`lifecycle_policy_text\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty.lifecycle_policy_text\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`CfnRepository.LifecyclePolicyProperty.LifecyclePolicyText\`.
 
@@ -1653,7 +1653,7 @@ aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty(lifecycle_policy_text: bui
 
 ##### \`registry_id\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty.registry_id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`CfnRepository.LifecyclePolicyProperty.RegistryId\`.
 
@@ -1670,17 +1670,17 @@ An ECR life cycle rule.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.LifecycleRule(description: builtins.str = None, 
+aws_cdk.aws_ecr.LifecycleRule(description: str = None, 
                               max_image_age: aws_cdk.core.Duration = None, 
                               max_image_count: typing.Union[int, float] = None, 
                               rule_priority: typing.Union[int, float] = None, 
-                              tag_prefix_list: typing.List[builtins.str] = None, 
+                              tag_prefix_list: typing.List[str] = None, 
                               tag_status: aws_cdk.aws_ecr.TagStatus = None)
 \`\`\`
 
 ##### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.LifecycleRule.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 Describes the purpose of the rule.
@@ -1727,7 +1727,7 @@ automatically assigned to them, higher than any rules that DO have priorities.
 
 ##### \`tag_prefix_list\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.LifecycleRule.tag_prefix_list\\"></a>
 
-- *Type:* **typing.List**[\`builtins.str\`]
+- *Type:* **typing.List**[\`str\`]
 
 Select images that have ALL the given prefixes in their tag.
 
@@ -1756,16 +1756,16 @@ Options for the onCloudTrailImagePushed method.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions(description: builtins.str = None, 
+aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions(description: str = None, 
                                                event_pattern: aws_cdk.aws_events.EventPattern = None, 
-                                               rule_name: builtins.str = None, 
+                                               rule_name: str = None, 
                                                target: aws_cdk.aws_events.IRuleTarget = None, 
-                                               image_tag: builtins.str = None)
+                                               image_tag: str = None)
 \`\`\`
 
 ##### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -1789,7 +1789,7 @@ on top of that filtering.
 
 ##### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -1807,7 +1807,7 @@ The target to register for the event.
 
 ##### \`image_tag\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions.image_tag\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* Watch changes to all tags
 
 Only watch changes to this image tag.
@@ -1823,16 +1823,16 @@ Options for the OnImageScanCompleted method.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.OnImageScanCompletedOptions(description: builtins.str = None, 
+aws_cdk.aws_ecr.OnImageScanCompletedOptions(description: str = None, 
                                             event_pattern: aws_cdk.aws_events.EventPattern = None, 
-                                            rule_name: builtins.str = None, 
+                                            rule_name: str = None, 
                                             target: aws_cdk.aws_events.IRuleTarget = None, 
-                                            image_tags: typing.List[builtins.str] = None)
+                                            image_tags: typing.List[str] = None)
 \`\`\`
 
 ##### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnImageScanCompletedOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -1856,7 +1856,7 @@ on top of that filtering.
 
 ##### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnImageScanCompletedOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -1874,7 +1874,7 @@ The target to register for the event.
 
 ##### \`image_tags\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnImageScanCompletedOptions.image_tags\\"></a>
 
-- *Type:* **typing.List**[\`builtins.str\`]
+- *Type:* **typing.List**[\`str\`]
 - *Default:* Watch the changes to the repository with all image tags
 
 Only watch changes to the image tags spedified.
@@ -1914,13 +1914,13 @@ aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty(rul
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty(region: builtins.str, 
-                                                                           registry_id: builtins.str)
+aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty(region: str, 
+                                                                           registry_id: str)
 \`\`\`
 
 ##### \`region\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty.region\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`CfnReplicationConfiguration.ReplicationDestinationProperty.Region\`.
 
@@ -1930,7 +1930,7 @@ aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty(regio
 
 ##### \`registry_id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty.registry_id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 \`CfnReplicationConfiguration.ReplicationDestinationProperty.RegistryId\`.
 
@@ -1967,19 +1967,19 @@ aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationRuleProperty(destinations
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.RepositoryAttributes(repository_arn: builtins.str, 
-                                     repository_name: builtins.str)
+aws_cdk.aws_ecr.RepositoryAttributes(repository_arn: str, 
+                                     repository_name: str)
 \`\`\`
 
 ##### \`repository_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryAttributes.repository_arn\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ##### \`repository_name\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryAttributes.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -1990,17 +1990,17 @@ aws_cdk.aws_ecr.RepositoryAttributes(repository_arn: builtins.str,
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.RepositoryProps(image_scan_on_push: builtins.bool = None, 
+aws_cdk.aws_ecr.RepositoryProps(image_scan_on_push: bool = None, 
                                 image_tag_mutability: aws_cdk.aws_ecr.TagMutability = None, 
-                                lifecycle_registry_id: builtins.str = None, 
+                                lifecycle_registry_id: str = None, 
                                 lifecycle_rules: typing.List[aws_cdk.aws_ecr.LifecycleRule] = None, 
                                 removal_policy: aws_cdk.core.RemovalPolicy = None, 
-                                repository_name: builtins.str = None)
+                                repository_name: str = None)
 \`\`\`
 
 ##### \`image_scan_on_push\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryProps.image_scan_on_push\\"></a>
 
-- *Type:* \`builtins.bool\`
+- *Type:* \`bool\`
 - *Default:* false
 
 Enable the scan on push when creating the repository.
@@ -2020,7 +2020,7 @@ If this parameter is omitted, the default setting of MUTABLE will be used which 
 
 ##### \`lifecycle_registry_id\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryProps.lifecycle_registry_id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* The default registry is assumed.
 
 The AWS account ID associated with the registry that contains the repository.
@@ -2049,7 +2049,7 @@ Determine what happens to the repository when the resource/stack is deleted.
 
 ##### \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryProps.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* Automatically generated name.
 
 Name for this repository.
@@ -2136,7 +2136,7 @@ def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
 
 \`\`\`python
 def grant(grantee: aws_cdk.aws_iam.IGrantable, 
-          actions: builtins.str)
+          actions: str)
 \`\`\`
 
 ###### \`grantee\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.grantee\\"></a>
@@ -2147,7 +2147,7 @@ def grant(grantee: aws_cdk.aws_iam.IGrantable,
 
 ###### \`actions\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.actions\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
@@ -2178,16 +2178,16 @@ def grant_pull_push(grantee: aws_cdk.aws_iam.IGrantable)
 ##### \`on_cloud_trail_event\` <a name=\\"aws_cdk.aws_ecr.IRepository.on_cloud_trail_event\\"></a>
 
 \`\`\`python
-def on_cloud_trail_event(id: builtins.str, 
-                         description: builtins.str = None, 
+def on_cloud_trail_event(id: str, 
+                         description: str = None, 
                          event_pattern: aws_cdk.aws_events.EventPattern = None, 
-                         rule_name: builtins.str = None, 
+                         rule_name: str = None, 
                          target: aws_cdk.aws_events.IRuleTarget = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The id of the rule.
 
@@ -2195,7 +2195,7 @@ The id of the rule.
 
 ###### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_events.OnEventOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -2219,7 +2219,7 @@ on top of that filtering.
 
 ###### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_events.OnEventOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -2238,17 +2238,17 @@ The target to register for the event.
 ##### \`on_cloud_trail_image_pushed\` <a name=\\"aws_cdk.aws_ecr.IRepository.on_cloud_trail_image_pushed\\"></a>
 
 \`\`\`python
-def on_cloud_trail_image_pushed(id: builtins.str, 
-                                description: builtins.str = None, 
+def on_cloud_trail_image_pushed(id: str, 
+                                description: str = None, 
                                 event_pattern: aws_cdk.aws_events.EventPattern = None, 
-                                rule_name: builtins.str = None, 
+                                rule_name: str = None, 
                                 target: aws_cdk.aws_events.IRuleTarget = None, 
-                                image_tag: builtins.str = None)
+                                image_tag: str = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The id of the rule.
 
@@ -2256,7 +2256,7 @@ The id of the rule.
 
 ###### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -2280,7 +2280,7 @@ on top of that filtering.
 
 ###### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -2298,7 +2298,7 @@ The target to register for the event.
 
 ###### \`image_tag\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions.image_tag\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* Watch changes to all tags
 
 Only watch changes to this image tag.
@@ -2308,22 +2308,22 @@ Only watch changes to this image tag.
 ##### \`on_event\` <a name=\\"aws_cdk.aws_ecr.IRepository.on_event\\"></a>
 
 \`\`\`python
-def on_event(id: builtins.str, 
-             description: builtins.str = None, 
+def on_event(id: str, 
+             description: str = None, 
              event_pattern: aws_cdk.aws_events.EventPattern = None, 
-             rule_name: builtins.str = None, 
+             rule_name: str = None, 
              target: aws_cdk.aws_events.IRuleTarget = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 ---
 
 ###### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_events.OnEventOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -2347,7 +2347,7 @@ on top of that filtering.
 
 ###### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_events.OnEventOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -2366,17 +2366,17 @@ The target to register for the event.
 ##### \`on_image_scan_completed\` <a name=\\"aws_cdk.aws_ecr.IRepository.on_image_scan_completed\\"></a>
 
 \`\`\`python
-def on_image_scan_completed(id: builtins.str, 
-                            description: builtins.str = None, 
+def on_image_scan_completed(id: str, 
+                            description: str = None, 
                             event_pattern: aws_cdk.aws_events.EventPattern = None, 
-                            rule_name: builtins.str = None, 
+                            rule_name: str = None, 
                             target: aws_cdk.aws_events.IRuleTarget = None, 
-                            image_tags: typing.List[builtins.str] = None)
+                            image_tags: typing.List[str] = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.id\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The id of the rule.
 
@@ -2384,7 +2384,7 @@ The id of the rule.
 
 ###### \`description\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnImageScanCompletedOptions.description\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* No description
 
 A description of the rule's purpose.
@@ -2408,7 +2408,7 @@ on top of that filtering.
 
 ###### \`rule_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnImageScanCompletedOptions.rule_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 - *Default:* AWS CloudFormation generates a unique physical ID.
 
 A name for the rule.
@@ -2426,7 +2426,7 @@ The target to register for the event.
 
 ###### \`image_tags\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.OnImageScanCompletedOptions.image_tags\\"></a>
 
-- *Type:* **typing.List**[\`builtins.str\`]
+- *Type:* **typing.List**[\`str\`]
 - *Default:* Watch the changes to the repository with all image tags
 
 Only watch changes to the image tags spedified.
@@ -2438,12 +2438,12 @@ Leave it undefined to watch the full repository.
 ##### \`repository_uri_for_digest\` <a name=\\"aws_cdk.aws_ecr.IRepository.repository_uri_for_digest\\"></a>
 
 \`\`\`python
-def repository_uri_for_digest(digest: builtins.str = None)
+def repository_uri_for_digest(digest: str = None)
 \`\`\`
 
 ###### \`digest\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.digest\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 Image digest to use (tools usually default to the image with the \\"latest\\" tag if omitted).
 
@@ -2452,12 +2452,12 @@ Image digest to use (tools usually default to the image with the \\"latest\\" ta
 ##### \`repository_uri_for_tag\` <a name=\\"aws_cdk.aws_ecr.IRepository.repository_uri_for_tag\\"></a>
 
 \`\`\`python
-def repository_uri_for_tag(tag: builtins.str = None)
+def repository_uri_for_tag(tag: str = None)
 \`\`\`
 
 ###### \`tag\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.tag\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 Image tag to use (tools usually default to \\"latest\\" if omitted).
 
@@ -2498,7 +2498,7 @@ The stack in which this resource is defined.
 
 ##### \`repository_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.repository_arn\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The ARN of the repository.
 
@@ -2506,7 +2506,7 @@ The ARN of the repository.
 
 ##### \`repository_name\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.repository_name\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The name of the repository.
 
@@ -2514,7 +2514,7 @@ The name of the repository.
 
 ##### \`repository_uri\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.repository_uri\\"></a>
 
-- *Type:* \`builtins.str\`
+- *Type:* \`str\`
 
 The URI of this repository (represents the latest image):.
 
