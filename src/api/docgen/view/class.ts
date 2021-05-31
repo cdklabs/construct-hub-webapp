@@ -7,9 +7,11 @@ import { Initializer } from "./initializer";
 import { InstanceMethods } from "./instance-methods";
 import { StaticFunctions } from "./static-functions";
 
+const CONSTRUCT_CLASS = "constructs.Construct";
+
 export class Class {
   public static isConstruct(klass: reflect.ClassType): boolean {
-    if (klass.fqn === "constructs.Construct") return true;
+    if (klass.fqn === CONSTRUCT_CLASS) return true;
 
     if (!klass.base) {
       return false;
