@@ -1,7 +1,7 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile, TranspiledClass } from "../transpile/transpile";
-import { Attributes } from "./attributes";
+import { Properties } from "./properties";
 import { Constants } from "./constants";
 import { Initializer } from "./initializer";
 import { InstanceMethods } from "./instance-methods";
@@ -26,7 +26,7 @@ export class Class {
   private readonly instanceMethods: InstanceMethods;
   private readonly staticFunctions: StaticFunctions;
   private readonly constants: Constants;
-  private readonly attributes: Attributes;
+  private readonly properties: Properties;
 
   constructor(
     private readonly transpile: Transpile,
@@ -38,7 +38,7 @@ export class Class {
     this.instanceMethods = new InstanceMethods(transpile, klass.ownMethods);
     this.staticFunctions = new StaticFunctions(transpile, klass.ownMethods);
     this.constants = new Constants(transpile, klass.ownProperties);
-    this.attributes = new Attributes(transpile, klass.ownProperties);
+    this.properties = new Properties(transpile, klass.ownProperties);
     this.transpiled = transpile.class(klass);
   }
 
@@ -67,7 +67,7 @@ export class Class {
     }
     md.section(this.instanceMethods.render());
     md.section(this.staticFunctions.render());
-    md.section(this.attributes.render());
+    md.section(this.properties.render());
     md.section(this.constants.render());
     return md;
   }

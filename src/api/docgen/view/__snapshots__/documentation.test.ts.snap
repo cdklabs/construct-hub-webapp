@@ -196,7 +196,7 @@ tree inspector to collect and process attributes.
 ---
 
 
-#### Attributes <a name=\\"Attributes\\"></a>
+#### Properties <a name=\\"Properties\\"></a>
 
 ##### \`attr_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.attr_arn\\"></a>
 
@@ -315,7 +315,7 @@ tree inspector to collect and process attributes.
 ---
 
 
-#### Attributes <a name=\\"Attributes\\"></a>
+#### Properties <a name=\\"Properties\\"></a>
 
 ##### \`attr_registry_id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnRegistryPolicy.attr_registry_id\\"></a>
 
@@ -404,7 +404,7 @@ tree inspector to collect and process attributes.
 ---
 
 
-#### Attributes <a name=\\"Attributes\\"></a>
+#### Properties <a name=\\"Properties\\"></a>
 
 ##### \`attr_registry_id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnReplicationConfiguration.attr_registry_id\\"></a>
 
@@ -559,7 +559,7 @@ tree inspector to collect and process attributes.
 ---
 
 
-#### Attributes <a name=\\"Attributes\\"></a>
+#### Properties <a name=\\"Properties\\"></a>
 
 ##### \`attr_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnRepository.attr_arn\\"></a>
 
@@ -957,7 +957,7 @@ aws_cdk.aws_ecr.Repository.from_repository_name(scope: constructs.Construct,
 
 ---
 
-#### Attributes <a name=\\"Attributes\\"></a>
+#### Properties <a name=\\"Properties\\"></a>
 
 ##### \`repository_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.Repository.repository_arn\\"></a>
 
@@ -1402,7 +1402,7 @@ Optional image tag.
 ---
 
 
-#### Attributes <a name=\\"Attributes\\"></a>
+#### Properties <a name=\\"Properties\\"></a>
 
 ##### \`repository_arn\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.RepositoryBase.repository_arn\\"></a>
 
@@ -2463,7 +2463,7 @@ Image tag to use (tools usually default to \\"latest\\" if omitted).
 
 ---
 
-#### Attributes <a name=\\"Attributes\\"></a>
+#### Properties <a name=\\"Properties\\"></a>
 
 ##### \`node\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.node\\"></a>
 

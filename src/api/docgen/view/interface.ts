@@ -1,7 +1,7 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile, TranspiledInterface } from "../transpile/transpile";
-import { Attributes } from "./attributes";
+import { Properties } from "./properties";
 import { InstanceMethods } from "./instance-methods";
 
 export class Interface {
@@ -10,7 +10,7 @@ export class Interface {
   }
 
   private readonly instanceMethods: InstanceMethods;
-  private readonly attributes: Attributes;
+  private readonly properties: Properties;
 
   private readonly transpiled: TranspiledInterface;
 
@@ -20,7 +20,7 @@ export class Interface {
   ) {
     this.transpiled = transpile.interface(iface);
     this.instanceMethods = new InstanceMethods(transpile, iface.ownMethods);
-    this.attributes = new Attributes(transpile, iface.allProperties);
+    this.properties = new Properties(transpile, iface.allProperties);
   }
 
   public render(): Markdown {
@@ -54,7 +54,7 @@ export class Interface {
     }
 
     md.section(this.instanceMethods.render());
-    md.section(this.attributes.render());
+    md.section(this.properties.render());
     return md;
   }
 }

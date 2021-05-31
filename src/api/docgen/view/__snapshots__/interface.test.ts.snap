@@ -354,7 +354,7 @@ Image tag to use (tools usually default to \\"latest\\" if omitted).
 
 ---
 
-# Attributes <a name=\\"Attributes\\"></a>
+# Properties <a name=\\"Properties\\"></a>
 
 ## \`node\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.IRepository.node\\"></a>
 
