@@ -93,8 +93,8 @@ buildTask.prependExec("npx projen");
 project.npmignore.addPatterns("!/build");
 project.npmignore.addPatterns("/public");
 
-// assemblies used for tests
-project.npmignore.addPatterns("src/__assemblies__");
+// test fixtures
+project.npmignore.addPatterns("src/__fixtures__");
 
 const task = project.addTask("dev:fetch-assemblies");
 task.exec(`node scripts/fetch-assemblies.js`);

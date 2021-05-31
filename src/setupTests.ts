@@ -15,7 +15,7 @@ const ASSEMBLY_UNDER_TEST = "@aws-cdk/aws-ecr";
 function createAssembly(): reflect.Assembly {
   const ts = new reflect.TypeSystem();
 
-  const packages = `${__dirname}/__assemblies__`;
+  const packages = `${__dirname}/__fixtures__/assemblies`;
 
   collectAssebmlies(packages, ts);
 
