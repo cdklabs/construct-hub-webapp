@@ -1,10 +1,10 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile, TranspiledClass } from "../transpile/transpile";
-import { Properties } from "./properties";
 import { Constants } from "./constants";
 import { Initializer } from "./initializer";
 import { InstanceMethods } from "./instance-methods";
+import { Properties } from "./properties";
 import { StaticFunctions } from "./static-functions";
 
 const CONSTRUCT_CLASS = "constructs.Construct";

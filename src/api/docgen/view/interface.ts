@@ -1,8 +1,8 @@
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { Transpile, TranspiledInterface } from "../transpile/transpile";
-import { Properties } from "./properties";
 import { InstanceMethods } from "./instance-methods";
+import { Properties } from "./properties";
 
 export class Interface {
   public static isStruct(iface: reflect.InterfaceType): boolean {
