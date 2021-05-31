@@ -1,4 +1,4 @@
-const { web, SourceCode, FileBase } = require("projen");
+const { web } = require("projen");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -96,8 +96,12 @@ project.npmignore.addPatterns("/public");
 // assemblies used for tests
 project.npmignore.addPatterns("src/__assemblies__");
 
-// generate a script for fetching assemblies for developement.
-codeGenFetchAssemblies();
+const task = project.addTask("dev:fetch-assemblies");
+task.exec(`node scripts/fetch-assemblies.js`);
+
+// these are development assemblies fetched specifically
+// by each developer.
+project.gitignore.exclude("public/packages");
 
 // Proxy requests to awscdk.io for local testing
 project.package.addField("proxy", "https://awscdk.io");
@@ -115,74 +119,3 @@ project.eslint.addRules({
 });
 
 project.synth();
-
-function codeGenFetchAssemblies() {
-  const scriptPath = "scripts/fetch-assemblies.js";
-
-  const packagesPath = "public/packages";
-
-  const script = new SourceCode(project, scriptPath);
-  script.line(`// ${FileBase.PROJEN_MARKER}`);
-  script.line(fromEnv.toString());
-  script.line(fetchAssembly.toString());
-  script.line(
-    `${fetchAssembly.name}(${fromEnv.name}('PACKAGE_NAME'), ${fromEnv.name}('PACKAGE_VERSION'), '${packagesPath}')`
-  );
-
-  project.gitignore.exclude(packagesPath);
-
-  const task = project.addTask("dev:fetch-assemblies");
-  task.exec(`node ${scriptPath}`);
-}
-
-function fromEnv(name) {
-  const value = process.env[name];
-  if (!value) {
-    throw new Error(`Missing ${name} env variable`);
-  }
-  return value;
-}
-
-/**
- * Fetch an assembly by name and version, accepted via env variable for easier invocation.
- * This fetches all the necessary assemblies into the packages path, which can later be used to instantiate
- * a jsii type system for the specific package.
- */
-function fetchAssembly(packageName, packageVersion, packagesPath) {
-  const exec = require("child_process").exec;
-  const fs = require("fs");
-  const os = require("os");
-  const path = require("path");
-
-  if (packageVersion.startsWith("^")) {
-    packageVersion = packageVersion.substring(1, packageVersion.length);
-  }
-
-  const output = `${packagesPath}/${packageName}@${packageVersion}/jsii.json`;
-
-  const tempDir = fs.mkdtempSync(`${os.tmpdir()}/assembly`);
-  const assemblyPath = `${__dirname}/../${output}`;
-  const package = `${packageName}@${packageVersion}`;
-
-  if (fs.existsSync(assemblyPath)) {
-    console.log(`Assembly for ${package} already exists locally`);
-    return;
-  }
-
-  console.log(`Fetching assembly for ${package}`);
-  fs.mkdirSync(path.dirname(assemblyPath), { recursive: true });
-  exec(
-    `cd ${tempDir} && npm v ${packageName}@${packageVersion} dist.tarball | xargs curl | tar -xz`,
-    (error, stdout, stderr) => {
-      fs.copyFileSync(path.join(tempDir, "package", ".jsii"), assemblyPath);
-      const packageJson = JSON.parse(
-        fs.readFileSync(path.join(tempDir, "package", "package.json"))
-      );
-      for (const [n, v] of Object.entries(
-        packageJson.peerDependencies ? packageJson.peerDependencies : {}
-      )) {
-        fetchAssembly(n, v, packagesPath);
-      }
-    }
-  );
-}

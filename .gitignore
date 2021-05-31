@@ -45,7 +45,6 @@ yarn-error.log*
 !/LICENSE
 !/package.json
 !/react-app-env.d.ts
-!/scripts/fetch-assemblies.js
 !/src
 !/test
 !/tsconfig.eslint.json
