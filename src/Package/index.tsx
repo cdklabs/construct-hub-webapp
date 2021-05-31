@@ -1,14 +1,12 @@
 import { Box } from "@chakra-ui/react";
-import * as spec from "@jsii/spec";
 import * as reflect from "jsii-reflect";
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { GettingStarted } from "../GettingStarted";
 import { PackageDocs } from "../PackageDocs";
 import { PackageHeader } from "../PackageHeader";
-import { getAssetsPath, parseSearch, getFullPackageName } from "./util";
-
-type Assemblies = { [packageName: string]: spec.Assembly };
+import { createAssembly } from "./assemblies";
+import { parseSearch, getFullPackageName } from "./util";
 
 interface PathParams {
   name: string;
@@ -27,11 +25,9 @@ export function Package() {
   const q = parseSearch(useLocation().search);
 
   useEffect(() => {
-    fetchAssemblies(name, version, scope)
-      .then((assemblies: Assemblies) => {
-        setState({
-          assembly: createAssembly(getFullPackageName(name, scope), assemblies),
-        });
+    createAssembly(name, version, scope)
+      .then((asm: reflect.Assembly) => {
+        setState({ assembly: asm });
       })
       .catch((err) => {
         console.error(err);
@@ -64,64 +60,4 @@ export function Package() {
       )}
     </Box>
   );
-}
-
-async function fetchAssembly(
-  name: string,
-  version: string,
-  scope?: string
-): Promise<spec.Assembly> {
-  if (version.startsWith("^")) {
-    version = version.substring(1, version.length);
-  }
-
-  // e.g https://awscdk.io/packages/@aws-cdk/alexa-ask@1.106.0/jsii.json
-  const assemblyPath = `${getAssetsPath(name, version, scope)}/jsii.json`;
-  const response = await fetch(assemblyPath);
-  if (!response.ok) {
-    throw new Error(
-      `Failed fetching assembly for ${assemblyPath}: ${response.statusText}`
-    );
-  }
-  return response.json();
-}
-
-async function fetchAssemblies(
-  name: string,
-  version: string,
-  scope?: string
-): Promise<Assemblies> {
-  const assemblies: Assemblies = {};
-
-  async function recurse(_name: string, _version: string, _scope?: string) {
-    const assembly = await fetchAssembly(_name, _version, _scope);
-    const packageFqn = `${getFullPackageName(_name, _scope)}@${_version};`;
-    if (assemblies[packageFqn]) {
-      return;
-    }
-    assemblies[packageFqn] = assembly;
-    for (const [d, v] of Object.entries(assembly.dependencies ?? {})) {
-      const scopeAndName = d.split("/");
-      if (scopeAndName.length > 1) {
-        await recurse(scopeAndName[1], v, scopeAndName[0]);
-      } else {
-        await recurse(scopeAndName[0], v, "");
-      }
-    }
-  }
-
-  await recurse(name, version, scope);
-
-  return assemblies;
-}
-
-function createAssembly(
-  fullPackageName: string,
-  assemblies: Assemblies
-): reflect.Assembly {
-  const ts = new reflect.TypeSystem();
-  Object.values(assemblies).forEach((a) => {
-    ts.addAssembly(new reflect.Assembly(ts, a));
-  });
-  return ts.findAssembly(fullPackageName);
 }
