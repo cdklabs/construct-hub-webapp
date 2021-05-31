@@ -36,8 +36,6 @@ function fetchAssembly(packageName, packageVersion, packagesPath) {
   }
 
   const output = `${packagesPath}/${packageName}@${packageVersion}/jsii.json`;
-
-  const tempDir = fs.mkdtempSync(`${os.tmpdir()}/assembly`);
   const assemblyPath = `${__dirname}/../${output}`;
   const package = `${packageName}@${packageVersion}`;
 
@@ -47,18 +45,32 @@ function fetchAssembly(packageName, packageVersion, packagesPath) {
   }
 
   console.log(`Fetching assembly for ${package}`);
-  fs.mkdirSync(path.dirname(assemblyPath), { recursive: true });
+
+  const tempDir = fs.mkdtempSync(`${os.tmpdir()}/assembly`);
+  const assemblyDir = path.dirname(assemblyPath);
   exec(
-    `cd ${tempDir} && npm v ${packageName}@${packageVersion} dist.tarball | xargs curl | tar -xz`,
-    (error, stdout, stderr) => {
-      fs.copyFileSync(path.join(tempDir, "package", ".jsii"), assemblyPath);
-      const packageJson = JSON.parse(
-        fs.readFileSync(path.join(tempDir, "package", "package.json"))
-      );
-      for (const [n, v] of Object.entries(
-        packageJson.peerDependencies ? packageJson.peerDependencies : {}
-      )) {
-        fetchAssembly(n, v, packagesPath);
+    `cd ${tempDir} && npm v ${package} dist.tarball | xargs curl | tar -xz`,
+    (error, _, stderr) => {
+      try {
+
+        if (error) {
+          console.log(`stderr: ${stderr}`);
+          throw error
+        }
+
+        fs.mkdirSync(assemblyDir, { recursive: true });
+        fs.copyFileSync(path.join(tempDir, "package", ".jsii"), assemblyPath);
+        const packageJson = JSON.parse(
+          fs.readFileSync(path.join(tempDir, "package", "package.json"))
+        );
+        for (const [n, v] of Object.entries(
+          packageJson.peerDependencies ? packageJson.peerDependencies : {}
+        )) {
+          fetchAssembly(n, v, packagesPath);
+        }
+        exec(`rm -rf ${tempDir}`);
+      } catch (e) {
+        throw new Error(`Failed fetching assembly for ${package} (cwd: ${tempDir}): ${e.message}`)
       }
     }
   );
