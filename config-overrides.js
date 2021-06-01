@@ -8,7 +8,13 @@ module.exports = function override(config, env) {
   return config;
 }
 
-// https://webpack.js.org/configuration/module/#module-contexts
+/**
+ * This is needed because of:
+ *
+ *  - ./node-modules/jsii-reflect/type-system.js has these violations.
+ *
+ * @see https://webpack.js.org/configuration/module/#module-contexts
+ */
 function ignoreContext(config) {
   // ignore just-in-time require statements
   config.module.unknownContextCritical = false;
