@@ -59,9 +59,11 @@
     "npm-check-updates": "^11",
     "prettier": "^2.3.0",
     "projen": "^0.18.13",
+    "react-app-rewired": "^2.1.8",
     "standard-version": "^9",
     "typescript": "^4.0.3"
   },
+  "peerDependencies": {},
   "dependencies": {
     "@chakra-ui/react": "*",
     "@emotion/react": "^11",

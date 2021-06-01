@@ -36,7 +36,7 @@ const project = new web.ReactTypeScriptProject({
     "codemaker",
   ],
 
-  devDeps: ["@types/react-router-dom"],
+  devDeps: ["@types/react-router-dom", "react-app-rewired"],
 });
 
 (function addStorybook() {
@@ -96,8 +96,8 @@ project.npmignore.addPatterns("/public");
 // test fixtures
 project.npmignore.addPatterns("src/__fixtures__");
 
-const task = project.addTask("dev:fetch-assemblies");
-task.exec(`node scripts/fetch-assemblies.js`);
+const fetchAssemblies = project.addTask("dev:fetch-assemblies");
+fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
 
 // these are development assemblies fetched specifically
 // by each developer.
@@ -118,4 +118,23 @@ project.eslint.addRules({
   ],
 });
 
+// rewire cra tasks, all apart from eject.
+rewireCRA(buildTask);
+rewireCRA(project.tasks.tryFind("test"));
+rewireCRA(project.tasks.tryFind("dev"));
+
 project.synth();
+
+/**
+ * Rewire a create-react-app task to use 'react-app-rewired` instead of 'react-scripts'
+ * so that our configuration overrides will take affect.
+ *
+ * @see https://www.npmjs.com/package/react-app-rewired
+ */
+function rewireCRA(craTask) {
+  for (const step of craTask.steps) {
+    if (step.exec?.startsWith("react-scripts")) {
+      step.exec = step.exec.replace("react-scripts", "react-app-rewired");
+    }
+  }
+}

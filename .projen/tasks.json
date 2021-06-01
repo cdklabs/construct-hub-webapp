@@ -81,7 +81,7 @@
       "description": "Runs tests",
       "steps": [
         {
-          "exec": "react-scripts test"
+          "exec": "react-app-rewired test"
         }
       ]
     },
@@ -100,7 +100,7 @@
           "spawn": "test"
         },
         {
-          "exec": "react-scripts build"
+          "exec": "react-app-rewired build"
         },
         {
           "spawn": "package"
@@ -196,7 +196,7 @@
       "description": "Starts the react application",
       "steps": [
         {
-          "exec": "react-scripts start"
+          "exec": "react-app-rewired start"
         }
       ]
     },

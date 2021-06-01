@@ -122,6 +122,10 @@
       "type": "build"
     },
     {
+      "name": "react-app-rewired",
+      "type": "build"
+    },
+    {
       "name": "standard-version",
       "version": "^9",
       "type": "build"
