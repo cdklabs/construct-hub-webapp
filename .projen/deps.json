@@ -122,6 +122,10 @@
       "type": "build"
     },
     {
+      "name": "react-app-rewired",
+      "type": "build"
+    },
+    {
       "name": "standard-version",
       "version": "^9",
       "type": "build"
@@ -146,6 +150,10 @@
       "type": "runtime"
     },
     {
+      "name": "@jsii/spec",
+      "type": "runtime"
+    },
+    {
       "name": "@uiw/react-markdown-preview",
       "type": "runtime"
     },
@@ -154,8 +162,16 @@
       "type": "runtime"
     },
     {
+      "name": "codemaker",
+      "type": "runtime"
+    },
+    {
       "name": "framer-motion",
       "version": "^4",
+      "type": "runtime"
+    },
+    {
+      "name": "jsii-reflect",
       "type": "runtime"
     },
     {

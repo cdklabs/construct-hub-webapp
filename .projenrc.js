@@ -1,4 +1,4 @@
-const { tasks, web } = require("projen");
+const { web } = require("projen");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -29,11 +29,14 @@ const project = new web.ReactTypeScriptProject({
     "@emotion/styled@^11",
     "chakra-ui-markdown-renderer",
     "framer-motion@^4",
-    "@uiw/react-markdown-preview",
     "react-router-dom",
+    "@uiw/react-markdown-preview",
+    "jsii-reflect",
+    "@jsii/spec",
+    "codemaker",
   ],
 
-  devDeps: ["@types/react-router-dom"],
+  devDeps: ["@types/react-router-dom", "react-app-rewired"],
 });
 
 (function addStorybook() {
@@ -80,14 +83,25 @@ const project = new web.ReactTypeScriptProject({
 // synthesize project files before build
 // see https://github.com/projen/projen/issues/754
 const buildTask = project.tasks.tryFind("build");
+buildTask.spawn(project.packageTask);
+buildTask.prependSpawn(project.testTask);
 buildTask.prependSpawn(project.compileTask);
 buildTask.prependExec("npx projen");
-buildTask.spawn(project.packageTask);
 
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
-project.npmignore?.addPatterns("!/build");
-project.npmignore?.addPatterns("/public");
+project.npmignore.addPatterns("!/build");
+project.npmignore.addPatterns("/public");
+
+// test fixtures
+project.npmignore.addPatterns("src/__fixtures__");
+
+const fetchAssemblies = project.addTask("dev:fetch-assemblies");
+fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
+
+// these are development assemblies fetched specifically
+// by each developer.
+project.gitignore.exclude("public/packages");
 
 // Proxy requests to awscdk.io for local testing
 project.package.addField("proxy", "https://awscdk.io");
@@ -104,4 +118,23 @@ project.eslint.addRules({
   ],
 });
 
+// rewire cra tasks, all apart from eject.
+rewireCRA(buildTask);
+rewireCRA(project.tasks.tryFind("test"));
+rewireCRA(project.tasks.tryFind("dev"));
+
 project.synth();
+
+/**
+ * Rewire a create-react-app task to use 'react-app-rewired` instead of 'react-scripts'
+ * so that our configuration overrides will take affect.
+ *
+ * @see https://www.npmjs.com/package/react-app-rewired
+ */
+function rewireCRA(craTask) {
+  for (const step of craTask.steps) {
+    if (step.exec?.startsWith("react-scripts")) {
+      step.exec = step.exec.replace("react-scripts", "react-app-rewired");
+    }
+  }
+}

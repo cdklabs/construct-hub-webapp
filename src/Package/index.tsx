@@ -1,10 +1,12 @@
 import { Box } from "@chakra-ui/react";
+import * as reflect from "jsii-reflect";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { GettingStarted } from "../GettingStarted";
 import { PackageDocs } from "../PackageDocs";
 import { PackageHeader } from "../PackageHeader";
-import { getAssetsPath } from "./util";
+import { createAssembly } from "./assemblies";
+import { parseSearch, getFullPackageName } from "./util";
 
 interface PathParams {
   name: string;
@@ -13,26 +15,19 @@ interface PathParams {
 }
 
 interface PackageDocsHomeState {
-  assembly?: any;
-  readme?: string;
+  assembly?: reflect.Assembly;
   error?: string;
 }
 
 export function Package() {
   const { name, scope, version }: PathParams = useParams();
-  const [{ assembly, readme }, setState] = useState<PackageDocsHomeState>({});
+  const [{ assembly }, setState] = useState<PackageDocsHomeState>({});
+  const q = parseSearch(useLocation().search);
 
-  const assetPath = getAssetsPath(name, version, scope);
   useEffect(() => {
-    Promise.all([
-      fetch(`${assetPath}/jsii.json`).then((res) => res.json()),
-      fetch(`${assetPath}/${name}-readme.md`).then((res) => res.text()),
-    ])
-      .then(([assemblyResponse, readmeResponse]) => {
-        setState({
-          assembly: assemblyResponse,
-          readme: readmeResponse,
-        });
+    createAssembly(name, version, scope)
+      .then((asm: reflect.Assembly) => {
+        setState({ assembly: asm });
       })
       .catch((err) => {
         console.error(err);
@@ -44,17 +39,25 @@ export function Package() {
   return (
     <Box w="100%">
       {/* Operator Area */}
-      <PackageHeader
-        title={scope ? `${scope}/${name}` : name}
-        description={assembly?.description}
-        tags={[]}
-      />
+      {assembly && (
+        <PackageHeader
+          title={getFullPackageName(name, scope)}
+          description={assembly?.description}
+          tags={[]}
+        />
+      )}
 
       {/* Getting Started Area */}
       <GettingStarted targets={targets} />
 
       {/* Readme and Api Reference Area */}
-      {readme && <PackageDocs readme={readme} />}
+      {assembly && (
+        <PackageDocs
+          assembly={assembly}
+          language={q.language ?? "python"}
+          submodule={q.submodule}
+        />
+      )}
     </Box>
   );
 }

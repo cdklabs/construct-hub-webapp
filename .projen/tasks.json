@@ -81,7 +81,7 @@
       "description": "Runs tests",
       "steps": [
         {
-          "exec": "react-scripts test"
+          "exec": "react-app-rewired test"
         }
       ]
     },
@@ -97,7 +97,10 @@
           "spawn": "compile"
         },
         {
-          "exec": "react-scripts build"
+          "spawn": "test"
+        },
+        {
+          "exec": "react-app-rewired build"
         },
         {
           "spawn": "package"
@@ -193,7 +196,7 @@
       "description": "Starts the react application",
       "steps": [
         {
-          "exec": "react-scripts start"
+          "exec": "react-app-rewired start"
         }
       ]
     },
@@ -222,6 +225,14 @@
       "steps": [
         {
           "exec": "build-storybook -s public"
+        }
+      ]
+    },
+    "dev:fetch-assemblies": {
+      "name": "dev:fetch-assemblies",
+      "steps": [
+        {
+          "exec": "node scripts/fetch-assemblies.js"
         }
       ]
     }
