@@ -136,6 +136,10 @@
       "type": "build"
     },
     {
+      "name": "@chakra-ui/icons",
+      "type": "runtime"
+    },
+    {
       "name": "@chakra-ui/react",
       "type": "runtime"
     },
@@ -151,10 +155,6 @@
     },
     {
       "name": "@jsii/spec",
-      "type": "runtime"
-    },
-    {
-      "name": "@uiw/react-markdown-preview",
       "type": "runtime"
     },
     {
@@ -180,6 +180,10 @@
     },
     {
       "name": "react-dom",
+      "type": "runtime"
+    },
+    {
+      "name": "react-markdown",
       "type": "runtime"
     },
     {

@@ -1,4 +1,5 @@
 import * as reflect from "jsii-reflect";
+import { sanitize } from "../../../util/sanitize-anchor";
 
 /**
  * Options for defining a markdown header.
@@ -155,8 +156,11 @@ export class Markdown {
 
     const content: string[] = [];
     if (this.header) {
+      const anchor = sanitize(this.id ?? "");
       const heading = `${"#".repeat(headerSize)} ${this.header}`;
-      content.push(`${heading} <a name="${this.id}"></a>`);
+      content.push(
+        `${heading} <span data-heading-title="${this.header}" data-heading-id="${anchor}"></span>`
+      );
       content.push("");
     }
 
