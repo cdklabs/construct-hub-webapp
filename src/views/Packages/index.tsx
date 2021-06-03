@@ -1,6 +1,6 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { PackageLatest } from "../../components";
 import { Package } from "../Package";
-import { PackageLatest } from "../PackageLatest";
 
 export function Packages() {
   const { path } = useRouteMatch();

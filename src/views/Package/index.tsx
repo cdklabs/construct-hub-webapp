@@ -2,11 +2,9 @@ import { Box } from "@chakra-ui/react";
 import * as reflect from "jsii-reflect";
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { GettingStarted } from "../GettingStarted";
-import { PackageDocs } from "../PackageDocs";
-import { PackageHeader } from "../PackageHeader";
-import { createAssembly } from "./assemblies";
-import { parseSearch, getFullPackageName } from "./util";
+import { createAssembly, getFullPackageName } from "../../api/package";
+import { PackageDetails, PackageDocs, PackageHeader } from "../../components";
+import { parseSearch } from "../../utils/url";
 
 interface PathParams {
   name: string;
@@ -35,20 +33,21 @@ export function Package() {
       });
   }, []);
 
-  const targets: string[] = Object.keys(assembly?.targets ?? {});
+  // TODO: The rendered content from this component is dependent on an assembly being defined.
+  // If there isn't one, it would likely be a good idea to display an error or notfound so that we don't render blank content
   return (
     <Box w="100%">
       {/* Operator Area */}
       {assembly && (
-        <PackageHeader
-          title={getFullPackageName(name, scope)}
-          description={assembly?.description}
-          tags={[]}
-        />
+        <>
+          <PackageHeader
+            title={getFullPackageName(name, scope)}
+            description={assembly?.description}
+            tags={[]}
+          />
+          <PackageDetails />
+        </>
       )}
-
-      {/* Getting Started Area */}
-      <GettingStarted targets={targets} />
 
       {/* Readme and Api Reference Area */}
       {assembly && (
