@@ -24,7 +24,14 @@ export function PackageHeader({
       {tags.length && (
         <Flex direction="row" mt={3}>
           {tags.map((tag) => (
-            <Flex bg="gray.100" borderRadius="sm" justify="center" mr={4} p={2}>
+            <Flex
+              bg="gray.100"
+              borderRadius="sm"
+              justify="center"
+              mr={4}
+              p={2}
+              key={tag}
+            >
               <Text>{tag.toUpperCase()}</Text>
             </Flex>
           ))}

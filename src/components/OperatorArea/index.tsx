@@ -62,7 +62,7 @@ export function OperatorArea({ metadata }: OperatorAreaProps) {
 
   if (!data || loading) {
     return (
-      <Center>
+      <Center p={5}>
         <Spinner size="xl" />
       </Center>
     );
