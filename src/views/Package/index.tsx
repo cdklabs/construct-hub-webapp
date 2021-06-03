@@ -3,7 +3,8 @@ import * as reflect from "jsii-reflect";
 import { useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { createAssembly, fetchMetadata, Metadata } from "../../api/package";
-import { PackageDetails, PackageDocs } from "../../components";
+import { PackageDetails } from "../../components/PackageDetails";
+import { PackageDocs } from "../../components/PackageDocs";
 import { useRequest } from "../../hooks/useRequest";
 import { parseSearch } from "../../utils/url";
 

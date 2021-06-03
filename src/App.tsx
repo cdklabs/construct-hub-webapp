@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Header } from "./components";
+import { Header } from "./components/Header";
 import { Theme } from "./Theme";
-import { Home, NotFound, Packages } from "./views";
+import { Home } from "./views/Home";
+import { NotFound } from "./views/NotFound";
+import { Packages } from "./views/Packages";
 
 export function App() {
   return (

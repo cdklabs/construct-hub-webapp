@@ -1,5 +1,5 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import { PackageLatest } from "../../components";
+import { PackageLatest } from "../../components/PackageLatest";
 import { Package } from "../Package";
 
 export function Packages() {

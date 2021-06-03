@@ -41,7 +41,7 @@ export async function fetchMetadata(
 
   if (!response.ok) {
     throw new Error(
-      `Failed fetching assembly for ${metadataPath}: ${response.statusText}`
+      `Failed fetching metadata for ${metadataPath}: ${response.statusText}`
     );
   }
 
