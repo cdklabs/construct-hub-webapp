@@ -6,12 +6,12 @@
   },
   "scripts": {
     "clobber": "npx projen clobber",
-    "bump": "npx projen bump",
-    "unbump": "npx projen unbump",
     "compile": "npx projen compile",
     "test:compile": "npx projen test:compile",
     "test": "npx projen test",
     "build": "npx projen build",
+    "bump": "npx projen bump",
+    "unbump": "npx projen unbump",
     "upgrade-dependencies": "npx projen upgrade-dependencies",
     "upgrade-projen": "npx projen upgrade-projen",
     "default": "npx projen default",
@@ -58,7 +58,7 @@
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
     "prettier": "^2.3.0",
-    "projen": "^0.18.13",
+    "projen": "^0.20.11",
     "react-app-rewired": "^2.1.8",
     "standard-version": "^9",
     "typescript": "^4.0.3"
