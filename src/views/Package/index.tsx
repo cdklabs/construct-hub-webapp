@@ -2,11 +2,11 @@ import { Box } from "@chakra-ui/react";
 import * as reflect from "jsii-reflect";
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { GettingStarted } from "../GettingStarted";
-import { PackageDocs } from "../PackageDocs";
-import { PackageHeader } from "../PackageHeader";
-import { createAssembly } from "./assemblies";
-import { parseSearch, getFullPackageName } from "./util";
+import { createAssembly } from "../../api/package/assemblies";
+import { parseSearch, getFullPackageName } from "../../api/package/util";
+import { GettingStarted } from "../../components/GettingStarted";
+import { PackageDocs } from "../../components/PackageDocs";
+import { PackageHeader } from "../../components/PackageHeader";
 
 interface PathParams {
   name: string;
