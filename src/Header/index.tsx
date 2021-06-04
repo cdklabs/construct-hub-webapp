@@ -2,7 +2,15 @@ import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
 
 export function Header() {
   return (
-    <Box borderRadius="md" w="100%" px={1} py={3} color="white" bg="purple.600">
+    <Box
+      bg="purple.600"
+      borderRadius="md"
+      color="white"
+      data-test="header"
+      px={1}
+      py={3}
+      w="100%"
+    >
       <Flex w="100%" alignItems="center" justifyContent="space-between">
         <Box>
           <Heading as="h1" color="white" size="xl">
