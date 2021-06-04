@@ -3409,7 +3409,7 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/react-hooks@*":
+"@testing-library/react-hooks@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@testing-library/react-hooks/-/react-hooks-7.0.0.tgz#dd6d37a7e018f147a3b9153137f10e013be8472b"
   integrity sha512-WFBGH8DWdIGGBHt6PBtQPe2v4Kbj9vQ1sQ9qLBTmwn1PNggngint4MTE/IiWCYhPbyTW3oc/7X62DObMn/AjQQ==
@@ -13616,10 +13616,10 @@ progress@^2.0.0, progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.18.13:
-  version "0.18.16"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.18.16.tgz#ba7e7241a7c21e21305973cee39550aa345a857f"
-  integrity sha512-dAfjqsNqHsBuTTMuw+gzZzrLkcnUL7TqEg5SSvlNUzTTuhchnljY1YU++i0604k3TOAG2Je+ZBBd4uMkb0sM2A==
+projen@^0.22.0:
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.22.0.tgz#24c9c2fa3a87eae61361324b8ca8f868971efffb"
+  integrity sha512-5ZQ8uI4cER1PELvJwUPoAd3/4PF7TILerDEj4V7qzbCF3UaDeEb25/rbtxl/iniGCnEFe0ZI5jaqJSkEXl0TZA==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.1"
