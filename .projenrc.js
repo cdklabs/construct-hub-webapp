@@ -41,13 +41,16 @@ const project = new web.ReactTypeScriptProject({
 
 (function addStorybook() {
   project.addDevDeps(
+    "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-essentials",
     "@storybook/addon-links",
+    "@storybook/addon-storysource",
     "@storybook/node-logger",
     "@storybook/preset-create-react-app",
     "@storybook/react",
-    "babel-loader@8.1.0"
+    "babel-loader@8.1.0",
+    "storybook-addon-performance"
   );
 
   // Add tasks and config for storybook
