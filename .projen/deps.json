@@ -33,6 +33,10 @@
       "type": "build"
     },
     {
+      "name": "@testing-library/react-hooks",
+      "type": "build"
+    },
+    {
       "name": "@testing-library/user-event",
       "type": "build"
     },
@@ -118,7 +122,7 @@
     },
     {
       "name": "projen",
-      "version": "^0.20.11",
+      "version": "^0.18.13",
       "type": "build"
     },
     {

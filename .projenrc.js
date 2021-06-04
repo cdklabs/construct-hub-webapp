@@ -36,7 +36,11 @@ const project = new web.ReactTypeScriptProject({
     "codemaker",
   ],
 
-  devDeps: ["@types/react-router-dom", "react-app-rewired"],
+  devDeps: [
+    "@types/react-router-dom",
+    "react-app-rewired",
+    "@testing-library/react-hooks",
+  ],
 });
 
 (function addStorybook() {
