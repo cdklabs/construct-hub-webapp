@@ -2585,7 +2585,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@storybook/addon-a11y@*":
+"@storybook/addon-a11y@^6.2.9":
   version "6.2.9"
   resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.2.9.tgz#8386d73343db03c15d07f6bf927a4030d441d1ff"
   integrity sha512-wo7nFpEqEeiHDsRKnhqe2gIHZ9Z7/Aefw570kBgReU5tKlmrb5rFAfTVBWGBZlLHWeJMsFsRsWrWrmkf1B52OQ==
@@ -2746,7 +2746,7 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-storysource@*":
+"@storybook/addon-storysource@^6.2.9":
   version "6.2.9"
   resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.2.9.tgz#631a9b6c2e3db42c05055ed5341700687a0b42f9"
   integrity sha512-lKQOKbk8akqPN7NNBRn+OsiwYg1BXYExmErCwAT/ejx4ggHJCPTDlrl2ZiEriKZ7WXIfgA4VuN5YriKu5uxdnw==
@@ -15728,7 +15728,7 @@ store2@^2.12.0:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-performance@*:
+storybook-addon-performance@^0.15.2:
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/storybook-addon-performance/-/storybook-addon-performance-0.15.2.tgz#e1cd82febc1ea6990e1d84095f04a95f6ec6753c"
   integrity sha512-YgzBoY3R9+UUUCGM4flFkYyv1nIwlV1svTURQCpZXzFgTTB1BsiJNx99mg0qgN7DHHDCGYGU9gsFfZHrTt69Mw==
