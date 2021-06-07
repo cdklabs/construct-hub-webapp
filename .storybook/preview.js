@@ -1,3 +1,5 @@
+import { addDecorator } from "@storybook/react";
+import { Theme } from "../src/contexts/Theme";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -7,4 +9,12 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
+
+export const decorators = [
+  (Story) => (
+    <Theme>
+      <Story />
+    </Theme>
+  ),
+];

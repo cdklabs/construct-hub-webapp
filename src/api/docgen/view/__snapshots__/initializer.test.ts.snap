@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`python snapshot 1`] = `
-" Initializer <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.Initializer\\"></a>
+" Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryinitializer\\"></span>
 
 \`\`\`python
 import aws_cdk.aws_ecr
@@ -14,7 +14,7 @@ aws_cdk.aws_ecr.CfnPublicRepository(scope: aws_cdk.core.Construct,
                                     tags: typing.List[aws_cdk.core.CfnTag] = None)
 \`\`\`
 
-# \`scope\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.scope\\"></a>
+# \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryscope\\"></span>
 
 - *Type:* [\`aws_cdk.core.Construct\`](#aws_cdk.core.Construct)
 
@@ -22,7 +22,7 @@ scope in which this resource is defined.
 
 ---
 
-# \`id\`<sup>Required</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepository.id\\"></a>
+# \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryid\\"></span>
 
 - *Type:* \`str\`
 
@@ -30,7 +30,7 @@ scoped id of the resource.
 
 ---
 
-# \`repository_catalog_data\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.repository_catalog_data\\"></a>
+# \`repository_catalog_data\`<sup>Optional</sup> <span data-heading-title=\\"\`repository_catalog_data\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositorycatalogdata\\"></span>
 
 - *Type:* \`typing.Any\`
 
@@ -40,7 +40,7 @@ scoped id of the resource.
 
 ---
 
-# \`repository_name\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.repository_name\\"></a>
+# \`repository_name\`<sup>Optional</sup> <span data-heading-title=\\"\`repository_name\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositoryname\\"></span>
 
 - *Type:* \`str\`
 
@@ -50,7 +50,7 @@ scoped id of the resource.
 
 ---
 
-# \`repository_policy_text\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.repository_policy_text\\"></a>
+# \`repository_policy_text\`<sup>Optional</sup> <span data-heading-title=\\"\`repository_policy_text\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositorypolicytext\\"></span>
 
 - *Type:* \`typing.Any\`
 
@@ -60,7 +60,7 @@ scoped id of the resource.
 
 ---
 
-# \`tags\`<sup>Optional</sup> <a name=\\"aws_cdk.aws_ecr.CfnPublicRepositoryProps.tags\\"></a>
+# \`tags\`<sup>Optional</sup> <span data-heading-title=\\"\`tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropstags\\"></span>
 
 - *Type:* **typing.List**[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
 

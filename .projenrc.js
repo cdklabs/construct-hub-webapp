@@ -17,6 +17,11 @@ const project = new web.ReactTypeScriptProject({
   releaseToNpm: true,
   releaseWorkflow: true,
   package: true,
+  tsconfig: {
+    compilerOptions: {
+      target: "es6",
+    },
+  },
 
   eslint: true,
   eslintOptions: {
@@ -26,15 +31,17 @@ const project = new web.ReactTypeScriptProject({
   deps: [
     "@chakra-ui/icons",
     "@chakra-ui/react",
+    "@chakra-ui/icons",
     "@emotion/react@^11",
     "@emotion/styled@^11",
     "chakra-ui-markdown-renderer",
     "framer-motion@^4",
     "react-router-dom",
-    "@uiw/react-markdown-preview",
+    "react-markdown",
     "jsii-reflect",
     "@jsii/spec",
     "codemaker",
+    "rehype-raw",
   ],
 
   devDeps: [

@@ -153,10 +153,6 @@
       "type": "runtime"
     },
     {
-      "name": "@uiw/react-markdown-preview",
-      "type": "runtime"
-    },
-    {
       "name": "chakra-ui-markdown-renderer",
       "type": "runtime"
     },
@@ -182,12 +178,20 @@
       "type": "runtime"
     },
     {
+      "name": "react-markdown",
+      "type": "runtime"
+    },
+    {
       "name": "react-router-dom",
       "type": "runtime"
     },
     {
       "name": "react-scripts",
       "version": "^4.0.0",
+      "type": "runtime"
+    },
+    {
+      "name": "rehype-raw",
       "type": "runtime"
     },
     {
