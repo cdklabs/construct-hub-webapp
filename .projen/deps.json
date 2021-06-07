@@ -46,10 +46,6 @@
     },
     {
       "name": "@types/node",
-      "type": "build"
-    },
-    {
-      "name": "@types/node",
       "version": "^10.17.0",
       "type": "build"
     },
@@ -112,17 +108,12 @@
       "type": "build"
     },
     {
-      "name": "npm-check-updates",
-      "version": "^11",
-      "type": "build"
-    },
-    {
       "name": "prettier",
       "type": "build"
     },
     {
       "name": "projen",
-      "version": "^0.22.3",
+      "version": "^0.22.8",
       "type": "build"
     },
     {
@@ -138,6 +129,10 @@
       "name": "typescript",
       "version": "^4.0.3",
       "type": "build"
+    },
+    {
+      "name": "@chakra-ui/icons",
+      "type": "runtime"
     },
     {
       "name": "@chakra-ui/react",

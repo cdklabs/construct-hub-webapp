@@ -24,6 +24,7 @@ const project = new web.ReactTypeScriptProject({
   },
 
   deps: [
+    "@chakra-ui/icons",
     "@chakra-ui/react",
     "@emotion/react@^11",
     "@emotion/styled@^11",
