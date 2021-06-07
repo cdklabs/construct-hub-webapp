@@ -1,4 +1,4 @@
-import { Divider, Flex, Grid } from "@chakra-ui/react";
+import { Center, Divider, Flex, Grid, Spinner } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import type { Metadata } from "../../api/package/metadata";
 import type { UseRequestResponse } from "../../hooks/useRequest";
@@ -19,6 +19,15 @@ interface PackageDetailsProps {
  */
 export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
   const targets: string[] = Object.keys(assembly.data?.targets ?? {});
+  const isLoading = assembly.loading || metadata.loading;
+
+  if (isLoading || !metadata.data) {
+    return (
+      <Center bg="gray.100" minH="200px">
+        <Spinner size="xl" />
+      </Center>
+    );
+  }
 
   return (
     <Grid
@@ -26,14 +35,14 @@ export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
       gap={2}
       templateColumns="auto 1fr 1fr"
       templateRows="1fr"
-      pt={2}
+      pt={4}
     >
       {/* Where to get logo? empty div to preserve layout for now */}
       <div />
       <Flex direction="column">
-        <PublisherArea metadata={metadata} />
+        <PublisherArea metadata={metadata.data} />
         <Divider borderColor="initial" color="gray.300" my={5} />
-        <OperatorArea metadata={metadata} />
+        <OperatorArea assembly={assembly.data} metadata={metadata.data} />
       </Flex>
       <GettingStarted targets={targets} />
     </Grid>

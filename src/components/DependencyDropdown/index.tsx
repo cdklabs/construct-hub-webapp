@@ -38,8 +38,13 @@ export function DependencyDropdown({ dependencies }: DependencyDropownProps) {
       </MenuButton>
       <MenuList>
         {depEntries.map(([name, version]) => (
-          <MenuItem>
-            <NavLink to={`/packages/${name}/v/${version}`}>
+          <MenuItem p={0}>
+            <NavLink
+              h="100%"
+              p={2}
+              to={`/packages/${name}/v/${version}`}
+              w="100%"
+            >
               {`${name} - ${version}`}
             </NavLink>
           </MenuItem>

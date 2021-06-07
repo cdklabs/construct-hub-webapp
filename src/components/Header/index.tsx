@@ -1,14 +1,30 @@
 import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
+import { Logo } from "../Logo";
 
 export function Header() {
   return (
-    <Box w="100%" px={1} py={3} color="white" bg="purple.600">
-      <Flex w="100%" alignItems="center" justifyContent="space-between">
-        <Box>
-          <Heading as="h1" color="white" size="xl">
+    <Box
+      bg="white"
+      boxShadow="base"
+      position="sticky"
+      px={2}
+      py={3}
+      top={0}
+      w="100%"
+      zIndex={10}
+    >
+      <Flex
+        alignItems="center"
+        as="header"
+        justifyContent="space-between"
+        w="100%"
+      >
+        <Flex>
+          <Logo height={12} width={12} mr={4} />
+          <Heading as="h1" size="xl">
             Construct Hub
           </Heading>
-        </Box>
+        </Flex>
         <Box width={0.3}>
           <Input id="search" name="search" placeholder="search" />
         </Box>

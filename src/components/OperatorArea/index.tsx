@@ -1,31 +1,30 @@
 import {
-  Center,
+  Box,
   Flex,
   Link,
   ListItem,
   Text,
-  Spinner,
   UnorderedList,
 } from "@chakra-ui/react";
+import type { Assembly } from "jsii-reflect";
 import { ReactNode, useMemo } from "react";
 import type { Metadata } from "../../api/package/metadata";
-import { UseRequestResponse } from "../../hooks/useRequest";
+import { DependencyDropdown } from "../DependencyDropdown";
 
 export interface OperatorAreaProps {
-  metadata: UseRequestResponse<Metadata>;
+  assembly?: Assembly;
+  metadata: Metadata;
 }
 
-export function OperatorArea({ metadata }: OperatorAreaProps) {
-  const { data, loading } = metadata;
-
+export function OperatorArea({ assembly, metadata }: OperatorAreaProps) {
   const details: ReactNode[] = useMemo(() => {
-    if (!data) return [];
+    if (!metadata) return [];
 
     const {
       date,
       publisher: { username },
       links: { repository },
-    } = data;
+    } = metadata;
 
     const items = [];
 
@@ -58,17 +57,16 @@ export function OperatorArea({ metadata }: OperatorAreaProps) {
         <Text>{detail}</Text>
       </ListItem>
     ));
-  }, [data]);
-
-  if (!data || loading) {
-    return (
-      <Center p={5}>
-        <Spinner size="xl" />
-      </Center>
-    );
-  }
+  }, [metadata]);
 
   return (
-    <Flex>{details.length && <UnorderedList>{details}</UnorderedList>}</Flex>
+    <Flex direction="column">
+      {details.length && <UnorderedList ml={0}>{details}</UnorderedList>}
+      {assembly?.spec?.dependencies && (
+        <Box my={4}>
+          <DependencyDropdown dependencies={assembly.spec.dependencies} />
+        </Box>
+      )}
+    </Flex>
   );
 }

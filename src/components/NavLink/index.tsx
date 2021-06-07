@@ -1,17 +1,9 @@
-import { Link as ChakraLink } from "@chakra-ui/react";
-import type { ReactChild } from "react";
+import { Link as ChakraLink, PropsOf } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
-// These can be expanded on as needed
-export interface NavLinkProps {
-  children: ReactChild;
-  to: string;
-}
+export type NavLinkProps = PropsOf<typeof ChakraLink> &
+  PropsOf<typeof RouterLink>;
 
-export function NavLink({ children, to }: NavLinkProps) {
-  return (
-    <ChakraLink as={RouterLink} to={to}>
-      {children}
-    </ChakraLink>
-  );
+export function NavLink(props: NavLinkProps) {
+  return <ChakraLink as={RouterLink} {...props} />;
 }
