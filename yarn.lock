@@ -7476,7 +7476,7 @@ eslint-plugin-jest@^24.1.0:
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.0.1"
 
-eslint-plugin-jsx-a11y@^6.3.1:
+eslint-plugin-jsx-a11y@^6.3.1, eslint-plugin-jsx-a11y@^6.4.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.4.1.tgz#a2d84caa49756942f42f1ffab9002436391718fd"
   integrity sha512-0rGPJBbwHoGNPU73/QCLP/vveMlM1b1Z9PponxO87jfr6tuH5ligXbDT6nHSSzBC8ovX2Z+BQu7Bk5D/Xgq9zg==
@@ -7505,7 +7505,7 @@ eslint-plugin-react-hooks@^4.2.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.0.tgz#8c229c268d468956334c943bb45fc860280f5556"
   integrity sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ==
 
-eslint-plugin-react@^7.21.5:
+eslint-plugin-react@^7.21.5, eslint-plugin-react@^7.24.0:
   version "7.24.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.24.0.tgz#eadedfa351a6f36b490aa17f4fa9b14e842b9eb4"
   integrity sha512-KJJIx2SYx7PBx3ONe/mEeMz4YE0Lcr7feJTCMyyKb/341NcjuAgim3Acgan89GfPv7nxXK2+0slu0CWXYM4x+Q==
@@ -13454,10 +13454,10 @@ progress@^2.0.0, progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.22.3:
-  version "0.22.3"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.22.3.tgz#b3e5023414d00e2f1210f4e73daa09b5ae62e99c"
-  integrity sha512-/BTKlbeLcMi5eyFri4rDJo0DzbS4l8AGNMLEefVVhliiWH98jbmTeUU8mG+U0hPxLC4jLy+z1DsZS4DTGs5mGg==
+projen@^0.22.8:
+  version "0.22.8"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.22.8.tgz#40997b19a7c807a48aeba010b073950a24d3ce22"
+  integrity sha512-Xb1oaE7JANYTHrc3p8b4NR0MU1jCsEeXkqtMEVcyGE5ufF2eGFZKpHxB3tErzLBPD9PE41g2mvYQ+k9dZ5cxlA==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.1"

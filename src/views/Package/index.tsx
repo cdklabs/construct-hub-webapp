@@ -33,6 +33,7 @@ export function Package() {
         console.error(err);
         setState((s) => ({ ...s, error: err }));
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const targets: string[] = Object.keys(assembly?.targets ?? {});
@@ -41,9 +42,9 @@ export function Package() {
       {/* Operator Area */}
       {assembly && (
         <PackageHeader
-          title={getFullPackageName(name, scope)}
           description={assembly?.description}
           tags={[]}
+          title={getFullPackageName(name, scope)}
         />
       )}
 

@@ -43,16 +43,16 @@ function Headings({ level, children }: HeadingResolverProps) {
   const id = dataElement?.dataset.headingId ?? sanitize(title);
 
   return (
-    <Heading my={4} level={level} as={elem} size={size}>
+    <Heading as={elem} level={level} my={4} size={size}>
       {level < 100 && (
         <a
-          data-heading-title={title}
           data-heading-id={id}
           data-heading-level={level}
-          id={id}
+          data-heading-title={title}
           href={`#${id}`}
+          id={id}
         >
-          <LinkIcon w={4} h={4} color="gray.500" mr={2} />
+          <LinkIcon color="gray.500" h={4} mr={2} w={4} />
         </a>
       )}
       {children}
@@ -71,10 +71,8 @@ const components = ChakraUIRenderer({
 
 export function Body({ children }: { children: string }) {
   return (
-    <ReactMarkdown
-      rehypePlugins={[rehypeRaw]}
-      children={children}
-      components={components}
-    />
+    <ReactMarkdown components={components} rehypePlugins={[rehypeRaw]}>
+      {children}
+    </ReactMarkdown>
   );
 }

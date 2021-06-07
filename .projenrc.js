@@ -47,6 +47,9 @@ const project = new web.ReactTypeScriptProject({
     "@types/react-router-dom",
     "react-app-rewired",
     "@testing-library/react-hooks",
+    "eslint-plugin-react",
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-jsx-a11y",
   ],
 });
 
@@ -127,6 +130,21 @@ project.eslint.addRules({
       peerDependencies: true,
     },
   ],
+});
+
+// React specific overrides
+project.eslint.addOverride({
+  files: ["src/**/*.tsx"],
+  extends: [
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+  ],
+  plugins: ["jsx-a11y"],
+  rules: {
+    "react/jsx-sort-props": ["warn"],
+    "react/react-in-jsx-scope": ["off"],
+  },
 });
 
 // rewire cra tasks, all apart from eject.

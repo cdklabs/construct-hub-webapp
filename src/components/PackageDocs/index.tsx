@@ -64,7 +64,7 @@ export function PackageDocs(props: PackageDocsProps) {
 
   return (
     <Flex bg="gray.100" width="100%">
-      <Box top={0} position="sticky" height="100vh" width="20%">
+      <Box height="100vh" position="sticky" top={0} width="20%">
         <PackageNav items={navItems} />
       </Box>
       <Box bg="white" p={4} width="80%">
