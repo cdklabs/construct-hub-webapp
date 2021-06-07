@@ -200,6 +200,10 @@
       "type": "runtime"
     },
     {
+      "name": "rehype-raw",
+      "type": "runtime"
+    },
+    {
       "name": "web-vitals",
       "type": "runtime"
     }

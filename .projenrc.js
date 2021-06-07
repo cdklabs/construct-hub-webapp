@@ -40,6 +40,7 @@ const project = new web.ReactTypeScriptProject({
     "jsii-reflect",
     "@jsii/spec",
     "codemaker",
+    "rehype-raw",
   ],
 
   devDeps: [

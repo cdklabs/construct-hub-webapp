@@ -2,7 +2,9 @@ import { LinkIcon } from "@chakra-ui/icons";
 import { Heading, As } from "@chakra-ui/react";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import React from "react";
+import ReactDOMServer from "react-dom/server";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import { sanitize } from "../../util/sanitize-anchor";
 
 type HeadingResolverProps = {
@@ -17,9 +19,12 @@ function Headings({ level, children }: HeadingResolverProps) {
   // Use DOMParser to look for data attribute for link ID
   const parser = new DOMParser();
   const doc = parser.parseFromString(
-    React.Children.toArray(children).join(""),
+    ReactDOMServer.renderToStaticMarkup(children as React.ReactElement),
     "text/html"
   );
+
+  const string = new XMLSerializer().serializeToString(doc);
+  console.log(string);
 
   const dataElement = doc.querySelector(
     "span[data-heading-title][data-heading-id]"
@@ -34,11 +39,12 @@ function Headings({ level, children }: HeadingResolverProps) {
         return accum;
       }, "")
       .trim();
+  /* console.log(dataElement?.dataset); */
   const id = dataElement?.dataset.headingId ?? sanitize(title);
 
   return (
     <Heading my={4} level={level} as={elem} size={size}>
-      {level < 4 && (
+      {level < 100 && (
         <a
           data-heading-title={title}
           data-heading-id={id}
@@ -64,5 +70,11 @@ const components = ChakraUIRenderer({
 });
 
 export function Body({ children }: { children: string }) {
-  return <ReactMarkdown skipHtml children={children} components={components} />;
+  return (
+    <ReactMarkdown
+      rehypePlugins={[rehypeRaw]}
+      children={children}
+      components={components}
+    />
+  );
 }
