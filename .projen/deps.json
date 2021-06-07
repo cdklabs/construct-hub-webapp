@@ -33,6 +33,10 @@
       "type": "build"
     },
     {
+      "name": "@testing-library/react-hooks",
+      "type": "build"
+    },
+    {
       "name": "@testing-library/user-event",
       "type": "build"
     },
