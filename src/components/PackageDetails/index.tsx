@@ -32,10 +32,12 @@ export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
   return (
     <Grid
       bg="gray.100"
+      borderBottom="1px solid"
+      borderColor="gray.200"
       gap={2}
+      pt={4}
       templateColumns="auto 1fr 1fr"
       templateRows="1fr"
-      pt={4}
     >
       {/* Where to get logo? empty div to preserve layout for now */}
       <div />
