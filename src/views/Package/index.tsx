@@ -1,12 +1,12 @@
 import { Box } from "@chakra-ui/react";
-import * as reflect from "jsii-reflect";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { createAssembly } from "../../api/package/assemblies";
-import { parseSearch, getFullPackageName } from "../../api/package/util";
-import { GettingStarted } from "../../components/GettingStarted";
+import { fetchMetadata } from "../../api/package/metadata";
+import { parseSearch } from "../../api/package/util";
+import { PackageDetails } from "../../components/PackageDetails";
 import { PackageDocs } from "../../components/PackageDocs";
-import { PackageHeader } from "../../components/PackageHeader";
+import { useRequest } from "../../hooks/useRequest";
 
 interface PathParams {
   name: string;
@@ -14,50 +14,31 @@ interface PathParams {
   version: string;
 }
 
-interface PackageDocsHomeState {
-  assembly?: reflect.Assembly;
-  error?: string;
-}
-
 export function Package() {
   const { name, scope, version }: PathParams = useParams();
-  const [{ assembly }, setState] = useState<PackageDocsHomeState>({});
+  const [requestAssembly, assemblyResponse] = useRequest(createAssembly);
+  const [requestMetadata, metadataResponse] = useRequest(fetchMetadata);
   const q = parseSearch(useLocation().search);
 
   useEffect(() => {
-    createAssembly(name, version, scope)
-      .then((asm: reflect.Assembly) => {
-        setState({ assembly: asm });
-      })
-      .catch((err) => {
-        console.error(err);
-        setState((s) => ({ ...s, error: err }));
-      });
-  }, []);
+    void requestAssembly(name, version, scope);
+    void requestMetadata(name, version, scope);
+  }, [name, scope, version]);
 
-  const targets: string[] = Object.keys(assembly?.targets ?? {});
   return (
     <Box w="100%">
       {/* Operator Area */}
-      {assembly && (
-        <PackageHeader
-          title={getFullPackageName(name, scope)}
-          description={assembly?.description}
-          tags={[]}
-        />
-      )}
-
-      {/* Getting Started Area */}
-      <GettingStarted targets={targets} />
-
+      <PackageDetails
+        assembly={assemblyResponse}
+        metadata={metadataResponse}
+        version={version}
+      />
       {/* Readme and Api Reference Area */}
-      {assembly && (
-        <PackageDocs
-          assembly={assembly}
-          language={q.language ?? "python"}
-          submodule={q.submodule}
-        />
-      )}
+      <PackageDocs
+        assembly={assemblyResponse}
+        language={q.language ?? "python"}
+        submodule={q.submodule}
+      />
     </Box>
   );
 }
