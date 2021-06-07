@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 export interface GettingStartedProps {
   targets: string[];
@@ -6,7 +6,7 @@ export interface GettingStartedProps {
 
 export function GettingStarted({ targets }: GettingStartedProps) {
   return (
-    <Flex bg="gray.200" width="100%">
+    <Flex width="100%">
       {targets.map((targetName) => {
         return (
           <Box key={targetName} padding={2}>
@@ -14,7 +14,6 @@ export function GettingStarted({ targets }: GettingStartedProps) {
           </Box>
         );
       })}
-      <Divider />
     </Flex>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
 export interface PackageHeaderProps {
   title: string;
@@ -6,10 +6,14 @@ export interface PackageHeaderProps {
   tags: string[];
 }
 
-export function PackageHeader({ description, title }: PackageHeaderProps) {
+export function PackageHeader({
+  description,
+  tags,
+  title,
+}: PackageHeaderProps) {
   return (
-    <Flex bg="gray.200" direction="column" width="100%">
-      <Box>
+    <Flex bg="white" direction="column" borderRadius="md" p={2} width="100%">
+      <Box mb={5}>
         <Heading>{title}</Heading>
       </Box>
 
@@ -17,7 +21,22 @@ export function PackageHeader({ description, title }: PackageHeaderProps) {
         <Text>{description}</Text>
       </Box>
 
-      <Divider />
+      {tags.length && (
+        <Flex direction="row" mt={3}>
+          {tags.map((tag) => (
+            <Flex
+              bg="gray.100"
+              borderRadius="sm"
+              justify="center"
+              mr={4}
+              p={2}
+              key={tag}
+            >
+              <Text>{tag.toUpperCase()}</Text>
+            </Flex>
+          ))}
+        </Flex>
+      )}
     </Flex>
   );
 }

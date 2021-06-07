@@ -1,20 +1,27 @@
 import { Box } from "@chakra-ui/react";
 import ReactMarkdown from "@uiw/react-markdown-preview";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import * as reflect from "jsii-reflect";
+import type { Assembly } from "jsii-reflect";
 import { Documentation } from "../../api/docgen/view/documentation";
+import type { UseRequestResponse } from "../../hooks/useRequest";
 
 export interface PackageDocsProps {
-  assembly: reflect.Assembly;
+  assembly: UseRequestResponse<Assembly>;
   language: string;
   submodule?: string;
 }
 
-export function PackageDocs(props: PackageDocsProps) {
+export function PackageDocs({
+  assembly,
+  language,
+  submodule,
+}: PackageDocsProps) {
+  if (!assembly.data || assembly.loading) return null;
+
   const doc = new Documentation({
-    assembly: props.assembly,
-    language: props.language,
-    submoduleName: props.submodule,
+    assembly: assembly.data,
+    language: language,
+    submoduleName: submodule,
   });
 
   const source = doc.render().render();
