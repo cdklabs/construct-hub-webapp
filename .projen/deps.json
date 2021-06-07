@@ -140,6 +140,10 @@
       "type": "build"
     },
     {
+      "name": "@chakra-ui/icons",
+      "type": "runtime"
+    },
+    {
       "name": "@chakra-ui/react",
       "type": "runtime"
     },
@@ -155,10 +159,6 @@
     },
     {
       "name": "@jsii/spec",
-      "type": "runtime"
-    },
-    {
-      "name": "@uiw/react-markdown-preview",
       "type": "runtime"
     },
     {
@@ -187,12 +187,20 @@
       "type": "runtime"
     },
     {
+      "name": "react-markdown",
+      "type": "runtime"
+    },
+    {
       "name": "react-router-dom",
       "type": "runtime"
     },
     {
       "name": "react-scripts",
       "version": "^4.0.0",
+      "type": "runtime"
+    },
+    {
+      "name": "rehype-raw",
       "type": "runtime"
     },
     {
