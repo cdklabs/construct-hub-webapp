@@ -28,13 +28,11 @@ export function Package() {
   return (
     <Box w="100%">
       {/* Operator Area */}
-      {metadataResponse.data && (
-        <PackageDetails
-          assembly={assemblyResponse}
-          metadata={metadataResponse}
-          version={version}
-        />
-      )}
+      <PackageDetails
+        assembly={assemblyResponse}
+        metadata={metadataResponse}
+        version={version}
+      />
       {/* Readme and Api Reference Area */}
       <PackageDocs
         assembly={assemblyResponse}
