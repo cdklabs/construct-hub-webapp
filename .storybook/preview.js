@@ -1,12 +1,10 @@
 import { withPerformance } from "storybook-addon-performance";
-import { Theme } from "../src/Theme";
-import { CSSReset } from "@chakra-ui/react";
+import { Theme } from "../src/contexts/Theme";
 
 export const decorators = [
   withPerformance,
   (Story) => (
     <Theme>
-      <CSSReset />
       <Story />
     </Theme>
   ),

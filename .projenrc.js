@@ -147,6 +147,7 @@ project.eslint.addOverride({
   rules: {
     "react/jsx-sort-props": ["warn"],
     "react/react-in-jsx-scope": ["off"],
+    "react/prop-types": ["off"],
   },
 });
 
