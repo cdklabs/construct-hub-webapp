@@ -6,7 +6,7 @@ export function Header() {
     <Box
       bg="white"
       boxShadow="base"
-      data-test="header"
+      data-testid="header"
       position="sticky"
       px={2}
       py={3}
