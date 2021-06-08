@@ -12,6 +12,7 @@ export interface LanguageBarProps {
   targetLanguages: Language[];
   selectedLanguage: Language;
   setSelectedLanguage: (lang: Language) => void;
+  showDisabled?: boolean;
 }
 
 const ALL_LANGUAGES: Language[] = [
@@ -45,10 +46,11 @@ export function LanguageBar({
   targetLanguages,
   selectedLanguage,
   setSelectedLanguage,
+  showDisabled = false,
 }: LanguageBarProps) {
   return (
     <Flex justify="center">
-      {ALL_LANGUAGES.map((language) => {
+      {(showDisabled ? ALL_LANGUAGES : targetLanguages).map((language) => {
         const isDisabled = !targetLanguages.includes(language);
         const isSelected = language === selectedLanguage;
 
