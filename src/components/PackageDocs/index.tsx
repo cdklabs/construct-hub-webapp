@@ -2,12 +2,11 @@ import { Flex, Box } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { useState, useEffect } from "react";
 import { Documentation } from "../../api/docgen/view/documentation";
-import type { UseRequestResponse } from "../../hooks/useRequest";
 import { PackageNav, PackageNavItem } from "../PackageNav";
 import { Body } from "./Body";
 
 export interface PackageDocsProps {
-  assembly: UseRequestResponse<Assembly>;
+  assembly: Assembly;
   language: string;
   submodule?: string;
 }
@@ -48,9 +47,8 @@ export function PackageDocs({
   language,
   submodule,
 }: PackageDocsProps) {
-  if (!assembly.data || assembly.loading) return null;
   const doc = new Documentation({
-    assembly: assembly.data,
+    assembly: assembly,
     language: language,
     submoduleName: submodule,
   });

@@ -35,11 +35,13 @@ export function Package() {
         version={version}
       />
       {/* Readme and Api Reference Area */}
-      <PackageDocs
-        assembly={assemblyResponse}
-        language={q.language ?? "python"}
-        submodule={q.submodule}
-      />
+      {assemblyResponse.data && !assemblyResponse.loading && (
+        <PackageDocs
+          assembly={assemblyResponse.data}
+          language={q.language ?? "python"}
+          submodule={q.submodule}
+        />
+      )}
     </Box>
   );
 }

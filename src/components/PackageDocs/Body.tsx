@@ -23,9 +23,6 @@ function Headings({ level, children }: HeadingResolverProps) {
     "text/html"
   );
 
-  const string = new XMLSerializer().serializeToString(doc);
-  console.log(string);
-
   const dataElement = doc.querySelector(
     "span[data-heading-title][data-heading-id]"
   ) as HTMLElement;
@@ -39,7 +36,7 @@ function Headings({ level, children }: HeadingResolverProps) {
         return accum;
       }, "")
       .trim();
-  /* console.log(dataElement?.dataset); */
+
   const id = dataElement?.dataset.headingId ?? sanitize(title);
 
   return (

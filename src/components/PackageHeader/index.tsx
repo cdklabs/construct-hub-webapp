@@ -12,7 +12,7 @@ export function PackageHeader({
   title,
 }: PackageHeaderProps) {
   return (
-    <Flex bg="white" direction="column" borderRadius="md" p={2} width="100%">
+    <Flex bg="white" borderRadius="md" direction="column" p={2} width="100%">
       <Box mb={5}>
         <Heading>{title}</Heading>
       </Box>
@@ -28,9 +28,9 @@ export function PackageHeader({
               bg="gray.100"
               borderRadius="sm"
               justify="center"
+              key={tag}
               mr={4}
               p={2}
-              key={tag}
             >
               <Text>{tag.toUpperCase()}</Text>
             </Flex>
