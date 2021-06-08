@@ -22,6 +22,8 @@
     "eject": "npx projen eject",
     "storybook": "npx projen storybook",
     "storybook:build": "npx projen storybook:build",
+    "cypress:open": "npx projen cypress:open",
+    "cypress:run": "npx projen cypress:run",
     "dev:fetch-assemblies": "npx projen dev:fetch-assemblies",
     "projen": "npx projen",
     "start": "npx projen start"
@@ -52,6 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
     "babel-loader": "8.1.0",
+    "cypress": "^7.5.0",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-node": "^0.3.4",
