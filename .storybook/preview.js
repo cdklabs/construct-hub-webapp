@@ -1,5 +1,14 @@
-import { addDecorator } from "@storybook/react";
+import { withPerformance } from "storybook-addon-performance";
 import { Theme } from "../src/contexts/Theme";
+
+export const decorators = [
+  withPerformance,
+  (Story) => (
+    <Theme>
+      <Story />
+    </Theme>
+  ),
+];
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -10,11 +19,3 @@ export const parameters = {
     },
   },
 };
-
-export const decorators = [
-  (Story) => (
-    <Theme>
-      <Story />
-    </Theme>
-  ),
-];

@@ -21,7 +21,7 @@ export function PackageHeader({
         <Text>{description}</Text>
       </Box>
 
-      {tags.length && (
+      {!!tags.length && (
         <Flex direction="row" mt={3}>
           {tags.map((tag) => (
             <Flex
