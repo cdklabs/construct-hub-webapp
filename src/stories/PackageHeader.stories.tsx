@@ -1,5 +1,5 @@
 import { Story } from "@storybook/react";
-import { PackageHeader, PackageHeaderProps } from "../PackageHeader";
+import { PackageHeader, PackageHeaderProps } from "../components/PackageHeader";
 
 export default {
   title: "Package Header",
