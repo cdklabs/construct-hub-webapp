@@ -6,6 +6,7 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
+import { format } from "date-fns";
 import type { Assembly } from "jsii-reflect";
 import { ReactNode, useMemo } from "react";
 import type { Metadata } from "../../api/package/metadata";
@@ -29,11 +30,12 @@ export function OperatorArea({ assembly, metadata }: OperatorAreaProps) {
     const items = [];
 
     if (date) {
-      items.push(`Published ${date}`);
+      const publishDate = new Date(date);
+      items.push(`Published: ${format(publishDate, "MMMM dd, yyyy")}`);
     }
 
     if (username) {
-      items.push(`Module managed by ${username}`);
+      items.push(`Module managed by: ${username}`);
     }
 
     if (repository) {
@@ -46,7 +48,7 @@ export function OperatorArea({ assembly, metadata }: OperatorAreaProps) {
             rel="no-referrer"
             target="_blank"
           >
-            github.
+            Github
           </Link>
         </>
       );

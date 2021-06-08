@@ -189,6 +189,10 @@
       "type": "runtime"
     },
     {
+      "name": "date-fns",
+      "type": "runtime"
+    },
+    {
       "name": "framer-motion",
       "version": "^4",
       "type": "runtime"
