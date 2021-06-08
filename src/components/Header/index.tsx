@@ -1,12 +1,12 @@
 import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
-import { Logo } from "../Logo";
+import { Logo } from "../../icons/Logo";
 
 export function Header() {
   return (
     <Box
       bg="white"
       boxShadow="base"
-      data-test="header"
+      data-testid="header"
       position="sticky"
       px={2}
       py={3}

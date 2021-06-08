@@ -10,7 +10,7 @@ import { format } from "date-fns";
 import type { Assembly } from "jsii-reflect";
 import { ReactNode, useMemo } from "react";
 import type { Metadata } from "../../api/package/metadata";
-import { DependencyDropdown } from "../DependencyDropdown";
+import { DependencyDropdown } from "../../components/DependencyDropdown";
 
 export interface OperatorAreaProps {
   assembly?: Assembly;
