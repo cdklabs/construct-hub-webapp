@@ -1,13 +1,13 @@
 import { Story } from "@storybook/react";
-import { PackageHeader, PackageHeaderProps } from "../PackageHeader";
+import { PackageHeader, PackageHeaderProps } from "../components/PackageHeader";
 
 export default {
   title: "Package Header",
   component: PackageHeader,
 };
 
-const Template: Story<PackageHeaderProps> = (args) => (
-  <PackageHeader {...args} />
+const Template: Story<PackageHeaderProps> = ({ title, description, tags }) => (
+  <PackageHeader description={description} tags={tags} title={title} />
 );
 
 export const Primary = Template.bind({});

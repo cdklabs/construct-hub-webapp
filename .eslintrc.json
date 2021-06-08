@@ -154,6 +154,30 @@
           }
         ]
       }
+    },
+    {
+      "files": [
+        "src/**/*.tsx"
+      ],
+      "extends": [
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended"
+      ],
+      "plugins": [
+        "jsx-a11y"
+      ],
+      "rules": {
+        "react/jsx-sort-props": [
+          "warn"
+        ],
+        "react/react-in-jsx-scope": [
+          "off"
+        ],
+        "react/prop-types": [
+          "off"
+        ]
+      }
     }
   ]
 }

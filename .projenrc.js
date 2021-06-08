@@ -17,6 +17,11 @@ const project = new web.ReactTypeScriptProject({
   releaseToNpm: true,
   releaseWorkflow: true,
   package: true,
+  tsconfig: {
+    compilerOptions: {
+      target: "es6",
+    },
+  },
 
   eslint: true,
   eslintOptions: {
@@ -25,29 +30,42 @@ const project = new web.ReactTypeScriptProject({
 
   deps: [
     "@chakra-ui/react",
+    "@chakra-ui/icons",
     "@emotion/react@^11",
     "@emotion/styled@^11",
     "chakra-ui-markdown-renderer",
     "framer-motion@^4",
     "react-router-dom",
-    "@uiw/react-markdown-preview",
+    "react-markdown",
     "jsii-reflect",
     "@jsii/spec",
     "codemaker",
+    "rehype-raw",
   ],
 
-  devDeps: ["@types/react-router-dom", "react-app-rewired", "cypress"],
+  devDeps: [
+    "cypress",
+    "@types/react-router-dom",
+    "react-app-rewired",
+    "@testing-library/react-hooks",
+    "eslint-plugin-react",
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-jsx-a11y",
+  ],
 });
 
 (function addStorybook() {
   project.addDevDeps(
+    "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-essentials",
     "@storybook/addon-links",
+    "@storybook/addon-storysource",
     "@storybook/node-logger",
     "@storybook/preset-create-react-app",
     "@storybook/react",
-    "babel-loader@8.1.0"
+    "babel-loader@8.1.0",
+    "storybook-addon-performance"
   );
 
   // Add tasks and config for storybook
@@ -127,6 +145,22 @@ project.eslint.addRules({
       peerDependencies: true,
     },
   ],
+});
+
+// React specific overrides
+project.eslint.addOverride({
+  files: ["src/**/*.tsx"],
+  extends: [
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+  ],
+  plugins: ["jsx-a11y"],
+  rules: {
+    "react/jsx-sort-props": ["warn"],
+    "react/react-in-jsx-scope": ["off"],
+    "react/prop-types": ["off"],
+  },
 });
 
 // rewire cra tasks, all apart from eject.
