@@ -45,6 +45,7 @@ const project = new web.ReactTypeScriptProject({
   ],
 
   devDeps: [
+    "cypress",
     "@types/react-router-dom",
     "react-app-rewired",
     "@testing-library/react-hooks",
@@ -113,6 +114,17 @@ project.npmignore.addPatterns("/public");
 
 // test fixtures
 project.npmignore.addPatterns("src/__fixtures__");
+
+// cypress e2e runner
+project.addTask("cypress:open", {
+  exec: "cypress open",
+  description: "open the cypress test runner UI",
+});
+
+project.addTask("cypress:run", {
+  exec: "cypress run",
+  description: "run the cypress suite in CLI",
+});
 
 const fetchAssemblies = project.addTask("dev:fetch-assemblies");
 fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);

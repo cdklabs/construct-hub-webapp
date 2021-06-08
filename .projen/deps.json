@@ -83,6 +83,10 @@
       "type": "build"
     },
     {
+      "name": "cypress",
+      "type": "build"
+    },
+    {
       "name": "eslint",
       "type": "build"
     },
