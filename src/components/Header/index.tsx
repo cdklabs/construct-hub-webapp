@@ -20,7 +20,7 @@ export function Header() {
         w="100%"
       >
         <Flex>
-          <Logo height={12} width={12} mr={4} />
+          <Logo height={12} mr={4} width={12} />
           <Heading as="h1" size="xl">
             Construct Hub
           </Heading>

@@ -19,7 +19,7 @@ export interface DependencyDropownProps {
 }
 
 function DropdownButton(props: PropsOf<typeof Button>) {
-  return <Button {...props} bg="white" variant="outline" size="md" />;
+  return <Button {...props} bg="white" size="md" variant="outline" />;
 }
 
 export function DependencyDropdown({ dependencies }: DependencyDropownProps) {
@@ -38,7 +38,7 @@ export function DependencyDropdown({ dependencies }: DependencyDropownProps) {
       </MenuButton>
       <MenuList>
         {depEntries.map(([name, version]) => (
-          <MenuItem p={0}>
+          <MenuItem key={`${name}/${version}`} p={0}>
             <NavLink
               h="100%"
               p={2}

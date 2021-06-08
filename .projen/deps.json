@@ -95,7 +95,19 @@
       "type": "build"
     },
     {
+      "name": "eslint-plugin-jsx-a11y",
+      "type": "build"
+    },
+    {
       "name": "eslint-plugin-prettier",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-react",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-react-hooks",
       "type": "build"
     },
     {

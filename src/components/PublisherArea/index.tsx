@@ -10,9 +10,9 @@ export function PublisherArea({ metadata }: PublisherAreaProps) {
   return (
     <Flex direction="column" w="100%">
       <PackageHeader
-        title={metadata.name}
         description={metadata.description}
         tags={metadata.keywords}
+        title={metadata.name}
       />
       {/* TODO: Version Dropdown Section */}
     </Flex>

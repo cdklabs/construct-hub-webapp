@@ -23,6 +23,7 @@ export function Package() {
   useEffect(() => {
     void requestAssembly(name, version, scope);
     void requestMetadata(name, version, scope);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, scope, version]);
 
   return (
@@ -34,11 +35,13 @@ export function Package() {
         version={version}
       />
       {/* Readme and Api Reference Area */}
-      <PackageDocs
-        assembly={assemblyResponse}
-        language={q.language ?? "python"}
-        submodule={q.submodule}
-      />
+      {assemblyResponse.data && !assemblyResponse.loading && (
+        <PackageDocs
+          assembly={assemblyResponse.data}
+          language={q.language ?? "python"}
+          submodule={q.submodule}
+        />
+      )}
     </Box>
   );
 }

@@ -43,8 +43,8 @@ export function OperatorArea({ assembly, metadata }: OperatorAreaProps) {
           <Link
             color="blue.500"
             href={repository}
-            target="_blank"
             rel="no-referrer"
+            target="_blank"
           >
             github.
           </Link>
