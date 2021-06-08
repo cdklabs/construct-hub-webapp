@@ -49,7 +49,7 @@ export function LanguageBar({
   showDisabled = false,
 }: LanguageBarProps) {
   return (
-    <Flex justify="center">
+    <Flex data-testid="language-bar" justify="center">
       {(showDisabled ? ALL_LANGUAGES : targetLanguages).map((language) => {
         const isDisabled = !targetLanguages.includes(language);
         const isSelected = language === selectedLanguage;
@@ -71,7 +71,7 @@ export function LanguageBar({
             cursor={isDisabled ? "not-allowed" : "pointer"}
             data-disabled={isDisabled}
             data-selected={isSelected}
-            data-test={`language-${language}`}
+            data-testid={`language-${language}`}
             direction="column"
             disabled={isDisabled}
             filter={isDisabled ? "grayscale(100%)" : "none"}
