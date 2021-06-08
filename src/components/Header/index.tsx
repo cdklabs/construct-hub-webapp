@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
-import { Logo } from "../Logo";
+import { Logo } from "../../icons/Logo";
 
 export function Header() {
   return (
