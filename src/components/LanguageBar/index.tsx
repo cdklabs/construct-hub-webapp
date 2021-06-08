@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, Icon } from "@chakra-ui/react";
 import { DotNetIcon } from "../../icons/DotNetIcon";
 import { GoIcon } from "../../icons/GoIcon";
 import { JavaIcon } from "../../icons/JavaIcon";
@@ -24,22 +24,31 @@ const ALL_LANGUAGES: Language[] = [
   "dotnet",
 ];
 
-const ICON_MAP = {
-  ts: TSIcon,
-  js: NodeIcon,
-  python: PythonIcon,
-  golang: GoIcon,
-  dotnet: DotNetIcon,
-  java: JavaIcon,
-};
-
-const NAME_MAP: Record<Language, string> = {
-  ts: "TypeScript",
-  python: "Python",
-  java: "Java",
-  js: "Node.js",
-  golang: "Go",
-  dotnet: ".NET",
+const LANGUAGE_MAP: Record<Language, { name: string; icon: typeof Icon }> = {
+  ts: {
+    name: "TypeScript",
+    icon: TSIcon,
+  },
+  python: {
+    name: "Python",
+    icon: NodeIcon,
+  },
+  java: {
+    name: "Java",
+    icon: PythonIcon,
+  },
+  js: {
+    name: "Node.js",
+    icon: GoIcon,
+  },
+  golang: {
+    name: "Go",
+    icon: DotNetIcon,
+  },
+  dotnet: {
+    name: ".NET",
+    icon: JavaIcon,
+  },
 };
 
 export function LanguageBar({
@@ -54,8 +63,7 @@ export function LanguageBar({
         const isDisabled = !targetLanguages.includes(language);
         const isSelected = language === selectedLanguage;
 
-        const name = NAME_MAP[language];
-        const Icon = ICON_MAP[language];
+        const { name, icon: LangIcon } = LANGUAGE_MAP[language];
 
         const onClick = () => {
           if (isSelected) return;
@@ -87,7 +95,7 @@ export function LanguageBar({
             }}
             type="button"
           >
-            <Icon height="2rem" width="2rem" />
+            <LangIcon height="2rem" width="2rem" />
             <Text fontSize="sm" mt={2}>
               {name}
             </Text>
