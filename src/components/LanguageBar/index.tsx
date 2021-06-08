@@ -31,23 +31,23 @@ const LANGUAGE_MAP: Record<Language, { name: string; icon: typeof Icon }> = {
   },
   python: {
     name: "Python",
-    icon: NodeIcon,
+    icon: PythonIcon,
   },
   java: {
     name: "Java",
-    icon: PythonIcon,
+    icon: JavaIcon,
   },
   js: {
     name: "Node.js",
-    icon: GoIcon,
+    icon: NodeIcon,
   },
   golang: {
     name: "Go",
-    icon: DotNetIcon,
+    icon: GoIcon,
   },
   dotnet: {
     name: ".NET",
-    icon: JavaIcon,
+    icon: DotNetIcon,
   },
 };
 
