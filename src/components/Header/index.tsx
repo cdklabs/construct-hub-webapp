@@ -1,7 +1,20 @@
 import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useQuery } from "../../hooks/useQuery";
 import { Logo } from "../../icons/Logo";
 
 export function Header() {
+  const q = useQuery().get("q") ?? "";
+  const [searchValue, setSearchValue] = useState(q);
+  const history = useHistory();
+  const onSearchChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
+    setSearchValue(evt.target.value);
+  };
+  const onSearchSubmit = (evt: React.FormEvent): void => {
+    evt.preventDefault();
+    history.push(`/search?q=${searchValue}`);
+  };
   return (
     <Box
       bg="white"
@@ -27,7 +40,16 @@ export function Header() {
           </Heading>
         </Flex>
         <Box width={0.3}>
-          <Input id="search" name="search" placeholder="search" />
+          <form onSubmit={onSearchSubmit}>
+            <Input
+              id="search"
+              name="search"
+              onChange={onSearchChange}
+              placeholder="search"
+              value={searchValue}
+            />
+            {searchValue}
+          </form>
         </Box>
         <Flex>
           <Box px={1}>
