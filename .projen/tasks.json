@@ -51,17 +51,23 @@
     "test": {
       "name": "test",
       "category": "10.test",
-      "description": "Runs tests",
+      "description": "Run tests",
       "steps": [
         {
-          "exec": "react-app-rewired test"
+          "spawn": "test:compile"
+        },
+        {
+          "spawn": "eslint"
+        },
+        {
+          "exec": "react-app-rewired test --watchAll=false"
         }
       ]
     },
     "build": {
       "name": "build",
       "category": "00.build",
-      "description": "Creates an optimized production build of your React application",
+      "description": "Full release build (test+compile)",
       "steps": [
         {
           "exec": "npx projen"
@@ -71,6 +77,18 @@
         },
         {
           "spawn": "test"
+        },
+        {
+          "exec": "npx projen"
+        },
+        {
+          "spawn": "test"
+        },
+        {
+          "spawn": "compile"
+        },
+        {
+          "spawn": "package"
         },
         {
           "exec": "react-app-rewired build"
