@@ -14,9 +14,9 @@ export function SearchResults() {
   }, [requestPackages]);
 
   const results = useMemo(() => {
-    return data?.packages.filter((item) =>
-      JSON.stringify(item).includes(query)
-    );
+    return query.length
+      ? data?.packages.filter((item) => JSON.stringify(item).includes(query))
+      : data?.packages ?? [];
   }, [query, data]);
 
   return (
