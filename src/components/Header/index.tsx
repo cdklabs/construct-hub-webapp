@@ -48,7 +48,6 @@ export function Header() {
               placeholder="search"
               value={searchValue}
             />
-            {searchValue}
           </form>
         </Box>
         <Flex>
