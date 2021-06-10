@@ -1,11 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { createAssembly } from "../../api/package/assemblies";
 import { fetchMetadata } from "../../api/package/metadata";
-import { parseSearch } from "../../api/package/util";
 import { PackageDetails } from "../../components/PackageDetails";
 import { PackageDocs } from "../../components/PackageDocs";
+import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
 
 interface PathParams {
@@ -18,7 +18,7 @@ export function Package() {
   const { name, scope, version }: PathParams = useParams();
   const [requestAssembly, assemblyResponse] = useRequest(createAssembly);
   const [requestMetadata, metadataResponse] = useRequest(fetchMetadata);
-  const q = parseSearch(useLocation().search);
+  const q = useQueryParams();
 
   useEffect(() => {
     void requestAssembly(name, version, scope);
@@ -38,8 +38,8 @@ export function Package() {
       {assemblyResponse.data && !assemblyResponse.loading && (
         <PackageDocs
           assembly={assemblyResponse.data}
-          language={q.language ?? "python"}
-          submodule={q.submodule}
+          language={q.get("language") ?? "python"}
+          submodule={q.get("submodule") ?? ""}
         />
       )}
     </Box>
