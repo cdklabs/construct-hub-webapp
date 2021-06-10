@@ -5,7 +5,7 @@ import { createAssembly } from "../../api/package/assemblies";
 import { fetchMetadata } from "../../api/package/metadata";
 import { PackageDetails } from "../../components/PackageDetails";
 import { PackageDocs } from "../../components/PackageDocs";
-import { useQuery } from "../../hooks/useQuery";
+import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
 
 interface PathParams {
@@ -18,7 +18,7 @@ export function Package() {
   const { name, scope, version }: PathParams = useParams();
   const [requestAssembly, assemblyResponse] = useRequest(createAssembly);
   const [requestMetadata, metadataResponse] = useRequest(fetchMetadata);
-  const q = useQuery();
+  const q = useQueryParams();
 
   useEffect(() => {
     void requestAssembly(name, version, scope);

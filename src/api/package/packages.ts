@@ -1,33 +1,10 @@
+import { Metadata } from "./metadata";
+
 export interface Packages {
   packages: {
     name: string;
     version: string;
-    metadata: {
-      name: string;
-      description: string;
-      scope: string;
-      version: string;
-      keywords: string[];
-      date: string;
-      links: {
-        npm: string;
-        homepage: string;
-        repository: string;
-        bugs: string;
-      };
-      author: {
-        name: string;
-        url: string;
-      };
-      publisher: {
-        username: string;
-        email: string;
-      };
-      mantainers: {
-        username: string;
-        email: string;
-      }[];
-    };
+    metadata: Metadata;
   }[];
 }
 

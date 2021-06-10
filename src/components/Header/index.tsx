@@ -1,11 +1,11 @@
 import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useQuery } from "../../hooks/useQuery";
+import { useQueryParams } from "../../hooks/useQueryParams";
 import { Logo } from "../../icons/Logo";
 
 export function Header() {
-  const q = useQuery().get("q") ?? "";
+  const q = useQueryParams().get("q") ?? "";
   const [searchValue, setSearchValue] = useState(q);
   const history = useHistory();
   const onSearchChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {

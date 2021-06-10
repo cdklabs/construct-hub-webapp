@@ -2,11 +2,11 @@ import { Box, SimpleGrid, Flex, GridItem, Tag, Text } from "@chakra-ui/react";
 import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { fetchPackages } from "../../api/package/packages";
-import { useQuery } from "../../hooks/useQuery";
+import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
 
 export function SearchResults() {
-  const query = useQuery().get("q") ?? "";
+  const query = useQueryParams().get("q") ?? "";
   const [requestPackages, { data }] = useRequest(fetchPackages);
 
   useEffect(() => {
@@ -14,11 +14,6 @@ export function SearchResults() {
   }, [requestPackages]);
 
   const results = useMemo(() => {
-    /* const searcher = new FuzzySearch(packagesResponse.data?.packages ?? [], [ */
-    /*   "name", */
-    /* ]); */
-
-    /* return query ? searcher.search(query) : []; */
     return data?.packages.filter((item) =>
       JSON.stringify(item).includes(query)
     );
