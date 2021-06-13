@@ -53,6 +53,11 @@ const project = new web.ReactTypeScriptProject({
     "eslint-plugin-react-hooks",
     "eslint-plugin-jsx-a11y",
   ],
+  autoApproveOptions: {
+    allowedUsernames: ["aws-cdk-automation"],
+    secret: "GITHUB_TOKEN",
+  },
+  autoApproveUpgrades: true,
 });
 
 (function addStorybook() {
