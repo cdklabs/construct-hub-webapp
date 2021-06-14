@@ -137,6 +137,7 @@
     },
     {
       "name": "projen",
+      "version": "^0.22.15",
       "type": "build"
     },
     {
@@ -180,11 +181,11 @@
       "type": "runtime"
     },
     {
-      "name": "chakra-ui-markdown-renderer",
+      "name": "case",
       "type": "runtime"
     },
     {
-      "name": "codemaker",
+      "name": "chakra-ui-markdown-renderer",
       "type": "runtime"
     },
     {

@@ -1,7 +1,11 @@
-import { toSnakeCase } from "codemaker";
+import Case from "case";
 import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import * as transpile from "./transpile";
+
+const toSnakeCase = (text?: string) => {
+  return Case.snake(text ?? "");
+};
 
 /**
  * A python transpiler.
