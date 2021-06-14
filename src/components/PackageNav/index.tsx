@@ -1,12 +1,12 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Link, Text } from "@chakra-ui/react";
 import { Fragment } from "react";
 
 function PackageNavItem({ title, path }: PackageNavItem) {
   return (
     <Box>
-      <a href={path}>
+      <Link href={path}>
         <Text>{title}</Text>
-      </a>
+      </Link>
     </Box>
   );
 }

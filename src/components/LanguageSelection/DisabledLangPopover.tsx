@@ -12,7 +12,7 @@ import {
 
 export function DisabledLangPopover() {
   return (
-    <Popover placement="left-start">
+    <Popover>
       <PopoverTrigger>
         <IconButton
           aria-label="Disabled language popover"

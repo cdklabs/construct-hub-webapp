@@ -1,9 +1,8 @@
-import { Center, Divider, Flex, Grid, Spinner } from "@chakra-ui/react";
+import { Center, Grid, Spinner } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import type { Metadata } from "../../api/package/metadata";
-import { Language } from "../../constants/languages";
 import type { UseRequestResponse } from "../../hooks/useRequest";
-import { GettingStarted } from "../GettingStarted";
+import { LanguageSelection } from "../LanguageSelection";
 import { OperatorArea } from "../OperatorArea";
 import { PackageHeader } from "../PackageHeader";
 
@@ -19,7 +18,6 @@ interface PackageDetailsProps {
  * the Getting Started, Operator Area, and Publisher Area sections
  */
 export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
-  const targets = Object.keys(assembly.data?.targets ?? {}) as Language[];
   const isLoading = assembly.loading || metadata.loading;
 
   if (isLoading || !metadata.data) {
@@ -31,17 +29,16 @@ export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
   }
 
   return (
-    <Grid bg="gray.50" columnGap={4} p={4} templateColumns="2fr 1fr">
-      <Flex direction="column">
+    <Grid p={4} rowGap={4} templateColumns="1fr" templateRows="auto">
+      <Grid columnGap={4} templateColumns="3fr 2fr">
         <PackageHeader
           description={metadata.data.description}
           tags={metadata.data.keywords}
           title={metadata.data.name}
         />
-        <Divider borderColor="initial" color="gray.300" my={5} />
         <OperatorArea assembly={assembly.data} metadata={metadata.data} />
-      </Flex>
-      <GettingStarted targets={targets} />
+      </Grid>
+      <LanguageSelection assembly={assembly.data} />
     </Grid>
   );
 }

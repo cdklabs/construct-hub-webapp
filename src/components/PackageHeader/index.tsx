@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
-
+import { Card } from "../Card";
 export interface PackageHeaderProps {
   title: string;
   description: string;
@@ -12,15 +12,7 @@ export function PackageHeader({
   title,
 }: PackageHeaderProps) {
   return (
-    <Flex
-      bg="white"
-      border="1px solid"
-      borderColor="gray.100"
-      borderRadius="md"
-      boxShadow="base"
-      direction="column"
-      p={2}
-    >
+    <Card as={Flex} direction="column" p={2}>
       <Box mb={5}>
         <Heading>{title}</Heading>
       </Box>
@@ -45,6 +37,6 @@ export function PackageHeader({
           ))}
         </Flex>
       )}
-    </Flex>
+    </Card>
   );
 }

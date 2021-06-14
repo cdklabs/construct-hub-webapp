@@ -1,7 +1,8 @@
-import { Flex, Box } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { useState, useEffect } from "react";
 import { Documentation } from "../../api/docgen/view/documentation";
+import { Card } from "../Card";
 import { PackageNav, PackageNavItem } from "../PackageNav";
 import { Body } from "./Body";
 
@@ -42,12 +43,17 @@ export function appendItem(
   }
 }
 
+// We want the nav to be sticky, but it should account for the sticky heading as well
+// The calculation here is heading height (72px) + margin-top (16px).
+const TOP_OFFSET = "88px";
+
 export function PackageDocs({
   assembly,
   language,
   submodule,
 }: PackageDocsProps) {
   const doc = new Documentation({
+    apiReference: false,
     assembly: assembly,
     language: language,
     submoduleName: submodule,
@@ -67,13 +73,42 @@ export function PackageDocs({
   }, []);
 
   return (
-    <Flex bg="gray.100" width="100%">
-      <Box height="100vh" position="sticky" top={0} width="20%">
+    <Grid
+      borderTop="1px solid"
+      // eslint-disable-next-line react/jsx-sort-props
+      borderColor="gray.100"
+      columnGap={4}
+      p={4}
+      templateColumns="1fr 4fr"
+      width="100%"
+    >
+      {/* Max Height is also limited by header (72px) and marginTop + marginBottom (32px) */}
+      <Card
+        alignSelf="start"
+        maxHeight="calc(100vh - 104px)"
+        overflowY="auto"
+        position="sticky"
+        top={TOP_OFFSET}
+      >
         <PackageNav items={navItems} />
-      </Box>
-      <Box bg="white" p={4} width="80%">
+      </Card>
+      <Card
+        maxWidth="100%"
+        overflow="hidden"
+        p={4}
+        sx={{
+          // Offsets the target link to account for sticky Header
+          "a:target:before": {
+            content: `""`,
+            display: "block",
+            height: "40px",
+            marginTop: `-40px`,
+            visibility: "hidden",
+          },
+        }}
+      >
         <Body>{source}</Body>
-      </Box>
-    </Flex>
+      </Card>
+    </Grid>
   );
 }
