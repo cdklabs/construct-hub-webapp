@@ -53,7 +53,6 @@ export function PackageDocs({
   submodule,
 }: PackageDocsProps) {
   const doc = new Documentation({
-    apiReference: false,
     assembly: assembly,
     language: language,
     submoduleName: submodule,

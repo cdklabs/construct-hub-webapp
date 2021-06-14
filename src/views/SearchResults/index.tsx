@@ -2,6 +2,7 @@ import { Box, SimpleGrid, Flex, GridItem, Tag, Text } from "@chakra-ui/react";
 import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { fetchPackages } from "../../api/package/packages";
+import { Card } from "../../components/Card";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
 
@@ -25,15 +26,7 @@ export function SearchResults() {
         results.map((pkg) => {
           return (
             <Link key={pkg.name} to={`/packages/${pkg.name}/v/${pkg.version}`}>
-              <GridItem
-                border="1px solid"
-                borderColor="gray.300"
-                borderRadius="md"
-                boxShadow="md"
-                colSpan={1}
-                h={64}
-                w="100%"
-              >
+              <Card as={GridItem} colSpan={1} h={64} w="100%">
                 <Flex
                   direction="column"
                   height="100%"
@@ -51,7 +44,7 @@ export function SearchResults() {
                     })}
                   </Box>
                 </Flex>
-              </GridItem>
+              </Card>
             </Link>
           );
         })}
