@@ -12,7 +12,15 @@ export function PackageHeader({
   title,
 }: PackageHeaderProps) {
   return (
-    <Flex bg="white" borderRadius="md" direction="column" p={2} width="100%">
+    <Flex
+      bg="white"
+      border="1px solid"
+      borderColor="gray.100"
+      borderRadius="md"
+      boxShadow="base"
+      direction="column"
+      p={2}
+    >
       <Box mb={5}>
         <Heading>{title}</Heading>
       </Box>

@@ -1,10 +1,11 @@
 import { Center, Divider, Flex, Grid, Spinner } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import type { Metadata } from "../../api/package/metadata";
+import { Language } from "../../constants/languages";
 import type { UseRequestResponse } from "../../hooks/useRequest";
 import { GettingStarted } from "../GettingStarted";
 import { OperatorArea } from "../OperatorArea";
-import { PublisherArea } from "../PublisherArea";
+import { PackageHeader } from "../PackageHeader";
 
 interface PackageDetailsProps {
   assembly: UseRequestResponse<Assembly>;
@@ -18,7 +19,7 @@ interface PackageDetailsProps {
  * the Getting Started, Operator Area, and Publisher Area sections
  */
 export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
-  const targets: string[] = Object.keys(assembly.data?.targets ?? {});
+  const targets = Object.keys(assembly.data?.targets ?? {}) as Language[];
   const isLoading = assembly.loading || metadata.loading;
 
   if (isLoading || !metadata.data) {
@@ -30,19 +31,13 @@ export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
   }
 
   return (
-    <Grid
-      bg="gray.100"
-      borderBottom="1px solid"
-      borderColor="gray.200"
-      gap={2}
-      pt={4}
-      templateColumns="auto 1fr 1fr"
-      templateRows="1fr"
-    >
-      {/* Where to get logo? empty div to preserve layout for now */}
-      <div />
+    <Grid bg="gray.50" columnGap={4} p={4} templateColumns="2fr 1fr">
       <Flex direction="column">
-        <PublisherArea metadata={metadata.data} />
+        <PackageHeader
+          description={metadata.data.description}
+          tags={metadata.data.keywords}
+          title={metadata.data.name}
+        />
         <Divider borderColor="initial" color="gray.300" my={5} />
         <OperatorArea assembly={assembly.data} metadata={metadata.data} />
       </Flex>

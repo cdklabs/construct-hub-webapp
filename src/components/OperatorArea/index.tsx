@@ -56,7 +56,7 @@ export function OperatorArea({ assembly, metadata }: OperatorAreaProps) {
 
     return items.map((detail: string | ReactNode, i: number) => (
       <ListItem key={`detail-${i}`} listStyleType="none" my={1}>
-        <Text>{detail}</Text>
+        <Text color="gray.500">{detail}</Text>
       </ListItem>
     ));
   }, [metadata]);

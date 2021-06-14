@@ -7,6 +7,7 @@ import {
   MenuList,
   PropsOf,
 } from "@chakra-ui/react";
+import { forwardRef } from "react";
 import { NavLink } from "../NavLink";
 
 export interface DependencyDropownProps {
@@ -18,9 +19,19 @@ export interface DependencyDropownProps {
   };
 }
 
-function DropdownButton(props: PropsOf<typeof Button>) {
-  return <Button {...props} bg="white" size="md" variant="outline" />;
-}
+const DropdownButton = forwardRef((props: PropsOf<typeof Button>, ref) => {
+  return (
+    <Button
+      {...props}
+      bg="white"
+      ref={ref as any}
+      size="md"
+      variant="outline"
+    />
+  );
+});
+
+DropdownButton.displayName = "DropdownButton";
 
 export function DependencyDropdown({ dependencies }: DependencyDropownProps) {
   const depEntries = Object.entries(dependencies);
