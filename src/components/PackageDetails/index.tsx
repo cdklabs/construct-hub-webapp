@@ -22,7 +22,7 @@ export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
 
   if (isLoading || !metadata.data) {
     return (
-      <Center bg="gray.100" minH="200px">
+      <Center minH="200px">
         <Spinner size="xl" />
       </Center>
     );

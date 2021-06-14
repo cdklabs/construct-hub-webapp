@@ -72,15 +72,7 @@ export function PackageDocs({
   }, []);
 
   return (
-    <Grid
-      borderTop="1px solid"
-      // eslint-disable-next-line react/jsx-sort-props
-      borderColor="gray.100"
-      columnGap={4}
-      p={4}
-      templateColumns="1fr 4fr"
-      width="100%"
-    >
+    <Grid columnGap={4} pb={4} px={4} templateColumns="1fr 4fr" width="100%">
       {/* Max Height is also limited by header (72px) and marginTop + marginBottom (32px) */}
       <Card
         alignSelf="start"
