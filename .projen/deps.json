@@ -180,11 +180,11 @@
       "type": "runtime"
     },
     {
-      "name": "chakra-ui-markdown-renderer",
+      "name": "case",
       "type": "runtime"
     },
     {
-      "name": "codemaker",
+      "name": "chakra-ui-markdown-renderer",
       "type": "runtime"
     },
     {
