@@ -1,11 +1,20 @@
 import * as reflect from "jsii-reflect";
 import { PythonTranspile } from "../transpile/python";
+import { TypeScriptTranspile } from "../transpile/typescript";
 import { StaticFunction } from "./static-function";
 
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
   const transpile = new PythonTranspile(assembly.system);
+  test("snapshot", () => {
+    const staticFunction = new StaticFunction(transpile, findStaticFunction());
+    expect(staticFunction.render().render()).toMatchSnapshot();
+  });
+});
+
+describe("typescript", () => {
+  const transpile = new TypeScriptTranspile(assembly.system);
   test("snapshot", () => {
     const staticFunction = new StaticFunction(transpile, findStaticFunction());
     expect(staticFunction.render().render()).toMatchSnapshot();

@@ -13,3 +13,14 @@ describe("python", () => {
     expect(docs.render().render()).toMatchSnapshot();
   });
 });
+
+describe("typescript", () => {
+  test("snapshot", () => {
+    const docs = new Documentation({
+      language: "typescript",
+      assembly: assembly,
+      readme: true,
+    });
+    expect(docs.render().render()).toMatchSnapshot();
+  });
+});

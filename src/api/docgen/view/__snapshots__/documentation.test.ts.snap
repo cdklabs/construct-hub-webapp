@@ -2568,3 +2568,1885 @@ Rule applies to untagged images.
 
 "
 `;
+
+exports[`typescript snapshot 1`] = `
+"# Amazon ECR Construct Library
+<!--BEGIN STABILITY BANNER-->
+
+---
+
+![cfn-resources: Stable](https://img.shields.io/badge/cfn--resources-stable-success.svg?style=for-the-badge)
+
+![cdk-constructs: Stable](https://img.shields.io/badge/cdk--constructs-stable-success.svg?style=for-the-badge)
+
+---
+
+<!--END STABILITY BANNER-->
+
+This package contains constructs for working with Amazon Elastic Container Registry.
+
+## Repositories
+
+Define a repository by creating a new instance of \`Repository\`. A repository
+holds multiple verions of a single container image.
+
+\`\`\`ts
+const repository = new ecr.Repository(this, 'Repository');
+\`\`\`
+
+## Image scanning
+
+Amazon ECR image scanning helps in identifying software vulnerabilities in your container images. You can manually scan container images stored in Amazon ECR, or you can configure your repositories to scan images when you push them to a repository. To create a new repository to scan on push, simply enable \`imageScanOnPush\` in the properties
+
+\`\`\`ts
+const repository = new ecr.Repository(stack, 'Repo', {
+  imageScanOnPush: true
+});
+\`\`\`
+
+To create an \`onImageScanCompleted\` event rule and trigger the event target
+
+\`\`\`ts
+repository.onImageScanCompleted('ImageScanComplete')
+  .addTarget(...)
+\`\`\`
+
+### Authorization Token
+
+Besides the Amazon ECR APIs, ECR also allows the Docker CLI or a language-specific Docker library to push and pull
+images from an ECR repository. However, the Docker CLI does not support native IAM authentication methods and
+additional steps must be taken so that Amazon ECR can authenticate and authorize Docker push and pull requests.
+More information can be found at at [Registry Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth).
+
+A Docker authorization token can be obtained using the \`GetAuthorizationToken\` ECR API. The following code snippets
+grants an IAM user access to call this API.
+
+\`\`\`ts
+import * as iam from '@aws-cdk/aws-iam';
+import * as ecr from '@aws-cdk/aws-ecr';
+
+const user = new iam.User(this, 'User', { ... });
+ecr.AuthorizationToken.grantRead(user);
+\`\`\`
+
+If you access images in the [Public ECR Gallery](https://gallery.ecr.aws/) as well, it is recommended you authenticate to the registry to benefit from
+higher rate and bandwidth limits.
+
+> See \`Pricing\` in https://aws.amazon.com/blogs/aws/amazon-ecr-public-a-new-public-container-registry/ and [Service quotas](https://docs.aws.amazon.com/AmazonECR/latest/public/public-service-quotas.html).
+
+The following code snippet grants an IAM user access to retrieve an authorization token for the public gallery.
+
+\`\`\`ts
+import * as iam from '@aws-cdk/aws-iam';
+import * as ecr from '@aws-cdk/aws-ecr';
+
+const user = new iam.User(this, 'User', { ... });
+ecr.PublicGalleryAuthorizationToken.grantRead(user);
+\`\`\`
+
+This user can then proceed to login to the registry using one of the [authentication methods](https://docs.aws.amazon.com/AmazonECR/latest/public/public-registries.html#public-registry-auth).
+
+### Image tag immutability
+
+You can set tag immutability on images in our repository using the \`imageTagMutability\` construct prop.
+
+\`\`\`ts
+new ecr.Repository(stack, 'Repo', { imageTagMutability: ecr.TagMutability.IMMUTABLE });
+\`\`\`
+
+## Automatically clean up repositories
+
+You can set life cycle rules to automatically clean up old images from your
+repository. The first life cycle rule that matches an image will be applied
+against that image. For example, the following deletes images older than
+30 days, while keeping all images tagged with prod (note that the order
+is important here):
+
+\`\`\`ts
+repository.addLifecycleRule({ tagPrefixList: ['prod'], maxImageCount: 9999 });
+repository.addLifecycleRule({ maxImageAge: cdk.Duration.days(30) });
+\`\`\`
+
+# API Reference <span data-heading-title=\\"API Reference\\" data-heading-id=\\"api-reference\\"></span>
+
+## Constructs <span data-heading-title=\\"Constructs\\" data-heading-id=\\"constructs\\"></span>
+
+### CfnPublicRepository <span data-heading-title=\\"CfnPublicRepository\\" data-heading-id=\\"awscdkawsecrcfnpublicrepository\\"></span>
+
+- *Implements:* [\`@aws-cdk/core.IInspectable\`](#@aws-cdk/core.IInspectable)
+
+A CloudFormation \`AWS::ECR::PublicRepository\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryinitializer\\"></span>
+
+\`\`\`typescript
+import { CfnPublicRepository } from '@aws-cdk/aws-ecr'
+
+new CfnPublicRepository(scope: Construct, id: string, props?: CfnPublicRepositoryProps)
+\`\`\`
+
+##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryscope\\"></span>
+
+- *Type:* [\`@aws-cdk/core.Construct\`](#@aws-cdk/core.Construct)
+
+scope in which this resource is defined.
+
+---
+
+##### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+scoped id of the resource.
+
+---
+
+##### \`props\`<sup>Optional</sup> <span data-heading-title=\\"\`props\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryprops\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.CfnPublicRepositoryProps\`](#@aws-cdk/aws-ecr.CfnPublicRepositoryProps)
+
+resource properties.
+
+---
+
+#### Methods <span data-heading-title=\\"Methods\\" data-heading-id=\\"methods\\"></span>
+
+##### \`inspect\` <span data-heading-title=\\"\`inspect\`\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryinspect\\"></span>
+
+\`\`\`typescript
+public inspect(inspector: TreeInspector)
+\`\`\`
+
+###### \`inspector\`<sup>Required</sup> <span data-heading-title=\\"\`inspector\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryinspector\\"></span>
+
+- *Type:* [\`@aws-cdk/core.TreeInspector\`](#@aws-cdk/core.TreeInspector)
+
+tree inspector to collect and process attributes.
+
+---
+
+
+#### Properties <span data-heading-title=\\"Properties\\" data-heading-id=\\"properties\\"></span>
+
+##### \`attrArn\`<sup>Required</sup> <span data-heading-title=\\"\`attrArn\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryattrarn\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`tags\`<sup>Required</sup> <span data-heading-title=\\"\`tags\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorytags\\"></span>
+
+- *Type:* [\`@aws-cdk/core.TagManager\`](#@aws-cdk/core.TagManager)
+
+\`AWS::ECR::PublicRepository.Tags\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-tags](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-tags)
+
+---
+
+##### \`repositoryCatalogData\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryCatalogData\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryrepositorycatalogdata\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::PublicRepository.RepositoryCatalogData\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorycatalogdata](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorycatalogdata)
+
+---
+
+##### \`repositoryPolicyText\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryPolicyText\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryrepositorypolicytext\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::PublicRepository.RepositoryPolicyText\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorypolicytext](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorypolicytext)
+
+---
+
+##### \`repositoryName\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryrepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+\`AWS::ECR::PublicRepository.RepositoryName\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositoryname](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositoryname)
+
+---
+
+#### Constants <span data-heading-title=\\"Constants\\" data-heading-id=\\"constants\\"></span>
+
+##### \`CFN_RESOURCE_TYPE_NAME\` <span data-heading-title=\\"\`CFN_RESOURCE_TYPE_NAME\`\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorycfnresourcetypename\\"></span>
+
+- *Type:* \`string\`
+
+The CloudFormation resource type name for this resource class.
+
+---
+
+### CfnRegistryPolicy <span data-heading-title=\\"CfnRegistryPolicy\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicy\\"></span>
+
+- *Implements:* [\`@aws-cdk/core.IInspectable\`](#@aws-cdk/core.IInspectable)
+
+A CloudFormation \`AWS::ECR::RegistryPolicy\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-registrypolicy.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-registrypolicy.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyinitializer\\"></span>
+
+\`\`\`typescript
+import { CfnRegistryPolicy } from '@aws-cdk/aws-ecr'
+
+new CfnRegistryPolicy(scope: Construct, id: string, props: CfnRegistryPolicyProps)
+\`\`\`
+
+##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyscope\\"></span>
+
+- *Type:* [\`@aws-cdk/core.Construct\`](#@aws-cdk/core.Construct)
+
+scope in which this resource is defined.
+
+---
+
+##### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyid\\"></span>
+
+- *Type:* \`string\`
+
+scoped id of the resource.
+
+---
+
+##### \`props\`<sup>Required</sup> <span data-heading-title=\\"\`props\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyprops\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.CfnRegistryPolicyProps\`](#@aws-cdk/aws-ecr.CfnRegistryPolicyProps)
+
+resource properties.
+
+---
+
+#### Methods <span data-heading-title=\\"Methods\\" data-heading-id=\\"methods\\"></span>
+
+##### \`inspect\` <span data-heading-title=\\"\`inspect\`\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyinspect\\"></span>
+
+\`\`\`typescript
+public inspect(inspector: TreeInspector)
+\`\`\`
+
+###### \`inspector\`<sup>Required</sup> <span data-heading-title=\\"\`inspector\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyinspector\\"></span>
+
+- *Type:* [\`@aws-cdk/core.TreeInspector\`](#@aws-cdk/core.TreeInspector)
+
+tree inspector to collect and process attributes.
+
+---
+
+
+#### Properties <span data-heading-title=\\"Properties\\" data-heading-id=\\"properties\\"></span>
+
+##### \`attrRegistryId\`<sup>Required</sup> <span data-heading-title=\\"\`attrRegistryId\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyattrregistryid\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`policyText\`<sup>Required</sup> <span data-heading-title=\\"\`policyText\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicypolicytext\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::RegistryPolicy.PolicyText\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-registrypolicy.html#cfn-ecr-registrypolicy-policytext](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-registrypolicy.html#cfn-ecr-registrypolicy-policytext)
+
+---
+
+#### Constants <span data-heading-title=\\"Constants\\" data-heading-id=\\"constants\\"></span>
+
+##### \`CFN_RESOURCE_TYPE_NAME\` <span data-heading-title=\\"\`CFN_RESOURCE_TYPE_NAME\`\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicycfnresourcetypename\\"></span>
+
+- *Type:* \`string\`
+
+The CloudFormation resource type name for this resource class.
+
+---
+
+### CfnReplicationConfiguration <span data-heading-title=\\"CfnReplicationConfiguration\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfiguration\\"></span>
+
+- *Implements:* [\`@aws-cdk/core.IInspectable\`](#@aws-cdk/core.IInspectable)
+
+A CloudFormation \`AWS::ECR::ReplicationConfiguration\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-replicationconfiguration.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-replicationconfiguration.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationinitializer\\"></span>
+
+\`\`\`typescript
+import { CfnReplicationConfiguration } from '@aws-cdk/aws-ecr'
+
+new CfnReplicationConfiguration(scope: Construct, id: string, props: CfnReplicationConfigurationProps)
+\`\`\`
+
+##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationscope\\"></span>
+
+- *Type:* [\`@aws-cdk/core.Construct\`](#@aws-cdk/core.Construct)
+
+scope in which this resource is defined.
+
+---
+
+##### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationid\\"></span>
+
+- *Type:* \`string\`
+
+scoped id of the resource.
+
+---
+
+##### \`props\`<sup>Required</sup> <span data-heading-title=\\"\`props\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationprops\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.CfnReplicationConfigurationProps\`](#@aws-cdk/aws-ecr.CfnReplicationConfigurationProps)
+
+resource properties.
+
+---
+
+#### Methods <span data-heading-title=\\"Methods\\" data-heading-id=\\"methods\\"></span>
+
+##### \`inspect\` <span data-heading-title=\\"\`inspect\`\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationinspect\\"></span>
+
+\`\`\`typescript
+public inspect(inspector: TreeInspector)
+\`\`\`
+
+###### \`inspector\`<sup>Required</sup> <span data-heading-title=\\"\`inspector\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationinspector\\"></span>
+
+- *Type:* [\`@aws-cdk/core.TreeInspector\`](#@aws-cdk/core.TreeInspector)
+
+tree inspector to collect and process attributes.
+
+---
+
+
+#### Properties <span data-heading-title=\\"Properties\\" data-heading-id=\\"properties\\"></span>
+
+##### \`attrRegistryId\`<sup>Required</sup> <span data-heading-title=\\"\`attrRegistryId\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationattrregistryid\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`replicationConfiguration\`<sup>Required</sup> <span data-heading-title=\\"\`replicationConfiguration\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationconfiguration\\"></span>
+
+- *Type:* [\`@aws-cdk/core.IResolvable\`](#@aws-cdk/core.IResolvable) | [\`@aws-cdk/aws-ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty\`](#@aws-cdk/aws-ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty)
+
+\`AWS::ECR::ReplicationConfiguration.ReplicationConfiguration\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-replicationconfiguration.html#cfn-ecr-replicationconfiguration-replicationconfiguration](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-replicationconfiguration.html#cfn-ecr-replicationconfiguration-replicationconfiguration)
+
+---
+
+#### Constants <span data-heading-title=\\"Constants\\" data-heading-id=\\"constants\\"></span>
+
+##### \`CFN_RESOURCE_TYPE_NAME\` <span data-heading-title=\\"\`CFN_RESOURCE_TYPE_NAME\`\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationcfnresourcetypename\\"></span>
+
+- *Type:* \`string\`
+
+The CloudFormation resource type name for this resource class.
+
+---
+
+### CfnRepository <span data-heading-title=\\"CfnRepository\\" data-heading-id=\\"awscdkawsecrcfnrepository\\"></span>
+
+- *Implements:* [\`@aws-cdk/core.IInspectable\`](#@aws-cdk/core.IInspectable)
+
+A CloudFormation \`AWS::ECR::Repository\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"awscdkawsecrcfnrepositoryinitializer\\"></span>
+
+\`\`\`typescript
+import { CfnRepository } from '@aws-cdk/aws-ecr'
+
+new CfnRepository(scope: Construct, id: string, props?: CfnRepositoryProps)
+\`\`\`
+
+##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryscope\\"></span>
+
+- *Type:* [\`@aws-cdk/core.Construct\`](#@aws-cdk/core.Construct)
+
+scope in which this resource is defined.
+
+---
+
+##### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+scoped id of the resource.
+
+---
+
+##### \`props\`<sup>Optional</sup> <span data-heading-title=\\"\`props\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryprops\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.CfnRepositoryProps\`](#@aws-cdk/aws-ecr.CfnRepositoryProps)
+
+resource properties.
+
+---
+
+#### Methods <span data-heading-title=\\"Methods\\" data-heading-id=\\"methods\\"></span>
+
+##### \`inspect\` <span data-heading-title=\\"\`inspect\`\\" data-heading-id=\\"awscdkawsecrcfnrepositoryinspect\\"></span>
+
+\`\`\`typescript
+public inspect(inspector: TreeInspector)
+\`\`\`
+
+###### \`inspector\`<sup>Required</sup> <span data-heading-title=\\"\`inspector\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryinspector\\"></span>
+
+- *Type:* [\`@aws-cdk/core.TreeInspector\`](#@aws-cdk/core.TreeInspector)
+
+tree inspector to collect and process attributes.
+
+---
+
+
+#### Properties <span data-heading-title=\\"Properties\\" data-heading-id=\\"properties\\"></span>
+
+##### \`attrArn\`<sup>Required</sup> <span data-heading-title=\\"\`attrArn\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryattrarn\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`attrRepositoryUri\`<sup>Required</sup> <span data-heading-title=\\"\`attrRepositoryUri\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryattrrepositoryuri\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`tags\`<sup>Required</sup> <span data-heading-title=\\"\`tags\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorytags\\"></span>
+
+- *Type:* [\`@aws-cdk/core.TagManager\`](#@aws-cdk/core.TagManager)
+
+\`AWS::ECR::Repository.Tags\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-tags](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-tags)
+
+---
+
+##### \`encryptionConfiguration\`<sup>Required</sup> <span data-heading-title=\\"\`encryptionConfiguration\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryencryptionconfiguration\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::Repository.EncryptionConfiguration\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-encryptionconfiguration](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-encryptionconfiguration)
+
+---
+
+##### \`imageScanningConfiguration\`<sup>Required</sup> <span data-heading-title=\\"\`imageScanningConfiguration\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryimagescanningconfiguration\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::Repository.ImageScanningConfiguration\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-imagescanningconfiguration](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-imagescanningconfiguration)
+
+---
+
+##### \`repositoryPolicyText\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryPolicyText\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryrepositorypolicytext\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::Repository.RepositoryPolicyText\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-repositorypolicytext](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-repositorypolicytext)
+
+---
+
+##### \`imageTagMutability\`<sup>Optional</sup> <span data-heading-title=\\"\`imageTagMutability\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryimagetagmutability\\"></span>
+
+- *Type:* \`string\`
+
+\`AWS::ECR::Repository.ImageTagMutability\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-imagetagmutability](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-imagetagmutability)
+
+---
+
+##### \`lifecyclePolicy\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecyclePolicy\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorylifecyclepolicy\\"></span>
+
+- *Type:* [\`@aws-cdk/core.IResolvable\`](#@aws-cdk/core.IResolvable) | [\`@aws-cdk/aws-ecr.CfnRepository.LifecyclePolicyProperty\`](#@aws-cdk/aws-ecr.CfnRepository.LifecyclePolicyProperty)
+
+\`AWS::ECR::Repository.LifecyclePolicy\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-lifecyclepolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-lifecyclepolicy)
+
+---
+
+##### \`repositoryName\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryrepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+\`AWS::ECR::Repository.RepositoryName\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-repositoryname](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-repositoryname)
+
+---
+
+#### Constants <span data-heading-title=\\"Constants\\" data-heading-id=\\"constants\\"></span>
+
+##### \`CFN_RESOURCE_TYPE_NAME\` <span data-heading-title=\\"\`CFN_RESOURCE_TYPE_NAME\`\\" data-heading-id=\\"awscdkawsecrcfnrepositorycfnresourcetypename\\"></span>
+
+- *Type:* \`string\`
+
+The CloudFormation resource type name for this resource class.
+
+---
+
+### Repository <span data-heading-title=\\"Repository\\" data-heading-id=\\"awscdkawsecrrepository\\"></span>
+
+Define an ECR repository.
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"awscdkawsecrrepositoryinitializer\\"></span>
+
+\`\`\`typescript
+import { Repository } from '@aws-cdk/aws-ecr'
+
+new Repository(scope: Construct, id: string, props?: RepositoryProps)
+\`\`\`
+
+##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryscope\\"></span>
+
+- *Type:* [\`constructs.Construct\`](#constructs.Construct)
+
+---
+
+##### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`props\`<sup>Optional</sup> <span data-heading-title=\\"\`props\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryprops\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.RepositoryProps\`](#@aws-cdk/aws-ecr.RepositoryProps)
+
+---
+
+#### Methods <span data-heading-title=\\"Methods\\" data-heading-id=\\"methods\\"></span>
+
+##### \`addLifecycleRule\` <span data-heading-title=\\"\`addLifecycleRule\`\\" data-heading-id=\\"awscdkawsecrrepositoryaddlifecyclerule\\"></span>
+
+\`\`\`typescript
+public addLifecycleRule(rule: LifecycleRule)
+\`\`\`
+
+###### \`rule\`<sup>Required</sup> <span data-heading-title=\\"\`rule\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryrule\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.LifecycleRule\`](#@aws-cdk/aws-ecr.LifecycleRule)
+
+---
+
+##### \`addToResourcePolicy\` <span data-heading-title=\\"\`addToResourcePolicy\`\\" data-heading-id=\\"awscdkawsecrrepositoryaddtoresourcepolicy\\"></span>
+
+\`\`\`typescript
+public addToResourcePolicy(statement: PolicyStatement)
+\`\`\`
+
+###### \`statement\`<sup>Required</sup> <span data-heading-title=\\"\`statement\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorystatement\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.PolicyStatement\`](#@aws-cdk/aws-iam.PolicyStatement)
+
+---
+
+#### Static Functions <span data-heading-title=\\"Static Functions\\" data-heading-id=\\"static-functions\\"></span>
+
+##### \`arnForLocalRepository\` <span data-heading-title=\\"\`arnForLocalRepository\`\\" data-heading-id=\\"awscdkawsecrrepositoryarnforlocalrepository\\"></span>
+
+\`\`\`typescript
+import { Repository } from '@aws-cdk/aws-ecr'
+
+Repository.arnForLocalRepository(repositoryName: string, scope: IConstruct, account?: string)
+\`\`\`
+
+###### \`repositoryName\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryrepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+###### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryscope\\"></span>
+
+- *Type:* [\`constructs.IConstruct\`](#constructs.IConstruct)
+
+---
+
+###### \`account\`<sup>Optional</sup> <span data-heading-title=\\"\`account\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryaccount\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`fromRepositoryArn\` <span data-heading-title=\\"\`fromRepositoryArn\`\\" data-heading-id=\\"awscdkawsecrrepositoryfromrepositoryarn\\"></span>
+
+\`\`\`typescript
+import { Repository } from '@aws-cdk/aws-ecr'
+
+Repository.fromRepositoryArn(scope: Construct, id: string, repositoryArn: string)
+\`\`\`
+
+###### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryscope\\"></span>
+
+- *Type:* [\`constructs.Construct\`](#constructs.Construct)
+
+---
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+###### \`repositoryArn\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryArn\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryrepositoryarn\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`fromRepositoryAttributes\` <span data-heading-title=\\"\`fromRepositoryAttributes\`\\" data-heading-id=\\"awscdkawsecrrepositoryfromrepositoryattributes\\"></span>
+
+\`\`\`typescript
+import { Repository } from '@aws-cdk/aws-ecr'
+
+Repository.fromRepositoryAttributes(scope: Construct, id: string, attrs: RepositoryAttributes)
+\`\`\`
+
+###### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryscope\\"></span>
+
+- *Type:* [\`constructs.Construct\`](#constructs.Construct)
+
+---
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+###### \`attrs\`<sup>Required</sup> <span data-heading-title=\\"\`attrs\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryattrs\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.RepositoryAttributes\`](#@aws-cdk/aws-ecr.RepositoryAttributes)
+
+---
+
+##### \`fromRepositoryName\` <span data-heading-title=\\"\`fromRepositoryName\`\\" data-heading-id=\\"awscdkawsecrrepositoryfromrepositoryname\\"></span>
+
+\`\`\`typescript
+import { Repository } from '@aws-cdk/aws-ecr'
+
+Repository.fromRepositoryName(scope: Construct, id: string, repositoryName: string)
+\`\`\`
+
+###### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryscope\\"></span>
+
+- *Type:* [\`constructs.Construct\`](#constructs.Construct)
+
+---
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+###### \`repositoryName\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryrepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+#### Properties <span data-heading-title=\\"Properties\\" data-heading-id=\\"properties\\"></span>
+
+##### \`repositoryArn\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryArn\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryrepositoryarn\\"></span>
+
+- *Type:* \`string\`
+
+The ARN of the repository.
+
+---
+
+##### \`repositoryName\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryrepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+The name of the repository.
+
+---
+
+
+### RepositoryBase <span data-heading-title=\\"RepositoryBase\\" data-heading-id=\\"awscdkawsecrrepositorybase\\"></span>
+
+- *Implements:* [\`@aws-cdk/aws-ecr.IRepository\`](#@aws-cdk/aws-ecr.IRepository)
+
+Base class for ECR repository.
+
+Reused between imported repositories and owned repositories.
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"awscdkawsecrrepositorybaseinitializer\\"></span>
+
+\`\`\`typescript
+import { RepositoryBase } from '@aws-cdk/aws-ecr'
+
+new RepositoryBase(scope: Construct, id: string, props?: ResourceProps)
+\`\`\`
+
+##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasescope\\"></span>
+
+- *Type:* [\`constructs.Construct\`](#constructs.Construct)
+
+---
+
+##### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseid\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`props\`<sup>Optional</sup> <span data-heading-title=\\"\`props\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseprops\\"></span>
+
+- *Type:* [\`@aws-cdk/core.ResourceProps\`](#@aws-cdk/core.ResourceProps)
+
+---
+
+#### Methods <span data-heading-title=\\"Methods\\" data-heading-id=\\"methods\\"></span>
+
+##### \`addToResourcePolicy\` <span data-heading-title=\\"\`addToResourcePolicy\`\\" data-heading-id=\\"awscdkawsecrrepositorybaseaddtoresourcepolicy\\"></span>
+
+\`\`\`typescript
+public addToResourcePolicy(statement: PolicyStatement)
+\`\`\`
+
+###### \`statement\`<sup>Required</sup> <span data-heading-title=\\"\`statement\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasestatement\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.PolicyStatement\`](#@aws-cdk/aws-iam.PolicyStatement)
+
+---
+
+##### \`grant\` <span data-heading-title=\\"\`grant\`\\" data-heading-id=\\"awscdkawsecrrepositorybasegrant\\"></span>
+
+\`\`\`typescript
+public grant(grantee: IGrantable, actions: string)
+\`\`\`
+
+###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasegrantee\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+
+---
+
+###### \`actions\`<sup>Required</sup> <span data-heading-title=\\"\`actions\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseactions\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`grantPull\` <span data-heading-title=\\"\`grantPull\`\\" data-heading-id=\\"awscdkawsecrrepositorybasegrantpull\\"></span>
+
+\`\`\`typescript
+public grantPull(grantee: IGrantable)
+\`\`\`
+
+###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasegrantee\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+
+---
+
+##### \`grantPullPush\` <span data-heading-title=\\"\`grantPullPush\`\\" data-heading-id=\\"awscdkawsecrrepositorybasegrantpullpush\\"></span>
+
+\`\`\`typescript
+public grantPullPush(grantee: IGrantable)
+\`\`\`
+
+###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasegrantee\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+
+---
+
+##### \`onCloudTrailEvent\` <span data-heading-title=\\"\`onCloudTrailEvent\`\\" data-heading-id=\\"awscdkawsecrrepositorybaseoncloudtrailevent\\"></span>
+
+\`\`\`typescript
+public onCloudTrailEvent(id: string, options?: OnEventOptions)
+\`\`\`
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseid\\"></span>
+
+- *Type:* \`string\`
+
+The id of the rule.
+
+---
+
+###### \`options\`<sup>Optional</sup> <span data-heading-title=\\"\`options\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseoptions\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-events.OnEventOptions\`](#@aws-cdk/aws-events.OnEventOptions)
+
+Options for adding the rule.
+
+---
+
+##### \`onCloudTrailImagePushed\` <span data-heading-title=\\"\`onCloudTrailImagePushed\`\\" data-heading-id=\\"awscdkawsecrrepositorybaseoncloudtrailimagepushed\\"></span>
+
+\`\`\`typescript
+public onCloudTrailImagePushed(id: string, options?: OnCloudTrailImagePushedOptions)
+\`\`\`
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseid\\"></span>
+
+- *Type:* \`string\`
+
+The id of the rule.
+
+---
+
+###### \`options\`<sup>Optional</sup> <span data-heading-title=\\"\`options\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseoptions\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.OnCloudTrailImagePushedOptions\`](#@aws-cdk/aws-ecr.OnCloudTrailImagePushedOptions)
+
+Options for adding the rule.
+
+---
+
+##### \`onEvent\` <span data-heading-title=\\"\`onEvent\`\\" data-heading-id=\\"awscdkawsecrrepositorybaseonevent\\"></span>
+
+\`\`\`typescript
+public onEvent(id: string, options?: OnEventOptions)
+\`\`\`
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseid\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+###### \`options\`<sup>Optional</sup> <span data-heading-title=\\"\`options\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseoptions\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-events.OnEventOptions\`](#@aws-cdk/aws-events.OnEventOptions)
+
+---
+
+##### \`onImageScanCompleted\` <span data-heading-title=\\"\`onImageScanCompleted\`\\" data-heading-id=\\"awscdkawsecrrepositorybaseonimagescancompleted\\"></span>
+
+\`\`\`typescript
+public onImageScanCompleted(id: string, options?: OnImageScanCompletedOptions)
+\`\`\`
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseid\\"></span>
+
+- *Type:* \`string\`
+
+The id of the rule.
+
+---
+
+###### \`options\`<sup>Optional</sup> <span data-heading-title=\\"\`options\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseoptions\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.OnImageScanCompletedOptions\`](#@aws-cdk/aws-ecr.OnImageScanCompletedOptions)
+
+Options for adding the rule.
+
+---
+
+##### \`repositoryUriForDigest\` <span data-heading-title=\\"\`repositoryUriForDigest\`\\" data-heading-id=\\"awscdkawsecrrepositorybaserepositoryurifordigest\\"></span>
+
+\`\`\`typescript
+public repositoryUriForDigest(digest?: string)
+\`\`\`
+
+###### \`digest\`<sup>Optional</sup> <span data-heading-title=\\"\`digest\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasedigest\\"></span>
+
+- *Type:* \`string\`
+
+Optional image digest.
+
+---
+
+##### \`repositoryUriForTag\` <span data-heading-title=\\"\`repositoryUriForTag\`\\" data-heading-id=\\"awscdkawsecrrepositorybaserepositoryurifortag\\"></span>
+
+\`\`\`typescript
+public repositoryUriForTag(tag?: string)
+\`\`\`
+
+###### \`tag\`<sup>Optional</sup> <span data-heading-title=\\"\`tag\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasetag\\"></span>
+
+- *Type:* \`string\`
+
+Optional image tag.
+
+---
+
+
+#### Properties <span data-heading-title=\\"Properties\\" data-heading-id=\\"properties\\"></span>
+
+##### \`repositoryArn\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryArn\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaserepositoryarn\\"></span>
+
+- *Type:* \`string\`
+
+The ARN of the repository.
+
+---
+
+##### \`repositoryName\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaserepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+The name of the repository.
+
+---
+
+##### \`repositoryUri\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryUri\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaserepositoryuri\\"></span>
+
+- *Type:* \`string\`
+
+The URI of this repository (represents the latest image):.
+
+ACCOUNT.dkr.ecr.REGION.amazonaws.com/REPOSITORY
+
+---
+
+
+## Structs <span data-heading-title=\\"Structs\\" data-heading-id=\\"structs\\"></span>
+
+### CfnPublicRepositoryProps <span data-heading-title=\\"CfnPublicRepositoryProps\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryprops\\"></span>
+
+Properties for defining a \`AWS::ECR::PublicRepository\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { CfnPublicRepositoryProps } from '@aws-cdk/aws-ecr'
+
+new CfnPublicRepositoryProps(repositoryCatalogData?: any, repositoryName?: string, repositoryPolicyText?: any, tags?: CfnTag[])
+\`\`\`
+
+##### \`repositoryCatalogData\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryCatalogData\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositorycatalogdata\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::PublicRepository.RepositoryCatalogData\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorycatalogdata](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorycatalogdata)
+
+---
+
+##### \`repositoryName\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+\`AWS::ECR::PublicRepository.RepositoryName\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositoryname](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositoryname)
+
+---
+
+##### \`repositoryPolicyText\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryPolicyText\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositorypolicytext\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::PublicRepository.RepositoryPolicyText\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorypolicytext](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorypolicytext)
+
+---
+
+##### \`tags\`<sup>Optional</sup> <span data-heading-title=\\"\`tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropstags\\"></span>
+
+- *Type:* [\`@aws-cdk/core.CfnTag\`](#@aws-cdk/core.CfnTag)[]
+
+\`AWS::ECR::PublicRepository.Tags\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-tags](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-tags)
+
+---
+
+### CfnRegistryPolicyProps <span data-heading-title=\\"CfnRegistryPolicyProps\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyprops\\"></span>
+
+Properties for defining a \`AWS::ECR::RegistryPolicy\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-registrypolicy.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-registrypolicy.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { CfnRegistryPolicyProps } from '@aws-cdk/aws-ecr'
+
+new CfnRegistryPolicyProps(policyText: any)
+\`\`\`
+
+##### \`policyText\`<sup>Required</sup> <span data-heading-title=\\"\`policyText\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicypropspolicytext\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::RegistryPolicy.PolicyText\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-registrypolicy.html#cfn-ecr-registrypolicy-policytext](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-registrypolicy.html#cfn-ecr-registrypolicy-policytext)
+
+---
+
+### CfnReplicationConfigurationProps <span data-heading-title=\\"CfnReplicationConfigurationProps\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationprops\\"></span>
+
+Properties for defining a \`AWS::ECR::ReplicationConfiguration\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-replicationconfiguration.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-replicationconfiguration.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { CfnReplicationConfigurationProps } from '@aws-cdk/aws-ecr'
+
+new CfnReplicationConfigurationProps(replicationConfiguration: IResolvable | ReplicationConfigurationProperty)
+\`\`\`
+
+##### \`replicationConfiguration\`<sup>Required</sup> <span data-heading-title=\\"\`replicationConfiguration\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationpropsreplicationconfiguration\\"></span>
+
+- *Type:* [\`@aws-cdk/core.IResolvable\`](#@aws-cdk/core.IResolvable) | [\`@aws-cdk/aws-ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty\`](#@aws-cdk/aws-ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty)
+
+\`AWS::ECR::ReplicationConfiguration.ReplicationConfiguration\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-replicationconfiguration.html#cfn-ecr-replicationconfiguration-replicationconfiguration](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-replicationconfiguration.html#cfn-ecr-replicationconfiguration-replicationconfiguration)
+
+---
+
+### CfnRepositoryProps <span data-heading-title=\\"CfnRepositoryProps\\" data-heading-id=\\"awscdkawsecrcfnrepositoryprops\\"></span>
+
+Properties for defining a \`AWS::ECR::Repository\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { CfnRepositoryProps } from '@aws-cdk/aws-ecr'
+
+new CfnRepositoryProps(encryptionConfiguration?: any, imageScanningConfiguration?: any, imageTagMutability?: string, lifecyclePolicy?: IResolvable | LifecyclePolicyProperty, repositoryName?: string, repositoryPolicyText?: any, tags?: CfnTag[])
+\`\`\`
+
+##### \`encryptionConfiguration\`<sup>Optional</sup> <span data-heading-title=\\"\`encryptionConfiguration\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropsencryptionconfiguration\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::Repository.EncryptionConfiguration\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-encryptionconfiguration](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-encryptionconfiguration)
+
+---
+
+##### \`imageScanningConfiguration\`<sup>Optional</sup> <span data-heading-title=\\"\`imageScanningConfiguration\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropsimagescanningconfiguration\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::Repository.ImageScanningConfiguration\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-imagescanningconfiguration](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-imagescanningconfiguration)
+
+---
+
+##### \`imageTagMutability\`<sup>Optional</sup> <span data-heading-title=\\"\`imageTagMutability\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropsimagetagmutability\\"></span>
+
+- *Type:* \`string\`
+
+\`AWS::ECR::Repository.ImageTagMutability\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-imagetagmutability](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-imagetagmutability)
+
+---
+
+##### \`lifecyclePolicy\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecyclePolicy\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropslifecyclepolicy\\"></span>
+
+- *Type:* [\`@aws-cdk/core.IResolvable\`](#@aws-cdk/core.IResolvable) | [\`@aws-cdk/aws-ecr.CfnRepository.LifecyclePolicyProperty\`](#@aws-cdk/aws-ecr.CfnRepository.LifecyclePolicyProperty)
+
+\`AWS::ECR::Repository.LifecyclePolicy\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-lifecyclepolicy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-lifecyclepolicy)
+
+---
+
+##### \`repositoryName\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropsrepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+\`AWS::ECR::Repository.RepositoryName\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-repositoryname](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-repositoryname)
+
+---
+
+##### \`repositoryPolicyText\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryPolicyText\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropsrepositorypolicytext\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::Repository.RepositoryPolicyText\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-repositorypolicytext](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-repositorypolicytext)
+
+---
+
+##### \`tags\`<sup>Optional</sup> <span data-heading-title=\\"\`tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropstags\\"></span>
+
+- *Type:* [\`@aws-cdk/core.CfnTag\`](#@aws-cdk/core.CfnTag)[]
+
+\`AWS::ECR::Repository.Tags\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-tags](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html#cfn-ecr-repository-tags)
+
+---
+
+### LifecyclePolicyProperty <span data-heading-title=\\"LifecyclePolicyProperty\\" data-heading-id=\\"awscdkawsecrcfnrepositorylifecyclepolicyproperty\\"></span>
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-repository-lifecyclepolicy.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-repository-lifecyclepolicy.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { LifecyclePolicyProperty } from '@aws-cdk/aws-ecr'
+
+new LifecyclePolicyProperty(lifecyclePolicyText?: string, registryId?: string)
+\`\`\`
+
+##### \`lifecyclePolicyText\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecyclePolicyText\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorylifecyclepolicypropertylifecyclepolicytext\\"></span>
+
+- *Type:* \`string\`
+
+\`CfnRepository.LifecyclePolicyProperty.LifecyclePolicyText\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-repository-lifecyclepolicy.html#cfn-ecr-repository-lifecyclepolicy-lifecyclepolicytext](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-repository-lifecyclepolicy.html#cfn-ecr-repository-lifecyclepolicy-lifecyclepolicytext)
+
+---
+
+##### \`registryId\`<sup>Optional</sup> <span data-heading-title=\\"\`registryId\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorylifecyclepolicypropertyregistryid\\"></span>
+
+- *Type:* \`string\`
+
+\`CfnRepository.LifecyclePolicyProperty.RegistryId\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-repository-lifecyclepolicy.html#cfn-ecr-repository-lifecyclepolicy-registryid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-repository-lifecyclepolicy.html#cfn-ecr-repository-lifecyclepolicy-registryid)
+
+---
+
+### LifecycleRule <span data-heading-title=\\"LifecycleRule\\" data-heading-id=\\"awscdkawsecrlifecyclerule\\"></span>
+
+An ECR life cycle rule.
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { LifecycleRule } from '@aws-cdk/aws-ecr'
+
+new LifecycleRule(description?: string, maxImageAge?: Duration, maxImageCount?: number, rulePriority?: number, tagPrefixList?: string[], tagStatus?: TagStatus)
+\`\`\`
+
+##### \`description\`<sup>Optional</sup> <span data-heading-title=\\"\`description\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecycleruledescription\\"></span>
+
+- *Type:* \`string\`
+- *Default:* No description
+
+Describes the purpose of the rule.
+
+---
+
+##### \`maxImageAge\`<sup>Optional</sup> <span data-heading-title=\\"\`maxImageAge\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecyclerulemaximageage\\"></span>
+
+- *Type:* [\`@aws-cdk/core.Duration\`](#@aws-cdk/core.Duration)
+
+The maximum age of images to retain. The value must represent a number of days.
+
+Specify exactly one of maxImageCount and maxImageAge.
+
+---
+
+##### \`maxImageCount\`<sup>Optional</sup> <span data-heading-title=\\"\`maxImageCount\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecyclerulemaximagecount\\"></span>
+
+- *Type:* \`number\`
+
+The maximum number of images to retain.
+
+Specify exactly one of maxImageCount and maxImageAge.
+
+---
+
+##### \`rulePriority\`<sup>Optional</sup> <span data-heading-title=\\"\`rulePriority\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecyclerulerulepriority\\"></span>
+
+- *Type:* \`number\`
+- *Default:* Automatically assigned
+
+Controls the order in which rules are evaluated (low to high).
+
+All rules must have a unique priority, where lower numbers have
+higher precedence. The first rule that matches is applied to an image.
+
+There can only be one rule with a tagStatus of Any, and it must have
+the highest rulePriority.
+
+All rules without a specified priority will have incrementing priorities
+automatically assigned to them, higher than any rules that DO have priorities.
+
+---
+
+##### \`tagPrefixList\`<sup>Optional</sup> <span data-heading-title=\\"\`tagPrefixList\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecycleruletagprefixlist\\"></span>
+
+- *Type:* \`string\`[]
+
+Select images that have ALL the given prefixes in their tag.
+
+Only if tagStatus == TagStatus.Tagged
+
+---
+
+##### \`tagStatus\`<sup>Optional</sup> <span data-heading-title=\\"\`tagStatus\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecycleruletagstatus\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.TagStatus\`](#@aws-cdk/aws-ecr.TagStatus)
+- *Default:* TagStatus.Tagged if tagPrefixList is given, TagStatus.Any otherwise
+
+Select images based on tags.
+
+Only one rule is allowed to select untagged images, and it must
+have the highest rulePriority.
+
+---
+
+### OnCloudTrailImagePushedOptions <span data-heading-title=\\"OnCloudTrailImagePushedOptions\\" data-heading-id=\\"awscdkawsecroncloudtrailimagepushedoptions\\"></span>
+
+Options for the onCloudTrailImagePushed method.
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { OnCloudTrailImagePushedOptions } from '@aws-cdk/aws-ecr'
+
+new OnCloudTrailImagePushedOptions(description?: string, eventPattern?: EventPattern, ruleName?: string, target?: IRuleTarget, imageTag?: string)
+\`\`\`
+
+##### \`description\`<sup>Optional</sup> <span data-heading-title=\\"\`description\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecroncloudtrailimagepushedoptionsdescription\\"></span>
+
+- *Type:* \`string\`
+- *Default:* No description
+
+A description of the rule's purpose.
+
+---
+
+##### \`eventPattern\`<sup>Optional</sup> <span data-heading-title=\\"\`eventPattern\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecroncloudtrailimagepushedoptionseventpattern\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-events.EventPattern\`](#@aws-cdk/aws-events.EventPattern)
+- *Default:* No additional filtering based on an event pattern.
+
+Additional restrictions for the event to route to the specified target.
+
+The method that generates the rule probably imposes some type of event
+filtering. The filtering implied by what you pass here is added
+on top of that filtering.
+
+> https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html
+
+---
+
+##### \`ruleName\`<sup>Optional</sup> <span data-heading-title=\\"\`ruleName\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecroncloudtrailimagepushedoptionsrulename\\"></span>
+
+- *Type:* \`string\`
+- *Default:* AWS CloudFormation generates a unique physical ID.
+
+A name for the rule.
+
+---
+
+##### \`target\`<sup>Optional</sup> <span data-heading-title=\\"\`target\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecroncloudtrailimagepushedoptionstarget\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-events.IRuleTarget\`](#@aws-cdk/aws-events.IRuleTarget)
+- *Default:* No target is added to the rule. Use \`addTarget()\` to add a target.
+
+The target to register for the event.
+
+---
+
+##### \`imageTag\`<sup>Optional</sup> <span data-heading-title=\\"\`imageTag\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecroncloudtrailimagepushedoptionsimagetag\\"></span>
+
+- *Type:* \`string\`
+- *Default:* Watch changes to all tags
+
+Only watch changes to this image tag.
+
+---
+
+### OnImageScanCompletedOptions <span data-heading-title=\\"OnImageScanCompletedOptions\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptions\\"></span>
+
+Options for the OnImageScanCompleted method.
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { OnImageScanCompletedOptions } from '@aws-cdk/aws-ecr'
+
+new OnImageScanCompletedOptions(description?: string, eventPattern?: EventPattern, ruleName?: string, target?: IRuleTarget, imageTags?: string[])
+\`\`\`
+
+##### \`description\`<sup>Optional</sup> <span data-heading-title=\\"\`description\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionsdescription\\"></span>
+
+- *Type:* \`string\`
+- *Default:* No description
+
+A description of the rule's purpose.
+
+---
+
+##### \`eventPattern\`<sup>Optional</sup> <span data-heading-title=\\"\`eventPattern\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionseventpattern\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-events.EventPattern\`](#@aws-cdk/aws-events.EventPattern)
+- *Default:* No additional filtering based on an event pattern.
+
+Additional restrictions for the event to route to the specified target.
+
+The method that generates the rule probably imposes some type of event
+filtering. The filtering implied by what you pass here is added
+on top of that filtering.
+
+> https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html
+
+---
+
+##### \`ruleName\`<sup>Optional</sup> <span data-heading-title=\\"\`ruleName\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionsrulename\\"></span>
+
+- *Type:* \`string\`
+- *Default:* AWS CloudFormation generates a unique physical ID.
+
+A name for the rule.
+
+---
+
+##### \`target\`<sup>Optional</sup> <span data-heading-title=\\"\`target\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionstarget\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-events.IRuleTarget\`](#@aws-cdk/aws-events.IRuleTarget)
+- *Default:* No target is added to the rule. Use \`addTarget()\` to add a target.
+
+The target to register for the event.
+
+---
+
+##### \`imageTags\`<sup>Optional</sup> <span data-heading-title=\\"\`imageTags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionsimagetags\\"></span>
+
+- *Type:* \`string\`[]
+- *Default:* Watch the changes to the repository with all image tags
+
+Only watch changes to the image tags spedified.
+
+Leave it undefined to watch the full repository.
+
+---
+
+### ReplicationConfigurationProperty <span data-heading-title=\\"ReplicationConfigurationProperty\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationconfigurationproperty\\"></span>
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationconfiguration.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationconfiguration.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { ReplicationConfigurationProperty } from '@aws-cdk/aws-ecr'
+
+new ReplicationConfigurationProperty(rules: IResolvable | IResolvable | ReplicationRuleProperty[])
+\`\`\`
+
+##### \`rules\`<sup>Required</sup> <span data-heading-title=\\"\`rules\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationconfigurationpropertyrules\\"></span>
+
+- *Type:* [\`@aws-cdk/core.IResolvable\`](#@aws-cdk/core.IResolvable) | [\`@aws-cdk/core.IResolvable\`](#@aws-cdk/core.IResolvable) | [\`@aws-cdk/aws-ecr.CfnReplicationConfiguration.ReplicationRuleProperty\`](#@aws-cdk/aws-ecr.CfnReplicationConfiguration.ReplicationRuleProperty)[]
+
+\`CfnReplicationConfiguration.ReplicationConfigurationProperty.Rules\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationconfiguration.html#cfn-ecr-replicationconfiguration-replicationconfiguration-rules](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationconfiguration.html#cfn-ecr-replicationconfiguration-replicationconfiguration-rules)
+
+---
+
+### ReplicationDestinationProperty <span data-heading-title=\\"ReplicationDestinationProperty\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationdestinationproperty\\"></span>
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationdestination.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationdestination.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { ReplicationDestinationProperty } from '@aws-cdk/aws-ecr'
+
+new ReplicationDestinationProperty(region: string, registryId: string)
+\`\`\`
+
+##### \`region\`<sup>Required</sup> <span data-heading-title=\\"\`region\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationdestinationpropertyregion\\"></span>
+
+- *Type:* \`string\`
+
+\`CfnReplicationConfiguration.ReplicationDestinationProperty.Region\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationdestination.html#cfn-ecr-replicationconfiguration-replicationdestination-region](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationdestination.html#cfn-ecr-replicationconfiguration-replicationdestination-region)
+
+---
+
+##### \`registryId\`<sup>Required</sup> <span data-heading-title=\\"\`registryId\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationdestinationpropertyregistryid\\"></span>
+
+- *Type:* \`string\`
+
+\`CfnReplicationConfiguration.ReplicationDestinationProperty.RegistryId\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationdestination.html#cfn-ecr-replicationconfiguration-replicationdestination-registryid](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationdestination.html#cfn-ecr-replicationconfiguration-replicationdestination-registryid)
+
+---
+
+### ReplicationRuleProperty <span data-heading-title=\\"ReplicationRuleProperty\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationruleproperty\\"></span>
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationrule.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationrule.html)
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { ReplicationRuleProperty } from '@aws-cdk/aws-ecr'
+
+new ReplicationRuleProperty(destinations: IResolvable | IResolvable | ReplicationDestinationProperty[])
+\`\`\`
+
+##### \`destinations\`<sup>Required</sup> <span data-heading-title=\\"\`destinations\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationrulepropertydestinations\\"></span>
+
+- *Type:* [\`@aws-cdk/core.IResolvable\`](#@aws-cdk/core.IResolvable) | [\`@aws-cdk/core.IResolvable\`](#@aws-cdk/core.IResolvable) | [\`@aws-cdk/aws-ecr.CfnReplicationConfiguration.ReplicationDestinationProperty\`](#@aws-cdk/aws-ecr.CfnReplicationConfiguration.ReplicationDestinationProperty)[]
+
+\`CfnReplicationConfiguration.ReplicationRuleProperty.Destinations\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationrule.html#cfn-ecr-replicationconfiguration-replicationrule-destinations](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecr-replicationconfiguration-replicationrule.html#cfn-ecr-replicationconfiguration-replicationrule-destinations)
+
+---
+
+### RepositoryAttributes <span data-heading-title=\\"RepositoryAttributes\\" data-heading-id=\\"awscdkawsecrrepositoryattributes\\"></span>
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { RepositoryAttributes } from '@aws-cdk/aws-ecr'
+
+new RepositoryAttributes(repositoryArn: string, repositoryName: string)
+\`\`\`
+
+##### \`repositoryArn\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryArn\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryattributesrepositoryarn\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`repositoryName\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryattributesrepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+### RepositoryProps <span data-heading-title=\\"RepositoryProps\\" data-heading-id=\\"awscdkawsecrrepositoryprops\\"></span>
+
+#### Initializer <span data-heading-title=\\"Initializer\\" data-heading-id=\\"object-objectinitializer\\"></span>
+
+\`\`\`typescript
+import { RepositoryProps } from '@aws-cdk/aws-ecr'
+
+new RepositoryProps(imageScanOnPush?: boolean, imageTagMutability?: TagMutability, lifecycleRegistryId?: string, lifecycleRules?: LifecycleRule[], removalPolicy?: RemovalPolicy, repositoryName?: string)
+\`\`\`
+
+##### \`imageScanOnPush\`<sup>Optional</sup> <span data-heading-title=\\"\`imageScanOnPush\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorypropsimagescanonpush\\"></span>
+
+- *Type:* \`boolean\`
+- *Default:* false
+
+Enable the scan on push when creating the repository.
+
+---
+
+##### \`imageTagMutability\`<sup>Optional</sup> <span data-heading-title=\\"\`imageTagMutability\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorypropsimagetagmutability\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.TagMutability\`](#@aws-cdk/aws-ecr.TagMutability)
+- *Default:* TagMutability.MUTABLE
+
+The tag mutability setting for the repository.
+
+If this parameter is omitted, the default setting of MUTABLE will be used which will allow image tags to be overwritten.
+
+---
+
+##### \`lifecycleRegistryId\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecycleRegistryId\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorypropslifecycleregistryid\\"></span>
+
+- *Type:* \`string\`
+- *Default:* The default registry is assumed.
+
+The AWS account ID associated with the registry that contains the repository.
+
+> https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_PutLifecyclePolicy.html
+
+---
+
+##### \`lifecycleRules\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecycleRules\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorypropslifecyclerules\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.LifecycleRule\`](#@aws-cdk/aws-ecr.LifecycleRule)[]
+- *Default:* No life cycle rules
+
+Life cycle rules to apply to this registry.
+
+---
+
+##### \`removalPolicy\`<sup>Optional</sup> <span data-heading-title=\\"\`removalPolicy\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorypropsremovalpolicy\\"></span>
+
+- *Type:* [\`@aws-cdk/core.RemovalPolicy\`](#@aws-cdk/core.RemovalPolicy)
+- *Default:* RemovalPolicy.Retain
+
+Determine what happens to the repository when the resource/stack is deleted.
+
+---
+
+##### \`repositoryName\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorypropsrepositoryname\\"></span>
+
+- *Type:* \`string\`
+- *Default:* Automatically generated name.
+
+Name for this repository.
+
+---
+
+## Classes <span data-heading-title=\\"Classes\\" data-heading-id=\\"classes\\"></span>
+
+### AuthorizationToken <span data-heading-title=\\"AuthorizationToken\\" data-heading-id=\\"awscdkawsecrauthorizationtoken\\"></span>
+
+Authorization token to access private ECR repositories in the current environment via Docker CLI.
+
+> https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html
+
+
+#### Static Functions <span data-heading-title=\\"Static Functions\\" data-heading-id=\\"static-functions\\"></span>
+
+##### \`grantRead\` <span data-heading-title=\\"\`grantRead\`\\" data-heading-id=\\"awscdkawsecrauthorizationtokengrantread\\"></span>
+
+\`\`\`typescript
+import { AuthorizationToken } from '@aws-cdk/aws-ecr'
+
+AuthorizationToken.grantRead(grantee: IGrantable)
+\`\`\`
+
+###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrauthorizationtokengrantee\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+
+---
+
+
+
+### PublicGalleryAuthorizationToken <span data-heading-title=\\"PublicGalleryAuthorizationToken\\" data-heading-id=\\"awscdkawsecrpublicgalleryauthorizationtoken\\"></span>
+
+Authorization token to access the global public ECR Gallery via Docker CLI.
+
+> https://docs.aws.amazon.com/AmazonECR/latest/public/public-registries.html#public-registry-auth
+
+
+#### Static Functions <span data-heading-title=\\"Static Functions\\" data-heading-id=\\"static-functions\\"></span>
+
+##### \`grantRead\` <span data-heading-title=\\"\`grantRead\`\\" data-heading-id=\\"awscdkawsecrpublicgalleryauthorizationtokengrantread\\"></span>
+
+\`\`\`typescript
+import { PublicGalleryAuthorizationToken } from '@aws-cdk/aws-ecr'
+
+PublicGalleryAuthorizationToken.grantRead(grantee: IGrantable)
+\`\`\`
+
+###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrpublicgalleryauthorizationtokengrantee\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+
+---
+
+
+
+## Protocols <span data-heading-title=\\"Protocols\\" data-heading-id=\\"protocols\\"></span>
+
+### IRepository <span data-heading-title=\\"IRepository\\" data-heading-id=\\"awscdkawsecrirepository\\"></span>
+
+- *Extends:* [\`@aws-cdk/core.IResource\`](#@aws-cdk/core.IResource)
+
+- *Implemented By:* [\`@aws-cdk/aws-ecr.Repository\`](#@aws-cdk/aws-ecr.Repository), [\`@aws-cdk/aws-ecr.RepositoryBase\`](#@aws-cdk/aws-ecr.RepositoryBase), [\`@aws-cdk/aws-ecr.IRepository\`](#@aws-cdk/aws-ecr.IRepository)
+
+Represents an ECR repository.
+
+#### Methods <span data-heading-title=\\"Methods\\" data-heading-id=\\"methods\\"></span>
+
+##### \`addToResourcePolicy\` <span data-heading-title=\\"\`addToResourcePolicy\`\\" data-heading-id=\\"awscdkawsecrirepositoryaddtoresourcepolicy\\"></span>
+
+\`\`\`typescript
+public addToResourcePolicy(statement: PolicyStatement)
+\`\`\`
+
+###### \`statement\`<sup>Required</sup> <span data-heading-title=\\"\`statement\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorystatement\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.PolicyStatement\`](#@aws-cdk/aws-iam.PolicyStatement)
+
+---
+
+##### \`grant\` <span data-heading-title=\\"\`grant\`\\" data-heading-id=\\"awscdkawsecrirepositorygrant\\"></span>
+
+\`\`\`typescript
+public grant(grantee: IGrantable, actions: string)
+\`\`\`
+
+###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorygrantee\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+
+---
+
+###### \`actions\`<sup>Required</sup> <span data-heading-title=\\"\`actions\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryactions\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+##### \`grantPull\` <span data-heading-title=\\"\`grantPull\`\\" data-heading-id=\\"awscdkawsecrirepositorygrantpull\\"></span>
+
+\`\`\`typescript
+public grantPull(grantee: IGrantable)
+\`\`\`
+
+###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorygrantee\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+
+---
+
+##### \`grantPullPush\` <span data-heading-title=\\"\`grantPullPush\`\\" data-heading-id=\\"awscdkawsecrirepositorygrantpullpush\\"></span>
+
+\`\`\`typescript
+public grantPullPush(grantee: IGrantable)
+\`\`\`
+
+###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorygrantee\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+
+---
+
+##### \`onCloudTrailEvent\` <span data-heading-title=\\"\`onCloudTrailEvent\`\\" data-heading-id=\\"awscdkawsecrirepositoryoncloudtrailevent\\"></span>
+
+\`\`\`typescript
+public onCloudTrailEvent(id: string, options?: OnEventOptions)
+\`\`\`
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+The id of the rule.
+
+---
+
+###### \`options\`<sup>Optional</sup> <span data-heading-title=\\"\`options\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryoptions\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-events.OnEventOptions\`](#@aws-cdk/aws-events.OnEventOptions)
+
+Options for adding the rule.
+
+---
+
+##### \`onCloudTrailImagePushed\` <span data-heading-title=\\"\`onCloudTrailImagePushed\`\\" data-heading-id=\\"awscdkawsecrirepositoryoncloudtrailimagepushed\\"></span>
+
+\`\`\`typescript
+public onCloudTrailImagePushed(id: string, options?: OnCloudTrailImagePushedOptions)
+\`\`\`
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+The id of the rule.
+
+---
+
+###### \`options\`<sup>Optional</sup> <span data-heading-title=\\"\`options\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryoptions\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.OnCloudTrailImagePushedOptions\`](#@aws-cdk/aws-ecr.OnCloudTrailImagePushedOptions)
+
+Options for adding the rule.
+
+---
+
+##### \`onEvent\` <span data-heading-title=\\"\`onEvent\`\\" data-heading-id=\\"awscdkawsecrirepositoryonevent\\"></span>
+
+\`\`\`typescript
+public onEvent(id: string, options?: OnEventOptions)
+\`\`\`
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+---
+
+###### \`options\`<sup>Optional</sup> <span data-heading-title=\\"\`options\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryoptions\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-events.OnEventOptions\`](#@aws-cdk/aws-events.OnEventOptions)
+
+---
+
+##### \`onImageScanCompleted\` <span data-heading-title=\\"\`onImageScanCompleted\`\\" data-heading-id=\\"awscdkawsecrirepositoryonimagescancompleted\\"></span>
+
+\`\`\`typescript
+public onImageScanCompleted(id: string, options?: OnImageScanCompletedOptions)
+\`\`\`
+
+###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryid\\"></span>
+
+- *Type:* \`string\`
+
+The id of the rule.
+
+---
+
+###### \`options\`<sup>Optional</sup> <span data-heading-title=\\"\`options\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryoptions\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-ecr.OnImageScanCompletedOptions\`](#@aws-cdk/aws-ecr.OnImageScanCompletedOptions)
+
+Options for adding the rule.
+
+---
+
+##### \`repositoryUriForDigest\` <span data-heading-title=\\"\`repositoryUriForDigest\`\\" data-heading-id=\\"awscdkawsecrirepositoryrepositoryurifordigest\\"></span>
+
+\`\`\`typescript
+public repositoryUriForDigest(digest?: string)
+\`\`\`
+
+###### \`digest\`<sup>Optional</sup> <span data-heading-title=\\"\`digest\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrirepositorydigest\\"></span>
+
+- *Type:* \`string\`
+
+Image digest to use (tools usually default to the image with the \\"latest\\" tag if omitted).
+
+---
+
+##### \`repositoryUriForTag\` <span data-heading-title=\\"\`repositoryUriForTag\`\\" data-heading-id=\\"awscdkawsecrirepositoryrepositoryurifortag\\"></span>
+
+\`\`\`typescript
+public repositoryUriForTag(tag?: string)
+\`\`\`
+
+###### \`tag\`<sup>Optional</sup> <span data-heading-title=\\"\`tag\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrirepositorytag\\"></span>
+
+- *Type:* \`string\`
+
+Image tag to use (tools usually default to \\"latest\\" if omitted).
+
+---
+
+#### Properties <span data-heading-title=\\"Properties\\" data-heading-id=\\"properties\\"></span>
+
+##### \`node\`<sup>Required</sup> <span data-heading-title=\\"\`node\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorynode\\"></span>
+
+- *Type:* [\`@aws-cdk/core.ConstructNode\`](#@aws-cdk/core.ConstructNode)
+
+The construct tree node for this construct.
+
+---
+
+##### \`env\`<sup>Required</sup> <span data-heading-title=\\"\`env\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryenv\\"></span>
+
+- *Type:* [\`@aws-cdk/core.ResourceEnvironment\`](#@aws-cdk/core.ResourceEnvironment)
+
+The environment this resource belongs to.
+
+For resources that are created and managed by the CDK
+(generally, those created by creating new class instances like Role, Bucket, etc.),
+this is always the same as the environment of the stack they belong to;
+however, for imported resources
+(those obtained from static methods like fromRoleArn, fromBucketName, etc.),
+that might be different than the stack they were imported into.
+
+---
+
+##### \`stack\`<sup>Required</sup> <span data-heading-title=\\"\`stack\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorystack\\"></span>
+
+- *Type:* [\`@aws-cdk/core.Stack\`](#@aws-cdk/core.Stack)
+
+The stack in which this resource is defined.
+
+---
+
+##### \`repositoryArn\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryArn\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryrepositoryarn\\"></span>
+
+- *Type:* \`string\`
+
+The ARN of the repository.
+
+---
+
+##### \`repositoryName\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryName\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryrepositoryname\\"></span>
+
+- *Type:* \`string\`
+
+The name of the repository.
+
+---
+
+##### \`repositoryUri\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryUri\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryrepositoryuri\\"></span>
+
+- *Type:* \`string\`
+
+The URI of this repository (represents the latest image):.
+
+ACCOUNT.dkr.ecr.REGION.amazonaws.com/REPOSITORY
+
+---
+
+## Enums <span data-heading-title=\\"Enums\\" data-heading-id=\\"enums\\"></span>
+
+### TagMutability <span data-heading-title=\\"TagMutability\\" data-heading-id=\\"tagmutability\\"></span>
+
+The tag mutability setting for your repository.
+
+#### \`MUTABLE\` <span data-heading-title=\\"\`MUTABLE\`\\" data-heading-id=\\"awscdkawsecrtagmutabilitymutable\\"></span>
+
+allow image tags to be overwritten.
+
+---
+
+
+#### \`IMMUTABLE\` <span data-heading-title=\\"\`IMMUTABLE\`\\" data-heading-id=\\"awscdkawsecrtagmutabilityimmutable\\"></span>
+
+all image tags within the repository will be immutable which will prevent them from being overwritten.
+
+---
+
+
+### TagStatus <span data-heading-title=\\"TagStatus\\" data-heading-id=\\"tagstatus\\"></span>
+
+Select images based on tags.
+
+#### \`ANY\` <span data-heading-title=\\"\`ANY\`\\" data-heading-id=\\"awscdkawsecrtagstatusany\\"></span>
+
+Rule applies to all images.
+
+---
+
+
+#### \`TAGGED\` <span data-heading-title=\\"\`TAGGED\`\\" data-heading-id=\\"awscdkawsecrtagstatustagged\\"></span>
+
+Rule applies to tagged images.
+
+---
+
+
+#### \`UNTAGGED\` <span data-heading-title=\\"\`UNTAGGED\`\\" data-heading-id=\\"awscdkawsecrtagstatusuntagged\\"></span>
+
+Rule applies to untagged images.
+
+---
+
+"
+`;
