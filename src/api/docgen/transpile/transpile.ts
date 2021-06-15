@@ -1,5 +1,4 @@
 import * as reflect from "jsii-reflect";
-import { Markdown } from "../render/markdown";
 
 /**
  * Outcome of transpiling a jsii struct.
@@ -115,21 +114,181 @@ export interface TranspiledType {
    * The language specific module fqn (mode + submodule).
    */
   readonly moduleFqn: string;
+  /**
+   * Simple name of the type.
+   */
+  readonly name: string;
+}
+
+/**
+ * Options for how to render a string representation of a type reference.
+ */
+export interface TranspiledTypeReferenceToStringOptions {
+  /**
+   * Type formatter.
+   */
+  typeFormatter?: (t: TranspiledType) => string;
+  /**
+   * String formatter.
+   */
+  stringFormatter?: (formatter: string) => string;
 }
 
 /**
  * Outcome of transpiling a jsii type reference.
  */
-export interface TranspiledTypeReference {
+export class TranspiledTypeReference {
   /**
-   * Markdown formatted representation.
+   * Create a type reference that reprensents a primitive.
    */
-  readonly markdown: string;
+  public static primitive(
+    transpile: Transpile,
+    ref: reflect.TypeReference,
+    primitive: string
+  ): TranspiledTypeReference {
+    return new TranspiledTypeReference(transpile, ref, primitive);
+  }
   /**
-   * The raw representation. Needed since type references are rendered
-   * inside code blocks, which don't support markdown formatting.
+   * Create a type reference that represents any type.
    */
-  readonly raw: string;
+  public static any(
+    transpile: Transpile,
+    ref: reflect.TypeReference
+  ): TranspiledTypeReference {
+    return new TranspiledTypeReference(transpile, ref, undefined, true);
+  }
+  /**
+   * Create a type reference that reprenets a concrete type.
+   */
+  public static type(
+    transpile: Transpile,
+    ref: reflect.TypeReference,
+    type: TranspiledType
+  ): TranspiledTypeReference {
+    return new TranspiledTypeReference(
+      transpile,
+      ref,
+      undefined,
+      undefined,
+      type
+    );
+  }
+  /**
+   * Create a type reference that reprenets an array of a type reference.
+   */
+  public static arrayOfType(
+    transpile: Transpile,
+    ref: reflect.TypeReference,
+    tf: TranspiledTypeReference
+  ): TranspiledTypeReference {
+    return new TranspiledTypeReference(
+      transpile,
+      ref,
+      undefined,
+      undefined,
+      undefined,
+      tf
+    );
+  }
+  /**
+   * Create a type reference that reprenets a map of a type reference.
+   */
+  public static mapOfType(
+    transpile: Transpile,
+    ref: reflect.TypeReference,
+    tf: TranspiledTypeReference
+  ): TranspiledTypeReference {
+    return new TranspiledTypeReference(
+      transpile,
+      ref,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      tf
+    );
+  }
+  /**
+   * Create a type reference that reprenets a union of a type references.
+   */
+  public static unionOfTypes(
+    transpile: Transpile,
+    ref: reflect.TypeReference,
+    tfs: TranspiledTypeReference[]
+  ): TranspiledTypeReference {
+    return new TranspiledTypeReference(
+      transpile,
+      ref,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      tfs
+    );
+  }
+
+  private constructor(
+    /**
+     * A transpiler
+     */
+    private readonly transpile: Transpile,
+    /**
+     * The original type reference.
+     */
+    private readonly ref: reflect.TypeReference,
+    /**
+     * Primitive type ref.
+     */
+    private readonly primitive?: string,
+    /**
+     * 'Any' type ref
+     */
+    private readonly isAny?: boolean,
+    /**
+     * Concrete type.
+     */
+    private readonly type?: TranspiledType,
+    /**
+     * Array of ref.
+     */
+    private readonly arrayOfType?: TranspiledTypeReference,
+    /**
+     * Map of ref.
+     */
+    private readonly mapOfType?: TranspiledTypeReference,
+    /**
+     * Union of ref.
+     */
+    private readonly unionOfTypes?: TranspiledTypeReference[]
+  ) {}
+
+  public toString(options?: TranspiledTypeReferenceToStringOptions): string {
+    const tFormatter = options?.typeFormatter ?? ((t) => t.fqn);
+    const sFormatter = options?.stringFormatter ?? ((s) => s);
+    if (this.primitive) {
+      return sFormatter(this.primitive);
+    }
+    if (this.type) {
+      return tFormatter(this.type);
+    }
+    if (this.isAny) {
+      return sFormatter(this.transpile.any());
+    }
+    if (this.arrayOfType) {
+      const ref = this.arrayOfType.toString(options);
+      return this.transpile.listOf(ref);
+    }
+    if (this.mapOfType) {
+      const ref = this.mapOfType.toString(options);
+      return this.transpile.mapOf(ref);
+    }
+    if (this.unionOfTypes) {
+      const refs = this.unionOfTypes.map((t) => t.toString(options));
+      return this.transpile.unionOf(refs);
+    }
+    throw new Error(`Invalid type reference: ${this.ref.toString()}`);
+  }
 }
 
 /**
@@ -225,49 +384,49 @@ export interface Transpile {
   typeReference(typeReference: reflect.TypeReference): TranspiledTypeReference;
 
   /**
-   * How a union of types looks like in the target language.
+   * How a union looks like in the target language.
    */
-  unionOfTypes(refs: TranspiledTypeReference[]): TranspiledTypeReference;
+  unionOf(types: string[]): string;
 
   /**
-   * How a list of types looks like in the target language.
+   * How a list looks like in the target language.
    */
-  listOfType(ref: TranspiledTypeReference): TranspiledTypeReference;
+  listOf(type: string): string;
 
   /**
-   * How a map of types looks like in the target language.
+   * How a map looks like in the target language.
    */
-  mapOfType(ref: TranspiledTypeReference): TranspiledTypeReference;
+  mapOf(type: string): string;
 
   /**
    * How the 'any' type is represented in the target language.
    */
-  any(): TranspiledTypeReference;
+  any(): string;
 
   /**
    * How the 'string' type is represented in the target language.
    */
-  str(): TranspiledTypeReference;
+  str(): string;
 
   /**
    * How the 'number' type is represented in the target language.
    */
-  number(): TranspiledTypeReference;
+  number(): string;
 
   /**
    * How the 'boolean' type is represented in the target language.
    */
-  boolean(): TranspiledTypeReference;
+  boolean(): string;
 
   /**
    * How the 'json' type is represented in the target language.
    */
-  json(): TranspiledTypeReference;
+  json(): string;
 
   /**
    * How the 'date' type is represented in the target language.
    */
-  date(): TranspiledTypeReference;
+  date(): string;
 
   /**
    * How a readme is displayed in the target language.
@@ -285,51 +444,55 @@ export interface TranspileBase extends Transpile {}
 export abstract class TranspileBase implements Transpile {
   constructor(public readonly language: string) {}
 
-  public typeReference(type: reflect.TypeReference): TranspiledTypeReference {
-    if (type.fqn && type.type) {
-      const transpiled = this.type(type.type);
-      return {
-        raw: transpiled.fqn,
-        markdown: `[${Markdown.pre(transpiled.fqn)}](#${transpiled.fqn})`,
-      };
+  public typeReference(ref: reflect.TypeReference): TranspiledTypeReference {
+    if (ref.type) {
+      const transpiled = this.type(ref.type);
+      return TranspiledTypeReference.type(this, ref, transpiled);
     }
 
-    if (type.unionOfTypes) {
-      const types = type.unionOfTypes.map((t) => this.typeReference(t));
-      return this.unionOfTypes(types);
+    if (ref.unionOfTypes) {
+      const transpiled = ref.unionOfTypes.map((t) => this.typeReference(t));
+      return TranspiledTypeReference.unionOfTypes(this, ref, transpiled);
     }
 
-    if (type.arrayOfType) {
-      const ref = this.typeReference(type.arrayOfType);
-      return this.listOfType(ref);
+    if (ref.arrayOfType) {
+      const transpiled = this.typeReference(ref.arrayOfType);
+      return TranspiledTypeReference.arrayOfType(this, ref, transpiled);
     }
 
-    if (type.mapOfType) {
-      const ref = this.typeReference(type.mapOfType);
-      return this.mapOfType(ref);
+    if (ref.mapOfType) {
+      const transpiled = this.typeReference(ref.mapOfType);
+      return TranspiledTypeReference.mapOfType(this, ref, transpiled);
     }
 
-    if (type.isAny) {
-      return this.any();
+    if (ref.isAny) {
+      return TranspiledTypeReference.any(this, ref);
     }
 
-    if (type.primitive) {
-      switch (type.primitive) {
+    if (ref.primitive) {
+      let transpiled;
+      switch (ref.primitive) {
         case "string":
-          return this.str();
+          transpiled = this.str();
+          break;
         case "boolean":
-          return this.boolean();
+          transpiled = this.boolean();
+          break;
         case "number":
-          return this.number();
+          transpiled = this.number();
+          break;
         case "date":
-          return this.date();
+          transpiled = this.date();
+          break;
         case "json":
-          return this.json();
+          transpiled = this.json();
+          break;
         default:
-          throw new Error(`Unsupported primitive type '${type.primitive}'`);
+          throw new Error(`Unsupported primitive type '${ref.primitive}'`);
       }
+      return TranspiledTypeReference.primitive(this, ref, transpiled);
     }
 
-    throw new Error(`Unsupported type: ${type.toString()}`);
+    throw new Error(`Unsupported type: ${ref.toString()}`);
   }
 }
