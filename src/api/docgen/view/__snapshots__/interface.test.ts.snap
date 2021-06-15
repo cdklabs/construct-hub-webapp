@@ -14,7 +14,7 @@ Represents an ECR repository.
 ## \`add_to_resource_policy\` <span data-heading-title=\\"\`add_to_resource_policy\`\\" data-heading-id=\\"awscdkawsecrirepositoryaddtoresourcepolicy\\"></span>
 
 \`\`\`python
-def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
+def add_to_resource_policy(statement: PolicyStatement)
 \`\`\`
 
 ### \`statement\`<sup>Required</sup> <span data-heading-title=\\"\`statement\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorystatement\\"></span>
@@ -26,7 +26,7 @@ def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
 ## \`grant\` <span data-heading-title=\\"\`grant\`\\" data-heading-id=\\"awscdkawsecrirepositorygrant\\"></span>
 
 \`\`\`python
-def grant(grantee: aws_cdk.aws_iam.IGrantable, 
+def grant(grantee: IGrantable, 
           actions: str)
 \`\`\`
 
@@ -45,7 +45,7 @@ def grant(grantee: aws_cdk.aws_iam.IGrantable,
 ## \`grant_pull\` <span data-heading-title=\\"\`grant_pull\`\\" data-heading-id=\\"awscdkawsecrirepositorygrantpull\\"></span>
 
 \`\`\`python
-def grant_pull(grantee: aws_cdk.aws_iam.IGrantable)
+def grant_pull(grantee: IGrantable)
 \`\`\`
 
 ### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorygrantee\\"></span>
@@ -57,7 +57,7 @@ def grant_pull(grantee: aws_cdk.aws_iam.IGrantable)
 ## \`grant_pull_push\` <span data-heading-title=\\"\`grant_pull_push\`\\" data-heading-id=\\"awscdkawsecrirepositorygrantpullpush\\"></span>
 
 \`\`\`python
-def grant_pull_push(grantee: aws_cdk.aws_iam.IGrantable)
+def grant_pull_push(grantee: IGrantable)
 \`\`\`
 
 ### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorygrantee\\"></span>
@@ -71,9 +71,9 @@ def grant_pull_push(grantee: aws_cdk.aws_iam.IGrantable)
 \`\`\`python
 def on_cloud_trail_event(id: str, 
                          description: str = None, 
-                         event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                         event_pattern: EventPattern = None, 
                          rule_name: str = None, 
-                         target: aws_cdk.aws_events.IRuleTarget = None)
+                         target: IRuleTarget = None)
 \`\`\`
 
 ### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryid\\"></span>
@@ -131,9 +131,9 @@ The target to register for the event.
 \`\`\`python
 def on_cloud_trail_image_pushed(id: str, 
                                 description: str = None, 
-                                event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                                event_pattern: EventPattern = None, 
                                 rule_name: str = None, 
-                                target: aws_cdk.aws_events.IRuleTarget = None, 
+                                target: IRuleTarget = None, 
                                 image_tag: str = None)
 \`\`\`
 
@@ -201,9 +201,9 @@ Only watch changes to this image tag.
 \`\`\`python
 def on_event(id: str, 
              description: str = None, 
-             event_pattern: aws_cdk.aws_events.EventPattern = None, 
+             event_pattern: EventPattern = None, 
              rule_name: str = None, 
-             target: aws_cdk.aws_events.IRuleTarget = None)
+             target: IRuleTarget = None)
 \`\`\`
 
 ### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryid\\"></span>
@@ -259,9 +259,9 @@ The target to register for the event.
 \`\`\`python
 def on_image_scan_completed(id: str, 
                             description: str = None, 
-                            event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                            event_pattern: EventPattern = None, 
                             rule_name: str = None, 
-                            target: aws_cdk.aws_events.IRuleTarget = None, 
+                            target: IRuleTarget = None, 
                             image_tags: typing.List[str] = None)
 \`\`\`
 
@@ -317,7 +317,7 @@ The target to register for the event.
 
 ### \`image_tags\`<sup>Optional</sup> <span data-heading-title=\\"\`image_tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionsimagetags\\"></span>
 
-- *Type:* **typing.List**[\`str\`]
+- *Type:* typing.List[\`str\`]
 - *Default:* Watch the changes to the repository with all image tags
 
 Only watch changes to the image tags spedified.
