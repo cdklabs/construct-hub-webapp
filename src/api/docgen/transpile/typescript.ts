@@ -5,7 +5,7 @@ import * as transpile from "./transpile";
  * A TypeScript transpiler.
  */
 export class TypeScriptTranspile extends transpile.TranspileBase {
-  constructor(private readonly ts: reflect.TypeSystem) {
+  constructor() {
     super("typescript");
   }
 
@@ -133,29 +133,14 @@ export class TypeScriptTranspile extends transpile.TranspileBase {
     };
   }
 
-  // TODO this method is a mess, refactor at some point...
-  public type(type: reflect.Type): transpile.TranspiledType {
-    const t = this.ts.findFqn(type.fqn);
-    const submodule = this.findSubmodule(t);
-    const moduleFqn = submodule ? submodule.fqn : t.assembly.name;
-    const submoduleName = submodule?.name;
-    const moduleName = t.assembly.name;
-
-    const fqn = [moduleName];
-
-    if (type.namespace) {
-      fqn.push(type.namespace);
+  public moduleLike(
+    moduleLike: reflect.ModuleLike
+  ): transpile.TranspiledModule {
+    if (moduleLike instanceof reflect.Submodule) {
+      const fqnParts = moduleLike.fqn.split(".");
+      return { name: fqnParts[0], submodule: fqnParts[1] };
     }
-
-    fqn.push(type.name);
-
-    return {
-      fqn: fqn.join("."),
-      moduleFqn,
-      name: type.name,
-      module: moduleName,
-      submodule: submoduleName,
-    };
+    return { name: moduleLike.fqn };
   }
 
   private optionalityCompare(

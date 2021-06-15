@@ -59,10 +59,10 @@ export class Documentation {
 
     switch (options.language) {
       case "python":
-        this.transpile = new PythonTranspile(this.assembly.system);
+        this.transpile = new PythonTranspile();
         break;
       case "typescript":
-        this.transpile = new TypeScriptTranspile(this.assembly.system);
+        this.transpile = new TypeScriptTranspile();
         break;
       default:
         throw new Error(

@@ -111,13 +111,13 @@ export interface TranspiledType {
    */
   readonly fqn: string;
   /**
-   * The language specific module fqn (mode + submodule).
-   */
-  readonly moduleFqn: string;
-  /**
    * Simple name of the type.
    */
   readonly name: string;
+  /**
+   * Namespace of the type.
+   */
+  readonly namespace?: string;
   /**
    * The language specific module name the type belongs to.
    */
@@ -333,6 +333,20 @@ export interface TranspiledEnumMember {
 }
 
 /**
+ * Outcome of transpiling a module.
+ */
+export interface TranspiledModule {
+  /**
+   * The language specific module name.
+   */
+  readonly name: string;
+  /**
+   * The language specific submodule name.
+   */
+  readonly submodule?: string;
+}
+
+/**
  * Language transpiling for jsii types.
  */
 export interface Transpile {
@@ -340,6 +354,11 @@ export interface Transpile {
    * The language of the tranpiler.
    */
   language: string;
+
+  /**
+   * Transpile a module like object (Assembly | Submodule)
+   */
+  moduleLike(moduleLike: reflect.ModuleLike): TranspiledModule;
 
   /**
    * Transpile a callable (method, static function, initializer)
@@ -451,6 +470,29 @@ export interface TranspileBase extends Transpile {}
  */
 export abstract class TranspileBase implements Transpile {
   constructor(public readonly language: string) {}
+
+  public type(type: reflect.Type): TranspiledType {
+    const tsSubmodule = this.findSubmodule(type);
+    const moduleLike = this.moduleLike(
+      tsSubmodule ? tsSubmodule : type.assembly
+    );
+
+    const fqn = [moduleLike.name];
+
+    if (type.namespace) {
+      fqn.push(type.namespace);
+    }
+
+    fqn.push(type.name);
+
+    return {
+      fqn: fqn.join("."),
+      name: type.name,
+      namespace: type.namespace,
+      module: moduleLike.name,
+      submodule: moduleLike.submodule,
+    };
+  }
 
   public typeReference(ref: reflect.TypeReference): TranspiledTypeReference {
     if (ref.type) {

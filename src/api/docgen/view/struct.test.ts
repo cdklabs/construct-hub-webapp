@@ -6,7 +6,7 @@ import { Struct } from "./struct";
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
-  const transpile = new PythonTranspile(assembly.system);
+  const transpile = new PythonTranspile();
   test("snapshot", () => {
     const struct = new Struct(
       transpile,
@@ -17,7 +17,7 @@ describe("python", () => {
 });
 
 describe("typescript", () => {
-  const transpile = new TypeScriptTranspile(assembly.system);
+  const transpile = new TypeScriptTranspile();
   test("snapshot", () => {
     const struct = new Struct(
       transpile,

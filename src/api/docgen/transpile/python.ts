@@ -10,7 +10,7 @@ const toSnakeCase = (text?: string) => {
  * A python transpiler.
  */
 export class PythonTranspile extends transpile.TranspileBase {
-  constructor(private readonly ts: reflect.TypeSystem) {
+  constructor() {
     super("python");
   }
 
@@ -142,59 +142,29 @@ export class PythonTranspile extends transpile.TranspileBase {
     };
   }
 
+  public moduleLike(
+    moduleLike: reflect.ModuleLike
+  ): transpile.TranspiledModule {
+    const fqn = moduleLike.targets?.python?.module;
+    if (!fqn) {
+      throw new Error(
+        `Python is not a supported target for module: ${moduleLike.fqn}`
+      );
+    }
+
+    if (moduleLike instanceof reflect.Submodule) {
+      const fqnParts = fqn.split(".");
+      return { name: fqnParts[0], submodule: fqnParts[1] };
+    }
+    return { name: fqn };
+  }
+
   public interface(
     iface: reflect.InterfaceType
   ): transpile.TranspiledInterface {
     return {
       name: iface.name,
       type: this.type(iface),
-    };
-  }
-
-  // TODO this method is a mess, refactor at some point...
-  public type(type: reflect.Type): transpile.TranspiledType {
-    const t = this.ts.findFqn(type.fqn);
-    const submodule = this.findSubmodule(t);
-
-    let moduleName, submoduleName;
-
-    const targets = submodule ? submodule.targets : type.assembly.targets;
-    if (!targets) {
-      throw new Error(`Unable to find 'targets' for fqn ${type.fqn}`);
-    }
-    if (!targets.python) {
-      throw new Error(`Python is not a supported target for fqn ${type.fqn}`);
-    }
-
-    const moduleFqn = targets.python.module;
-
-    if (submodule) {
-      const moduleFqnParts = moduleFqn.split(".");
-      if (moduleFqnParts.length !== 2) {
-        throw new Error(
-          `Unexpected module fqn: ${moduleFqn}. Should contain exactly two dot seprate elements`
-        );
-      }
-      moduleName = moduleFqnParts[0];
-      submoduleName = moduleFqnParts[1];
-    } else {
-      moduleName = moduleFqn;
-    }
-
-    const fqn = [moduleName];
-
-    if (type.namespace) {
-      fqn.push(type.namespace);
-    }
-
-    fqn.push(type.name);
-
-    return {
-      fqn: fqn.join("."),
-      moduleFqn,
-      name: type.name,
-      module: moduleName,
-      submodule: submoduleName,
     };
   }
 
@@ -234,7 +204,7 @@ function formatInvocation(
   inputs: string[],
   method?: string
 ) {
-  let target = type.fqn;
+  let target = type.submodule ? `${type.namespace}.${type.name}` : type.fqn;
   if (method) {
     target = `${target}.${method}`;
   }
@@ -242,7 +212,10 @@ function formatInvocation(
 }
 
 function formatImport(type: transpile.TranspiledType) {
-  return `import ${type.moduleFqn}`;
+  if (type.submodule) {
+    return `from ${type.module} import ${type.submodule}`;
+  }
+  return `import ${type.module}`;
 }
 
 function formatSignature(name: string, inputs: string[]) {

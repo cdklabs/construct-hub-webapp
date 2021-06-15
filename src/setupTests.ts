@@ -9,21 +9,19 @@ import * as path from "path";
 import * as jsii from "@jsii/spec";
 import * as reflect from "jsii-reflect";
 
-// randomly selected...
-const ASSEMBLY_UNDER_TEST = "@aws-cdk/aws-ecr";
-
-function createAssembly(): reflect.Assembly {
+function createAssembly(name: string): reflect.Assembly {
   const ts = new reflect.TypeSystem();
 
   const packages = `${__dirname}/__fixtures__/assemblies`;
 
   collectAssebmlies(packages, ts);
 
-  return ts.findAssembly(ASSEMBLY_UNDER_TEST);
+  return ts.findAssembly(name);
 }
 
-// expose the type system under test gloablly
-(global as any).assembly = createAssembly();
+// expose the assemblies under test gloablly
+(global as any).assembly = createAssembly("@aws-cdk/aws-ecr");
+(global as any).assemblyWithSubmodules = createAssembly("aws-cdk-lib");
 
 function collectAssebmlies(p: string, ts: reflect.TypeSystem) {
   const stat = fs.statSync(p);

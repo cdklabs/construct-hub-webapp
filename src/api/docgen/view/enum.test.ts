@@ -6,7 +6,7 @@ import { Enum } from "./enum";
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
-  const transpile = new PythonTranspile(assembly.system);
+  const transpile = new PythonTranspile();
   test("snapshot", () => {
     const enu = new Enum(transpile, assembly.enums[0]);
     expect(enu.render().render()).toMatchSnapshot();
@@ -14,7 +14,7 @@ describe("python", () => {
 });
 
 describe("typescript", () => {
-  const transpile = new TypeScriptTranspile(assembly.system);
+  const transpile = new TypeScriptTranspile();
   test("snapshot", () => {
     const enu = new Enum(transpile, assembly.enums[0]);
     expect(enu.render().render()).toMatchSnapshot();
