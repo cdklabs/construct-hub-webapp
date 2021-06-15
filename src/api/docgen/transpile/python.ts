@@ -1,6 +1,5 @@
 import { toSnakeCase } from "codemaker";
 import * as reflect from "jsii-reflect";
-import { Markdown } from "../render/markdown";
 import * as transpile from "./transpile";
 
 /**
@@ -15,67 +14,36 @@ export class PythonTranspile extends transpile.TranspileBase {
     return readme;
   }
 
-  public unionOfTypes(
-    refs: transpile.TranspiledTypeReference[]
-  ): transpile.TranspiledTypeReference {
-    const typing = this.typing("Union");
-    return {
-      raw: `${typing}[${refs.map((r) => r.raw).join(", ")}]`,
-      markdown: `${Markdown.bold(typing)}[${refs
-        .map((r) => r.markdown)
-        .join(", ")}]`,
-    };
+  public unionOf(types: string[]): string {
+    return `${this.typing("Union")}[${types.join(", ")}]`;
   }
 
-  public listOfType(
-    ref: transpile.TranspiledTypeReference
-  ): transpile.TranspiledTypeReference {
-    const typing = this.typing("List");
-    return {
-      raw: `${typing}[${ref.raw}]`,
-      markdown: `${Markdown.bold(typing)}[${ref.markdown}]`,
-    };
+  public listOf(type: string): string {
+    return `${this.typing("List")}[${type}]`;
   }
 
-  public mapOfType(
-    ref: transpile.TranspiledTypeReference
-  ): transpile.TranspiledTypeReference {
-    const typing = this.typing("Mapping");
-    return {
-      raw: `${typing}[#${ref.raw}]`,
-      markdown: `${Markdown.bold(this.typing("Mapping"))}[${ref.markdown}]`,
-    };
+  public mapOf(type: string): string {
+    return `${this.typing("Mapping")}[${type}]`;
   }
 
-  public any(): transpile.TranspiledTypeReference {
-    const typing = this.typing("Any");
-    return { raw: typing, markdown: Markdown.pre(typing) };
+  public any(): string {
+    return this.typing("Any");
   }
 
-  public boolean(): transpile.TranspiledTypeReference {
-    const b = "bool";
-    return { raw: b, markdown: Markdown.pre(b) };
+  public boolean(): string {
+    return "bool";
   }
 
-  public str(): transpile.TranspiledTypeReference {
-    const s = "str";
-    return { raw: s, markdown: Markdown.pre(s) };
+  public str(): string {
+    return "str";
   }
 
-  public number(): transpile.TranspiledTypeReference {
-    const types = ["int", "float"];
-    const typing = this.typing("Union");
-    return {
-      raw: `${typing}[${types.join(", ")}]`,
-      markdown: `${Markdown.bold(this.typing("Union"))}[${types
-        .map((t) => Markdown.pre(t))
-        .join(", ")}]`,
-    };
+  public number(): string {
+    return `${this.typing("Union")}[int, float]`;
   }
 
-  public date(): transpile.TranspiledTypeReference {
-    const d = "datetime.datetime";
-    return { raw: d, markdown: Markdown.pre(d) };
+  public date(): string {
+    return "datetime.datetime";
   }
 
   public enum(enu: reflect.EnumType): transpile.TranspiledEnum {
@@ -91,9 +59,8 @@ export class PythonTranspile extends transpile.TranspileBase {
       name: em.name,
     };
   }
-  public json(): transpile.TranspiledTypeReference {
-    const a = "any";
-    return { raw: a, markdown: Markdown.pre(a) };
+  public json(): string {
+    return "any";
   }
 
   public property(property: reflect.Property): transpile.TranspiledProperty {
@@ -126,7 +93,7 @@ export class PythonTranspile extends transpile.TranspileBase {
   public struct(struct: reflect.InterfaceType): transpile.TranspiledStruct {
     const type = this.type(struct);
     const inputs = struct.allProperties.map((p) =>
-      formatInput(this.property(p))
+      this.formatInput(this.property(p))
     );
     return {
       type: type,
@@ -155,7 +122,7 @@ export class PythonTranspile extends transpile.TranspileBase {
     }
 
     const name = toSnakeCase(callable.name);
-    const inputs = parameters.map((p) => formatInput(this.parameter(p)));
+    const inputs = parameters.map((p) => this.formatInput(this.parameter(p)));
 
     return {
       name,
@@ -191,7 +158,7 @@ export class PythonTranspile extends transpile.TranspileBase {
 
     fqn.push(type.name);
 
-    return { fqn: fqn.join("."), moduleFqn: module };
+    return { fqn: fqn.join("."), moduleFqn: module, name: type.name };
   }
 
   private moduleFqn(fqn: string): string {
@@ -258,14 +225,15 @@ export class PythonTranspile extends transpile.TranspileBase {
   private typing(type: "List" | "Mapping" | "Any" | "Union"): string {
     return `typing.${type}`;
   }
-}
 
-function formatInput(
-  transpiled: transpile.TranspiledParameter | transpile.TranspiledProperty
-): string {
-  return `${transpiled.name}: ${transpiled.typeReference.raw}${
-    transpiled.optional ? " = None" : ""
-  }`;
+  private formatInput(
+    transpiled: transpile.TranspiledParameter | transpile.TranspiledProperty
+  ): string {
+    const tf = transpiled.typeReference.toString({
+      typeFormatter: (t) => t.name,
+    });
+    return `${transpiled.name}: ${tf}${transpiled.optional ? " = None" : ""}`;
+  }
 }
 
 function formatInvocation(

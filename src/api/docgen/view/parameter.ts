@@ -34,7 +34,10 @@ export class Parameter {
     }
 
     const metadata: any = {
-      Type: this.transpiled.typeReference.markdown,
+      Type: this.transpiled.typeReference.toString({
+        typeFormatter: (t) => `[${Markdown.pre(t.fqn)}](#${t.fqn})`,
+        stringFormatter: Markdown.pre,
+      }),
     };
 
     if (this.parameter.spec.docs?.default) {

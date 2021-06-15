@@ -115,12 +115,12 @@ A CloudFormation \`AWS::ECR::PublicRepository\`.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnPublicRepository(scope: aws_cdk.core.Construct, 
+aws_cdk.aws_ecr.CfnPublicRepository(scope: Construct, 
                                     id: str, 
                                     repository_catalog_data: typing.Any = None, 
                                     repository_name: str = None, 
                                     repository_policy_text: typing.Any = None, 
-                                    tags: typing.List[aws_cdk.core.CfnTag] = None)
+                                    tags: typing.List[CfnTag] = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryscope\\"></span>
@@ -171,7 +171,7 @@ scoped id of the resource.
 
 ##### \`tags\`<sup>Optional</sup> <span data-heading-title=\\"\`tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropstags\\"></span>
 
-- *Type:* **typing.List**[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
+- *Type:* typing.List[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
 
 \`AWS::ECR::PublicRepository.Tags\`.
 
@@ -184,7 +184,7 @@ scoped id of the resource.
 ##### \`inspect\` <span data-heading-title=\\"\`inspect\`\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryinspect\\"></span>
 
 \`\`\`python
-def inspect(inspector: aws_cdk.core.TreeInspector)
+def inspect(inspector: TreeInspector)
 \`\`\`
 
 ###### \`inspector\`<sup>Required</sup> <span data-heading-title=\\"\`inspector\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryinspector\\"></span>
@@ -267,7 +267,7 @@ A CloudFormation \`AWS::ECR::RegistryPolicy\`.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnRegistryPolicy(scope: aws_cdk.core.Construct, 
+aws_cdk.aws_ecr.CfnRegistryPolicy(scope: Construct, 
                                   id: str, 
                                   policy_text: typing.Any)
 \`\`\`
@@ -303,7 +303,7 @@ scoped id of the resource.
 ##### \`inspect\` <span data-heading-title=\\"\`inspect\`\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyinspect\\"></span>
 
 \`\`\`python
-def inspect(inspector: aws_cdk.core.TreeInspector)
+def inspect(inspector: TreeInspector)
 \`\`\`
 
 ###### \`inspector\`<sup>Required</sup> <span data-heading-title=\\"\`inspector\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicyinspector\\"></span>
@@ -356,9 +356,9 @@ A CloudFormation \`AWS::ECR::ReplicationConfiguration\`.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnReplicationConfiguration(scope: aws_cdk.core.Construct, 
+aws_cdk.aws_ecr.CfnReplicationConfiguration(scope: Construct, 
                                             id: str, 
-                                            replication_configuration: typing.Union[aws_cdk.core.IResolvable, aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty])
+                                            replication_configuration: typing.Union[IResolvable, ReplicationConfigurationProperty])
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationscope\\"></span>
@@ -379,7 +379,7 @@ scoped id of the resource.
 
 ##### \`replication_configuration\`<sup>Required</sup> <span data-heading-title=\\"\`replication_configuration\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationpropsreplicationconfiguration\\"></span>
 
-- *Type:* **typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty)]
+- *Type:* typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty)]
 
 \`AWS::ECR::ReplicationConfiguration.ReplicationConfiguration\`.
 
@@ -392,7 +392,7 @@ scoped id of the resource.
 ##### \`inspect\` <span data-heading-title=\\"\`inspect\`\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationinspect\\"></span>
 
 \`\`\`python
-def inspect(inspector: aws_cdk.core.TreeInspector)
+def inspect(inspector: TreeInspector)
 \`\`\`
 
 ###### \`inspector\`<sup>Required</sup> <span data-heading-title=\\"\`inspector\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationinspector\\"></span>
@@ -414,7 +414,7 @@ tree inspector to collect and process attributes.
 
 ##### \`replication_configuration\`<sup>Required</sup> <span data-heading-title=\\"\`replication_configuration\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationconfiguration\\"></span>
 
-- *Type:* **typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty)]
+- *Type:* typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty)]
 
 \`AWS::ECR::ReplicationConfiguration.ReplicationConfiguration\`.
 
@@ -445,15 +445,15 @@ A CloudFormation \`AWS::ECR::Repository\`.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnRepository(scope: aws_cdk.core.Construct, 
+aws_cdk.aws_ecr.CfnRepository(scope: Construct, 
                               id: str, 
                               encryption_configuration: typing.Any = None, 
                               image_scanning_configuration: typing.Any = None, 
                               image_tag_mutability: str = None, 
-                              lifecycle_policy: typing.Union[aws_cdk.core.IResolvable, aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty] = None, 
+                              lifecycle_policy: typing.Union[IResolvable, LifecyclePolicyProperty] = None, 
                               repository_name: str = None, 
                               repository_policy_text: typing.Any = None, 
-                              tags: typing.List[aws_cdk.core.CfnTag] = None)
+                              tags: typing.List[CfnTag] = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryscope\\"></span>
@@ -504,7 +504,7 @@ scoped id of the resource.
 
 ##### \`lifecycle_policy\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecycle_policy\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropslifecyclepolicy\\"></span>
 
-- *Type:* **typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty\`](#aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty)]
+- *Type:* typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty\`](#aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty)]
 
 \`AWS::ECR::Repository.LifecyclePolicy\`.
 
@@ -534,7 +534,7 @@ scoped id of the resource.
 
 ##### \`tags\`<sup>Optional</sup> <span data-heading-title=\\"\`tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropstags\\"></span>
 
-- *Type:* **typing.List**[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
+- *Type:* typing.List[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
 
 \`AWS::ECR::Repository.Tags\`.
 
@@ -547,7 +547,7 @@ scoped id of the resource.
 ##### \`inspect\` <span data-heading-title=\\"\`inspect\`\\" data-heading-id=\\"awscdkawsecrcfnrepositoryinspect\\"></span>
 
 \`\`\`python
-def inspect(inspector: aws_cdk.core.TreeInspector)
+def inspect(inspector: TreeInspector)
 \`\`\`
 
 ###### \`inspector\`<sup>Required</sup> <span data-heading-title=\\"\`inspector\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositoryinspector\\"></span>
@@ -625,7 +625,7 @@ tree inspector to collect and process attributes.
 
 ##### \`lifecycle_policy\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecycle_policy\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorylifecyclepolicy\\"></span>
 
-- *Type:* **typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty\`](#aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty)]
+- *Type:* typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty\`](#aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty)]
 
 \`AWS::ECR::Repository.LifecyclePolicy\`.
 
@@ -662,13 +662,13 @@ Define an ECR repository.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.Repository(scope: constructs.Construct, 
+aws_cdk.aws_ecr.Repository(scope: Construct, 
                            id: str, 
                            image_scan_on_push: bool = None, 
-                           image_tag_mutability: aws_cdk.aws_ecr.TagMutability = None, 
+                           image_tag_mutability: TagMutability = None, 
                            lifecycle_registry_id: str = None, 
-                           lifecycle_rules: typing.List[aws_cdk.aws_ecr.LifecycleRule] = None, 
-                           removal_policy: aws_cdk.core.RemovalPolicy = None, 
+                           lifecycle_rules: typing.List[LifecycleRule] = None, 
+                           removal_policy: RemovalPolicy = None, 
                            repository_name: str = None)
 \`\`\`
 
@@ -717,7 +717,7 @@ The AWS account ID associated with the registry that contains the repository.
 
 ##### \`lifecycle_rules\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecycle_rules\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorypropslifecyclerules\\"></span>
 
-- *Type:* **typing.List**[[\`aws_cdk.aws_ecr.LifecycleRule\`](#aws_cdk.aws_ecr.LifecycleRule)]
+- *Type:* typing.List[[\`aws_cdk.aws_ecr.LifecycleRule\`](#aws_cdk.aws_ecr.LifecycleRule)]
 - *Default:* No life cycle rules
 
 Life cycle rules to apply to this registry.
@@ -748,11 +748,11 @@ Name for this repository.
 
 \`\`\`python
 def add_lifecycle_rule(description: str = None, 
-                       max_image_age: aws_cdk.core.Duration = None, 
+                       max_image_age: Duration = None, 
                        max_image_count: typing.Union[int, float] = None, 
                        rule_priority: typing.Union[int, float] = None, 
                        tag_prefix_list: typing.List[str] = None, 
-                       tag_status: aws_cdk.aws_ecr.TagStatus = None)
+                       tag_status: TagStatus = None)
 \`\`\`
 
 ###### \`description\`<sup>Optional</sup> <span data-heading-title=\\"\`description\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecycleruledescription\\"></span>
@@ -776,7 +776,7 @@ Specify exactly one of maxImageCount and maxImageAge.
 
 ###### \`max_image_count\`<sup>Optional</sup> <span data-heading-title=\\"\`max_image_count\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecyclerulemaximagecount\\"></span>
 
-- *Type:* **typing.Union**[\`int\`, \`float\`]
+- *Type:* \`typing.Union[int, float]\`
 
 The maximum number of images to retain.
 
@@ -786,7 +786,7 @@ Specify exactly one of maxImageCount and maxImageAge.
 
 ###### \`rule_priority\`<sup>Optional</sup> <span data-heading-title=\\"\`rule_priority\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecyclerulerulepriority\\"></span>
 
-- *Type:* **typing.Union**[\`int\`, \`float\`]
+- *Type:* \`typing.Union[int, float]\`
 - *Default:* Automatically assigned
 
 Controls the order in which rules are evaluated (low to high).
@@ -804,7 +804,7 @@ automatically assigned to them, higher than any rules that DO have priorities.
 
 ###### \`tag_prefix_list\`<sup>Optional</sup> <span data-heading-title=\\"\`tag_prefix_list\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecycleruletagprefixlist\\"></span>
 
-- *Type:* **typing.List**[\`str\`]
+- *Type:* typing.List[\`str\`]
 
 Select images that have ALL the given prefixes in their tag.
 
@@ -827,7 +827,7 @@ have the highest rulePriority.
 ##### \`add_to_resource_policy\` <span data-heading-title=\\"\`add_to_resource_policy\`\\" data-heading-id=\\"awscdkawsecrrepositoryaddtoresourcepolicy\\"></span>
 
 \`\`\`python
-def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
+def add_to_resource_policy(statement: PolicyStatement)
 \`\`\`
 
 ###### \`statement\`<sup>Required</sup> <span data-heading-title=\\"\`statement\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorystatement\\"></span>
@@ -844,7 +844,7 @@ def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.Repository.arn_for_local_repository(repository_name: str, 
-                                                    scope: constructs.IConstruct, 
+                                                    scope: IConstruct, 
                                                     account: str = None)
 \`\`\`
 
@@ -871,7 +871,7 @@ aws_cdk.aws_ecr.Repository.arn_for_local_repository(repository_name: str,
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.Repository.from_repository_arn(scope: constructs.Construct, 
+aws_cdk.aws_ecr.Repository.from_repository_arn(scope: Construct, 
                                                id: str, 
                                                repository_arn: str)
 \`\`\`
@@ -899,7 +899,7 @@ aws_cdk.aws_ecr.Repository.from_repository_arn(scope: constructs.Construct,
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.Repository.from_repository_attributes(scope: constructs.Construct, 
+aws_cdk.aws_ecr.Repository.from_repository_attributes(scope: Construct, 
                                                       id: str, 
                                                       repository_arn: str, 
                                                       repository_name: str)
@@ -934,7 +934,7 @@ aws_cdk.aws_ecr.Repository.from_repository_attributes(scope: constructs.Construc
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.Repository.from_repository_name(scope: constructs.Construct, 
+aws_cdk.aws_ecr.Repository.from_repository_name(scope: Construct, 
                                                 id: str, 
                                                 repository_name: str)
 \`\`\`
@@ -989,7 +989,7 @@ Reused between imported repositories and owned repositories.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.RepositoryBase(scope: constructs.Construct, 
+aws_cdk.aws_ecr.RepositoryBase(scope: Construct, 
                                id: str, 
                                account: str = None, 
                                environment_from_arn: str = None, 
@@ -1061,7 +1061,7 @@ The AWS region this resource belongs to.
 ##### \`add_to_resource_policy\` <span data-heading-title=\\"\`add_to_resource_policy\`\\" data-heading-id=\\"awscdkawsecrrepositorybaseaddtoresourcepolicy\\"></span>
 
 \`\`\`python
-def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
+def add_to_resource_policy(statement: PolicyStatement)
 \`\`\`
 
 ###### \`statement\`<sup>Required</sup> <span data-heading-title=\\"\`statement\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasestatement\\"></span>
@@ -1073,7 +1073,7 @@ def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
 ##### \`grant\` <span data-heading-title=\\"\`grant\`\\" data-heading-id=\\"awscdkawsecrrepositorybasegrant\\"></span>
 
 \`\`\`python
-def grant(grantee: aws_cdk.aws_iam.IGrantable, 
+def grant(grantee: IGrantable, 
           actions: str)
 \`\`\`
 
@@ -1092,7 +1092,7 @@ def grant(grantee: aws_cdk.aws_iam.IGrantable,
 ##### \`grant_pull\` <span data-heading-title=\\"\`grant_pull\`\\" data-heading-id=\\"awscdkawsecrrepositorybasegrantpull\\"></span>
 
 \`\`\`python
-def grant_pull(grantee: aws_cdk.aws_iam.IGrantable)
+def grant_pull(grantee: IGrantable)
 \`\`\`
 
 ###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasegrantee\\"></span>
@@ -1104,7 +1104,7 @@ def grant_pull(grantee: aws_cdk.aws_iam.IGrantable)
 ##### \`grant_pull_push\` <span data-heading-title=\\"\`grant_pull_push\`\\" data-heading-id=\\"awscdkawsecrrepositorybasegrantpullpush\\"></span>
 
 \`\`\`python
-def grant_pull_push(grantee: aws_cdk.aws_iam.IGrantable)
+def grant_pull_push(grantee: IGrantable)
 \`\`\`
 
 ###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybasegrantee\\"></span>
@@ -1118,9 +1118,9 @@ def grant_pull_push(grantee: aws_cdk.aws_iam.IGrantable)
 \`\`\`python
 def on_cloud_trail_event(id: str, 
                          description: str = None, 
-                         event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                         event_pattern: EventPattern = None, 
                          rule_name: str = None, 
-                         target: aws_cdk.aws_events.IRuleTarget = None)
+                         target: IRuleTarget = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseid\\"></span>
@@ -1178,9 +1178,9 @@ The target to register for the event.
 \`\`\`python
 def on_cloud_trail_image_pushed(id: str, 
                                 description: str = None, 
-                                event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                                event_pattern: EventPattern = None, 
                                 rule_name: str = None, 
-                                target: aws_cdk.aws_events.IRuleTarget = None, 
+                                target: IRuleTarget = None, 
                                 image_tag: str = None)
 \`\`\`
 
@@ -1248,9 +1248,9 @@ Only watch changes to this image tag.
 \`\`\`python
 def on_event(id: str, 
              description: str = None, 
-             event_pattern: aws_cdk.aws_events.EventPattern = None, 
+             event_pattern: EventPattern = None, 
              rule_name: str = None, 
-             target: aws_cdk.aws_events.IRuleTarget = None)
+             target: IRuleTarget = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositorybaseid\\"></span>
@@ -1306,9 +1306,9 @@ The target to register for the event.
 \`\`\`python
 def on_image_scan_completed(id: str, 
                             description: str = None, 
-                            event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                            event_pattern: EventPattern = None, 
                             rule_name: str = None, 
-                            target: aws_cdk.aws_events.IRuleTarget = None, 
+                            target: IRuleTarget = None, 
                             image_tags: typing.List[str] = None)
 \`\`\`
 
@@ -1364,7 +1364,7 @@ The target to register for the event.
 
 ###### \`image_tags\`<sup>Optional</sup> <span data-heading-title=\\"\`image_tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionsimagetags\\"></span>
 
-- *Type:* **typing.List**[\`str\`]
+- *Type:* typing.List[\`str\`]
 - *Default:* Watch the changes to the repository with all image tags
 
 Only watch changes to the image tags spedified.
@@ -1447,7 +1447,7 @@ import aws_cdk.aws_ecr
 aws_cdk.aws_ecr.CfnPublicRepositoryProps(repository_catalog_data: typing.Any = None, 
                                          repository_name: str = None, 
                                          repository_policy_text: typing.Any = None, 
-                                         tags: typing.List[aws_cdk.core.CfnTag] = None)
+                                         tags: typing.List[CfnTag] = None)
 \`\`\`
 
 ##### \`repository_catalog_data\`<sup>Optional</sup> <span data-heading-title=\\"\`repository_catalog_data\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositorycatalogdata\\"></span>
@@ -1482,7 +1482,7 @@ aws_cdk.aws_ecr.CfnPublicRepositoryProps(repository_catalog_data: typing.Any = N
 
 ##### \`tags\`<sup>Optional</sup> <span data-heading-title=\\"\`tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropstags\\"></span>
 
-- *Type:* **typing.List**[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
+- *Type:* typing.List[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
 
 \`AWS::ECR::PublicRepository.Tags\`.
 
@@ -1525,12 +1525,12 @@ Properties for defining a \`AWS::ECR::ReplicationConfiguration\`.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnReplicationConfigurationProps(replication_configuration: typing.Union[aws_cdk.core.IResolvable, aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty])
+aws_cdk.aws_ecr.CfnReplicationConfigurationProps(replication_configuration: typing.Union[IResolvable, ReplicationConfigurationProperty])
 \`\`\`
 
 ##### \`replication_configuration\`<sup>Required</sup> <span data-heading-title=\\"\`replication_configuration\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationpropsreplicationconfiguration\\"></span>
 
-- *Type:* **typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty)]
+- *Type:* typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty)]
 
 \`AWS::ECR::ReplicationConfiguration.ReplicationConfiguration\`.
 
@@ -1552,10 +1552,10 @@ import aws_cdk.aws_ecr
 aws_cdk.aws_ecr.CfnRepositoryProps(encryption_configuration: typing.Any = None, 
                                    image_scanning_configuration: typing.Any = None, 
                                    image_tag_mutability: str = None, 
-                                   lifecycle_policy: typing.Union[aws_cdk.core.IResolvable, aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty] = None, 
+                                   lifecycle_policy: typing.Union[IResolvable, LifecyclePolicyProperty] = None, 
                                    repository_name: str = None, 
                                    repository_policy_text: typing.Any = None, 
-                                   tags: typing.List[aws_cdk.core.CfnTag] = None)
+                                   tags: typing.List[CfnTag] = None)
 \`\`\`
 
 ##### \`encryption_configuration\`<sup>Optional</sup> <span data-heading-title=\\"\`encryption_configuration\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropsencryptionconfiguration\\"></span>
@@ -1590,7 +1590,7 @@ aws_cdk.aws_ecr.CfnRepositoryProps(encryption_configuration: typing.Any = None,
 
 ##### \`lifecycle_policy\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecycle_policy\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropslifecyclepolicy\\"></span>
 
-- *Type:* **typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty\`](#aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty)]
+- *Type:* typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty\`](#aws_cdk.aws_ecr.CfnRepository.LifecyclePolicyProperty)]
 
 \`AWS::ECR::Repository.LifecyclePolicy\`.
 
@@ -1620,7 +1620,7 @@ aws_cdk.aws_ecr.CfnRepositoryProps(encryption_configuration: typing.Any = None,
 
 ##### \`tags\`<sup>Optional</sup> <span data-heading-title=\\"\`tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropstags\\"></span>
 
-- *Type:* **typing.List**[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
+- *Type:* typing.List[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
 
 \`AWS::ECR::Repository.Tags\`.
 
@@ -1671,11 +1671,11 @@ An ECR life cycle rule.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.LifecycleRule(description: str = None, 
-                              max_image_age: aws_cdk.core.Duration = None, 
+                              max_image_age: Duration = None, 
                               max_image_count: typing.Union[int, float] = None, 
                               rule_priority: typing.Union[int, float] = None, 
                               tag_prefix_list: typing.List[str] = None, 
-                              tag_status: aws_cdk.aws_ecr.TagStatus = None)
+                              tag_status: TagStatus = None)
 \`\`\`
 
 ##### \`description\`<sup>Optional</sup> <span data-heading-title=\\"\`description\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecycleruledescription\\"></span>
@@ -1699,7 +1699,7 @@ Specify exactly one of maxImageCount and maxImageAge.
 
 ##### \`max_image_count\`<sup>Optional</sup> <span data-heading-title=\\"\`max_image_count\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecyclerulemaximagecount\\"></span>
 
-- *Type:* **typing.Union**[\`int\`, \`float\`]
+- *Type:* \`typing.Union[int, float]\`
 
 The maximum number of images to retain.
 
@@ -1709,7 +1709,7 @@ Specify exactly one of maxImageCount and maxImageAge.
 
 ##### \`rule_priority\`<sup>Optional</sup> <span data-heading-title=\\"\`rule_priority\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecyclerulerulepriority\\"></span>
 
-- *Type:* **typing.Union**[\`int\`, \`float\`]
+- *Type:* \`typing.Union[int, float]\`
 - *Default:* Automatically assigned
 
 Controls the order in which rules are evaluated (low to high).
@@ -1727,7 +1727,7 @@ automatically assigned to them, higher than any rules that DO have priorities.
 
 ##### \`tag_prefix_list\`<sup>Optional</sup> <span data-heading-title=\\"\`tag_prefix_list\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecycleruletagprefixlist\\"></span>
 
-- *Type:* **typing.List**[\`str\`]
+- *Type:* typing.List[\`str\`]
 
 Select images that have ALL the given prefixes in their tag.
 
@@ -1757,9 +1757,9 @@ Options for the onCloudTrailImagePushed method.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.OnCloudTrailImagePushedOptions(description: str = None, 
-                                               event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                                               event_pattern: EventPattern = None, 
                                                rule_name: str = None, 
-                                               target: aws_cdk.aws_events.IRuleTarget = None, 
+                                               target: IRuleTarget = None, 
                                                image_tag: str = None)
 \`\`\`
 
@@ -1824,9 +1824,9 @@ Options for the OnImageScanCompleted method.
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.OnImageScanCompletedOptions(description: str = None, 
-                                            event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                                            event_pattern: EventPattern = None, 
                                             rule_name: str = None, 
-                                            target: aws_cdk.aws_events.IRuleTarget = None, 
+                                            target: IRuleTarget = None, 
                                             image_tags: typing.List[str] = None)
 \`\`\`
 
@@ -1874,7 +1874,7 @@ The target to register for the event.
 
 ##### \`image_tags\`<sup>Optional</sup> <span data-heading-title=\\"\`image_tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionsimagetags\\"></span>
 
-- *Type:* **typing.List**[\`str\`]
+- *Type:* typing.List[\`str\`]
 - *Default:* Watch the changes to the repository with all image tags
 
 Only watch changes to the image tags spedified.
@@ -1892,12 +1892,12 @@ Leave it undefined to watch the full repository.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty(rules: typing.Union[aws_cdk.core.IResolvable, typing.List[typing.Union[aws_cdk.core.IResolvable, aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationRuleProperty]]])
+aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationConfigurationProperty(rules: typing.Union[IResolvable, typing.List[typing.Union[IResolvable, ReplicationRuleProperty]]])
 \`\`\`
 
 ##### \`rules\`<sup>Required</sup> <span data-heading-title=\\"\`rules\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationconfigurationpropertyrules\\"></span>
 
-- *Type:* **typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), **typing.List**[**typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationRuleProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationRuleProperty)]]]
+- *Type:* typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), typing.List[typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationRuleProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationRuleProperty)]]]
 
 \`CfnReplicationConfiguration.ReplicationConfigurationProperty.Rules\`.
 
@@ -1947,12 +1947,12 @@ aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty(regio
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationRuleProperty(destinations: typing.Union[aws_cdk.core.IResolvable, typing.List[typing.Union[aws_cdk.core.IResolvable, aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty]]])
+aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationRuleProperty(destinations: typing.Union[IResolvable, typing.List[typing.Union[IResolvable, ReplicationDestinationProperty]]])
 \`\`\`
 
 ##### \`destinations\`<sup>Required</sup> <span data-heading-title=\\"\`destinations\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationrulepropertydestinations\\"></span>
 
-- *Type:* **typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), **typing.List**[**typing.Union**[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty)]]]
+- *Type:* typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), typing.List[typing.Union[[\`aws_cdk.core.IResolvable\`](#aws_cdk.core.IResolvable), [\`aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty\`](#aws_cdk.aws_ecr.CfnReplicationConfiguration.ReplicationDestinationProperty)]]]
 
 \`CfnReplicationConfiguration.ReplicationRuleProperty.Destinations\`.
 
@@ -1991,10 +1991,10 @@ aws_cdk.aws_ecr.RepositoryAttributes(repository_arn: str,
 import aws_cdk.aws_ecr
 
 aws_cdk.aws_ecr.RepositoryProps(image_scan_on_push: bool = None, 
-                                image_tag_mutability: aws_cdk.aws_ecr.TagMutability = None, 
+                                image_tag_mutability: TagMutability = None, 
                                 lifecycle_registry_id: str = None, 
-                                lifecycle_rules: typing.List[aws_cdk.aws_ecr.LifecycleRule] = None, 
-                                removal_policy: aws_cdk.core.RemovalPolicy = None, 
+                                lifecycle_rules: typing.List[LifecycleRule] = None, 
+                                removal_policy: RemovalPolicy = None, 
                                 repository_name: str = None)
 \`\`\`
 
@@ -2031,7 +2031,7 @@ The AWS account ID associated with the registry that contains the repository.
 
 ##### \`lifecycle_rules\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecycle_rules\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorypropslifecyclerules\\"></span>
 
-- *Type:* **typing.List**[[\`aws_cdk.aws_ecr.LifecycleRule\`](#aws_cdk.aws_ecr.LifecycleRule)]
+- *Type:* typing.List[[\`aws_cdk.aws_ecr.LifecycleRule\`](#aws_cdk.aws_ecr.LifecycleRule)]
 - *Default:* No life cycle rules
 
 Life cycle rules to apply to this registry.
@@ -2072,7 +2072,7 @@ Authorization token to access private ECR repositories in the current environmen
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.AuthorizationToken.grant_read(grantee: aws_cdk.aws_iam.IGrantable)
+aws_cdk.aws_ecr.AuthorizationToken.grant_read(grantee: IGrantable)
 \`\`\`
 
 ###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrauthorizationtokengrantee\\"></span>
@@ -2097,7 +2097,7 @@ Authorization token to access the global public ECR Gallery via Docker CLI.
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.PublicGalleryAuthorizationToken.grant_read(grantee: aws_cdk.aws_iam.IGrantable)
+aws_cdk.aws_ecr.PublicGalleryAuthorizationToken.grant_read(grantee: IGrantable)
 \`\`\`
 
 ###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrpublicgalleryauthorizationtokengrantee\\"></span>
@@ -2123,7 +2123,7 @@ Represents an ECR repository.
 ##### \`add_to_resource_policy\` <span data-heading-title=\\"\`add_to_resource_policy\`\\" data-heading-id=\\"awscdkawsecrirepositoryaddtoresourcepolicy\\"></span>
 
 \`\`\`python
-def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
+def add_to_resource_policy(statement: PolicyStatement)
 \`\`\`
 
 ###### \`statement\`<sup>Required</sup> <span data-heading-title=\\"\`statement\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorystatement\\"></span>
@@ -2135,7 +2135,7 @@ def add_to_resource_policy(statement: aws_cdk.aws_iam.PolicyStatement)
 ##### \`grant\` <span data-heading-title=\\"\`grant\`\\" data-heading-id=\\"awscdkawsecrirepositorygrant\\"></span>
 
 \`\`\`python
-def grant(grantee: aws_cdk.aws_iam.IGrantable, 
+def grant(grantee: IGrantable, 
           actions: str)
 \`\`\`
 
@@ -2154,7 +2154,7 @@ def grant(grantee: aws_cdk.aws_iam.IGrantable,
 ##### \`grant_pull\` <span data-heading-title=\\"\`grant_pull\`\\" data-heading-id=\\"awscdkawsecrirepositorygrantpull\\"></span>
 
 \`\`\`python
-def grant_pull(grantee: aws_cdk.aws_iam.IGrantable)
+def grant_pull(grantee: IGrantable)
 \`\`\`
 
 ###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorygrantee\\"></span>
@@ -2166,7 +2166,7 @@ def grant_pull(grantee: aws_cdk.aws_iam.IGrantable)
 ##### \`grant_pull_push\` <span data-heading-title=\\"\`grant_pull_push\`\\" data-heading-id=\\"awscdkawsecrirepositorygrantpullpush\\"></span>
 
 \`\`\`python
-def grant_pull_push(grantee: aws_cdk.aws_iam.IGrantable)
+def grant_pull_push(grantee: IGrantable)
 \`\`\`
 
 ###### \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositorygrantee\\"></span>
@@ -2180,9 +2180,9 @@ def grant_pull_push(grantee: aws_cdk.aws_iam.IGrantable)
 \`\`\`python
 def on_cloud_trail_event(id: str, 
                          description: str = None, 
-                         event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                         event_pattern: EventPattern = None, 
                          rule_name: str = None, 
-                         target: aws_cdk.aws_events.IRuleTarget = None)
+                         target: IRuleTarget = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryid\\"></span>
@@ -2240,9 +2240,9 @@ The target to register for the event.
 \`\`\`python
 def on_cloud_trail_image_pushed(id: str, 
                                 description: str = None, 
-                                event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                                event_pattern: EventPattern = None, 
                                 rule_name: str = None, 
-                                target: aws_cdk.aws_events.IRuleTarget = None, 
+                                target: IRuleTarget = None, 
                                 image_tag: str = None)
 \`\`\`
 
@@ -2310,9 +2310,9 @@ Only watch changes to this image tag.
 \`\`\`python
 def on_event(id: str, 
              description: str = None, 
-             event_pattern: aws_cdk.aws_events.EventPattern = None, 
+             event_pattern: EventPattern = None, 
              rule_name: str = None, 
-             target: aws_cdk.aws_events.IRuleTarget = None)
+             target: IRuleTarget = None)
 \`\`\`
 
 ###### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrirepositoryid\\"></span>
@@ -2368,9 +2368,9 @@ The target to register for the event.
 \`\`\`python
 def on_image_scan_completed(id: str, 
                             description: str = None, 
-                            event_pattern: aws_cdk.aws_events.EventPattern = None, 
+                            event_pattern: EventPattern = None, 
                             rule_name: str = None, 
-                            target: aws_cdk.aws_events.IRuleTarget = None, 
+                            target: IRuleTarget = None, 
                             image_tags: typing.List[str] = None)
 \`\`\`
 
@@ -2426,7 +2426,7 @@ The target to register for the event.
 
 ###### \`image_tags\`<sup>Optional</sup> <span data-heading-title=\\"\`image_tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionsimagetags\\"></span>
 
-- *Type:* **typing.List**[\`str\`]
+- *Type:* typing.List[\`str\`]
 - *Default:* Watch the changes to the repository with all image tags
 
 Only watch changes to the image tags spedified.

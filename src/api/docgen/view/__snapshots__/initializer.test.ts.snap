@@ -6,12 +6,12 @@ exports[`python snapshot 1`] = `
 \`\`\`python
 import aws_cdk.aws_ecr
 
-aws_cdk.aws_ecr.CfnPublicRepository(scope: aws_cdk.core.Construct, 
+aws_cdk.aws_ecr.CfnPublicRepository(scope: Construct, 
                                     id: str, 
                                     repository_catalog_data: typing.Any = None, 
                                     repository_name: str = None, 
                                     repository_policy_text: typing.Any = None, 
-                                    tags: typing.List[aws_cdk.core.CfnTag] = None)
+                                    tags: typing.List[CfnTag] = None)
 \`\`\`
 
 # \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositoryscope\\"></span>
@@ -62,7 +62,7 @@ scoped id of the resource.
 
 # \`tags\`<sup>Optional</sup> <span data-heading-title=\\"\`tags\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropstags\\"></span>
 
-- *Type:* **typing.List**[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
+- *Type:* typing.List[[\`aws_cdk.core.CfnTag\`](#aws_cdk.core.CfnTag)]
 
 \`AWS::ECR::PublicRepository.Tags\`.
 
