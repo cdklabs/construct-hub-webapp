@@ -3796,9 +3796,9 @@ Manages mapping between IAM users and roles to Kubernetes RBAC configuration.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.AwsAuth(scope: Construct, 
-                        id: str, 
-                        cluster: Cluster)
+aws_eks.AwsAuth(scope: Construct, 
+                id: str, 
+                cluster: Cluster)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksawsauthscope\\"></span>
@@ -3948,14 +3948,14 @@ A CloudFormation \`AWS::EKS::Addon\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnAddon(scope: Construct, 
-                         id: str, 
-                         addon_name: str, 
-                         cluster_name: str, 
-                         addon_version: str = None, 
-                         resolve_conflicts: str = None, 
-                         service_account_role_arn: str = None, 
-                         tags: typing.List[CfnTag] = None)
+aws_eks.CfnAddon(scope: Construct, 
+                 id: str, 
+                 addon_name: str, 
+                 cluster_name: str, 
+                 addon_version: str = None, 
+                 resolve_conflicts: str = None, 
+                 service_account_role_arn: str = None, 
+                 tags: typing.List[CfnTag] = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnaddonscope\\"></span>
@@ -4142,14 +4142,14 @@ A CloudFormation \`AWS::EKS::Cluster\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnCluster(scope: Construct, 
-                           id: str, 
-                           resources_vpc_config: typing.Union[ResourcesVpcConfigProperty, IResolvable], 
-                           role_arn: str, 
-                           encryption_config: typing.Union[IResolvable, typing.List[typing.Union[EncryptionConfigProperty, IResolvable]]] = None, 
-                           kubernetes_network_config: typing.Union[KubernetesNetworkConfigProperty, IResolvable] = None, 
-                           name: str = None, 
-                           version: str = None)
+aws_eks.CfnCluster(scope: Construct, 
+                   id: str, 
+                   resources_vpc_config: typing.Union[ResourcesVpcConfigProperty, IResolvable], 
+                   role_arn: str, 
+                   encryption_config: typing.Union[IResolvable, typing.List[typing.Union[EncryptionConfigProperty, IResolvable]]] = None, 
+                   kubernetes_network_config: typing.Union[KubernetesNetworkConfigProperty, IResolvable] = None, 
+                   name: str = None, 
+                   version: str = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnclusterscope\\"></span>
@@ -4366,14 +4366,14 @@ A CloudFormation \`AWS::EKS::FargateProfile\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnFargateProfile(scope: Construct, 
-                                  id: str, 
-                                  cluster_name: str, 
-                                  pod_execution_role_arn: str, 
-                                  selectors: typing.Union[IResolvable, typing.List[typing.Union[SelectorProperty, IResolvable]]], 
-                                  fargate_profile_name: str = None, 
-                                  subnets: typing.List[str] = None, 
-                                  tags: typing.List[CfnTag] = None)
+aws_eks.CfnFargateProfile(scope: Construct, 
+                          id: str, 
+                          cluster_name: str, 
+                          pod_execution_role_arn: str, 
+                          selectors: typing.Union[IResolvable, typing.List[typing.Union[SelectorProperty, IResolvable]]], 
+                          fargate_profile_name: str = None, 
+                          subnets: typing.List[str] = None, 
+                          tags: typing.List[CfnTag] = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnfargateprofilescope\\"></span>
@@ -4560,25 +4560,25 @@ A CloudFormation \`AWS::EKS::Nodegroup\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup(scope: Construct, 
-                             id: str, 
-                             cluster_name: str, 
-                             node_role: str, 
-                             subnets: typing.List[str], 
-                             ami_type: str = None, 
-                             capacity_type: str = None, 
-                             disk_size: typing.Union[int, float] = None, 
-                             force_update_enabled: typing.Union[bool, IResolvable] = None, 
-                             instance_types: typing.List[str] = None, 
-                             labels: typing.Any = None, 
-                             launch_template: typing.Union[LaunchTemplateSpecificationProperty, IResolvable] = None, 
-                             nodegroup_name: str = None, 
-                             release_version: str = None, 
-                             remote_access: typing.Union[RemoteAccessProperty, IResolvable] = None, 
-                             scaling_config: typing.Union[ScalingConfigProperty, IResolvable] = None, 
-                             tags: typing.Any = None, 
-                             taints: typing.Union[IResolvable, typing.List[typing.Union[TaintProperty, IResolvable]]] = None, 
-                             version: str = None)
+aws_eks.CfnNodegroup(scope: Construct, 
+                     id: str, 
+                     cluster_name: str, 
+                     node_role: str, 
+                     subnets: typing.List[str], 
+                     ami_type: str = None, 
+                     capacity_type: str = None, 
+                     disk_size: typing.Union[int, float] = None, 
+                     force_update_enabled: typing.Union[bool, IResolvable] = None, 
+                     instance_types: typing.List[str] = None, 
+                     labels: typing.Any = None, 
+                     launch_template: typing.Union[LaunchTemplateSpecificationProperty, IResolvable] = None, 
+                     nodegroup_name: str = None, 
+                     release_version: str = None, 
+                     remote_access: typing.Union[RemoteAccessProperty, IResolvable] = None, 
+                     scaling_config: typing.Union[ScalingConfigProperty, IResolvable] = None, 
+                     tags: typing.Any = None, 
+                     taints: typing.Union[IResolvable, typing.List[typing.Union[TaintProperty, IResolvable]]] = None, 
+                     version: str = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnnodegroupscope\\"></span>
@@ -4998,30 +4998,30 @@ The user is still required to create the worker nodes.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.Cluster(scope: Construct, 
-                        id: str, 
-                        version: KubernetesVersion, 
-                        cluster_name: str = None, 
-                        output_cluster_name: bool = None, 
-                        output_config_command: bool = None, 
-                        role: IRole = None, 
-                        security_group: ISecurityGroup = None, 
-                        vpc: IVpc = None, 
-                        vpc_subnets: typing.List[SubnetSelection] = None, 
-                        cluster_handler_environment: typing.Mapping[str] = None, 
-                        core_dns_compute_type: CoreDnsComputeType = None, 
-                        endpoint_access: EndpointAccess = None, 
-                        kubectl_environment: typing.Mapping[str] = None, 
-                        kubectl_layer: ILayerVersion = None, 
-                        kubectl_memory: Size = None, 
-                        masters_role: IRole = None, 
-                        output_masters_role_arn: bool = None, 
-                        place_cluster_handler_in_vpc: bool = None, 
-                        prune: bool = None, 
-                        secrets_encryption_key: IKey = None, 
-                        default_capacity: typing.Union[int, float] = None, 
-                        default_capacity_instance: InstanceType = None, 
-                        default_capacity_type: DefaultCapacityType = None)
+aws_eks.Cluster(scope: Construct, 
+                id: str, 
+                version: KubernetesVersion, 
+                cluster_name: str = None, 
+                output_cluster_name: bool = None, 
+                output_config_command: bool = None, 
+                role: IRole = None, 
+                security_group: ISecurityGroup = None, 
+                vpc: IVpc = None, 
+                vpc_subnets: typing.List[SubnetSelection] = None, 
+                cluster_handler_environment: typing.Mapping[str] = None, 
+                core_dns_compute_type: CoreDnsComputeType = None, 
+                endpoint_access: EndpointAccess = None, 
+                kubectl_environment: typing.Mapping[str] = None, 
+                kubectl_layer: ILayerVersion = None, 
+                kubectl_memory: Size = None, 
+                masters_role: IRole = None, 
+                output_masters_role_arn: bool = None, 
+                place_cluster_handler_in_vpc: bool = None, 
+                prune: bool = None, 
+                secrets_encryption_key: IKey = None, 
+                default_capacity: typing.Union[int, float] = None, 
+                default_capacity_instance: InstanceType = None, 
+                default_capacity_type: DefaultCapacityType = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksclusterscope\\"></span>
@@ -6229,23 +6229,23 @@ Timeout for waiting on the load balancer address.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.Cluster.from_cluster_attributes(scope: Construct, 
-                                                id: str, 
-                                                cluster_name: str, 
-                                                cluster_certificate_authority_data: str = None, 
-                                                cluster_encryption_config_key_arn: str = None, 
-                                                cluster_endpoint: str = None, 
-                                                cluster_security_group_id: str = None, 
-                                                kubectl_environment: typing.Mapping[str] = None, 
-                                                kubectl_layer: ILayerVersion = None, 
-                                                kubectl_memory: Size = None, 
-                                                kubectl_private_subnet_ids: typing.List[str] = None, 
-                                                kubectl_role_arn: str = None, 
-                                                kubectl_security_group_id: str = None, 
-                                                open_id_connect_provider: IOpenIdConnectProvider = None, 
-                                                prune: bool = None, 
-                                                security_group_ids: typing.List[str] = None, 
-                                                vpc: IVpc = None)
+aws_eks.Cluster.from_cluster_attributes(scope: Construct, 
+                                        id: str, 
+                                        cluster_name: str, 
+                                        cluster_certificate_authority_data: str = None, 
+                                        cluster_encryption_config_key_arn: str = None, 
+                                        cluster_endpoint: str = None, 
+                                        cluster_security_group_id: str = None, 
+                                        kubectl_environment: typing.Mapping[str] = None, 
+                                        kubectl_layer: ILayerVersion = None, 
+                                        kubectl_memory: Size = None, 
+                                        kubectl_private_subnet_ids: typing.List[str] = None, 
+                                        kubectl_role_arn: str = None, 
+                                        kubectl_security_group_id: str = None, 
+                                        open_id_connect_provider: IOpenIdConnectProvider = None, 
+                                        prune: bool = None, 
+                                        security_group_ids: typing.List[str] = None, 
+                                        vpc: IVpc = None)
 \`\`\`
 
 ###### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksclusterscope\\"></span>
@@ -6662,28 +6662,28 @@ The cluster is created with a default Fargate Profile that matches the
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.FargateCluster(scope: Construct, 
-                               id: str, 
-                               version: KubernetesVersion, 
-                               cluster_name: str = None, 
-                               output_cluster_name: bool = None, 
-                               output_config_command: bool = None, 
-                               role: IRole = None, 
-                               security_group: ISecurityGroup = None, 
-                               vpc: IVpc = None, 
-                               vpc_subnets: typing.List[SubnetSelection] = None, 
-                               cluster_handler_environment: typing.Mapping[str] = None, 
-                               core_dns_compute_type: CoreDnsComputeType = None, 
-                               endpoint_access: EndpointAccess = None, 
-                               kubectl_environment: typing.Mapping[str] = None, 
-                               kubectl_layer: ILayerVersion = None, 
-                               kubectl_memory: Size = None, 
-                               masters_role: IRole = None, 
-                               output_masters_role_arn: bool = None, 
-                               place_cluster_handler_in_vpc: bool = None, 
-                               prune: bool = None, 
-                               secrets_encryption_key: IKey = None, 
-                               default_profile: FargateProfileOptions = None)
+aws_eks.FargateCluster(scope: Construct, 
+                       id: str, 
+                       version: KubernetesVersion, 
+                       cluster_name: str = None, 
+                       output_cluster_name: bool = None, 
+                       output_config_command: bool = None, 
+                       role: IRole = None, 
+                       security_group: ISecurityGroup = None, 
+                       vpc: IVpc = None, 
+                       vpc_subnets: typing.List[SubnetSelection] = None, 
+                       cluster_handler_environment: typing.Mapping[str] = None, 
+                       core_dns_compute_type: CoreDnsComputeType = None, 
+                       endpoint_access: EndpointAccess = None, 
+                       kubectl_environment: typing.Mapping[str] = None, 
+                       kubectl_layer: ILayerVersion = None, 
+                       kubectl_memory: Size = None, 
+                       masters_role: IRole = None, 
+                       output_masters_role_arn: bool = None, 
+                       place_cluster_handler_in_vpc: bool = None, 
+                       prune: bool = None, 
+                       secrets_encryption_key: IKey = None, 
+                       default_profile: FargateProfileOptions = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksfargateclusterscope\\"></span>
@@ -6954,14 +6954,14 @@ match a selector in that profile in order to be scheduled onto Fargate.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.FargateProfile(scope: Construct, 
-                               id: str, 
-                               selectors: typing.List[Selector], 
-                               fargate_profile_name: str = None, 
-                               pod_execution_role: IRole = None, 
-                               subnet_selection: SubnetSelection = None, 
-                               vpc: IVpc = None, 
-                               cluster: Cluster)
+aws_eks.FargateProfile(scope: Construct, 
+                       id: str, 
+                       selectors: typing.List[Selector], 
+                       fargate_profile_name: str = None, 
+                       pod_execution_role: IRole = None, 
+                       subnet_selection: SubnetSelection = None, 
+                       vpc: IVpc = None, 
+                       cluster: Cluster)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksfargateprofilescope\\"></span>
@@ -7101,18 +7101,18 @@ Applies/deletes the resources using \`kubectl\` in sync with the resource.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.HelmChart(scope: Construct, 
-                          id: str, 
-                          chart: str, 
-                          create_namespace: bool = None, 
-                          namespace: str = None, 
-                          release: str = None, 
-                          repository: str = None, 
-                          timeout: Duration = None, 
-                          values: typing.Mapping[typing.Any] = None, 
-                          version: str = None, 
-                          wait: bool = None, 
-                          cluster: ICluster)
+aws_eks.HelmChart(scope: Construct, 
+                  id: str, 
+                  chart: str, 
+                  create_namespace: bool = None, 
+                  namespace: str = None, 
+                  release: str = None, 
+                  repository: str = None, 
+                  timeout: Duration = None, 
+                  values: typing.Mapping[typing.Any] = None, 
+                  version: str = None, 
+                  wait: bool = None, 
+                  cluster: ICluster)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekshelmchartscope\\"></span>
@@ -7248,13 +7248,13 @@ Applies/deletes the manifest using \`kubectl\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.KubernetesManifest(scope: Construct, 
-                                   id: str, 
-                                   prune: bool = None, 
-                                   skip_validation: bool = None, 
-                                   cluster: ICluster, 
-                                   manifest: typing.List[typing.Mapping[typing.Any]], 
-                                   overwrite: bool = None)
+aws_eks.KubernetesManifest(scope: Construct, 
+                           id: str, 
+                           prune: bool = None, 
+                           skip_validation: bool = None, 
+                           cluster: ICluster, 
+                           manifest: typing.List[typing.Mapping[typing.Any]], 
+                           overwrite: bool = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekskubernetesmanifestscope\\"></span>
@@ -7365,14 +7365,14 @@ Use this to fetch any information available by the \`kubectl get\` command.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.KubernetesObjectValue(scope: Construct, 
-                                      id: str, 
-                                      cluster: ICluster, 
-                                      json_path: str, 
-                                      object_name: str, 
-                                      object_type: str, 
-                                      object_namespace: str = None, 
-                                      timeout: Duration = None)
+aws_eks.KubernetesObjectValue(scope: Construct, 
+                              id: str, 
+                              cluster: ICluster, 
+                              json_path: str, 
+                              object_name: str, 
+                              object_type: str, 
+                              object_namespace: str = None, 
+                              timeout: Duration = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekskubernetesobjectvaluescope\\"></span>
@@ -7476,14 +7476,14 @@ A CloudFormation resource which applies/restores a JSON patch into a Kubernetes 
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.KubernetesPatch(scope: Construct, 
-                                id: str, 
-                                apply_patch: typing.Mapping[typing.Any], 
-                                cluster: ICluster, 
-                                resource_name: str, 
-                                restore_patch: typing.Mapping[typing.Any], 
-                                patch_type: PatchType = None, 
-                                resource_namespace: str = None)
+aws_eks.KubernetesPatch(scope: Construct, 
+                        id: str, 
+                        apply_patch: typing.Mapping[typing.Any], 
+                        cluster: ICluster, 
+                        resource_name: str, 
+                        restore_patch: typing.Mapping[typing.Any], 
+                        patch_type: PatchType = None, 
+                        resource_namespace: str = None)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekskubernetespatchscope\\"></span>
@@ -7567,25 +7567,25 @@ The Nodegroup resource class.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.Nodegroup(scope: Construct, 
-                          id: str, 
-                          ami_type: NodegroupAmiType = None, 
-                          capacity_type: CapacityType = None, 
-                          desired_size: typing.Union[int, float] = None, 
-                          disk_size: typing.Union[int, float] = None, 
-                          force_update: bool = None, 
-                          instance_types: typing.List[InstanceType] = None, 
-                          labels: typing.Mapping[str] = None, 
-                          launch_template_spec: LaunchTemplateSpec = None, 
-                          max_size: typing.Union[int, float] = None, 
-                          min_size: typing.Union[int, float] = None, 
-                          nodegroup_name: str = None, 
-                          node_role: IRole = None, 
-                          release_version: str = None, 
-                          remote_access: NodegroupRemoteAccess = None, 
-                          subnets: SubnetSelection = None, 
-                          tags: typing.Mapping[str] = None, 
-                          cluster: ICluster)
+aws_eks.Nodegroup(scope: Construct, 
+                  id: str, 
+                  ami_type: NodegroupAmiType = None, 
+                  capacity_type: CapacityType = None, 
+                  desired_size: typing.Union[int, float] = None, 
+                  disk_size: typing.Union[int, float] = None, 
+                  force_update: bool = None, 
+                  instance_types: typing.List[InstanceType] = None, 
+                  labels: typing.Mapping[str] = None, 
+                  launch_template_spec: LaunchTemplateSpec = None, 
+                  max_size: typing.Union[int, float] = None, 
+                  min_size: typing.Union[int, float] = None, 
+                  nodegroup_name: str = None, 
+                  node_role: IRole = None, 
+                  release_version: str = None, 
+                  remote_access: NodegroupRemoteAccess = None, 
+                  subnets: SubnetSelection = None, 
+                  tags: typing.Mapping[str] = None, 
+                  cluster: ICluster)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksnodegroupscope\\"></span>
@@ -7793,9 +7793,9 @@ Cluster resource.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.Nodegroup.from_nodegroup_name(scope: Construct, 
-                                              id: str, 
-                                              nodegroup_name: str)
+aws_eks.Nodegroup.from_nodegroup_name(scope: Construct, 
+                                      id: str, 
+                                      nodegroup_name: str)
 \`\`\`
 
 ###### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksnodegroupscope\\"></span>
@@ -7869,9 +7869,9 @@ that will be compatible with the eks cluster
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.OpenIdConnectProvider(scope: Construct, 
-                                      id: str, 
-                                      url: str)
+aws_eks.OpenIdConnectProvider(scope: Construct, 
+                              id: str, 
+                              url: str)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksopenidconnectproviderscope\\"></span>
@@ -7922,11 +7922,11 @@ Service Account.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.ServiceAccount(scope: Construct, 
-                               id: str, 
-                               name: str = None, 
-                               namespace: str = None, 
-                               cluster: ICluster)
+aws_eks.ServiceAccount(scope: Construct, 
+                       id: str, 
+                       name: str = None, 
+                       namespace: str = None, 
+                       cluster: ICluster)
 \`\`\`
 
 ##### \`scope\`<sup>Required</sup> <span data-heading-title=\\"\`scope\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksserviceaccountscope\\"></span>
@@ -8044,32 +8044,32 @@ Options for adding worker nodes.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.AutoScalingGroupCapacityOptions(allow_all_outbound: bool = None, 
-                                                associate_public_ip_address: bool = None, 
-                                                auto_scaling_group_name: str = None, 
-                                                block_devices: typing.List[BlockDevice] = None, 
-                                                cooldown: Duration = None, 
-                                                desired_capacity: typing.Union[int, float] = None, 
-                                                group_metrics: typing.List[GroupMetrics] = None, 
-                                                health_check: HealthCheck = None, 
-                                                ignore_unmodified_size_properties: bool = None, 
-                                                instance_monitoring: Monitoring = None, 
-                                                key_name: str = None, 
-                                                max_capacity: typing.Union[int, float] = None, 
-                                                max_instance_lifetime: Duration = None, 
-                                                min_capacity: typing.Union[int, float] = None, 
-                                                new_instances_protected_from_scale_in: bool = None, 
-                                                notifications: typing.List[NotificationConfiguration] = None, 
-                                                signals: Signals = None, 
-                                                spot_price: str = None, 
-                                                update_policy: UpdatePolicy = None, 
-                                                vpc_subnets: SubnetSelection = None, 
-                                                instance_type: InstanceType, 
-                                                bootstrap_enabled: bool = None, 
-                                                bootstrap_options: BootstrapOptions = None, 
-                                                machine_image_type: MachineImageType = None, 
-                                                map_role: bool = None, 
-                                                spot_interrupt_handler: bool = None)
+aws_eks.AutoScalingGroupCapacityOptions(allow_all_outbound: bool = None, 
+                                        associate_public_ip_address: bool = None, 
+                                        auto_scaling_group_name: str = None, 
+                                        block_devices: typing.List[BlockDevice] = None, 
+                                        cooldown: Duration = None, 
+                                        desired_capacity: typing.Union[int, float] = None, 
+                                        group_metrics: typing.List[GroupMetrics] = None, 
+                                        health_check: HealthCheck = None, 
+                                        ignore_unmodified_size_properties: bool = None, 
+                                        instance_monitoring: Monitoring = None, 
+                                        key_name: str = None, 
+                                        max_capacity: typing.Union[int, float] = None, 
+                                        max_instance_lifetime: Duration = None, 
+                                        min_capacity: typing.Union[int, float] = None, 
+                                        new_instances_protected_from_scale_in: bool = None, 
+                                        notifications: typing.List[NotificationConfiguration] = None, 
+                                        signals: Signals = None, 
+                                        spot_price: str = None, 
+                                        update_policy: UpdatePolicy = None, 
+                                        vpc_subnets: SubnetSelection = None, 
+                                        instance_type: InstanceType, 
+                                        bootstrap_enabled: bool = None, 
+                                        bootstrap_options: BootstrapOptions = None, 
+                                        machine_image_type: MachineImageType = None, 
+                                        map_role: bool = None, 
+                                        spot_interrupt_handler: bool = None)
 \`\`\`
 
 ##### \`allow_all_outbound\`<sup>Optional</sup> <span data-heading-title=\\"\`allow_all_outbound\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawseksautoscalinggroupcapacityoptionsallowalloutbound\\"></span>
@@ -8394,11 +8394,11 @@ Options for adding an AutoScalingGroup as capacity.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.AutoScalingGroupOptions(bootstrap_enabled: bool = None, 
-                                        bootstrap_options: BootstrapOptions = None, 
-                                        machine_image_type: MachineImageType = None, 
-                                        map_role: bool = None, 
-                                        spot_interrupt_handler: bool = None)
+aws_eks.AutoScalingGroupOptions(bootstrap_enabled: bool = None, 
+                                bootstrap_options: BootstrapOptions = None, 
+                                machine_image_type: MachineImageType = None, 
+                                map_role: bool = None, 
+                                spot_interrupt_handler: bool = None)
 \`\`\`
 
 ##### \`bootstrap_enabled\`<sup>Optional</sup> <span data-heading-title=\\"\`bootstrap_enabled\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawseksautoscalinggroupoptionsbootstrapenabled\\"></span>
@@ -8462,8 +8462,8 @@ AwsAuth mapping.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.AwsAuthMapping(groups: typing.List[str], 
-                               username: str = None)
+aws_eks.AwsAuthMapping(groups: typing.List[str], 
+                       username: str = None)
 \`\`\`
 
 ##### \`groups\`<sup>Required</sup> <span data-heading-title=\\"\`groups\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksawsauthmappinggroups\\"></span>
@@ -8494,7 +8494,7 @@ Configuration props for the AwsAuth construct.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.AwsAuthProps(cluster: Cluster)
+aws_eks.AwsAuthProps(cluster: Cluster)
 \`\`\`
 
 ##### \`cluster\`<sup>Required</sup> <span data-heading-title=\\"\`cluster\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksawsauthpropscluster\\"></span>
@@ -8516,13 +8516,13 @@ EKS node bootstrapping options.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.BootstrapOptions(additional_args: str = None, 
-                                 aws_api_retry_attempts: typing.Union[int, float] = None, 
-                                 dns_cluster_ip: str = None, 
-                                 docker_config_json: str = None, 
-                                 enable_docker_bridge: bool = None, 
-                                 kubelet_extra_args: str = None, 
-                                 use_max_pods: bool = None)
+aws_eks.BootstrapOptions(additional_args: str = None, 
+                         aws_api_retry_attempts: typing.Union[int, float] = None, 
+                         dns_cluster_ip: str = None, 
+                         docker_config_json: str = None, 
+                         enable_docker_bridge: bool = None, 
+                         kubelet_extra_args: str = None, 
+                         use_max_pods: bool = None)
 \`\`\`
 
 ##### \`additional_args\`<sup>Optional</sup> <span data-heading-title=\\"\`additional_args\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawseksbootstrapoptionsadditionalargs\\"></span>
@@ -8604,12 +8604,12 @@ Properties for defining a \`AWS::EKS::Addon\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnAddonProps(addon_name: str, 
-                              cluster_name: str, 
-                              addon_version: str = None, 
-                              resolve_conflicts: str = None, 
-                              service_account_role_arn: str = None, 
-                              tags: typing.List[CfnTag] = None)
+aws_eks.CfnAddonProps(addon_name: str, 
+                      cluster_name: str, 
+                      addon_version: str = None, 
+                      resolve_conflicts: str = None, 
+                      service_account_role_arn: str = None, 
+                      tags: typing.List[CfnTag] = None)
 \`\`\`
 
 ##### \`addon_name\`<sup>Required</sup> <span data-heading-title=\\"\`addon_name\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnaddonpropsaddonname\\"></span>
@@ -8683,12 +8683,12 @@ Properties for defining a \`AWS::EKS::Cluster\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnClusterProps(resources_vpc_config: typing.Union[ResourcesVpcConfigProperty, IResolvable], 
-                                role_arn: str, 
-                                encryption_config: typing.Union[IResolvable, typing.List[typing.Union[EncryptionConfigProperty, IResolvable]]] = None, 
-                                kubernetes_network_config: typing.Union[KubernetesNetworkConfigProperty, IResolvable] = None, 
-                                name: str = None, 
-                                version: str = None)
+aws_eks.CfnClusterProps(resources_vpc_config: typing.Union[ResourcesVpcConfigProperty, IResolvable], 
+                        role_arn: str, 
+                        encryption_config: typing.Union[IResolvable, typing.List[typing.Union[EncryptionConfigProperty, IResolvable]]] = None, 
+                        kubernetes_network_config: typing.Union[KubernetesNetworkConfigProperty, IResolvable] = None, 
+                        name: str = None, 
+                        version: str = None)
 \`\`\`
 
 ##### \`resources_vpc_config\`<sup>Required</sup> <span data-heading-title=\\"\`resources_vpc_config\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnclusterpropsresourcesvpcconfig\\"></span>
@@ -8762,12 +8762,12 @@ Properties for defining a \`AWS::EKS::FargateProfile\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnFargateProfileProps(cluster_name: str, 
-                                       pod_execution_role_arn: str, 
-                                       selectors: typing.Union[IResolvable, typing.List[typing.Union[SelectorProperty, IResolvable]]], 
-                                       fargate_profile_name: str = None, 
-                                       subnets: typing.List[str] = None, 
-                                       tags: typing.List[CfnTag] = None)
+aws_eks.CfnFargateProfileProps(cluster_name: str, 
+                               pod_execution_role_arn: str, 
+                               selectors: typing.Union[IResolvable, typing.List[typing.Union[SelectorProperty, IResolvable]]], 
+                               fargate_profile_name: str = None, 
+                               subnets: typing.List[str] = None, 
+                               tags: typing.List[CfnTag] = None)
 \`\`\`
 
 ##### \`cluster_name\`<sup>Required</sup> <span data-heading-title=\\"\`cluster_name\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnfargateprofilepropsclustername\\"></span>
@@ -8841,23 +8841,23 @@ Properties for defining a \`AWS::EKS::Nodegroup\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnNodegroupProps(cluster_name: str, 
-                                  node_role: str, 
-                                  subnets: typing.List[str], 
-                                  ami_type: str = None, 
-                                  capacity_type: str = None, 
-                                  disk_size: typing.Union[int, float] = None, 
-                                  force_update_enabled: typing.Union[bool, IResolvable] = None, 
-                                  instance_types: typing.List[str] = None, 
-                                  labels: typing.Any = None, 
-                                  launch_template: typing.Union[LaunchTemplateSpecificationProperty, IResolvable] = None, 
-                                  nodegroup_name: str = None, 
-                                  release_version: str = None, 
-                                  remote_access: typing.Union[RemoteAccessProperty, IResolvable] = None, 
-                                  scaling_config: typing.Union[ScalingConfigProperty, IResolvable] = None, 
-                                  tags: typing.Any = None, 
-                                  taints: typing.Union[IResolvable, typing.List[typing.Union[TaintProperty, IResolvable]]] = None, 
-                                  version: str = None)
+aws_eks.CfnNodegroupProps(cluster_name: str, 
+                          node_role: str, 
+                          subnets: typing.List[str], 
+                          ami_type: str = None, 
+                          capacity_type: str = None, 
+                          disk_size: typing.Union[int, float] = None, 
+                          force_update_enabled: typing.Union[bool, IResolvable] = None, 
+                          instance_types: typing.List[str] = None, 
+                          labels: typing.Any = None, 
+                          launch_template: typing.Union[LaunchTemplateSpecificationProperty, IResolvable] = None, 
+                          nodegroup_name: str = None, 
+                          release_version: str = None, 
+                          remote_access: typing.Union[RemoteAccessProperty, IResolvable] = None, 
+                          scaling_config: typing.Union[ScalingConfigProperty, IResolvable] = None, 
+                          tags: typing.Any = None, 
+                          taints: typing.Union[IResolvable, typing.List[typing.Union[TaintProperty, IResolvable]]] = None, 
+                          version: str = None)
 \`\`\`
 
 ##### \`cluster_name\`<sup>Required</sup> <span data-heading-title=\\"\`cluster_name\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnnodegrouppropsclustername\\"></span>
@@ -9039,21 +9039,21 @@ Attributes for EKS clusters.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.ClusterAttributes(cluster_name: str, 
-                                  cluster_certificate_authority_data: str = None, 
-                                  cluster_encryption_config_key_arn: str = None, 
-                                  cluster_endpoint: str = None, 
-                                  cluster_security_group_id: str = None, 
-                                  kubectl_environment: typing.Mapping[str] = None, 
-                                  kubectl_layer: ILayerVersion = None, 
-                                  kubectl_memory: Size = None, 
-                                  kubectl_private_subnet_ids: typing.List[str] = None, 
-                                  kubectl_role_arn: str = None, 
-                                  kubectl_security_group_id: str = None, 
-                                  open_id_connect_provider: IOpenIdConnectProvider = None, 
-                                  prune: bool = None, 
-                                  security_group_ids: typing.List[str] = None, 
-                                  vpc: IVpc = None)
+aws_eks.ClusterAttributes(cluster_name: str, 
+                          cluster_certificate_authority_data: str = None, 
+                          cluster_encryption_config_key_arn: str = None, 
+                          cluster_endpoint: str = None, 
+                          cluster_security_group_id: str = None, 
+                          kubectl_environment: typing.Mapping[str] = None, 
+                          kubectl_layer: ILayerVersion = None, 
+                          kubectl_memory: Size = None, 
+                          kubectl_private_subnet_ids: typing.List[str] = None, 
+                          kubectl_role_arn: str = None, 
+                          kubectl_security_group_id: str = None, 
+                          open_id_connect_provider: IOpenIdConnectProvider = None, 
+                          prune: bool = None, 
+                          security_group_ids: typing.List[str] = None, 
+                          vpc: IVpc = None)
 \`\`\`
 
 ##### \`cluster_name\`<sup>Required</sup> <span data-heading-title=\\"\`cluster_name\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksclusterattributesclustername\\"></span>
@@ -9226,25 +9226,25 @@ Options for EKS clusters.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.ClusterOptions(version: KubernetesVersion, 
-                               cluster_name: str = None, 
-                               output_cluster_name: bool = None, 
-                               output_config_command: bool = None, 
-                               role: IRole = None, 
-                               security_group: ISecurityGroup = None, 
-                               vpc: IVpc = None, 
-                               vpc_subnets: typing.List[SubnetSelection] = None, 
-                               cluster_handler_environment: typing.Mapping[str] = None, 
-                               core_dns_compute_type: CoreDnsComputeType = None, 
-                               endpoint_access: EndpointAccess = None, 
-                               kubectl_environment: typing.Mapping[str] = None, 
-                               kubectl_layer: ILayerVersion = None, 
-                               kubectl_memory: Size = None, 
-                               masters_role: IRole = None, 
-                               output_masters_role_arn: bool = None, 
-                               place_cluster_handler_in_vpc: bool = None, 
-                               prune: bool = None, 
-                               secrets_encryption_key: IKey = None)
+aws_eks.ClusterOptions(version: KubernetesVersion, 
+                       cluster_name: str = None, 
+                       output_cluster_name: bool = None, 
+                       output_config_command: bool = None, 
+                       role: IRole = None, 
+                       security_group: ISecurityGroup = None, 
+                       vpc: IVpc = None, 
+                       vpc_subnets: typing.List[SubnetSelection] = None, 
+                       cluster_handler_environment: typing.Mapping[str] = None, 
+                       core_dns_compute_type: CoreDnsComputeType = None, 
+                       endpoint_access: EndpointAccess = None, 
+                       kubectl_environment: typing.Mapping[str] = None, 
+                       kubectl_layer: ILayerVersion = None, 
+                       kubectl_memory: Size = None, 
+                       masters_role: IRole = None, 
+                       output_masters_role_arn: bool = None, 
+                       place_cluster_handler_in_vpc: bool = None, 
+                       prune: bool = None, 
+                       secrets_encryption_key: IKey = None)
 \`\`\`
 
 ##### \`version\`<sup>Required</sup> <span data-heading-title=\\"\`version\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksclusteroptionsversion\\"></span>
@@ -9470,28 +9470,28 @@ Common configuration props for EKS clusters.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.ClusterProps(version: KubernetesVersion, 
-                             cluster_name: str = None, 
-                             output_cluster_name: bool = None, 
-                             output_config_command: bool = None, 
-                             role: IRole = None, 
-                             security_group: ISecurityGroup = None, 
-                             vpc: IVpc = None, 
-                             vpc_subnets: typing.List[SubnetSelection] = None, 
-                             cluster_handler_environment: typing.Mapping[str] = None, 
-                             core_dns_compute_type: CoreDnsComputeType = None, 
-                             endpoint_access: EndpointAccess = None, 
-                             kubectl_environment: typing.Mapping[str] = None, 
-                             kubectl_layer: ILayerVersion = None, 
-                             kubectl_memory: Size = None, 
-                             masters_role: IRole = None, 
-                             output_masters_role_arn: bool = None, 
-                             place_cluster_handler_in_vpc: bool = None, 
-                             prune: bool = None, 
-                             secrets_encryption_key: IKey = None, 
-                             default_capacity: typing.Union[int, float] = None, 
-                             default_capacity_instance: InstanceType = None, 
-                             default_capacity_type: DefaultCapacityType = None)
+aws_eks.ClusterProps(version: KubernetesVersion, 
+                     cluster_name: str = None, 
+                     output_cluster_name: bool = None, 
+                     output_config_command: bool = None, 
+                     role: IRole = None, 
+                     security_group: ISecurityGroup = None, 
+                     vpc: IVpc = None, 
+                     vpc_subnets: typing.List[SubnetSelection] = None, 
+                     cluster_handler_environment: typing.Mapping[str] = None, 
+                     core_dns_compute_type: CoreDnsComputeType = None, 
+                     endpoint_access: EndpointAccess = None, 
+                     kubectl_environment: typing.Mapping[str] = None, 
+                     kubectl_layer: ILayerVersion = None, 
+                     kubectl_memory: Size = None, 
+                     masters_role: IRole = None, 
+                     output_masters_role_arn: bool = None, 
+                     place_cluster_handler_in_vpc: bool = None, 
+                     prune: bool = None, 
+                     secrets_encryption_key: IKey = None, 
+                     default_capacity: typing.Union[int, float] = None, 
+                     default_capacity_instance: InstanceType = None, 
+                     default_capacity_type: DefaultCapacityType = None)
 \`\`\`
 
 ##### \`version\`<sup>Required</sup> <span data-heading-title=\\"\`version\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksclusterpropsversion\\"></span>
@@ -9753,14 +9753,14 @@ Options for configuring an EKS cluster.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CommonClusterOptions(version: KubernetesVersion, 
-                                     cluster_name: str = None, 
-                                     output_cluster_name: bool = None, 
-                                     output_config_command: bool = None, 
-                                     role: IRole = None, 
-                                     security_group: ISecurityGroup = None, 
-                                     vpc: IVpc = None, 
-                                     vpc_subnets: typing.List[SubnetSelection] = None)
+aws_eks.CommonClusterOptions(version: KubernetesVersion, 
+                             cluster_name: str = None, 
+                             output_cluster_name: bool = None, 
+                             output_config_command: bool = None, 
+                             role: IRole = None, 
+                             security_group: ISecurityGroup = None, 
+                             vpc: IVpc = None, 
+                             vpc_subnets: typing.List[SubnetSelection] = None)
 \`\`\`
 
 ##### \`version\`<sup>Required</sup> <span data-heading-title=\\"\`version\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscommonclusteroptionsversion\\"></span>
@@ -9856,9 +9856,9 @@ Properties for EksOptimizedImage.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.EksOptimizedImageProps(cpu_arch: CpuArch = None, 
-                                       kubernetes_version: str = None, 
-                                       node_type: NodeType = None)
+aws_eks.EksOptimizedImageProps(cpu_arch: CpuArch = None, 
+                               kubernetes_version: str = None, 
+                               node_type: NodeType = None)
 \`\`\`
 
 ##### \`cpu_arch\`<sup>Optional</sup> <span data-heading-title=\\"\`cpu_arch\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekseksoptimizedimagepropscpuarch\\"></span>
@@ -9897,8 +9897,8 @@ What instance type to retrieve the image for (standard or GPU-optimized).
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnCluster.EncryptionConfigProperty(provider: typing.Union[ProviderProperty, IResolvable] = None, 
-                                                    resources: typing.List[str] = None)
+aws_eks.CfnCluster.EncryptionConfigProperty(provider: typing.Union[ProviderProperty, IResolvable] = None, 
+                                            resources: typing.List[str] = None)
 \`\`\`
 
 ##### \`provider\`<sup>Optional</sup> <span data-heading-title=\\"\`provider\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekscfnclusterencryptionconfigpropertyprovider\\"></span>
@@ -9930,26 +9930,26 @@ Configuration props for EKS Fargate.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.FargateClusterProps(version: KubernetesVersion, 
-                                    cluster_name: str = None, 
-                                    output_cluster_name: bool = None, 
-                                    output_config_command: bool = None, 
-                                    role: IRole = None, 
-                                    security_group: ISecurityGroup = None, 
-                                    vpc: IVpc = None, 
-                                    vpc_subnets: typing.List[SubnetSelection] = None, 
-                                    cluster_handler_environment: typing.Mapping[str] = None, 
-                                    core_dns_compute_type: CoreDnsComputeType = None, 
-                                    endpoint_access: EndpointAccess = None, 
-                                    kubectl_environment: typing.Mapping[str] = None, 
-                                    kubectl_layer: ILayerVersion = None, 
-                                    kubectl_memory: Size = None, 
-                                    masters_role: IRole = None, 
-                                    output_masters_role_arn: bool = None, 
-                                    place_cluster_handler_in_vpc: bool = None, 
-                                    prune: bool = None, 
-                                    secrets_encryption_key: IKey = None, 
-                                    default_profile: FargateProfileOptions = None)
+aws_eks.FargateClusterProps(version: KubernetesVersion, 
+                            cluster_name: str = None, 
+                            output_cluster_name: bool = None, 
+                            output_config_command: bool = None, 
+                            role: IRole = None, 
+                            security_group: ISecurityGroup = None, 
+                            vpc: IVpc = None, 
+                            vpc_subnets: typing.List[SubnetSelection] = None, 
+                            cluster_handler_environment: typing.Mapping[str] = None, 
+                            core_dns_compute_type: CoreDnsComputeType = None, 
+                            endpoint_access: EndpointAccess = None, 
+                            kubectl_environment: typing.Mapping[str] = None, 
+                            kubectl_layer: ILayerVersion = None, 
+                            kubectl_memory: Size = None, 
+                            masters_role: IRole = None, 
+                            output_masters_role_arn: bool = None, 
+                            place_cluster_handler_in_vpc: bool = None, 
+                            prune: bool = None, 
+                            secrets_encryption_key: IKey = None, 
+                            default_profile: FargateProfileOptions = None)
 \`\`\`
 
 ##### \`version\`<sup>Required</sup> <span data-heading-title=\\"\`version\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksfargateclusterpropsversion\\"></span>
@@ -10185,11 +10185,11 @@ Options for defining EKS Fargate Profiles.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.FargateProfileOptions(selectors: typing.List[Selector], 
-                                      fargate_profile_name: str = None, 
-                                      pod_execution_role: IRole = None, 
-                                      subnet_selection: SubnetSelection = None, 
-                                      vpc: IVpc = None)
+aws_eks.FargateProfileOptions(selectors: typing.List[Selector], 
+                              fargate_profile_name: str = None, 
+                              pod_execution_role: IRole = None, 
+                              subnet_selection: SubnetSelection = None, 
+                              vpc: IVpc = None)
 \`\`\`
 
 ##### \`selectors\`<sup>Required</sup> <span data-heading-title=\\"\`selectors\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksfargateprofileoptionsselectors\\"></span>
@@ -10264,12 +10264,12 @@ Configuration props for EKS Fargate Profiles.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.FargateProfileProps(selectors: typing.List[Selector], 
-                                    fargate_profile_name: str = None, 
-                                    pod_execution_role: IRole = None, 
-                                    subnet_selection: SubnetSelection = None, 
-                                    vpc: IVpc = None, 
-                                    cluster: Cluster)
+aws_eks.FargateProfileProps(selectors: typing.List[Selector], 
+                            fargate_profile_name: str = None, 
+                            pod_execution_role: IRole = None, 
+                            subnet_selection: SubnetSelection = None, 
+                            vpc: IVpc = None, 
+                            cluster: Cluster)
 \`\`\`
 
 ##### \`selectors\`<sup>Required</sup> <span data-heading-title=\\"\`selectors\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksfargateprofilepropsselectors\\"></span>
@@ -10354,15 +10354,15 @@ Helm Chart options.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.HelmChartOptions(chart: str, 
-                                 create_namespace: bool = None, 
-                                 namespace: str = None, 
-                                 release: str = None, 
-                                 repository: str = None, 
-                                 timeout: Duration = None, 
-                                 values: typing.Mapping[typing.Any] = None, 
-                                 version: str = None, 
-                                 wait: bool = None)
+aws_eks.HelmChartOptions(chart: str, 
+                         create_namespace: bool = None, 
+                         namespace: str = None, 
+                         release: str = None, 
+                         repository: str = None, 
+                         timeout: Duration = None, 
+                         values: typing.Mapping[typing.Any] = None, 
+                         version: str = None, 
+                         wait: bool = None)
 \`\`\`
 
 ##### \`chart\`<sup>Required</sup> <span data-heading-title=\\"\`chart\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekshelmchartoptionschart\\"></span>
@@ -10458,16 +10458,16 @@ Helm Chart properties.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.HelmChartProps(chart: str, 
-                               create_namespace: bool = None, 
-                               namespace: str = None, 
-                               release: str = None, 
-                               repository: str = None, 
-                               timeout: Duration = None, 
-                               values: typing.Mapping[typing.Any] = None, 
-                               version: str = None, 
-                               wait: bool = None, 
-                               cluster: ICluster)
+aws_eks.HelmChartProps(chart: str, 
+                       create_namespace: bool = None, 
+                       namespace: str = None, 
+                       release: str = None, 
+                       repository: str = None, 
+                       timeout: Duration = None, 
+                       values: typing.Mapping[typing.Any] = None, 
+                       version: str = None, 
+                       wait: bool = None, 
+                       cluster: ICluster)
 \`\`\`
 
 ##### \`chart\`<sup>Required</sup> <span data-heading-title=\\"\`chart\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekshelmchartpropschart\\"></span>
@@ -10573,8 +10573,8 @@ Options for \`KubernetesManifest\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.KubernetesManifestOptions(prune: bool = None, 
-                                          skip_validation: bool = None)
+aws_eks.KubernetesManifestOptions(prune: bool = None, 
+                                  skip_validation: bool = None)
 \`\`\`
 
 ##### \`prune\`<sup>Optional</sup> <span data-heading-title=\\"\`prune\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekskubernetesmanifestoptionsprune\\"></span>
@@ -10621,11 +10621,11 @@ Properties for KubernetesManifest.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.KubernetesManifestProps(prune: bool = None, 
-                                        skip_validation: bool = None, 
-                                        cluster: ICluster, 
-                                        manifest: typing.List[typing.Mapping[typing.Any]], 
-                                        overwrite: bool = None)
+aws_eks.KubernetesManifestProps(prune: bool = None, 
+                                skip_validation: bool = None, 
+                                cluster: ICluster, 
+                                manifest: typing.List[typing.Mapping[typing.Any]], 
+                                overwrite: bool = None)
 \`\`\`
 
 ##### \`prune\`<sup>Optional</sup> <span data-heading-title=\\"\`prune\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekskubernetesmanifestpropsprune\\"></span>
@@ -10709,7 +10709,7 @@ in the cluster with the same name, the operation will fail.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnCluster.KubernetesNetworkConfigProperty(service_ipv4_cidr: str = None)
+aws_eks.CfnCluster.KubernetesNetworkConfigProperty(service_ipv4_cidr: str = None)
 \`\`\`
 
 ##### \`service_ipv4_cidr\`<sup>Optional</sup> <span data-heading-title=\\"\`service_ipv4_cidr\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekscfnclusterkubernetesnetworkconfigpropertyserviceipv4cidr\\"></span>
@@ -10731,12 +10731,12 @@ Properties for KubernetesObjectValue.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.KubernetesObjectValueProps(cluster: ICluster, 
-                                           json_path: str, 
-                                           object_name: str, 
-                                           object_type: str, 
-                                           object_namespace: str = None, 
-                                           timeout: Duration = None)
+aws_eks.KubernetesObjectValueProps(cluster: ICluster, 
+                                   json_path: str, 
+                                   object_name: str, 
+                                   object_type: str, 
+                                   object_namespace: str = None, 
+                                   timeout: Duration = None)
 \`\`\`
 
 ##### \`cluster\`<sup>Required</sup> <span data-heading-title=\\"\`cluster\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekskubernetesobjectvaluepropscluster\\"></span>
@@ -10804,12 +10804,12 @@ Properties for KubernetesPatch.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.KubernetesPatchProps(apply_patch: typing.Mapping[typing.Any], 
-                                     cluster: ICluster, 
-                                     resource_name: str, 
-                                     restore_patch: typing.Mapping[typing.Any], 
-                                     patch_type: PatchType = None, 
-                                     resource_namespace: str = None)
+aws_eks.KubernetesPatchProps(apply_patch: typing.Mapping[typing.Any], 
+                             cluster: ICluster, 
+                             resource_name: str, 
+                             restore_patch: typing.Mapping[typing.Any], 
+                             patch_type: PatchType = None, 
+                             resource_namespace: str = None)
 \`\`\`
 
 ##### \`apply_patch\`<sup>Required</sup> <span data-heading-title=\\"\`apply_patch\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekskubernetespatchpropsapplypatch\\"></span>
@@ -10875,8 +10875,8 @@ The kubernetes API namespace.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnFargateProfile.LabelProperty(key: str, 
-                                                value: str)
+aws_eks.CfnFargateProfile.LabelProperty(key: str, 
+                                        value: str)
 \`\`\`
 
 ##### \`key\`<sup>Required</sup> <span data-heading-title=\\"\`key\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnfargateprofilelabelpropertykey\\"></span>
@@ -10908,8 +10908,8 @@ Launch template property specification.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.LaunchTemplateSpec(id: str, 
-                                   version: str = None)
+aws_eks.LaunchTemplateSpec(id: str, 
+                           version: str = None)
 \`\`\`
 
 ##### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekslaunchtemplatespecid\\"></span>
@@ -10938,9 +10938,9 @@ The launch template version to be used (optional).
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty(id: str = None, 
-                                                                 name: str = None, 
-                                                                 version: str = None)
+aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty(id: str = None, 
+                                                         name: str = None, 
+                                                         version: str = None)
 \`\`\`
 
 ##### \`id\`<sup>Optional</sup> <span data-heading-title=\\"\`id\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekscfnnodegrouplaunchtemplatespecificationpropertyid\\"></span>
@@ -10982,22 +10982,22 @@ The Nodegroup Options for addNodeGroup() method.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.NodegroupOptions(ami_type: NodegroupAmiType = None, 
-                                 capacity_type: CapacityType = None, 
-                                 desired_size: typing.Union[int, float] = None, 
-                                 disk_size: typing.Union[int, float] = None, 
-                                 force_update: bool = None, 
-                                 instance_types: typing.List[InstanceType] = None, 
-                                 labels: typing.Mapping[str] = None, 
-                                 launch_template_spec: LaunchTemplateSpec = None, 
-                                 max_size: typing.Union[int, float] = None, 
-                                 min_size: typing.Union[int, float] = None, 
-                                 nodegroup_name: str = None, 
-                                 node_role: IRole = None, 
-                                 release_version: str = None, 
-                                 remote_access: NodegroupRemoteAccess = None, 
-                                 subnets: SubnetSelection = None, 
-                                 tags: typing.Mapping[str] = None)
+aws_eks.NodegroupOptions(ami_type: NodegroupAmiType = None, 
+                         capacity_type: CapacityType = None, 
+                         desired_size: typing.Union[int, float] = None, 
+                         disk_size: typing.Union[int, float] = None, 
+                         force_update: bool = None, 
+                         instance_types: typing.List[InstanceType] = None, 
+                         labels: typing.Mapping[str] = None, 
+                         launch_template_spec: LaunchTemplateSpec = None, 
+                         max_size: typing.Union[int, float] = None, 
+                         min_size: typing.Union[int, float] = None, 
+                         nodegroup_name: str = None, 
+                         node_role: IRole = None, 
+                         release_version: str = None, 
+                         remote_access: NodegroupRemoteAccess = None, 
+                         subnets: SubnetSelection = None, 
+                         tags: typing.Mapping[str] = None)
 \`\`\`
 
 ##### \`ami_type\`<sup>Optional</sup> <span data-heading-title=\\"\`ami_type\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawseksnodegroupoptionsamitype\\"></span>
@@ -11186,23 +11186,23 @@ NodeGroup properties interface.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.NodegroupProps(ami_type: NodegroupAmiType = None, 
-                               capacity_type: CapacityType = None, 
-                               desired_size: typing.Union[int, float] = None, 
-                               disk_size: typing.Union[int, float] = None, 
-                               force_update: bool = None, 
-                               instance_types: typing.List[InstanceType] = None, 
-                               labels: typing.Mapping[str] = None, 
-                               launch_template_spec: LaunchTemplateSpec = None, 
-                               max_size: typing.Union[int, float] = None, 
-                               min_size: typing.Union[int, float] = None, 
-                               nodegroup_name: str = None, 
-                               node_role: IRole = None, 
-                               release_version: str = None, 
-                               remote_access: NodegroupRemoteAccess = None, 
-                               subnets: SubnetSelection = None, 
-                               tags: typing.Mapping[str] = None, 
-                               cluster: ICluster)
+aws_eks.NodegroupProps(ami_type: NodegroupAmiType = None, 
+                       capacity_type: CapacityType = None, 
+                       desired_size: typing.Union[int, float] = None, 
+                       disk_size: typing.Union[int, float] = None, 
+                       force_update: bool = None, 
+                       instance_types: typing.List[InstanceType] = None, 
+                       labels: typing.Mapping[str] = None, 
+                       launch_template_spec: LaunchTemplateSpec = None, 
+                       max_size: typing.Union[int, float] = None, 
+                       min_size: typing.Union[int, float] = None, 
+                       nodegroup_name: str = None, 
+                       node_role: IRole = None, 
+                       release_version: str = None, 
+                       remote_access: NodegroupRemoteAccess = None, 
+                       subnets: SubnetSelection = None, 
+                       tags: typing.Mapping[str] = None, 
+                       cluster: ICluster)
 \`\`\`
 
 ##### \`ami_type\`<sup>Optional</sup> <span data-heading-title=\\"\`ami_type\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawseksnodegrouppropsamitype\\"></span>
@@ -11401,8 +11401,8 @@ The remote access (SSH) configuration to use with your node group.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.NodegroupRemoteAccess(ssh_key_name: str, 
-                                      source_security_groups: typing.List[ISecurityGroup] = None)
+aws_eks.NodegroupRemoteAccess(ssh_key_name: str, 
+                              source_security_groups: typing.List[ISecurityGroup] = None)
 \`\`\`
 
 ##### \`ssh_key_name\`<sup>Required</sup> <span data-heading-title=\\"\`ssh_key_name\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksnodegroupremoteaccesssshkeyname\\"></span>
@@ -11435,7 +11435,7 @@ Initialization properties for \`OpenIdConnectProvider\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.OpenIdConnectProviderProps(url: str)
+aws_eks.OpenIdConnectProviderProps(url: str)
 \`\`\`
 
 ##### \`url\`<sup>Required</sup> <span data-heading-title=\\"\`url\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksopenidconnectproviderpropsurl\\"></span>
@@ -11464,7 +11464,7 @@ aws eks describe-cluster --name %cluster_name% --query \\"cluster.identity.oidc.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnCluster.ProviderProperty(key_arn: str = None)
+aws_eks.CfnCluster.ProviderProperty(key_arn: str = None)
 \`\`\`
 
 ##### \`key_arn\`<sup>Optional</sup> <span data-heading-title=\\"\`key_arn\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekscfnclusterproviderpropertykeyarn\\"></span>
@@ -11486,8 +11486,8 @@ aws_cdk.aws_eks.CfnCluster.ProviderProperty(key_arn: str = None)
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup.RemoteAccessProperty(ec2_ssh_key: str, 
-                                                  source_security_groups: typing.List[str] = None)
+aws_eks.CfnNodegroup.RemoteAccessProperty(ec2_ssh_key: str, 
+                                          source_security_groups: typing.List[str] = None)
 \`\`\`
 
 ##### \`ec2_ssh_key\`<sup>Required</sup> <span data-heading-title=\\"\`ec2_ssh_key\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnnodegroupremoteaccesspropertyec2sshkey\\"></span>
@@ -11519,8 +11519,8 @@ aws_cdk.aws_eks.CfnNodegroup.RemoteAccessProperty(ec2_ssh_key: str,
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnCluster.ResourcesVpcConfigProperty(subnet_ids: typing.List[str], 
-                                                      security_group_ids: typing.List[str] = None)
+aws_eks.CfnCluster.ResourcesVpcConfigProperty(subnet_ids: typing.List[str], 
+                                              security_group_ids: typing.List[str] = None)
 \`\`\`
 
 ##### \`subnet_ids\`<sup>Required</sup> <span data-heading-title=\\"\`subnet_ids\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnclusterresourcesvpcconfigpropertysubnetids\\"></span>
@@ -11552,9 +11552,9 @@ aws_cdk.aws_eks.CfnCluster.ResourcesVpcConfigProperty(subnet_ids: typing.List[st
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup.ScalingConfigProperty(desired_size: typing.Union[int, float] = None, 
-                                                   max_size: typing.Union[int, float] = None, 
-                                                   min_size: typing.Union[int, float] = None)
+aws_eks.CfnNodegroup.ScalingConfigProperty(desired_size: typing.Union[int, float] = None, 
+                                           max_size: typing.Union[int, float] = None, 
+                                           min_size: typing.Union[int, float] = None)
 \`\`\`
 
 ##### \`desired_size\`<sup>Optional</sup> <span data-heading-title=\\"\`desired_size\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekscfnnodegroupscalingconfigpropertydesiredsize\\"></span>
@@ -11596,8 +11596,8 @@ Fargate profile selector.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.Selector(namespace: str, 
-                         labels: typing.Mapping[str] = None)
+aws_eks.Selector(namespace: str, 
+                 labels: typing.Mapping[str] = None)
 \`\`\`
 
 ##### \`namespace\`<sup>Required</sup> <span data-heading-title=\\"\`namespace\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawseksselectornamespace\\"></span>
@@ -11634,8 +11634,8 @@ considered a match.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnFargateProfile.SelectorProperty(namespace: str, 
-                                                   labels: typing.Union[IResolvable, typing.List[typing.Union[LabelProperty, IResolvable]]] = None)
+aws_eks.CfnFargateProfile.SelectorProperty(namespace: str, 
+                                           labels: typing.Union[IResolvable, typing.List[typing.Union[LabelProperty, IResolvable]]] = None)
 \`\`\`
 
 ##### \`namespace\`<sup>Required</sup> <span data-heading-title=\\"\`namespace\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekscfnfargateprofileselectorpropertynamespace\\"></span>
@@ -11667,8 +11667,8 @@ Options for \`ServiceAccount\`.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.ServiceAccountOptions(name: str = None, 
-                                      namespace: str = None)
+aws_eks.ServiceAccountOptions(name: str = None, 
+                              namespace: str = None)
 \`\`\`
 
 ##### \`name\`<sup>Optional</sup> <span data-heading-title=\\"\`name\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawseksserviceaccountoptionsname\\"></span>
@@ -11698,9 +11698,9 @@ Properties for defining service accounts.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.ServiceAccountProps(name: str = None, 
-                                    namespace: str = None, 
-                                    cluster: ICluster)
+aws_eks.ServiceAccountProps(name: str = None, 
+                            namespace: str = None, 
+                            cluster: ICluster)
 \`\`\`
 
 ##### \`name\`<sup>Optional</sup> <span data-heading-title=\\"\`name\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawseksserviceaccountpropsname\\"></span>
@@ -11738,8 +11738,8 @@ Options for fetching a ServiceLoadBalancerAddress.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.ServiceLoadBalancerAddressOptions(namespace: str = None, 
-                                                  timeout: Duration = None)
+aws_eks.ServiceLoadBalancerAddressOptions(namespace: str = None, 
+                                          timeout: Duration = None)
 \`\`\`
 
 ##### \`namespace\`<sup>Optional</sup> <span data-heading-title=\\"\`namespace\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawseksserviceloadbalanceraddressoptionsnamespace\\"></span>
@@ -11769,9 +11769,9 @@ Timeout for waiting on the load balancer address.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.CfnNodegroup.TaintProperty(effect: str = None, 
-                                           key: str = None, 
-                                           value: str = None)
+aws_eks.CfnNodegroup.TaintProperty(effect: str = None, 
+                                   key: str = None, 
+                                   value: str = None)
 \`\`\`
 
 ##### \`effect\`<sup>Optional</sup> <span data-heading-title=\\"\`effect\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekscfnnodegrouptaintpropertyeffect\\"></span>
@@ -11817,9 +11817,9 @@ Construct an Amazon Linux 2 image from the latest EKS Optimized AMI published in
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.EksOptimizedImage(cpu_arch: CpuArch = None, 
-                                  kubernetes_version: str = None, 
-                                  node_type: NodeType = None)
+aws_eks.EksOptimizedImage(cpu_arch: CpuArch = None, 
+                          kubernetes_version: str = None, 
+                          node_type: NodeType = None)
 \`\`\`
 
 ##### \`cpu_arch\`<sup>Optional</sup> <span data-heading-title=\\"\`cpu_arch\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsekseksoptimizedimagepropscpuarch\\"></span>
@@ -11942,7 +11942,7 @@ Kubernetes cluster version.
 \`\`\`python
 from aws_cdk import aws_eks
 
-aws_cdk.aws_eks.KubernetesVersion.of(version: str)
+aws_eks.KubernetesVersion.of(version: str)
 \`\`\`
 
 ###### \`version\`<sup>Required</sup> <span data-heading-title=\\"\`version\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsekskubernetesversionversion\\"></span>

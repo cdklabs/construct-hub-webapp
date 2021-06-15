@@ -170,7 +170,7 @@ function formatInitialization(
   type: transpile.TranspiledType,
   inputs: string[]
 ) {
-  const target = type.submodule ? `${type.submodule}.${type.name}` : type.name;
+  const target = type.submodule ? `${type.namespace}.${type.name}` : type.name;
   return `new ${target}(${formatInputs(inputs)})`;
 }
 
@@ -179,8 +179,11 @@ function formatInvocation(
   inputs: string[],
   method: string
 ) {
-  const target = type.submodule ? `${type.submodule}.${type.name}` : type.name;
-  return `${target}.${method}(${formatInputs(inputs)})`;
+  let target = type.submodule ? `${type.namespace}.${type.name}` : type.name;
+  if (method) {
+    target = `${target}.${method}`;
+  }
+  return `${target}(${formatInputs(inputs)})`;
 }
 
 function formatImport(type: transpile.TranspiledType) {
