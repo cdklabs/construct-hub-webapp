@@ -1,7 +1,7 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { Language, LANGUAGES } from "../../constants/languages";
-import { useLanguage } from "../../contexts/Language";
+import { useLanguage } from "../../hooks/useLanguage";
 import { Card } from "../Card";
 import { LanguageBar } from "../LanguageBar";
 import { DisabledLangPopover } from "./DisabledLangPopover";
@@ -11,7 +11,7 @@ export interface LanguageSelectionProps {
 }
 
 export function LanguageSelection({ assembly }: LanguageSelectionProps) {
-  const [language, setLanguage] = useLanguage();
+  const [language, setLanguage] = useLanguage({ updateUrl: true });
   const targets = Object.keys(assembly?.spec?.targets ?? {}) as Language[];
 
   return (

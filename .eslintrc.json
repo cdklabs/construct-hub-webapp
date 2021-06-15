@@ -157,7 +157,8 @@
     },
     {
       "files": [
-        "src/**/*.tsx"
+        "src/**/*.tsx",
+        "src/**/*.ts"
       ],
       "extends": [
         "plugin:react/recommended",

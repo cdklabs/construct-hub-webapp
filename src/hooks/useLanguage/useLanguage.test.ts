@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { useQueryParams as useQueryParamsMock } from "../../hooks/useQueryParams";
-import { LanguageProvider, useLanguage } from "./Language";
+import { useLanguage } from "./useLanguage";
 
 jest.mock("../../hooks/useQueryParams", () => ({
   useQueryParams: jest.fn(),
@@ -15,8 +15,7 @@ describe("LanguageProvider", () => {
 
   afterEach(jest.clearAllMocks);
 
-  const testRender = () =>
-    renderHook(() => useLanguage(), { wrapper: LanguageProvider });
+  const testRender = () => renderHook(() => useLanguage());
 
   it("sets value to valid language from query params", () => {
     useQueryParams.mockReturnValue(new URLSearchParams("l=golang"));

@@ -155,7 +155,7 @@ project.eslint.addRules({
 
 // React specific overrides
 project.eslint.addOverride({
-  files: ["src/**/*.tsx"],
+  files: ["src/**/*.tsx", "src/**/*.ts"],
   extends: [
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",

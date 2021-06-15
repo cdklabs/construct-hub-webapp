@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { App } from "./App";
-import { LanguageProvider } from "./contexts/Language";
 import { Theme } from "./contexts/Theme";
 import { reportWebVitals } from "./reportWebVitals";
 
@@ -11,9 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Theme>
-        <LanguageProvider>
-          <App />
-        </LanguageProvider>
+        <App />
       </Theme>
     </Router>
   </React.StrictMode>,
