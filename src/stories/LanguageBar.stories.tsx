@@ -1,10 +1,7 @@
 import { Story } from "@storybook/react";
 import { useState } from "react";
-import {
-  LanguageBar,
-  Language,
-  LanguageBarProps,
-} from "../components/LanguageBar";
+import { LanguageBar, LanguageBarProps } from "../components/LanguageBar";
+import { Language } from "../constants/languages";
 
 export default {
   title: "Language Bar",

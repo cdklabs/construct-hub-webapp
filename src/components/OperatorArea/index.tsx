@@ -11,6 +11,7 @@ import type { Assembly } from "jsii-reflect";
 import { ReactNode, useMemo } from "react";
 import type { Metadata } from "../../api/package/metadata";
 import { DependencyDropdown } from "../../components/DependencyDropdown";
+import { Card } from "../Card";
 
 export interface OperatorAreaProps {
   assembly?: Assembly;
@@ -56,19 +57,19 @@ export function OperatorArea({ assembly, metadata }: OperatorAreaProps) {
 
     return items.map((detail: string | ReactNode, i: number) => (
       <ListItem key={`detail-${i}`} listStyleType="none" my={1}>
-        <Text>{detail}</Text>
+        <Text color="gray.500">{detail}</Text>
       </ListItem>
     ));
   }, [metadata]);
 
   return (
-    <Flex direction="column">
+    <Card as={Flex} direction="column">
       {details.length && <UnorderedList ml={0}>{details}</UnorderedList>}
       {assembly?.spec?.dependencies && (
-        <Box my={4}>
+        <Box mt={4}>
           <DependencyDropdown dependencies={assembly.spec.dependencies} />
         </Box>
       )}
-    </Flex>
+    </Card>
   );
 }
