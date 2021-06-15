@@ -118,6 +118,14 @@ export interface TranspiledType {
    * Simple name of the type.
    */
   readonly name: string;
+  /**
+   * The language specific module name the type belongs to.
+   */
+  readonly module: string;
+  /**
+   * The language specific submodule name the type belongs to.
+   */
+  readonly submodule?: string;
 }
 
 /**
@@ -473,5 +481,32 @@ export abstract class TranspileBase implements Transpile {
     }
 
     throw new Error(`Unsupported type: ${type.toString()}`);
+  }
+
+  protected findSubmodule(type: reflect.Type): reflect.Submodule | undefined {
+    if (!type.namespace) {
+      return undefined;
+    }
+
+    // if the type is in a submodule, the submodule name is the first
+    // part of the namespace. we construct the full submodule fqn and search for it.
+    const submoduleFqn = `${type.assembly.name}.${
+      type.namespace.split(".")[0]
+    }`;
+    const submodules = type.assembly.submodules.filter(
+      (s) => s.fqn === submoduleFqn
+    );
+
+    if (submodules.length > 1) {
+      // can never happen, but the array data structure forces this handling.
+      throw new Error(`Found multiple submodulues with fqn ${submoduleFqn}`);
+    }
+
+    if (submodules.length === 0) {
+      return undefined;
+    }
+
+    // type is inside this submodule.
+    return submodules[0];
   }
 }

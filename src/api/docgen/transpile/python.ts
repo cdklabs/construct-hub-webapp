@@ -147,10 +147,37 @@ export class PythonTranspile extends transpile.TranspileBase {
     };
   }
 
+  // TODO this method is a mess, refactor at some point...
   public type(type: reflect.Type): transpile.TranspiledType {
-    const module = this.moduleFqn(type.fqn);
+    const t = this.ts.findFqn(type.fqn);
+    const submodule = this.findSubmodule(t);
 
-    const fqn = [module];
+    let moduleName, submoduleName;
+
+    const targets = submodule ? submodule.targets : type.assembly.targets;
+    if (!targets) {
+      throw new Error(`Unable to find 'targets' for fqn ${type.fqn}`);
+    }
+    if (!targets.python) {
+      throw new Error(`Python is not a supported target for fqn ${type.fqn}`);
+    }
+
+    const moduleFqn = targets.python.module;
+
+    if (submodule) {
+      const moduleFqnParts = moduleFqn.split(".");
+      if (moduleFqnParts.length !== 2) {
+        throw new Error(
+          `Unexpected module fqn: ${moduleFqn}. Should contain exactly two dot seprate elements`
+        );
+      }
+      moduleName = moduleFqnParts[0];
+      submoduleName = moduleFqnParts[1];
+    } else {
+      moduleName = moduleFqn;
+    }
+
+    const fqn = [moduleName];
 
     if (type.namespace) {
       fqn.push(type.namespace);
@@ -158,24 +185,13 @@ export class PythonTranspile extends transpile.TranspileBase {
 
     fqn.push(type.name);
 
-    return { fqn: fqn.join("."), moduleFqn: module, name: type.name };
-  }
-
-  private moduleFqn(fqn: string): string {
-    const type = this.ts.findFqn(fqn);
-    const submodule = this.findSubmodule(type);
-
-    const targets = submodule ? submodule.targets : type.assembly.targets;
-
-    if (!targets) {
-      throw new Error(`Unable to find 'targets' for fqn ${type.fqn}`);
-    }
-
-    if (!targets.python) {
-      throw new Error(`Python is not a supported target for fqn ${type.fqn}`);
-    }
-
-    return targets.python.module;
+    return {
+      fqn: fqn.join("."),
+      moduleFqn,
+      name: type.name,
+      module: moduleName,
+      submodule: submoduleName,
+    };
   }
 
   private optionalityCompare(
@@ -193,33 +209,6 @@ export class PythonTranspile extends transpile.TranspileBase {
 
   private isStruct(p: reflect.Parameter): boolean {
     return p.type.fqn ? p.system.findFqn(p.type.fqn).isDataType() : false;
-  }
-
-  private findSubmodule(type: reflect.Type): reflect.Submodule | undefined {
-    if (!type.namespace) {
-      return undefined;
-    }
-
-    // if the type is in a submodule, the submodule name is the first
-    // part of the namespace. we construct the full submodule fqn and seach for it.
-    const submoduleFqn = `${type.assembly.name}.${
-      type.namespace.split(".")[0]
-    }`;
-    const submodules = type.assembly.submodules.filter(
-      (s) => s.fqn === submoduleFqn
-    );
-
-    if (submodules.length > 1) {
-      // can never happen, but the array data structure forces this handling.
-      throw new Error(`Found multiple submodulues with fqn ${submoduleFqn}`);
-    }
-
-    if (submodules.length === 0) {
-      return undefined;
-    }
-
-    // type is inside this submodule.
-    return submodules[0];
   }
 
   private typing(type: "List" | "Mapping" | "Any" | "Union"): string {
