@@ -28,7 +28,7 @@ describe("<LanguageBar />", () => {
       expect(getByTestId(`language-${language}`)).not.toBeNull();
     });
 
-    expect(queryByTestId("language-ts")).toBeNull();
+    expect(queryByTestId("language-typescript")).toBeNull();
   });
 
   test("showDisabled:true shows disabled languages", () => {
@@ -37,7 +37,7 @@ describe("<LanguageBar />", () => {
       showDisabled: true,
     });
 
-    const disabledElement = getByTestId("language-ts");
+    const disabledElement = getByTestId("language-typescript");
     expect(disabledElement).not.toBeNull();
     expect(disabledElement).toHaveAttribute("disabled");
   });
