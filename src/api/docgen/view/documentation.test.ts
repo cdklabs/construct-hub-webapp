@@ -25,3 +25,24 @@ describe("python", () => {
     expect(docs.render().render()).toMatchSnapshot();
   });
 });
+
+describe("typescript", () => {
+  test("snapshot - single module", () => {
+    const docs = new Documentation({
+      language: "typescript",
+      assembly: assembly,
+      readme: true,
+    });
+    expect(docs.render().render()).toMatchSnapshot();
+  });
+
+  test("snapshot - submodules", () => {
+    const docs = new Documentation({
+      language: "typescript",
+      assembly: assemblyWithSubmodules,
+      submoduleName: "aws_eks",
+      readme: true,
+    });
+    expect(docs.render().render()).toMatchSnapshot();
+  });
+});

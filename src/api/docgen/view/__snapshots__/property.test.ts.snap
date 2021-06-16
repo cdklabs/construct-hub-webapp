@@ -12,3 +12,16 @@ exports[`python snapshot 1`] = `
 ---
 "
 `;
+
+exports[`typescript snapshot 1`] = `
+" \`repositoryCatalogData\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryCatalogData\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositorycatalogdata\\"></span>
+
+- *Type:* \`any\`
+
+\`AWS::ECR::PublicRepository.RepositoryCatalogData\`.
+
+> [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorycatalogdata](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html#cfn-ecr-publicrepository-repositorycatalogdata)
+
+---
+"
+`;

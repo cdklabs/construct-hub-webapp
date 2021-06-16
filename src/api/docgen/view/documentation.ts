@@ -2,6 +2,7 @@ import * as reflect from "jsii-reflect";
 import { Markdown } from "../render/markdown";
 import { PythonTranspile } from "../transpile/python";
 import { Transpile } from "../transpile/transpile";
+import { TypeScriptTranspile } from "../transpile/typescript";
 import { ApiReference } from "./api-reference";
 import { Readme } from "./readme";
 
@@ -59,6 +60,9 @@ export class Documentation {
     switch (options.language) {
       case "python":
         this.transpile = new PythonTranspile();
+        break;
+      case "typescript":
+        this.transpile = new TypeScriptTranspile();
         break;
       default:
         throw new Error(
