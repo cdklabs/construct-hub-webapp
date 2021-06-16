@@ -1,6 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Documentation } from "../../api/docgen/view/documentation";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { Card } from "../Card";
@@ -59,12 +59,16 @@ export function PackageDocs({
 
   const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
 
-  const doc = new Documentation({
-    apiReference: hasApiReference,
-    assembly: assembly,
-    language: language,
-    submoduleName: submodule,
-  });
+  const doc = useMemo(
+    () =>
+      new Documentation({
+        apiReference: hasApiReference,
+        assembly: assembly,
+        language: language,
+        submoduleName: submodule,
+      }),
+    [hasApiReference, assembly, language, submodule]
+  );
 
   const md = doc.render();
   const source = md.render();

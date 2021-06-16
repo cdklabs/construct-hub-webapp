@@ -1,7 +1,7 @@
 import { LinkIcon } from "@chakra-ui/icons";
 import { Heading, As } from "@chakra-ui/react";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import React from "react";
+import React, { useMemo } from "react";
 import ReactDOMServer from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -66,10 +66,16 @@ const components = ChakraUIRenderer({
   h6: Headings,
 });
 
+const rehypePlugins = [rehypeRaw];
+
 export function Body({ children }: { children: string }) {
-  return (
-    <ReactMarkdown components={components} rehypePlugins={[rehypeRaw]}>
-      {children}
-    </ReactMarkdown>
-  );
+  const body = useMemo(() => {
+    return (
+      <ReactMarkdown components={components} rehypePlugins={rehypePlugins}>
+        {children}
+      </ReactMarkdown>
+    );
+  }, [children]);
+
+  return body;
 }
