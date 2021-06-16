@@ -5,7 +5,7 @@ import { Parameter } from "./parameter";
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
-  const transpile = new PythonTranspile(assembly.system);
+  const transpile = new PythonTranspile();
   test("snapshot", () => {
     const parameter = new Parameter(transpile, findParameter());
     expect(parameter.render().render()).toMatchSnapshot();
