@@ -500,10 +500,11 @@ export abstract class TranspileBase implements Transpile {
 
     const fqn = [moduleLike.name];
 
+    // TODO - these should also probably be transliterated.
+    // for python it just happens to work
     if (type.namespace) {
       fqn.push(type.namespace);
     }
-
     fqn.push(type.name);
 
     return {
