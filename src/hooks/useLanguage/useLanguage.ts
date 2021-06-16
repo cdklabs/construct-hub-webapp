@@ -1,14 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
-import { Language, Languages, LANGUAGES } from "../../constants/languages";
+import {
+  Language,
+  Languages,
+  TEMP_SUPPORTED_LANGUAGES,
+} from "../../constants/languages";
 import { useQueryParams } from "../../hooks/useQueryParams";
 
-const defaultLang: Language = Languages.TypeScript;
+// Only supported language atm
+const defaultLang: Language = Languages.Python;
 
 const LOCAL_KEY = "preferred-language";
 const PARAM_KEY = "lang";
 
-const isValidLang = (lang: Language | void) => lang && LANGUAGES.includes(lang);
+const isValidLang = (lang: Language | void) =>
+  lang && TEMP_SUPPORTED_LANGUAGES.includes(lang);
 
 const getInitialLang = (langFromParams: Language): Language => {
   // First, use language from query params in url
@@ -51,7 +57,23 @@ export function useLanguage(options: UseLanguageOptions = {}) {
     getInitialLang(langFromParams)
   );
 
-  // A wrapper around setLanguage to persist language when a user manually sets it.
+  // State subscribes to query param changes
+  useEffect(() => {
+    if (isValidLang(langFromParams) && langFromParams !== language) {
+      setLanguage(langFromParams);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [langFromParams]);
+
+  // Syncs language changes to URL if updateUrl = true
+  useEffect(() => {
+    if (langFromParams !== language && updateUrl) {
+      params.set(PARAM_KEY, language);
+      replace({ pathname, hash, search: params.toString() });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language, updateUrl]);
+
   const update = useCallback(
     (val: Language) => {
       setLanguage(val);
@@ -67,14 +89,5 @@ export function useLanguage(options: UseLanguageOptions = {}) {
     [updateSaved]
   );
 
-  useEffect(() => {
-    if (updateUrl && language !== langFromParams) {
-      params.set(PARAM_KEY, language);
-      replace({ pathname, search: params.toString(), hash });
-    }
-    // We only want this effect to run when language or updateUrl changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [language, updateUrl]);
-
-  return [language, update] as const;
+  return useMemo(() => [language, update] as const, [language, update]);
 }

@@ -5,6 +5,7 @@ import { createAssembly } from "../../api/package/assemblies";
 import { fetchMetadata } from "../../api/package/metadata";
 import { PackageDetails } from "../../components/PackageDetails";
 import { PackageDocs } from "../../components/PackageDocs";
+import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
 
@@ -19,6 +20,7 @@ export function Package() {
   const [requestAssembly, assemblyResponse] = useRequest(createAssembly);
   const [requestMetadata, metadataResponse] = useRequest(fetchMetadata);
   const q = useQueryParams();
+  const [language] = useLanguage();
 
   useEffect(() => {
     void requestAssembly(name, version, scope);
@@ -38,7 +40,7 @@ export function Package() {
       {assemblyResponse.data && !assemblyResponse.loading && (
         <PackageDocs
           assembly={assemblyResponse.data}
-          language={q.get("language") ?? "python"}
+          language={language}
           submodule={q.get("submodule") ?? ""}
         />
       )}
