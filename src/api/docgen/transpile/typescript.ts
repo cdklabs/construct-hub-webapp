@@ -113,7 +113,7 @@ export class TypeScriptTranspile extends transpile.TranspileBase {
 
     const invocation =
       callable.kind === reflect.MemberKind.Initializer
-        ? formatInitialization(type, inputs)
+        ? formatClassInitialization(type, inputs)
         : formatInvocation(type, inputs, name);
 
     return {
@@ -173,7 +173,7 @@ function formatStructInitialization(type: transpile.TranspiledType) {
   return `const ${toCamelCase(type.name)}: ${target} = { ... }`;
 }
 
-function formatInitialization(
+function formatClassInitialization(
   type: transpile.TranspiledType,
   inputs: string[]
 ) {
