@@ -1,11 +1,20 @@
 import * as reflect from "jsii-reflect";
 import { PythonTranspile } from "../transpile/python";
+import { TypeScriptTranspile } from "../transpile/typescript";
 import { Interface } from "./interface";
 
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
-  const transpile = new PythonTranspile(assembly.system);
+  const transpile = new PythonTranspile();
+  test("snapshot", () => {
+    const klass = new Interface(transpile, findInterface());
+    expect(klass.render().render()).toMatchSnapshot();
+  });
+});
+
+describe("typescript", () => {
+  const transpile = new TypeScriptTranspile();
   test("snapshot", () => {
     const klass = new Interface(transpile, findInterface());
     expect(klass.render().render()).toMatchSnapshot();

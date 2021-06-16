@@ -10,7 +10,7 @@ const toSnakeCase = (text?: string) => {
  * A python transpiler.
  */
 export class PythonTranspile extends transpile.TranspileBase {
-  constructor(private readonly ts: reflect.TypeSystem) {
+  constructor() {
     super("python");
   }
 
@@ -142,6 +142,23 @@ export class PythonTranspile extends transpile.TranspileBase {
     };
   }
 
+  public moduleLike(
+    moduleLike: reflect.ModuleLike
+  ): transpile.TranspiledModuleLike {
+    const fqn = moduleLike.targets?.python?.module;
+    if (!fqn) {
+      throw new Error(
+        `Python is not a supported target for module: ${moduleLike.fqn}`
+      );
+    }
+
+    if (moduleLike instanceof reflect.Submodule) {
+      const fqnParts = fqn.split(".");
+      return { name: fqnParts[0], submodule: fqnParts[1] };
+    }
+    return { name: fqn };
+  }
+
   public interface(
     iface: reflect.InterfaceType
   ): transpile.TranspiledInterface {
@@ -149,37 +166,6 @@ export class PythonTranspile extends transpile.TranspileBase {
       name: iface.name,
       type: this.type(iface),
     };
-  }
-
-  public type(type: reflect.Type): transpile.TranspiledType {
-    const module = this.moduleFqn(type.fqn);
-
-    const fqn = [module];
-
-    if (type.namespace) {
-      fqn.push(type.namespace);
-    }
-
-    fqn.push(type.name);
-
-    return { fqn: fqn.join("."), moduleFqn: module, name: type.name };
-  }
-
-  private moduleFqn(fqn: string): string {
-    const type = this.ts.findFqn(fqn);
-    const submodule = this.findSubmodule(type);
-
-    const targets = submodule ? submodule.targets : type.assembly.targets;
-
-    if (!targets) {
-      throw new Error(`Unable to find 'targets' for fqn ${type.fqn}`);
-    }
-
-    if (!targets.python) {
-      throw new Error(`Python is not a supported target for fqn ${type.fqn}`);
-    }
-
-    return targets.python.module;
   }
 
   private optionalityCompare(
@@ -197,33 +183,6 @@ export class PythonTranspile extends transpile.TranspileBase {
 
   private isStruct(p: reflect.Parameter): boolean {
     return p.type.fqn ? p.system.findFqn(p.type.fqn).isDataType() : false;
-  }
-
-  private findSubmodule(type: reflect.Type): reflect.Submodule | undefined {
-    if (!type.namespace) {
-      return undefined;
-    }
-
-    // if the type is in a submodule, the submodule name is the first
-    // part of the namespace. we construct the full submodule fqn and seach for it.
-    const submoduleFqn = `${type.assembly.name}.${
-      type.namespace.split(".")[0]
-    }`;
-    const submodules = type.assembly.submodules.filter(
-      (s) => s.fqn === submoduleFqn
-    );
-
-    if (submodules.length > 1) {
-      // can never happen, but the array data structure forces this handling.
-      throw new Error(`Found multiple submodulues with fqn ${submoduleFqn}`);
-    }
-
-    if (submodules.length === 0) {
-      return undefined;
-    }
-
-    // type is inside this submodule.
-    return submodules[0];
   }
 
   private typing(type: "List" | "Mapping" | "Any" | "Union"): string {
@@ -245,7 +204,22 @@ function formatInvocation(
   inputs: string[],
   method?: string
 ) {
-  let target = type.fqn;
+  let target;
+  if (type.submodule) {
+    if (!type.namespace) {
+      throw new Error(
+        `Invalid type: ${type.fqn}: Types defined in a submodule (${type.submodule}) must have a namespace. `
+      );
+    }
+    // we don't include the submodule name here since it is
+    // included in the namespace. this works because we import the submodule
+    // in this case.
+    // TODO - merge `formatInvocation` with `formatImport` since they are inherently coupled.
+    target = `${type.namespace}.${type.name}`;
+  } else {
+    target = type.fqn;
+  }
+
   if (method) {
     target = `${target}.${method}`;
   }
@@ -253,7 +227,10 @@ function formatInvocation(
 }
 
 function formatImport(type: transpile.TranspiledType) {
-  return `import ${type.moduleFqn}`;
+  if (type.submodule) {
+    return `from ${type.module} import ${type.submodule}`;
+  }
+  return `import ${type.module}`;
 }
 
 function formatSignature(name: string, inputs: string[]) {

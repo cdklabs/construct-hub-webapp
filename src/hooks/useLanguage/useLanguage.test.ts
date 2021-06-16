@@ -1,5 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { useLocation as useLocationMock } from "react-router-dom";
+import * as languageConstants from "../../constants/languages";
 import { useLanguage } from "./useLanguage";
 
 jest.mock("react-router-dom", () => ({
@@ -22,6 +23,8 @@ describe("useLanguage", () => {
   const getItem = jest.spyOn(window.localStorage.__proto__, "getItem");
 
   beforeEach(() => {
+    // @ts-ignore
+    languageConstants.TEMP_SUPPORTED_LANGUAGES = languageConstants.LANGUAGES;
     useLocation.mockReturnValue(baseLocation);
   });
 
@@ -46,7 +49,7 @@ describe("useLanguage", () => {
     });
     const { result } = testRender();
 
-    expect(result.current[0]).toEqual("ts"); // The default language
+    expect(result.current[0]).toEqual("python"); // The default language
   });
 
   it("checks localStorage for valid language if no url param value", () => {
@@ -60,13 +63,13 @@ describe("useLanguage", () => {
     getItem.mockReturnValueOnce("ruby");
     const { result } = testRender();
 
-    expect(result.current[0]).toEqual("ts");
+    expect(result.current[0]).toEqual("python");
   });
 
   it("falls back to default lang if not localStorage or url param", () => {
     getItem.mockReturnValueOnce(null);
     const { result } = testRender();
 
-    expect(result.current[0]).toEqual("ts");
+    expect(result.current[0]).toEqual("python");
   });
 });

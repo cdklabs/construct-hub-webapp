@@ -8,3 +8,12 @@ exports[`python snapshot 1`] = `
 ---
 "
 `;
+
+exports[`typescript snapshot 1`] = `
+" \`grantee\`<sup>Required</sup> <span data-heading-title=\\"\`grantee\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrauthorizationtokengrantee\\"></span>
+
+- *Type:* [\`@aws-cdk/aws-iam.IGrantable\`](#@aws-cdk/aws-iam.IGrantable)
+
+---
+"
+`;

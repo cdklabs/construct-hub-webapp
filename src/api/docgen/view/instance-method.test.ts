@@ -1,11 +1,20 @@
 import * as reflect from "jsii-reflect";
 import { PythonTranspile } from "../transpile/python";
+import { TypeScriptTranspile } from "../transpile/typescript";
 import { InstanceMethod } from "./instance-method";
 
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
-  const transpile = new PythonTranspile(assembly.system);
+  const transpile = new PythonTranspile();
+  test("snapshot", () => {
+    const instanceMethod = new InstanceMethod(transpile, findInstanceMethod());
+    expect(instanceMethod.render().render()).toMatchSnapshot();
+  });
+});
+
+describe("typescript", () => {
+  const transpile = new TypeScriptTranspile();
   test("snapshot", () => {
     const instanceMethod = new InstanceMethod(transpile, findInstanceMethod());
     expect(instanceMethod.render().render()).toMatchSnapshot();
