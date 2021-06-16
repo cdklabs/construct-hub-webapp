@@ -21,9 +21,13 @@ export class ApiReference {
     assembly: reflect.Assembly,
     submodule?: reflect.Submodule
   ) {
-    const classes = this.filterSubmodule(assembly.classes, submodule);
-    const interfaces = this.filterSubmodule(assembly.interfaces, submodule);
-    const enums = this.filterSubmodule(assembly.enums, submodule);
+    const classes = this.sortByName(
+      submodule ? submodule.classes : assembly.classes
+    );
+    const interfaces = this.sortByName(
+      submodule ? submodule.interfaces : assembly.interfaces
+    );
+    const enums = this.sortByName(submodule ? submodule.enums : assembly.enums);
 
     this.constructs = new Constructs(transpile, classes);
     this.classes = new Classes(transpile, classes);
@@ -45,14 +49,7 @@ export class ApiReference {
     return md;
   }
 
-  private filterSubmodule<Type extends reflect.Type>(
-    arr: readonly Type[],
-    submodule?: reflect.Submodule
-  ): Type[] {
-    return arr
-      .filter((e) =>
-        submodule ? !!e.namespace?.startsWith(submodule.name) : true
-      )
-      .sort((s1, s2) => s1.name.localeCompare(s2.name));
+  private sortByName<Type extends reflect.Type>(arr: readonly Type[]): Type[] {
+    return [...arr].sort((s1, s2) => s1.name.localeCompare(s2.name));
   }
 }
