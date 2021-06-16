@@ -6,7 +6,7 @@ const assemblyWithSubmodules: reflect.Assembly = (global as any)
   .assemblyWithSubmodules;
 
 describe("python", () => {
-  test("snapshot - single module", () => {
+  test("snapshot - root module", () => {
     const docs = new Documentation({
       language: "python",
       assembly: assembly,

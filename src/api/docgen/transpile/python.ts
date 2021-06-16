@@ -204,7 +204,22 @@ function formatInvocation(
   inputs: string[],
   method?: string
 ) {
-  let target = type.submodule ? `${type.namespace}.${type.name}` : type.fqn;
+  let target;
+  if (type.submodule) {
+    if (!type.namespace) {
+      throw new Error(
+        `Invalid type: ${type.fqn}: Types defined in a submodule (${type.submodule}) must have a namespace. `
+      );
+    }
+    // we don't include the submodule name here since it is
+    // included in the namespace. this works because we import the submodule
+    // in this case.
+    // TODO - merge `formatInvocation` with `formatImport` since they are inherently coupled.
+    target = `${type.namespace}.${type.name}`;
+  } else {
+    target = type.fqn;
+  }
+
   if (method) {
     target = `${target}.${method}`;
   }

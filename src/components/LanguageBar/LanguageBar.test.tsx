@@ -1,5 +1,6 @@
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import { Language, LanguageBar, LanguageBarProps } from "./index";
+import type { Language } from "../../constants/languages";
+import { LanguageBar, LanguageBarProps } from "./index";
 
 describe("<LanguageBar />", () => {
   afterEach(cleanup);

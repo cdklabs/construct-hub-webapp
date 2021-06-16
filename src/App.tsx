@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import { Switch, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Home } from "./views/Home";
@@ -7,7 +8,7 @@ import { SearchResults } from "./views/SearchResults";
 
 export function App() {
   return (
-    <div className="App">
+    <Box bg="gray.50" className="App">
       <Header />
       <Switch>
         <Route exact path="/">
@@ -23,6 +24,6 @@ export function App() {
           <NotFound />
         </Route>
       </Switch>
-    </div>
+    </Box>
   );
 }

@@ -1,5 +1,6 @@
 import { ChevronDownIcon, LinkIcon } from "@chakra-ui/icons";
 import {
+  forwardRef,
   Menu,
   MenuButton,
   Button,
@@ -18,9 +19,11 @@ export interface DependencyDropownProps {
   };
 }
 
-function DropdownButton(props: PropsOf<typeof Button>) {
-  return <Button {...props} bg="white" size="md" variant="outline" />;
-}
+const DropdownButton = forwardRef((props: PropsOf<typeof Button>, ref) => {
+  return <Button bg="white" ref={ref} size="md" variant="outline" {...props} />;
+});
+
+DropdownButton.displayName = "DropdownButton";
 
 export function DependencyDropdown({ dependencies }: DependencyDropownProps) {
   const depEntries = Object.entries(dependencies);

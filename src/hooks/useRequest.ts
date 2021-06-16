@@ -73,6 +73,7 @@ export function useRequest<T extends PromiseFn>(
         }
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onError, onSuccess]
   );
 

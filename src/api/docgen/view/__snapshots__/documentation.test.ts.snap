@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`python snapshot - single module 1`] = `
+exports[`python snapshot - root module 1`] = `
 "# Amazon ECR Construct Library
 <!--BEGIN STABILITY BANNER-->
 
@@ -19304,7 +19304,7 @@ What instance type to retrieve the image for (standard or GPU-optimized).
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.EncryptionConfigProperty(provider?: ProviderProperty | IResolvable, resources?: string[])
+new aws_eks.CfnCluster.EncryptionConfigProperty(provider?: ProviderProperty | IResolvable, resources?: string[])
 \`\`\`
 
 ##### \`provider\`<sup>Optional</sup> <span data-heading-title=\\"\`provider\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnclusterencryptionconfigpropertyprovider\\"></span>
@@ -20065,7 +20065,7 @@ in the cluster with the same name, the operation will fail.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.KubernetesNetworkConfigProperty(serviceIpv4Cidr?: string)
+new aws_eks.CfnCluster.KubernetesNetworkConfigProperty(serviceIpv4Cidr?: string)
 \`\`\`
 
 ##### \`serviceIpv4Cidr\`<sup>Optional</sup> <span data-heading-title=\\"\`serviceIpv4Cidr\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnclusterkubernetesnetworkconfigpropertyserviceipv4cidr\\"></span>
@@ -20221,7 +20221,7 @@ The kubernetes API namespace.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.LabelProperty(key: string, value: string)
+new aws_eks.CfnFargateProfile.LabelProperty(key: string, value: string)
 \`\`\`
 
 ##### \`key\`<sup>Required</sup> <span data-heading-title=\\"\`key\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnfargateprofilelabelpropertykey\\"></span>
@@ -20282,7 +20282,7 @@ The launch template version to be used (optional).
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.LaunchTemplateSpecificationProperty(id?: string, name?: string, version?: string)
+new aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty(id?: string, name?: string, version?: string)
 \`\`\`
 
 ##### \`id\`<sup>Optional</sup> <span data-heading-title=\\"\`id\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnnodegrouplaunchtemplatespecificationpropertyid\\"></span>
@@ -20774,7 +20774,7 @@ aws eks describe-cluster --name %cluster_name% --query \\"cluster.identity.oidc.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.ProviderProperty(keyArn?: string)
+new aws_eks.CfnCluster.ProviderProperty(keyArn?: string)
 \`\`\`
 
 ##### \`keyArn\`<sup>Optional</sup> <span data-heading-title=\\"\`keyArn\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnclusterproviderpropertykeyarn\\"></span>
@@ -20796,7 +20796,7 @@ new aws_eks.ProviderProperty(keyArn?: string)
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.RemoteAccessProperty(ec2SshKey: string, sourceSecurityGroups?: string[])
+new aws_eks.CfnNodegroup.RemoteAccessProperty(ec2SshKey: string, sourceSecurityGroups?: string[])
 \`\`\`
 
 ##### \`ec2SshKey\`<sup>Required</sup> <span data-heading-title=\\"\`ec2SshKey\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnnodegroupremoteaccesspropertyec2sshkey\\"></span>
@@ -20828,7 +20828,7 @@ new aws_eks.RemoteAccessProperty(ec2SshKey: string, sourceSecurityGroups?: strin
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.ResourcesVpcConfigProperty(subnetIds: string[], securityGroupIds?: string[])
+new aws_eks.CfnCluster.ResourcesVpcConfigProperty(subnetIds: string[], securityGroupIds?: string[])
 \`\`\`
 
 ##### \`subnetIds\`<sup>Required</sup> <span data-heading-title=\\"\`subnetIds\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnclusterresourcesvpcconfigpropertysubnetids\\"></span>
@@ -20860,7 +20860,7 @@ new aws_eks.ResourcesVpcConfigProperty(subnetIds: string[], securityGroupIds?: s
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.ScalingConfigProperty(desiredSize?: number, maxSize?: number, minSize?: number)
+new aws_eks.CfnNodegroup.ScalingConfigProperty(desiredSize?: number, maxSize?: number, minSize?: number)
 \`\`\`
 
 ##### \`desiredSize\`<sup>Optional</sup> <span data-heading-title=\\"\`desiredSize\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnnodegroupscalingconfigpropertydesiredsize\\"></span>
@@ -20939,7 +20939,7 @@ considered a match.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.SelectorProperty(namespace: string, labels?: IResolvable | LabelProperty | IResolvable[])
+new aws_eks.CfnFargateProfile.SelectorProperty(namespace: string, labels?: IResolvable | LabelProperty | IResolvable[])
 \`\`\`
 
 ##### \`namespace\`<sup>Required</sup> <span data-heading-title=\\"\`namespace\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnfargateprofileselectorpropertynamespace\\"></span>
@@ -21069,7 +21069,7 @@ Timeout for waiting on the load balancer address.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.TaintProperty(effect?: string, key?: string, value?: string)
+new aws_eks.CfnNodegroup.TaintProperty(effect?: string, key?: string, value?: string)
 \`\`\`
 
 ##### \`effect\`<sup>Optional</sup> <span data-heading-title=\\"\`effect\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnnodegrouptaintpropertyeffect\\"></span>
