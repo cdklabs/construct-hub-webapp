@@ -1,5 +1,10 @@
+import Case from "case";
 import * as reflect from "jsii-reflect";
 import * as transpile from "./transpile";
+
+const toCamelCase = (text?: string) => {
+  return Case.camel(text ?? "");
+};
 
 /**
  * A TypeScript transpiler.
@@ -92,14 +97,11 @@ export class TypeScriptTranspile extends transpile.TranspileBase {
 
   public struct(struct: reflect.InterfaceType): transpile.TranspiledStruct {
     const type = this.type(struct);
-    const inputs = struct.allProperties.map((p) =>
-      this.formatInput(this.property(p))
-    );
     return {
       type: type,
       name: struct.name,
       import: formatImport(type),
-      initialization: formatInitialization(type, inputs),
+      initialization: formatStructInitialization(type),
     };
   }
 
@@ -164,6 +166,11 @@ export class TypeScriptTranspile extends transpile.TranspileBase {
     });
     return `${transpiled.name}${transpiled.optional ? "?" : ""}: ${tf}`;
   }
+}
+
+function formatStructInitialization(type: transpile.TranspiledType) {
+  const target = type.submodule ? `${type.namespace}.${type.name}` : type.name;
+  return `const ${toCamelCase(type.name)}: ${target} = { ... }`;
 }
 
 function formatInitialization(
