@@ -2,6 +2,7 @@ import { Grid } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { useState, useEffect } from "react";
 import { Documentation } from "../../api/docgen/view/documentation";
+import { useQueryParams } from "../../hooks/useQueryParams";
 import { Card } from "../Card";
 import { PackageNav, PackageNavItem } from "../PackageNav";
 import { Body } from "./Body";
@@ -47,13 +48,19 @@ export function appendItem(
 // The calculation here is heading height (72px) + margin-top (16px).
 const TOP_OFFSET = "88px";
 
+const isDev = process.env.NODE_ENV === "development";
+
 export function PackageDocs({
   assembly,
   language,
   submodule,
 }: PackageDocsProps) {
+  const q = useQueryParams();
+
+  const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
+
   const doc = new Documentation({
-    apiReference: false,
+    apiReference: hasApiReference,
     assembly: assembly,
     language: language,
     submoduleName: submodule,
