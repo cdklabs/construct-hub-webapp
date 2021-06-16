@@ -1,6 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Documentation } from "../../api/docgen/view/documentation";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { Card } from "../Card";
@@ -59,16 +59,20 @@ export function PackageDocs({
 
   const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
 
-  const doc = new Documentation({
-    apiReference: hasApiReference,
-    assembly: assembly,
-    language: language,
-    submoduleName: submodule,
-  });
+  const source = useMemo(() => {
+    const doc = new Documentation({
+      apiReference: hasApiReference,
+      assembly: assembly,
+      language: language,
+      submoduleName: submodule,
+    });
 
-  const md = doc.render();
-  const source = md.render();
+    const md = doc.render();
+    return md.render();
+  }, [hasApiReference, assembly, language, submodule]);
+
   const [navItems, setNavItems] = useState<PackageNavItem[]>([]);
+
   useEffect(() => {
     const tree = [
       ...document.querySelectorAll(
