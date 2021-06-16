@@ -1,9 +1,15 @@
-export type Language = "dotnet" | "js" | "ts" | "python" | "golang" | "java";
+export type Language =
+  | "dotnet"
+  | "js"
+  | "typescript"
+  | "python"
+  | "golang"
+  | "java";
 
 export enum Languages {
   DotNet = "dotnet",
   NodeJS = "js",
-  TypeScript = "ts",
+  TypeScript = "typescript",
   Python = "python",
   Go = "golang",
   Java = "java",
@@ -18,4 +24,7 @@ export const LANGUAGES: Language[] = [
   Languages.DotNet,
 ];
 
-export const TEMP_SUPPORTED_LANGUAGES: Language[] = [Languages.Python];
+export const TEMP_SUPPORTED_LANGUAGES: Language[] = [
+  Languages.TypeScript,
+  Languages.Python,
+];

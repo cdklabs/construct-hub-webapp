@@ -9,10 +9,10 @@
 // service worker, and the Workbox build step will be skipped.
 
 import { clientsClaim } from "workbox-core";
-// import { ExpirationPlugin } from "workbox-expiration";
+import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-// import { NetworkFirst, StaleWhileRevalidate } from "workbox-strategies";
+import { NetworkFirst, StaleWhileRevalidate } from "workbox-strategies";
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -63,26 +63,26 @@ self.addEventListener("message", (event) => {
 
 // Any other custom service worker logic can go here.
 
-// // Caches jsii.json assemblies
-// registerRoute(
-//   ({ url }) =>
-//     url.origin === self.location.origin && url.pathname.endsWith("jsii.json"),
-//   new StaleWhileRevalidate({
-//     cacheName: "assemblies",
-//     plugins: [
-//       // Ensure that once this runtime cache reaches a maximum size the
-//       // least-recently used assemblies are removed.
-//       new ExpirationPlugin({ maxEntries: 100 }),
-//     ],
-//   })
-// );
+// Caches jsii.json assemblies
+registerRoute(
+  ({ url }) =>
+    url.origin === self.location.origin && url.pathname.endsWith("jsii.json"),
+  new StaleWhileRevalidate({
+    cacheName: "assemblies",
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used assemblies are removed.
+      new ExpirationPlugin({ maxEntries: 100 }),
+    ],
+  })
+);
 
-// // Caches the assemblies catalog
-// registerRoute(
-//   ({ url }) =>
-//     url.origin === self.location.origin &&
-//     url.pathname.endsWith("packages.json"),
-//   new NetworkFirst({
-//     cacheName: "catalog",
-//   })
-// );
+// Caches the assemblies catalog
+registerRoute(
+  ({ url }) =>
+    url.origin === self.location.origin &&
+    url.pathname.endsWith("packages.json"),
+  new NetworkFirst({
+    cacheName: "catalog",
+  })
+);

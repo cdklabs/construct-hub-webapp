@@ -16,7 +16,19 @@ export interface LanguageSelectionProps {
 
 export function LanguageSelection({ assembly }: LanguageSelectionProps) {
   const [language, setLanguage] = useLanguage({ updateUrl: true });
-  const targets = Object.keys(assembly?.spec?.targets ?? {}) as Language[];
+  const assemblyTargets = Object.keys(
+    assembly?.spec?.targets ?? {}
+  ) as Language[];
+
+  const targets = assemblyTargets.reduce<Language[]>((languages, lang) => {
+    if (TEMP_SUPPORTED_LANGUAGES.includes(lang)) {
+      languages.push(lang);
+    } else if (lang === "js") {
+      languages.push("typescript");
+    }
+
+    return languages;
+  }, []);
 
   return (
     <Card align="center" as={Flex} justify="space-between" px={4} py={0}>
