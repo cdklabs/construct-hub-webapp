@@ -72,7 +72,7 @@ Properties for defining a \`AWS::ECR::PublicRepository\`.
 \`\`\`typescript
 import { CfnPublicRepositoryProps } from '@aws-cdk/aws-ecr'
 
-new CfnPublicRepositoryProps(repositoryCatalogData?: any, repositoryName?: string, repositoryPolicyText?: any, tags?: CfnTag[])
+const cfnPublicRepositoryProps: CfnPublicRepositoryProps = { ... }
 \`\`\`
 
 ## \`repositoryCatalogData\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryCatalogData\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositorycatalogdata\\"></span>

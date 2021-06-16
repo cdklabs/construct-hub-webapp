@@ -13581,7 +13581,7 @@ Properties for defining a \`AWS::ECR::PublicRepository\`.
 \`\`\`typescript
 import { CfnPublicRepositoryProps } from '@aws-cdk/aws-ecr'
 
-new CfnPublicRepositoryProps(repositoryCatalogData?: any, repositoryName?: string, repositoryPolicyText?: any, tags?: CfnTag[])
+const cfnPublicRepositoryProps: CfnPublicRepositoryProps = { ... }
 \`\`\`
 
 ##### \`repositoryCatalogData\`<sup>Optional</sup> <span data-heading-title=\\"\`repositoryCatalogData\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnpublicrepositorypropsrepositorycatalogdata\\"></span>
@@ -13635,7 +13635,7 @@ Properties for defining a \`AWS::ECR::RegistryPolicy\`.
 \`\`\`typescript
 import { CfnRegistryPolicyProps } from '@aws-cdk/aws-ecr'
 
-new CfnRegistryPolicyProps(policyText: any)
+const cfnRegistryPolicyProps: CfnRegistryPolicyProps = { ... }
 \`\`\`
 
 ##### \`policyText\`<sup>Required</sup> <span data-heading-title=\\"\`policyText\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnregistrypolicypropspolicytext\\"></span>
@@ -13659,7 +13659,7 @@ Properties for defining a \`AWS::ECR::ReplicationConfiguration\`.
 \`\`\`typescript
 import { CfnReplicationConfigurationProps } from '@aws-cdk/aws-ecr'
 
-new CfnReplicationConfigurationProps(replicationConfiguration: IResolvable | ReplicationConfigurationProperty)
+const cfnReplicationConfigurationProps: CfnReplicationConfigurationProps = { ... }
 \`\`\`
 
 ##### \`replicationConfiguration\`<sup>Required</sup> <span data-heading-title=\\"\`replicationConfiguration\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationpropsreplicationconfiguration\\"></span>
@@ -13683,7 +13683,7 @@ Properties for defining a \`AWS::ECR::Repository\`.
 \`\`\`typescript
 import { CfnRepositoryProps } from '@aws-cdk/aws-ecr'
 
-new CfnRepositoryProps(encryptionConfiguration?: any, imageScanningConfiguration?: any, imageTagMutability?: string, lifecyclePolicy?: IResolvable | LifecyclePolicyProperty, repositoryName?: string, repositoryPolicyText?: any, tags?: CfnTag[])
+const cfnRepositoryProps: CfnRepositoryProps = { ... }
 \`\`\`
 
 ##### \`encryptionConfiguration\`<sup>Optional</sup> <span data-heading-title=\\"\`encryptionConfiguration\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorypropsencryptionconfiguration\\"></span>
@@ -13765,7 +13765,7 @@ new CfnRepositoryProps(encryptionConfiguration?: any, imageScanningConfiguration
 \`\`\`typescript
 import { LifecyclePolicyProperty } from '@aws-cdk/aws-ecr'
 
-new LifecyclePolicyProperty(lifecyclePolicyText?: string, registryId?: string)
+const lifecyclePolicyProperty: LifecyclePolicyProperty = { ... }
 \`\`\`
 
 ##### \`lifecyclePolicyText\`<sup>Optional</sup> <span data-heading-title=\\"\`lifecyclePolicyText\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrcfnrepositorylifecyclepolicypropertylifecyclepolicytext\\"></span>
@@ -13797,7 +13797,7 @@ An ECR life cycle rule.
 \`\`\`typescript
 import { LifecycleRule } from '@aws-cdk/aws-ecr'
 
-new LifecycleRule(description?: string, maxImageAge?: Duration, maxImageCount?: number, rulePriority?: number, tagPrefixList?: string[], tagStatus?: TagStatus)
+const lifecycleRule: LifecycleRule = { ... }
 \`\`\`
 
 ##### \`description\`<sup>Optional</sup> <span data-heading-title=\\"\`description\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrlifecycleruledescription\\"></span>
@@ -13878,7 +13878,7 @@ Options for the onCloudTrailImagePushed method.
 \`\`\`typescript
 import { OnCloudTrailImagePushedOptions } from '@aws-cdk/aws-ecr'
 
-new OnCloudTrailImagePushedOptions(description?: string, eventPattern?: EventPattern, ruleName?: string, target?: IRuleTarget, imageTag?: string)
+const onCloudTrailImagePushedOptions: OnCloudTrailImagePushedOptions = { ... }
 \`\`\`
 
 ##### \`description\`<sup>Optional</sup> <span data-heading-title=\\"\`description\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecroncloudtrailimagepushedoptionsdescription\\"></span>
@@ -13941,7 +13941,7 @@ Options for the OnImageScanCompleted method.
 \`\`\`typescript
 import { OnImageScanCompletedOptions } from '@aws-cdk/aws-ecr'
 
-new OnImageScanCompletedOptions(description?: string, eventPattern?: EventPattern, ruleName?: string, target?: IRuleTarget, imageTags?: string[])
+const onImageScanCompletedOptions: OnImageScanCompletedOptions = { ... }
 \`\`\`
 
 ##### \`description\`<sup>Optional</sup> <span data-heading-title=\\"\`description\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecronimagescancompletedoptionsdescription\\"></span>
@@ -14006,7 +14006,7 @@ Leave it undefined to watch the full repository.
 \`\`\`typescript
 import { ReplicationConfigurationProperty } from '@aws-cdk/aws-ecr'
 
-new ReplicationConfigurationProperty(rules: IResolvable | IResolvable | ReplicationRuleProperty[])
+const replicationConfigurationProperty: ReplicationConfigurationProperty = { ... }
 \`\`\`
 
 ##### \`rules\`<sup>Required</sup> <span data-heading-title=\\"\`rules\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationconfigurationpropertyrules\\"></span>
@@ -14028,7 +14028,7 @@ new ReplicationConfigurationProperty(rules: IResolvable | IResolvable | Replicat
 \`\`\`typescript
 import { ReplicationDestinationProperty } from '@aws-cdk/aws-ecr'
 
-new ReplicationDestinationProperty(region: string, registryId: string)
+const replicationDestinationProperty: ReplicationDestinationProperty = { ... }
 \`\`\`
 
 ##### \`region\`<sup>Required</sup> <span data-heading-title=\\"\`region\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationdestinationpropertyregion\\"></span>
@@ -14060,7 +14060,7 @@ new ReplicationDestinationProperty(region: string, registryId: string)
 \`\`\`typescript
 import { ReplicationRuleProperty } from '@aws-cdk/aws-ecr'
 
-new ReplicationRuleProperty(destinations: IResolvable | IResolvable | ReplicationDestinationProperty[])
+const replicationRuleProperty: ReplicationRuleProperty = { ... }
 \`\`\`
 
 ##### \`destinations\`<sup>Required</sup> <span data-heading-title=\\"\`destinations\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrcfnreplicationconfigurationreplicationrulepropertydestinations\\"></span>
@@ -14080,7 +14080,7 @@ new ReplicationRuleProperty(destinations: IResolvable | IResolvable | Replicatio
 \`\`\`typescript
 import { RepositoryAttributes } from '@aws-cdk/aws-ecr'
 
-new RepositoryAttributes(repositoryArn: string, repositoryName: string)
+const repositoryAttributes: RepositoryAttributes = { ... }
 \`\`\`
 
 ##### \`repositoryArn\`<sup>Required</sup> <span data-heading-title=\\"\`repositoryArn\`<sup>Required</sup>\\" data-heading-id=\\"awscdkawsecrrepositoryattributesrepositoryarn\\"></span>
@@ -14102,7 +14102,7 @@ new RepositoryAttributes(repositoryArn: string, repositoryName: string)
 \`\`\`typescript
 import { RepositoryProps } from '@aws-cdk/aws-ecr'
 
-new RepositoryProps(imageScanOnPush?: boolean, imageTagMutability?: TagMutability, lifecycleRegistryId?: string, lifecycleRules?: LifecycleRule[], removalPolicy?: RemovalPolicy, repositoryName?: string)
+const repositoryProps: RepositoryProps = { ... }
 \`\`\`
 
 ##### \`imageScanOnPush\`<sup>Optional</sup> <span data-heading-title=\\"\`imageScanOnPush\`<sup>Optional</sup>\\" data-heading-id=\\"awscdkawsecrrepositorypropsimagescanonpush\\"></span>
@@ -17580,7 +17580,7 @@ Options for adding worker nodes.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.AutoScalingGroupCapacityOptions(allowAllOutbound?: boolean, associatePublicIpAddress?: boolean, autoScalingGroupName?: string, blockDevices?: BlockDevice[], cooldown?: Duration, desiredCapacity?: number, groupMetrics?: GroupMetrics[], healthCheck?: HealthCheck, ignoreUnmodifiedSizeProperties?: boolean, instanceMonitoring?: Monitoring, keyName?: string, maxCapacity?: number, maxInstanceLifetime?: Duration, minCapacity?: number, newInstancesProtectedFromScaleIn?: boolean, notifications?: NotificationConfiguration[], signals?: Signals, spotPrice?: string, updatePolicy?: UpdatePolicy, vpcSubnets?: SubnetSelection, instanceType: InstanceType, bootstrapEnabled?: boolean, bootstrapOptions?: BootstrapOptions, machineImageType?: MachineImageType, mapRole?: boolean, spotInterruptHandler?: boolean)
+const autoScalingGroupCapacityOptions: aws_eks.AutoScalingGroupCapacityOptions = { ... }
 \`\`\`
 
 ##### \`allowAllOutbound\`<sup>Optional</sup> <span data-heading-title=\\"\`allowAllOutbound\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawseksautoscalinggroupcapacityoptionsallowalloutbound\\"></span>
@@ -17905,7 +17905,7 @@ Options for adding an AutoScalingGroup as capacity.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.AutoScalingGroupOptions(bootstrapEnabled?: boolean, bootstrapOptions?: BootstrapOptions, machineImageType?: MachineImageType, mapRole?: boolean, spotInterruptHandler?: boolean)
+const autoScalingGroupOptions: aws_eks.AutoScalingGroupOptions = { ... }
 \`\`\`
 
 ##### \`bootstrapEnabled\`<sup>Optional</sup> <span data-heading-title=\\"\`bootstrapEnabled\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawseksautoscalinggroupoptionsbootstrapenabled\\"></span>
@@ -17969,7 +17969,7 @@ AwsAuth mapping.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.AwsAuthMapping(groups: string[], username?: string)
+const awsAuthMapping: aws_eks.AwsAuthMapping = { ... }
 \`\`\`
 
 ##### \`groups\`<sup>Required</sup> <span data-heading-title=\\"\`groups\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksawsauthmappinggroups\\"></span>
@@ -18000,7 +18000,7 @@ Configuration props for the AwsAuth construct.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.AwsAuthProps(cluster: Cluster)
+const awsAuthProps: aws_eks.AwsAuthProps = { ... }
 \`\`\`
 
 ##### \`cluster\`<sup>Required</sup> <span data-heading-title=\\"\`cluster\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksawsauthpropscluster\\"></span>
@@ -18022,7 +18022,7 @@ EKS node bootstrapping options.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.BootstrapOptions(additionalArgs?: string, awsApiRetryAttempts?: number, dnsClusterIp?: string, dockerConfigJson?: string, enableDockerBridge?: boolean, kubeletExtraArgs?: string, useMaxPods?: boolean)
+const bootstrapOptions: aws_eks.BootstrapOptions = { ... }
 \`\`\`
 
 ##### \`additionalArgs\`<sup>Optional</sup> <span data-heading-title=\\"\`additionalArgs\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawseksbootstrapoptionsadditionalargs\\"></span>
@@ -18104,7 +18104,7 @@ Properties for defining a \`AWS::EKS::Addon\`.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnAddonProps(addonName: string, clusterName: string, addonVersion?: string, resolveConflicts?: string, serviceAccountRoleArn?: string, tags?: CfnTag[])
+const cfnAddonProps: aws_eks.CfnAddonProps = { ... }
 \`\`\`
 
 ##### \`addonName\`<sup>Required</sup> <span data-heading-title=\\"\`addonName\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnaddonpropsaddonname\\"></span>
@@ -18178,7 +18178,7 @@ Properties for defining a \`AWS::EKS::Cluster\`.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnClusterProps(resourcesVpcConfig: ResourcesVpcConfigProperty | IResolvable, roleArn: string, encryptionConfig?: IResolvable | EncryptionConfigProperty | IResolvable[], kubernetesNetworkConfig?: KubernetesNetworkConfigProperty | IResolvable, name?: string, version?: string)
+const cfnClusterProps: aws_eks.CfnClusterProps = { ... }
 \`\`\`
 
 ##### \`resourcesVpcConfig\`<sup>Required</sup> <span data-heading-title=\\"\`resourcesVpcConfig\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnclusterpropsresourcesvpcconfig\\"></span>
@@ -18252,7 +18252,7 @@ Properties for defining a \`AWS::EKS::FargateProfile\`.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnFargateProfileProps(clusterName: string, podExecutionRoleArn: string, selectors: IResolvable | SelectorProperty | IResolvable[], fargateProfileName?: string, subnets?: string[], tags?: CfnTag[])
+const cfnFargateProfileProps: aws_eks.CfnFargateProfileProps = { ... }
 \`\`\`
 
 ##### \`clusterName\`<sup>Required</sup> <span data-heading-title=\\"\`clusterName\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnfargateprofilepropsclustername\\"></span>
@@ -18326,7 +18326,7 @@ Properties for defining a \`AWS::EKS::Nodegroup\`.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnNodegroupProps(clusterName: string, nodeRole: string, subnets: string[], amiType?: string, capacityType?: string, diskSize?: number, forceUpdateEnabled?: boolean | IResolvable, instanceTypes?: string[], labels?: any, launchTemplate?: LaunchTemplateSpecificationProperty | IResolvable, nodegroupName?: string, releaseVersion?: string, remoteAccess?: RemoteAccessProperty | IResolvable, scalingConfig?: ScalingConfigProperty | IResolvable, tags?: any, taints?: IResolvable | TaintProperty | IResolvable[], version?: string)
+const cfnNodegroupProps: aws_eks.CfnNodegroupProps = { ... }
 \`\`\`
 
 ##### \`clusterName\`<sup>Required</sup> <span data-heading-title=\\"\`clusterName\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnnodegrouppropsclustername\\"></span>
@@ -18508,7 +18508,7 @@ Attributes for EKS clusters.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.ClusterAttributes(clusterName: string, clusterCertificateAuthorityData?: string, clusterEncryptionConfigKeyArn?: string, clusterEndpoint?: string, clusterSecurityGroupId?: string, kubectlEnvironment?: {[ key: string ]: string}, kubectlLayer?: ILayerVersion, kubectlMemory?: Size, kubectlPrivateSubnetIds?: string[], kubectlRoleArn?: string, kubectlSecurityGroupId?: string, openIdConnectProvider?: IOpenIdConnectProvider, prune?: boolean, securityGroupIds?: string[], vpc?: IVpc)
+const clusterAttributes: aws_eks.ClusterAttributes = { ... }
 \`\`\`
 
 ##### \`clusterName\`<sup>Required</sup> <span data-heading-title=\\"\`clusterName\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksclusterattributesclustername\\"></span>
@@ -18681,7 +18681,7 @@ Options for EKS clusters.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.ClusterOptions(version: KubernetesVersion, clusterName?: string, outputClusterName?: boolean, outputConfigCommand?: boolean, role?: IRole, securityGroup?: ISecurityGroup, vpc?: IVpc, vpcSubnets?: SubnetSelection[], clusterHandlerEnvironment?: {[ key: string ]: string}, coreDnsComputeType?: CoreDnsComputeType, endpointAccess?: EndpointAccess, kubectlEnvironment?: {[ key: string ]: string}, kubectlLayer?: ILayerVersion, kubectlMemory?: Size, mastersRole?: IRole, outputMastersRoleArn?: boolean, placeClusterHandlerInVpc?: boolean, prune?: boolean, secretsEncryptionKey?: IKey)
+const clusterOptions: aws_eks.ClusterOptions = { ... }
 \`\`\`
 
 ##### \`version\`<sup>Required</sup> <span data-heading-title=\\"\`version\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksclusteroptionsversion\\"></span>
@@ -18907,7 +18907,7 @@ Common configuration props for EKS clusters.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.ClusterProps(version: KubernetesVersion, clusterName?: string, outputClusterName?: boolean, outputConfigCommand?: boolean, role?: IRole, securityGroup?: ISecurityGroup, vpc?: IVpc, vpcSubnets?: SubnetSelection[], clusterHandlerEnvironment?: {[ key: string ]: string}, coreDnsComputeType?: CoreDnsComputeType, endpointAccess?: EndpointAccess, kubectlEnvironment?: {[ key: string ]: string}, kubectlLayer?: ILayerVersion, kubectlMemory?: Size, mastersRole?: IRole, outputMastersRoleArn?: boolean, placeClusterHandlerInVpc?: boolean, prune?: boolean, secretsEncryptionKey?: IKey, defaultCapacity?: number, defaultCapacityInstance?: InstanceType, defaultCapacityType?: DefaultCapacityType)
+const clusterProps: aws_eks.ClusterProps = { ... }
 \`\`\`
 
 ##### \`version\`<sup>Required</sup> <span data-heading-title=\\"\`version\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksclusterpropsversion\\"></span>
@@ -19169,7 +19169,7 @@ Options for configuring an EKS cluster.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CommonClusterOptions(version: KubernetesVersion, clusterName?: string, outputClusterName?: boolean, outputConfigCommand?: boolean, role?: IRole, securityGroup?: ISecurityGroup, vpc?: IVpc, vpcSubnets?: SubnetSelection[])
+const commonClusterOptions: aws_eks.CommonClusterOptions = { ... }
 \`\`\`
 
 ##### \`version\`<sup>Required</sup> <span data-heading-title=\\"\`version\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscommonclusteroptionsversion\\"></span>
@@ -19265,7 +19265,7 @@ Properties for EksOptimizedImage.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.EksOptimizedImageProps(cpuArch?: CpuArch, kubernetesVersion?: string, nodeType?: NodeType)
+const eksOptimizedImageProps: aws_eks.EksOptimizedImageProps = { ... }
 \`\`\`
 
 ##### \`cpuArch\`<sup>Optional</sup> <span data-heading-title=\\"\`cpuArch\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekseksoptimizedimagepropscpuarch\\"></span>
@@ -19304,7 +19304,7 @@ What instance type to retrieve the image for (standard or GPU-optimized).
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnCluster.EncryptionConfigProperty(provider?: ProviderProperty | IResolvable, resources?: string[])
+const encryptionConfigProperty: aws_eks.CfnCluster.EncryptionConfigProperty = { ... }
 \`\`\`
 
 ##### \`provider\`<sup>Optional</sup> <span data-heading-title=\\"\`provider\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnclusterencryptionconfigpropertyprovider\\"></span>
@@ -19336,7 +19336,7 @@ Configuration props for EKS Fargate.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.FargateClusterProps(version: KubernetesVersion, clusterName?: string, outputClusterName?: boolean, outputConfigCommand?: boolean, role?: IRole, securityGroup?: ISecurityGroup, vpc?: IVpc, vpcSubnets?: SubnetSelection[], clusterHandlerEnvironment?: {[ key: string ]: string}, coreDnsComputeType?: CoreDnsComputeType, endpointAccess?: EndpointAccess, kubectlEnvironment?: {[ key: string ]: string}, kubectlLayer?: ILayerVersion, kubectlMemory?: Size, mastersRole?: IRole, outputMastersRoleArn?: boolean, placeClusterHandlerInVpc?: boolean, prune?: boolean, secretsEncryptionKey?: IKey, defaultProfile?: FargateProfileOptions)
+const fargateClusterProps: aws_eks.FargateClusterProps = { ... }
 \`\`\`
 
 ##### \`version\`<sup>Required</sup> <span data-heading-title=\\"\`version\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksfargateclusterpropsversion\\"></span>
@@ -19572,7 +19572,7 @@ Options for defining EKS Fargate Profiles.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.FargateProfileOptions(selectors: Selector[], fargateProfileName?: string, podExecutionRole?: IRole, subnetSelection?: SubnetSelection, vpc?: IVpc)
+const fargateProfileOptions: aws_eks.FargateProfileOptions = { ... }
 \`\`\`
 
 ##### \`selectors\`<sup>Required</sup> <span data-heading-title=\\"\`selectors\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksfargateprofileoptionsselectors\\"></span>
@@ -19647,7 +19647,7 @@ Configuration props for EKS Fargate Profiles.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.FargateProfileProps(selectors: Selector[], fargateProfileName?: string, podExecutionRole?: IRole, subnetSelection?: SubnetSelection, vpc?: IVpc, cluster: Cluster)
+const fargateProfileProps: aws_eks.FargateProfileProps = { ... }
 \`\`\`
 
 ##### \`selectors\`<sup>Required</sup> <span data-heading-title=\\"\`selectors\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksfargateprofilepropsselectors\\"></span>
@@ -19732,7 +19732,7 @@ Helm Chart options.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.HelmChartOptions(chart: string, createNamespace?: boolean, namespace?: string, release?: string, repository?: string, timeout?: Duration, values?: {[ key: string ]: any}, version?: string, wait?: boolean)
+const helmChartOptions: aws_eks.HelmChartOptions = { ... }
 \`\`\`
 
 ##### \`chart\`<sup>Required</sup> <span data-heading-title=\\"\`chart\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekshelmchartoptionschart\\"></span>
@@ -19828,7 +19828,7 @@ Helm Chart properties.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.HelmChartProps(chart: string, createNamespace?: boolean, namespace?: string, release?: string, repository?: string, timeout?: Duration, values?: {[ key: string ]: any}, version?: string, wait?: boolean, cluster: ICluster)
+const helmChartProps: aws_eks.HelmChartProps = { ... }
 \`\`\`
 
 ##### \`chart\`<sup>Required</sup> <span data-heading-title=\\"\`chart\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekshelmchartpropschart\\"></span>
@@ -19934,7 +19934,7 @@ Options for \`KubernetesManifest\`.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.KubernetesManifestOptions(prune?: boolean, skipValidation?: boolean)
+const kubernetesManifestOptions: aws_eks.KubernetesManifestOptions = { ... }
 \`\`\`
 
 ##### \`prune\`<sup>Optional</sup> <span data-heading-title=\\"\`prune\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekskubernetesmanifestoptionsprune\\"></span>
@@ -19981,7 +19981,7 @@ Properties for KubernetesManifest.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.KubernetesManifestProps(prune?: boolean, skipValidation?: boolean, cluster: ICluster, manifest: {[ key: string ]: any}[], overwrite?: boolean)
+const kubernetesManifestProps: aws_eks.KubernetesManifestProps = { ... }
 \`\`\`
 
 ##### \`prune\`<sup>Optional</sup> <span data-heading-title=\\"\`prune\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekskubernetesmanifestpropsprune\\"></span>
@@ -20065,7 +20065,7 @@ in the cluster with the same name, the operation will fail.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnCluster.KubernetesNetworkConfigProperty(serviceIpv4Cidr?: string)
+const kubernetesNetworkConfigProperty: aws_eks.CfnCluster.KubernetesNetworkConfigProperty = { ... }
 \`\`\`
 
 ##### \`serviceIpv4Cidr\`<sup>Optional</sup> <span data-heading-title=\\"\`serviceIpv4Cidr\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnclusterkubernetesnetworkconfigpropertyserviceipv4cidr\\"></span>
@@ -20087,7 +20087,7 @@ Properties for KubernetesObjectValue.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.KubernetesObjectValueProps(cluster: ICluster, jsonPath: string, objectName: string, objectType: string, objectNamespace?: string, timeout?: Duration)
+const kubernetesObjectValueProps: aws_eks.KubernetesObjectValueProps = { ... }
 \`\`\`
 
 ##### \`cluster\`<sup>Required</sup> <span data-heading-title=\\"\`cluster\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekskubernetesobjectvaluepropscluster\\"></span>
@@ -20155,7 +20155,7 @@ Properties for KubernetesPatch.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.KubernetesPatchProps(applyPatch: {[ key: string ]: any}, cluster: ICluster, resourceName: string, restorePatch: {[ key: string ]: any}, patchType?: PatchType, resourceNamespace?: string)
+const kubernetesPatchProps: aws_eks.KubernetesPatchProps = { ... }
 \`\`\`
 
 ##### \`applyPatch\`<sup>Required</sup> <span data-heading-title=\\"\`applyPatch\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekskubernetespatchpropsapplypatch\\"></span>
@@ -20221,7 +20221,7 @@ The kubernetes API namespace.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnFargateProfile.LabelProperty(key: string, value: string)
+const labelProperty: aws_eks.CfnFargateProfile.LabelProperty = { ... }
 \`\`\`
 
 ##### \`key\`<sup>Required</sup> <span data-heading-title=\\"\`key\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnfargateprofilelabelpropertykey\\"></span>
@@ -20253,7 +20253,7 @@ Launch template property specification.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.LaunchTemplateSpec(id: string, version?: string)
+const launchTemplateSpec: aws_eks.LaunchTemplateSpec = { ... }
 \`\`\`
 
 ##### \`id\`<sup>Required</sup> <span data-heading-title=\\"\`id\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekslaunchtemplatespecid\\"></span>
@@ -20282,7 +20282,7 @@ The launch template version to be used (optional).
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty(id?: string, name?: string, version?: string)
+const launchTemplateSpecificationProperty: aws_eks.CfnNodegroup.LaunchTemplateSpecificationProperty = { ... }
 \`\`\`
 
 ##### \`id\`<sup>Optional</sup> <span data-heading-title=\\"\`id\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnnodegrouplaunchtemplatespecificationpropertyid\\"></span>
@@ -20324,7 +20324,7 @@ The Nodegroup Options for addNodeGroup() method.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.NodegroupOptions(amiType?: NodegroupAmiType, capacityType?: CapacityType, desiredSize?: number, diskSize?: number, forceUpdate?: boolean, instanceTypes?: InstanceType[], labels?: {[ key: string ]: string}, launchTemplateSpec?: LaunchTemplateSpec, maxSize?: number, minSize?: number, nodegroupName?: string, nodeRole?: IRole, releaseVersion?: string, remoteAccess?: NodegroupRemoteAccess, subnets?: SubnetSelection, tags?: {[ key: string ]: string})
+const nodegroupOptions: aws_eks.NodegroupOptions = { ... }
 \`\`\`
 
 ##### \`amiType\`<sup>Optional</sup> <span data-heading-title=\\"\`amiType\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawseksnodegroupoptionsamitype\\"></span>
@@ -20513,7 +20513,7 @@ NodeGroup properties interface.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.NodegroupProps(amiType?: NodegroupAmiType, capacityType?: CapacityType, desiredSize?: number, diskSize?: number, forceUpdate?: boolean, instanceTypes?: InstanceType[], labels?: {[ key: string ]: string}, launchTemplateSpec?: LaunchTemplateSpec, maxSize?: number, minSize?: number, nodegroupName?: string, nodeRole?: IRole, releaseVersion?: string, remoteAccess?: NodegroupRemoteAccess, subnets?: SubnetSelection, tags?: {[ key: string ]: string}, cluster: ICluster)
+const nodegroupProps: aws_eks.NodegroupProps = { ... }
 \`\`\`
 
 ##### \`amiType\`<sup>Optional</sup> <span data-heading-title=\\"\`amiType\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawseksnodegrouppropsamitype\\"></span>
@@ -20712,7 +20712,7 @@ The remote access (SSH) configuration to use with your node group.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.NodegroupRemoteAccess(sshKeyName: string, sourceSecurityGroups?: ISecurityGroup[])
+const nodegroupRemoteAccess: aws_eks.NodegroupRemoteAccess = { ... }
 \`\`\`
 
 ##### \`sshKeyName\`<sup>Required</sup> <span data-heading-title=\\"\`sshKeyName\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksnodegroupremoteaccesssshkeyname\\"></span>
@@ -20745,7 +20745,7 @@ Initialization properties for \`OpenIdConnectProvider\`.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.OpenIdConnectProviderProps(url: string)
+const openIdConnectProviderProps: aws_eks.OpenIdConnectProviderProps = { ... }
 \`\`\`
 
 ##### \`url\`<sup>Required</sup> <span data-heading-title=\\"\`url\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksopenidconnectproviderpropsurl\\"></span>
@@ -20774,7 +20774,7 @@ aws eks describe-cluster --name %cluster_name% --query \\"cluster.identity.oidc.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnCluster.ProviderProperty(keyArn?: string)
+const providerProperty: aws_eks.CfnCluster.ProviderProperty = { ... }
 \`\`\`
 
 ##### \`keyArn\`<sup>Optional</sup> <span data-heading-title=\\"\`keyArn\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnclusterproviderpropertykeyarn\\"></span>
@@ -20796,7 +20796,7 @@ new aws_eks.CfnCluster.ProviderProperty(keyArn?: string)
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnNodegroup.RemoteAccessProperty(ec2SshKey: string, sourceSecurityGroups?: string[])
+const remoteAccessProperty: aws_eks.CfnNodegroup.RemoteAccessProperty = { ... }
 \`\`\`
 
 ##### \`ec2SshKey\`<sup>Required</sup> <span data-heading-title=\\"\`ec2SshKey\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnnodegroupremoteaccesspropertyec2sshkey\\"></span>
@@ -20828,7 +20828,7 @@ new aws_eks.CfnNodegroup.RemoteAccessProperty(ec2SshKey: string, sourceSecurityG
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnCluster.ResourcesVpcConfigProperty(subnetIds: string[], securityGroupIds?: string[])
+const resourcesVpcConfigProperty: aws_eks.CfnCluster.ResourcesVpcConfigProperty = { ... }
 \`\`\`
 
 ##### \`subnetIds\`<sup>Required</sup> <span data-heading-title=\\"\`subnetIds\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnclusterresourcesvpcconfigpropertysubnetids\\"></span>
@@ -20860,7 +20860,7 @@ new aws_eks.CfnCluster.ResourcesVpcConfigProperty(subnetIds: string[], securityG
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnNodegroup.ScalingConfigProperty(desiredSize?: number, maxSize?: number, minSize?: number)
+const scalingConfigProperty: aws_eks.CfnNodegroup.ScalingConfigProperty = { ... }
 \`\`\`
 
 ##### \`desiredSize\`<sup>Optional</sup> <span data-heading-title=\\"\`desiredSize\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnnodegroupscalingconfigpropertydesiredsize\\"></span>
@@ -20902,7 +20902,7 @@ Fargate profile selector.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.Selector(namespace: string, labels?: {[ key: string ]: string})
+const selector: aws_eks.Selector = { ... }
 \`\`\`
 
 ##### \`namespace\`<sup>Required</sup> <span data-heading-title=\\"\`namespace\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawseksselectornamespace\\"></span>
@@ -20939,7 +20939,7 @@ considered a match.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnFargateProfile.SelectorProperty(namespace: string, labels?: IResolvable | LabelProperty | IResolvable[])
+const selectorProperty: aws_eks.CfnFargateProfile.SelectorProperty = { ... }
 \`\`\`
 
 ##### \`namespace\`<sup>Required</sup> <span data-heading-title=\\"\`namespace\`<sup>Required</sup>\\" data-heading-id=\\"awscdklibawsekscfnfargateprofileselectorpropertynamespace\\"></span>
@@ -20971,7 +20971,7 @@ Options for \`ServiceAccount\`.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.ServiceAccountOptions(name?: string, namespace?: string)
+const serviceAccountOptions: aws_eks.ServiceAccountOptions = { ... }
 \`\`\`
 
 ##### \`name\`<sup>Optional</sup> <span data-heading-title=\\"\`name\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawseksserviceaccountoptionsname\\"></span>
@@ -21001,7 +21001,7 @@ Properties for defining service accounts.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.ServiceAccountProps(name?: string, namespace?: string, cluster: ICluster)
+const serviceAccountProps: aws_eks.ServiceAccountProps = { ... }
 \`\`\`
 
 ##### \`name\`<sup>Optional</sup> <span data-heading-title=\\"\`name\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawseksserviceaccountpropsname\\"></span>
@@ -21039,7 +21039,7 @@ Options for fetching a ServiceLoadBalancerAddress.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.ServiceLoadBalancerAddressOptions(namespace?: string, timeout?: Duration)
+const serviceLoadBalancerAddressOptions: aws_eks.ServiceLoadBalancerAddressOptions = { ... }
 \`\`\`
 
 ##### \`namespace\`<sup>Optional</sup> <span data-heading-title=\\"\`namespace\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawseksserviceloadbalanceraddressoptionsnamespace\\"></span>
@@ -21069,7 +21069,7 @@ Timeout for waiting on the load balancer address.
 \`\`\`typescript
 import { aws_eks } from 'aws-cdk-lib'
 
-new aws_eks.CfnNodegroup.TaintProperty(effect?: string, key?: string, value?: string)
+const taintProperty: aws_eks.CfnNodegroup.TaintProperty = { ... }
 \`\`\`
 
 ##### \`effect\`<sup>Optional</sup> <span data-heading-title=\\"\`effect\`<sup>Optional</sup>\\" data-heading-id=\\"awscdklibawsekscfnnodegrouptaintpropertyeffect\\"></span>
