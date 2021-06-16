@@ -5,7 +5,7 @@ import { Initializer } from "./initializer";
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
-  const transpile = new PythonTranspile(assembly.system);
+  const transpile = new PythonTranspile();
   test("snapshot", () => {
     const initializer = new Initializer(transpile, findInitializer());
     expect(initializer.render().render()).toMatchSnapshot();

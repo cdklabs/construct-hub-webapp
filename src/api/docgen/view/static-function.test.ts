@@ -5,7 +5,7 @@ import { StaticFunction } from "./static-function";
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
-  const transpile = new PythonTranspile(assembly.system);
+  const transpile = new PythonTranspile();
   test("snapshot", () => {
     const staticFunction = new StaticFunction(transpile, findStaticFunction());
     expect(staticFunction.render().render()).toMatchSnapshot();

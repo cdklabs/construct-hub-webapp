@@ -111,13 +111,21 @@ export interface TranspiledType {
    */
   readonly fqn: string;
   /**
-   * The language specific module fqn (mode + submodule).
-   */
-  readonly moduleFqn: string;
-  /**
    * Simple name of the type.
    */
   readonly name: string;
+  /**
+   * Namespace of the type.
+   */
+  readonly namespace?: string;
+  /**
+   * The language specific module name the type belongs to.
+   */
+  readonly module: string;
+  /**
+   * The language specific submodule name the type belongs to.
+   */
+  readonly submodule?: string;
 }
 
 /**
@@ -325,6 +333,43 @@ export interface TranspiledEnumMember {
 }
 
 /**
+ * Outcome of transpiling a module like object. (Assembly | Submodule)
+ */
+export interface TranspiledModuleLike {
+  /**
+   * The language specific module name.
+   *
+   * In case the module like object is a submodule, this should contain
+   * only the root module name.
+   *
+   * In case the module like object is the root module, this should contain
+   * the module fqn.
+   *
+   * Examples:
+   *
+   *   `aws-cdk-lib` -> `aws_cdk`
+   *   `aws-cdk-lib.aws_eks` -> `aws_cdk`
+   *   `@aws-cdk/aws-eks` -> `aws_cdk.aws_eks`
+   */
+  readonly name: string;
+  /**
+   * The language specific submodule name.
+   *
+   * In case the module like object is a submodule, this should contain
+   * only the submodule name.
+   *
+   * In case the module like object is the root module, this should be undefined
+   *
+   * Examples:
+   *
+   *   `aws-cdk-lib` -> undefined
+   *   `aws-cdk-lib.aws_eks` -> `aws_eks`
+   *   `@aws-cdk/aws-eks` -> undefined
+   */
+  readonly submodule?: string;
+}
+
+/**
  * Language transpiling for jsii types.
  */
 export interface Transpile {
@@ -332,6 +377,11 @@ export interface Transpile {
    * The language of the tranpiler.
    */
   language: string;
+
+  /**
+   * Transpile a module like object (Assembly | Submodule)
+   */
+  moduleLike(moduleLike: reflect.ModuleLike): TranspiledModuleLike;
 
   /**
    * Transpile a callable (method, static function, initializer)
@@ -444,6 +494,27 @@ export interface TranspileBase extends Transpile {}
 export abstract class TranspileBase implements Transpile {
   constructor(public readonly language: string) {}
 
+  public type(type: reflect.Type): TranspiledType {
+    const submodule = this.findSubmodule(type);
+    const moduleLike = this.moduleLike(submodule ? submodule : type.assembly);
+
+    const fqn = [moduleLike.name];
+
+    if (type.namespace) {
+      fqn.push(type.namespace);
+    }
+
+    fqn.push(type.name);
+
+    return {
+      fqn: fqn.join("."),
+      name: type.name,
+      namespace: type.namespace,
+      module: moduleLike.name,
+      submodule: moduleLike.submodule,
+    };
+  }
+
   public typeReference(ref: reflect.TypeReference): TranspiledTypeReference {
     if (ref.type) {
       const transpiled = this.type(ref.type);
@@ -494,5 +565,32 @@ export abstract class TranspileBase implements Transpile {
     }
 
     throw new Error(`Unsupported type: ${ref.toString()}`);
+  }
+
+  protected findSubmodule(type: reflect.Type): reflect.Submodule | undefined {
+    if (!type.namespace) {
+      return undefined;
+    }
+
+    // if the type is in a submodule, the submodule name is the first
+    // part of the namespace. we construct the full submodule fqn and search for it.
+    const submoduleFqn = `${type.assembly.name}.${
+      type.namespace.split(".")[0]
+    }`;
+    const submodules = type.assembly.submodules.filter(
+      (s) => s.fqn === submoduleFqn
+    );
+
+    if (submodules.length > 1) {
+      // can never happen, but the array data structure forces this handling.
+      throw new Error(`Found multiple submodulues with fqn ${submoduleFqn}`);
+    }
+
+    if (submodules.length === 0) {
+      return undefined;
+    }
+
+    // type is inside this submodule.
+    return submodules[0];
   }
 }

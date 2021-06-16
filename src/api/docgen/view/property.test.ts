@@ -5,7 +5,7 @@ import { Property } from "./property";
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
-  const transpile = new PythonTranspile(assembly.system);
+  const transpile = new PythonTranspile();
   test("snapshot", () => {
     const parameter = new Property(
       transpile,

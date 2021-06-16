@@ -5,7 +5,7 @@ import { Interface } from "./interface";
 const assembly: reflect.Assembly = (global as any).assembly;
 
 describe("python", () => {
-  const transpile = new PythonTranspile(assembly.system);
+  const transpile = new PythonTranspile();
   test("snapshot", () => {
     const klass = new Interface(transpile, findInterface());
     expect(klass.render().render()).toMatchSnapshot();
