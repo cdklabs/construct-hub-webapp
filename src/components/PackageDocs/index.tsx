@@ -59,20 +59,20 @@ export function PackageDocs({
 
   const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
 
-  const doc = useMemo(
-    () =>
-      new Documentation({
-        apiReference: hasApiReference,
-        assembly: assembly,
-        language: language,
-        submoduleName: submodule,
-      }),
-    [hasApiReference, assembly, language, submodule]
-  );
+  const source = useMemo(() => {
+    const doc = new Documentation({
+      apiReference: hasApiReference,
+      assembly: assembly,
+      language: language,
+      submoduleName: submodule,
+    });
 
-  const md = doc.render();
-  const source = md.render();
+    const md = doc.render();
+    return md.render();
+  }, [hasApiReference, assembly, language, submodule]);
+
   const [navItems, setNavItems] = useState<PackageNavItem[]>([]);
+
   useEffect(() => {
     const tree = [
       ...document.querySelectorAll(
