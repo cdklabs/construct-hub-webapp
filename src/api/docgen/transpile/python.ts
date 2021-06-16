@@ -144,7 +144,7 @@ export class PythonTranspile extends transpile.TranspileBase {
 
   public moduleLike(
     moduleLike: reflect.ModuleLike
-  ): transpile.TranspiledModule {
+  ): transpile.TranspiledModuleLike {
     const fqn = moduleLike.targets?.python?.module;
     if (!fqn) {
       throw new Error(

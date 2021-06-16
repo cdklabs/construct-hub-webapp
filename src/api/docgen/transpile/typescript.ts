@@ -135,7 +135,7 @@ export class TypeScriptTranspile extends transpile.TranspileBase {
 
   public moduleLike(
     moduleLike: reflect.ModuleLike
-  ): transpile.TranspiledModule {
+  ): transpile.TranspiledModuleLike {
     if (moduleLike instanceof reflect.Submodule) {
       const fqnParts = moduleLike.fqn.split(".");
       return { name: fqnParts[0], submodule: fqnParts[1] };
