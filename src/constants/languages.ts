@@ -17,3 +17,5 @@ export const LANGUAGES: Language[] = [
   Languages.Go,
   Languages.DotNet,
 ];
+
+export const TEMP_SUPPORTED_LANGUAGES: Language[] = [Languages.Python];

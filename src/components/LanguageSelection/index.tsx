@@ -1,6 +1,10 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
-import { Language, LANGUAGES } from "../../constants/languages";
+import {
+  Language,
+  LANGUAGES,
+  TEMP_SUPPORTED_LANGUAGES,
+} from "../../constants/languages";
 import { useLanguage } from "../../hooks/useLanguage";
 import { Card } from "../Card";
 import { LanguageBar } from "../LanguageBar";
@@ -32,7 +36,9 @@ export function LanguageSelection({ assembly }: LanguageSelectionProps) {
           selectedLanguage={targets.includes(language) ? language : targets[0]}
           setSelectedLanguage={setLanguage}
           showDisabled
-          targetLanguages={targets}
+          targetLanguages={targets.filter((target) =>
+            TEMP_SUPPORTED_LANGUAGES.includes(target)
+          )}
         />
       </Flex>
       <Button colorScheme="blue" disabled size="lg">
