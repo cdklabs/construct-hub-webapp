@@ -15,7 +15,7 @@ export interface LanguageBarProps {
 }
 
 const LANGUAGE_MAP: Record<Language, { name: string; icon: typeof Icon }> = {
-  typescript: {
+  ts: {
     name: "TypeScript",
     icon: TSIcon,
   },

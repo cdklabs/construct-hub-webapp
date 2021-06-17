@@ -12,7 +12,7 @@ const Template: Story<LanguageBarProps> = ({
   showDisabled,
   targetLanguages,
 }) => {
-  const [selected, setSelected] = useState<Language>("typescript");
+  const [selected, setSelected] = useState<Language>("ts");
 
   return (
     <LanguageBar
@@ -27,6 +27,6 @@ const Template: Story<LanguageBarProps> = ({
 export const Primary = Template.bind({});
 
 Primary.args = {
-  targetLanguages: ["typescript", "dotnet", "golang", "java"],
+  targetLanguages: ["ts", "dotnet", "golang", "java"],
   showDisabled: true,
 };

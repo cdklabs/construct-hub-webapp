@@ -1,15 +1,9 @@
-export type Language =
-  | "dotnet"
-  | "js"
-  | "typescript"
-  | "python"
-  | "golang"
-  | "java";
+export type Language = "dotnet" | "js" | "ts" | "python" | "golang" | "java";
 
 export enum Languages {
   DotNet = "dotnet",
   NodeJS = "js",
-  TypeScript = "typescript",
+  TypeScript = "ts",
   Python = "python",
   Go = "golang",
   Java = "java",
