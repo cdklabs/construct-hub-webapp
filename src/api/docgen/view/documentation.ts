@@ -61,7 +61,7 @@ export class Documentation {
       case "python":
         this.transpile = new PythonTranspile();
         break;
-      case "typescript":
+      case "ts":
         this.transpile = new TypeScriptTranspile();
         break;
       default:

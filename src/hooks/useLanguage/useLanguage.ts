@@ -8,7 +8,7 @@ import {
 import { useQueryParams } from "../../hooks/useQueryParams";
 
 // Only supported language atm
-const defaultLang: Language = Languages.Python;
+const defaultLang: Language = Languages.TypeScript;
 
 const LOCAL_KEY = "preferred-language";
 const PARAM_KEY = "lang";
