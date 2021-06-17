@@ -18,7 +18,4 @@ export const LANGUAGES: Language[] = [
   Languages.DotNet,
 ];
 
-export const TEMP_SUPPORTED_LANGUAGES: Language[] = [
-  Languages.TypeScript,
-  Languages.Python,
-];
+export const TEMP_SUPPORTED_LANGUAGES: Language[] = [Languages.Python];
