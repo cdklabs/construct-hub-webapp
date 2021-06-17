@@ -29,7 +29,7 @@ describe("python", () => {
 describe("typescript", () => {
   test("snapshot - single module", () => {
     const docs = new Documentation({
-      language: "typescript",
+      language: "ts",
       assembly: assembly,
       readme: true,
     });
@@ -38,7 +38,7 @@ describe("typescript", () => {
 
   test("snapshot - submodules", () => {
     const docs = new Documentation({
-      language: "typescript",
+      language: "ts",
       assembly: assemblyWithSubmodules,
       submoduleName: "aws_eks",
       readme: true,
