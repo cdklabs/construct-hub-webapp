@@ -16,7 +16,10 @@ export interface LanguageSelectionProps {
 }
 
 export function LanguageSelection({ assembly }: LanguageSelectionProps) {
-  const [language, setLanguage] = useLanguage({ updateUrl: true });
+  const [language, setLanguage] = useLanguage({
+    updateSaved: true,
+    updateUrl: true,
+  });
   const targets = [
     ...Object.keys(assembly?.spec?.targets ?? {}),
     // typescript is the source language and hence always supported.
