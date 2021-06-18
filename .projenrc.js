@@ -42,6 +42,12 @@ const project = new web.ReactTypeScriptProject({
     "react-markdown",
     "react-router-dom",
     "rehype-raw",
+    // PWA Functionality
+    "workbox-core",
+    "workbox-expiration",
+    "workbox-precaching",
+    "workbox-routing",
+    "workbox-strategies",
   ],
 
   devDeps: [

@@ -5,6 +5,7 @@ import "./index.css";
 import { App } from "./App";
 import { CatalogProvider } from "./contexts/Catalog";
 import { Theme } from "./contexts/Theme";
+import { register } from "./register-service-worker";
 import { reportWebVitals } from "./reportWebVitals";
 
 ReactDOM.render(
@@ -24,3 +25,6 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// Register service worker for PWA functionality.
+register();
