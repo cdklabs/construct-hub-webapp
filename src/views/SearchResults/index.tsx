@@ -4,11 +4,9 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useCatalog } from "../../contexts/Catalog";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { LimitDropdown } from "./components/LimitDropdown";
-// import { GoToPage } from "./components/GoToPage";
 import { PageControls } from "./components/PageControls";
 import { Results } from "./components/Results";
 import { ShowingDetails } from "./components/ShowingDetails";
-// import { TopControls } from "./components/TopControls";
 import { LIMITS } from "./constants";
 
 const toNum = (val: string) => {
@@ -55,14 +53,6 @@ export function SearchResults() {
     Object.entries(params).forEach(([k, v]) => newParams.set(k, `${v}`));
     return `${pathname}?${newParams}`;
   };
-
-  // const getNextPageUrl = (value?: number) =>
-  //   getUrl({ offset: Math.min(pageLimit, value ?? offset + 1) });
-
-  // const getPrevPageUrl = (value?: number) =>
-  //   getUrl({ offset: Math.max(0, value ?? offset - 1) });
-
-  // const getLimitUrl = (value: number) => getUrl({ offset: 0, limit: value });
 
   useEffect(() => {
     // If the query has results but the page has nothing to show...

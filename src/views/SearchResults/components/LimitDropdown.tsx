@@ -13,7 +13,7 @@ export const LimitDropdown: FunctionComponent<LimitDropdownProps> = ({
   getPageUrl,
 }) => (
   <Menu>
-    <MenuButton as={Button} colorScheme="blue">
+    <MenuButton as={Button} colorScheme="blue" mx={2}>
       Show: {limit}
     </MenuButton>
     <MenuList>

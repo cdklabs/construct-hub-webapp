@@ -44,10 +44,10 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
   };
 
   return (
-    <Flex align="center" as="form" onSubmit={onSubmit}>
+    <Flex align="center" as="form" mx={2} onSubmit={onSubmit}>
       <InputGroup>
         <InputLeftAddon>
-          <Text mx={2} w="max-content">
+          <Text w="max-content">
             {offset + 1} - {pageLimit + 1}
           </Text>
         </InputLeftAddon>
