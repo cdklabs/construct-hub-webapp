@@ -31,14 +31,18 @@ async function fetchAssemblies(
       return;
     }
     assemblies[packageFqn] = assembly;
+    const promises: Promise<void>[] = [];
+
     for (const [d, v] of Object.entries(assembly.dependencies ?? {})) {
       const scopeAndName = d.split("/");
       if (scopeAndName.length > 1) {
-        await recurse(scopeAndName[1], v, scopeAndName[0]);
+        promises.push(recurse(scopeAndName[1], v, scopeAndName[0]));
       } else {
-        await recurse(scopeAndName[0], v, "");
+        promises.push(recurse(scopeAndName[0], v, ""));
       }
     }
+
+    await Promise.all(promises);
   }
 
   await recurse(name, version, scope);
