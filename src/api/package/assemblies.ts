@@ -23,13 +23,17 @@ async function fetchAssemblies(
   scope?: string
 ): Promise<Assemblies> {
   const assemblies: Assemblies = {};
+  const requested = new Set();
 
   async function recurse(_name: string, _version: string, _scope?: string) {
-    const assembly = await fetchAssembly(_name, _version, _scope);
     const packageFqn = `${getFullPackageName(_name, _scope)}@${_version};`;
-    if (assemblies[packageFqn]) {
+
+    if (requested.has(packageFqn)) {
       return;
     }
+
+    requested.add(packageFqn);
+    const assembly = await fetchAssembly(_name, _version, _scope);
     assemblies[packageFqn] = assembly;
     const promises: Promise<void>[] = [];
 
