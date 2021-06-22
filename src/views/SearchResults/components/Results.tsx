@@ -1,4 +1,5 @@
 import { Box, Flex, GridItem, SimpleGrid, Tag, Text } from "@chakra-ui/react";
+import { format } from "date-fns";
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { Packages } from "../../../api/package/packages";
@@ -25,6 +26,14 @@ export const Results: FunctionComponent<ResultsProps> = ({ results }) => {
                 p={2}
               >
                 <Text>{pkg.name}</Text>
+                <Text>{pkg.version}</Text>
+                <Text>{pkg.metadata.description}</Text>
+                <Text>
+                  {`Published on ${format(
+                    new Date(pkg.metadata.date),
+                    "MMMM dd, yyyy"
+                  )} by ${pkg.metadata.author.name}`}
+                </Text>
                 <Box overflow="hidden">
                   {pkg.metadata.keywords.map((tag) => {
                     return (
