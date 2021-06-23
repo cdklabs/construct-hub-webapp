@@ -60,6 +60,7 @@ export function PackageDocs({
   const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
 
   const source = useMemo(() => {
+    const startTime = Date.now();
     const doc = new Documentation({
       apiReference: hasApiReference,
       assembly: assembly,
@@ -68,7 +69,9 @@ export function PackageDocs({
     });
 
     const md = doc.render();
-    return md.render();
+    const s = md.render();
+    console.log(`Documentation generated in ${Date.now() - startTime}ms`);
+    return s;
   }, [hasApiReference, assembly, language, submodule]);
 
   const [navItems, setNavItems] = useState<PackageNavItem[]>([]);
