@@ -27,15 +27,15 @@ export const Results: FunctionComponent<ResultsProps> = ({ results }) => {
               >
                 <Text>{pkg.name}</Text>
                 <Text>{pkg.version}</Text>
-                <Text>{pkg.metadata.description}</Text>
+                <Text>{pkg.description}</Text>
                 <Text>
                   {`Published on ${format(
                     new Date(pkg.metadata.date),
                     "MMMM dd, yyyy"
-                  )} by ${pkg.metadata.author.name}`}
+                  )} by ${pkg.author.name}`}
                 </Text>
                 <Box overflow="hidden">
-                  {pkg.metadata.keywords.map((tag) => {
+                  {pkg.keywords.map((tag) => {
                     return (
                       <Tag key={tag} mr={1}>
                         {tag}

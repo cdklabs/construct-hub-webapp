@@ -1,28 +1,7 @@
 import { getAssetsPath } from "./util";
 
-type UserInfo = {
-  username: string;
-  email: string;
-};
-
 export interface Metadata {
-  name: string;
-  scope: "unscoped" | string;
-  version: string;
-  description: string;
-  keywords: string[];
   date: string;
-  links: {
-    npm: string;
-    homepage: string;
-    repository: string;
-    bugs: string;
-  };
-  author: UserInfo & {
-    name: string;
-  };
-  publisher: UserInfo;
-  maintainers: UserInfo[];
 }
 
 export async function fetchMetadata(
