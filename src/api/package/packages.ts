@@ -1,9 +1,17 @@
 import { Metadata } from "./metadata";
 
+export interface Author {
+  readonly name: string;
+  readonly url: string;
+}
+
 export interface Packages {
   packages: {
     name: string;
     version: string;
+    description: string;
+    author: Author;
+    keywords: string[];
     metadata: Metadata;
   }[];
 }

@@ -63,7 +63,7 @@ async function fetchAssembly(
     version = version.substring(1, version.length);
   }
 
-  const assemblyPath = `${getAssetsPath(name, version, scope)}/jsii.json`;
+  const assemblyPath = `${getAssetsPath(name, version, scope)}/assembly.json`;
   const response = await fetch(assemblyPath);
   if (!response.ok) {
     throw new Error(

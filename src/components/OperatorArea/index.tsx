@@ -22,11 +22,9 @@ export function OperatorArea({ assembly, metadata }: OperatorAreaProps) {
   const details: ReactNode[] = useMemo(() => {
     if (!metadata) return [];
 
-    const {
-      date,
-      publisher: { username },
-      links: { repository },
-    } = metadata;
+    const { date } = metadata;
+    const username = assembly?.author.name;
+    const repository = assembly?.repository.url;
 
     const items = [];
 
@@ -60,7 +58,7 @@ export function OperatorArea({ assembly, metadata }: OperatorAreaProps) {
         <Text color="gray.500">{detail}</Text>
       </ListItem>
     ));
-  }, [metadata]);
+  }, [metadata, assembly]);
 
   return (
     <Card as={Flex} direction="column">

@@ -1,7 +1,7 @@
 export function getAssetsPath(name: string, version: string, scope?: string) {
-  const prefix = `/packages/`;
+  const prefix = `/data/`;
   const body = getFullPackageName(name, scope);
-  const suffix = `@${version}`;
+  const suffix = `/v${version}`;
   return `${prefix}${body}${suffix}`;
 }
 
