@@ -60,7 +60,10 @@ export function PackageDocs({
   const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
 
   const source = useMemo(() => {
-    const startTime = Date.now();
+    const timeLabel = `Timer | docgen(${assembly.name}${
+      submodule ? `.${submodule}` : ""
+    })`;
+    console.time(timeLabel);
     const doc = new Documentation({
       apiReference: hasApiReference,
       assembly: assembly,
@@ -70,7 +73,7 @@ export function PackageDocs({
 
     const md = doc.render();
     const s = md.render();
-    console.log(`Documentation generated in ${Date.now() - startTime}ms`);
+    console.timeEnd(timeLabel);
     return s;
   }, [hasApiReference, assembly, language, submodule]);
 
