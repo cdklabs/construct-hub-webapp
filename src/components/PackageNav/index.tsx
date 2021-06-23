@@ -39,7 +39,7 @@ export interface PackageNavProps {
 
 export function PackageNav({ items }: PackageNavProps) {
   return (
-    <Flex direction="column" paddingRight={4}>
+    <Flex direction="column">
       <PackageNavItems items={items} />
     </Flex>
   );

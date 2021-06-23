@@ -18,9 +18,7 @@ interface PackageDetailsProps {
  * the Getting Started, Operator Area, and Publisher Area sections
  */
 export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
-  const isLoading = assembly.loading || metadata.loading;
-
-  if (isLoading || !metadata.data) {
+  if (metadata.loading || !metadata.data) {
     return (
       <Center minH="200px">
         <Spinner size="xl" />

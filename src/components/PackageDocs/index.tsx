@@ -1,9 +1,10 @@
-import { Grid } from "@chakra-ui/react";
+import { Box, Flex, Grid, useToken } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { useState, useEffect, useMemo } from "react";
 import { Documentation } from "../../api/docgen/view/documentation";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { Card } from "../Card";
+import { ChooseSubmodule } from "../ChooseSubmodule";
 import { PackageNav, PackageNavItem } from "../PackageNav";
 import { Body } from "./Body";
 
@@ -55,6 +56,8 @@ export function PackageDocs({
   language,
   submodule,
 }: PackageDocsProps) {
+  const [borderColor] = useToken("colors", ["gray.100"]);
+  const border = `1px solid ${borderColor}`;
   const q = useQueryParams();
 
   const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
@@ -81,19 +84,26 @@ export function PackageDocs({
     ].reduce(appendItem, []);
 
     setNavItems(tree);
-  }, []);
+  }, [source]);
 
   return (
     <Grid columnGap={4} pb={4} px={4} templateColumns="1fr 4fr" width="100%">
-      {/* Max Height is also limited by header (72px) and marginTop + marginBottom (32px) */}
       <Card
-        alignSelf="start"
+        alignSelf="stretch"
+        as={Flex}
+        direction="column"
         maxHeight="calc(100vh - 104px)"
-        overflowY="auto"
+        overflow="hidden auto"
+        p={0}
         position="sticky"
         top={TOP_OFFSET}
       >
-        <PackageNav items={navItems} />
+        <Box borderBottom={border} justify="center" p={0}>
+          <ChooseSubmodule assembly={assembly} />
+        </Box>
+        <Box overflowY="auto">
+          <PackageNav items={navItems} />
+        </Box>
       </Card>
       <Card
         maxWidth="100%"

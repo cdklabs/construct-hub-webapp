@@ -104,15 +104,15 @@ registerRoute(
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-metadata",
-    plugins: [new ExpirationPlugin({ maxAgeSeconds: 600 })],
+    plugins: [new ExpirationPlugin({ maxEntries: 100 })],
   })
 );
 
 registerRoute(
-  "/index/packages.json",
+  ({ url }) =>
+    url.origin === self.origin && url.pathname.endsWith("packages.json"),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-catalog",
-    plugins: [new ExpirationPlugin({ maxAgeSeconds: 300 })],
   })
 );
