@@ -145,10 +145,7 @@ fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
 project.gitignore.exclude("public/packages");
 
 // Proxy requests to awscdk.io for local testing
-project.package.addField(
-  "proxy",
-  "https://construct-hub-testing.dev-tools.aws.dev/"
-);
+project.package.addField("proxy", "TODO");
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
