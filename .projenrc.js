@@ -1,4 +1,4 @@
-const { web } = require("projen");
+const { SourceCode, web } = require("projen");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -179,6 +179,7 @@ project.eslint.addOverride({
 rewireCRA(buildTask);
 rewireCRA(project.tasks.tryFind("test"));
 rewireCRA(project.tasks.tryFind("dev"));
+addBuildConfig();
 
 project.synth();
 
@@ -194,4 +195,16 @@ function rewireCRA(craTask) {
       step.exec = step.exec.replace("react-scripts", "react-app-rewired");
     }
   }
+}
+
+/**
+ * Add build time configuration values for react-scripts.
+ * Use an `.env.local` file to override for local development.
+ */
+function addBuildConfig() {
+  project.gitignore?.addPatterns(".env.local");
+
+  const config = new SourceCode(project, ".env");
+  // Remove inline scripts to allow strict CSP policy.
+  config.line("INLINE_RUNTIME_CHUNK=false");
 }
