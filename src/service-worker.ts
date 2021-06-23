@@ -90,7 +90,8 @@ registerRoute(
 // The following routes cache our jsii.json, metadata.json, and packages.json requests.
 
 registerRoute(
-  ({ url }) => url.origin === self.origin && url.pathname.endsWith("jsii.json"),
+  ({ url }) =>
+    url.origin === self.origin && url.pathname.endsWith("assembly.json"),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-jsii",
