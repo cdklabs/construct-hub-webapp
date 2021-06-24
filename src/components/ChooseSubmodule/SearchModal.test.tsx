@@ -3,9 +3,9 @@ import userEvent from "@testing-library/user-event";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import { SearchPopover } from "./SearchPopover";
+import { SearchModal } from "./SearchModal";
 
-describe("<SearchPopover />", () => {
+describe("<SearchModal />", () => {
   const history = createMemoryHistory();
   const onClose = jest.fn();
   const onInputChange = jest.fn();
@@ -16,13 +16,12 @@ describe("<SearchPopover />", () => {
 
   const renderPopover = () =>
     render(
-      <SearchPopover
+      <SearchModal
         inputValue=""
         isOpen
         onClose={onClose}
         onInputChange={onInputChange}
         submodules={submodules}
-        trigger={<button />}
       />,
       {
         // eslint-disable-next-line react/display-name
@@ -33,14 +32,14 @@ describe("<SearchPopover />", () => {
   it("renders header, search, and submodules", () => {
     const { queryByTestId, queryByText } = renderPopover();
     expect(queryByText("target-name")).not.toBeNull();
-    expect(queryByTestId("choose-submodule-popover-header")).not.toBeNull();
+    expect(queryByTestId("choose-submodule-modal-header")).not.toBeNull();
     expect(queryByTestId("choose-submodule-search-form")).not.toBeNull();
-    expect(queryByTestId("choose-submodule-popover-results")).not.toBeNull();
+    expect(queryByTestId("choose-submodule-modal-results")).not.toBeNull();
   });
 
   it("fires onClose when exited", () => {
     const { getByTestId } = renderPopover();
-    const closeBtn = getByTestId("choose-submodule-popover-close");
+    const closeBtn = getByTestId("choose-submodule-modal-close");
     userEvent.click(closeBtn);
     expect(onClose).toHaveBeenCalled();
   });
