@@ -56,6 +56,7 @@ export function SearchPopover({
   return (
     <Popover
       initialFocusRef={inputRef}
+      isLazy
       isOpen={isOpen}
       offset={[20, -15]}
       onClose={onClose}

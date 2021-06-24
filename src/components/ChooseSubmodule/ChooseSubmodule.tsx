@@ -63,6 +63,7 @@ export function ChooseSubmodule({ assembly }: ChooseSubmoduleProps) {
           borderRadius="none"
           borderRight={`1px solid ${borderColor}`}
           color={textColor}
+          data-testid="choose-submodule-go-back"
           h={btnHeight}
           onClick={onGoBack}
           variant="ghost"
@@ -80,6 +81,7 @@ export function ChooseSubmodule({ assembly }: ChooseSubmoduleProps) {
           <Button
             borderRadius="none"
             color={textColor}
+            data-testid="choose-submodule-search-trigger"
             disabled={!assembly?.submodules.length}
             flexGrow={1}
             h={btnHeight}
