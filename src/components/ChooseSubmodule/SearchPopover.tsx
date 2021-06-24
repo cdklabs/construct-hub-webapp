@@ -9,13 +9,7 @@ import {
   PopoverTrigger,
   UnorderedList,
 } from "@chakra-ui/react";
-import {
-  FormEventHandler,
-  FunctionComponent,
-  ReactNode,
-  useCallback,
-  useRef,
-} from "react";
+import { FormEventHandler, ReactNode, useCallback, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { Result } from "./Result";
 import { SearchInput } from "./SearchInput";
@@ -29,14 +23,14 @@ export interface SearchPopoverProps {
   trigger: ReactNode;
 }
 
-export const SearchPopover: FunctionComponent<SearchPopoverProps> = ({
+export function SearchPopover({
   inputValue,
   isOpen,
   onClose,
   onInputChange,
   submodules,
   trigger,
-}) => {
+}: SearchPopoverProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const { push } = useHistory();
 
@@ -104,4 +98,4 @@ export const SearchPopover: FunctionComponent<SearchPopoverProps> = ({
       </PopoverContent>
     </Popover>
   );
-};
+}

@@ -1,7 +1,7 @@
 import { ArrowBackIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Flex, useDisclosure, useToken } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
-import { FunctionComponent, useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { SearchPopover } from "./SearchPopover";
@@ -10,9 +10,7 @@ export interface ChooseSubmoduleProps {
   assembly?: Assembly;
 }
 
-export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
-  assembly,
-}) => {
+export function ChooseSubmodule({ assembly }: ChooseSubmoduleProps) {
   const { pathname } = useLocation();
   const { push } = useHistory();
   const query = useQueryParams();
@@ -95,4 +93,4 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
       />
     </Flex>
   );
-};
+}

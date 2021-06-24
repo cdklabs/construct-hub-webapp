@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, useToken } from "@chakra-ui/react";
+import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { useState, useEffect, useMemo } from "react";
 import { Documentation } from "../../api/docgen/view/documentation";
@@ -56,8 +56,6 @@ export function PackageDocs({
   language,
   submodule,
 }: PackageDocsProps) {
-  const [borderColor] = useToken("colors", ["gray.100"]);
-  const border = `1px solid ${borderColor}`;
   const q = useQueryParams();
 
   const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
@@ -104,7 +102,12 @@ export function PackageDocs({
         position="sticky"
         top={TOP_OFFSET}
       >
-        <Box borderBottom={border} justify="center" p={0}>
+        <Box
+          borderBottom="1px solid"
+          borderColor="gray.100"
+          justify="center"
+          p={0}
+        >
           <ChooseSubmodule assembly={assembly} />
         </Box>
         <Box overflowY="auto">

@@ -1,12 +1,12 @@
 import { ListItem } from "@chakra-ui/react";
-import type { FunctionComponent, KeyboardEventHandler } from "react";
+import type { KeyboardEventHandler } from "react";
 
 export interface ResultProps {
   name: string;
   onClick: () => void;
 }
 
-export const Result: FunctionComponent<ResultProps> = ({ name, onClick }) => {
+export function Result({ name, onClick }: ResultProps) {
   const onKeyDown: KeyboardEventHandler<HTMLLIElement> = (e) => {
     if (e.key === "Enter") {
       onClick();
@@ -32,4 +32,4 @@ export const Result: FunctionComponent<ResultProps> = ({ name, onClick }) => {
       {name}
     </ListItem>
   );
-};
+}

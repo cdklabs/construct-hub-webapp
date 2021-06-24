@@ -1,4 +1,4 @@
-import { Box, Center, Spinner } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { createAssembly } from "../../api/package/assemblies";
@@ -37,18 +37,12 @@ export function Package() {
         version={version}
       />
       {/* Readme and Api Reference Area */}
-      {assemblyResponse.data && !assemblyResponse.loading ? (
+      {assemblyResponse.data && !assemblyResponse.loading && (
         <PackageDocs
           assembly={assemblyResponse.data}
           language={language}
           submodule={q.get("submodule") ?? ""}
         />
-      ) : (
-        !metadataResponse.loading && (
-          <Center h="100%">
-            <Spinner size="xl" />
-          </Center>
-        )
       )}
     </Box>
   );
