@@ -55,6 +55,16 @@ describe("<ChooseSubmodule />", () => {
     expect(queryByTestId("choose-submodule-go-back")).not.toBeNull();
   });
 
+  it("navigates to correct path on back button click", () => {
+    history = createMemoryHistory({
+      initialEntries: ["/?submodule=@aws-cdk/eks"],
+    });
+
+    const { getByTestId } = renderComponent();
+    userEvent.click(getByTestId("choose-submodule-go-back"));
+    expect(window.location.search).toEqual("");
+  });
+
   it("shows all submodules when no filter", () => {
     const { getByTestId, queryAllByTestId } = renderComponent();
 
@@ -77,5 +87,16 @@ describe("<ChooseSubmodule />", () => {
     });
 
     expect(queryAllByTestId("choose-submodule-result").length).toEqual(1);
+  });
+
+  it("submodules link to correct path", () => {
+    const { getByTestId, queryAllByTestId } = renderComponent();
+
+    userEvent.click(getByTestId("choose-submodule-search-trigger"));
+    userEvent.click(queryAllByTestId("choose-submodule-result")[0]);
+
+    expect(decodeURIComponent(history.location.search)).toEqual(
+      "?submodule=@aws-cdk/eks"
+    );
   });
 });
