@@ -16,7 +16,7 @@ export async function fetchMetadata(
     sanitizedVersion = sanitizedVersion.substring(1, sanitizedVersion.length);
   }
 
-  const metadataPath = `${getAssetsPath(name, version, scope)}/${
+  const metadataPath = `${getAssetsPath(name, version, scope)}${
     consts.METADATA_SUFFIX
   }`;
   const response = await fetch(metadataPath);
