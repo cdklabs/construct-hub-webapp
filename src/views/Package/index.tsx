@@ -23,8 +23,8 @@ export function Package() {
   const [language] = useLanguage();
 
   useEffect(() => {
-    void requestAssembly(name, version, scope);
     void requestMetadata(name, version, scope);
+    void requestAssembly(name, version, scope);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, scope, version]);
 

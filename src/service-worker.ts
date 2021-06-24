@@ -106,15 +106,15 @@ registerRoute(
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-metadata",
-    plugins: [new ExpirationPlugin({ maxAgeSeconds: 600 })],
+    plugins: [new ExpirationPlugin({ maxEntries: 100 })],
   })
 );
 
 registerRoute(
-  consts.CATALOG_SUFFIX,
+  ({ url }) =>
+    url.origin === self.origin && url.pathname.endsWith(consts.CATALOG_SUFFIX),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-catalog",
-    plugins: [new ExpirationPlugin({ maxAgeSeconds: 300 })],
   })
 );
