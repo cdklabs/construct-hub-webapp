@@ -1,3 +1,4 @@
+import * as consts from "../../constants/paths";
 import { Metadata } from "./metadata";
 
 export interface Author {
@@ -17,7 +18,7 @@ export interface Packages {
 }
 
 export async function fetchPackages(): Promise<Packages> {
-  const response = await fetch("/index/packages.json");
+  const response = await fetch(consts.CATALOG_SUFFIX);
 
   if (!response.ok) {
     console.error(response.statusText);

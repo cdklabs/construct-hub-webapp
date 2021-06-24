@@ -13,6 +13,7 @@ import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
 import { StaleWhileRevalidate } from "workbox-strategies";
+import * as consts from "./constants/paths";
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -87,11 +88,11 @@ registerRoute(
   })
 );
 
-// The following routes cache our jsii.json, metadata.json, and packages.json requests.
+// The following routes cache our jsii.json, metadata.json, and catalog.json requests.
 
 registerRoute(
   ({ url }) =>
-    url.origin === self.origin && url.pathname.endsWith("assembly.json"),
+    url.origin === self.origin && url.pathname.endsWith(consts.ASSEMBLY_SUFFIX),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-jsii",
@@ -101,7 +102,7 @@ registerRoute(
 
 registerRoute(
   ({ url }) =>
-    url.origin === self.origin && url.pathname.endsWith("metadata.json"),
+    url.origin === self.origin && url.pathname.endsWith(consts.METADATA_SUFFIX),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-metadata",
@@ -110,7 +111,7 @@ registerRoute(
 );
 
 registerRoute(
-  "/index/packages.json",
+  consts.CATALOG_SUFFIX,
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-catalog",
