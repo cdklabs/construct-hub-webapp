@@ -1,5 +1,6 @@
 import * as spec from "@jsii/spec";
 import * as reflect from "jsii-reflect";
+import * as consts from "../../constants/paths";
 import { getAssetsPath, getFullPackageName } from "./util";
 
 type Assemblies = { [packageName: string]: spec.Assembly };
@@ -63,7 +64,9 @@ async function fetchAssembly(
     version = version.substring(1, version.length);
   }
 
-  const assemblyPath = `${getAssetsPath(name, version, scope)}/jsii.json`;
+  const assemblyPath = `${getAssetsPath(name, version, scope)}${
+    consts.ASSEMBLY_SUFFIX
+  }`;
   const response = await fetch(assemblyPath);
   if (!response.ok) {
     throw new Error(

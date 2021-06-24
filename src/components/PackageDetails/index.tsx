@@ -18,7 +18,9 @@ interface PackageDetailsProps {
  * the Getting Started, Operator Area, and Publisher Area sections
  */
 export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
-  if (metadata.loading || !metadata.data) {
+  const isLoading = assembly.loading || metadata.loading;
+
+  if (isLoading || !assembly.data || !metadata.data) {
     return (
       <Center minH="200px">
         <Spinner size="xl" />
@@ -30,9 +32,9 @@ export function PackageDetails({ assembly, metadata }: PackageDetailsProps) {
     <Grid p={4} rowGap={4} templateColumns="1fr" templateRows="auto">
       <Grid columnGap={4} templateColumns="3fr 2fr">
         <PackageHeader
-          description={metadata.data.description}
-          tags={metadata.data.keywords}
-          title={metadata.data.name}
+          description={assembly.data.spec.description}
+          tags={assembly.data.spec.keywords ?? []}
+          title={assembly.data.spec.name}
         />
         <OperatorArea assembly={assembly.data} metadata={metadata.data} />
       </Grid>

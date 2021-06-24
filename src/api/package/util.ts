@@ -1,7 +1,9 @@
+import * as consts from "../../constants/paths";
+
 export function getAssetsPath(name: string, version: string, scope?: string) {
-  const prefix = `/packages/`;
+  const prefix = `${consts.PACKAGES_PREFIX}/`;
   const body = getFullPackageName(name, scope);
-  const suffix = `@${version}`;
+  const suffix = `/v${version}`;
   return `${prefix}${body}${suffix}`;
 }
 

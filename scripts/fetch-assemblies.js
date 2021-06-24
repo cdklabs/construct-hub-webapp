@@ -35,7 +35,7 @@ function fetchAssembly(packageName, packageVersion, packagesPath) {
     packageVersion = packageVersion.substring(1, packageVersion.length);
   }
 
-  const output = `${packagesPath}/${packageName}@${packageVersion}/jsii.json`;
+  const output = `${packagesPath}/${packageName}/v${packageVersion}/assembly.json`;
   const assemblyPath = `${__dirname}/../${output}`;
   const package = `${packageName}@${packageVersion}`;
 
@@ -76,4 +76,4 @@ function fetchAssembly(packageName, packageVersion, packagesPath) {
   );
 }
 
-fetchAssembly(fromEnv('PACKAGE_NAME'), fromEnv('PACKAGE_VERSION'), 'public/packages')
+fetchAssembly(fromEnv('PACKAGE_NAME'), fromEnv('PACKAGE_VERSION'), 'public/data')
