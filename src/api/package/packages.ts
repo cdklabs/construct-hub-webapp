@@ -17,7 +17,7 @@ export interface Packages {
 }
 
 export async function fetchPackages(): Promise<Packages> {
-  const response = await fetch("/index/packages.json");
+  const response = await fetch("/catalog.json");
 
   if (!response.ok) {
     console.error(response.statusText);
