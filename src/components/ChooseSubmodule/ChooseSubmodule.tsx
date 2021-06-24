@@ -4,7 +4,7 @@ import type { Assembly } from "jsii-reflect";
 import { useCallback, useMemo, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useQueryParams } from "../../hooks/useQueryParams";
-import { SearchPopover } from "./SearchPopover";
+import { SearchModal } from "./SearchModal";
 
 export interface ChooseSubmoduleProps {
   assembly?: Assembly;
@@ -71,27 +71,25 @@ export function ChooseSubmodule({ assembly }: ChooseSubmoduleProps) {
           <ArrowBackIcon aria-label="Back to construct root" />
         </Button>
       )}
-      <SearchPopover
+      <Button
+        borderRadius="none"
+        color={textColor}
+        data-testid="choose-submodule-search-trigger"
+        disabled={!assembly?.submodules.length}
+        flexGrow={1}
+        h={btnHeight}
+        onClick={onOpen}
+        rightIcon={<ChevronDownIcon />}
+        variant="ghost"
+      >
+        {submoduleText}
+      </Button>
+      <SearchModal
         inputValue={filter}
         isOpen={isOpen}
         onClose={onClose}
         onInputChange={setFilter}
         submodules={submodules}
-        trigger={
-          <Button
-            borderRadius="none"
-            color={textColor}
-            data-testid="choose-submodule-search-trigger"
-            disabled={!assembly?.submodules.length}
-            flexGrow={1}
-            h={btnHeight}
-            onClick={onOpen}
-            rightIcon={<ChevronDownIcon />}
-            variant="ghost"
-          >
-            {submoduleText}
-          </Button>
-        }
       />
     </Flex>
   );
