@@ -1,3 +1,4 @@
+import * as consts from "../../constants/paths";
 import { getAssetsPath } from "./util";
 
 export interface Metadata {
@@ -15,7 +16,9 @@ export async function fetchMetadata(
     sanitizedVersion = sanitizedVersion.substring(1, sanitizedVersion.length);
   }
 
-  const metadataPath = `${getAssetsPath(name, version, scope)}/metadata.json`;
+  const metadataPath = `${getAssetsPath(name, version, scope)}/${
+    consts.METADATA_SUFFIX
+  }`;
   const response = await fetch(metadataPath);
 
   if (!response.ok) {

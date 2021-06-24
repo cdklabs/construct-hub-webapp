@@ -92,7 +92,7 @@ registerRoute(
 
 registerRoute(
   ({ url }) =>
-    url.origin === self.origin && url.pathname.endsWith("assembly.json"),
+    url.origin === self.origin && url.pathname.endsWith(consts.ASSEMBLY_SUFFIX),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-jsii",
@@ -102,7 +102,7 @@ registerRoute(
 
 registerRoute(
   ({ url }) =>
-    url.origin === self.origin && url.pathname.endsWith("metadata.json"),
+    url.origin === self.origin && url.pathname.endsWith(consts.METADATA_SUFFIX),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-metadata",
@@ -111,7 +111,7 @@ registerRoute(
 );
 
 registerRoute(
-  consts.CATALOG,
+  consts.CATALOG_SUFFIX,
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-catalog",
