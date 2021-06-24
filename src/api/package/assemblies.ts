@@ -64,7 +64,7 @@ async function fetchAssembly(
     version = version.substring(1, version.length);
   }
 
-  const assemblyPath = `${getAssetsPath(name, version, scope)}/${
+  const assemblyPath = `${getAssetsPath(name, version, scope)}${
     consts.ASSEMBLY_SUFFIX
   }`;
   const response = await fetch(assemblyPath);
