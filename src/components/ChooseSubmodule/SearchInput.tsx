@@ -5,7 +5,7 @@ import {
   Input,
   forwardRef,
 } from "@chakra-ui/react";
-import { FormEventHandler, useEffect, useState } from "react";
+import { FormEventHandler, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 
 export interface SearchInputProps {
@@ -17,20 +17,17 @@ export interface SearchInputProps {
 export const SearchInput = forwardRef<SearchInputProps, "input">(
   ({ value, onChange, onSubmit }, inputRef) => {
     const [inputValue, setInputValue] = useState(value);
-    const debounced = useDebounce(inputValue, 250);
 
-    useEffect(() => {
-      onChange(debounced);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [debounced]);
+    useDebounce(inputValue, { onChange });
 
     return (
-      <form onSubmit={onSubmit}>
+      <form data-testid="choose-submodule-search-form" onSubmit={onSubmit}>
         <InputGroup>
           <InputLeftElement>
             <SearchIcon color="gray.400" />
           </InputLeftElement>
           <Input
+            data-testid="choose-submodule-search-input"
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Search"
             ref={inputRef}

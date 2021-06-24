@@ -69,11 +69,15 @@ export const SearchPopover: FunctionComponent<SearchPopoverProps> = ({
     >
       <PopoverTrigger>{trigger}</PopoverTrigger>
       <PopoverContent boxShadow="2xl">
-        <PopoverCloseButton />
-        <PopoverHeader fontSize="lg" fontWeight="bold">
+        <PopoverCloseButton data-testid="choose-submodule-popover-close" />
+        <PopoverHeader
+          data-testid="choose-submodule-popover-header"
+          fontSize="lg"
+          fontWeight="bold"
+        >
           Choose a submodule
         </PopoverHeader>
-        <PopoverBody p={0}>
+        <PopoverBody data-testid="choose-submodule-popover-body" p={0}>
           <Box p={4}>
             <SearchInput
               onChange={onInputChange}
@@ -84,6 +88,7 @@ export const SearchPopover: FunctionComponent<SearchPopoverProps> = ({
           </Box>
           <Divider bg="blue.100" />
           <UnorderedList
+            data-testid="choose-submodule-popover-results"
             m={0}
             maxH="50vh"
             overflow="hidden auto"

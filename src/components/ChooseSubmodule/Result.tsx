@@ -16,6 +16,7 @@ export const Result: FunctionComponent<ResultProps> = ({ name, onClick }) => {
   return (
     <ListItem
       alignItems="center"
+      data-testid="choose-submodule-result"
       display="flex"
       fontSize="lg"
       h={12}

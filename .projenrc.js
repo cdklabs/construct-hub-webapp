@@ -51,13 +51,14 @@ const project = new web.ReactTypeScriptProject({
   ],
 
   devDeps: [
-    "cypress",
-    "@types/react-router-dom",
-    "react-app-rewired",
     "@testing-library/react-hooks",
-    "eslint-plugin-react",
-    "eslint-plugin-react-hooks",
+    "@testing-library/user-event",
+    "@types/react-router-dom",
+    "cypress",
     "eslint-plugin-jsx-a11y",
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-react",
+    "react-app-rewired",
   ],
   autoApproveOptions: {
     allowedUsernames: ["aws-cdk-automation"],
