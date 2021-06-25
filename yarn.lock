@@ -2777,9 +2777,9 @@
     ts-dedent "^2.0.0"
 
 "@storybook/addon-measure@^1.2.3":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-measure/-/addon-measure-1.2.4.tgz#149705ef9de5e9251c012deb84406b3bc9307452"
-  integrity sha512-pxAo7QcETdiienZYMjAhX/3BqPnYTuH0ZSjmJzsr+yCBvZmZUciq1h3WvyUN59rT0ewFwLTKsmZG/wVZj+aN+Q==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-measure/-/addon-measure-1.3.1.tgz#a85b35a73ce9587d54d35e18307eeeb82f509534"
+  integrity sha512-OTTbVOs/85zP5MzAMAAs/IyS3MNegSMvvGOzBRsX/7GBxhtjkrryamDkVr9py3JqPwRSndwwB7y0ZwWmf/9KJw==
 
 "@storybook/addon-storysource@^6.3.0":
   version "6.3.0"
@@ -2831,7 +2831,7 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.3.0", "@storybook/addons@^6.2.9", "@storybook/addons@^6.3.0-beta.6":
+"@storybook/addons@6.3.0", "@storybook/addons@^6.2.9", "@storybook/addons@^6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.0.tgz#a86849f46a654d2d78b91fad0088264a32d4e58e"
   integrity sha512-/dcq20HtdSw5+cG8znR59Y/uv2zCR2VjRK3N52IkGWk162b/UbSjjL0PhNnnQFGpH9Fruft6mqvjTAKT41kmJw==
@@ -2846,7 +2846,7 @@
     global "^4.4.0"
     regenerator-runtime "^0.13.7"
 
-"@storybook/api@6.3.0", "@storybook/api@^6.2.9", "@storybook/api@^6.3.0-beta.6":
+"@storybook/api@6.3.0", "@storybook/api@^6.2.9", "@storybook/api@^6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.3.0.tgz#5ecb646e7c3c4c7c494bb15f4c94554f7f4ee09e"
   integrity sha512-swPMcQadLDRTnMjL9dwY6K1zXHn3KcAa3euvSHd1R4OKXTSBBj1zHvIaOrq6yHz7RIYOACmZlEV3CUru9FlvEA==
@@ -3002,7 +3002,7 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components@6.3.0", "@storybook/components@^6.2.9", "@storybook/components@^6.3.0-beta.6":
+"@storybook/components@6.3.0", "@storybook/components@^6.2.9", "@storybook/components@^6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.3.0.tgz#5ad372abd60ee0cb02516f960f514659e3fbf865"
   integrity sha512-TDcazQAtNgE1E33jKKABx51XpvWyXMcJZFWA0d5wu8XrElrL1PuZqz7dPePoWKGMfTaPYWP6rRyDg4Svv36j+A==
@@ -3109,7 +3109,7 @@
     util-deprecate "^1.0.2"
     webpack "4"
 
-"@storybook/core-events@6.3.0", "@storybook/core-events@^6.2.9", "@storybook/core-events@^6.3.0-beta.6":
+"@storybook/core-events@6.3.0", "@storybook/core-events@^6.2.9", "@storybook/core-events@^6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.3.0.tgz#5e220a866db5b93550b5c3464774a7b10ad036a6"
   integrity sha512-ZGTm5nQvFLlc2LVgoDyxo99MbQcFqQzkxIQReFkO7hPwwkcjcwmdBtnlmkn9/p5QQ5/8aU0k+ceCkrBNu1M83w==
@@ -4334,9 +4334,9 @@ acorn@^7.1.0, acorn@^7.1.1, acorn@^7.4.0, acorn@^7.4.1:
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
 acorn@^8.2.4:
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.4.0.tgz#af53266e698d7cffa416714b503066a82221be60"
-  integrity sha512-ULr0LDaEqQrMFGyQ3bhJkLsbtrQ8QibAseGZeaSUiT/6zb9IvIkomWHJIvgvwad+hinRAgsI51JcWk2yvwyL+w==
+  version "8.4.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.4.1.tgz#56c36251fc7cabc7096adc18f05afe814321a28c"
+  integrity sha512-asabaBSkEKosYKMITunzX177CXxQ4Q8BSSzMTKD+FefUhipQC70gfW5SiUDhYQ3vk8G+81HqQk7Fv9OXwwn9KA==
 
 add-stream@^1.0.0:
   version "1.0.0"
@@ -7462,14 +7462,14 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.723:
-  version "1.3.756"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.756.tgz#942cee59cd64d19f576d8d5804eef09cb423740c"
-  integrity sha512-WsmJym1TMeHVndjPjczTFbnRR/c4sbzg8fBFtuhlb2Sru3i/S1VGpzDSrv/It8ctMU2bj8G7g7/O3FzYMGw6eA==
+  version "1.3.757"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.757.tgz#ff99436c99ca0fc5d120e11030a868401396e0e1"
+  integrity sha512-kP0ooyrvavDC+Y9UG6G/pUVxfRNM2VTJwtLQLvgsJeyf1V+7shMCb68Wj0/TETmfx8dWv9pToGkVT39udE87wQ==
 
 element-resize-detector@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.2.2.tgz#bf7c3ff915957e4e62e86241ed2f9c86b078892b"
-  integrity sha512-+LOXRkCJc4I5WhEJxIDjhmE3raF8jtOMBDqSCgZTMz2TX3oXAX5pE2+MDeopJlGdXzP7KzPbBJaUGfNaP9HG4A==
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.2.3.tgz#5078d9b99398fe4c589f8c8df94ff99e5d413ff3"
+  integrity sha512-+dhNzUgLpq9ol5tyhoG7YLoXL3ssjfFW+0gpszXPwRU6NjGr1fVHMEAF8fVzIiRJq57Nre0RFeIjJwI8Nh2NmQ==
   dependencies:
     batch-processor "1.0.0"
 
@@ -15889,14 +15889,14 @@ store2@^2.12.0:
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
 storybook-addon-outline@^1.3.3:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/storybook-addon-outline/-/storybook-addon-outline-1.3.4.tgz#4d90c262781db995312ca8bb6d4ba26028ff55b6"
-  integrity sha512-UNFansfJq1j5Z+GdB8/eoSck9A27VPm5HPG4LBnPKwvAmvjccVgY9mcbcG/ezF83RlrtCOKkfQ1NgOqz2NlGGg==
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/storybook-addon-outline/-/storybook-addon-outline-1.4.0.tgz#2aa047b4f4c8b423b37d94fcf2abcd057a7ca7ae"
+  integrity sha512-H7b8TDNYLTV/aNhWb7c/QMlrlZM88pAiDB8w+0tTN/DRMKQUgFM/J0IEjy/MWzet5AKGJDrVnv2JFfk9gSP4qg==
   dependencies:
-    "@storybook/addons" "^6.3.0-beta.6"
-    "@storybook/api" "^6.3.0-beta.6"
-    "@storybook/components" "^6.3.0-beta.6"
-    "@storybook/core-events" "^6.3.0-beta.6"
+    "@storybook/addons" "^6.3.0"
+    "@storybook/api" "^6.3.0"
+    "@storybook/components" "^6.3.0"
+    "@storybook/core-events" "^6.3.0"
     ts-dedent "^2.1.1"
 
 storybook-addon-performance@^0.16.0:
