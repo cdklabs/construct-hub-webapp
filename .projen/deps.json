@@ -111,6 +111,10 @@
       "type": "build"
     },
     {
+      "name": "eslint-plugin-prefer-arrow",
+      "type": "build"
+    },
+    {
       "name": "eslint-plugin-prettier",
       "type": "build"
     },

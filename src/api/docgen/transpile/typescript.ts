@@ -2,8 +2,50 @@ import Case from "case";
 import * as reflect from "jsii-reflect";
 import * as transpile from "./transpile";
 
+// Helpers
 const toCamelCase = (text?: string) => {
   return Case.camel(text ?? "");
+};
+
+const formatInputs = (inputs: string[]) => {
+  return inputs.join(", ");
+};
+
+const formatStructInitialization = (type: transpile.TranspiledType) => {
+  const target = type.submodule ? `${type.namespace}.${type.name}` : type.name;
+  return `const ${toCamelCase(type.name)}: ${target} = { ... }`;
+};
+
+const formatClassInitialization = (
+  type: transpile.TranspiledType,
+  inputs: string[]
+) => {
+  const target = type.submodule ? `${type.namespace}.${type.name}` : type.name;
+  return `new ${target}(${formatInputs(inputs)})`;
+};
+
+const formatInvocation = (
+  type: transpile.TranspiledType,
+  inputs: string[],
+  method: string
+) => {
+  let target = type.submodule ? `${type.namespace}.${type.name}` : type.name;
+  if (method) {
+    target = `${target}.${method}`;
+  }
+  return `${target}(${formatInputs(inputs)})`;
+};
+
+const formatImport = (type: transpile.TranspiledType) => {
+  if (type.submodule) {
+    return `import { ${type.submodule} } from '${type.module}'`;
+  } else {
+    return `import { ${type.name} } from '${type.module}'`;
+  }
+};
+
+const formatSignature = (name: string, inputs: string[]) => {
+  return `public ${name}(${formatInputs(inputs)})`;
 };
 
 /**
@@ -166,45 +208,4 @@ export class TypeScriptTranspile extends transpile.TranspileBase {
     });
     return `${transpiled.name}${transpiled.optional ? "?" : ""}: ${tf}`;
   }
-}
-
-function formatStructInitialization(type: transpile.TranspiledType) {
-  const target = type.submodule ? `${type.namespace}.${type.name}` : type.name;
-  return `const ${toCamelCase(type.name)}: ${target} = { ... }`;
-}
-
-function formatClassInitialization(
-  type: transpile.TranspiledType,
-  inputs: string[]
-) {
-  const target = type.submodule ? `${type.namespace}.${type.name}` : type.name;
-  return `new ${target}(${formatInputs(inputs)})`;
-}
-
-function formatInvocation(
-  type: transpile.TranspiledType,
-  inputs: string[],
-  method: string
-) {
-  let target = type.submodule ? `${type.namespace}.${type.name}` : type.name;
-  if (method) {
-    target = `${target}.${method}`;
-  }
-  return `${target}(${formatInputs(inputs)})`;
-}
-
-function formatImport(type: transpile.TranspiledType) {
-  if (type.submodule) {
-    return `import { ${type.submodule} } from '${type.module}'`;
-  } else {
-    return `import { ${type.name} } from '${type.module}'`;
-  }
-}
-
-function formatSignature(name: string, inputs: string[]) {
-  return `public ${name}(${formatInputs(inputs)})`;
-}
-
-function formatInputs(inputs: string[]) {
-  return inputs.join(", ");
 }

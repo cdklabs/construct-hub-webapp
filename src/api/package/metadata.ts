@@ -5,11 +5,11 @@ export interface Metadata {
   date: string;
 }
 
-export async function fetchMetadata(
+export const fetchMetadata = async (
   name: string,
   version: string,
   scope?: string
-): Promise<Metadata> {
+): Promise<Metadata> => {
   let sanitizedVersion = version;
 
   if (sanitizedVersion.startsWith("^")) {
@@ -28,4 +28,4 @@ export async function fetchMetadata(
   }
 
   return response.json();
-}
+};

@@ -166,7 +166,8 @@
         "plugin:jsx-a11y/recommended"
       ],
       "plugins": [
-        "jsx-a11y"
+        "jsx-a11y",
+        "prefer-arrow"
       ],
       "rules": {
         "react/jsx-sort-props": [
@@ -177,6 +178,16 @@
         ],
         "react/prop-types": [
           "off"
+        ],
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": [
+          "error"
+        ],
+        "prefer-arrow/prefer-arrow-functions": [
+          "error",
+          {
+            "singleReturnOnly": false
+          }
         ]
       }
     }
