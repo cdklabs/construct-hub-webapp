@@ -5,28 +5,36 @@ import { getAssetsPath, getFullPackageName } from "./util";
 
 type Assemblies = { [packageName: string]: spec.Assembly };
 
-export async function createAssembly(
+const fetchAssembly = async (
   name: string,
   version: string,
   scope?: string
-): Promise<reflect.Assembly> {
-  const assemblies = await fetchAssemblies(name, version, scope);
-  const ts = new reflect.TypeSystem();
-  Object.values(assemblies).forEach((a) => {
-    ts.addAssembly(new reflect.Assembly(ts, a));
-  });
-  return ts.findAssembly(getFullPackageName(name, scope));
-}
+): Promise<spec.Assembly> => {
+  if (version.startsWith("^")) {
+    version = version.substring(1, version.length);
+  }
 
-async function fetchAssemblies(
+  const assemblyPath = `${getAssetsPath(name, version, scope)}${
+    consts.ASSEMBLY_SUFFIX
+  }`;
+  const response = await fetch(assemblyPath);
+  if (!response.ok) {
+    throw new Error(
+      `Failed fetching assembly for ${assemblyPath}: ${response.statusText}`
+    );
+  }
+  return response.json();
+};
+
+const fetchAssemblies = async (
   name: string,
   version: string,
   scope?: string
-): Promise<Assemblies> {
+): Promise<Assemblies> => {
   const assemblies: Assemblies = {};
   const requested = new Set();
 
-  async function recurse(_name: string, _version: string, _scope?: string) {
+  const recurse = async (_name: string, _version: string, _scope?: string) => {
     const packageFqn = `${getFullPackageName(_name, _scope)}@${_version};`;
 
     if (requested.has(packageFqn)) {
@@ -48,30 +56,22 @@ async function fetchAssemblies(
     }
 
     await Promise.all(promises);
-  }
+  };
 
   await recurse(name, version, scope);
 
   return assemblies;
-}
+};
 
-async function fetchAssembly(
+export const createAssembly = async (
   name: string,
   version: string,
   scope?: string
-): Promise<spec.Assembly> {
-  if (version.startsWith("^")) {
-    version = version.substring(1, version.length);
-  }
-
-  const assemblyPath = `${getAssetsPath(name, version, scope)}${
-    consts.ASSEMBLY_SUFFIX
-  }`;
-  const response = await fetch(assemblyPath);
-  if (!response.ok) {
-    throw new Error(
-      `Failed fetching assembly for ${assemblyPath}: ${response.statusText}`
-    );
-  }
-  return response.json();
-}
+): Promise<reflect.Assembly> => {
+  const assemblies = await fetchAssemblies(name, version, scope);
+  const ts = new reflect.TypeSystem();
+  Object.values(assemblies).forEach((a) => {
+    ts.addAssembly(new reflect.Assembly(ts, a));
+  });
+  return ts.findAssembly(getFullPackageName(name, scope));
+};

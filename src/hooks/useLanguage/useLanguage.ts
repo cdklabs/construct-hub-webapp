@@ -45,7 +45,7 @@ export interface UseLanguageOptions {
   updateSaved?: boolean;
 }
 
-export function useLanguage(options: UseLanguageOptions = {}) {
+export const useLanguage = (options: UseLanguageOptions = {}) => {
   const { updateUrl, updateSaved } = options;
   const { pathname, hash } = useLocation();
   const { replace } = useHistory();
@@ -90,4 +90,4 @@ export function useLanguage(options: UseLanguageOptions = {}) {
   );
 
   return useMemo(() => [language, update] as const, [language, update]);
-}
+};

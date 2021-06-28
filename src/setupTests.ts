@@ -9,21 +9,7 @@ import * as path from "path";
 import * as jsii from "@jsii/spec";
 import * as reflect from "jsii-reflect";
 
-function createAssembly(name: string): reflect.Assembly {
-  const ts = new reflect.TypeSystem();
-
-  const packages = `${__dirname}/__fixtures__/assemblies`;
-
-  collectAssebmlies(packages, ts);
-
-  return ts.findAssembly(name);
-}
-
-// expose the assemblies under test gloablly
-(global as any).assembly = createAssembly("@aws-cdk/aws-ecr");
-(global as any).assemblyWithSubmodules = createAssembly("aws-cdk-lib");
-
-function collectAssebmlies(p: string, ts: reflect.TypeSystem) {
+const collectAssebmlies = (p: string, ts: reflect.TypeSystem) => {
   const stat = fs.statSync(p);
 
   if (stat.isDirectory()) {
@@ -36,4 +22,18 @@ function collectAssebmlies(p: string, ts: reflect.TypeSystem) {
       ts.addAssembly(new reflect.Assembly(ts, assembly));
     }
   }
-}
+};
+
+const createAssembly = (name: string): reflect.Assembly => {
+  const ts = new reflect.TypeSystem();
+
+  const packages = `${__dirname}/__fixtures__/assemblies`;
+
+  collectAssebmlies(packages, ts);
+
+  return ts.findAssembly(name);
+};
+
+// expose the assemblies under test gloablly
+(global as any).assembly = createAssembly("@aws-cdk/aws-ecr");
+(global as any).assemblyWithSubmodules = createAssembly("aws-cdk-lib");

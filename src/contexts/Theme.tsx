@@ -1,11 +1,12 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import type { FunctionComponent } from "react";
 
 const theme = extendTheme({});
 
-export function Theme(props: { children: JSX.Element }) {
+export const Theme: FunctionComponent = ({ children }) => {
   return (
     <ChakraProvider resetCSS theme={theme}>
-      {props.children}
+      {children}
     </ChakraProvider>
   );
-}
+};

@@ -1,11 +1,11 @@
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import type { Language } from "../../constants/languages";
-import { LanguageBar, LanguageBarProps } from "./index";
+import { LanguageBar, LanguageBarProps } from "./LanguageBar";
 
 describe("<LanguageBar />", () => {
   afterEach(cleanup);
 
-  function renderLanguageBar(props: Partial<LanguageBarProps>) {
+  const renderLanguageBar = (props: Partial<LanguageBarProps>) => {
     return render(
       <LanguageBar
         selectedLanguage="js"
@@ -14,7 +14,7 @@ describe("<LanguageBar />", () => {
         {...props}
       />
     );
-  }
+  };
 
   test("showDisabled:false hides disabled languages", () => {
     const targetLanguages: Language[] = ["js", "python", "golang"];

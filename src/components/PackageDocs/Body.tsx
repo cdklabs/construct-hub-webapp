@@ -1,7 +1,7 @@
 import { LinkIcon } from "@chakra-ui/icons";
 import { Heading, As } from "@chakra-ui/react";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import React, { useMemo } from "react";
+import { Children, FunctionComponent, ReactNode, useMemo } from "react";
 import ReactDOMServer from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -9,10 +9,13 @@ import { sanitize } from "../../util/sanitize-anchor";
 
 type HeadingResolverProps = {
   level: number;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-function Headings({ level, children }: HeadingResolverProps) {
+const Headings: FunctionComponent<HeadingResolverProps> = ({
+  level,
+  children,
+}) => {
   const size: string = ["2xl", "xl", "lg", "md", "sm", "xs"][level - 1];
   const elem = `h${level}` as As<any>;
 
@@ -28,7 +31,7 @@ function Headings({ level, children }: HeadingResolverProps) {
   ) as HTMLElement;
   const title =
     dataElement?.dataset.headingTitle ??
-    React.Children.toArray(children)
+    Children.toArray(children)
       .reduce((accum: string, child): string => {
         if (typeof child === "string") {
           return `${accum}${child}`;
@@ -55,7 +58,7 @@ function Headings({ level, children }: HeadingResolverProps) {
       {children}
     </Heading>
   );
-}
+};
 
 const components = ChakraUIRenderer({
   h1: Headings,
@@ -68,7 +71,7 @@ const components = ChakraUIRenderer({
 
 const rehypePlugins = [rehypeRaw];
 
-export function Body({ children }: { children: string }) {
+export const Body: FunctionComponent<{ children: string }> = ({ children }) => {
   const body = useMemo(() => {
     return (
       <ReactMarkdown components={components} rehypePlugins={rehypePlugins}>
@@ -78,4 +81,4 @@ export function Body({ children }: { children: string }) {
   }, [children]);
 
   return body;
-}
+};

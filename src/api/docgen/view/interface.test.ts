@@ -5,6 +5,15 @@ import { Interface } from "./interface";
 
 const assembly: reflect.Assembly = (global as any).assembly;
 
+const findInterface = () => {
+  for (const iface of assembly.interfaces) {
+    if (!iface.datatype) {
+      return iface;
+    }
+  }
+  throw new Error("Assembly does not contain an interface");
+};
+
 describe("python", () => {
   const transpile = new PythonTranspile();
   test("snapshot", () => {
@@ -20,12 +29,3 @@ describe("typescript", () => {
     expect(klass.render().render()).toMatchSnapshot();
   });
 });
-
-function findInterface() {
-  for (const iface of assembly.interfaces) {
-    if (!iface.datatype) {
-      return iface;
-    }
-  }
-  throw new Error("Assembly does not contain an interface");
-}

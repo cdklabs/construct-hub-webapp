@@ -56,6 +56,7 @@ const project = new web.ReactTypeScriptProject({
     "@types/react-router-dom",
     "cypress",
     "eslint-plugin-jsx-a11y",
+    "eslint-plugin-prefer-arrow",
     "eslint-plugin-react-hooks",
     "eslint-plugin-react",
     "react-app-rewired",
@@ -171,11 +172,19 @@ project.eslint.addOverride({
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
   ],
-  plugins: ["jsx-a11y"],
+  plugins: ["jsx-a11y", "prefer-arrow"],
   rules: {
     "react/jsx-sort-props": ["warn"],
     "react/react-in-jsx-scope": ["off"],
     "react/prop-types": ["off"],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "prefer-arrow/prefer-arrow-functions": [
+      "error",
+      {
+        singleReturnOnly: false,
+      },
+    ],
   },
 });
 

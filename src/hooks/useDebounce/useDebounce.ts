@@ -5,7 +5,10 @@ export interface UseDebounceOptions<T> {
   onChange?: (val: T) => void;
 }
 
-export function useDebounce<T>(value: T, options: UseDebounceOptions<T> = {}) {
+export const useDebounce = <T>(
+  value: T,
+  options: UseDebounceOptions<T> = {}
+) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
   const { delay = 250, onChange } = options;
 
@@ -23,4 +26,4 @@ export function useDebounce<T>(value: T, options: UseDebounceOptions<T> = {}) {
   }, [value, delay, onChange]);
 
   return debouncedValue;
-}
+};

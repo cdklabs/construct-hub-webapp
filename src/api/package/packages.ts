@@ -17,7 +17,7 @@ export interface Packages {
   }[];
 }
 
-export async function fetchPackages(): Promise<Packages> {
+export const fetchPackages = async (): Promise<Packages> => {
   const response = await fetch(consts.CATALOG_SUFFIX);
 
   if (!response.ok) {
@@ -26,4 +26,4 @@ export async function fetchPackages(): Promise<Packages> {
   }
 
   return response.json();
-}
+};

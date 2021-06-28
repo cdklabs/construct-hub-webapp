@@ -5,6 +5,15 @@ import { Initializer } from "./initializer";
 
 const assembly: reflect.Assembly = (global as any).assembly;
 
+const findInitializer = (): reflect.Initializer => {
+  for (const klass of assembly.system.classes) {
+    if (klass.initializer) {
+      return klass.initializer;
+    }
+  }
+  throw new Error("Assembly does not contain an initializer");
+};
+
 describe("python", () => {
   const transpile = new PythonTranspile();
   test("snapshot", () => {
@@ -20,12 +29,3 @@ describe("typescript", () => {
     expect(initializer.render().render()).toMatchSnapshot();
   });
 });
-
-function findInitializer(): reflect.Initializer {
-  for (const klass of assembly.system.classes) {
-    if (klass.initializer) {
-      return klass.initializer;
-    }
-  }
-  throw new Error("Assembly does not contain an initializer");
-}
