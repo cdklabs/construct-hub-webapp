@@ -13,6 +13,7 @@ export const Results: FunctionComponent<ResultsProps> = ({ results }) => {
   return (
     <SimpleGrid columns={[1, null, 3, null, 5]} mt={4} spacing={6}>
       {results.map((pkg) => {
+        const publishDate = new Date(pkg.metadata.date);
         return (
           <Link
             key={`${pkg.name}@${pkg.version}`}
@@ -29,10 +30,13 @@ export const Results: FunctionComponent<ResultsProps> = ({ results }) => {
                 <Text>{pkg.version}</Text>
                 <Text>{pkg.description}</Text>
                 <Text>
-                  {`Published on ${format(
-                    new Date(pkg.metadata.date),
-                    "MMMM dd, yyyy"
-                  )} by ${pkg.author.name}`}
+                  <>
+                    Published on{" "}
+                    <time dateTime={publishDate.toISOString()}>
+                      {format(publishDate, "MMMM dd, yyyy")}
+                    </time>{" "}
+                    by {pkg.author.name}
+                  </>
                 </Text>
                 <Box overflow="hidden">
                   {pkg.keywords.map((tag) => {
