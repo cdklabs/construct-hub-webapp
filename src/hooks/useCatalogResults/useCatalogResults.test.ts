@@ -20,7 +20,7 @@ const defaultCatalogContext = {
   data: catalogFixture,
 };
 
-jest.mock("../../Contexts/Catalog/index.ts", () => ({
+jest.mock("../../contexts/Catalog", () => ({
   useCatalog: jest.fn(),
 }));
 
