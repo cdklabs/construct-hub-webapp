@@ -4,19 +4,22 @@ import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { Packages } from "../../../api/package/packages";
 import { Card } from "../../../components/Card";
+import { QUERY_PARAMS } from "../../../constants/url";
+import { useLanguage } from "../../../hooks/useLanguage";
 
 export interface ResultsProps {
   results: Packages["packages"];
 }
 
 export const Results: FunctionComponent<ResultsProps> = ({ results }) => {
+  const [language] = useLanguage();
   return (
-    <SimpleGrid columns={[1, null, 3, null, 5]} mt={4} spacing={6}>
+    <SimpleGrid columns={[1, null, 3, null, 5]} spacing={6}>
       {results.map((pkg) => {
         return (
           <Link
             key={`${pkg.name}@${pkg.version}`}
-            to={`/packages/${pkg.name}/v/${pkg.version}`}
+            to={`/packages/${pkg.name}/v/${pkg.version}?${QUERY_PARAMS.LANGUAGE}=${language}`}
           >
             <Card as={GridItem} colSpan={1} h={64} w="100%">
               <Flex

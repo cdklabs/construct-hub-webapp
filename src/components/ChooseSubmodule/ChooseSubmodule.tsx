@@ -3,6 +3,7 @@ import { Button, Flex, useDisclosure, useToken } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { QUERY_PARAMS } from "../../constants/url";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { SearchModal } from "./SearchModal";
 
@@ -22,14 +23,14 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
   const [borderColor, textColor] = useToken("colors", ["gray.100", "gray.800"]);
   const btnHeight = useToken("space", "16");
 
-  const currentSubmodule = query.get("submodule");
+  const currentSubmodule = query.get(QUERY_PARAMS.SUBMODULE);
   const submoduleText = currentSubmodule ?? "Submodules";
 
   const [filter, setFilter] = useState("");
 
   const onGoBack = () => {
-    const lang = query.get("lang");
-    push(`${pathname}${lang ? `?lang=${lang}` : ""}`);
+    const lang = query.get(QUERY_PARAMS.LANGUAGE);
+    push(`${pathname}${lang ? `?${QUERY_PARAMS.LANGUAGE}=${lang}` : ""}`);
   };
 
   const getUrl = useCallback(
@@ -55,8 +56,6 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
       to: getUrl(name),
     }));
   }, [assembly?.submodules, filter, getUrl]);
-
-  if (!assembly?.submodules.length) return null;
 
   return (
     <Flex>
