@@ -1,5 +1,5 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
-import type { Assembly } from "jsii-reflect";
+import type { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
 import {
   Language,
@@ -24,7 +24,7 @@ export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
     updateUrl: true,
   });
   const targets = [
-    ...Object.keys(assembly?.spec?.targets ?? {}),
+    ...Object.keys(assembly?.targets ?? {}),
     // typescript is the source language and hence always supported.
     // (it doesn't appear in spec.targets)
     Languages.TypeScript,

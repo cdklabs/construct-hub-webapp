@@ -6,8 +6,8 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
+import type { Assembly } from "@jsii/spec";
 import { format } from "date-fns";
-import type { Assembly } from "jsii-reflect";
 import { FunctionComponent, ReactNode, useMemo } from "react";
 import type { Metadata } from "../../api/package/metadata";
 import { DependencyDropdown } from "../../components/DependencyDropdown";
@@ -66,9 +66,9 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
   return (
     <Card as={Flex} direction="column">
       {details.length && <UnorderedList ml={0}>{details}</UnorderedList>}
-      {assembly?.spec?.dependencies && (
+      {assembly?.dependencies && (
         <Box mt={4}>
-          <DependencyDropdown dependencies={assembly.spec.dependencies} />
+          <DependencyDropdown dependencies={assembly.dependencies} />
         </Box>
       )}
     </Card>

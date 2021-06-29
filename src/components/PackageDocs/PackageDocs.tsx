@@ -1,17 +1,12 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
-import type { Assembly } from "jsii-reflect";
-import { useState, useEffect, useMemo, FunctionComponent } from "react";
-import { Documentation } from "../../api/docgen/view/documentation";
-import { useQueryParams } from "../../hooks/useQueryParams";
+import { useState, useEffect, FunctionComponent } from "react";
 import { Card } from "../Card";
-import { ChooseSubmodule } from "../ChooseSubmodule";
+// import { ChooseSubmodule } from "../ChooseSubmodule";
 import { PackageNav, PackageNavItem } from "../PackageNav";
 import { Body } from "./Body";
 
 export interface PackageDocsProps {
-  assembly: Assembly;
-  language: string;
-  submodule?: string;
+  markdown: string;
 }
 
 export const appendItem = (
@@ -49,34 +44,10 @@ export const appendItem = (
 // The calculation here is heading height (72px) + margin-top (16px).
 const TOP_OFFSET = "88px";
 
-const isDev = process.env.NODE_ENV === "development";
-
 export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
-  assembly,
-  language,
-  submodule,
+  markdown,
 }) => {
-  const q = useQueryParams();
-
-  const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
-
-  const source = useMemo(() => {
-    const timeLabel = `Timer | docgen(${assembly.name}${
-      submodule ? `.${submodule}` : ""
-    })`;
-    console.time(timeLabel);
-    const doc = new Documentation({
-      apiReference: hasApiReference,
-      assembly: assembly,
-      language: language,
-      submoduleName: submodule,
-    });
-
-    const md = doc.render();
-    const s = md.render();
-    console.timeEnd(timeLabel);
-    return s;
-  }, [hasApiReference, assembly, language, submodule]);
+  const source = markdown;
 
   const [navItems, setNavItems] = useState<PackageNavItem[]>([]);
 
@@ -108,7 +79,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
           justify="center"
           p={0}
         >
-          <ChooseSubmodule assembly={assembly} />
+          {/* <ChooseSubmodule assembly={assembly} /> */}
         </Box>
         <Box overflowY="auto">
           <PackageNav items={navItems} />

@@ -5,7 +5,26 @@ import { getAssetsPath, getFullPackageName } from "./util";
 
 type Assemblies = { [packageName: string]: spec.Assembly };
 
-const fetchAssembly = async (
+export const fetchMarkdown = async (
+  name: string,
+  version: string,
+  scope?: string
+): Promise<string> => {
+  if (version.startsWith("^")) {
+    version = version.substring(1, version.length);
+  }
+
+  const markdownPath = `${getAssetsPath(name, version, scope)}/docs-python.md`;
+  const response = await fetch(markdownPath);
+  if (!response.ok) {
+    throw new Error(
+      `Failed fetching assembly for ${markdownPath}: ${response.statusText}`
+    );
+  }
+  return response.text();
+};
+
+export const fetchAssembly = async (
   name: string,
   version: string,
   scope?: string
