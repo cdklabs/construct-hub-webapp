@@ -5,6 +5,7 @@ import { Children, FunctionComponent, ReactNode, useMemo } from "react";
 import ReactDOMServer from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import { useQueryParams } from "../../hooks/useQueryParams";
 import { sanitize } from "../../util/sanitize-anchor";
 
 type HeadingResolverProps = {
@@ -72,13 +73,21 @@ const components = ChakraUIRenderer({
 const rehypePlugins = [rehypeRaw];
 
 export const Body: FunctionComponent<{ children: string }> = ({ children }) => {
+  const q = useQueryParams();
+  const format = q.get("format") ?? "pretty";
   const body = useMemo(() => {
-    return (
-      <ReactMarkdown components={components} rehypePlugins={rehypePlugins}>
-        {children}
-      </ReactMarkdown>
-    );
-  }, [children]);
+    if (format === "raw") {
+      return <div>{children}</div>;
+    }
+    if (format === "pretty") {
+      return (
+        <ReactMarkdown components={components} rehypePlugins={rehypePlugins}>
+          {children}
+        </ReactMarkdown>
+      );
+    }
+    throw new Error(`Unsupported format: ${format}`);
+  }, [children, format]);
 
   return body;
 };
