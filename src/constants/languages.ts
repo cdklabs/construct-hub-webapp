@@ -9,6 +9,15 @@ export enum Languages {
   Java = "java",
 }
 
+export const LANGUAGE_NAME_MAP: { [key in Languages]: string } = {
+  [Languages.TypeScript]: "TypeScript",
+  [Languages.Python]: "Python",
+  [Languages.Java]: "Java",
+  [Languages.NodeJS]: "Node.js",
+  [Languages.Go]: "Go",
+  [Languages.DotNet]: ".NET",
+};
+
 export const LANGUAGES: Language[] = [
   Languages.TypeScript,
   Languages.Python,
