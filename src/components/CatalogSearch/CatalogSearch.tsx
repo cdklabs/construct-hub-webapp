@@ -41,7 +41,7 @@ export interface CatalogSearchProps {
   /**
    * Controls the query state change event
    */
-  onQueryChange: (search: string) => void;
+  onQueryChange: ChangeEventHandler<HTMLInputElement>;
   /**
    * Controls the language state value
    */
@@ -53,10 +53,7 @@ export interface CatalogSearchProps {
   /**
    * Called when the catalog search form is submitted (via enter keypress or submit click)
    */
-  onSubmit: (params: {
-    query: CatalogSearchProps["query"];
-    language: CatalogSearchProps["language"];
-  }) => void;
+  onSubmit: FormEventHandler<HTMLFormElement>;
 }
 
 export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
@@ -66,18 +63,8 @@ export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
   onLanguageChange,
   onSubmit,
 }) => {
-  const handleQueryChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    e.preventDefault();
-    onQueryChange(e.target.value);
-  };
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    onSubmit({ query, language });
-  };
-
   return (
-    <form data-testid={testIds.form} onSubmit={handleSubmit}>
+    <form data-testid={testIds.form} onSubmit={onSubmit}>
       <Grid
         autoRows="1fr"
         gap={4}
@@ -85,10 +72,9 @@ export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
         width="full"
       >
         <Input
-          bg="white"
           data-testid={testIds.input}
           name="query"
-          onChange={handleQueryChange}
+          onChange={onQueryChange}
           placeholder="Search providers or modules..."
           value={query}
         />

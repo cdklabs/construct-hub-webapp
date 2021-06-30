@@ -6,12 +6,12 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
-import { format } from "date-fns";
 import type { Assembly } from "jsii-reflect";
 import { FunctionComponent, ReactNode, useMemo } from "react";
 import type { Metadata } from "../../api/package/metadata";
 import { DependencyDropdown } from "../../components/DependencyDropdown";
 import { Card } from "../Card";
+import { Time } from "../Time";
 
 export interface OperatorAreaProps {
   assembly?: Assembly;
@@ -32,15 +32,8 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
     const items = [];
 
     if (date) {
-      const publishDate = new Date(date);
-      items.push(
-        <>
-          Published:{" "}
-          <time dateTime={publishDate.toISOString()}>
-            {format(publishDate, "MMMM dd, yyyy")}
-          </time>
-        </>
-      );
+      const publishDate = <Time date={new Date(date)} format="MMMM dd, yyyy" />;
+      items.push(<>Published: {publishDate}</>);
     }
 
     if (username) {
