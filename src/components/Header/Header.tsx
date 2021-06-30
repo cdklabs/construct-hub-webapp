@@ -1,26 +1,12 @@
-import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
-import { FunctionComponent, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useQueryParams } from "../../hooks/useQueryParams";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { FunctionComponent } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ROUTES } from "../../constants/url";
 import { Logo } from "../../icons/Logo";
-import { Form } from "../Form";
+import { HeaderSearch } from "./HeaderSearch";
 
 export const Header: FunctionComponent = () => {
-  const queryParams = useQueryParams();
-  const q = queryParams.get("q") ?? "";
-  const [searchValue, setSearchValue] = useState(q);
-  const history = useHistory();
-  const onSearchChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearchValue(evt.target.value);
-  };
-  const onSearchSubmit = (evt: React.FormEvent): void => {
-    evt.preventDefault();
-    const limit = queryParams.get("limit");
-    const limitParam = limit ? `&limit=${limit}` : "";
-    history.push(
-      `/?q=${encodeURIComponent(searchValue)}${limitParam}&offset=0`
-    );
-  };
+  const { pathname } = useLocation();
   return (
     <Box
       bg="white"
@@ -45,17 +31,11 @@ export const Header: FunctionComponent = () => {
             Construct Hub
           </Heading>
         </Flex>
-        <Box width={0.3}>
-          <Form onSubmit={onSearchSubmit}>
-            <Input
-              id="search"
-              name="search"
-              onChange={onSearchChange}
-              placeholder="search"
-              value={searchValue}
-            />
-          </Form>
-        </Box>
+        {pathname.startsWith(ROUTES.PACKAGES) && (
+          <Box width={0.3}>
+            <HeaderSearch />
+          </Box>
+        )}
         <Flex>
           <Box px={1}>
             <Text>Getting Started</Text>

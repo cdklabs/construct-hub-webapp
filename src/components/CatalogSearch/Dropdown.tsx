@@ -33,7 +33,12 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 
   return (
     <Menu strategy="fixed">
-      <MenuButton as={Button} data-testid={testIds.trigger} variant="outline">
+      <MenuButton
+        as={Button}
+        bg="white"
+        data-testid={testIds.trigger}
+        variant="outline"
+      >
         <Text data-testid={testIds.value}>{text}</Text>
       </MenuButton>
       <MenuList data-testid={testIds.menu}>

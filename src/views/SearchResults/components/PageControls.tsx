@@ -13,7 +13,7 @@ export interface PageControlsProps {
   limit: number;
   offset: number;
   pageLimit: number;
-  getPageUrl: (params: { offset?: number; limit?: number }) => string;
+  getPageUrl: (params: { offset?: number }) => string;
 }
 
 export const PageControls: FunctionComponent<PageControlsProps> = ({

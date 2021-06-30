@@ -72,6 +72,7 @@ export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
         width="full"
       >
         <Input
+          bg="white"
           data-testid={testIds.input}
           name="query"
           onChange={onQueryChange}
