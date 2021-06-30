@@ -1,9 +1,9 @@
 import { Box, Flex, GridItem, SimpleGrid, Tag, Text } from "@chakra-ui/react";
-import { format } from "date-fns";
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { Packages } from "../../../api/package/packages";
 import { Card } from "../../../components/Card";
+import { Time } from "../../../components/Time";
 
 export interface ResultsProps {
   results: Packages["packages"];
@@ -13,7 +13,9 @@ export const Results: FunctionComponent<ResultsProps> = ({ results }) => {
   return (
     <SimpleGrid columns={[1, null, 3, null, 5]} mt={4} spacing={6}>
       {results.map((pkg) => {
-        const publishDate = new Date(pkg.metadata.date);
+        const publishDate = (
+          <Time date={new Date(pkg.metadata.date)} format="MMMM dd, yyyy" />
+        );
         return (
           <Link
             key={`${pkg.name}@${pkg.version}`}
@@ -31,11 +33,7 @@ export const Results: FunctionComponent<ResultsProps> = ({ results }) => {
                 <Text>{pkg.description}</Text>
                 <Text>
                   <>
-                    Published on{" "}
-                    <time dateTime={publishDate.toISOString()}>
-                      {format(publishDate, "MMMM dd, yyyy")}
-                    </time>{" "}
-                    by {pkg.author.name}
+                    Published on {publishDate} by {pkg.author.name}
                   </>
                 </Text>
                 <Box overflow="hidden">
