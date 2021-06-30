@@ -17,11 +17,6 @@ export const Primary: Story<CatalogSearchProps> = (props) => {
   const [query, setQuery] = useState(props.query);
   const [language, setLanguage] = useState<Language | null>(null);
 
-  const onQueryChange = (q: string) => {
-    setQuery(q);
-    props.onQueryChange?.(q);
-  };
-
   const onLanguageChange = (lang: Language | null) => {
     setLanguage(lang);
     props.onLanguageChange?.(lang);
@@ -31,7 +26,11 @@ export const Primary: Story<CatalogSearchProps> = (props) => {
     <CatalogSearch
       language={language}
       onLanguageChange={onLanguageChange}
-      onQueryChange={onQueryChange}
+      onQueryChange={(e) => {
+        e.preventDefault();
+        setQuery(e.target.value);
+        props.onQueryChange?.(e);
+      }}
       onSubmit={props.onSubmit}
       query={query}
     />
