@@ -3,6 +3,7 @@ import { FunctionComponent, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { Logo } from "../../icons/Logo";
+import { Form } from "../Form";
 
 export const Header: FunctionComponent = () => {
   const queryParams = useQueryParams();
@@ -45,7 +46,7 @@ export const Header: FunctionComponent = () => {
           </Heading>
         </Flex>
         <Box width={0.3}>
-          <form onSubmit={onSearchSubmit}>
+          <Form onSubmit={onSearchSubmit}>
             <Input
               id="search"
               name="search"
@@ -53,7 +54,7 @@ export const Header: FunctionComponent = () => {
               placeholder="search"
               value={searchValue}
             />
-          </form>
+          </Form>
         </Box>
         <Flex>
           <Box px={1}>
