@@ -5,6 +5,7 @@ import { createAssembly } from "../../api/package/assemblies";
 import { fetchMetadata } from "../../api/package/metadata";
 import { PackageDetails } from "../../components/PackageDetails";
 import { PackageDocs } from "../../components/PackageDocs";
+import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
@@ -41,7 +42,7 @@ export const Package: FunctionComponent = () => {
         <PackageDocs
           assembly={assemblyResponse.data}
           language={language}
-          submodule={q.get("submodule") ?? ""}
+          submodule={q.get(QUERY_PARAMS.SUBMODULE) ?? ""}
         />
       )}
     </Box>

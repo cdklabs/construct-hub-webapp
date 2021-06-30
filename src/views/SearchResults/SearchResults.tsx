@@ -1,13 +1,16 @@
-import { Center, Flex, Spinner } from "@chakra-ui/react";
-import { FunctionComponent, useEffect, useMemo } from "react";
+import { Box, Center, Divider, Flex, Spinner } from "@chakra-ui/react";
+import { FunctionComponent, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { useCatalog } from "../../contexts/Catalog";
+import { CatalogSearch } from "../../components/CatalogSearch";
+import { Language } from "../../constants/languages";
+import { QUERY_PARAMS } from "../../constants/url";
+import { useCatalogResults } from "../../hooks/useCatalogResults";
+import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { useQueryParams } from "../../hooks/useQueryParams";
-import { LimitDropdown } from "./components/LimitDropdown";
 import { PageControls } from "./components/PageControls";
 import { Results } from "./components/Results";
 import { ShowingDetails } from "./components/ShowingDetails";
-import { LIMITS } from "./constants";
+import { LIMIT, SearchQueryParam } from "./constants";
 
 const toNum = (val: string) => {
   const result = parseInt(val);
@@ -20,35 +23,36 @@ const toNum = (val: string) => {
 };
 
 export const SearchResults: FunctionComponent = () => {
-  const { data, loading } = useCatalog();
-
   const queryParams = useQueryParams();
-  const query = decodeURIComponent(queryParams.get("q") ?? "");
 
-  const limit = toNum(queryParams.get("limit") ?? `${LIMITS[0]}`);
-  const offset = toNum(queryParams.get("offset") ?? "0");
+  const searchQuery = decodeURIComponent(
+    queryParams.get(QUERY_PARAMS.SEARCH_QUERY) ?? ""
+  );
+
+  const languageQuery = queryParams.get(
+    QUERY_PARAMS.LANGUAGE
+  ) as Language | null;
+
+  const searchAPI = useCatalogSearch({
+    defaultQuery: searchQuery,
+    defaultLanguage: languageQuery,
+  });
+
+  const offset = toNum(queryParams.get(QUERY_PARAMS.OFFSET) ?? "0");
 
   const { pathname } = useLocation();
   const { push } = useHistory();
 
-  const results = useMemo(
-    () =>
-      (query.length
-        ? data?.packages.filter((item) => JSON.stringify(item).includes(query))
-        : data?.packages) ?? [],
-    [query, data]
-  );
+  const { results, displayable, loading, pageLimit } = useCatalogResults({
+    query: searchQuery,
+    offset,
+    limit: LIMIT,
+    language: languageQuery,
+  });
 
-  const pageLimit = Math.floor(results.length / limit);
-
-  const displayable = useMemo(() => {
-    const startIndex = (offset > pageLimit ? pageLimit : offset) * limit;
-    const stopIndex = startIndex + limit;
-
-    return results.slice(startIndex, stopIndex);
-  }, [offset, pageLimit, limit, results]);
-
-  const getUrl = (params: { [key: string]: number }) => {
+  const getUrl = (
+    params: Partial<{ [key in SearchQueryParam]: number | string }>
+  ) => {
     const newParams = new URLSearchParams(`${queryParams}`);
     Object.entries(params).forEach(([k, v]) => newParams.set(k, `${v}`));
     return `${pathname}?${newParams}`;
@@ -56,7 +60,7 @@ export const SearchResults: FunctionComponent = () => {
 
   useEffect(() => {
     // If the query has results but the page has nothing to show...
-    if (!loading && (offset < 0 || offset > pageLimit)) {
+    if (!loading && results.length && (offset < 0 || offset > pageLimit)) {
       // Handle an out of bounds offset
       if (offset < 0) {
         push(getUrl({ offset: 0 }));
@@ -76,31 +80,31 @@ export const SearchResults: FunctionComponent = () => {
     );
   }
 
-  const controls = (
-    <Flex align="center" justify="space-between" w="100%">
-      <ShowingDetails
-        count={results.length}
-        filtered={!!query}
-        limit={limit}
-        offset={offset}
-      />
-      <Flex align="center">
-        <LimitDropdown getPageUrl={getUrl} limit={limit} />
-        <PageControls
-          getPageUrl={getUrl}
-          limit={limit}
-          offset={offset}
-          pageLimit={pageLimit}
-        />
-      </Flex>
-    </Flex>
-  );
-
   return (
-    <Flex direction="column" p={4}>
-      {controls}
-      <Results results={displayable} />
-      {controls}
+    <Flex direction="column">
+      <Box px={10} py={6}>
+        <CatalogSearch {...searchAPI} />
+      </Box>
+      <Divider />
+      <Box px={10} py={6}>
+        <Box pb={6}>
+          <ShowingDetails
+            count={results.length}
+            filtered={!!searchQuery}
+            limit={LIMIT}
+            offset={offset}
+          />
+        </Box>
+        <Results results={displayable} />
+        <Box pt={6}>
+          <PageControls
+            getPageUrl={getUrl}
+            limit={LIMIT}
+            offset={offset}
+            pageLimit={pageLimit}
+          />
+        </Box>
+      </Box>
     </Flex>
   );
 };

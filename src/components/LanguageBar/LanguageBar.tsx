@@ -1,6 +1,10 @@
 import { Flex, Text, Icon, PropsOf } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { Language, LANGUAGES } from "../../constants/languages";
+import {
+  Language,
+  LANGUAGES,
+  LANGUAGE_NAME_MAP,
+} from "../../constants/languages";
 import { DotNetIcon } from "../../icons/DotNetIcon";
 import { GoIcon } from "../../icons/GoIcon";
 import { JavaIcon } from "../../icons/JavaIcon";
@@ -20,27 +24,27 @@ const LANGUAGE_MAP: Record<
   { name: string; icon: FunctionComponent<PropsOf<typeof Icon>> }
 > = {
   ts: {
-    name: "TypeScript",
+    name: LANGUAGE_NAME_MAP.ts,
     icon: TSIcon,
   },
   python: {
-    name: "Python",
+    name: LANGUAGE_NAME_MAP.python,
     icon: PythonIcon,
   },
   java: {
-    name: "Java",
+    name: LANGUAGE_NAME_MAP.java,
     icon: JavaIcon,
   },
   js: {
-    name: "Node.js",
+    name: LANGUAGE_NAME_MAP.js,
     icon: NodeIcon,
   },
   golang: {
-    name: "Go",
+    name: LANGUAGE_NAME_MAP.golang,
     icon: GoIcon,
   },
   dotnet: {
-    name: ".NET",
+    name: LANGUAGE_NAME_MAP.dotnet,
     icon: DotNetIcon,
   },
 };

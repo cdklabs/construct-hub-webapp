@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { FormEventHandler, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
+import { Form } from "../Form";
 
 export interface SearchInputProps {
   value: string;
@@ -21,7 +22,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
     useDebounce(inputValue, { onChange });
 
     return (
-      <form data-testid="choose-submodule-search-form" onSubmit={onSubmit}>
+      <Form data-testid="choose-submodule-search-form" onSubmit={onSubmit}>
         <InputGroup>
           <InputLeftElement>
             <SearchIcon color="gray.400" />
@@ -35,7 +36,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
             variant="filled"
           />
         </InputGroup>
-      </form>
+      </Form>
     );
   }
 );

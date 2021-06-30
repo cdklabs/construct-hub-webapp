@@ -1,4 +1,4 @@
-import * as consts from "../../constants/paths";
+import { API_PATHS } from "../../constants/url";
 
 export const getFullPackageName = (name: string, scope?: string) => {
   return scope ? `${scope}/${name}` : name;
@@ -9,7 +9,7 @@ export const getAssetsPath = (
   version: string,
   scope?: string
 ) => {
-  const prefix = `${consts.PACKAGES_PREFIX}/`;
+  const prefix = `${API_PATHS.PACKAGES_PREFIX}/`;
   const body = getFullPackageName(name, scope);
   const suffix = `/v${version}`;
   return `${prefix}${body}${suffix}`;
