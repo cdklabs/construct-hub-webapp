@@ -1,50 +1,45 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "../../constants/url";
-import { Logo } from "../../icons/Logo";
 import { HeaderSearch } from "./HeaderSearch";
 
 export const Header: FunctionComponent = () => {
   const { pathname } = useLocation();
   return (
-    <Box
+    <Grid
+      as="header"
       bg="white"
       boxShadow="base"
       data-testid="header"
+      gridTemplateColumns="auto 1fr auto"
+      gridTemplateRows="1fr"
       position="sticky"
-      px={2}
-      py={3}
+      px={4}
+      py={4}
       top={0}
       w="100%"
       zIndex={10}
     >
-      <Flex
-        alignItems="center"
-        as="header"
-        justifyContent="space-between"
-        w="100%"
-      >
-        <Flex as={Link} to="/">
-          <Logo height={12} mr={4} width={12} />
-          <Heading as="h1" size="xl">
-            Construct Hub
-          </Heading>
-        </Flex>
-        {pathname.startsWith(ROUTES.PACKAGES) && (
-          <Box width={0.3}>
-            <HeaderSearch />
-          </Box>
-        )}
-        <Flex>
-          <Box px={1}>
-            <Text>Getting Started</Text>
-          </Box>
-          <Box px={1}>
-            <Text>Browse</Text>
-          </Box>
-        </Flex>
+      <Flex as={Link} to="/">
+        <Heading as="h1" size="lg">
+          <Box as="span" color="blue.500">
+            Construct
+          </Box>{" "}
+          Hub
+        </Heading>
       </Flex>
-    </Box>
+      <Box maxWidth="50%" ml={6}>
+        {pathname.startsWith(ROUTES.PACKAGES) && <HeaderSearch />}
+      </Box>
+      <Flex alignSelf="center">
+        <Box px={1}>
+          <Text>Getting Started</Text>
+        </Box>
+        <Box px={1}>
+          <Text>Browse</Text>
+        </Box>
+      </Flex>
+    </Grid>
   );
 };
