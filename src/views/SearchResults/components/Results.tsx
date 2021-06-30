@@ -3,9 +3,9 @@ import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { Packages } from "../../../api/package/packages";
 import { Card } from "../../../components/Card";
+import { Time } from "../../../components/Time";
 import { QUERY_PARAMS } from "../../../constants/url";
 import { useLanguage } from "../../../hooks/useLanguage";
-import { Time } from "../../../components/Time";
 
 export interface ResultsProps {
   results: Packages["packages"];

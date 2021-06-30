@@ -1,4 +1,10 @@
-import { useCallback, useMemo, useState } from "react";
+import {
+  ChangeEventHandler,
+  FormEventHandler,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 import { useHistory } from "react-router-dom";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS, ROUTES } from "../../constants/url";
@@ -20,17 +26,26 @@ export const useCatalogSearch = (options: UseCatalogSearchParams = {}) => {
 
   const { push } = useHistory();
 
-  const onSubmit = useCallback(() => {
-    const baseUrl = `${ROUTES.SEARCH}?${QUERY_PARAMS.SEARCH_QUERY}=${search}&${QUERY_PARAMS.OFFSET}=0`;
-    const langParam = language ? `&${QUERY_PARAMS.LANGUAGE}=${language}` : "";
-    push(`${baseUrl}${langParam}`);
-  }, [language, push, search]);
+  const onQueryChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
+
+  const onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
+    (e) => {
+      e.preventDefault();
+      const baseUrl = `${ROUTES.SEARCH}?${QUERY_PARAMS.SEARCH_QUERY}=${search}&${QUERY_PARAMS.OFFSET}=0`;
+      const langParam = language ? `&${QUERY_PARAMS.LANGUAGE}=${language}` : "";
+      push(`${baseUrl}${langParam}`);
+    },
+    [language, push, search]
+  );
 
   return useMemo(
     () => ({
       query: search,
       language,
-      onQueryChange: setSearch,
+      onQueryChange,
       onLanguageChange: setLanguage,
       onSubmit,
     }),
