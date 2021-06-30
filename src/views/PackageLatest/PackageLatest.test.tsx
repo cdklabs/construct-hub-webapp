@@ -11,6 +11,7 @@ test("redirect to latest", () => {
         },
         description: "packageDescription",
         keywords: [],
+        languages: {},
         metadata: {
           date: "publish date",
         },
@@ -34,6 +35,7 @@ test("throws if missing package", () => {
         },
         description: "packageDescription",
         keywords: [],
+        languages: {},
         metadata: {
           date: "publish date",
         },
@@ -56,6 +58,7 @@ test("throws if multiple packages", () => {
         },
         description: "packageDescription",
         keywords: [],
+        languages: {},
         metadata: {
           date: "publish date",
         },
@@ -69,6 +72,7 @@ test("throws if multiple packages", () => {
         },
         description: "packageDescription",
         keywords: [],
+        languages: {},
         metadata: {
           date: "publish date",
         },

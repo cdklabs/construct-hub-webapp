@@ -13,7 +13,7 @@ import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
 import { StaleWhileRevalidate } from "workbox-strategies";
-import * as consts from "./constants/paths";
+import { API_PATHS } from "./constants/url";
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -92,7 +92,8 @@ registerRoute(
 
 registerRoute(
   ({ url }) =>
-    url.origin === self.origin && url.pathname.endsWith(consts.ASSEMBLY_SUFFIX),
+    url.origin === self.origin &&
+    url.pathname.endsWith(API_PATHS.ASSEMBLY_SUFFIX),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-jsii",
@@ -102,7 +103,8 @@ registerRoute(
 
 registerRoute(
   ({ url }) =>
-    url.origin === self.origin && url.pathname.endsWith(consts.METADATA_SUFFIX),
+    url.origin === self.origin &&
+    url.pathname.endsWith(API_PATHS.METADATA_SUFFIX),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-metadata",
@@ -112,7 +114,8 @@ registerRoute(
 
 registerRoute(
   ({ url }) =>
-    url.origin === self.origin && url.pathname.endsWith(consts.CATALOG_SUFFIX),
+    url.origin === self.origin &&
+    url.pathname.endsWith(API_PATHS.CATALOG_SUFFIX),
   new StaleWhileRevalidate({
     fetchOptions,
     cacheName: "assembly-catalog",

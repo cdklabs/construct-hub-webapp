@@ -17,6 +17,7 @@ export const ArrowButton: FunctionComponent<ArrowButtonProps> = ({
 
   const props = {
     "aria-label": label,
+    borderRadius: "md",
     colorScheme: "blue",
     icon: <Icon h={4} w={4} />,
     mx: 2,
