@@ -32,12 +32,8 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
     const items = [];
 
     if (date) {
-      const publishDate = new Date(date);
-      items.push(
-        <>
-          Published: <Time date={publishDate} format="MMMM dd, yyyy" />
-        </>
-      );
+      const publishDate = <Time date={new Date(date)} format="MMMM dd, yyyy" />;
+      items.push(<>Published: {publishDate}</>);
     }
 
     if (username) {
