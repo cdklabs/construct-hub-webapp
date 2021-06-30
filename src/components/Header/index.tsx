@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { Logo } from "../../icons/Logo";
+import GettingStartedDropdown from "../GettingStartedDropdown";
 
 export function Header() {
   const queryParams = useQueryParams();
@@ -56,9 +57,7 @@ export function Header() {
           </form>
         </Box>
         <Flex>
-          <Box px={1}>
-            <Text>Getting Started</Text>
-          </Box>
+          <GettingStartedDropdown />
           <Box px={1}>
             <Text>Browse</Text>
           </Box>
