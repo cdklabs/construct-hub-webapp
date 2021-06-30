@@ -45,8 +45,6 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
       );
     }
 
-    console.log({ license, LICENSE_LINKS });
-
     if (license && license in LICENSE_LINKS) {
       const licenseLink = (
         <LicenseLink license={license as keyof typeof LICENSE_LINKS} />
