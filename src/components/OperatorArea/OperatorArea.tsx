@@ -1,16 +1,11 @@
-import {
-  Box,
-  Flex,
-  Link,
-  ListItem,
-  Text,
-  UnorderedList,
-} from "@chakra-ui/react";
+import { Box, Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { FunctionComponent, ReactNode, useMemo } from "react";
 import type { Metadata } from "../../api/package/metadata";
 import { DependencyDropdown } from "../../components/DependencyDropdown";
 import { Card } from "../Card";
+import { ExternalLink } from "../ExternalLink";
+import { LicenseLink, LICENSE_LINKS } from "../LicenseLink";
 import { Time } from "../Time";
 
 export interface OperatorAreaProps {
@@ -28,6 +23,7 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
     const { date } = metadata;
     const username = assembly?.author.name;
     const repository = assembly?.repository.url;
+    const license = assembly?.license;
 
     const items = [];
 
@@ -41,19 +37,21 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
     }
 
     if (repository) {
+      const { hostname } = new URL(repository);
       items.push(
         <>
-          Source code:{" "}
-          <Link
-            color="blue.500"
-            href={repository}
-            rel="no-referrer"
-            target="_blank"
-          >
-            Github
-          </Link>
+          Source code: <ExternalLink href={repository}>{hostname}</ExternalLink>
         </>
       );
+    }
+
+    console.log({ license, LICENSE_LINKS });
+
+    if (license && license in LICENSE_LINKS) {
+      const licenseLink = (
+        <LicenseLink license={license as keyof typeof LICENSE_LINKS} />
+      );
+      items.push(<>License: {licenseLink}</>);
     }
 
     return items.map((detail: string | ReactNode, i: number) => (
