@@ -1,13 +1,9 @@
 import { Story } from "@storybook/react";
 import { MemoryRouter } from "react-router-dom";
-import {
-  PackageNav,
-  PackageNavProps,
-  PackageNavItem,
-} from "../components/PackageNav";
+import { PackageNav, PackageNavProps, PackageNavItem } from "./PackageNav";
 
 export default {
-  title: "Package Navigation",
+  title: "Components / Package Navigation",
   component: PackageNav,
   decorators: [
     (ComponentStory: any) => (
