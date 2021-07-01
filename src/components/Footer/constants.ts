@@ -21,6 +21,5 @@ export const FOOTER_LINKS = {
   },
 } as const;
 
-// TODO: Finalize this text?
 export const DISCLAIMER =
-  "2021 Amazon Web Services, inc. Construct Hub, All rights reserved.";
+  "2021 Amazon Web Services, Inc. Construct Hub, All rights reserved.";
