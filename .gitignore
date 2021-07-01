@@ -7,6 +7,7 @@
 *.tgz
 *.tsbuildinfo
 .cache
+.env.local
 .eslintcache
 .nyc_output
 .yarn-integrity
@@ -24,10 +25,11 @@ logs
 node_modules/
 npm-debug.log*
 pids
-public/packages
+public/data
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 yarn-debug.log*
 yarn-error.log*
+!/.env
 !/.eslintrc.json
 !/.gitattributes
 !/.github/pull_request_template.md

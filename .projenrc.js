@@ -1,4 +1,4 @@
-const { web } = require("projen");
+const { SourceCode, web } = require("projen");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -51,13 +51,15 @@ const project = new web.ReactTypeScriptProject({
   ],
 
   devDeps: [
-    "cypress",
-    "@types/react-router-dom",
-    "react-app-rewired",
     "@testing-library/react-hooks",
-    "eslint-plugin-react",
-    "eslint-plugin-react-hooks",
+    "@testing-library/user-event",
+    "@types/react-router-dom",
+    "cypress",
     "eslint-plugin-jsx-a11y",
+    "eslint-plugin-prefer-arrow",
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-react",
+    "react-app-rewired",
   ],
   autoApproveOptions: {
     allowedUsernames: ["aws-cdk-automation"],
@@ -142,10 +144,13 @@ fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
 
 // these are development assemblies fetched specifically
 // by each developer.
-project.gitignore.exclude("public/packages");
+project.gitignore.exclude("public/data");
 
 // Proxy requests to awscdk.io for local testing
-project.package.addField("proxy", "https://awscdk.io");
+project.package.addField(
+  "proxy",
+  "https://construct-hub-testing.dev-tools.aws.dev/"
+);
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
@@ -167,11 +172,19 @@ project.eslint.addOverride({
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
   ],
-  plugins: ["jsx-a11y"],
+  plugins: ["jsx-a11y", "prefer-arrow"],
   rules: {
     "react/jsx-sort-props": ["warn"],
     "react/react-in-jsx-scope": ["off"],
     "react/prop-types": ["off"],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "prefer-arrow/prefer-arrow-functions": [
+      "error",
+      {
+        singleReturnOnly: false,
+      },
+    ],
   },
 });
 
@@ -179,6 +192,7 @@ project.eslint.addOverride({
 rewireCRA(buildTask);
 rewireCRA(project.tasks.tryFind("test"));
 rewireCRA(project.tasks.tryFind("dev"));
+addBuildConfig();
 
 project.synth();
 
@@ -194,4 +208,16 @@ function rewireCRA(craTask) {
       step.exec = step.exec.replace("react-scripts", "react-app-rewired");
     }
   }
+}
+
+/**
+ * Add build time configuration values for react-scripts.
+ * Use an `.env.local` file to override for local development.
+ */
+function addBuildConfig() {
+  project.gitignore?.addPatterns(".env.local");
+
+  const config = new SourceCode(project, ".env");
+  // Remove inline scripts to allow strict CSP policy.
+  config.line("INLINE_RUNTIME_CHUNK=false");
 }

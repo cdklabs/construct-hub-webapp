@@ -1,0 +1,4899 @@
+{
+  "packages": [
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for Alexa::ASK",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "alexa-ask"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.Alexa.Ask",
+          "packageId": "Amazon.CDK.Alexa.Ask",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.alexa.ask",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "alexa-ask"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.alexa-ask",
+          "module": "aws_cdk.alexa_ask",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:46:55 GMT"
+      },
+      "name": "@aws-cdk/alexa-ask",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Continuous Integration / Continuous Delivery for CDK Applications",
+      "keywords": [
+        "aws",
+        "cdk"
+      ],
+      "languages": {
+        "java": {
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cdk-app-delivery"
+          },
+          "package": "software.amazon.awscdk.appdelivery"
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AppDelivery",
+          "packageId": "Amazon.CDK.AppDelivery",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.app-delivery",
+          "module": "aws_cdk.app_delivery",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:02:49 GMT"
+      },
+      "name": "@aws-cdk/app-delivery",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "An assertion library for use with CDK Apps",
+      "keywords": [
+        "aws",
+        "cdk",
+        "assert"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.assertions",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cdk-assertions"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.Assertions",
+          "packageId": "Amazon.CDK.Assertions",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.assertions",
+          "module": "aws_cdk.assertions",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:08 GMT"
+      },
+      "name": "@aws-cdk/assertions",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "This module is deprecated. All types are now available under the core module",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "assets"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.assets",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cdk-assets"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.Assets",
+          "packageId": "Amazon.CDK.Assets",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.assets",
+          "module": "aws_cdk.assets",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:55:34 GMT"
+      },
+      "name": "@aws-cdk/assets",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AccessAnalyzer",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::AccessAnalyzer",
+        "aws-accessanalyzer"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AccessAnalyzer",
+          "packageId": "Amazon.CDK.AWS.AccessAnalyzer",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.accessanalyzer",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "accessanalyzer"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-accessanalyzer",
+          "module": "aws_cdk.aws_accessanalyzer",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:14 GMT"
+      },
+      "name": "@aws-cdk/aws-accessanalyzer",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ACMPCA",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::ACMPCA",
+        "aws-acmpca"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ACMPCA",
+          "packageId": "Amazon.CDK.AWS.ACMPCA",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.acmpca",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "acmpca"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-acmpca",
+          "module": "aws_cdk.aws_acmpca",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:18 GMT"
+      },
+      "name": "@aws-cdk/aws-acmpca",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AmazonMQ",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "aws-amazonmq"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AmazonMQ",
+          "packageId": "Amazon.CDK.AWS.AmazonMQ",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.amazonmq",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "amazonmq"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-amazonmq",
+          "module": "aws_cdk.aws_amazonmq",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:23 GMT"
+      },
+      "name": "@aws-cdk/aws-amazonmq",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Amplify",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Amplify",
+        "aws-amplify"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Amplify",
+          "packageId": "Amazon.CDK.AWS.Amplify",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.amplify",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "amplify"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-amplify",
+          "module": "aws_cdk.aws_amplify",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:59:23 GMT"
+      },
+      "name": "@aws-cdk/aws-amplify",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ApiGateway",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "apigateway"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.apigateway",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "apigateway"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.APIGateway",
+          "packageId": "Amazon.CDK.AWS.APIGateway",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-apigateway",
+          "module": "aws_cdk.aws_apigateway",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:21 GMT"
+      },
+      "name": "@aws-cdk/aws-apigateway",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Authorizers for AWS APIGateway V2",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "apigateway"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.APIGatewayv2.Authorizers",
+          "packageId": "Amazon.CDK.AWS.APIGatewayv2.Authorizers",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.apigatewayv2.authorizers",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "apigatewayv2-authorizers"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-apigatewayv2-authorizers",
+          "module": "aws_cdk.aws_apigatewayv2_authorizers",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:01:49 GMT"
+      },
+      "name": "@aws-cdk/aws-apigatewayv2-authorizers",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Integrations for AWS APIGateway V2",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "apigateway"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.APIGatewayv2.Integrations",
+          "packageId": "Amazon.CDK.AWS.APIGatewayv2.Integrations",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.apigatewayv2.integrations",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "apigatewayv2-integrations"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-apigatewayv2-integrations",
+          "module": "aws_cdk.aws_apigatewayv2_integrations",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:57 GMT"
+      },
+      "name": "@aws-cdk/aws-apigatewayv2-integrations",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::APIGatewayv2",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "apigateway"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.APIGatewayv2",
+          "packageId": "Amazon.CDK.AWS.APIGatewayv2",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.apigatewayv2",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "apigatewayv2"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-apigatewayv2",
+          "module": "aws_cdk.aws_apigatewayv2",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:59:57 GMT"
+      },
+      "name": "@aws-cdk/aws-apigatewayv2",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AppConfig",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::AppConfig",
+        "aws-appconfig"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AppConfig",
+          "packageId": "Amazon.CDK.AWS.AppConfig",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.appconfig",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "appconfig"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-appconfig",
+          "module": "aws_cdk.aws_appconfig",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:28 GMT"
+      },
+      "name": "@aws-cdk/aws-appconfig",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AppFlow",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::AppFlow",
+        "aws-appflow"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AppFlow",
+          "packageId": "Amazon.CDK.AWS.AppFlow",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.appflow",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "appflow"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-appflow",
+          "module": "aws_cdk.aws_appflow",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:33 GMT"
+      },
+      "name": "@aws-cdk/aws-appflow",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AppIntegrations",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::AppIntegrations",
+        "aws-appintegrations"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AppIntegrations",
+          "packageId": "Amazon.CDK.AWS.AppIntegrations",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.appintegrations",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "appintegrations"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-appintegrations",
+          "module": "aws_cdk.aws_appintegrations"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:38 GMT"
+      },
+      "name": "@aws-cdk/aws-appintegrations",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ApplicationAutoScaling",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "applicationautoscaling"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.applicationautoscaling",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "applicationautoscaling"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ApplicationAutoScaling",
+          "packageId": "Amazon.CDK.AWS.ApplicationAutoScaling",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-applicationautoscaling",
+          "module": "aws_cdk.aws_applicationautoscaling",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:56:06 GMT"
+      },
+      "name": "@aws-cdk/aws-applicationautoscaling",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ApplicationInsights",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::ApplicationInsights",
+        "aws-applicationinsights"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ApplicationInsights",
+          "packageId": "Amazon.CDK.AWS.ApplicationInsights",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.applicationinsights",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "applicationinsights"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-applicationinsights",
+          "module": "aws_cdk.aws_applicationinsights",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:42 GMT"
+      },
+      "name": "@aws-cdk/aws-applicationinsights",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AppMesh",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::AppMesh",
+        "aws-appmesh"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AppMesh",
+          "packageId": "Amazon.CDK.AWS.AppMesh",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.appmesh",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "appmesh"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-appmesh",
+          "module": "aws_cdk.aws_appmesh",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:01:02 GMT"
+      },
+      "name": "@aws-cdk/aws-appmesh",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AppRunner",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::AppRunner",
+        "aws-apprunner"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AppRunner",
+          "packageId": "Amazon.CDK.AWS.AppRunner",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.apprunner",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "apprunner"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-apprunner",
+          "module": "aws_cdk.aws_apprunner"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:47 GMT"
+      },
+      "name": "@aws-cdk/aws-apprunner",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AppStream",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "aws-appstream"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AppStream",
+          "packageId": "Amazon.CDK.AWS.AppStream",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.appstream",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "appstream"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-appstream",
+          "module": "aws_cdk.aws_appstream",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:52 GMT"
+      },
+      "name": "@aws-cdk/aws-appstream",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AppSync",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "appsync"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.appsync",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "appsync"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AppSync",
+          "packageId": "Amazon.CDK.AWS.AppSync",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-appsync",
+          "module": "aws_cdk.aws_appsync",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:02:54 GMT"
+      },
+      "name": "@aws-cdk/aws-appsync",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Athena",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "athena"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.athena",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "athena"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Athena",
+          "packageId": "Amazon.CDK.AWS.Athena",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-athena",
+          "module": "aws_cdk.aws_athena",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:47:58 GMT"
+      },
+      "name": "@aws-cdk/aws-athena",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AuditManager",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::AuditManager",
+        "aws-auditmanager"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AuditManager",
+          "packageId": "Amazon.CDK.AWS.AuditManager",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.auditmanager",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "auditmanager"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-auditmanager",
+          "module": "aws_cdk.aws_auditmanager"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:04 GMT"
+      },
+      "name": "@aws-cdk/aws-auditmanager",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Common implementation package for @aws-cdk/aws-autoscaling and @aws-cdk/aws-applicationautoscaling",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "s3"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.autoscaling.common",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "autoscaling-common"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AutoScaling.Common",
+          "packageId": "Amazon.CDK.AWS.AutoScaling.Common",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-autoscaling-common",
+          "module": "aws_cdk.aws_autoscaling_common",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:55:38 GMT"
+      },
+      "name": "@aws-cdk/aws-autoscaling-common",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Lifecycle hook for AWS AutoScaling",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "autoscaling"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.autoscaling.hooktargets",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "autoscaling-hooktargets"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AutoScaling.HookTargets",
+          "packageId": "Amazon.CDK.AWS.AutoScaling.HookTargets",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-autoscaling-hooktargets",
+          "module": "aws_cdk.aws_autoscaling_hooktargets",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:01:06 GMT"
+      },
+      "name": "@aws-cdk/aws-autoscaling-hooktargets",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AutoScaling",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "autoscaling"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.autoscaling",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "autoscaling"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AutoScaling",
+          "packageId": "Amazon.CDK.AWS.AutoScaling",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-autoscaling",
+          "module": "aws_cdk.aws_autoscaling",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:26 GMT"
+      },
+      "name": "@aws-cdk/aws-autoscaling",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AutoScalingPlans",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "autoscalingplans"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.autoscalingplans",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "autoscalingplans"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AutoScalingPlans",
+          "packageId": "Amazon.CDK.AWS.AutoScalingPlans",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-autoscalingplans",
+          "module": "aws_cdk.aws_autoscalingplans",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:08 GMT"
+      },
+      "name": "@aws-cdk/aws-autoscalingplans",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Backup",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Backup",
+        "aws-backup"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Backup",
+          "packageId": "Amazon.CDK.AWS.Backup",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.backup",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "backup"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-backup",
+          "module": "aws_cdk.aws_backup",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:02:59 GMT"
+      },
+      "name": "@aws-cdk/aws-backup",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Batch",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "batch"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.batch",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "batch"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Batch",
+          "packageId": "Amazon.CDK.AWS.Batch",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-batch",
+          "module": "aws_cdk.aws_batch",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:02:03 GMT"
+      },
+      "name": "@aws-cdk/aws-batch",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Budgets",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "budgets"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.budgets",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "budgets"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Budgets",
+          "packageId": "Amazon.CDK.AWS.Budgets",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-budgets",
+          "module": "aws_cdk.aws_budgets",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:15 GMT"
+      },
+      "name": "@aws-cdk/aws-budgets",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Cassandra",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Cassandra",
+        "aws-cassandra"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Cassandra",
+          "packageId": "Amazon.CDK.AWS.Cassandra",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.cassandra",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cassandra"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cassandra",
+          "module": "aws_cdk.aws_cassandra",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:19 GMT"
+      },
+      "name": "@aws-cdk/aws-cassandra",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CE",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CE",
+        "aws-ce"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CE",
+          "packageId": "Amazon.CDK.AWS.CE",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.ce",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ce"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ce",
+          "module": "aws_cdk.aws_ce",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:24 GMT"
+      },
+      "name": "@aws-cdk/aws-ce",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CertificateManager",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "certificatemanager"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.certificatemanager",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "certificatemanager"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CertificateManager",
+          "packageId": "Amazon.CDK.AWS.CertificateManager",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-certificatemanager",
+          "module": "aws_cdk.aws_certificatemanager",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:59:47 GMT"
+      },
+      "name": "@aws-cdk/aws-certificatemanager",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Chatbot",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Chatbot",
+        "aws-chatbot"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Chatbot",
+          "packageId": "Amazon.CDK.AWS.Chatbot",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.chatbot",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "chatbot"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-chatbot",
+          "module": "aws_cdk.aws_chatbot",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:56:59 GMT"
+      },
+      "name": "@aws-cdk/aws-chatbot",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Cloud9",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloud9"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.cloud9",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cloud9"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Cloud9",
+          "packageId": "Amazon.CDK.AWS.Cloud9",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cloud9",
+          "module": "aws_cdk.aws_cloud9",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:57:30 GMT"
+      },
+      "name": "@aws-cdk/aws-cloud9",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CloudFormation",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudformation"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.cloudformation",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cloudformation"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CloudFormation",
+          "packageId": "Amazon.CDK.AWS.CloudFormation",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cloudformation",
+          "module": "aws_cdk.aws_cloudformation",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:58:59 GMT"
+      },
+      "name": "@aws-cdk/aws-cloudformation",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS CloudFront Origins",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudfront",
+        "cloudfront-origins"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.cloudfront.origins",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cloudfront-origins"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CloudFront.Origins",
+          "packageId": "Amazon.CDK.AWS.CloudFront.Origins",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cloudfront-origins",
+          "module": "aws_cdk.aws_cloudfront_origins",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:31 GMT"
+      },
+      "name": "@aws-cdk/aws-cloudfront-origins",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CloudFront",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudfront"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.cloudfront",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cloudfront"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CloudFront",
+          "packageId": "Amazon.CDK.AWS.CloudFront",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cloudfront",
+          "module": "aws_cdk.aws_cloudfront",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:02 GMT"
+      },
+      "name": "@aws-cdk/aws-cloudfront",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CloudTrail",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudtrail"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.cloudtrail",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cloudtrail"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CloudTrail",
+          "packageId": "Amazon.CDK.AWS.CloudTrail",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cloudtrail",
+          "module": "aws_cdk.aws_cloudtrail",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:58:02 GMT"
+      },
+      "name": "@aws-cdk/aws-cloudtrail",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Alarm Actions for AWS CloudWatch CDK library",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudwatch"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.cloudwatch.actions",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cloudwatch-actions"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CloudWatch.Actions",
+          "packageId": "Amazon.CDK.AWS.CloudWatch.Actions",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cloudwatch-actions",
+          "module": "aws_cdk.aws_cloudwatch_actions",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:01:12 GMT"
+      },
+      "name": "@aws-cdk/aws-cloudwatch-actions",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CloudWatch",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudwatch"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.cloudwatch",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cloudwatch"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CloudWatch",
+          "packageId": "Amazon.CDK.AWS.CloudWatch",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cloudwatch",
+          "module": "aws_cdk.aws_cloudwatch",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:55:43 GMT"
+      },
+      "name": "@aws-cdk/aws-cloudwatch",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeArtifact",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CodeArtifact",
+        "aws-codeartifact"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeArtifact",
+          "packageId": "Amazon.CDK.AWS.CodeArtifact",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.codeartifact",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codeartifact"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-codeartifact",
+          "module": "aws_cdk.aws_codeartifact"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:28 GMT"
+      },
+      "name": "@aws-cdk/aws-codeartifact",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeBuild",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "codebuild"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.codebuild",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codebuild"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeBuild",
+          "packageId": "Amazon.CDK.AWS.CodeBuild",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codebuild",
+          "module": "aws_cdk.aws_codebuild",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:59:04 GMT"
+      },
+      "name": "@aws-cdk/aws-codebuild",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeCommit",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "codecommit"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.codecommit",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codecommit"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeCommit",
+          "packageId": "Amazon.CDK.AWS.CodeCommit",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codecommit",
+          "module": "aws_cdk.aws_codecommit",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:57:04 GMT"
+      },
+      "name": "@aws-cdk/aws-codecommit",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeDeploy",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "codedeploy"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.codedeploy",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codedeploy"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeDeploy",
+          "packageId": "Amazon.CDK.AWS.CodeDeploy",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codedeploy",
+          "module": "aws_cdk.aws_codedeploy",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:01:16 GMT"
+      },
+      "name": "@aws-cdk/aws-codedeploy",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeGuruProfiler",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CodeGuruProfiler",
+        "aws-codeguruprofiler"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeGuruProfiler",
+          "packageId": "Amazon.CDK.AWS.CodeGuruProfiler",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.codeguruprofiler",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codeguruprofiler"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codeguruprofiler",
+          "module": "aws_cdk.aws_codeguruprofiler",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:55:48 GMT"
+      },
+      "name": "@aws-cdk/aws-codeguruprofiler",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeGuruReviewer",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CodeGuruReviewer",
+        "aws-codegurureviewer"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeGuruReviewer",
+          "packageId": "Amazon.CDK.AWS.CodeGuruReviewer",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.codegurureviewer",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codegurureviewer"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codegurureviewer",
+          "module": "aws_cdk.aws_codegurureviewer",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:32 GMT"
+      },
+      "name": "@aws-cdk/aws-codegurureviewer",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Concrete Actions for AWS Code Pipeline",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "codepipeline",
+        "pipeline"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.codepipeline.actions",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codepipeline-actions"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodePipeline.Actions",
+          "packageId": "Amazon.CDK.AWS.CodePipeline.Actions",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codepipeline-actions",
+          "module": "aws_cdk.aws_codepipeline_actions",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:02:22 GMT"
+      },
+      "name": "@aws-cdk/aws-codepipeline-actions",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Better interface to AWS Code Pipeline",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "codepipeline",
+        "pipeline"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.codepipeline",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codepipeline"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodePipeline",
+          "packageId": "Amazon.CDK.AWS.CodePipeline",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codepipeline",
+          "module": "aws_cdk.aws_codepipeline",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:56:24 GMT"
+      },
+      "name": "@aws-cdk/aws-codepipeline",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeStar",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CodeStar",
+        "aws-codestar"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeStar",
+          "packageId": "Amazon.CDK.AWS.CodeStar",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.codestar",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codestar"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codestar",
+          "module": "aws_cdk.aws_codestar",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:56:28 GMT"
+      },
+      "name": "@aws-cdk/aws-codestar",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeStarConnections",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CodeStarConnections",
+        "aws-codestarconnections"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeStarConnections",
+          "packageId": "Amazon.CDK.AWS.CodeStarConnections",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.codestarconnections",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codestarconnections"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codestarconnections",
+          "module": "aws_cdk.aws_codestarconnections",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:36 GMT"
+      },
+      "name": "@aws-cdk/aws-codestarconnections",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeStarNotifications",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CodeStarNotifications",
+        "aws-codestarnotifications"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeStarNotifications",
+          "packageId": "Amazon.CDK.AWS.CodeStarNotifications",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.codestarnotifications",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codestarnotifications"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codestarnotifications",
+          "module": "aws_cdk.aws_codestarnotifications",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:41 GMT"
+      },
+      "name": "@aws-cdk/aws-codestarnotifications",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Cognito",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cognito"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.cognito",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cognito"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Cognito",
+          "packageId": "Amazon.CDK.AWS.Cognito",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cognito",
+          "module": "aws_cdk.aws_cognito",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:07 GMT"
+      },
+      "name": "@aws-cdk/aws-cognito",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Config",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "config"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.config",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "config"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Config",
+          "packageId": "Amazon.CDK.AWS.Config",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-config",
+          "module": "aws_cdk.aws_config",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:02:29 GMT"
+      },
+      "name": "@aws-cdk/aws-config",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CUR",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CUR",
+        "aws-cur"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CUR",
+          "packageId": "Amazon.CDK.AWS.CUR",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.cur",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cur"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-cur",
+          "module": "aws_cdk.aws_cur"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:45 GMT"
+      },
+      "name": "@aws-cdk/aws-cur",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CustomerProfiles",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CustomerProfiles",
+        "aws-customerprofiles"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CustomerProfiles",
+          "packageId": "Amazon.CDK.AWS.CustomerProfiles",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.customerprofiles",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "customerprofiles"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-customerprofiles",
+          "module": "aws_cdk.aws_customerprofiles"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:50 GMT"
+      },
+      "name": "@aws-cdk/aws-customerprofiles",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DataBrew",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::DataBrew",
+        "aws-databrew"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DataBrew",
+          "packageId": "Amazon.CDK.AWS.DataBrew",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.databrew",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "databrew"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-databrew",
+          "module": "aws_cdk.aws_databrew"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:54 GMT"
+      },
+      "name": "@aws-cdk/aws-databrew",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DataPipeline",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "datapipeline"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.datapipeline",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "datapipeline"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DataPipeline",
+          "packageId": "Amazon.CDK.AWS.DataPipeline",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-datapipeline",
+          "module": "aws_cdk.aws_datapipeline",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:48:58 GMT"
+      },
+      "name": "@aws-cdk/aws-datapipeline",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DataSync",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::DataSync",
+        "aws-datasync"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DataSync",
+          "packageId": "Amazon.CDK.AWS.DataSync",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.datasync",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "datasync"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-datasync",
+          "module": "aws_cdk.aws_datasync"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:03 GMT"
+      },
+      "name": "@aws-cdk/aws-datasync",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DAX",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "dax"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.dax",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "dax"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DAX",
+          "packageId": "Amazon.CDK.AWS.DAX",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-dax",
+          "module": "aws_cdk.aws_dax",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:08 GMT"
+      },
+      "name": "@aws-cdk/aws-dax",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Detective",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Detective",
+        "aws-detective"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Detective",
+          "packageId": "Amazon.CDK.AWS.Detective",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.detective",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "detective"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-detective",
+          "module": "aws_cdk.aws_detective",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:12 GMT"
+      },
+      "name": "@aws-cdk/aws-detective",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DevOpsGuru",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::DevOpsGuru",
+        "aws-devopsguru"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DevOpsGuru",
+          "packageId": "Amazon.CDK.AWS.DevOpsGuru",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.devopsguru",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "devopsguru"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-devopsguru",
+          "module": "aws_cdk.aws_devopsguru"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:18 GMT"
+      },
+      "name": "@aws-cdk/aws-devopsguru",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DirectoryService",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "directoryservice"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.directoryservice",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "directoryservice"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DirectoryService",
+          "packageId": "Amazon.CDK.AWS.DirectoryService",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-directoryservice",
+          "module": "aws_cdk.aws_directoryservice",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:23 GMT"
+      },
+      "name": "@aws-cdk/aws-directoryservice",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DLM",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "aws-dlm"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DLM",
+          "packageId": "Amazon.CDK.AWS.DLM",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.dlm",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "dlm"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-dlm",
+          "module": "aws_cdk.aws_dlm",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:29 GMT"
+      },
+      "name": "@aws-cdk/aws-dlm",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DMS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "dms"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.dms",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "dms"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DMS",
+          "packageId": "Amazon.CDK.AWS.DMS",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-dms",
+          "module": "aws_cdk.aws_dms",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:34 GMT"
+      },
+      "name": "@aws-cdk/aws-dms",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DocDB",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::DocDB",
+        "aws-docdb"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DocDB",
+          "packageId": "Amazon.CDK.AWS.DocDB",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.docdb",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "docdb"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-docdb",
+          "module": "aws_cdk.aws_docdb",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:59:09 GMT"
+      },
+      "name": "@aws-cdk/aws-docdb",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Build a global dynamodb table",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "dynamodb",
+        "global"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.dynamodb.global",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "dynamodb-global"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-dynamodb-global",
+          "module": "aws_cdk.aws_dynamodb_global",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DynamoDB.Global",
+          "packageId": "Amazon.CDK.AWS.DynamoDB.Global",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:59:52 GMT"
+      },
+      "name": "@aws-cdk/aws-dynamodb-global",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DynamoDB",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "dynamodb"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.dynamodb",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "dynamodb"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DynamoDB",
+          "packageId": "Amazon.CDK.AWS.DynamoDB",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-dynamodb",
+          "module": "aws_cdk.aws_dynamodb",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:59:32 GMT"
+      },
+      "name": "@aws-cdk/aws-dynamodb",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::EC2",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "ec2"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.ec2",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ec2"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.EC2",
+          "packageId": "Amazon.CDK.AWS.EC2",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ec2",
+          "module": "aws_cdk.aws_ec2",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:57:09 GMT"
+      },
+      "name": "@aws-cdk/aws-ec2",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Docker image assets deployed to ECR",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "assets",
+        "docker"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.ecr.assets",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ecr-assets"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Ecr.Assets",
+          "packageId": "Amazon.CDK.ECR.Assets",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ecr-assets",
+          "module": "aws_cdk.aws_ecr_assets",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:56:32 GMT"
+      },
+      "name": "@aws-cdk/aws-ecr-assets",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ECR",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "ecr"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.ecr",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ecr"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ECR",
+          "packageId": "Amazon.CDK.AWS.ECR",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ecr",
+          "module": "aws_cdk.aws_ecr",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:56:10 GMT"
+      },
+      "name": "@aws-cdk/aws-ecr",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ECS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "ecs",
+        "ecs-patterns"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.ecs.patterns",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ecs-patterns"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ECS.Patterns",
+          "packageId": "Amazon.CDK.AWS.ECS.Patterns",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ecs-patterns",
+          "module": "aws_cdk.aws_ecs_patterns",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:02:34 GMT"
+      },
+      "name": "@aws-cdk/aws-ecs-patterns",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ECS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "ecs"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.ecs",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ecs"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ECS",
+          "packageId": "Amazon.CDK.AWS.ECS",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ecs",
+          "module": "aws_cdk.aws_ecs",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:01:53 GMT"
+      },
+      "name": "@aws-cdk/aws-ecs",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::EFS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "efs"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.efs",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "efs"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.EFS",
+          "packageId": "Amazon.CDK.AWS.EFS",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-efs",
+          "module": "aws_cdk.aws_efs",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:57:34 GMT"
+      },
+      "name": "@aws-cdk/aws-efs",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::EKS (Legacy)",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "eks"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.eks.legacy",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "eks-legacy"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.EKS.Legacy",
+          "packageId": "Amazon.CDK.AWS.EKS.Legacy",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-eks-legacy",
+          "module": "aws_cdk.aws_eks_legacy",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:01:21 GMT"
+      },
+      "name": "@aws-cdk/aws-eks-legacy",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::EKS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "eks"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.eks",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "eks"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.EKS",
+          "packageId": "Amazon.CDK.AWS.EKS",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-eks",
+          "module": "aws_cdk.aws_eks",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:01:27 GMT"
+      },
+      "name": "@aws-cdk/aws-eks",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ElastiCache",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "elasticache"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.elasticache",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "elasticache"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ElastiCache",
+          "packageId": "Amazon.CDK.AWS.ElastiCache",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-elasticache",
+          "module": "aws_cdk.aws_elasticache",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:40 GMT"
+      },
+      "name": "@aws-cdk/aws-elasticache",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ElasticBeanstalk",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "elasticbeanstalk"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.elasticbeanstalk",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "elasticbeanstalk"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ElasticBeanstalk",
+          "packageId": "Amazon.CDK.AWS.ElasticBeanstalk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-elasticbeanstalk",
+          "module": "aws_cdk.aws_elasticbeanstalk",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:45 GMT"
+      },
+      "name": "@aws-cdk/aws-elasticbeanstalk",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ElasticLoadBalancing",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "elasticloadbalancing"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.elasticloadbalancing",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "elasticloadbalancing"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ElasticLoadBalancing",
+          "packageId": "Amazon.CDK.AWS.ElasticLoadBalancing",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-elasticloadbalancing",
+          "module": "aws_cdk.aws_elasticloadbalancing",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:57:39 GMT"
+      },
+      "name": "@aws-cdk/aws-elasticloadbalancing",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Integration actions for AWS ElasticLoadBalancingV2",
+      "keywords": [
+        "aws",
+        "cdk",
+        "cloudlib",
+        "aws-cloudlib",
+        "aws-clib"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.elasticloadbalancingv2.actions",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "elasticloadbalancingv2-actions"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ElasticLoadBalancingV2.Actions",
+          "packageId": "Amazon.CDK.AWS.ElasticLoadBalancingV2.Actions",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-elasticloadbalancingv2-actions",
+          "module": "aws_cdk.aws_elasticloadbalancingv2_actions",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:35 GMT"
+      },
+      "name": "@aws-cdk/aws-elasticloadbalancingv2-actions",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Integration targets for AWS ElasticLoadBalancingV2",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "elasticloadbalancing",
+        "elb"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.elasticloadbalancingv2.targets",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "elasticloadbalancingv2-targets"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ElasticLoadBalancingV2.Targets",
+          "packageId": "Amazon.CDK.AWS.ElasticLoadBalancingV2.Targets",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-elasticloadbalancingv2-targets",
+          "module": "aws_cdk.aws_elasticloadbalancingv2_targets",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:39 GMT"
+      },
+      "name": "@aws-cdk/aws-elasticloadbalancingv2-targets",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ElasticLoadBalancingV2",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "elasticloadbalancingv2"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.elasticloadbalancingv2",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "elasticloadbalancingv2"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ElasticLoadBalancingV2",
+          "packageId": "Amazon.CDK.AWS.ElasticLoadBalancingV2",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-elasticloadbalancingv2",
+          "module": "aws_cdk.aws_elasticloadbalancingv2",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:11 GMT"
+      },
+      "name": "@aws-cdk/aws-elasticloadbalancingv2",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Elasticsearch",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "elasticsearch"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.elasticsearch",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "elasticsearch"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Elasticsearch",
+          "packageId": "Amazon.CDK.AWS.Elasticsearch",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-elasticsearch",
+          "module": "aws_cdk.aws_elasticsearch",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:16 GMT"
+      },
+      "name": "@aws-cdk/aws-elasticsearch",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::EMR",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "emr"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.emr",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "emr"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.EMR",
+          "packageId": "Amazon.CDK.AWS.EMR",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-emr",
+          "module": "aws_cdk.aws_emr",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:50 GMT"
+      },
+      "name": "@aws-cdk/aws-emr",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::EMRContainers",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::EMRContainers",
+        "aws-emrcontainers"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.EMRContainers",
+          "packageId": "Amazon.CDK.AWS.EMRContainers",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.emrcontainers",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "emrcontainers"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-emrcontainers",
+          "module": "aws_cdk.aws_emrcontainers"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:54 GMT"
+      },
+      "name": "@aws-cdk/aws-emrcontainers",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Event targets for Amazon EventBridge",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudwatch",
+        "events",
+        "eventbridge"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.events.targets",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "events-targets"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Events.Targets",
+          "packageId": "Amazon.CDK.AWS.Events.Targets",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-events-targets",
+          "module": "aws_cdk.aws_events_targets",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:02:07 GMT"
+      },
+      "name": "@aws-cdk/aws-events-targets",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Amazon EventBridge Construct Library",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudwatch",
+        "events",
+        "eventbridge"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.events",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "events"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Events",
+          "packageId": "Amazon.CDK.AWS.Events",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-events",
+          "module": "aws_cdk.aws_events",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:55:52 GMT"
+      },
+      "name": "@aws-cdk/aws-events",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::EventSchemas",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::EventSchemas",
+        "aws-eventschemas"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.EventSchemas",
+          "packageId": "Amazon.CDK.AWS.EventSchemas",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.eventschemas",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "eventschemas"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-eventschemas",
+          "module": "aws_cdk.aws_eventschemas",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:49:59 GMT"
+      },
+      "name": "@aws-cdk/aws-eventschemas",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::FinSpace",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::FinSpace",
+        "aws-finspace"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.FinSpace",
+          "packageId": "Amazon.CDK.AWS.FinSpace",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.finspace",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "finspace"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-finspace",
+          "module": "aws_cdk.aws_finspace"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:03 GMT"
+      },
+      "name": "@aws-cdk/aws-finspace",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::FIS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::FIS",
+        "aws-fis"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.FIS",
+          "packageId": "Amazon.CDK.AWS.FIS",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.fis",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "fis"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-fis",
+          "module": "aws_cdk.aws_fis"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:07 GMT"
+      },
+      "name": "@aws-cdk/aws-fis",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::FMS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::FMS",
+        "aws-fms"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.FMS",
+          "packageId": "Amazon.CDK.AWS.FMS",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.fms",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "fms"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-fms",
+          "module": "aws_cdk.aws_fms",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:12 GMT"
+      },
+      "name": "@aws-cdk/aws-fms",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::FraudDetector",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::FraudDetector",
+        "aws-frauddetector"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.FraudDetector",
+          "packageId": "Amazon.CDK.AWS.FraudDetector",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.frauddetector",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "frauddetector"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-frauddetector",
+          "module": "aws_cdk.aws_frauddetector"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:16 GMT"
+      },
+      "name": "@aws-cdk/aws-frauddetector",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::FSx",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::FSx",
+        "aws-fsx"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.FSx",
+          "packageId": "Amazon.CDK.AWS.FSx",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.fsx",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "fsx"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-fsx",
+          "module": "aws_cdk.aws_fsx",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:57:43 GMT"
+      },
+      "name": "@aws-cdk/aws-fsx",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::GameLift",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "gamelift"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.gamelift",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "gamelift"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.GameLift",
+          "packageId": "Amazon.CDK.AWS.GameLift",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-gamelift",
+          "module": "aws_cdk.aws_gamelift",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:20 GMT"
+      },
+      "name": "@aws-cdk/aws-gamelift",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Endpoints for AWS Global Accelerator",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "globalaccelerator"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.GlobalAccelerator.Endpoints",
+          "packageId": "Amazon.CDK.AWS.GlobalAccelerator.Endpoints",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.globalaccelerator.endpoints",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "globalaccelerator-endpoints"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-globalaccelerator-endpoints",
+          "module": "aws_cdk.aws_globalaccelerator_endpoints",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:01:32 GMT"
+      },
+      "name": "@aws-cdk/aws-globalaccelerator-endpoints",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::GlobalAccelerator",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::GlobalAccelerator",
+        "aws-globalaccelerator"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.GlobalAccelerator",
+          "packageId": "Amazon.CDK.AWS.GlobalAccelerator",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.globalaccelerator",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "globalaccelerator"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-globalaccelerator",
+          "module": "aws_cdk.aws_globalaccelerator",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 23:00:44 GMT"
+      },
+      "name": "@aws-cdk/aws-globalaccelerator",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Glue",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "glue"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.glue",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "glue"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Glue",
+          "packageId": "Amazon.CDK.AWS.Glue",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-glue",
+          "module": "aws_cdk.aws_glue",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:57:48 GMT"
+      },
+      "name": "@aws-cdk/aws-glue",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Greengrass",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Greengrass",
+        "aws-greengrass"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Greengrass",
+          "packageId": "Amazon.CDK.AWS.Greengrass",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.greengrass",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "greengrass"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-greengrass",
+          "module": "aws_cdk.aws_greengrass",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:25 GMT"
+      },
+      "name": "@aws-cdk/aws-greengrass",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::GreengrassV2",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::GreengrassV2",
+        "aws-greengrassv2"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.GreengrassV2",
+          "packageId": "Amazon.CDK.AWS.GreengrassV2",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.greengrassv2",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "greengrassv2"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-greengrassv2",
+          "module": "aws_cdk.aws_greengrassv2",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:29 GMT"
+      },
+      "name": "@aws-cdk/aws-greengrassv2",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::GroundStation",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::GroundStation",
+        "aws-groundstation"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.GroundStation",
+          "packageId": "Amazon.CDK.AWS.GroundStation",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.groundstation",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "groundstation"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-groundstation",
+          "module": "aws_cdk.aws_groundstation"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:34 GMT"
+      },
+      "name": "@aws-cdk/aws-groundstation",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::GuardDuty",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "guardduty"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.guardduty",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "guardduty"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.GuardDuty",
+          "packageId": "Amazon.CDK.AWS.GuardDuty",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-guardduty",
+          "module": "aws_cdk.aws_guardduty",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:38 GMT"
+      },
+      "name": "@aws-cdk/aws-guardduty",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "CDK routines for easily assigning correct and minimal IAM permissions",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "iam"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.iam",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iam"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IAM",
+          "packageId": "Amazon.CDK.AWS.IAM",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-iam",
+          "module": "aws_cdk.aws_iam",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:43 GMT"
+      },
+      "name": "@aws-cdk/aws-iam",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ImageBuilder",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::ImageBuilder",
+        "aws-imagebuilder"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ImageBuilder",
+          "packageId": "Amazon.CDK.AWS.ImageBuilder",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.imagebuilder",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "imagebuilder"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-imagebuilder",
+          "module": "aws_cdk.aws_imagebuilder",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:47 GMT"
+      },
+      "name": "@aws-cdk/aws-imagebuilder",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Inspector",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "inspector"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.inspector",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "inspector"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Inspector",
+          "packageId": "Amazon.CDK.AWS.Inspector",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-inspector",
+          "module": "aws_cdk.aws_inspector",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:52 GMT"
+      },
+      "name": "@aws-cdk/aws-inspector",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoT",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "iot"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.iot",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iot"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoT",
+          "packageId": "Amazon.CDK.AWS.IoT",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-iot",
+          "module": "aws_cdk.aws_iot",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:50:56 GMT"
+      },
+      "name": "@aws-cdk/aws-iot",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoT1Click",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "aws-iot1click"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoT1Click",
+          "packageId": "Amazon.CDK.AWS.IoT1Click",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.iot1click",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iot1click"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-iot1click",
+          "module": "aws_cdk.aws_iot1click",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:51:04 GMT"
+      },
+      "name": "@aws-cdk/aws-iot1click",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoTAnalytics",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::IoTAnalytics",
+        "aws-iotanalytics"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoTAnalytics",
+          "packageId": "Amazon.CDK.AWS.IoTAnalytics",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.iotanalytics",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iotanalytics"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-iotanalytics",
+          "module": "aws_cdk.aws_iotanalytics",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:51:10 GMT"
+      },
+      "name": "@aws-cdk/aws-iotanalytics",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoTCoreDeviceAdvisor",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::IoTCoreDeviceAdvisor",
+        "aws-iotcoredeviceadvisor"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoTCoreDeviceAdvisor",
+          "packageId": "Amazon.CDK.AWS.IoTCoreDeviceAdvisor",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.iotcoredeviceadvisor",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iotcoredeviceadvisor"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-iotcoredeviceadvisor",
+          "module": "aws_cdk.aws_iotcoredeviceadvisor"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:51:15 GMT"
+      },
+      "name": "@aws-cdk/aws-iotcoredeviceadvisor",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoTEvents",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::IoTEvents",
+        "aws-iotevents"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoTEvents",
+          "packageId": "Amazon.CDK.AWS.IoTEvents",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.iotevents",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iotevents"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-iotevents",
+          "module": "aws_cdk.aws_iotevents",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:51:20 GMT"
+      },
+      "name": "@aws-cdk/aws-iotevents",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoTFleetHub",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::IoTFleetHub",
+        "aws-iotfleethub"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoTFleetHub",
+          "packageId": "Amazon.CDK.AWS.IoTFleetHub",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.iotfleethub",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iotfleethub"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-iotfleethub",
+          "module": "aws_cdk.aws_iotfleethub"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:51:25 GMT"
+      },
+      "name": "@aws-cdk/aws-iotfleethub",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoTSiteWise",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::IoTSiteWise",
+        "aws-iotsitewise"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoTSiteWise",
+          "packageId": "Amazon.CDK.AWS.IoTSiteWise",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.iotsitewise",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iotsitewise"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-iotsitewise",
+          "module": "aws_cdk.aws_iotsitewise"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:51:29 GMT"
+      },
+      "name": "@aws-cdk/aws-iotsitewise",
+      "version": "1.110.1"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoTThingsGraph",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::IoTThingsGraph",
+        "aws-iotthingsgraph"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoTThingsGraph",
+          "packageId": "Amazon.CDK.AWS.IoTThingsGraph",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.iotthingsgraph",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iotthingsgraph"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-iotthingsgraph",
+          "module": "aws_cdk.aws_iotthingsgraph",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "date": "Mon, 28 Jun 2021 22:51:34 GMT"
+      },
+      "name": "@aws-cdk/aws-iotthingsgraph",
+      "version": "1.110.1"
+    }
+  ],
+  "updated": "2021-06-29T16:34:27.265Z"
+}

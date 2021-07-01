@@ -1,11 +1,13 @@
 import { Flex } from "@chakra-ui/react";
+import type { FunctionComponent } from "react";
 import { Switch, Route } from "react-router-dom";
 import { Header } from "./components/Header";
+import { ROUTES } from "./constants/url";
 import { NotFound } from "./views/NotFound";
 import { Packages } from "./views/Packages";
 import { SearchResults } from "./views/SearchResults";
 
-export function App() {
+export const App: FunctionComponent = () => {
   return (
     <Flex
       as="main"
@@ -17,10 +19,10 @@ export function App() {
     >
       <Header />
       <Switch>
-        <Route path="/packages">
+        <Route path={ROUTES.PACKAGES}>
           <Packages />
         </Route>
-        <Route exact path="/">
+        <Route exact path={[ROUTES.HOME, ROUTES.SEARCH]}>
           <SearchResults />
         </Route>
         <Route path="*">
@@ -29,4 +31,4 @@ export function App() {
       </Switch>
     </Flex>
   );
-}
+};

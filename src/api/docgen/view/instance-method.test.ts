@@ -5,6 +5,17 @@ import { InstanceMethod } from "./instance-method";
 
 const assembly: reflect.Assembly = (global as any).assembly;
 
+const findInstanceMethod = (): reflect.Method => {
+  for (const klass of assembly.system.classes) {
+    for (const method of klass.ownMethods) {
+      if (!method.static) {
+        return method;
+      }
+    }
+  }
+  throw new Error("Assembly does not contain an instance method");
+};
+
 describe("python", () => {
   const transpile = new PythonTranspile();
   test("snapshot", () => {
@@ -20,14 +31,3 @@ describe("typescript", () => {
     expect(instanceMethod.render().render()).toMatchSnapshot();
   });
 });
-
-function findInstanceMethod(): reflect.Method {
-  for (const klass of assembly.system.classes) {
-    for (const method of klass.ownMethods) {
-      if (!method.static) {
-        return method;
-      }
-    }
-  }
-  throw new Error("Assembly does not contain an instance method");
-}

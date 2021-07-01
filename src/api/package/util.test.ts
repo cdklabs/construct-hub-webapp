@@ -7,13 +7,13 @@ describe("getAssetsUrl", () => {
 
   test("excludes scope when undefined", () => {
     const subject = getAssetsPath(name, version);
-    expect(subject).toEqual("/packages/PACKAGE_NAME@PACKAGE_VERSION");
+    expect(subject).toEqual("/data/PACKAGE_NAME/vPACKAGE_VERSION");
   });
 
   test("includes scope when defined", () => {
     const subject = getAssetsPath(name, version, scope);
     expect(subject).toEqual(
-      "/packages/PACKAGE_SCOPE/PACKAGE_NAME@PACKAGE_VERSION"
+      "/data/PACKAGE_SCOPE/PACKAGE_NAME/vPACKAGE_VERSION"
     );
   });
 });

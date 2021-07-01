@@ -9,8 +9,9 @@ import {
   PopoverArrow,
   PopoverCloseButton,
 } from "@chakra-ui/react";
+import type { FunctionComponent } from "react";
 
-export function DisabledLangPopover() {
+export const DisabledLangPopover: FunctionComponent = () => {
   return (
     <Popover>
       <PopoverTrigger>
@@ -31,4 +32,4 @@ export function DisabledLangPopover() {
       </PopoverContent>
     </Popover>
   );
-}
+};

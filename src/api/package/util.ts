@@ -1,10 +1,16 @@
-export function getAssetsPath(name: string, version: string, scope?: string) {
-  const prefix = `/packages/`;
-  const body = getFullPackageName(name, scope);
-  const suffix = `@${version}`;
-  return `${prefix}${body}${suffix}`;
-}
+import { API_PATHS } from "../../constants/url";
 
-export function getFullPackageName(name: string, scope?: string) {
+export const getFullPackageName = (name: string, scope?: string) => {
   return scope ? `${scope}/${name}` : name;
-}
+};
+
+export const getAssetsPath = (
+  name: string,
+  version: string,
+  scope?: string
+) => {
+  const prefix = `${API_PATHS.PACKAGES_PREFIX}/`;
+  const body = getFullPackageName(name, scope);
+  const suffix = `/v${version}`;
+  return `${prefix}${body}${suffix}`;
+};

@@ -5,13 +5,13 @@ import {
   Languages,
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
+import { QUERY_PARAMS } from "../../constants/url";
 import { useQueryParams } from "../../hooks/useQueryParams";
 
 // Only supported language atm
 const defaultLang: Language = Languages.TypeScript;
 
 const LOCAL_KEY = "preferred-language";
-const PARAM_KEY = "lang";
 
 const isValidLang = (lang: Language | void) =>
   lang && TEMP_SUPPORTED_LANGUAGES.includes(lang);
@@ -45,12 +45,12 @@ export interface UseLanguageOptions {
   updateSaved?: boolean;
 }
 
-export function useLanguage(options: UseLanguageOptions = {}) {
+export const useLanguage = (options: UseLanguageOptions = {}) => {
   const { updateUrl, updateSaved } = options;
   const { pathname, hash } = useLocation();
   const { replace } = useHistory();
   const params = useQueryParams();
-  const langFromParams = params.get(PARAM_KEY) as Language;
+  const langFromParams = params.get(QUERY_PARAMS.LANGUAGE) as Language;
 
   // Passed as function to guarantee it runs on hook mount
   const [language, setLanguage] = useState<Language>(() =>
@@ -68,7 +68,7 @@ export function useLanguage(options: UseLanguageOptions = {}) {
   // Syncs language changes to URL if updateUrl = true
   useEffect(() => {
     if (langFromParams !== language && updateUrl) {
-      params.set(PARAM_KEY, language);
+      params.set(QUERY_PARAMS.LANGUAGE, language);
       replace({ pathname, hash, search: params.toString() });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,4 +90,4 @@ export function useLanguage(options: UseLanguageOptions = {}) {
   );
 
   return useMemo(() => [language, update] as const, [language, update]);
-}
+};

@@ -2,8 +2,77 @@ import Case from "case";
 import * as reflect from "jsii-reflect";
 import * as transpile from "./transpile";
 
+// Helpers
 const toSnakeCase = (text?: string) => {
   return Case.snake(text ?? "");
+};
+
+const formatImport = (type: transpile.TranspiledType) => {
+  if (type.submodule) {
+    return `from ${type.module} import ${type.submodule}`;
+  }
+  return `import ${type.module}`;
+};
+
+const formatInputs = (inputs: string[], indent: number) => {
+  return inputs.join(`, \n${" ".repeat(indent)}`);
+};
+
+const formatInvocation = (
+  type: transpile.TranspiledType,
+  inputs: string[],
+  method?: string
+) => {
+  let target;
+  if (type.submodule) {
+    if (!type.namespace) {
+      throw new Error(
+        `Invalid type: ${type.fqn}: Types defined in a submodule (${type.submodule}) must have a namespace. `
+      );
+    }
+    // we don't include the submodule name here since it is
+    // included in the namespace. this works because we import the submodule
+    // in this case.
+    // TODO - merge `formatInvocation` with `formatImport` since they are inherently coupled.
+    target = `${type.namespace}.${type.name}`;
+  } else {
+    target = type.fqn;
+  }
+
+  if (method) {
+    target = `${target}.${method}`;
+  }
+  return `${target}(${formatInputs(inputs, 1 + target.length)})`;
+};
+
+const formatSignature = (name: string, inputs: string[]) => {
+  const def = "def ";
+  // length of the word 'def' +
+  // length of the method name +
+  // 1 opening paranthesis
+  const indent = def.length + name.length + 1;
+  return `${def}${name}(${formatInputs(inputs, indent)})`;
+};
+
+/**
+ * Hack to convert a jsii property to a parameter for
+ * python specific parameter expansion.
+ */
+const propertyToParameter = (
+  callable: reflect.Callable,
+  property: reflect.Property
+): reflect.Parameter => {
+  return {
+    docs: property.docs,
+    method: callable,
+    name: property.name,
+    optional: property.optional,
+    parentType: property.parentType,
+    spec: property.spec,
+    system: property.system,
+    type: property.type,
+    variadic: false,
+  };
 };
 
 /**
@@ -197,72 +266,4 @@ export class PythonTranspile extends transpile.TranspileBase {
     });
     return `${transpiled.name}: ${tf}${transpiled.optional ? " = None" : ""}`;
   }
-}
-
-function formatInvocation(
-  type: transpile.TranspiledType,
-  inputs: string[],
-  method?: string
-) {
-  let target;
-  if (type.submodule) {
-    if (!type.namespace) {
-      throw new Error(
-        `Invalid type: ${type.fqn}: Types defined in a submodule (${type.submodule}) must have a namespace. `
-      );
-    }
-    // we don't include the submodule name here since it is
-    // included in the namespace. this works because we import the submodule
-    // in this case.
-    // TODO - merge `formatInvocation` with `formatImport` since they are inherently coupled.
-    target = `${type.namespace}.${type.name}`;
-  } else {
-    target = type.fqn;
-  }
-
-  if (method) {
-    target = `${target}.${method}`;
-  }
-  return `${target}(${formatInputs(inputs, 1 + target.length)})`;
-}
-
-function formatImport(type: transpile.TranspiledType) {
-  if (type.submodule) {
-    return `from ${type.module} import ${type.submodule}`;
-  }
-  return `import ${type.module}`;
-}
-
-function formatSignature(name: string, inputs: string[]) {
-  const def = "def ";
-  // length of the word 'def' +
-  // length of the method name +
-  // 1 opening paranthesis
-  const indent = def.length + name.length + 1;
-  return `${def}${name}(${formatInputs(inputs, indent)})`;
-}
-
-function formatInputs(inputs: string[], indent: number) {
-  return inputs.join(`, \n${" ".repeat(indent)}`);
-}
-
-/**
- * Hack to convert a jsii property to a parameter for
- * python specific parameter expansion.
- */
-function propertyToParameter(
-  callable: reflect.Callable,
-  property: reflect.Property
-): reflect.Parameter {
-  return {
-    docs: property.docs,
-    method: callable,
-    name: property.name,
-    optional: property.optional,
-    parentType: property.parentType,
-    spec: property.spec,
-    system: property.system,
-    type: property.type,
-    variadic: false,
-  };
 }
