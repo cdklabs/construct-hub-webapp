@@ -1,53 +1,51 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
-  forwardRef,
   Button,
   Menu,
   MenuButton,
+  MenuDivider,
   MenuGroup,
   MenuItem,
   MenuList,
-  PropsOf,
 } from "@chakra-ui/react";
-import { GETTING_STARTED, ILink } from "../../constants/links";
-
-function ExternalLink({ display, url }: ILink): JSX.Element {
-  return (
-    <MenuItem>
-      <a href={url}>{display}</a>
-    </MenuItem>
-  );
-}
-
-const GettingStartedButton = forwardRef(
-  (props: PropsOf<typeof Button>, ref) => {
-    return <Button bg="white" ref={ref} size="md" {...props} />;
-  }
-);
-
-GettingStartedButton.displayName = "GettingStartedButton";
+import { GETTING_STARTED } from "../../constants/links";
+import { ExternalLink } from "../ExternalLink";
 
 export default function GettingStartedDropdown(): JSX.Element {
   return (
-    <Menu>
+    <Menu colorScheme="#002954">
       <MenuButton
-        as={GettingStartedButton}
-        rightIcon={<ChevronDownIcon color="black.600" h={6} w={6} />}
+        as={Button}
+        bg="white"
+        color="#002954"
+        size="md"
+        rightIcon={<ChevronDownIcon color="#002954" h={6} w={6} />}
       >
         Getting Started
       </MenuButton>
-      <MenuList>
-        {GETTING_STARTED.map((item) => {
+      <MenuList color="#002954">
+        {GETTING_STARTED.map((item, idx) => {
           if ("links" in item) {
             return (
-              <MenuGroup key={item.display} title={item.display}>
-                {item.links.map((link) => (
-                  <ExternalLink key={link.display} {...link} />
-                ))}
-              </MenuGroup>
+              <>
+                <MenuGroup key={item.display} title={item.display}>
+                  {item.links.map((link) => (
+                    <MenuItem key={link.display}>
+                      <ExternalLink href={link.url}>
+                        {link.display}
+                      </ExternalLink>
+                    </MenuItem>
+                  ))}
+                </MenuGroup>
+                {idx !== GETTING_STARTED.length - 1 && <MenuDivider />}
+              </>
             );
           }
-          return <ExternalLink key={item.display} {...item} />;
+          return (
+            <MenuItem key={item.display}>
+              <ExternalLink href={item.url}>{item.display}</ExternalLink>
+            </MenuItem>
+          );
         })}
       </MenuList>
     </Menu>
