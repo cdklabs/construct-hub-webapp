@@ -18,9 +18,9 @@ export const GettingStartedDropdown = (): JSX.Element => {
         as={Button}
         bg="white"
         color="blue.800"
+        rightIcon={<ChevronDownIcon color="blue.800" h={6} w={6} />}
         size="md"
         variant="link"
-        rightIcon={<ChevronDownIcon color="blue.800" h={6} w={6} />}
       >
         Getting Started
       </MenuButton>
