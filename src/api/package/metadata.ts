@@ -3,6 +3,9 @@ import { getAssetsPath } from "./util";
 
 export interface Metadata {
   date: string;
+  links?: {
+    npm: string;
+  };
 }
 
 export const fetchMetadata = async (
