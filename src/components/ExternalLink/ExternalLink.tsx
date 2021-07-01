@@ -4,6 +4,12 @@ export interface ExternalLinkProps extends LinkProps {}
 
 export const ExternalLink = forwardRef<ExternalLinkProps, "a">((props, ref) => {
   return (
-    <Link ref={ref} target="_blank" rel="noopener noreferrer" {...props} />
+    <Link
+      color="blue.500"
+      ref={ref}
+      rel="noopener noreferrer"
+      target="_blank"
+      {...props}
+    />
   );
 });
