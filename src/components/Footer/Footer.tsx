@@ -1,30 +1,8 @@
-import {
-  Box,
-  Divider,
-  Flex,
-  forwardRef,
-  Link,
-  LinkProps,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Divider, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { createTestIds } from "../../util/createTestIds";
-// import { ExternalLink } from "../ExternalLink";
+import { ExternalLink } from "../ExternalLink";
 import { DISCLAIMER, FOOTER_LINKS } from "./constants";
-
-// TODO: Update to use the <ExternalLink /> when merged to main
-export const ExternalLink = forwardRef<LinkProps, "a">((props, ref) => {
-  return (
-    <Link
-      color="blue.500"
-      ref={ref}
-      rel="noopener noreferrer"
-      target="_blank"
-      {...props}
-    />
-  );
-});
 
 export interface FooterProps {}
 
