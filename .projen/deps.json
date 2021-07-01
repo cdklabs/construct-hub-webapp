@@ -192,6 +192,10 @@
       "type": "runtime"
     },
     {
+      "name": "copy-to-clipboard",
+      "type": "runtime"
+    },
+    {
       "name": "date-fns",
       "type": "runtime"
     },
