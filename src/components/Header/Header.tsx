@@ -2,6 +2,7 @@ import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "../../constants/url";
+import { GettingStartedDropdown } from "../GettingStartedDropdown";
 import { HeaderSearch } from "./HeaderSearch";
 
 export const Header: FunctionComponent = () => {
@@ -22,7 +23,7 @@ export const Header: FunctionComponent = () => {
       zIndex={10}
     >
       <Flex as={Link} to="/">
-        <Heading as="h1" size="lg">
+        <Heading as="h1" color="blue.800" size="lg">
           <Box as="span" color="blue.500">
             Construct
           </Box>{" "}
@@ -34,7 +35,7 @@ export const Header: FunctionComponent = () => {
       </Box>
       <Flex alignSelf="center">
         <Box px={1}>
-          <Text>Getting Started</Text>
+          <GettingStartedDropdown />
         </Box>
         <Box px={1}>
           <Text>Browse</Text>
