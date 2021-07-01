@@ -92,9 +92,17 @@ export const CodePopover: FunctionComponent<CodePopoverProps> = ({
             />
           </Flex>
         </PopoverHeader>
-        <PopoverBody bg="white">
-          {/* TODO: Implement a code-block component */}
-          <Code data-testid={testIds.code}>{code}</Code>
+        <PopoverBody
+          as={Code}
+          bg="gray.100"
+          borderTopLeftRadius="0"
+          borderTopRightRadius="0"
+          color="gray.800"
+          data-testid={testIds.code}
+          overflow="auto"
+          variant="code-block"
+        >
+          {code}
         </PopoverBody>
       </PopoverContent>
     </Popover>

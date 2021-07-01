@@ -1,6 +1,5 @@
 import { Center } from "@chakra-ui/react";
 import type { Story } from "@storybook/react";
-import { LANGUAGE_NAME_MAP } from "../../constants/languages";
 import { CodePopover, CodePopoverProps } from "./CodePopover";
 import { CodePopoverTrigger } from "./CodePopoverTrigger";
 
@@ -20,6 +19,12 @@ export const Primary: Story<CodePopoverProps> = ({ header, code }) => (
 );
 
 Primary.args = {
-  code: "npm install @aws-cdk/core",
-  header: LANGUAGE_NAME_MAP.ts,
+  code: `
+<div class="container">
+  <h1>This is a header</h1>
+  <h2>This is a smaller header</h2>
+  <h3>This is a really, really, really long header</h3>
+</div>
+  `,
+  header: "HTML",
 };
