@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "../../constants/url";
 import { Logo } from "../../icons/Logo";
-import GettingStartedDropdown from "../GettingStartedDropdown";
+import { GettingStartedDropdown } from "../GettingStartedDropdown";
 import { HeaderSearch } from "./HeaderSearch";
 
 export const Header: FunctionComponent = () => {

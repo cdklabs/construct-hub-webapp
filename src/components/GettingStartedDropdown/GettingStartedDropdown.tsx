@@ -11,19 +11,20 @@ import {
 import { GETTING_STARTED } from "../../constants/links";
 import { ExternalLink } from "../ExternalLink";
 
-export default function GettingStartedDropdown(): JSX.Element {
+export const GettingStartedDropdown = (): JSX.Element => {
   return (
-    <Menu colorScheme="#002954">
+    <Menu colorScheme="blue.800">
       <MenuButton
         as={Button}
         bg="white"
-        color="#002954"
+        color="blue.800"
         size="md"
-        rightIcon={<ChevronDownIcon color="#002954" h={6} w={6} />}
+        variant="link"
+        rightIcon={<ChevronDownIcon color="blue.800" h={6} w={6} />}
       >
         Getting Started
       </MenuButton>
-      <MenuList color="#002954">
+      <MenuList color="blue.800">
         {GETTING_STARTED.map((item, idx) => {
           if ("links" in item) {
             return (
@@ -50,4 +51,4 @@ export default function GettingStartedDropdown(): JSX.Element {
       </MenuList>
     </Menu>
   );
-}
+};
