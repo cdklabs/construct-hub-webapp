@@ -1,12 +1,12 @@
 import { Box, Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { FunctionComponent, ReactNode, useMemo } from "react";
-import type { Metadata } from "../../api/package/metadata";
-import { DependencyDropdown } from "../../components/DependencyDropdown";
-import { Card } from "../Card";
-import { ExternalLink } from "../ExternalLink";
-import { LicenseLink, LICENSE_LINKS } from "../LicenseLink";
-import { Time } from "../Time";
+import type { Metadata } from "../../../../api/package/metadata";
+import { Card } from "../../../../components/Card";
+import { ExternalLink } from "../../../../components/ExternalLink";
+import { LicenseLink, LICENSE_LINKS } from "../../../../components/LicenseLink";
+import { Time } from "../../../../components/Time";
+import { DependencyDropdown } from "../DependencyDropdown";
 
 export interface OperatorAreaProps {
   assembly?: Assembly;

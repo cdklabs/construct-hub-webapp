@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom";
 import { PackageNav, PackageNavProps, PackageNavItem } from "./PackageNav";
 
 export default {
-  title: "Components / Package Navigation",
+  title: "Views / Package / Package Navigation",
   component: PackageNav,
   decorators: [
     (ComponentStory: any) => (

@@ -6,8 +6,8 @@ import {
   forwardRef,
 } from "@chakra-ui/react";
 import { FormEventHandler, useState } from "react";
-import { useDebounce } from "../../hooks/useDebounce";
-import { Form } from "../Form";
+import { Form } from "../../../../components/Form";
+import { useDebounce } from "../../../../hooks/useDebounce";
 
 export interface SearchInputProps {
   value: string;

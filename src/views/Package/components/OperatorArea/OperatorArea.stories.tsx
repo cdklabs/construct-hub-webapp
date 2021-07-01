@@ -2,7 +2,7 @@ import { Story } from "@storybook/react";
 import { OperatorArea, OperatorAreaProps } from "./OperatorArea";
 
 export default {
-  title: "Components / OperatorArea",
+  title: "Views / Package / OperatorArea",
   component: OperatorArea,
 };
 
