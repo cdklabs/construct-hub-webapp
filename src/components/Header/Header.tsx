@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "../../constants/url";
 import { Logo } from "../../icons/Logo";
+import { GettingStartedDropdown } from "../GettingStartedDropdown";
 import { HeaderSearch } from "./HeaderSearch";
 
 export const Header: FunctionComponent = () => {
@@ -37,9 +38,7 @@ export const Header: FunctionComponent = () => {
           </Box>
         )}
         <Flex>
-          <Box px={1}>
-            <Text>Getting Started</Text>
-          </Box>
+          <GettingStartedDropdown />
           <Box px={1}>
             <Text>Browse</Text>
           </Box>
