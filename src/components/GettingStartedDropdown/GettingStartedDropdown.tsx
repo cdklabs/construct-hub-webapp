@@ -8,11 +8,11 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import { Fragment } from "react";
+import { Fragment, FunctionComponent } from "react";
 import { GETTING_STARTED } from "../../constants/links";
 import { ExternalLink } from "../ExternalLink";
 
-export const GettingStartedDropdown = (): JSX.Element => {
+export const GettingStartedDropdown: FunctionComponent = () => {
   return (
     <Menu colorScheme="blue.800">
       <MenuButton
