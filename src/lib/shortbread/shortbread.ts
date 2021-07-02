@@ -71,10 +71,8 @@ const callIfDefined =
       throw new Error("shortbread has not been initialized");
     }
 
-    const shortbreadMethod = instance[method];
-    // TODO: figure out how to properly annotate this internal to the function.
     // Annotations are correct for consumers
-    return (shortbreadMethod as any)(...args);
+    return (instance[method] as any)(...args);
   };
 
 /**
