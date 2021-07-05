@@ -8,17 +8,21 @@ type Assemblies = { [packageName: string]: spec.Assembly };
 export const fetchMarkdown = async (
   name: string,
   version: string,
-  scope?: string
+  scope?: string,
+  language?: string,
+  _?: string
 ): Promise<string> => {
   if (version.startsWith("^")) {
     version = version.substring(1, version.length);
   }
 
-  const markdownPath = `${getAssetsPath(name, version, scope)}/docs-python.md`;
+  const markdownPath = `${getAssetsPath(name, version, scope)}/docs-${
+    language ?? "ts"
+  }.md`;
   const response = await fetch(markdownPath);
   if (!response.ok) {
     throw new Error(
-      `Failed fetching assembly for ${markdownPath}: ${response.statusText}`
+      `Failed fetching documentation for ${markdownPath}: ${response.statusText}`
     );
   }
   return response.text();

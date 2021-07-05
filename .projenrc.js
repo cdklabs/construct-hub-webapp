@@ -147,7 +147,7 @@ fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
 project.gitignore.exclude("public/data");
 
 // Proxy requests to awscdk.io for local testing
-project.package.addField("proxy", "https://d1yw87p13t4ydc.cloudfront.net");
+project.package.addField("proxy", "https://d2ha9yenu2jur.cloudfront.net");
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({

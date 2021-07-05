@@ -1,6 +1,6 @@
 import { ArrowBackIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Flex, useDisclosure, useToken } from "@chakra-ui/react";
-import type { Assembly } from "jsii-reflect";
+import type { Assembly } from "@jsii/spec";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { QUERY_PARAMS } from "../../constants/url";
@@ -43,18 +43,21 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
   );
 
   const submodules = useMemo(() => {
-    let results = assembly?.submodules ?? [];
+    let results = Object.keys(assembly?.submodules ?? {});
 
     if (filter) {
-      results = results.filter(({ name }) =>
-        name.toLowerCase().includes(filter.toLowerCase())
+      results = results.filter((fqn) =>
+        fqn.toLowerCase().includes(filter.toLowerCase())
       );
     }
 
-    return results.map(({ name }) => ({
-      name,
-      to: getUrl(name),
-    }));
+    return results.map((fqn) => {
+      const name = fqn.split(".")[1];
+      return {
+        name,
+        to: getUrl(name),
+      };
+    });
   }, [assembly?.submodules, filter, getUrl]);
 
   return (
@@ -76,7 +79,7 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
         borderRadius="none"
         color={textColor}
         data-testid="choose-submodule-search-trigger"
-        disabled={!assembly?.submodules.length}
+        disabled={!Object.keys(assembly?.submodules ?? {}).length}
         flexGrow={1}
         h={btnHeight}
         onClick={onOpen}

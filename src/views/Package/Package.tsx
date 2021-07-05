@@ -42,9 +42,15 @@ export const Package: FunctionComponent = () => {
         version={version}
       />
       {/* Readme and Api Reference Area */}
-      {markdownResponse.data && !markdownResponse.loading && (
-        <PackageDocs markdown={markdownResponse.data} />
-      )}
+      {assemblyResponse.data &&
+        !assemblyResponse.loading &&
+        markdownResponse.data &&
+        !markdownResponse.loading && (
+          <PackageDocs
+            assembly={assemblyResponse.data}
+            markdown={markdownResponse.data}
+          />
+        )}
     </Box>
   );
 };

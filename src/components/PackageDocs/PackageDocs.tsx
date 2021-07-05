@@ -1,12 +1,14 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
+import { Assembly } from "@jsii/spec";
 import { useState, useEffect, FunctionComponent } from "react";
 import { Card } from "../Card";
-// import { ChooseSubmodule } from "../ChooseSubmodule";
+import { ChooseSubmodule } from "../ChooseSubmodule";
 import { PackageNav, PackageNavItem } from "../PackageNav";
 import { Body } from "./Body";
 
 export interface PackageDocsProps {
   markdown: string;
+  assembly: Assembly;
 }
 
 export const appendItem = (
@@ -46,6 +48,7 @@ const TOP_OFFSET = "88px";
 
 export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
   markdown,
+  assembly,
 }) => {
   const source = markdown;
 
@@ -79,7 +82,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
           justify="center"
           p={0}
         >
-          {/* <ChooseSubmodule assembly={assembly} /> */}
+          <ChooseSubmodule assembly={assembly} />
         </Box>
         <Box overflowY="auto">
           <PackageNav items={navItems} />
