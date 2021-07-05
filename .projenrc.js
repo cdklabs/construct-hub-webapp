@@ -35,6 +35,7 @@ const project = new web.ReactTypeScriptProject({
     "@emotion/styled@^11",
     "@jsii/spec",
     "case",
+    "copy-to-clipboard",
     "chakra-ui-markdown-renderer",
     "date-fns",
     "framer-motion@^4",
