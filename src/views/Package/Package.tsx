@@ -5,6 +5,9 @@ import { fetchMarkdown, fetchAssembly } from "../../api/package/assemblies";
 import { fetchMetadata } from "../../api/package/metadata";
 import { PackageDetails } from "../../components/PackageDetails";
 import { PackageDocs } from "../../components/PackageDocs";
+import { QUERY_PARAMS } from "../../constants/url";
+import { useLanguage } from "../../hooks/useLanguage";
+import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
 
 interface PathParams {
@@ -19,12 +22,16 @@ export const Package: FunctionComponent = () => {
   const [requestAssembly, assemblyResponse] = useRequest(fetchAssembly);
   const [requestMetadata, metadataResponse] = useRequest(fetchMetadata);
 
+  const q = useQueryParams();
+  const [language] = useLanguage();
+  const submodule = q.get(QUERY_PARAMS.SUBMODULE) ?? "";
+
   useEffect(() => {
     void requestMetadata(name, version, scope);
-    void requestMarkdown(name, version, scope);
+    void requestMarkdown(name, version, scope, language, submodule);
     void requestAssembly(name, version, scope);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name, scope, version]);
+  }, [name, scope, version, language]);
 
   return (
     <Box w="100%">

@@ -1,8 +1,11 @@
-import * as consts from "../../constants/paths";
+import { API_PATHS } from "../../constants/url";
 import { getAssetsPath } from "./util";
 
 export interface Metadata {
   date: string;
+  links?: {
+    npm: string;
+  };
 }
 
 export const fetchMetadata = async (
@@ -17,7 +20,7 @@ export const fetchMetadata = async (
   }
 
   const metadataPath = `${getAssetsPath(name, version, scope)}${
-    consts.METADATA_SUFFIX
+    API_PATHS.METADATA_SUFFIX
   }`;
   const response = await fetch(metadataPath);
 

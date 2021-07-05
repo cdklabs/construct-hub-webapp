@@ -9,7 +9,7 @@ export interface ShowingDetailsProps {
 }
 
 const Em: FunctionComponent = ({ children }) => (
-  <Text as="em" fontWeight="bold">
+  <Text as="em" color="blue.500" fontWeight="bold">
     {children}
   </Text>
 );

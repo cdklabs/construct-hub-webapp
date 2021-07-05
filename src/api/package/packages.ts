@@ -1,4 +1,5 @@
-import * as consts from "../../constants/paths";
+import { Language } from "../../constants/languages";
+import { API_PATHS } from "../../constants/url";
 import { Metadata } from "./metadata";
 
 export interface Author {
@@ -9,6 +10,7 @@ export interface Author {
 export interface Packages {
   packages: {
     name: string;
+    languages: Partial<Record<Language, Record<string, unknown>>>;
     version: string;
     description: string;
     author: Author;
@@ -18,7 +20,7 @@ export interface Packages {
 }
 
 export const fetchPackages = async (): Promise<Packages> => {
-  const response = await fetch(consts.CATALOG_SUFFIX);
+  const response = await fetch(API_PATHS.CATALOG_SUFFIX);
 
   if (!response.ok) {
     console.error(response.statusText);
