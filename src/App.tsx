@@ -1,6 +1,7 @@
-import { Flex } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Switch, Route } from "react-router-dom";
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ROUTES } from "./constants/url";
 import { NotFound } from "./views/NotFound";
@@ -9,10 +10,11 @@ import { SearchResults } from "./views/SearchResults";
 
 export const App: FunctionComponent = () => {
   return (
-    <Flex
+    <Grid
       as="main"
       bg="gray.50"
-      direction="column"
+      gridTemplateColumns="1fr"
+      gridTemplateRows="auto 1fr auto"
       inset={0}
       overflow="auto"
       position="fixed"
@@ -29,6 +31,7 @@ export const App: FunctionComponent = () => {
           <NotFound />
         </Route>
       </Switch>
-    </Flex>
+      <Footer />
+    </Grid>
   );
 };
