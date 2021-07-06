@@ -1,11 +1,11 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, Flex, IconButton, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, Link, IconButton, useDisclosure } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { NavLink } from "../NavLink";
 
 export interface NavItemConfig {
-  items?: NavItemConfig[];
+  children?: NavItemConfig[];
   display: string;
   url: string;
 }
@@ -29,17 +29,20 @@ const iconProps = {
 };
 
 export const NavItem: FunctionComponent<NavItemProps> = ({
-  items,
+  children,
   display,
   url,
   onOpen,
 }) => {
   const { pathname, hash } = useLocation();
-  const linkIsActive = url.startsWith("#") ? hash === url : pathname === url;
+  const isHashUrl = url.startsWith("#");
+  const linkIsActive = isHashUrl ? hash === url : pathname === url;
   const disclosure = useDisclosure({ onOpen });
 
-  const showToggle = items?.length ?? 0 > 0;
+  const showToggle = (children?.length ?? 0) > 0;
   const showChildren = disclosure.isOpen && showToggle;
+
+  const LinkComponent = isHashUrl ? Link : NavLink;
 
   useEffect(() => {
     if (linkIsActive) {
@@ -69,12 +72,20 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
             w={2}
           />
         )}
-        <NavLink pl={!showToggle ? 2 : 0} to={url}>
+        <LinkComponent
+          href={url}
+          overflow="hidden"
+          pl={!showToggle ? 2 : 0}
+          textOverflow="ellipsis"
+          title={display}
+          to={url}
+          whiteSpace="nowrap"
+        >
           {display}
-        </NavLink>
+        </LinkComponent>
       </Flex>
       <Box display={showChildren ? "initial" : "none"} pl={6}>
-        {items?.map((item, idx) => {
+        {children?.map((item, idx) => {
           return <NavItem {...item} key={idx} onOpen={disclosure.onOpen} />;
         })}
       </Box>
@@ -84,7 +95,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
 
 export const NavTree: FunctionComponent<NavTreeProps> = ({ items }) => {
   return (
-    <Flex direction="column">
+    <Flex direction="column" maxWidth="100%" overflowX="hidden">
       {items.map((item, idx) => {
         return <NavItem {...item} key={idx} />;
       })}

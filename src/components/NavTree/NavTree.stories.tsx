@@ -18,11 +18,11 @@ Primary.args = {
     {
       display: "README",
       url: "#readme",
-      items: [
+      children: [
         {
           display: "Header",
           url: "#header",
-          items: [
+          children: [
             {
               display: "Subheader",
               url: "#subheader",
@@ -32,7 +32,7 @@ Primary.args = {
         {
           display: "Contents",
           url: "#contents",
-          items: [
+          children: [
             {
               display: "Item 1",
               url: "#contents-item-1",
@@ -44,7 +44,7 @@ Primary.args = {
             {
               display: "Item 3",
               url: "#contents-item-3",
-              items: [
+              children: [
                 {
                   display: "Child 1",
                   url: "#contents-item-3-child-1",
@@ -62,7 +62,7 @@ Primary.args = {
     {
       display: "Api Reference",
       url: "#api-reference",
-      items: [
+      children: [
         {
           display: "Header",
           url: "#api-reference-header",
