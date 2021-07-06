@@ -52,7 +52,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   }, [linkIsActive]);
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" pl={2}>
       <Flex align="center" color={linkIsActive ? "blue.500" : "gray.800"}>
         {showToggle && (
           <IconButton
@@ -66,6 +66,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
                 <ChevronRightIcon {...iconProps} />
               )
             }
+            ml={-2}
             onClick={disclosure.onToggle}
             size="xs"
             variant="link"
@@ -75,7 +76,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
         <LinkComponent
           href={url}
           overflow="hidden"
-          pl={!showToggle ? 2 : 0}
+          pl={!showToggle ? 4 : 0}
           textOverflow="ellipsis"
           title={display}
           to={url}
@@ -84,7 +85,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
           {display}
         </LinkComponent>
       </Flex>
-      <Box display={showChildren ? "initial" : "none"} pl={6}>
+      <Box display={showChildren ? "initial" : "none"}>
         {children?.map((item, idx) => {
           return <NavItem {...item} key={idx} onOpen={disclosure.onOpen} />;
         })}
@@ -97,7 +98,7 @@ export const NavTree: FunctionComponent<NavTreeProps> = ({ items }) => {
   return (
     <Flex direction="column" maxWidth="100%" overflowX="hidden">
       {items.map((item, idx) => {
-        return <NavItem {...item} key={idx} />;
+        return <NavItem {...item} key={idx} onOpen={undefined} />;
       })}
     </Flex>
   );
