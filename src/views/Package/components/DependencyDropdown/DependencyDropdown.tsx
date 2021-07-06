@@ -1,7 +1,7 @@
 import { ChevronDownIcon, LinkIcon } from "@chakra-ui/icons";
 import { Menu, MenuButton, Button, MenuItem, MenuList } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { NavLink } from "../NavLink";
+import { NavLink } from "../../../../components/NavLink";
 
 export interface DependencyDropdownProps {
   dependencies: {

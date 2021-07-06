@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Card } from "../Card";
+import { Card } from "../../../../components/Card";
 
 export interface PackageHeaderProps {
   title: string;

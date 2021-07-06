@@ -1,11 +1,11 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { useState, useEffect, useMemo, FunctionComponent } from "react";
-import { Documentation } from "../../api/docgen/view/documentation";
-import { useQueryParams } from "../../hooks/useQueryParams";
-import { Card } from "../Card";
+import { Documentation } from "../../../../api/docgen/view/documentation";
+import { Card } from "../../../../components/Card";
+import { NavTree, NavItemConfig } from "../../../../components/NavTree";
+import { useQueryParams } from "../../../../hooks/useQueryParams";
 import { ChooseSubmodule } from "../ChooseSubmodule";
-import { NavTree, NavItemConfig } from "../NavTree";
 import { Body } from "./Body";
 
 export interface PackageDocsProps {
@@ -90,7 +90,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
   }, [source]);
 
   return (
-    <Grid columnGap={4} pb={4} px={4} templateColumns="1fr 4fr" width="100%">
+    <Grid columnGap={4} templateColumns="1fr 4fr" width="100%">
       <Card
         alignSelf="stretch"
         as={Flex}

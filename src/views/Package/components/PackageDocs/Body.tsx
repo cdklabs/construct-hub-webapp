@@ -5,7 +5,7 @@ import { Children, FunctionComponent, ReactNode, useMemo } from "react";
 import ReactDOMServer from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import { sanitize } from "../../util/sanitize-anchor";
+import { sanitize } from "../../../../util/sanitize-anchor";
 
 type HeadingResolverProps = {
   level: number;

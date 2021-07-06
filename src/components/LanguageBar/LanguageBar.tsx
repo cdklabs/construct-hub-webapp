@@ -1,4 +1,4 @@
-import { Flex, Text, Icon, PropsOf } from "@chakra-ui/react";
+import { Flex, Grid, Icon, PropsOf } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import {
   Language,
@@ -55,53 +55,57 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
   setSelectedLanguage,
   showDisabled = false,
 }) => {
+  const displayable = showDisabled ? LANGUAGES : targetLanguages;
   return (
-    <Flex data-testid="language-bar">
-      {(showDisabled ? LANGUAGES : targetLanguages).map(
-        (language: Language) => {
-          const isDisabled = !targetLanguages.includes(language);
-          const isSelected = language === selectedLanguage;
+    <Grid
+      data-testid="language-bar"
+      gap="2"
+      gridTemplateColumns={`repeat(${displayable.length}, 1fr)`}
+      gridTemplateRows="1fr"
+    >
+      {displayable.map((language: Language) => {
+        const isDisabled = !targetLanguages.includes(language);
+        const isSelected = language === selectedLanguage;
 
-          const { name, icon: LangIcon } = LANGUAGE_MAP[language];
+        const { icon: LangIcon } = LANGUAGE_MAP[language];
 
-          const onClick = () => {
-            if (isSelected) return;
-            setSelectedLanguage(language);
-          };
+        const onClick = () => {
+          if (isSelected) return;
+          setSelectedLanguage(language);
+        };
 
-          return (
-            <Flex
-              align="center"
-              as="button"
-              borderBottom={isSelected && !isDisabled ? "2px solid" : "none"}
-              borderColor="blue.500"
-              cursor={isDisabled ? "not-allowed" : "pointer"}
-              data-disabled={isDisabled}
-              data-selected={isSelected}
-              data-testid={`language-${language}`}
-              direction="column"
-              disabled={isDisabled}
-              filter={isDisabled ? "grayscale(100%)" : "none"}
-              justify="center"
-              key={language}
-              onClick={onClick}
-              px={4}
-              py={2}
-              sx={{
-                ":hover:not(:disabled)": {
-                  bg: "gray.100",
-                },
-              }}
-              type="button"
-            >
-              <LangIcon height="2rem" width="2rem" />
-              <Text fontSize="sm" mt={2}>
-                {name}
-              </Text>
-            </Flex>
-          );
-        }
-      )}
-    </Flex>
+        return (
+          <Flex
+            align="center"
+            as="button"
+            bg="white"
+            border={isSelected ? "1px solid" : "none"}
+            borderColor="blue.500"
+            borderRadius="md"
+            boxShadow="base"
+            cursor={isDisabled ? "not-allowed" : "pointer"}
+            data-disabled={isDisabled}
+            data-selected={isSelected}
+            data-testid={`language-${language}`}
+            direction="column"
+            disabled={isDisabled}
+            filter={isDisabled ? "grayscale(100%)" : "none"}
+            justify="center"
+            key={language}
+            onClick={onClick}
+            opacity={isDisabled ? "0.5" : 1}
+            p={2}
+            sx={{
+              ":hover:not(:disabled)": {
+                bg: "gray.100",
+              },
+            }}
+            type="button"
+          >
+            <LangIcon borderRadius="50%" height="2rem" width="2rem" />
+          </Flex>
+        );
+      })}
+    </Grid>
   );
 };

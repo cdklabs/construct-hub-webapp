@@ -2,7 +2,7 @@ import { Story } from "@storybook/react";
 import { PackageHeader, PackageHeaderProps } from "./PackageHeader";
 
 export default {
-  title: "Components / Package Header",
+  title: "Views / Package / Package Header",
   component: PackageHeader,
 };
 
