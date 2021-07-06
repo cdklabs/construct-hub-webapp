@@ -3,9 +3,9 @@ import type { Assembly } from "jsii-reflect";
 import { useState, useEffect, useMemo, FunctionComponent } from "react";
 import { Documentation } from "../../../../api/docgen/view/documentation";
 import { Card } from "../../../../components/Card";
+import { NavTree, NavItemConfig } from "../../../../components/NavTree";
 import { useQueryParams } from "../../../../hooks/useQueryParams";
 import { ChooseSubmodule } from "../ChooseSubmodule";
-import { PackageNav, PackageNavItem } from "../PackageNav";
 import { Body } from "./Body";
 
 export interface PackageDocsProps {
@@ -14,10 +14,9 @@ export interface PackageDocsProps {
   submodule?: string;
 }
 
-export const appendItem = (
-  itemTree: PackageNavItem[],
-  item: Element
-): PackageNavItem[] => {
+type Item = NavItemConfig & { level: number; children: Item[] };
+
+export const appendItem = (itemTree: Item[], item: Element): Item[] => {
   if (!(item instanceof HTMLElement)) {
     return itemTree;
   }
@@ -33,8 +32,8 @@ export const appendItem = (
     return [
       ...itemTree,
       {
-        title: headingTitle,
-        path: `#${headingId}`,
+        display: headingTitle,
+        url: `#${headingId}`,
         level,
         children: [],
       },
@@ -78,7 +77,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
     return s;
   }, [hasApiReference, assembly, language, submodule]);
 
-  const [navItems, setNavItems] = useState<PackageNavItem[]>([]);
+  const [navItems, setNavItems] = useState<Item[]>([]);
 
   useEffect(() => {
     const tree = [
@@ -111,7 +110,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
           <ChooseSubmodule assembly={assembly} />
         </Box>
         <Box overflowY="auto">
-          <PackageNav items={navItems} />
+          <NavTree items={navItems} />
         </Box>
       </Card>
       <Card
