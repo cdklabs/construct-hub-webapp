@@ -1,14 +1,14 @@
-import { Box, Center, Divider, Flex, Spinner } from "@chakra-ui/react";
+import { Box, Divider, Flex } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { CatalogSearch } from "../../components/CatalogSearch";
+import { Results } from "../../components/Results";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { PageControls } from "./components/PageControls";
-import { Results } from "./components/Results";
 import { ShowingDetails } from "./components/ShowingDetails";
 import { LIMIT, SearchQueryParam } from "./constants";
 
@@ -72,14 +72,6 @@ export const SearchResults: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, results, pageLimit, offset]);
 
-  if (loading) {
-    return (
-      <Center height="100%">
-        <Spinner size="xl" />
-      </Center>
-    );
-  }
-
   return (
     <Flex direction="column">
       <Box px={10} py={6}>
@@ -95,7 +87,10 @@ export const SearchResults: FunctionComponent = () => {
             offset={offset}
           />
         </Box>
-        <Results results={displayable} />
+        <Results
+          results={displayable}
+          skeleton={{ loading, noOfItems: LIMIT }}
+        />
         <Box pt={6}>
           <PageControls
             getPageUrl={getUrl}
