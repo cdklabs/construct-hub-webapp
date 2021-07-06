@@ -1,4 +1,4 @@
-import { Stack } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { createAssembly } from "../../api/package/assemblies";
@@ -31,16 +31,20 @@ export const Package: FunctionComponent = () => {
   }, [name, scope, version]);
 
   return (
-    <Stack p={4} spacing={4} w="100%">
+    <Stack pt={4} spacing={4} w="100%">
       {/* Operator Area */}
-      <PackageDetails
-        assembly={assemblyResponse}
-        metadata={metadataResponse}
-        version={version}
-      />
-      {assemblyResponse.data && (
-        <LanguageSelection assembly={assemblyResponse.data} />
-      )}
+      <Box px={4}>
+        <PackageDetails
+          assembly={assemblyResponse}
+          metadata={metadataResponse}
+          version={version}
+        />
+      </Box>
+      <Box px={4}>
+        {assemblyResponse.data && (
+          <LanguageSelection assembly={assemblyResponse.data} />
+        )}
+      </Box>
       {/* Readme and Api Reference Area */}
       {assemblyResponse.data && !assemblyResponse.loading && (
         <PackageDocs

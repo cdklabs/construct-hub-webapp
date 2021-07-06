@@ -2,7 +2,6 @@ import { Box, Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { FunctionComponent, ReactNode, useMemo } from "react";
 import type { Metadata } from "../../../../api/package/metadata";
-import { Card } from "../../../../components/Card";
 import { ExternalLink } from "../../../../components/ExternalLink";
 import { LicenseLink, LICENSE_LINKS } from "../../../../components/LicenseLink";
 import { Time } from "../../../../components/Time";
@@ -77,13 +76,13 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
   }, [metadata, assembly]);
 
   return (
-    <Card as={Flex} direction="column">
+    <Flex direction="column">
       {details.length && <UnorderedList ml={0}>{details}</UnorderedList>}
       {assembly?.spec?.dependencies && (
         <Box mt={4}>
           <DependencyDropdown dependencies={assembly.spec.dependencies} />
         </Box>
       )}
-    </Card>
+    </Flex>
   );
 };

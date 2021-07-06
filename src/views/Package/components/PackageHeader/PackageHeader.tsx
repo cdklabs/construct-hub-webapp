@@ -1,6 +1,5 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Card } from "../../../../components/Card";
 
 export interface PackageHeaderProps {
   title: string;
@@ -14,7 +13,7 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
   title,
 }) => {
   return (
-    <Card as={Flex} direction="column" p={2}>
+    <Flex direction="column" p={2}>
       <Box mb={5}>
         <Heading>{title}</Heading>
       </Box>
@@ -39,6 +38,6 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
           ))}
         </Flex>
       )}
-    </Card>
+    </Flex>
   );
 };
