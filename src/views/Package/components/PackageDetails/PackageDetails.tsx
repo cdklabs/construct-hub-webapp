@@ -1,9 +1,8 @@
 import { Center, Grid, Spinner } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { FunctionComponent } from "react";
-import type { Metadata } from "../../api/package/metadata";
-import type { UseRequestResponse } from "../../hooks/useRequest";
-import { LanguageSelection } from "../LanguageSelection";
+import type { Metadata } from "../../../../api/package/metadata";
+import type { UseRequestResponse } from "../../../../hooks/useRequest";
 import { OperatorArea } from "../OperatorArea";
 import { PackageHeader } from "../PackageHeader";
 
@@ -33,7 +32,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
   }
 
   return (
-    <Grid p={4} rowGap={4} templateColumns="1fr" templateRows="auto">
+    <Grid rowGap={4} templateColumns="1fr" templateRows="auto">
       <Grid columnGap={4} templateColumns="3fr 2fr">
         <PackageHeader
           description={assembly.data.spec.description}
@@ -42,7 +41,6 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
         />
         <OperatorArea assembly={assembly.data} metadata={metadata.data} />
       </Grid>
-      <LanguageSelection assembly={assembly.data} />
     </Grid>
   );
 };

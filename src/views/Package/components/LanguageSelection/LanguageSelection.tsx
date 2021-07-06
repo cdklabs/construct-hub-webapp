@@ -1,19 +1,17 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import type { FunctionComponent } from "react";
+import { LanguageBar } from "../../../../components/LanguageBar";
 import {
   Language,
   Languages,
-  LANGUAGES,
   TEMP_SUPPORTED_LANGUAGES,
-} from "../../constants/languages";
-import { useLanguage } from "../../hooks/useLanguage";
-import { Card } from "../Card";
-import { LanguageBar } from "../LanguageBar";
-import { DisabledLangPopover } from "./DisabledLangPopover";
+} from "../../../../constants/languages";
+import { useLanguage } from "../../../../hooks/useLanguage";
+import { UseConstruct } from "../UseConstruct";
 
 export interface LanguageSelectionProps {
-  assembly?: Assembly;
+  assembly: Assembly;
 }
 
 export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
@@ -31,19 +29,8 @@ export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
   ] as Language[];
 
   return (
-    <Card align="center" as={Flex} justify="space-between" px={4} py={0}>
+    <Flex align="center" justify="space-between">
       <Flex direction="column">
-        <Flex align="center" m={2}>
-          <Text
-            color="gray.500"
-            fontWeight="semibold"
-            mr={2}
-            textTransform="uppercase"
-          >
-            Client Libraries
-          </Text>
-          {targets.length < LANGUAGES.length ? <DisabledLangPopover /> : null}
-        </Flex>
         <LanguageBar
           selectedLanguage={targets.includes(language) ? language : targets[0]}
           setSelectedLanguage={setLanguage}
@@ -53,9 +40,7 @@ export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
           )}
         />
       </Flex>
-      <Button colorScheme="blue" disabled size="lg">
-        Use Construct
-      </Button>
-    </Card>
+      <UseConstruct packageName={assembly.name} />
+    </Flex>
   );
 };

@@ -1,14 +1,15 @@
-import { Box } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { createAssembly } from "../../api/package/assemblies";
 import { fetchMetadata } from "../../api/package/metadata";
-import { PackageDetails } from "../../components/PackageDetails";
-import { PackageDocs } from "../../components/PackageDocs";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
+import { LanguageSelection } from "./components/LanguageSelection";
+import { PackageDetails } from "./components/PackageDetails";
+import { PackageDocs } from "./components/PackageDocs";
 
 interface PathParams {
   name: string;
@@ -30,13 +31,16 @@ export const Package: FunctionComponent = () => {
   }, [name, scope, version]);
 
   return (
-    <Box w="100%">
+    <Stack p={4} spacing={4} w="100%">
       {/* Operator Area */}
       <PackageDetails
         assembly={assemblyResponse}
         metadata={metadataResponse}
         version={version}
       />
+      {assemblyResponse.data && (
+        <LanguageSelection assembly={assemblyResponse.data} />
+      )}
       {/* Readme and Api Reference Area */}
       {assemblyResponse.data && !assemblyResponse.loading && (
         <PackageDocs
@@ -45,6 +49,6 @@ export const Package: FunctionComponent = () => {
           submodule={q.get(QUERY_PARAMS.SUBMODULE) ?? ""}
         />
       )}
-    </Box>
+    </Stack>
   );
 };
