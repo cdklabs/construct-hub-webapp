@@ -22,4 +22,8 @@ export class StaticFunctions {
     }
     return md;
   }
+
+  public renderToJson() {
+    return this.staticFunctions.map((func) => func.renderToJson());
+  }
 }

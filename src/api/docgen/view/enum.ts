@@ -26,4 +26,13 @@ export class Enum {
 
     return md;
   }
+
+  public renderToJson() {
+    const transpiled = this.transpile.enum(this.enu);
+    return {
+      name: transpiled.name,
+      docs: this.enu.docs.toString(),
+      members: this.members.map((member) => member.renderToJson()),
+    };
+  }
 }

@@ -1,4 +1,5 @@
 import * as reflect from "jsii-reflect";
+import { PackagePageContent } from "../api-reference";
 import { Markdown } from "../render/markdown";
 import { PythonTranspile } from "../transpile/python";
 import { Transpile } from "../transpile/transpile";
@@ -98,6 +99,25 @@ export class Documentation {
     }
 
     return documentation;
+  }
+
+  public renderToJson(): PackagePageContent {
+    const readme = this.includeReadme
+      ? new Readme(this.transpile, this.assembly, this.submodule)
+          .render()
+          .render()
+      : undefined;
+    const apiReference = new ApiReference(
+      this.transpile,
+      this.assembly,
+      this.submodule
+    );
+
+    return {
+      readme,
+      apiReference: apiReference.renderToJson(),
+      navItems: [],
+    };
   }
 
   /**

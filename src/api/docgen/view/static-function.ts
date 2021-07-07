@@ -39,4 +39,21 @@ export class StaticFunction {
 
     return md;
   }
+
+  public renderToJson() {
+    const md = new Markdown();
+    md.code(
+      this.transpile.language,
+      `${this.transpiled.import}`,
+      "",
+      `${this.transpiled.invocation}`
+    );
+
+    return {
+      id: `${this.transpiled.parentType.fqn}.Initializer`,
+      name: this.transpiled.name,
+      snippet: md.render(),
+      parameters: this.parameters.map((parameter) => parameter.renderToJson()),
+    };
+  }
 }

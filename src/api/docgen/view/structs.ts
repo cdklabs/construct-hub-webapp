@@ -23,4 +23,8 @@ export class Structs {
     }
     return md;
   }
+
+  public renderToJson() {
+    return this.structs.map((struct) => struct.renderToJson());
+  }
 }

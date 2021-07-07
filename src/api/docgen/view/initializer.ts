@@ -37,4 +37,20 @@ export class Initializer {
 
     return md;
   }
+
+  public renderToJson() {
+    const md = new Markdown();
+    md.code(
+      this.transpile.language,
+      `${this.transpiled.import}`,
+      "",
+      `${this.transpiled.invocation}`
+    );
+
+    return {
+      id: `${this.transpiled.parentType.fqn}.Initializer`,
+      snippet: md.render(),
+      parameters: this.parameters.map((parameter) => parameter.renderToJson()),
+    };
+  }
 }

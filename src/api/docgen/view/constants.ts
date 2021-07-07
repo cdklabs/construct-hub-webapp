@@ -22,4 +22,8 @@ export class Constants {
     }
     return md;
   }
+
+  public renderToJson() {
+    return this.constants.map((constant) => constant.renderToJson());
+  }
 }

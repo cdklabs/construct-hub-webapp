@@ -33,4 +33,14 @@ export class EnumMember {
 
     return md;
   }
+
+  public renderToJson() {
+    return {
+      id: this.transpiled.fqn,
+      name: this.transpiled.name,
+      deprecated: this.em.docs.deprecated,
+      deprecationReason: this.em.docs.deprecationReason,
+      docs: this.em.docs.toString(),
+    };
+  }
 }

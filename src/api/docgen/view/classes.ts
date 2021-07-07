@@ -22,4 +22,8 @@ export class Classes {
     }
     return md;
   }
+
+  public renderToJson() {
+    return this.classes.map((klass) => klass.renderToJson());
+  }
 }

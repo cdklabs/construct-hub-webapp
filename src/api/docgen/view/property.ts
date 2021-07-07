@@ -61,4 +61,17 @@ export class Property {
 
     return md;
   }
+
+  public renderToJson() {
+    return {
+      id: `${this.transpiled.parentType.fqn}.${this.transpiled.name}`,
+      name: this.transpiled.name,
+      optional: this.property.const ? false : this.property.optional,
+      deprecated: this.property.docs.deprecated,
+      deprecationReason: this.property.docs.deprecationReason,
+      docs: this.property.docs.toString(),
+      default: this.property.spec.docs?.default,
+      type: this.transpiled.typeReference.toJson(),
+    };
+  }
 }

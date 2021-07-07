@@ -20,4 +20,8 @@ export class Enums {
     }
     return md;
   }
+
+  public renderToJson() {
+    return this.enums.map((e) => e.renderToJson());
+  }
 }

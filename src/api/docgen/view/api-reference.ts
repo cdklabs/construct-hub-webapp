@@ -1,4 +1,5 @@
 import * as reflect from "jsii-reflect";
+import { ApiReferenceJson } from "../api-reference";
 import { Markdown } from "../render/markdown";
 import { Transpile } from "../transpile/transpile";
 import { Classes } from "./classes";
@@ -47,6 +48,16 @@ export class ApiReference {
     md.section(this.interfaces.render());
     md.section(this.enums.render());
     return md;
+  }
+
+  public renderToJson(): ApiReferenceJson {
+    return {
+      constructs: this.constructs.renderToJson(),
+      classes: this.classes.renderToJson(),
+      structs: this.structs.renderToJson(),
+      interfaces: this.interfaces.renderToJson(),
+      enums: this.enums.renderToJson(),
+    };
   }
 
   private sortByName<Type extends reflect.Type>(arr: readonly Type[]): Type[] {

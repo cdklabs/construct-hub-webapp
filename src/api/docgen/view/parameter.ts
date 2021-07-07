@@ -57,4 +57,17 @@ export class Parameter {
 
     return md;
   }
+
+  public renderToJson() {
+    return {
+      id: `${this.transpiled.parentType.fqn}.${this.transpiled.name}`,
+      name: this.transpiled.name,
+      optional: this.parameter.optional,
+      deprecated: this.parameter.docs.deprecated,
+      deprecationReason: this.parameter.docs.deprecationReason,
+      docs: this.parameter.docs.toString(),
+      default: this.parameter.spec.docs?.default,
+      type: this.transpiled.typeReference.toJson(),
+    };
+  }
 }

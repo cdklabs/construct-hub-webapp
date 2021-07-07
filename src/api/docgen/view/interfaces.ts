@@ -24,4 +24,8 @@ export class Interfaces {
 
     return md;
   }
+
+  public renderToJson() {
+    return this.interfaces.map((iface) => iface.renderToJson());
+  }
 }

@@ -22,4 +22,8 @@ export class InstanceMethods {
     }
     return md;
   }
+
+  public renderToJson() {
+    return this.instanceMethods.map((method) => method.renderToJson());
+  }
 }

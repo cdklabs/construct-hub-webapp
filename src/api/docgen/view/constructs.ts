@@ -23,4 +23,8 @@ export class Constructs {
     }
     return md;
   }
+
+  public renderToJson() {
+    return this.constructs.map((construct) => construct.renderToJson());
+  }
 }

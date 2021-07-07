@@ -11,4 +11,8 @@ export class Constant {
   public render(): Markdown {
     return this.constant.render();
   }
+
+  public renderToJson() {
+    return this.constant.renderToJson();
+  }
 }

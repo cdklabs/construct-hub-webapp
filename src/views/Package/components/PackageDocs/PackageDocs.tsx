@@ -1,11 +1,11 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
-import { useState, useEffect, useMemo, FunctionComponent } from "react";
+import { useMemo, FunctionComponent } from "react";
 import { Documentation } from "../../../../api/docgen/view/documentation";
 import { NavTree, NavItemConfig } from "../../../../components/NavTree";
 import { useQueryParams } from "../../../../hooks/useQueryParams";
+import { ApiReference } from "../ApiReference";
 import { ChooseSubmodule } from "../ChooseSubmodule";
-import { Body } from "./Body";
 
 export interface PackageDocsProps {
   assembly: Assembly;
@@ -57,7 +57,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
 
   const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
 
-  const source = useMemo(() => {
+  const { apiReference, navItems } = useMemo(() => {
     const timeLabel = `Timer | docgen(${assembly.name}${
       submodule ? `.${submodule}` : ""
     })`;
@@ -69,23 +69,8 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
       submoduleName: submodule,
     });
 
-    const md = doc.render();
-    const s = md.render();
-    console.timeEnd(timeLabel);
-    return s;
+    return doc.renderToJson();
   }, [hasApiReference, assembly, language, submodule]);
-
-  const [navItems, setNavItems] = useState<Item[]>([]);
-
-  useEffect(() => {
-    const tree = [
-      ...document.querySelectorAll(
-        `[data-heading-id][data-heading-title][data-heading-level]`
-      ),
-    ].reduce(appendItem, []);
-
-    setNavItems(tree);
-  }, [source]);
 
   return (
     <Grid
@@ -135,7 +120,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
           },
         }}
       >
-        <Body>{source}</Body>
+        <ApiReference {...apiReference} />
       </Box>
     </Grid>
   );

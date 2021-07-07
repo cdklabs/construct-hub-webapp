@@ -22,4 +22,8 @@ export class Properties {
     }
     return md;
   }
+
+  public renderToJson() {
+    return this.properties.map((property) => property.renderToJson());
+  }
 }

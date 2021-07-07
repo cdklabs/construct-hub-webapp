@@ -11,4 +11,8 @@ export class Construct {
   public render(): Markdown {
     return this.construct.render();
   }
+
+  public renderToJson() {
+    return this.construct.renderToJson();
+  }
 }

@@ -45,4 +45,22 @@ export class Struct {
     md.section(initializer);
     return md;
   }
+
+  public renderToJson() {
+    const initializer = new Markdown();
+    initializer.code(
+      this.transpile.language,
+      `${this.transpiled.import}`,
+      "",
+      `${this.transpiled.initialization}`
+    );
+
+    return {
+      id: this.transpiled.type.fqn,
+      name: this.transpiled.name,
+      docs: this.iface.docs.toString(),
+      initializer: initializer.render(),
+      properties: this.properties.map((property) => property.renderToJson()),
+    };
+  }
 }

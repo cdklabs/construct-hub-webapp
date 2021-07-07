@@ -71,4 +71,24 @@ export class Class {
     md.section(this.constants.render());
     return md;
   }
+
+  public renderToJson() {
+    return {
+      id: this.transpiled.type.fqn,
+      name: this.transpiled.name,
+      interfaces: this.klass.interfaces.map((iface) => {
+        const transpiled = this.transpile.type(iface);
+        return {
+          fqn: iface.fqn,
+          name: transpiled.fqn,
+        };
+      }),
+      docs: this.klass.docs.toString(),
+      initializer: this.initializer?.renderToJson(),
+      instanceMethods: this.instanceMethods.renderToJson(),
+      staticMethods: this.staticFunctions.renderToJson(),
+      properties: this.properties.renderToJson(),
+      constants: this.constants.renderToJson(),
+    };
+  }
 }

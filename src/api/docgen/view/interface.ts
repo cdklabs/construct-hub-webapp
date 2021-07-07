@@ -57,4 +57,28 @@ export class Interface {
     md.section(this.properties.render());
     return md;
   }
+
+  public renderToJson() {
+    return {
+      id: this.transpiled.type.fqn,
+      name: this.transpiled.name,
+      interfaces: this.iface.interfaces.map((iface) => {
+        const transpiled = this.transpile.type(iface);
+        return {
+          fqn: iface.fqn,
+          name: transpiled.fqn,
+        };
+      }),
+      implementations: this.iface.allImplementations.map((impl) => {
+        const transpiled = this.transpile.type(impl);
+        return {
+          fqn: impl.fqn,
+          name: transpiled.fqn,
+        };
+      }),
+      docs: this.iface.docs.toString(),
+      instanceMethods: this.instanceMethods.renderToJson(),
+      properties: this.properties.renderToJson(),
+    };
+  }
 }

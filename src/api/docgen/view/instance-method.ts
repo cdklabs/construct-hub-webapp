@@ -34,4 +34,15 @@ export class InstanceMethod {
 
     return md;
   }
+
+  public renderToJson() {
+    const md = new Markdown();
+    md.code(this.transpile.language, this.transpiled.signature);
+    return {
+      id: `${this.transpiled.parentType.fqn}.${this.transpiled.name}`,
+      name: this.transpiled.name,
+      snippet: md.render(),
+      parameters: this.parameters.map((parameter) => parameter.renderToJson()),
+    };
+  }
 }
