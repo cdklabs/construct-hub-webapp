@@ -76,7 +76,7 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
   }, [metadata, assembly]);
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" textAlign={["center", null, "initial"]}>
       {details.length && <UnorderedList ml={0}>{details}</UnorderedList>}
       {assembly?.spec?.dependencies && (
         <Box mt={4}>

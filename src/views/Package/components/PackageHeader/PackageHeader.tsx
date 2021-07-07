@@ -13,7 +13,7 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
   title,
 }) => {
   return (
-    <Flex direction="column" p={2}>
+    <Flex direction="column" p={2} textAlign={["center", null, "initial"]}>
       <Box mb={5}>
         <Heading>{title}</Heading>
       </Box>
@@ -23,7 +23,7 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
       </Box>
 
       {!!tags.length && (
-        <Flex direction="row" mt={3}>
+        <Flex direction="row" justify={["center", null, "initial"]} mt={3}>
           {tags.map((tag) => (
             <Flex
               bg="gray.100"

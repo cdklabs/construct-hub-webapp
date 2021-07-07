@@ -33,13 +33,22 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
   }
 
   return (
-    <Grid as={Card} gap={4} templateColumns="3fr 1px 2fr" templateRows="auto">
+    <Grid
+      as={Card}
+      gap={4}
+      templateColumns={["1fr", null, "3fr auto 2fr"]}
+      templateRows="auto"
+    >
       <PackageHeader
         description={assembly.data.spec.description}
         tags={assembly.data.spec.keywords ?? []}
         title={assembly.data.spec.name}
       />
-      <Divider orientation="vertical" />
+      <Divider display={["none", null, "initial"]} orientation="vertical" />
+      <Divider
+        display={["initial", "initial", "none"]}
+        orientation="horizontal"
+      />
       <OperatorArea assembly={assembly.data} metadata={metadata.data} />
     </Grid>
   );

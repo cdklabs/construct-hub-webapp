@@ -40,7 +40,7 @@ export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
           )}
         />
       </Flex>
-      <UseConstruct packageName={assembly.name} />
+      <UseConstruct packageName={assembly.name} version={assembly.version} />
     </Flex>
   );
 };

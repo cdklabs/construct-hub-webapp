@@ -31,7 +31,7 @@ export const Package: FunctionComponent = () => {
   }, [name, scope, version]);
 
   return (
-    <Stack pt={4} spacing={4} w="100%">
+    <Stack maxW="100vw" pt={4} spacing={4}>
       {/* Operator Area */}
       <Box px={4}>
         <PackageDetails
