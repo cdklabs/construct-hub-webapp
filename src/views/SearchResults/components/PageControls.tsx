@@ -23,6 +23,7 @@ export const PageControls: FunctionComponent<PageControlsProps> = ({
   return (
     <Grid
       alignItems="center"
+      pt={6}
       templateColumns="repeat(3, 1fr)"
       templateRows="1fr"
     >
