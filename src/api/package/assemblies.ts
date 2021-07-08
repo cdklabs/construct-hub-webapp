@@ -10,15 +10,17 @@ export const fetchMarkdown = async (
   version: string,
   scope?: string,
   language?: string,
-  _?: string
+  submodule?: string
 ): Promise<string> => {
   if (version.startsWith("^")) {
     version = version.substring(1, version.length);
   }
 
-  const markdownPath = `${getAssetsPath(name, version, scope)}/docs-${
+  const docsSuffix = `/docs-${submodule ? `${submodule}-` : ""}${
     language ?? "ts"
   }.md`;
+
+  const markdownPath = `${getAssetsPath(name, version, scope)}${docsSuffix}`;
   const response = await fetch(markdownPath);
   if (!response.ok) {
     throw new Error(
