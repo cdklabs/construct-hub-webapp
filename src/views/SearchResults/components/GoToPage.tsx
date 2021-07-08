@@ -1,11 +1,4 @@
-import {
-  Flex,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  Button,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, Input, Text } from "@chakra-ui/react";
 import {
   FormEventHandler,
   FunctionComponent,
@@ -45,26 +38,22 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
 
   return (
     <Flex align="center" as="form" mx={2} onSubmit={onSubmit}>
-      <InputGroup>
-        <InputLeftAddon>
-          <Text w="max-content">
-            {offset + 1} - {pageLimit + 1}
-          </Text>
-        </InputLeftAddon>
-        <Input
-          colorScheme="blue"
-          max={pageLimit + 1}
-          min={1}
-          name="page"
-          onChange={onInputChange}
-          type="number"
-          value={inputValue}
-          w="auto"
-        />
-      </InputGroup>
-      <Button colorScheme="blue" ml={2} type="submit">
-        Go
-      </Button>
+      <Input
+        colorScheme="blue"
+        h={10}
+        max={pageLimit + 1}
+        min={1}
+        name="page"
+        onChange={onInputChange}
+        p={0}
+        textAlign="center"
+        type="number"
+        value={inputValue}
+        w={10}
+      />
+      <Text ml={2} w="max-content">
+        of {pageLimit + 1}
+      </Text>
     </Flex>
   );
 };
