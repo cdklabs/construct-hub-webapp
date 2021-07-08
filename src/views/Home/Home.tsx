@@ -1,9 +1,19 @@
-import { Box, Stack, Heading, Image } from "@chakra-ui/react";
+import { Box, Stack, Heading } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { CatalogSearch } from "../../components/CatalogSearch";
+import { Picture } from "../../components/Picture";
 import { Results } from "../../components/Results";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
+
+const sources = {
+  optimal: [
+    { media: "(max-width:1024px)", srcSet: "assets/hive@50.webp" },
+    { media: "(min-width:1024px)", srcSet: "assets/hive@100.webp" },
+    { media: "(min-width:1024px)", srcSet: "assets/hive@100.png" },
+  ],
+  fallback: "assets/hive@50.png",
+};
 
 export const Home: FunctionComponent = () => {
   const searchAPI = useCatalogSearch();
@@ -17,12 +27,16 @@ export const Home: FunctionComponent = () => {
 
   return (
     <>
-      <Box as="picture" position="absolute" top="0" w="100%" zIndex="hide">
-        <source media="(max-width:1024px)" srcSet="hive@50.webp" />
-        <source media="(min-width:1024px" srcSet="hive@100.webp" />
-        <source media="(min-width:1024px)" srcSet="hive@100.png" />
-        <Image alt="" h="540px" src="hive@50.png" w="100%" />
-      </Box>
+      <Picture
+        alt={""}
+        h="540px"
+        position="absolute"
+        sources={sources.optimal}
+        src={sources.fallback}
+        top="0"
+        w="100%"
+        zIndex="hide"
+      />
       {/* Hero Section */}
       <Stack
         align="stretch"
