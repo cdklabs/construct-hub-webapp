@@ -9,13 +9,13 @@ export interface PictureProps extends HTMLChakraProps<"img"> {
   }[];
 }
 
-export const Picture = forwardRef<PictureProps, "picture">(
+export const Picture = forwardRef<PictureProps, "img">(
   ({ sources, ...props }, ref) => (
-    <Box as="picture" ref={ref}>
+    <Box as="picture">
       {sources?.map((source, idx) => (
         <source key={idx} media={source.media} srcSet={source.srcSet} />
       ))}
-      <Image {...props} />
+      <Image ref={ref} {...props} />
     </Box>
   )
 );
