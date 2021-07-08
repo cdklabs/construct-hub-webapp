@@ -73,7 +73,7 @@ export const SearchResults: FunctionComponent = () => {
   }, [loading, results, pageLimit, offset]);
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" maxW="100vw">
       <Box px={10} py={6}>
         <CatalogSearch {...searchAPI} />
       </Box>

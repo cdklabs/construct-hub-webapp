@@ -1,3 +1,12 @@
+import type { PropsOf, Icon } from "@chakra-ui/react";
+import type { FunctionComponent } from "react";
+import { DotNetIcon } from "../icons/DotNetIcon";
+import { GoIcon } from "../icons/GoIcon";
+import { JavaIcon } from "../icons/JavaIcon";
+import { NodeIcon } from "../icons/NodeIcon";
+import { PythonIcon } from "../icons/PythonIcon";
+import { TSIcon } from "../icons/TSIcon";
+
 export type Language = "dotnet" | "js" | "ts" | "python" | "golang" | "java";
 
 export enum Languages {
@@ -31,3 +40,33 @@ export const TEMP_SUPPORTED_LANGUAGES: Language[] = [
   Languages.Python,
   Languages.TypeScript,
 ];
+
+export const LANGUAGE_RENDER_MAP: Record<
+  Language,
+  { name: string; icon: FunctionComponent<PropsOf<typeof Icon>> }
+> = {
+  ts: {
+    name: LANGUAGE_NAME_MAP.ts,
+    icon: TSIcon,
+  },
+  python: {
+    name: LANGUAGE_NAME_MAP.python,
+    icon: PythonIcon,
+  },
+  java: {
+    name: LANGUAGE_NAME_MAP.java,
+    icon: JavaIcon,
+  },
+  js: {
+    name: LANGUAGE_NAME_MAP.js,
+    icon: NodeIcon,
+  },
+  golang: {
+    name: LANGUAGE_NAME_MAP.golang,
+    icon: GoIcon,
+  },
+  dotnet: {
+    name: LANGUAGE_NAME_MAP.dotnet,
+    icon: DotNetIcon,
+  },
+};

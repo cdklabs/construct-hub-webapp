@@ -73,6 +73,7 @@ export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
       >
         <Input
           bg="white"
+          borderColor="blue.100"
           boxShadow="base"
           data-testid={testIds.input}
           name="query"
