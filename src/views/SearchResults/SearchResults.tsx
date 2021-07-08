@@ -91,14 +91,12 @@ export const SearchResults: FunctionComponent = () => {
           results={displayable}
           skeleton={{ loading, noOfItems: LIMIT }}
         />
-        <Box pt={6}>
-          <PageControls
-            getPageUrl={getUrl}
-            limit={LIMIT}
-            offset={offset}
-            pageLimit={pageLimit}
-          />
-        </Box>
+        <PageControls
+          getPageUrl={getUrl}
+          limit={LIMIT}
+          offset={offset}
+          pageLimit={pageLimit}
+        />
       </Box>
     </Flex>
   );
