@@ -102,7 +102,11 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
             }}
             type="button"
           >
-            <LangIcon borderRadius="50%" height="2rem" width="2rem" />
+            <LangIcon
+              aria-label={`${language}-icon`}
+              height="2rem"
+              width="2rem"
+            />
           </Flex>
         );
       })}

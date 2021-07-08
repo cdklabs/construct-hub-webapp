@@ -15,14 +15,16 @@ import { useLanguage } from "../../../../hooks/useLanguage";
 const getCodeSample = ({
   language,
   packageName,
+  version,
 }: {
   language: Language;
   packageName: string;
+  version: string;
 }) => {
   if (language === Languages.TypeScript) {
-    return `npm install ${packageName}`;
+    return `npm install ${packageName}@${version}`;
   } else if (language === Languages.Python) {
-    return `pip install ${packageName}`;
+    return `pip install ${packageName}==${version}`;
   }
 
   return "";
@@ -30,14 +32,16 @@ const getCodeSample = ({
 
 export interface UseConstructProps {
   packageName: string;
+  version: string;
 }
 
 export const UseConstruct: FunctionComponent<UseConstructProps> = ({
   packageName,
+  version,
 }) => {
   const [language] = useLanguage();
 
-  const code = getCodeSample({ language, packageName });
+  const code = getCodeSample({ language, packageName, version });
   const header = LANGUAGE_NAME_MAP[language];
 
   const trigger = (

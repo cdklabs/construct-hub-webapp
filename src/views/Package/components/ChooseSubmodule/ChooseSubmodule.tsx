@@ -67,6 +67,7 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
           data-testid="choose-submodule-go-back"
           h={btnHeight}
           onClick={onGoBack}
+          title="Back to construct root"
           variant="ghost"
         >
           <ArrowBackIcon aria-label="Back to construct root" />
@@ -81,6 +82,7 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
         h={btnHeight}
         onClick={onOpen}
         rightIcon={<ChevronDownIcon />}
+        title="Choose Submodule"
         variant="ghost"
       >
         {submoduleText}

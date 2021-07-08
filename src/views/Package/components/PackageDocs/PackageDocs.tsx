@@ -2,7 +2,6 @@ import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { useState, useEffect, useMemo, FunctionComponent } from "react";
 import { Documentation } from "../../../../api/docgen/view/documentation";
-import { Card } from "../../../../components/Card";
 import { NavTree, NavItemConfig } from "../../../../components/NavTree";
 import { useQueryParams } from "../../../../hooks/useQueryParams";
 import { ChooseSubmodule } from "../ChooseSubmodule";
@@ -44,9 +43,8 @@ export const appendItem = (itemTree: Item[], item: Element): Item[] => {
   }
 };
 
-// We want the nav to be sticky, but it should account for the sticky heading as well
-// The calculation here is heading height (72px) + margin-top (16px).
-const TOP_OFFSET = "88px";
+// We want the nav to be sticky, but it should account for the sticky heading as well, which is 72px
+const TOP_OFFSET = "72px";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -90,12 +88,21 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
   }, [source]);
 
   return (
-    <Grid columnGap={4} templateColumns="1fr 4fr" width="100%">
-      <Card
+    <Grid
+      bg="white"
+      borderTop="1px solid"
+      borderTopColor="gray.100"
+      columnGap={4}
+      h="100%"
+      templateColumns="1fr 3fr"
+      width="100%"
+    >
+      <Flex
         alignSelf="stretch"
-        as={Flex}
+        borderRight="1px solid"
+        borderRightColor="gray.100"
         direction="column"
-        maxHeight="calc(100vh - 104px)"
+        maxHeight={`calc(100vh - ${TOP_OFFSET})`}
         overflow="hidden auto"
         p={0}
         position="sticky"
@@ -112,8 +119,8 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         <Box overflowY="auto">
           <NavTree items={navItems} />
         </Box>
-      </Card>
-      <Card
+      </Flex>
+      <Box
         maxWidth="100%"
         overflow="hidden"
         p={4}
@@ -129,7 +136,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         }}
       >
         <Body>{source}</Body>
-      </Card>
+      </Box>
     </Grid>
   );
 };
