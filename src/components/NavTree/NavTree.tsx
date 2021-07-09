@@ -39,7 +39,6 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   const linkIsActive = isHashUrl ? hash === url : pathname === url;
   const disclosure = useDisclosure({ onOpen });
 
-  const isRoot = !onOpen;
   const showToggle = (children?.length ?? 0) > 0;
   const showChildren = disclosure.isOpen && showToggle;
 
@@ -53,12 +52,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   }, [linkIsActive]);
 
   return (
-    <Flex
-      borderLeft={isRoot ? "none" : "1px solid"}
-      borderLeftColor="gray.100"
-      direction="column"
-      pl={2}
-    >
+    <Flex direction="column" pl={2}>
       <Flex align="center" color={linkIsActive ? "blue.500" : "gray.800"}>
         {showToggle && (
           <IconButton
@@ -91,7 +85,12 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
           {display}
         </LinkComponent>
       </Flex>
-      <Box display={showChildren ? "initial" : "none"}>
+      <Box
+        borderLeft={"1px solid"}
+        borderLeftColor="gray.100"
+        display={showChildren ? "initial" : "none"}
+        ml={1}
+      >
         {children?.map((item, idx) => {
           return <NavItem {...item} key={idx} onOpen={disclosure.onOpen} />;
         })}
