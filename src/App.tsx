@@ -17,7 +17,8 @@ export const App: FunctionComponent = () => {
       gridTemplateColumns="1fr"
       gridTemplateRows="auto 1fr auto"
       inset={0}
-      overflow="auto"
+      maxW="100vw"
+      overflow="hidden auto"
       position="fixed"
     >
       <Header />

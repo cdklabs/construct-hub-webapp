@@ -18,4 +18,10 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: "primary",
+    values: [
+      { name: "primary", value: "#F7FAFC" },
+    ],
+  },
 };
