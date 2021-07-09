@@ -36,6 +36,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
       <MenuButton
         as={Button}
         bg="white"
+        borderColor="blue.100"
         boxShadow="base"
         data-testid={testIds.trigger}
         variant="outline"

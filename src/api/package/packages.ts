@@ -7,16 +7,18 @@ export interface Author {
   readonly url: string;
 }
 
+export interface CatalogPackage {
+  name: string;
+  languages: Partial<Record<Language, Record<string, unknown>>>;
+  version: string;
+  description: string;
+  author: Author;
+  keywords: string[];
+  metadata: Metadata;
+}
+
 export interface Packages {
-  packages: {
-    name: string;
-    languages: Partial<Record<Language, Record<string, unknown>>>;
-    version: string;
-    description: string;
-    author: Author;
-    keywords: string[];
-    metadata: Metadata;
-  }[];
+  packages: CatalogPackage[];
 }
 
 export const fetchPackages = async (): Promise<Packages> => {

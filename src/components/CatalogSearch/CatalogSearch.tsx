@@ -63,6 +63,7 @@ export const CatalogSearchInputs: FunctionComponent<
   <>
     <Input
       bg="white"
+      borderColor="blue.100"
       boxShadow="base"
       data-testid={testIds.input}
       name="query"
@@ -95,16 +96,18 @@ export const CatalogSearchInputs: FunctionComponent<
 
 export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
   onSubmit,
-  ...inputProps
-}) => (
-  <Form data-testid={testIds.form} onSubmit={onSubmit}>
-    <Grid
-      autoRows="1fr"
-      gap={4}
-      templateColumns={{ sm: "1fr", md: "3fr 1fr 1fr" }}
-      width="full"
-    >
-      <CatalogSearchInputs {...inputProps} />
-    </Grid>
-  </Form>
-);
+  ...props
+}) => {
+  return (
+    <Form data-testid={testIds.form} onSubmit={onSubmit}>
+      <Grid
+        autoRows="1fr"
+        gap={4}
+        templateColumns={{ sm: "1fr", md: "3fr 1fr 1fr" }}
+        width="full"
+      >
+        <CatalogSearchInputs {...props} />
+      </Grid>
+    </Form>
+  );
+};
