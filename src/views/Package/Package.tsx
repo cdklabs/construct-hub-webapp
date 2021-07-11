@@ -1,7 +1,8 @@
 import { Box, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchMarkdown, fetchAssembly } from "../../api/package/assemblies";
+import { fetchAssembly } from "../../api/package/assembly";
+import { fetchMarkdown } from "../../api/package/docs";
 import { fetchMetadata } from "../../api/package/metadata";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
@@ -29,7 +30,7 @@ export const Package: FunctionComponent = () => {
 
   useEffect(() => {
     void requestMetadata(name, version, scope);
-    void requestMarkdown(name, version, scope, language, submodule);
+    void requestMarkdown(name, version, language, scope, submodule);
     void requestAssembly(name, version, scope);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, scope, version, language]);
