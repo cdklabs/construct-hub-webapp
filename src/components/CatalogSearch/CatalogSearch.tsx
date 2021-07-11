@@ -73,6 +73,7 @@ export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
       >
         <Input
           bg="white"
+          boxShadow="base"
           data-testid={testIds.input}
           name="query"
           onChange={onQueryChange}
@@ -91,7 +92,12 @@ export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
             value: testIds.languageDropdownValue,
           }}
         />
-        <Button colorScheme="blue" data-testid={testIds.submit} type="submit">
+        <Button
+          boxShadow="base"
+          colorScheme="blue"
+          data-testid={testIds.submit}
+          type="submit"
+        >
           Search
         </Button>
       </Grid>

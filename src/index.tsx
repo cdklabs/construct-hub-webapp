@@ -4,19 +4,22 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { App } from "./App";
 import { CatalogProvider } from "./contexts/Catalog";
+import { ShortbreadProvider } from "./contexts/Shortbread";
 import { Theme } from "./contexts/Theme";
 import { register } from "./register-service-worker";
 import { reportWebVitals } from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Theme>
-        <CatalogProvider>
-          <App />
-        </CatalogProvider>
-      </Theme>
-    </Router>
+    <ShortbreadProvider>
+      <Router>
+        <Theme>
+          <CatalogProvider>
+            <App />
+          </CatalogProvider>
+        </Theme>
+      </Router>
+    </ShortbreadProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
