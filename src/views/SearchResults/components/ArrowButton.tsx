@@ -18,9 +18,13 @@ export const ArrowButton: FunctionComponent<ArrowButtonProps> = ({
   const props = {
     "aria-label": label,
     borderRadius: "md",
+    borderColor: "blue.500",
     colorScheme: "blue",
-    icon: <Icon h={4} w={4} />,
+    icon: <Icon color="blue.500" h={5} w={5} />,
     mx: 2,
+    h: 10,
+    w: 10,
+    variant: "outline",
   };
 
   if (offset !== undefined) {
