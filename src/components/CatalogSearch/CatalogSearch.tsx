@@ -10,6 +10,7 @@ import {
   LANGUAGE_NAME_MAP,
 } from "../../constants/languages";
 import { createTestIds } from "../../util/createTestIds";
+import { Form } from "../Form";
 import { Dropdown, DropdownProps } from "./Dropdown";
 
 type LanguageItems = Partial<Record<Language, string>>;
@@ -56,52 +57,57 @@ export interface CatalogSearchProps {
   onSubmit: FormEventHandler<HTMLFormElement>;
 }
 
+export const CatalogSearchInputs: FunctionComponent<
+  Omit<CatalogSearchProps, "onSubmit">
+> = ({ query, onQueryChange, language, onLanguageChange }) => (
+  <>
+    <Input
+      bg="white"
+      borderColor="blue.100"
+      boxShadow="base"
+      data-testid={testIds.input}
+      name="query"
+      onChange={onQueryChange}
+      placeholder="Search providers or modules..."
+      value={query}
+    />
+    <LanguageDropdown
+      items={languageOptions}
+      onSelect={onLanguageChange}
+      placeholder="Language..."
+      selected={language}
+      testIds={{
+        item: testIds.languageItem,
+        menu: testIds.languageDropdownMenu,
+        trigger: testIds.languageDropdown,
+        value: testIds.languageDropdownValue,
+      }}
+    />
+    <Button
+      boxShadow="base"
+      colorScheme="blue"
+      data-testid={testIds.submit}
+      type="submit"
+    >
+      Search
+    </Button>
+  </>
+);
+
 export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
-  query,
-  onQueryChange,
-  language,
-  onLanguageChange,
   onSubmit,
+  ...props
 }) => {
   return (
-    <form data-testid={testIds.form} onSubmit={onSubmit}>
+    <Form data-testid={testIds.form} onSubmit={onSubmit}>
       <Grid
         autoRows="1fr"
         gap={4}
         templateColumns={{ sm: "1fr", md: "3fr 1fr 1fr" }}
         width="full"
       >
-        <Input
-          bg="white"
-          borderColor="blue.100"
-          boxShadow="base"
-          data-testid={testIds.input}
-          name="query"
-          onChange={onQueryChange}
-          placeholder="Search providers or modules..."
-          value={query}
-        />
-        <LanguageDropdown
-          items={languageOptions}
-          onSelect={onLanguageChange}
-          placeholder="Language..."
-          selected={language}
-          testIds={{
-            item: testIds.languageItem,
-            menu: testIds.languageDropdownMenu,
-            trigger: testIds.languageDropdown,
-            value: testIds.languageDropdownValue,
-          }}
-        />
-        <Button
-          boxShadow="base"
-          colorScheme="blue"
-          data-testid={testIds.submit}
-          type="submit"
-        >
-          Search
-        </Button>
+        <CatalogSearchInputs {...props} />
       </Grid>
-    </form>
+    </Form>
   );
 };

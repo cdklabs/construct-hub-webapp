@@ -1,46 +1,65 @@
-import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
+import { Grid, GridItem, GridItemProps, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { ROUTES } from "../../constants/url";
 import { GettingStartedDropdown } from "../GettingStartedDropdown";
-import { HeaderSearch } from "./HeaderSearch";
+import { NavButton } from "./NavButton";
+import { SearchButton } from "./SearchButton";
+import { Title } from "./Title";
+
+const HeaderItem: FunctionComponent<GridItemProps> = (props) => (
+  <GridItem align="center" justify="center" rowStart={1} {...props} />
+);
 
 export const Header: FunctionComponent = () => {
-  const { pathname } = useLocation();
   return (
     <Grid
+      alignItems="center"
       as="header"
       bg="white"
       boxShadow="base"
       data-testid="header"
-      gridTemplateColumns="auto 1fr auto"
+      gap={4}
+      gridTemplateColumns={["1fr 3fr 1fr", null, "2fr 3fr 2fr", "1fr 2fr 1fr"]}
       gridTemplateRows="1fr"
+      maxW="100vw"
       position="sticky"
       px={4}
       py={4}
       top={0}
       w="100%"
-      zIndex={10}
+      zIndex="sticky"
     >
-      <Flex as={Link} to="/">
-        <Heading as="h1" color="blue.800" size="lg">
-          <Box as="span" color="blue.500">
-            Construct
-          </Box>{" "}
-          Hub
-        </Heading>
-      </Flex>
-      <Box maxWidth="50%" ml={6}>
-        {pathname.startsWith(ROUTES.PACKAGES) && <HeaderSearch />}
-      </Box>
-      <Flex alignSelf="center">
-        <Box px={1}>
+      {/* Logo / Header */}
+      <HeaderItem
+        colStart={[2, null, 1]}
+        justifySelf={["center", null, "start"]}
+      >
+        <Title />
+      </HeaderItem>
+
+      {/* Search Trigger */}
+      <HeaderItem
+        colStart={[3, null, 2]}
+        justifySelf={["end", null, "stretch"]}
+      >
+        <SearchButton />
+      </HeaderItem>
+
+      {/* Navigation */}
+      <HeaderItem colStart={[1, null, 3]} justifySelf={["start", null, "end"]}>
+        <Grid
+          alignItems="center"
+          display={["none", null, "grid"]}
+          gridTemplateColumns="1fr 1fr"
+          gridTemplateRows="1fr"
+          w="100%"
+        >
           <GettingStartedDropdown />
-        </Box>
-        <Box px={1}>
-          <Text>Browse</Text>
-        </Box>
-      </Flex>
+          <Text color="blue.800" fontWeight="semibold" ml={2}>
+            Browse
+          </Text>
+        </Grid>
+        <NavButton />
+      </HeaderItem>
     </Grid>
   );
 };
