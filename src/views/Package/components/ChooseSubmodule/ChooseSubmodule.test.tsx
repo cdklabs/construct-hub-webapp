@@ -14,8 +14,6 @@ const assembly: Assembly = {
   },
 } as any;
 
-jest.setTimeout(10 * 1000);
-
 describe("<ChooseSubmodule />", () => {
   let history: ReturnType<typeof createMemoryHistory>;
 

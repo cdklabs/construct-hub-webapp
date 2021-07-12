@@ -1,5 +1,8 @@
 import { getAssetsPath } from "./util";
 
+/**
+ * Fetch markdown docs of a specific package from the backend.
+ */
 export const fetchMarkdown = async (
   name: string,
   version: string,

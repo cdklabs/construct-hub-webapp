@@ -8,6 +8,9 @@ export interface Metadata {
   };
 }
 
+/**
+ * Fetch metadata of a specific package from the backend.
+ */
 export const fetchMetadata = async (
   name: string,
   version: string,
