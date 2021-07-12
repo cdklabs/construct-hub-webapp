@@ -45,10 +45,7 @@ export const UseConstruct: FunctionComponent<UseConstructProps> = ({
   const header = LANGUAGE_NAME_MAP[language];
 
   const trigger = (
-    <CodePopoverTrigger
-      disabled={!TEMP_SUPPORTED_LANGUAGES.includes(language)}
-      size="lg"
-    >
+    <CodePopoverTrigger disabled={!TEMP_SUPPORTED_LANGUAGES.includes(language)}>
       Use Construct
     </CodePopoverTrigger>
   );
