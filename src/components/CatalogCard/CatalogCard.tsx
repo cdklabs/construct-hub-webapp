@@ -45,15 +45,16 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
     );
   }
 
-  const publishDate = (
+  const publishDate = pkg.metadata?.date ? (
     <Time
       date={new Date(pkg.metadata.date)}
       fontSize="sm"
       format="MMMM dd, yyyy"
     />
-  );
+  ) : null;
 
-  const { author, languages } = pkg;
+  const author = pkg.author ?? {};
+  const languages = pkg.languages ?? {};
   const targets = Object.keys(languages) as Language[];
 
   return (
