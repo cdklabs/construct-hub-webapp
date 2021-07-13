@@ -1,5 +1,5 @@
 import { Center, Divider, Flex, Grid, Spinner } from "@chakra-ui/react";
-import type { Assembly } from "jsii-reflect";
+import type { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
 import type { Metadata } from "../../../../api/package/metadata";
 import { Card } from "../../../../components/Card";
@@ -41,9 +41,9 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
         templateRows="auto"
       >
         <PackageHeader
-          description={assembly.data.spec.description}
-          tags={assembly.data.spec.keywords ?? []}
-          title={assembly.data.spec.name}
+          description={assembly.data.description}
+          tags={assembly.data.keywords ?? []}
+          title={assembly.data.name}
         />
         <Divider display={["none", null, "initial"]} orientation="vertical" />
         <Divider

@@ -1,21 +1,17 @@
+import type { Assembly } from "@jsii/spec";
 import { act, cleanup, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createMemoryHistory } from "history";
-import type { Assembly } from "jsii-reflect";
 import { Router } from "react-router-dom";
 import { ChooseSubmodule } from "./ChooseSubmodule";
 
 // Necessary data shape for <ChooseSubmodule />
 const assembly: Assembly = {
-  submodules: [
-    {
-      name: "@aws-cdk/eks",
-    },
-    {
-      name: "@aws-cdk/cx-api",
-    },
-  ],
+  submodules: {
+    "aws-cdk-lib.aws_eks": {},
+    "aws-cdk-lib.cx_api": {},
+  },
 } as any;
 
 describe("<ChooseSubmodule />", () => {
@@ -48,7 +44,7 @@ describe("<ChooseSubmodule />", () => {
     expect(queryByTestId("choose-submodule-go-back")).toBeNull();
 
     history = createMemoryHistory({
-      initialEntries: ["/?submodule=@aws-cdk/eks"],
+      initialEntries: ["/?submodule=aws_eks"],
     });
 
     ({ queryByTestId } = renderComponent());
@@ -57,7 +53,7 @@ describe("<ChooseSubmodule />", () => {
 
   it("navigates to correct path on back button click", () => {
     history = createMemoryHistory({
-      initialEntries: ["/?submodule=@aws-cdk/eks"],
+      initialEntries: ["/?submodule=aws_eks"],
     });
 
     const { getByTestId } = renderComponent();
@@ -71,7 +67,7 @@ describe("<ChooseSubmodule />", () => {
     userEvent.click(getByTestId("choose-submodule-search-trigger"));
 
     expect(queryAllByTestId("choose-submodule-result").length).toEqual(
-      assembly.submodules.length
+      Object.keys(assembly.submodules ?? {}).length
     );
   });
 
@@ -79,7 +75,7 @@ describe("<ChooseSubmodule />", () => {
     const { getByTestId, queryAllByTestId } = renderComponent();
 
     userEvent.click(getByTestId("choose-submodule-search-trigger"));
-    userEvent.type(getByTestId("choose-submodule-search-input"), "cx-api");
+    userEvent.type(getByTestId("choose-submodule-search-input"), "cx_api");
 
     await act(async () => {
       // Wait for search debounce
@@ -96,7 +92,7 @@ describe("<ChooseSubmodule />", () => {
     userEvent.click(queryAllByTestId("choose-submodule-result")[0]);
 
     expect(decodeURIComponent(history.location.search)).toEqual(
-      "?submodule=@aws-cdk/eks"
+      "?submodule=aws_eks"
     );
   });
 });

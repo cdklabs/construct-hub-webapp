@@ -21,6 +21,9 @@ export interface Packages {
   packages: CatalogPackage[];
 }
 
+/**
+ * Fetch the catalog of all packages from the backend.
+ */
 export const fetchPackages = async (): Promise<Packages> => {
   const response = await fetch(API_PATHS.CATALOG_SUFFIX);
 

@@ -37,7 +37,7 @@ describe("<LanguageBar />", () => {
       showDisabled: true,
     });
 
-    const disabledElement = getByTestId("language-ts");
+    const disabledElement = getByTestId("language-typescript");
     expect(disabledElement).not.toBeNull();
     expect(disabledElement).toHaveAttribute("disabled");
   });

@@ -1,7 +1,8 @@
 import { Box, Flex, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { createAssembly } from "../../api/package/assemblies";
+import { fetchAssembly } from "../../api/package/assembly";
+import { fetchMarkdown } from "../../api/package/docs";
 import { fetchMetadata } from "../../api/package/metadata";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
@@ -19,16 +20,24 @@ interface PathParams {
 
 export const Package: FunctionComponent = () => {
   const { name, scope, version }: PathParams = useParams();
-  const [requestAssembly, assemblyResponse] = useRequest(createAssembly);
+  const [requestMarkdown, markdownResponse] = useRequest(fetchMarkdown);
+  const [requestAssembly, assemblyResponse] = useRequest(fetchAssembly);
   const [requestMetadata, metadataResponse] = useRequest(fetchMetadata);
+
   const q = useQueryParams();
   const [language] = useLanguage();
+  const submodule = q.get(QUERY_PARAMS.SUBMODULE) ?? "";
 
   useEffect(() => {
     void requestMetadata(name, version, scope);
     void requestAssembly(name, version, scope);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name, scope, version]);
+  }, [name, scope, version, language]);
+
+  useEffect(() => {
+    void requestMarkdown(name, version, language, scope, submodule);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [name, scope, version, language, submodule]);
 
   return (
     <Stack maxW="100vw" pt={4} spacing={4}>
@@ -49,13 +58,15 @@ export const Package: FunctionComponent = () => {
         </Flex>
       )}
       {/* Readme and Api Reference Area */}
-      {assemblyResponse.data && !assemblyResponse.loading && (
-        <PackageDocs
-          assembly={assemblyResponse.data}
-          language={language}
-          submodule={q.get(QUERY_PARAMS.SUBMODULE) ?? ""}
-        />
-      )}
+      {markdownResponse.data &&
+        !markdownResponse.loading &&
+        assemblyResponse.data &&
+        !assemblyResponse.loading && (
+          <PackageDocs
+            assembly={assemblyResponse.data}
+            markdown={markdownResponse.data}
+          />
+        )}
     </Stack>
   );
 };

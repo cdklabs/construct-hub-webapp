@@ -1,16 +1,13 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
-import type { Assembly } from "jsii-reflect";
-import { useState, useEffect, useMemo, FunctionComponent } from "react";
-import { Documentation } from "../../../../api/docgen/view/documentation";
+import type { Assembly } from "@jsii/spec";
+import { useState, useEffect, FunctionComponent } from "react";
 import { NavTree, NavItemConfig } from "../../../../components/NavTree";
-import { useQueryParams } from "../../../../hooks/useQueryParams";
 import { ChooseSubmodule } from "../ChooseSubmodule";
 import { Body } from "./Body";
 
 export interface PackageDocsProps {
+  markdown: string;
   assembly: Assembly;
-  language: string;
-  submodule?: string;
 }
 
 type Item = NavItemConfig & { level: number; children: Item[] };
@@ -46,34 +43,11 @@ export const appendItem = (itemTree: Item[], item: Element): Item[] => {
 // We want the nav to be sticky, but it should account for the sticky heading as well, which is 72px
 const TOP_OFFSET = "72px";
 
-const isDev = process.env.NODE_ENV === "development";
-
 export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
+  markdown,
   assembly,
-  language,
-  submodule,
 }) => {
-  const q = useQueryParams();
-
-  const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
-
-  const source = useMemo(() => {
-    const timeLabel = `Timer | docgen(${assembly.name}${
-      submodule ? `.${submodule}` : ""
-    })`;
-    console.time(timeLabel);
-    const doc = new Documentation({
-      apiReference: hasApiReference,
-      assembly: assembly,
-      language: language,
-      submoduleName: submodule,
-    });
-
-    const md = doc.render();
-    const s = md.render();
-    console.timeEnd(timeLabel);
-    return s;
-  }, [hasApiReference, assembly, language, submodule]);
+  const source = markdown;
 
   const [navItems, setNavItems] = useState<Item[]>([]);
 
