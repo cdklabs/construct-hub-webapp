@@ -5,8 +5,7 @@ import type { Metadata } from "../../../../api/package/metadata";
 import { ExternalLink } from "../../../../components/ExternalLink";
 import { LicenseLink, LICENSE_LINKS } from "../../../../components/LicenseLink";
 import { Time } from "../../../../components/Time";
-// FIXME: We are temporarily hiding dependencies as they are not all present in s3
-// import { DependencyDropdown } from "../DependencyDropdown";
+import { DependencyDropdown } from "../DependencyDropdown";
 
 export interface OperatorAreaProps {
   assembly?: Assembly;
@@ -79,11 +78,11 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
   return (
     <Flex direction="column" textAlign={["center", null, "initial"]}>
       {details.length && <UnorderedList ml={0}>{details}</UnorderedList>}
-      {/* {assembly?.dependencies && (
+      {assembly?.dependencies && (
         <Box mt={4}>
           <DependencyDropdown dependencies={assembly.dependencies} />
         </Box>
-      )} */}
+      )}
     </Flex>
   );
 };
