@@ -30,10 +30,14 @@ export const Package: FunctionComponent = () => {
 
   useEffect(() => {
     void requestMetadata(name, version, scope);
-    void requestMarkdown(name, version, language, scope, submodule);
     void requestAssembly(name, version, scope);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, scope, version, language]);
+
+  useEffect(() => {
+    void requestMarkdown(name, version, language, scope, submodule);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [name, scope, version, language, submodule]);
 
   return (
     <Stack maxW="100vw" pt={4} spacing={4}>
