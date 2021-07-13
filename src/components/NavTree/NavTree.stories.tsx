@@ -5,6 +5,12 @@ import { NavTree, NavTreeProps } from "./NavTree";
 export default {
   title: "Components / NavTree",
   component: NavTree,
+  parameters: {
+    backgrounds: {
+      default: "white",
+      values: [{ name: "white", value: "#FFFFFF" }],
+    },
+  },
 };
 
 export const Primary: Story<NavTreeProps> = ({ items }) => (

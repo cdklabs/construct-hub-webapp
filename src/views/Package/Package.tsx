@@ -1,4 +1,4 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Box, Flex, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
@@ -8,9 +8,9 @@ import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
-import { LanguageSelection } from "./components/LanguageSelection";
 import { PackageDetails } from "./components/PackageDetails";
 import { PackageDocs } from "./components/PackageDocs";
+import { UseConstruct } from "./components/UseConstruct";
 
 interface PathParams {
   name: string;
@@ -45,11 +45,14 @@ export const Package: FunctionComponent = () => {
           version={version}
         />
       </Box>
-      <Box px={4}>
-        {assemblyResponse.data && (
-          <LanguageSelection assembly={assemblyResponse.data} />
-        )}
-      </Box>
+      {assemblyResponse.data && (
+        <Flex justify="end" px={4}>
+          <UseConstruct
+            packageName={assemblyResponse.data.name}
+            version={assemblyResponse.data.version}
+          />
+        </Flex>
+      )}
       {/* Readme and Api Reference Area */}
       {markdownResponse.data &&
         !markdownResponse.loading &&

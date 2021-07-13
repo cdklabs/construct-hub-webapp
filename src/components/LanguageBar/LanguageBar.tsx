@@ -45,7 +45,7 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
             bg="white"
             border={isSelected ? "1px solid" : "none"}
             borderColor="blue.500"
-            borderRadius="md"
+            borderRadius="lg"
             boxShadow="base"
             cursor={isDisabled ? "not-allowed" : "pointer"}
             data-disabled={isDisabled}
@@ -58,7 +58,7 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
             key={language}
             onClick={onClick}
             opacity={isDisabled ? "0.5" : 1}
-            p={2}
+            p={1}
             sx={{
               ":hover:not(:disabled)": {
                 bg: "gray.100",
@@ -68,8 +68,9 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
           >
             <LangIcon
               aria-label={`${language}-icon`}
-              height="2rem"
-              width="2rem"
+              borderRadius="sm"
+              height={[4, 5, 6]}
+              width={[4, 5, 6]}
             />
           </Flex>
         );

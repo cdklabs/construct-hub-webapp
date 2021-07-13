@@ -11,10 +11,8 @@ const ResultsSkeletonComponent: FunctionComponent<ResultsSkeletonProps> = ({
 }) => {
   const skeletons = [];
 
-  const skeleton = <CatalogCard />;
-
   for (let i = 0; i < noOfItems; i += 1) {
-    skeletons.push(skeleton);
+    skeletons.push(<CatalogCard key={i} />);
   }
 
   return <ResultsGrid>{skeletons}</ResultsGrid>;

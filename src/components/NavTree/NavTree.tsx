@@ -85,7 +85,12 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
           {display}
         </LinkComponent>
       </Flex>
-      <Box display={showChildren ? "initial" : "none"}>
+      <Box
+        borderLeft={"1px solid"}
+        borderLeftColor="gray.100"
+        display={showChildren ? "initial" : "none"}
+        ml={1}
+      >
         {children?.map((item, idx) => {
           return <NavItem {...item} key={idx} onOpen={disclosure.onOpen} />;
         })}

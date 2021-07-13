@@ -7,6 +7,7 @@ import {
   MenuGroup,
   MenuItem,
   MenuList,
+  Text,
 } from "@chakra-ui/react";
 import { Fragment, FunctionComponent } from "react";
 import { GETTING_STARTED } from "../../constants/links";
@@ -14,7 +15,7 @@ import { ExternalLink } from "../ExternalLink";
 
 export const GettingStartedDropdown: FunctionComponent = () => {
   return (
-    <Menu colorScheme="blue.800">
+    <Menu colorScheme="blue.800" strategy="fixed">
       <MenuButton
         as={Button}
         bg="white"
@@ -23,7 +24,7 @@ export const GettingStartedDropdown: FunctionComponent = () => {
         size="md"
         variant="link"
       >
-        Getting Started
+        <Text isTruncated>Getting Started</Text>
       </MenuButton>
       <MenuList color="blue.800">
         {GETTING_STARTED.map((item, idx) => {

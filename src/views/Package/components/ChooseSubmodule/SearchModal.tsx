@@ -16,7 +16,7 @@ import {
   useRef,
 } from "react";
 import { useHistory } from "react-router-dom";
-import { Result } from "./Result";
+import { SearchItem } from "../../../../components/SearchItem";
 import { SearchInput } from "./SearchInput";
 
 export interface SearchModalProps {
@@ -88,7 +88,12 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
               tabIndex={-1}
             >
               {submodules.map(({ name, to }) => (
-                <Result key={name} name={name} onClick={() => navigate(to)} />
+                <SearchItem
+                  data-testid="choose-submodule-result"
+                  key={name}
+                  name={name}
+                  onClick={() => navigate(to)}
+                />
               ))}
             </UnorderedList>
           </ModalBody>

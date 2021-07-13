@@ -1,7 +1,8 @@
 import { render, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
-import { CatalogSearch, CatalogSearchProps, testIds } from "./CatalogSearch";
+import { CatalogSearch, CatalogSearchProps } from "./CatalogSearch";
+import { testIds } from "./constants";
 
 describe("<CatalogSearch />", () => {
   const onSubmit = jest.fn();

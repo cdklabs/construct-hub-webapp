@@ -1,5 +1,5 @@
 import { ArrowBackIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { Button, Flex, useDisclosure, useToken } from "@chakra-ui/react";
+import { Button, Divider, Stack, useDisclosure } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
@@ -20,11 +20,10 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [borderColor, textColor] = useToken("colors", ["gray.100", "gray.800"]);
-  const btnHeight = useToken("space", "16");
-
   const currentSubmodule = query.get(QUERY_PARAMS.SUBMODULE);
-  const submoduleText = currentSubmodule ?? "Submodules";
+  const submoduleText = currentSubmodule
+    ? `Submodule: ${currentSubmodule}`
+    : "Choose Submodule";
 
   const [filter, setFilter] = useState("");
 
@@ -61,32 +60,32 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
   }, [assembly?.submodules, filter, getUrl]);
 
   return (
-    <Flex>
+    <Stack spacing={4} w="100%">
       {currentSubmodule && (
-        <Button
-          borderRadius="none"
-          borderRight={`1px solid ${borderColor}`}
-          color={textColor}
-          data-testid="choose-submodule-go-back"
-          h={btnHeight}
-          onClick={onGoBack}
-          title="Back to construct root"
-          variant="ghost"
-        >
-          <ArrowBackIcon aria-label="Back to construct root" />
-        </Button>
+        <>
+          <Button
+            borderRadius="none"
+            data-testid="choose-submodule-go-back"
+            leftIcon={<ArrowBackIcon aria-label="Back to construct root" />}
+            onClick={onGoBack}
+            title="Back to construct root"
+            variant="link"
+          >
+            {assembly?.name}
+          </Button>
+          <Divider />
+        </>
       )}
       <Button
         borderRadius="none"
-        color={textColor}
+        color="blue.500"
         data-testid="choose-submodule-search-trigger"
         disabled={!Object.keys(assembly?.submodules ?? {}).length}
         flexGrow={1}
-        h={btnHeight}
         onClick={onOpen}
         rightIcon={<ChevronDownIcon />}
         title="Choose Submodule"
-        variant="ghost"
+        variant="link"
       >
         {submoduleText}
       </Button>
@@ -97,6 +96,6 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
         onInputChange={setFilter}
         submodules={submodules}
       />
-    </Flex>
+    </Stack>
   );
 };

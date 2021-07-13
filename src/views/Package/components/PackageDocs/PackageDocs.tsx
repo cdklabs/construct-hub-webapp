@@ -68,7 +68,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
       borderTopColor="gray.100"
       columnGap={4}
       h="100%"
-      templateColumns="1fr 3fr"
+      templateColumns={["1fr", null, "1fr 3fr"]}
       width="100%"
     >
       <Flex
@@ -76,21 +76,22 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         borderRight="1px solid"
         borderRightColor="gray.100"
         direction="column"
+        display={["none", null, "flex"]}
         maxHeight={`calc(100vh - ${TOP_OFFSET})`}
         overflow="hidden auto"
         p={0}
         position="sticky"
         top={TOP_OFFSET}
       >
-        <Box
+        <Flex
           borderBottom="1px solid"
           borderColor="gray.100"
           justify="center"
-          p={0}
+          py={4}
         >
           <ChooseSubmodule assembly={assembly} />
-        </Box>
-        <Box overflowY="auto">
+        </Flex>
+        <Box overflowY="auto" pt={4}>
           <NavTree items={navItems} />
         </Box>
       </Flex>
@@ -103,8 +104,8 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
           "a:target:before": {
             content: `""`,
             display: "block",
-            height: "40px",
-            marginTop: `-40px`,
+            height: TOP_OFFSET,
+            marginTop: `calc(-1 * ${TOP_OFFSET})`,
             visibility: "hidden",
           },
         }}
