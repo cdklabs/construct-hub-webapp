@@ -14,7 +14,7 @@ export interface CatalogPackage {
   description: string;
   author: Author;
   keywords: string[];
-  metadata: Metadata;
+  metadata?: Metadata;
 }
 
 export interface Packages {
