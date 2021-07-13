@@ -39,6 +39,8 @@ const project = new web.ReactTypeScriptProject({
     "chakra-ui-markdown-renderer",
     "date-fns",
     "framer-motion@^4",
+    "prismjs",
+    "prism-react-renderer",
     "jsii-reflect",
     "react-markdown",
     "react-router-dom",
@@ -54,6 +56,7 @@ const project = new web.ReactTypeScriptProject({
   devDeps: [
     "@testing-library/react-hooks",
     "@testing-library/user-event",
+    "@types/prismjs",
     "@types/react-router-dom",
     "cypress",
     "eslint-plugin-jsx-a11y",

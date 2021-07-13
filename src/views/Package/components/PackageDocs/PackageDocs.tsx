@@ -2,10 +2,10 @@ import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "jsii-reflect";
 import { useState, useEffect, useMemo, FunctionComponent } from "react";
 import { Documentation } from "../../../../api/docgen/view/documentation";
+import { Markdown } from "../../../../components/Markdown";
 import { NavTree, NavItemConfig } from "../../../../components/NavTree";
 import { useQueryParams } from "../../../../hooks/useQueryParams";
 import { ChooseSubmodule } from "../ChooseSubmodule";
-import { Body } from "./Body";
 
 export interface PackageDocsProps {
   assembly: Assembly;
@@ -135,7 +135,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
           },
         }}
       >
-        <Body>{source}</Body>
+        <Markdown>{source}</Markdown>
       </Box>
     </Grid>
   );

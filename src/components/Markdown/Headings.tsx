@@ -1,18 +1,15 @@
 import { LinkIcon } from "@chakra-ui/icons";
 import { Heading, As } from "@chakra-ui/react";
-import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import { Children, FunctionComponent, ReactNode, useMemo } from "react";
+import { Children, FunctionComponent, ReactNode } from "react";
 import ReactDOMServer from "react-dom/server";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import { sanitize } from "../../../../util/sanitize-anchor";
+import { sanitize } from "../../util/sanitize-anchor";
 
-type HeadingResolverProps = {
+interface HeadingResolverProps {
   level: number;
   children: ReactNode;
-};
+}
 
-const Headings: FunctionComponent<HeadingResolverProps> = ({
+export const Headings: FunctionComponent<HeadingResolverProps> = ({
   level,
   children,
 }) => {
@@ -58,27 +55,4 @@ const Headings: FunctionComponent<HeadingResolverProps> = ({
       {children}
     </Heading>
   );
-};
-
-const components = ChakraUIRenderer({
-  h1: Headings,
-  h2: Headings,
-  h3: Headings,
-  h4: Headings,
-  h5: Headings,
-  h6: Headings,
-});
-
-const rehypePlugins = [rehypeRaw];
-
-export const Body: FunctionComponent<{ children: string }> = ({ children }) => {
-  const body = useMemo(() => {
-    return (
-      <ReactMarkdown components={components} rehypePlugins={rehypePlugins}>
-        {children}
-      </ReactMarkdown>
-    );
-  }, [children]);
-
-  return body;
 };

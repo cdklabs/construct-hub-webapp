@@ -58,6 +58,10 @@
       "type": "build"
     },
     {
+      "name": "@types/prismjs",
+      "type": "build"
+    },
+    {
       "name": "@types/react",
       "type": "build"
     },
@@ -206,6 +210,14 @@
     },
     {
       "name": "jsii-reflect",
+      "type": "runtime"
+    },
+    {
+      "name": "prism-react-renderer",
+      "type": "runtime"
+    },
+    {
+      "name": "prismjs",
       "type": "runtime"
     },
     {
