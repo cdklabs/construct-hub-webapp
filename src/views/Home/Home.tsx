@@ -30,6 +30,7 @@ export const Home: FunctionComponent = () => {
       <Picture
         alt={""}
         h="540px"
+        opacity={0.5}
         position="absolute"
         sources={sources.optimal}
         src={sources.fallback}
@@ -47,9 +48,14 @@ export const Home: FunctionComponent = () => {
         p={[10, 15, 20]}
         spacing={8}
       >
-        <Heading color="blue.800" size="2xl" textAlign="center">
-          A catalog of AWS Cloud Development kit construct libraries
-        </Heading>
+        <Stack spacing={4}>
+          <Heading color="blue.800" size="2xl" textAlign="center">
+            Find reusable components for your cloud applications
+          </Heading>
+          <Heading as="h3" color="blue.800" mb={8} size="md" textAlign="center">
+            AWS CDK | CDK for Terraform | CDK For Kubernetes
+          </Heading>
+        </Stack>
         <CatalogSearch {...searchAPI} />
       </Stack>
 

@@ -31,13 +31,11 @@ export const Package: FunctionComponent = () => {
   useEffect(() => {
     void requestMetadata(name, version, scope);
     void requestAssembly(name, version, scope);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name, scope, version, language]);
+  }, [name, requestAssembly, requestMetadata, scope, version]);
 
   useEffect(() => {
     void requestMarkdown(name, version, language, scope, submodule);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name, scope, version, language, submodule]);
+  }, [name, scope, version, language, submodule, requestMarkdown]);
 
   return (
     <Stack maxW="100vw" pt={4} spacing={4}>
