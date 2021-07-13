@@ -13,7 +13,19 @@ export const Code: FunctionComponent<CodeProps> = ({ inline, children }) => {
   /* const [lang] = useLanguage(); */
 
   if (inline) {
-    return <InlineCode p={2}>{children}</InlineCode>;
+    return (
+      <InlineCode
+        bg="gray.50"
+        border="1px solid"
+        borderColor="gray.100"
+        borderRadius="md"
+        color="blue.500"
+        px={2}
+        py={0}
+      >
+        {children}
+      </InlineCode>
+    );
   }
 
   const code = Children.toArray(children)

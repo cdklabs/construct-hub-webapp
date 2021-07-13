@@ -87,6 +87,8 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
     setNavItems(tree);
   }, [source]);
 
+  const markdown = useMemo(() => <Markdown>{source}</Markdown>, [source]);
+
   return (
     <Grid
       bg="white"
@@ -135,7 +137,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
           },
         }}
       >
-        <Markdown>{source}</Markdown>
+        {markdown}
       </Box>
     </Grid>
   );

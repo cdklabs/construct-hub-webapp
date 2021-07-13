@@ -1,8 +1,8 @@
-import { LinkIcon } from "@chakra-ui/icons";
 import { Heading, As } from "@chakra-ui/react";
 import { Children, FunctionComponent, ReactNode } from "react";
 import ReactDOMServer from "react-dom/server";
 import { sanitize } from "../../util/sanitize-anchor";
+import { NavLink } from "../NavLink";
 
 interface HeadingResolverProps {
   level: number;
@@ -40,19 +40,17 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
   const id = dataElement?.dataset.headingId ?? sanitize(title);
 
   return (
-    <Heading as={elem} level={level} my={4} size={size}>
-      {level < 100 && (
-        <a
-          data-heading-id={id}
-          data-heading-level={level}
-          data-heading-title={title}
-          href={`#${id}`}
-          id={id}
-        >
-          <LinkIcon color="gray.500" h={4} mr={2} w={4} />
-        </a>
-      )}
-      {children}
-    </Heading>
+    <NavLink
+      data-heading-id={id}
+      data-heading-level={level}
+      data-heading-title={title}
+      id={id}
+      replace
+      to={`#${id}`}
+    >
+      <Heading as={elem} color="blue.800" level={level} my={4} size={size}>
+        {children}
+      </Heading>
+    </NavLink>
   );
 };
