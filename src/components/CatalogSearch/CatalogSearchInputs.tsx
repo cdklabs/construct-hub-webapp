@@ -48,7 +48,7 @@ export const CatalogSearchInputs: FunctionComponent<CatalogSearchInputsProps> =
         data-testid={testIds.input}
         name="query"
         onChange={onQueryChange}
-        placeholder="Search providers or modules..."
+        placeholder="Search Constructs..."
         value={query}
       />
       <LanguageDropdown

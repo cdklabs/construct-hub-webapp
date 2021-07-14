@@ -30,7 +30,7 @@ export const SearchButton: FunctionComponent = () => {
         variant="outline"
         w="100%"
       >
-        Search providers or modules...
+        Search Constructs...
       </Button>
       {/* Mobile Search Trigger */}
       <IconButton
