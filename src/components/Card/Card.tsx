@@ -17,3 +17,5 @@ export const Card = forwardRef<CardProps, "div">((props, ref) => {
     />
   );
 });
+
+Card.displayName = "Card";

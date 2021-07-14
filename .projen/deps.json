@@ -188,10 +188,6 @@
       "type": "runtime"
     },
     {
-      "name": "chakra-ui-markdown-renderer",
-      "type": "runtime"
-    },
-    {
       "name": "copy-to-clipboard",
       "type": "runtime"
     },

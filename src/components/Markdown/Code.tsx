@@ -1,17 +1,19 @@
 import { Code as InlineCode } from "@chakra-ui/react";
-/* import { Language } from "prism-react-renderer"; */
+import { Language } from "prism-react-renderer";
 import { Children, FunctionComponent, ReactNode } from "react";
-/* import { useLanguage } from "../../hooks/useLanguage"; */
 import { Code as BlockCode } from "../Code";
 
 interface CodeProps {
   inline?: boolean;
   children: ReactNode;
+  language?: Language;
 }
 
-export const Code: FunctionComponent<CodeProps> = ({ inline, children }) => {
-  /* const [lang] = useLanguage(); */
-
+export const Code: FunctionComponent<CodeProps> = ({
+  inline,
+  children,
+  language = "typescript",
+}) => {
   if (inline) {
     return (
       <InlineCode
@@ -37,5 +39,5 @@ export const Code: FunctionComponent<CodeProps> = ({ inline, children }) => {
     }, "")
     .trim();
 
-  return <BlockCode code={code} language={"python"} />;
+  return <BlockCode code={code} language={language} />;
 };

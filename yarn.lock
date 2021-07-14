@@ -5663,13 +5663,6 @@ ccount@^1.0.0:
   resolved "https://registry.yarnpkg.com/ccount/-/ccount-1.1.0.tgz#246687debb6014735131be8abab2d93898f8d043"
   integrity sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg==
 
-chakra-ui-markdown-renderer@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/chakra-ui-markdown-renderer/-/chakra-ui-markdown-renderer-3.0.1.tgz#5a8afb650a1fadfb3219dd0fe388c1491aa1f6ee"
-  integrity sha512-rBIILnjMSZQiLY3279FXIm8Q8Bpu1L2XBwXmqeyNkQ9gtYk//gl+xHFBMnN/Xb/6aOVCbFSN/b3NC8LwLv4ybQ==
-  dependencies:
-    deepmerge "^4.2.2"
-
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
