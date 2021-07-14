@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import { Story } from "@storybook/react";
 import { useState } from "react";
 import { Language } from "../../constants/languages";
@@ -15,12 +16,14 @@ const Template: Story<LanguageBarProps> = ({
   const [selected, setSelected] = useState<Language>("typescript");
 
   return (
-    <LanguageBar
-      selectedLanguage={selected}
-      setSelectedLanguage={setSelected}
-      showDisabled={showDisabled}
-      targetLanguages={targetLanguages}
-    />
+    <Box mx="auto">
+      <LanguageBar
+        selectedLanguage={selected}
+        setSelectedLanguage={setSelected}
+        showDisabled={showDisabled}
+        targetLanguages={targetLanguages}
+      />
+    </Box>
   );
 };
 
