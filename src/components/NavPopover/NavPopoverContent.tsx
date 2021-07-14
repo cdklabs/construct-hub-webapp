@@ -9,13 +9,13 @@ import {
 import { Fragment, FunctionComponent } from "react";
 import { ExternalLink } from "../ExternalLink";
 import { NavLink } from "../NavLink";
-import type { NavPopoverItems, NavPopoverLink } from "./types";
+import type { IMenuItems, ILink } from "./types";
 
 export interface NavPopoverContentProps extends MenuListProps {
-  items: NavPopoverItems;
+  items: IMenuItems;
 }
 
-const Link: FunctionComponent<NavPopoverLink> = ({ display, isNavLink, url }) =>
+const Link: FunctionComponent<ILink> = ({ display, isNavLink, url }) =>
   isNavLink ? (
     <NavLink to={url}>{display}</NavLink>
   ) : (

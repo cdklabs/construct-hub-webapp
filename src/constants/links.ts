@@ -1,6 +1,6 @@
-import type { NavPopoverItems } from "../components/NavPopover";
+import type { IMenuItems } from "../components/NavPopover";
 
-export const COMMUNITY: NavPopoverItems = [
+export const COMMUNITY: IMenuItems = [
   {
     display: "Slack",
     url: "https://join.slack.com/t/cdk-dev/shared_invite/zt-mso6p56d-qJp7SOTBvMaQuDrx7R2wHg",
@@ -8,7 +8,7 @@ export const COMMUNITY: NavPopoverItems = [
   { display: "Community Hub", url: "https://cdk.dev" },
 ];
 
-export const GETTING_STARTED: NavPopoverItems = [
+export const GETTING_STARTED: IMenuItems = [
   {
     display: "AWS CDK",
     links: [

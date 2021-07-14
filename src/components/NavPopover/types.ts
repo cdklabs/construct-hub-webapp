@@ -1,4 +1,4 @@
-export type NavPopoverLink = {
+export type ILink = {
   display: string;
   isNavLink?: boolean;
   url: string;
@@ -6,7 +6,7 @@ export type NavPopoverLink = {
 
 export interface IGroup {
   display: string;
-  links: NavPopoverLink[];
+  links: ILink[];
 }
 
-export type NavPopoverItems = (NavPopoverLink | IGroup)[];
+export type IMenuItems = (ILink | IGroup)[];
