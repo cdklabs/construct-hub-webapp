@@ -1,16 +1,13 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
-import type { Assembly } from "jsii-reflect";
-import { useState, useEffect, useMemo, FunctionComponent } from "react";
-import { Documentation } from "../../../../api/docgen/view/documentation";
+import type { Assembly } from "@jsii/spec";
+import { useState, useEffect, FunctionComponent, useMemo } from "react";
 import { Markdown } from "../../../../components/Markdown";
 import { NavTree, NavItemConfig } from "../../../../components/NavTree";
-import { useQueryParams } from "../../../../hooks/useQueryParams";
 import { ChooseSubmodule } from "../ChooseSubmodule";
 
 export interface PackageDocsProps {
+  markdown: string;
   assembly: Assembly;
-  language: string;
-  submodule?: string;
 }
 
 type Item = NavItemConfig & { level: number; children: Item[] };
@@ -46,35 +43,10 @@ export const appendItem = (itemTree: Item[], item: Element): Item[] => {
 // We want the nav to be sticky, but it should account for the sticky heading as well, which is 72px
 const TOP_OFFSET = "72px";
 
-const isDev = process.env.NODE_ENV === "development";
-
 export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
+  markdown: source,
   assembly,
-  language,
-  submodule,
 }) => {
-  const q = useQueryParams();
-
-  const hasApiReference = !isDev || (isDev && q.get("apiRef") !== "false");
-
-  const source = useMemo(() => {
-    const timeLabel = `Timer | docgen(${assembly.name}${
-      submodule ? `.${submodule}` : ""
-    })`;
-    console.time(timeLabel);
-    const doc = new Documentation({
-      apiReference: hasApiReference,
-      assembly: assembly,
-      language: language,
-      submoduleName: submodule,
-    });
-
-    const md = doc.render();
-    const s = md.render();
-    console.timeEnd(timeLabel);
-    return s;
-  }, [hasApiReference, assembly, language, submodule]);
-
   const [navItems, setNavItems] = useState<Item[]>([]);
 
   useEffect(() => {
@@ -96,7 +68,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
       borderTopColor="gray.100"
       columnGap={4}
       h="100%"
-      templateColumns="1fr 3fr"
+      templateColumns={["1fr", null, "1fr 3fr"]}
       width="100%"
     >
       <Flex
@@ -104,21 +76,22 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         borderRight="1px solid"
         borderRightColor="gray.100"
         direction="column"
+        display={["none", null, "flex"]}
         maxHeight={`calc(100vh - ${TOP_OFFSET})`}
         overflow="hidden auto"
         p={0}
         position="sticky"
         top={TOP_OFFSET}
       >
-        <Box
+        <Flex
           borderBottom="1px solid"
           borderColor="gray.100"
           justify="center"
-          p={0}
+          py={4}
         >
           <ChooseSubmodule assembly={assembly} />
-        </Box>
-        <Box overflowY="auto">
+        </Flex>
+        <Box overflowY="auto" pt={4}>
           <NavTree items={navItems} />
         </Box>
       </Flex>
@@ -131,8 +104,8 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
           "a:target:before": {
             content: `""`,
             display: "block",
-            height: "40px",
-            marginTop: `-40px`,
+            height: TOP_OFFSET,
+            marginTop: `calc(-1 * ${TOP_OFFSET})`,
             visibility: "hidden",
           },
         }}

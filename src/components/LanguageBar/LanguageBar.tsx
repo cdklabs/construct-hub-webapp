@@ -1,4 +1,4 @@
-import { Flex, Grid } from "@chakra-ui/react";
+import { IconButton, Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import {
   Language,
@@ -21,11 +21,11 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
 }) => {
   const displayable = showDisabled ? LANGUAGES : targetLanguages;
   return (
-    <Grid
+    <Stack
+      align="center"
       data-testid="language-bar"
-      gap="2"
-      gridTemplateColumns={`repeat(${displayable.length}, 1fr)`}
-      gridTemplateRows="1fr"
+      direction="row"
+      spacing={2}
     >
       {displayable.map((language: Language) => {
         const isDisabled = !targetLanguages.includes(language);
@@ -39,41 +39,32 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
         };
 
         return (
-          <Flex
-            align="center"
-            as="button"
-            bg="white"
+          <IconButton
+            aria-label={`Select ${language} icon`}
             border={isSelected ? "1px solid" : "none"}
             borderColor="blue.500"
-            borderRadius="md"
+            borderRadius="lg"
             boxShadow="base"
+            colorScheme="blue"
             cursor={isDisabled ? "not-allowed" : "pointer"}
-            data-disabled={isDisabled}
-            data-selected={isSelected}
             data-testid={`language-${language}`}
-            direction="column"
             disabled={isDisabled}
-            filter={isDisabled ? "grayscale(100%)" : "none"}
-            justify="center"
+            icon={
+              <LangIcon
+                aria-label={`${language}-icon`}
+                borderRadius="sm"
+                height={[4, 5, 6]}
+                width={[4, 5, 6]}
+              />
+            }
             key={language}
             onClick={onClick}
-            opacity={isDisabled ? "0.5" : 1}
-            p={2}
-            sx={{
-              ":hover:not(:disabled)": {
-                bg: "gray.100",
-              },
-            }}
-            type="button"
-          >
-            <LangIcon
-              aria-label={`${language}-icon`}
-              height="2rem"
-              width="2rem"
-            />
-          </Flex>
+            p={1}
+            variant="outline"
+            w="max-content"
+          />
         );
       })}
-    </Grid>
+    </Stack>
   );
 };

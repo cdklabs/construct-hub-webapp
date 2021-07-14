@@ -1,11 +1,14 @@
 import { renderHook, cleanup } from "@testing-library/react-hooks";
-import catalogFixture from "../../__fixtures__/catalog.json";
+import catalog from "../../__fixtures__/catalog.json";
+import { Packages } from "../../api/package/packages";
 import { Languages } from "../../constants/languages";
 import { useCatalog } from "../../contexts/Catalog";
 import {
   useCatalogResults,
   UseCatalogResultsOptions,
 } from "./useCatalogResults";
+
+const catalogFixture = catalog as Packages;
 
 const defaultOptions: UseCatalogResultsOptions = {
   offset: 0,

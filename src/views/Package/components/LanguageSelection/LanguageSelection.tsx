@@ -1,5 +1,4 @@
-import { Flex } from "@chakra-ui/react";
-import type { Assembly } from "jsii-reflect";
+import type { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
 import { LanguageBar } from "../../../../components/LanguageBar";
 import {
@@ -8,7 +7,6 @@ import {
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../../../constants/languages";
 import { useLanguage } from "../../../../hooks/useLanguage";
-import { UseConstruct } from "../UseConstruct";
 
 export interface LanguageSelectionProps {
   assembly: Assembly;
@@ -22,25 +20,20 @@ export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
     updateUrl: true,
   });
   const targets = [
-    ...Object.keys(assembly?.spec?.targets ?? {}),
+    ...Object.keys(assembly?.targets ?? {}),
     // typescript is the source language and hence always supported.
     // (it doesn't appear in spec.targets)
     Languages.TypeScript,
   ] as Language[];
 
   return (
-    <Flex align="center" justify="space-between">
-      <Flex direction="column">
-        <LanguageBar
-          selectedLanguage={targets.includes(language) ? language : targets[0]}
-          setSelectedLanguage={setLanguage}
-          showDisabled
-          targetLanguages={targets.filter((target) =>
-            TEMP_SUPPORTED_LANGUAGES.includes(target)
-          )}
-        />
-      </Flex>
-      <UseConstruct packageName={assembly.name} version={assembly.version} />
-    </Flex>
+    <LanguageBar
+      selectedLanguage={targets.includes(language) ? language : targets[0]}
+      setSelectedLanguage={setLanguage}
+      showDisabled
+      targetLanguages={targets.filter((target) =>
+        TEMP_SUPPORTED_LANGUAGES.includes(target)
+      )}
+    />
   );
 };

@@ -7,12 +7,18 @@ import { NodeIcon } from "../icons/NodeIcon";
 import { PythonIcon } from "../icons/PythonIcon";
 import { TSIcon } from "../icons/TSIcon";
 
-export type Language = "dotnet" | "js" | "ts" | "python" | "golang" | "java";
+export type Language =
+  | "dotnet"
+  | "js"
+  | "typescript"
+  | "python"
+  | "golang"
+  | "java";
 
 export enum Languages {
   DotNet = "dotnet",
   NodeJS = "js",
-  TypeScript = "ts",
+  TypeScript = "typescript",
   Python = "python",
   Go = "golang",
   Java = "java",
@@ -45,8 +51,8 @@ export const LANGUAGE_RENDER_MAP: Record<
   Language,
   { name: string; icon: FunctionComponent<PropsOf<typeof Icon>> }
 > = {
-  ts: {
-    name: LANGUAGE_NAME_MAP.ts,
+  typescript: {
+    name: LANGUAGE_NAME_MAP.typescript,
     icon: TSIcon,
   },
   python: {
