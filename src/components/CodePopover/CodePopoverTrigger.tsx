@@ -21,3 +21,5 @@ export const CodePopoverTrigger = forwardRef<CodePopoverTriggerProps, "button">(
     </Button>
   )
 );
+
+CodePopoverTrigger.displayName = "CodePopoverTrigger";

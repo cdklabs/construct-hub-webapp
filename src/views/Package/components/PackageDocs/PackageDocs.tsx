@@ -1,9 +1,9 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
-import { useState, useEffect, FunctionComponent } from "react";
+import { useState, useEffect, FunctionComponent, useMemo } from "react";
+import { Markdown } from "../../../../components/Markdown";
 import { NavTree, NavItemConfig } from "../../../../components/NavTree";
 import { ChooseSubmodule } from "../ChooseSubmodule";
-import { Body } from "./Body";
 
 export interface PackageDocsProps {
   markdown: string;
@@ -44,11 +44,9 @@ export const appendItem = (itemTree: Item[], item: Element): Item[] => {
 const TOP_OFFSET = "72px";
 
 export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
-  markdown,
+  markdown: source,
   assembly,
 }) => {
-  const source = markdown;
-
   const [navItems, setNavItems] = useState<Item[]>([]);
 
   useEffect(() => {
@@ -60,6 +58,8 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
 
     setNavItems(tree);
   }, [source]);
+
+  const markdown = useMemo(() => <Markdown>{source}</Markdown>, [source]);
 
   return (
     <Grid
@@ -110,7 +110,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
           },
         }}
       >
-        <Body>{source}</Body>
+        {markdown}
       </Box>
     </Grid>
   );

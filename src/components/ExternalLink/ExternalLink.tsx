@@ -13,3 +13,5 @@ export const ExternalLink = forwardRef<ExternalLinkProps, "a">((props, ref) => {
     />
   );
 });
+
+ExternalLink.displayName = "ExternalLink";

@@ -19,3 +19,5 @@ export const Picture = forwardRef<PictureProps, "img">(
     </Box>
   )
 );
+
+Picture.displayName = "Picture";

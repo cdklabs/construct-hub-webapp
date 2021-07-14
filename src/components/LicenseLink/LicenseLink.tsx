@@ -21,3 +21,5 @@ export const LicenseLink = forwardRef<LicenseLinkProps, "a">(
     );
   }
 );
+
+LicenseLink.displayName = "LicenseLink";

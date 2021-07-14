@@ -1,6 +1,6 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Flex, Link, IconButton, useDisclosure } from "@chakra-ui/react";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { NavLink } from "../NavLink";
 
@@ -51,6 +51,14 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [linkIsActive]);
 
+  const nestedItems = useMemo(
+    () =>
+      children?.map((item, idx) => {
+        return <NavItem {...item} key={idx} onOpen={disclosure.onOpen} />;
+      }),
+    [children, disclosure.onOpen]
+  );
+
   return (
     <Flex direction="column" pl={2}>
       <Flex align="center" color={linkIsActive ? "blue.500" : "gray.800"}>
@@ -91,9 +99,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
         display={showChildren ? "initial" : "none"}
         ml={1}
       >
-        {children?.map((item, idx) => {
-          return <NavItem {...item} key={idx} onOpen={disclosure.onOpen} />;
-        })}
+        {nestedItems}
       </Box>
     </Flex>
   );
