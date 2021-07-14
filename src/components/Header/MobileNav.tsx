@@ -6,11 +6,11 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Portal,
-  Text,
   Stack,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { GettingStartedDropdown } from "../GettingStartedDropdown";
+import { Community } from "./Community";
+import { GettingStarted } from "./GettingStarted";
 import { Title } from "./Title";
 
 export interface MobileNavProps {
@@ -33,10 +33,8 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
           </DrawerHeader>
           <DrawerBody>
             <Stack align="start" justify="start" spacing={4}>
-              <GettingStartedDropdown />
-              <Text color="blue.800" fontWeight="semibold">
-                Browse
-              </Text>
+              <GettingStarted />
+              <Community />
             </Stack>
           </DrawerBody>
         </DrawerContent>
