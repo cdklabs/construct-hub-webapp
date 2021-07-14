@@ -40,3 +40,5 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
     );
   }
 );
+
+SearchInput.displayName = "SearchInput";
