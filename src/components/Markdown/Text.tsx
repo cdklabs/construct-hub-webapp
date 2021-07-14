@@ -1,5 +1,14 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, HTMLChakraProps, Link, Text } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+
+export const A: FunctionComponent<HTMLChakraProps<"a">> = ({
+  children,
+  ...linkProps
+}) => (
+  <Link color="blue.500" {...linkProps}>
+    {children}
+  </Link>
+);
 
 export const Blockquote: FunctionComponent = ({ children }) => (
   <Box

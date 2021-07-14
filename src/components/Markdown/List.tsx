@@ -11,7 +11,6 @@ export const Ol: FunctionComponent = ({ children }) => (
 
 export const Li: FunctionComponent = ({ children }) => (
   <ListItem
-    mb={4}
     sx={{
       "em:first-of-type": {
         mr: 2,

@@ -7,10 +7,11 @@ import { Code } from "./Code";
 import { Headings } from "./Headings";
 import { Hr } from "./Hr";
 import { Ul, Ol, Li } from "./List";
-import { Blockquote, Em, P, Pre, Sup } from "./Text";
+import { A, Blockquote, Em, P, Pre, Sup } from "./Text";
 
 const components = ChakraUIRenderer(
   {
+    a: A,
     blockquote: Blockquote,
     code: Code,
     em: Em,
