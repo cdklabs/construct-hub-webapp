@@ -36,3 +36,5 @@ export const SearchItem = forwardRef<SearchItemProps, "li">(
     );
   }
 );
+
+SearchItem.displayName = "SearchItem";
