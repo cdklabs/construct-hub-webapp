@@ -23,7 +23,10 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
     const username = assembly?.author.name;
     const repository = assembly?.repository.url;
     const license = assembly?.license;
-    const registry = links?.npm;
+    // https://www.npmjs.com/package/aws-cdk/v/1.113.0
+    const registry =
+      links?.npm ??
+      `https://www.npmjs.com/package/${assembly?.name}/v/${assembly?.version}`;
 
     const items = [];
 
