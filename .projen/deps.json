@@ -209,6 +209,10 @@
       "type": "runtime"
     },
     {
+      "name": "prism-react-renderer",
+      "type": "runtime"
+    },
+    {
       "name": "react",
       "type": "runtime"
     },
