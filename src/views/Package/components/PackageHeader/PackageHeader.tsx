@@ -32,18 +32,21 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
           justify={{ base: "center", md: "initial" }}
           mt={3}
         >
-          {tags.map((tag) => (
-            <Flex
-              bg="gray.100"
-              borderRadius="sm"
-              justify="center"
-              key={tag}
-              mr={4}
-              p={2}
-            >
-              <Text>{tag.toUpperCase()}</Text>
-            </Flex>
-          ))}
+          {tags
+            .filter(Boolean)
+            .slice(0, 3)
+            .map((tag) => (
+              <Flex
+                bg="gray.100"
+                borderRadius="sm"
+                justify="center"
+                key={tag}
+                mr={4}
+                p={2}
+              >
+                <Text>{tag.toUpperCase()}</Text>
+              </Flex>
+            ))}
         </Flex>
       )}
     </Flex>

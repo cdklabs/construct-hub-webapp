@@ -23,9 +23,9 @@ export const DependencyDropdown: FunctionComponent<DependencyDropdownProps> = ({
     <Menu>
       <MenuButton
         as={Button}
-        bg="white"
-        leftIcon={<LinkIcon color="purple.600" />}
-        rightIcon={<ChevronDownIcon color="purple.600" h={6} w={6} />}
+        color="blue.500"
+        leftIcon={<LinkIcon />}
+        rightIcon={<ChevronDownIcon h={6} w={6} />}
         size="md"
         variant="outline"
       >

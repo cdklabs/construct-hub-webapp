@@ -93,14 +93,16 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         position="sticky"
         top={TOP_OFFSET}
       >
-        <Flex
-          borderBottom="1px solid"
-          borderColor="gray.100"
-          justify="center"
-          py={4}
-        >
-          <ChooseSubmodule assembly={assembly} />
-        </Flex>
+        {Object.keys(assembly?.submodules ?? {}).length > 0 && (
+          <Flex
+            borderBottom="1px solid"
+            borderColor="gray.100"
+            justify="center"
+            py={4}
+          >
+            <ChooseSubmodule assembly={assembly} />
+          </Flex>
+        )}
         <Box overflowY="auto" pt={4}>
           <NavTree items={navItems} />
         </Box>
