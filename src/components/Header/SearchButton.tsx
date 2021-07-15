@@ -20,7 +20,7 @@ export const SearchButton: FunctionComponent = () => {
         align="center"
         color="gray.600"
         colorScheme="gray"
-        display={["none", null, "flex"]}
+        display={{ base: "none", md: "flex" }}
         fontWeight="medium"
         justifyContent="space-between"
         m="0 auto"
@@ -36,7 +36,7 @@ export const SearchButton: FunctionComponent = () => {
       <IconButton
         aria-label="Search Icon"
         borderRadius="md"
-        display={["initial", null, "none"]}
+        display={{ base: "initial", md: "none" }}
         icon={<SearchIcon color="gray.600" />}
         onClick={searchModal.onOpen}
         variant="ghost"

@@ -33,12 +33,12 @@ export const Footer: FunctionComponent<FooterProps> = () => {
           ([key, { display, testId, url }], index) => (
             <Flex
               align="center"
-              direction={["column", "column", "row"]}
+              direction={{ base: "column", md: "row" }}
               key={key}
             >
               {/* Single Row Divider */}
               <Box
-                display={["none", "none", index !== 0 ? "initial" : "none"]}
+                display={{ base: "none", md: index !== 0 ? "initial" : "none" }}
                 h={5}
               >
                 <Divider borderColor="white" mr={6} orientation="vertical" />
@@ -54,7 +54,11 @@ export const Footer: FunctionComponent<FooterProps> = () => {
               </ExternalLink>
               {/* 2 Row Divider */}
               <Box
-                display={["none", index < 2 ? "initial" : "none", "none"]}
+                display={{
+                  base: "none",
+                  sm: index < 2 ? "initial" : "none",
+                  md: "none",
+                }}
                 w="100%"
               >
                 <Divider borderColor="white" />
