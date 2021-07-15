@@ -5,6 +5,7 @@ import type { Metadata } from "../../../../api/package/metadata";
 import { ExternalLink } from "../../../../components/ExternalLink";
 import { LicenseLink, LICENSE_LINKS } from "../../../../components/LicenseLink";
 import { Time } from "../../../../components/Time";
+import { getRepoUrlAndHost } from "../../../../util/url";
 import { DependencyDropdown } from "../DependencyDropdown";
 
 export interface OperatorAreaProps {
@@ -21,7 +22,7 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
 
     const { date, links } = metadata;
     const username = assembly?.author.name;
-    const repository = assembly?.repository.url;
+    const repository = assembly?.repository;
     const license = assembly?.license;
     // https://www.npmjs.com/package/aws-cdk/v/1.113.0
     const registry =
@@ -47,12 +48,14 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
     }
 
     if (repository) {
-      const repoLink = (
-        <ExternalLink href={repository}>
-          {new URL(repository).hostname}
-        </ExternalLink>
-      );
-      items.push(<>Source code: {repoLink}</>);
+      const repo = getRepoUrlAndHost(repository.url);
+
+      if (repo) {
+        const repoLink = (
+          <ExternalLink href={repo.url}>{repo.hostname}</ExternalLink>
+        );
+        items.push(<>Source code: {repoLink}</>);
+      }
     }
 
     if (license && license in LICENSE_LINKS) {
