@@ -39,6 +39,11 @@ describe("<ChooseSubmodule />", () => {
     expect(queryByTestId("choose-submodule-search-form")).not.toBeNull();
   });
 
+  it("renders nothing if no submodules", () => {
+    const { queryByTestId } = renderComponent({} as any);
+    expect(queryByTestId("choose-submodule-search-trigger")).toBeNull();
+  });
+
   it("only displays back button when a submodule is present", () => {
     let { queryByTestId } = renderComponent();
     expect(queryByTestId("choose-submodule-go-back")).toBeNull();
