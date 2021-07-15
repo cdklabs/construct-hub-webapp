@@ -39,8 +39,8 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
 
   const navigate = useCallback(
     (to: string) => {
-      push(to);
       onClose();
+      push(to);
     },
     [onClose, push]
   );
