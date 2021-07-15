@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 
 export interface PackageHeaderProps {
@@ -15,16 +15,16 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
   return (
     <Flex
       direction="column"
+      maxWidth="100%"
+      overflowX="hidden"
       p={2}
       textAlign={{ base: "center", md: "initial" }}
     >
-      <Box mb={5}>
-        <Heading>{title}</Heading>
-      </Box>
+      <Heading mb={5} wordBreak="break-word">
+        {title}
+      </Heading>
 
-      <Box>
-        <Text>{description}</Text>
-      </Box>
+      <Text wordBreak="break-word">{description}</Text>
 
       {!!tags.length && (
         <Flex
