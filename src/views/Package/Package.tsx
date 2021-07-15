@@ -1,4 +1,4 @@
-import { Box, Flex, Stack } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
@@ -10,7 +10,6 @@ import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
 import { PackageDetails } from "./components/PackageDetails";
 import { PackageDocs } from "./components/PackageDocs";
-import { UseConstruct } from "./components/UseConstruct";
 
 interface PathParams {
   name: string;
@@ -47,14 +46,6 @@ export const Package: FunctionComponent = () => {
           version={version}
         />
       </Box>
-      {assemblyResponse.data && (
-        <Flex justify="end" px={4}>
-          <UseConstruct
-            packageName={assemblyResponse.data.name}
-            version={assemblyResponse.data.version}
-          />
-        </Flex>
-      )}
       {/* Readme and Api Reference Area */}
       {markdownResponse.data &&
         !markdownResponse.loading &&
