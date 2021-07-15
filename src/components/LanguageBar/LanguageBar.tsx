@@ -7,7 +7,7 @@ import {
 } from "../../constants/languages";
 
 export interface LanguageBarProps {
-  targetLanguages: Language[];
+  targetLanguages: readonly Language[];
   selectedLanguage: Language;
   setSelectedLanguage: (lang: Language) => void;
   showDisabled?: boolean;
@@ -20,6 +20,7 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
   showDisabled = false,
 }) => {
   const displayable = showDisabled ? LANGUAGES : targetLanguages;
+  const targetLanguageSet = new Set(targetLanguages);
   return (
     <Stack
       align="center"
@@ -28,7 +29,7 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
       spacing={2}
     >
       {displayable.map((language: Language) => {
-        const isDisabled = !targetLanguages.includes(language);
+        const isDisabled = !targetLanguageSet.has(language);
         const isSelected = language === selectedLanguage;
 
         const { icon: LangIcon } = LANGUAGE_RENDER_MAP[language];

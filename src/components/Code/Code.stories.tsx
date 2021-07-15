@@ -1,5 +1,5 @@
 import type { Story } from "@storybook/react";
-import { Languages } from "../../constants/languages";
+import { Language } from "../../constants/languages";
 import { Code, CodeProps } from "./Code";
 
 export default {
@@ -13,7 +13,7 @@ export const SingleLine: Story<CodeProps> = ({ code, language }) => (
 
 SingleLine.args = {
   code: "npm install @aws-cdk/region-info@1.113.0",
-  language: Languages.TypeScript,
+  language: Language.TypeScript,
 };
 
 export const MultiLine: Story<CodeProps> = ({ code, language }) => (
@@ -32,5 +32,5 @@ region = RegionInfo.get("eu-west-1")
 region.s3_static_website_endpoint# s3-website-eu-west-1.amazonaws.com
 region.service_principal("logs.amazonaws.com")
   `,
-  language: Languages.Python,
+  language: Language.Python,
 };

@@ -12,7 +12,7 @@ type LanguageItems = Partial<Record<Language, string>>;
 
 const languageOptions = Object.fromEntries(
   Object.entries(LANGUAGE_NAME_MAP).filter(([key]) =>
-    TEMP_SUPPORTED_LANGUAGES.includes(key as Language)
+    TEMP_SUPPORTED_LANGUAGES.has(key as Language)
   )
 ) as LanguageItems;
 

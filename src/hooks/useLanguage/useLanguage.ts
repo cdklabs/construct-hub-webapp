@@ -1,25 +1,21 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
-import {
-  Language,
-  Languages,
-  TEMP_SUPPORTED_LANGUAGES,
-} from "../../constants/languages";
+import { Language, TEMP_SUPPORTED_LANGUAGES } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useQueryParams } from "../../hooks/useQueryParams";
 
 // Only supported language atm
-const defaultLang: Language = Languages.TypeScript;
+const defaultLang = Language.TypeScript;
 
 const LOCAL_KEY = "preferred-language";
 
-const isValidLang = (lang: Language | void) =>
-  lang && TEMP_SUPPORTED_LANGUAGES.includes(lang);
+const isValidLang = (lang?: string | Language): lang is Language =>
+  lang != null && TEMP_SUPPORTED_LANGUAGES.has(lang as Language);
 
-const getInitialLang = (langFromParams: Language): Language => {
+const getInitialLang = (langFromParams: string | Language): Language => {
   // First, use language from query params in url
   if (isValidLang(langFromParams)) {
-    return langFromParams as Language;
+    return langFromParams;
   }
 
   // Next check for one stored in localStorage
