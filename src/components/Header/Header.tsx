@@ -1,6 +1,7 @@
-import { Grid, GridItem, GridItemProps, Text } from "@chakra-ui/react";
+import { Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { GettingStartedDropdown } from "../GettingStartedDropdown";
+import { Community } from "./Community";
+import { GettingStarted } from "./GettingStarted";
 import { NavButton } from "./NavButton";
 import { SearchButton } from "./SearchButton";
 import { Title } from "./Title";
@@ -60,10 +61,8 @@ export const Header: FunctionComponent = () => {
           gridTemplateRows="1fr"
           w="100%"
         >
-          <GettingStartedDropdown />
-          <Text color="blue.800" fontWeight="semibold" ml={2}>
-            Browse
-          </Text>
+          <GettingStarted />
+          <Community />
         </Grid>
         <NavButton />
       </HeaderItem>

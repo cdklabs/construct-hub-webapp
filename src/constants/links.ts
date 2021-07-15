@@ -1,37 +1,26 @@
-export interface ILink {
-  display: string;
-  url: string;
-}
+import type { IMenuItems } from "../components/NavPopover";
 
-export interface IGroup {
-  display: string;
-  links: ILink[];
-}
-
-export const isIGroup = (item: ILink | IGroup) => {
-  return "links" in item;
-};
-
-export type MenuContent = (ILink | IGroup)[];
-
-export const GETTING_STARTED: MenuContent = [
+export const COMMUNITY: IMenuItems = [
   {
-    display: "CDK",
+    display: "Slack",
+    url: "https://join.slack.com/t/cdk-dev/shared_invite/zt-mso6p56d-qJp7SOTBvMaQuDrx7R2wHg",
+  },
+  { display: "Community Hub", url: "https://cdk.dev" },
+];
+
+export const GETTING_STARTED: IMenuItems = [
+  {
+    display: "AWS CDK",
     links: [
-      { display: "Quick Start", url: "https://cdkworkshop.com/" },
+      { display: "Workshop", url: "https://cdkworkshop.com/" },
       {
-        display: "Developer Guide",
+        display: "Getting Started",
         url: "https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html",
-      },
-      {
-        display: "CLI",
-        url: "https://docs.aws.amazon.com/cdk/latest/guide/cli.html",
       },
       {
         display: "Best Practices",
         url: "https://aws.amazon.com/blogs/devops/best-practices-for-developing-cloud-applications-with-aws-cdk/",
       },
-      { display: "Slack", url: "https://cdk.dev/" },
     ],
   },
   {
