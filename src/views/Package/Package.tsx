@@ -8,6 +8,7 @@ import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
+import { NotFound } from "../NotFound";
 import { PackageDetails } from "./components/PackageDetails";
 import { PackageDocs } from "./components/PackageDocs";
 import { UseConstruct } from "./components/UseConstruct";
@@ -36,6 +37,11 @@ export const Package: FunctionComponent = () => {
   useEffect(() => {
     void requestMarkdown(name, version, language, scope, submodule);
   }, [name, scope, version, language, submodule, requestMarkdown]);
+
+  // Handle missing JSON for assembly
+  if (assemblyResponse.error) {
+    return <NotFound />;
+  }
 
   return (
     <Stack maxW="100vw" pt={4} spacing={4}>

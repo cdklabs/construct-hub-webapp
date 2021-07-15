@@ -5,11 +5,11 @@ import { Picture } from "../../components/Picture";
 
 const bgSources = {
   optimal: [
-    { media: "(max-width:1024px)", srcSet: "assets/404-hive@50.webp" },
-    { media: "(min-width:1024px)", srcSet: "assets/404-hive@100.webp" },
-    { media: "(min-width:1024px)", srcSet: "assets/404-hive@100.png" },
+    { media: "(max-width:1024px)", srcSet: "/assets/404-hive@50.webp" },
+    { media: "(min-width:1024px)", srcSet: "/assets/404-hive@100.webp" },
+    { media: "(min-width:1024px)", srcSet: "/assets/404-hive@100.png" },
   ],
-  fallback: "assets/404-hive@50.png",
+  fallback: "/assets/404-hive@50.png",
 };
 
 export const NotFound: FunctionComponent = () => {
@@ -26,8 +26,8 @@ export const NotFound: FunctionComponent = () => {
       <Flex align="center" direction="column" justify="center">
         <Picture
           alt="404 Image"
-          sources={[{ srcSet: "assets/robot.webp" }]}
-          src="assets/robot.png"
+          sources={[{ srcSet: "/assets/robot.webp" }]}
+          src="/assets/robot.png"
         />
         <Button as={Link} colorScheme="blue" to="/">
           Take Me Home

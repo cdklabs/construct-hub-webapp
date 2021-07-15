@@ -22,6 +22,8 @@ export type UseRequestReturn<T extends (...args: any[]) => Promise<T>> = [
   UseRequestResponse<AwaitedReturn<T>>
 ];
 
+const isDev = process.env.NODE_ENV == "development";
+
 /**
  * Provides an API to statefully interact with promises. This hook
  * prevents state updates if promise has not resolved before component unmounts.
@@ -63,7 +65,10 @@ export const useRequest = <T extends PromiseFn>(
           setLoading(false);
         }
       } catch (e) {
-        console.error(e);
+        if (isDev) {
+          console.error(e);
+        }
+
         onError?.(e);
 
         if (mountedRef.current) {
