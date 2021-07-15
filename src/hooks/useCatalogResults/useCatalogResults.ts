@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Language, Languages } from "../../constants/languages";
+import { Language } from "../../constants/languages";
 import { useCatalog } from "../../contexts/Catalog";
 
 export interface UseCatalogResultsOptions {
@@ -33,7 +33,7 @@ export const useCatalogResults = ({
     }
 
     // Omit TS from filters b/c it is always available
-    if (language && language !== Languages.TypeScript) {
+    if (language && language !== Language.TypeScript) {
       filtered = filtered.filter((item) =>
         Object.keys(item.languages).includes(language)
       );

@@ -24,7 +24,9 @@ describe("useLanguage", () => {
 
   beforeEach(() => {
     // @ts-ignore
-    languageConstants.TEMP_SUPPORTED_LANGUAGES = languageConstants.LANGUAGES;
+    languageConstants.TEMP_SUPPORTED_LANGUAGES = new Set(
+      languageConstants.LANGUAGES
+    );
     useLocation.mockReturnValue(baseLocation);
   });
 
@@ -56,20 +58,20 @@ describe("useLanguage", () => {
     getItem.mockReturnValueOnce("dotnet");
     const { result } = testRender();
 
-    expect(result.current[0]).toEqual("dotnet");
+    expect(result.current[0]).toEqual(languageConstants.Language.DotNet);
   });
 
   it("ignores invalid localStorage value", () => {
     getItem.mockReturnValueOnce("ruby");
     const { result } = testRender();
 
-    expect(result.current[0]).toEqual("typescript");
+    expect(result.current[0]).toEqual(languageConstants.Language.TypeScript);
   });
 
   it("falls back to default lang if not localStorage or url param", () => {
     getItem.mockReturnValueOnce(null);
     const { result } = testRender();
 
-    expect(result.current[0]).toEqual("typescript");
+    expect(result.current[0]).toEqual(languageConstants.Language.TypeScript);
   });
 });
