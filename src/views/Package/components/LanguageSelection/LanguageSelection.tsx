@@ -3,7 +3,6 @@ import type { FunctionComponent } from "react";
 import { LanguageBar } from "../../../../components/LanguageBar";
 import {
   Language,
-  Languages,
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../../../constants/languages";
 import { useLanguage } from "../../../../hooks/useLanguage";
@@ -23,7 +22,7 @@ export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
     ...Object.keys(assembly?.targets ?? {}),
     // typescript is the source language and hence always supported.
     // (it doesn't appear in spec.targets)
-    Languages.TypeScript,
+    Language.TypeScript,
   ] as Language[];
 
   return (
@@ -32,7 +31,7 @@ export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
       setSelectedLanguage={setLanguage}
       showDisabled
       targetLanguages={targets.filter((target) =>
-        TEMP_SUPPORTED_LANGUAGES.includes(target)
+        TEMP_SUPPORTED_LANGUAGES.has(target)
       )}
     />
   );

@@ -7,7 +7,6 @@ import {
   TEMP_SUPPORTED_LANGUAGES,
   LANGUAGE_NAME_MAP,
   Language,
-  Languages,
 } from "../../../../constants/languages";
 import { useLanguage } from "../../../../hooks/useLanguage";
 
@@ -21,9 +20,9 @@ const getCodeSample = ({
   packageName: string;
   version: string;
 }) => {
-  if (language === Languages.TypeScript) {
+  if (language === Language.TypeScript) {
     return `npm install ${packageName}@${version}`;
-  } else if (language === Languages.Python) {
+  } else if (language === Language.Python) {
     return `pip install ${packageName}==${version}`;
   }
 
@@ -45,7 +44,7 @@ export const UseConstruct: FunctionComponent<UseConstructProps> = ({
   const header = LANGUAGE_NAME_MAP[language];
 
   const trigger = (
-    <CodePopoverTrigger disabled={!TEMP_SUPPORTED_LANGUAGES.includes(language)}>
+    <CodePopoverTrigger disabled={!TEMP_SUPPORTED_LANGUAGES.has(language)}>
       Use Construct
     </CodePopoverTrigger>
   );

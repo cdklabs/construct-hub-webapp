@@ -1,7 +1,7 @@
 import { renderHook, cleanup } from "@testing-library/react-hooks";
 import catalog from "../../__fixtures__/catalog.json";
 import { Packages } from "../../api/package/packages";
-import { Languages } from "../../constants/languages";
+import { Language } from "../../constants/languages";
 import { useCatalog } from "../../contexts/Catalog";
 import {
   useCatalogResults,
@@ -67,12 +67,12 @@ describe("useCatalogResults", () => {
   it("filters results by language", () => {
     const { result } = renderUseCatalog({
       ...defaultOptions,
-      language: Languages.DotNet,
+      language: Language.DotNet,
     });
 
     expect(result.current.results).toEqual(
       catalogFixture.packages.filter(({ languages }) =>
-        Object.keys(languages).includes(Languages.DotNet)
+        Object.keys(languages).includes(Language.DotNet)
       )
     );
   });

@@ -3,6 +3,7 @@ import type { FunctionComponent } from "react";
 import { CatalogPackage } from "../../api/package/packages";
 import {
   Language,
+  LANGUAGES,
   LANGUAGE_RENDER_MAP,
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
@@ -128,30 +129,36 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
 
           {/* Language Support Icons */}
           <Stack align="center" direction="row">
-            {Object.entries(LANGUAGE_RENDER_MAP).map(([key, language]) => {
-              const isSupported =
-                targets
-                  .filter((t) =>
-                    TEMP_SUPPORTED_LANGUAGES.includes(t as Language)
-                  )
-                  .includes(key as Language) || key === "ts";
+            {Object.entries(LANGUAGE_RENDER_MAP)
+              // Ensure entries are always sorted in a stable way
+              .sort(
+                ([left], [right]) =>
+                  LANGUAGES.indexOf(left as Language) -
+                  LANGUAGES.indexOf(right as Language)
+              )
+              .map(([language, info]) => {
+                const isSupported =
+                  language === Language.TypeScript ||
+                  targets
+                    .filter((t) => TEMP_SUPPORTED_LANGUAGES.has(t as Language))
+                    .includes(language as Language);
 
-              const { name, icon: Icon } = language;
-              const label = isSupported
-                ? `Supports ${name}`
-                : `Does not support ${name}`;
+                const { name, icon: Icon } = info;
+                const label = isSupported
+                  ? `Supports ${name}`
+                  : `Does not support ${name}`;
 
-              return (
-                <Icon
-                  aria-label={label}
-                  data-testid={testIds.language}
-                  h={6}
-                  key={key}
-                  opacity={isSupported ? 1 : 0.2}
-                  w={6}
-                />
-              );
-            })}
+                return (
+                  <Icon
+                    aria-label={label}
+                    data-testid={testIds.language}
+                    h={6}
+                    key={language}
+                    opacity={isSupported ? 1 : 0.2}
+                    w={6}
+                  />
+                );
+              })}
           </Stack>
         </Stack>
       </Box>

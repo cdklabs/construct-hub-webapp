@@ -1,5 +1,5 @@
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import type { Language } from "../../constants/languages";
+import { Language } from "../../constants/languages";
 import { LanguageBar, LanguageBarProps } from "./LanguageBar";
 
 describe("<LanguageBar />", () => {
@@ -8,16 +8,20 @@ describe("<LanguageBar />", () => {
   const renderLanguageBar = (props: Partial<LanguageBarProps>) => {
     return render(
       <LanguageBar
-        selectedLanguage="js"
+        selectedLanguage={Language.TypeScript}
         setSelectedLanguage={() => {}}
-        targetLanguages={["js", "python"]}
+        targetLanguages={[Language.TypeScript, Language.Python]}
         {...props}
       />
     );
   };
 
   test("showDisabled:false hides disabled languages", () => {
-    const targetLanguages: Language[] = ["js", "python", "golang"];
+    const targetLanguages: Language[] = [
+      Language.TypeScript,
+      Language.Python,
+      Language.Go,
+    ];
 
     const { getByTestId, queryByTestId } = renderLanguageBar({
       targetLanguages,
@@ -33,7 +37,7 @@ describe("<LanguageBar />", () => {
 
   test("showDisabled:true shows disabled languages", () => {
     const { getByTestId } = renderLanguageBar({
-      targetLanguages: ["js"],
+      targetLanguages: [Language.Python],
       showDisabled: true,
     });
 
@@ -46,8 +50,8 @@ describe("<LanguageBar />", () => {
     const selectElement = jest.fn();
 
     const { getByTestId } = renderLanguageBar({
-      targetLanguages: ["js", "dotnet"],
-      selectedLanguage: "js",
+      targetLanguages: [Language.TypeScript, Language.DotNet],
+      selectedLanguage: Language.TypeScript,
       setSelectedLanguage: selectElement,
     });
 
