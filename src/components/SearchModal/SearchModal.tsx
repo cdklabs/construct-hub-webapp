@@ -11,7 +11,7 @@ import {
   Stack,
   UnorderedList,
 } from "@chakra-ui/react";
-import { FunctionComponent } from "react";
+import { FormEventHandler, FunctionComponent } from "react";
 import { useHistory } from "react-router-dom";
 import { QUERY_PARAMS, ROUTES } from "../../constants/url";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
@@ -49,8 +49,13 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
   const showResults = (query || language) && displayable.length > 0;
 
   const navigate = (to: string) => {
-    push(to);
     onClose();
+    push(to);
+  };
+
+  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    onClose();
+    searchAPI.onSubmit(e);
   };
 
   return (
@@ -61,7 +66,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
             <ModalCloseButton />
             <ModalHeader>Search modules or providers</ModalHeader>
             <ModalBody>
-              <Form onSubmit={searchAPI.onSubmit} pb={4}>
+              <Form onSubmit={onSubmit} pb={4}>
                 <Stack spacing={4}>
                   <CatalogSearchInputs {...searchAPI} />
                 </Stack>

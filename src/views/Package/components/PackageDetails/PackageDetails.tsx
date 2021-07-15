@@ -1,4 +1,4 @@
-import { Center, Divider, Flex, Grid, Spinner } from "@chakra-ui/react";
+import { Center, Divider, Flex, Grid, Spinner, Stack } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
 import type { Metadata } from "../../../../api/package/metadata";
@@ -7,6 +7,7 @@ import type { UseRequestResponse } from "../../../../hooks/useRequest";
 import { LanguageSelection } from "../LanguageSelection";
 import { OperatorArea } from "../OperatorArea";
 import { PackageHeader } from "../PackageHeader";
+import { UseConstruct } from "../UseConstruct";
 
 interface PackageDetailsProps {
   assembly: UseRequestResponse<Assembly>;
@@ -56,9 +57,20 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
         />
         <OperatorArea assembly={assembly.data} metadata={metadata.data} />
       </Grid>
-      <Flex justify={{ base: "center", md: "start" }} px={2} py={4}>
+      <Stack
+        align="center"
+        direction={{ base: "column", md: "row" }}
+        justify={{ base: "center", md: "space-between" }}
+        px={2}
+        py={4}
+        spacing={4}
+      >
         <LanguageSelection assembly={assembly.data} />
-      </Flex>
+        <UseConstruct
+          packageName={assembly.data.name}
+          version={assembly.data.version}
+        />
+      </Stack>
     </Flex>
   );
 };
