@@ -18,7 +18,7 @@ export const Blockquote: FunctionComponent = ({ children }) => (
     borderLeftColor="gray.200"
     borderRadius="md"
     p={2}
-    wordBreak="break-all"
+    wordBreak="break-word"
   >
     {children}
   </Box>

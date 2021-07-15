@@ -37,6 +37,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
     <Flex as={Card} direction="column">
       <Grid
         gap={4}
+        overflow="hidden"
         templateColumns={{ base: "1fr", md: "3fr auto 2fr" }}
         templateRows="auto"
       >

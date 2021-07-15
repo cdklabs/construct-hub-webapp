@@ -3,6 +3,7 @@ import { Children, FunctionComponent, ReactNode } from "react";
 import ReactDOMServer from "react-dom/server";
 import { sanitize } from "../../util/sanitize-anchor";
 import { NavLink } from "../NavLink";
+import { Hr } from "./Hr";
 
 interface HeadingResolverProps {
   level: number;
@@ -14,6 +15,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
   children,
 }) => {
   const size: string = ["2xl", "xl", "lg", "md", "sm", "xs"][level - 1];
+  const mb: number = [8, 7, 6, 5, 5, 4][level - 1];
   const elem = `h${level}` as As<any>;
 
   // Use DOMParser to look for data attribute for link ID
@@ -40,17 +42,18 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
   const id = dataElement?.dataset.headingId ?? sanitize(title);
 
   return (
-    <NavLink
-      data-heading-id={id}
-      data-heading-level={level}
-      data-heading-title={title}
-      id={id}
-      replace
-      to={`#${id}`}
-    >
-      <Heading as={elem} color="blue.800" level={level} my={4} size={size}>
+    <Heading as={elem} color="blue.800" level={level} mb={mb} size={size}>
+      <NavLink
+        data-heading-id={id}
+        data-heading-level={level}
+        data-heading-title={title}
+        id={id}
+        replace
+        to={`#${id}`}
+      >
         {children}
-      </Heading>
-    </NavLink>
+        {level < 3 && <Hr />}
+      </NavLink>
+    </Heading>
   );
 };
