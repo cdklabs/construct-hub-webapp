@@ -8,11 +8,11 @@ import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 
 const sources = {
   optimal: [
-    { media: "(max-width:1024px)", srcSet: "assets/hive@50.webp" },
-    { media: "(min-width:1024px)", srcSet: "assets/hive@100.webp" },
-    { media: "(min-width:1024px)", srcSet: "assets/hive@100.png" },
+    { media: "(max-width:1024px)", srcSet: "/assets/hive@50.webp" },
+    { media: "(min-width:1024px)", srcSet: "/assets/hive@100.webp" },
+    { media: "(min-width:1024px)", srcSet: "/assets/hive@100.png" },
   ],
-  fallback: "assets/hive@50.png",
+  fallback: "/assets/hive@50.png",
 };
 
 export const Home: FunctionComponent = () => {

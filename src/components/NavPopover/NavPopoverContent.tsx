@@ -29,10 +29,10 @@ export const NavPopoverContent = forwardRef<NavPopoverContentProps, "div">(
         {items.map((item, idx) => {
           if ("links" in item) {
             return (
-              <Fragment key={item.display}>
+              <Fragment key={`${item.display}-${idx}`}>
                 <MenuGroup align="left" title={item.display}>
-                  {item.links.map((link) => (
-                    <MenuItem key={item.display}>
+                  {item.links.map((link, linkIdx) => (
+                    <MenuItem key={`${link.display}-${linkIdx}`}>
                       <Link {...link} />
                     </MenuItem>
                   ))}
@@ -43,7 +43,7 @@ export const NavPopoverContent = forwardRef<NavPopoverContentProps, "div">(
           }
 
           return (
-            <MenuItem key={item.display}>
+            <MenuItem key={`${item.display}-${idx}`}>
               <Link {...item} />
             </MenuItem>
           );
