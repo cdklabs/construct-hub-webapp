@@ -13,7 +13,7 @@ describe("getRepoUrlAndHost", () => {
     expect(result.url).toEqual("https://github.com/foo/bar");
   });
 
-  it("return undefined for invalid urls", () => {
+  it("returns undefined for invalid urls", () => {
     [
       "://github.com/foo/bar",
       "git@github.com/foo/bar",
