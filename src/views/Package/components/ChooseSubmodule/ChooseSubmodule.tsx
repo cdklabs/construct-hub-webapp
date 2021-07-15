@@ -18,6 +18,7 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
   const { push } = useHistory();
   const query = useQueryParams();
 
+  const allSubmodules = Object.keys(assembly?.submodules ?? {});
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const currentSubmodule = query.get(QUERY_PARAMS.SUBMODULE);
@@ -42,7 +43,7 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
   );
 
   const submodules = useMemo(() => {
-    let results = Object.keys(assembly?.submodules ?? {});
+    let results = allSubmodules;
 
     if (filter) {
       results = results.filter((fqn) =>
@@ -57,7 +58,11 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
         to: getUrl(name),
       };
     });
-  }, [assembly?.submodules, filter, getUrl]);
+  }, [allSubmodules, filter, getUrl]);
+
+  if (allSubmodules.length === 0) {
+    return null;
+  }
 
   return (
     <Stack spacing={4} w="100%">
@@ -80,7 +85,6 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
         borderRadius="none"
         color="blue.500"
         data-testid="choose-submodule-search-trigger"
-        disabled={!Object.keys(assembly?.submodules ?? {}).length}
         flexGrow={1}
         onClick={onOpen}
         rightIcon={<ChevronDownIcon />}
