@@ -11,7 +11,7 @@ export const NavButton: FunctionComponent = () => {
       <IconButton
         aria-label="Navigation Menu"
         borderRadius="md"
-        display={["initial", null, "none"]}
+        display={{ md: "none" }}
         icon={<HamburgerIcon />}
         onClick={nav.onOpen}
         variant="ghost"

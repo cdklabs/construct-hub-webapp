@@ -37,7 +37,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
     <Flex as={Card} direction="column">
       <Grid
         gap={4}
-        templateColumns={["1fr", null, "3fr auto 2fr"]}
+        templateColumns={{ base: "1fr", md: "3fr auto 2fr" }}
         templateRows="auto"
       >
         <PackageHeader
@@ -45,14 +45,17 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
           tags={assembly.data.keywords ?? []}
           title={assembly.data.name}
         />
-        <Divider display={["none", null, "initial"]} orientation="vertical" />
         <Divider
-          display={["initial", "initial", "none"]}
+          display={{ base: "none", md: "initial" }}
+          orientation="vertical"
+        />
+        <Divider
+          display={{ base: "initial", md: "none" }}
           orientation="horizontal"
         />
         <OperatorArea assembly={assembly.data} metadata={metadata.data} />
       </Grid>
-      <Flex justify={["center", null, "start"]} px={2} py={4}>
+      <Flex justify={{ base: "center", md: "start" }} px={2} py={4}>
         <LanguageSelection assembly={assembly.data} />
       </Flex>
     </Flex>
