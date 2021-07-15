@@ -1,6 +1,7 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { useState, useEffect, FunctionComponent, useMemo } from "react";
+import { useLocation } from "react-router-dom";
 import { Markdown } from "../../../../components/Markdown";
 import { NavTree, NavItemConfig } from "../../../../components/NavTree";
 import { ChooseSubmodule } from "../ChooseSubmodule";
@@ -59,6 +60,15 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
     setNavItems(tree);
   }, [source]);
 
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const target = document.querySelector(`${hash}`) as HTMLElement;
+      target?.scrollIntoView(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [source]);
+
   const markdown = useMemo(() => <Markdown>{source}</Markdown>, [source]);
 
   return (
@@ -100,13 +110,8 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         overflow="hidden"
         p={4}
         sx={{
-          // Offsets the target link to account for sticky Header
-          "a:target:before": {
-            content: `""`,
-            display: "block",
-            height: TOP_OFFSET,
-            marginTop: `calc(-1 * ${TOP_OFFSET})`,
-            visibility: "hidden",
+          a: {
+            scrollMarginTop: TOP_OFFSET,
           },
         }}
       >
