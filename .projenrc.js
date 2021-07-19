@@ -43,6 +43,8 @@ const project = new web.ReactTypeScriptProject({
     "react-markdown",
     "react-router-dom",
     "rehype-raw",
+    "rehype-sanitize",
+    "remark-gfm",
     // PWA Functionality
     "workbox-core",
     "workbox-expiration",

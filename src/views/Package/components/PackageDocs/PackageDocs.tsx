@@ -69,7 +69,10 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [source]);
 
-  const markdown = useMemo(() => <Markdown>{source}</Markdown>, [source]);
+  const markdown = useMemo(
+    () => <Markdown repository={assembly.repository}>{source}</Markdown>,
+    [assembly.repository, source]
+  );
 
   return (
     <Grid

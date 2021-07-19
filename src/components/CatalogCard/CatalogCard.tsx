@@ -112,7 +112,11 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
             {publishDate}
           </Text>
 
-          {author.url ? (
+          {typeof author === "string" ? (
+            <Text data-testid={testIds.author} fontSize="sm" isTruncated>
+              {author}
+            </Text>
+          ) : author.url ? (
             <ExternalLink
               data-testid={testIds.author}
               fontSize="sm"
@@ -123,7 +127,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
             </ExternalLink>
           ) : (
             <Text data-testid={testIds.author} fontSize="sm" isTruncated>
-              {author.name}
+              {typeof author === "string" ? author : author.name}
             </Text>
           )}
 
