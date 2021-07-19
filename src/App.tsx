@@ -4,10 +4,15 @@ import { Switch, Route } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ROUTES } from "./constants/url";
+import * as shortbread from "./lib/shortbread";
 import { Home } from "./views/Home";
 import { NotFound } from "./views/NotFound";
 import { Packages } from "./views/Packages";
 import { SearchResults } from "./views/SearchResults";
+
+shortbread
+  .initialize()
+  .then(shortbread.checkForCookieConsent, (err) => console.error(err));
 
 export const App: FunctionComponent = () => {
   return (
