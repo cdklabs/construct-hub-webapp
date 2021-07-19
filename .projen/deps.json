@@ -234,6 +234,14 @@
       "type": "runtime"
     },
     {
+      "name": "rehype-sanitize",
+      "type": "runtime"
+    },
+    {
+      "name": "remark-gfm",
+      "type": "runtime"
+    },
+    {
       "name": "web-vitals",
       "type": "runtime"
     },
