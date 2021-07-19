@@ -12,7 +12,7 @@ export interface CatalogPackage {
   languages: Partial<Record<Language, Record<string, unknown>>>;
   version: string;
   description: string;
-  author: Author;
+  author: Author | string;
   keywords: string[];
   metadata?: Metadata;
 }
