@@ -33,7 +33,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
 }) => {
   const { push } = useHistory();
   const [currentLanguage] = useLanguage();
-  const searchAPI = useCatalogSearch();
+  const { onSubmit: onSearchSubmit, ...searchAPI } = useCatalogSearch();
   const { query, language } = useDebounce({
     query: searchAPI.query,
     language: searchAPI.language,
@@ -56,7 +56,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
 
   const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     onClose();
-    searchAPI.onSubmit(e);
+    onSearchSubmit(e);
   };
 
   return (

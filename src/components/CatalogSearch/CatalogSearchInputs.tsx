@@ -1,5 +1,5 @@
 import { Button, forwardRef, Input } from "@chakra-ui/react";
-import type { ChangeEventHandler, FunctionComponent, RefObject } from "react";
+import type { ChangeEventHandler, FunctionComponent } from "react";
 import {
   Language,
   TEMP_SUPPORTED_LANGUAGES,
@@ -75,6 +75,4 @@ export const CatalogSearchInputs = forwardRef<
       Search
     </Button>
   </>
-)) as FunctionComponent<
-  CatalogSearchInputsProps & { ref?: RefObject<HTMLInputElement> }
->;
+));
