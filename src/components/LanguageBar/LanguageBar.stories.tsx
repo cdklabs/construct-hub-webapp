@@ -9,10 +9,7 @@ export default {
   component: LanguageBar,
 };
 
-const Template: Story<LanguageBarProps> = ({
-  showDisabled,
-  targetLanguages,
-}) => {
+const Template: Story<LanguageBarProps> = ({ targetLanguages }) => {
   const [selected, setSelected] = useState<Language>(Language.TypeScript);
 
   return (
@@ -20,7 +17,6 @@ const Template: Story<LanguageBarProps> = ({
       <LanguageBar
         selectedLanguage={selected}
         setSelectedLanguage={setSelected}
-        showDisabled={showDisabled}
         targetLanguages={targetLanguages}
       />
     </Box>
@@ -37,5 +33,4 @@ Primary.args = {
     Language.Go,
     Language.Java,
   ],
-  showDisabled: true,
 };

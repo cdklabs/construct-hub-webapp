@@ -8,12 +8,15 @@ import remarkGfm from "remark-gfm";
 import { Code } from "./Code";
 import { Headings } from "./Headings";
 import { Hr } from "./Hr";
+import { Img } from "./Img";
 import { Ul, Ol, Li } from "./List";
+import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption } from "./Table";
 import { A, Blockquote, Em, P, Pre, Sup } from "./Text";
 
 const components = {
   a: A,
   blockquote: Blockquote,
+  caption: TableCaption,
   code: Code,
   em: Em,
   h1: Headings,
@@ -23,11 +26,19 @@ const components = {
   h5: Headings,
   h6: Headings,
   hr: Hr,
+  img: Img,
   li: Li,
   ol: Ol,
   p: P,
   pre: Pre,
   sup: Sup,
+  table: Table,
+  tbody: Tbody,
+  td: Td,
+  tfoot: Tfoot,
+  th: Th,
+  thead: Thead,
+  tr: Tr,
   ul: Ul,
 };
 

@@ -25,7 +25,6 @@ describe("<LanguageBar />", () => {
 
     const { getByTestId, queryByTestId } = renderLanguageBar({
       targetLanguages,
-      showDisabled: false,
     });
 
     targetLanguages.forEach((language) => {
@@ -35,28 +34,17 @@ describe("<LanguageBar />", () => {
     expect(queryByTestId("language-ts")).toBeNull();
   });
 
-  test("showDisabled:true shows disabled languages", () => {
-    const { getByTestId } = renderLanguageBar({
-      targetLanguages: [Language.Python],
-      showDisabled: true,
-    });
-
-    const disabledElement = getByTestId("language-typescript");
-    expect(disabledElement).not.toBeNull();
-    expect(disabledElement).toHaveAttribute("disabled");
-  });
-
   test("selecting an element", () => {
     const selectElement = jest.fn();
 
     const { getByTestId } = renderLanguageBar({
-      targetLanguages: [Language.TypeScript, Language.DotNet],
+      targetLanguages: [Language.TypeScript, Language.Python],
       selectedLanguage: Language.TypeScript,
       setSelectedLanguage: selectElement,
     });
 
-    fireEvent.click(getByTestId("language-dotnet"));
+    fireEvent.click(getByTestId("language-python"));
 
-    expect(selectElement).toHaveBeenCalledWith("dotnet");
+    expect(selectElement).toHaveBeenCalledWith("python");
   });
 });
