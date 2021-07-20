@@ -8,6 +8,7 @@ import { Home } from "./views/Home";
 import { NotFound } from "./views/NotFound";
 import { Packages } from "./views/Packages";
 import { SearchResults } from "./views/SearchResults";
+import { SiteTerms } from "./views/SiteTerms";
 
 export const App: FunctionComponent = () => {
   return (
@@ -25,6 +26,9 @@ export const App: FunctionComponent = () => {
       <Switch>
         <Route exact path={ROUTES.HOME}>
           <Home />
+        </Route>
+        <Route exact path={ROUTES.SITE_TERMS}>
+          <SiteTerms />
         </Route>
         <Route path={ROUTES.PACKAGES}>
           <Packages />
