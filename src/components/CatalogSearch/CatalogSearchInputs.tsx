@@ -1,4 +1,4 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Button, forwardRef, Input } from "@chakra-ui/react";
 import type { ChangeEventHandler, FunctionComponent } from "react";
 import {
   Language,
@@ -38,38 +38,41 @@ export interface CatalogSearchInputsProps {
   onLanguageChange: (language: Language | null) => void;
 }
 
-export const CatalogSearchInputs: FunctionComponent<CatalogSearchInputsProps> =
-  ({ query, onQueryChange, language, onLanguageChange }) => (
-    <>
-      <Input
-        bg="white"
-        borderColor="blue.100"
-        boxShadow="base"
-        data-testid={testIds.input}
-        name="query"
-        onChange={onQueryChange}
-        placeholder="Search Constructs..."
-        value={query}
-      />
-      <LanguageDropdown
-        items={languageOptions}
-        onSelect={onLanguageChange}
-        placeholder="Language..."
-        selected={language}
-        testIds={{
-          item: testIds.languageItem,
-          menu: testIds.languageDropdownMenu,
-          trigger: testIds.languageDropdown,
-          value: testIds.languageDropdownValue,
-        }}
-      />
-      <Button
-        boxShadow="base"
-        colorScheme="blue"
-        data-testid={testIds.submit}
-        type="submit"
-      >
-        Search
-      </Button>
-    </>
-  );
+export const CatalogSearchInputs = forwardRef<
+  CatalogSearchInputsProps,
+  "input"
+>(({ query, onQueryChange, language, onLanguageChange }, ref) => (
+  <>
+    <Input
+      bg="white"
+      borderColor="blue.100"
+      boxShadow="base"
+      data-testid={testIds.input}
+      name="query"
+      onChange={onQueryChange}
+      placeholder="Search Constructs..."
+      ref={ref}
+      value={query}
+    />
+    <LanguageDropdown
+      items={languageOptions}
+      onSelect={onLanguageChange}
+      placeholder="Language..."
+      selected={language}
+      testIds={{
+        item: testIds.languageItem,
+        menu: testIds.languageDropdownMenu,
+        trigger: testIds.languageDropdown,
+        value: testIds.languageDropdownValue,
+      }}
+    />
+    <Button
+      boxShadow="base"
+      colorScheme="blue"
+      data-testid={testIds.submit}
+      type="submit"
+    >
+      Search
+    </Button>
+  </>
+));
