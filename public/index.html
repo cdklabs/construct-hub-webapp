@@ -4,6 +4,23 @@
     <meta charset="utf-8" />
     <meta name="description" content="Construct Hub helps developers find open-source construct libraries for use with AWS CDK, CDK8s, CDKTf and other construct-based tools." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+<% if (process.env.NODE_ENV === 'development') { %>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' https://*.awsstatic.com;
+                   connect-src 'self' https://*.shortbread.aws.dev ws://localhost:3000;
+                   frame-src 'none';
+                   img-src 'self' https://* http://*.omtrdc.net;
+                   object-src 'none';
+                   style-src 'self' 'unsafe-inline';" />
+<% } else { %>
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self' 'unsafe-inline' https://*.awsstatic.com;
+               connect-src 'self' https://*.shortbread.aws.dev;
+               frame-src 'none';
+               img-src 'self' https://* http://*.omtrdc.net;
+               object-src 'none';
+               style-src 'self' 'unsafe-inline';" />
+<% } %>
 
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="theme-color" content="#ffffff" />
