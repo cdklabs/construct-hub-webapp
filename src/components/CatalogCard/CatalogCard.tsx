@@ -142,7 +142,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                   LANGUAGES.indexOf(right as Language)
               )
               .map(([language, info]) => {
-                const isSupportedByConstruct =
+                const isSupportedByLibrary =
                   language === Language.TypeScript ||
                   targets.includes(language as Language);
 
@@ -151,7 +151,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                   // Otherwise, the language must be supported by ConstructHub
                   TEMP_SUPPORTED_LANGUAGES.has(language as Language);
 
-                if (!isSupportedByConstruct) return null;
+                if (!isSupportedByLibrary) return null;
 
                 const { name, icon: Icon } = info;
 
