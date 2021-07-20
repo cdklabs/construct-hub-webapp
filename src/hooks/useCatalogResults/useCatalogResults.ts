@@ -39,7 +39,14 @@ export const useCatalogResults = ({
       );
     }
 
-    return filtered;
+    return filtered.sort((p1, p2) => {
+      const d1 = new Date(p1.metadata.date);
+      const d2 = new Date(p2.metadata.date);
+      if (d1 === d2) {
+        return 0;
+      }
+      return d1 < d2 ? 1 : -1;
+    });
   }, [data?.packages, error, language, loading, query]);
 
   const pageLimit = results ? Math.floor(results.length / limit) : 0;
