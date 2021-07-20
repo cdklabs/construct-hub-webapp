@@ -11,7 +11,7 @@ import {
   Stack,
   UnorderedList,
 } from "@chakra-ui/react";
-import { FormEventHandler, FunctionComponent } from "react";
+import { FormEventHandler, FunctionComponent, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { QUERY_PARAMS, ROUTES } from "../../constants/url";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
@@ -33,7 +33,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
 }) => {
   const { push } = useHistory();
   const [currentLanguage] = useLanguage();
-  const searchAPI = useCatalogSearch();
+  const { onSubmit: onSearchSubmit, ...searchAPI } = useCatalogSearch();
   const { query, language } = useDebounce({
     query: searchAPI.query,
     language: searchAPI.language,
@@ -47,6 +47,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
   });
 
   const showResults = (query || language) && displayable.length > 0;
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const navigate = (to: string) => {
     onClose();
@@ -55,12 +56,12 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
 
   const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     onClose();
-    searchAPI.onSubmit(e);
+    onSearchSubmit(e);
   };
 
   return (
     <Portal>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal initialFocusRef={inputRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
           <ModalContent>
             <ModalCloseButton />
@@ -68,7 +69,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
             <ModalBody>
               <Form onSubmit={onSubmit} pb={4}>
                 <Stack spacing={4}>
-                  <CatalogSearchInputs {...searchAPI} />
+                  <CatalogSearchInputs ref={inputRef} {...searchAPI} />
                 </Stack>
               </Form>
               {showResults && (
