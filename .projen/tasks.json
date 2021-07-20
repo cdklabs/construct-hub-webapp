@@ -2,7 +2,6 @@
   "tasks": {
     "clobber": {
       "name": "clobber",
-      "category": "30.maintain",
       "description": "hard resets to HEAD of origin and cleans the local repo",
       "env": {
         "BRANCH": "$(git branch --show-current)"
@@ -35,7 +34,6 @@
     },
     "compile": {
       "name": "compile",
-      "category": "00.build",
       "description": "Only compile",
       "steps": [
         {
@@ -45,12 +43,10 @@
     },
     "test:compile": {
       "name": "test:compile",
-      "category": "10.test",
       "description": "compiles the test code"
     },
     "test": {
       "name": "test",
-      "category": "10.test",
       "description": "Run tests",
       "steps": [
         {
@@ -66,7 +62,6 @@
     },
     "build": {
       "name": "build",
-      "category": "00.build",
       "description": "Full release build (test+compile)",
       "steps": [
         {
@@ -100,11 +95,11 @@
     },
     "bump": {
       "name": "bump",
-      "category": "20.release",
       "description": "Bumps version based on latest git tag and generates a changelog entry",
       "env": {
         "OUTFILE": "package.json",
-        "CHANGELOG": ".changelog.tmp.md"
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt"
       },
       "steps": [
         {
@@ -115,15 +110,31 @@
     },
     "unbump": {
       "name": "unbump",
-      "category": "20.release",
       "description": "Restores version to 0.0.0",
       "env": {
         "OUTFILE": "package.json",
-        "CHANGELOG": ".changelog.tmp.md"
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt"
       },
       "steps": [
         {
           "builtin": "release/reset-version"
+        }
+      ]
+    },
+    "publish:npm": {
+      "name": "publish:npm",
+      "description": "Publish this package to the npm Registry",
+      "env": {
+        "NPM_DIST_TAG": "latest",
+        "NPM_REGISTRY": "registry.npmjs.org"
+      },
+      "requiredEnv": [
+        "NPM_TOKEN"
+      ],
+      "steps": [
+        {
+          "exec": "npx -p jsii-release@latest jsii-release-npm"
         }
       ]
     },
@@ -158,7 +169,6 @@
     },
     "watch": {
       "name": "watch",
-      "category": "00.build",
       "description": "Watch & compile in the background",
       "steps": [
         {
@@ -168,12 +178,8 @@
     },
     "package": {
       "name": "package",
-      "category": "20.release",
       "description": "Create an npm tarball",
       "steps": [
-        {
-          "exec": "rm -fr dist"
-        },
         {
           "exec": "mkdir -p dist/js"
         },
@@ -187,7 +193,6 @@
     },
     "eslint": {
       "name": "eslint",
-      "category": "10.test",
       "description": "Runs eslint against the codebase",
       "steps": [
         {
@@ -197,7 +202,6 @@
     },
     "dev": {
       "name": "dev",
-      "category": "00.build",
       "description": "Starts the react application",
       "steps": [
         {
@@ -207,7 +211,6 @@
     },
     "eject": {
       "name": "eject",
-      "category": "99.misc",
       "description": "Ejects your React application from react-scripts",
       "steps": [
         {
@@ -256,6 +259,30 @@
       "steps": [
         {
           "exec": "node scripts/fetch-assemblies.js"
+        }
+      ]
+    },
+    "release": {
+      "name": "release",
+      "description": "Prepare a release from \"main\" branch",
+      "env": {
+        "RELEASE": "true"
+      },
+      "steps": [
+        {
+          "exec": "rm -fr dist"
+        },
+        {
+          "spawn": "bump"
+        },
+        {
+          "spawn": "build"
+        },
+        {
+          "spawn": "unbump"
+        },
+        {
+          "exec": "git diff --ignore-space-at-eol --exit-code"
         }
       ]
     }
