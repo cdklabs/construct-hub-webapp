@@ -11,8 +11,6 @@ import {
   Text,
   useClipboard,
   useDisclosure,
-  useMediaQuery,
-  useToken,
 } from "@chakra-ui/react";
 import { FunctionComponent, ReactNode, useRef } from "react";
 import { createTestIds } from "../../util/createTestIds";
@@ -51,14 +49,12 @@ export const CodePopover: FunctionComponent<CodePopoverProps> = ({
   const { hasCopied, onCopy } = useClipboard(code);
   const disclosure = useDisclosure();
   const focusRef = useRef<HTMLButtonElement>(null);
-  const mdBreakpoint = useToken("breakpoints", "md");
-  const [isMd] = useMediaQuery(`(min-width: ${mdBreakpoint})`);
 
   return (
     <Popover
       initialFocusRef={focusRef}
       isLazy
-      placement={isMd ? "bottom-end" : "bottom"}
+      placement="bottom-end"
       {...disclosure}
     >
       <PopoverTrigger>{trigger}</PopoverTrigger>
