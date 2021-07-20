@@ -22,6 +22,7 @@ export const ShortbreadProvider: FunctionComponent = ({ children }) => {
     initialize()
       .then(() => {
         if (!isCancelled) {
+          publicAPI.checkForCookieConsent();
           setIsReady(true);
         }
       })
