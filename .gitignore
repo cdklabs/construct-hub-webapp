@@ -11,9 +11,10 @@
 .eslintcache
 .nyc_output
 .yarn-integrity
-/.changelog.tmp.md
 /build
 /dist
+/dist/changelog.md
+/dist/version.txt
 /lib
 /storybook-static/
 build/Release
