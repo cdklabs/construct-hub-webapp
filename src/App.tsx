@@ -17,6 +17,7 @@ export const App: FunctionComponent = () => {
       bg="gray.50"
       gridTemplateColumns="1fr"
       gridTemplateRows="auto 1fr auto"
+      h="100%"
       inset={0}
       maxW="100vw"
       overflow="hidden auto"
