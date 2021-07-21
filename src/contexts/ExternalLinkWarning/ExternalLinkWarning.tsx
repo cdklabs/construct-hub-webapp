@@ -12,7 +12,7 @@ import {
   ExternalLinkPrompt,
   ExternalLinkPromptOptions,
 } from "./constants";
-import { ExternalLinkWarningModal } from "./ExternaLinkWarningModal";
+import { ExternalLinkWarningModal } from "./ExternalLinkWarningModal";
 
 const ExternalLinkWarningContext = createContext<ExternalLinkPrompt>(
   ({ onClick }) => onClick

@@ -9,6 +9,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
+  Tooltip,
 } from "@chakra-ui/react";
 import {
   ChangeEventHandler,
@@ -66,11 +67,21 @@ export const ExternalLinkWarningModal: FunctionComponent<ExternalLinkWarningModa
     return (
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
-          <ModalContent>
+          <ModalContent color="blue.800">
             <ModalHeader>Confirm</ModalHeader>
-            <ModalBody fontSize="md">
-              <Text mb={4}>
-                This link is taking you to an external site. Proceed?
+            <ModalBody>
+              <Text fontSize="lg" mb={2}>
+                This link is taking you to an external site
+              </Text>
+              <Text
+                bg="gray.100"
+                borderRadius="sm"
+                color="blue.500"
+                fontSize="sm"
+                mb={4}
+                p={1}
+              >
+                {href}
               </Text>
               <Checkbox onChange={onPreferenceUpdated}>
                 Do not show this warning again.
@@ -81,19 +92,21 @@ export const ExternalLinkWarningModal: FunctionComponent<ExternalLinkWarningModa
                 Cancel
               </Button>
 
-              <Button
-                as="a"
-                colorScheme="blue"
-                href={href}
-                ml={4}
-                onClick={onProceed}
-                rel="noopener noreferrer"
-                rightIcon={<ExternalLinkIcon />}
-                target="_blank"
-                variant="ghost"
-              >
-                Proceed
-              </Button>
+              <Tooltip hasArrow label={href} placement="top">
+                <Button
+                  as="a"
+                  colorScheme="blue"
+                  href={href}
+                  ml={4}
+                  onClick={onProceed}
+                  rel="noopener noreferrer"
+                  rightIcon={<ExternalLinkIcon />}
+                  target="_blank"
+                  variant="ghost"
+                >
+                  Proceed
+                </Button>
+              </Tooltip>
             </ModalFooter>
           </ModalContent>
         </ModalOverlay>

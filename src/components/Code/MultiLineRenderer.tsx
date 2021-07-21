@@ -10,8 +10,8 @@ export const MultiLineRenderer: FunctionComponent<RendererProps> = ({
   getTokenProps,
 }) => (
   <>
-    <Flex align="center" bg="blue.500" justify="flex-end" px={2} py={1}>
-      <CopyButton _hover={{ bg: "blue.400" }} color="white" value={code} />
+    <Flex align="center" bg="blue.100" justify="flex-end" px={2} py={1}>
+      <CopyButton _hover={{ bg: "blue.200" }} color="blue.500" value={code} />
     </Flex>
     <Box maxW="100%" overflowX="auto" p={2}>
       {tokens.map((line, i) => (
