@@ -13,6 +13,7 @@ export const QUERY_PARAMS = {
 } as const;
 
 export const ROUTES = {
+  FAQ: "/faq",
   HOME: "/",
   PACKAGES: "/packages",
   SEARCH: "/search",

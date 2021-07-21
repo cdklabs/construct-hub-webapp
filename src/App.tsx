@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ROUTES } from "./constants/url";
+import { FAQ } from "./views/FAQ";
 import { Home } from "./views/Home";
 import { NotFound } from "./views/NotFound";
 import { Packages } from "./views/Packages";
@@ -24,6 +25,9 @@ export const App: FunctionComponent = () => {
     >
       <Header />
       <Switch>
+        <Route exact path={ROUTES.FAQ}>
+          <FAQ />
+        </Route>
         <Route exact path={ROUTES.HOME}>
           <Home />
         </Route>
