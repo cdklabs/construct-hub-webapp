@@ -2,6 +2,7 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   Button,
   Checkbox,
+  Link,
   Modal,
   ModalBody,
   ModalContent,
@@ -14,7 +15,6 @@ import {
 import {
   ChangeEventHandler,
   FunctionComponent,
-  MouseEvent,
   MouseEventHandler,
   useState,
 } from "react";
@@ -47,7 +47,7 @@ export const ExternalLinkWarningModal: FunctionComponent<ExternalLinkWarningModa
       onClose();
     };
 
-    const onProceed: MouseEventHandler<HTMLButtonElement> = (e) => {
+    const onProceed: MouseEventHandler<HTMLAnchorElement> = (e) => {
       // If a user decided to not show warnings in the future, update localStorage & state to reflect their decision
       if (!finalShouldWarn) {
         setShouldWarn(finalShouldWarn);
@@ -60,7 +60,7 @@ export const ExternalLinkWarningModal: FunctionComponent<ExternalLinkWarningModa
         } catch {}
       }
 
-      onClick?.(e as unknown as MouseEvent<HTMLAnchorElement>);
+      onClick?.(e);
       onClose();
     };
 
@@ -93,19 +93,17 @@ export const ExternalLinkWarningModal: FunctionComponent<ExternalLinkWarningModa
               </Button>
 
               <Tooltip hasArrow label={href} placement="top">
-                <Button
-                  as="a"
-                  colorScheme="blue"
-                  href={href}
-                  ml={4}
-                  onClick={onProceed}
-                  rel="noopener noreferrer"
-                  rightIcon={<ExternalLinkIcon />}
-                  target="_blank"
-                  variant="ghost"
-                >
-                  Proceed
-                </Button>
+                <Link href={href} isExternal onClick={onProceed}>
+                  <Button
+                    colorScheme="blue"
+                    ml={4}
+                    rightIcon={<ExternalLinkIcon />}
+                    tabIndex={0}
+                    variant="ghost"
+                  >
+                    Proceed
+                  </Button>
+                </Link>
               </Tooltip>
             </ModalFooter>
           </ModalContent>
