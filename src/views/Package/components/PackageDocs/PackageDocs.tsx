@@ -114,6 +114,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         </Box>
       </Flex>
       <Box
+        h="max-content"
         maxWidth="100%"
         overflow="hidden"
         p={4}
