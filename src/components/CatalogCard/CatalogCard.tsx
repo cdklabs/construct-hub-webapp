@@ -63,7 +63,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
       <Stack maxH="100%" maxW="100%" overflow="hidden" p={4} spacing={2}>
         {/* Name & Version */}
         <Text
-          color="gray.800"
+          color="blue.800"
           data-testid={testIds.name}
           fontWeight="semibold"
           isTruncated

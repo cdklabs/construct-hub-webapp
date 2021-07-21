@@ -1,4 +1,11 @@
-import { Box, Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Link,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent, ReactNode, useMemo } from "react";
 import type { Metadata } from "../../../../api/package/metadata";
@@ -74,6 +81,12 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
       items.push(<>Registry: {registryLink}</>);
     }
 
+    items.push(
+      <Link color="blue.500" href="mailto:abuse@amazon.com">
+        Report Package
+      </Link>
+    );
+
     return items.map((detail: string | ReactNode, i: number) => (
       <ListItem key={`detail-${i}`} listStyleType="none" my={1}>
         <Text color="gray.600">{detail}</Text>
@@ -83,7 +96,7 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
 
   return (
     <Flex direction="column" textAlign={{ base: "center", md: "initial" }}>
-      {details.length && <UnorderedList ml={0}>{details}</UnorderedList>}
+      <UnorderedList ml={0}>{details}</UnorderedList>
       {assembly?.dependencies && (
         <Box mt={4}>
           <DependencyDropdown dependencies={assembly.dependencies} />

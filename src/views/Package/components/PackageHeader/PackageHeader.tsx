@@ -1,16 +1,18 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 
 export interface PackageHeaderProps {
   title: string;
   description: string;
   tags: string[];
+  version: string;
 }
 
 export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
   description,
   tags,
   title,
+  version,
 }) => {
   return (
     <Flex
@@ -20,9 +22,18 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
       p={2}
       textAlign={{ base: "center", md: "initial" }}
     >
-      <Heading mb={5} wordBreak="break-word">
-        {title}
-      </Heading>
+      <Stack
+        align="center"
+        direction={{ base: "column", md: "row" }}
+        justify={{ base: "center", md: "start" }}
+        mb={4}
+        spacing={4}
+      >
+        <Heading wordBreak="break-word">{title}</Heading>
+        <Text color="blue.500" fontSize="md">
+          {version}
+        </Text>
+      </Stack>
 
       <Text wordBreak="break-word">{description}</Text>
 
