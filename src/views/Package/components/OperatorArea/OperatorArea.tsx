@@ -52,7 +52,9 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
 
       if (repo) {
         const repoLink = (
-          <ExternalLink href={repo.url}>{repo.hostname}</ExternalLink>
+          <ExternalLink hasWarning href={repo.url}>
+            {repo.hostname}
+          </ExternalLink>
         );
         items.push(<>Source code: {repoLink}</>);
       }
@@ -67,7 +69,7 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
 
     if (registry) {
       const registryLink = (
-        <ExternalLink href={registry}>
+        <ExternalLink hasWarning href={registry}>
           {new URL(registry).hostname}
         </ExternalLink>
       );
