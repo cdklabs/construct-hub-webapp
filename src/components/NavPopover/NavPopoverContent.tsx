@@ -19,7 +19,16 @@ const Link: FunctionComponent<ILink> = ({ display, isNavLink, url }) =>
   isNavLink ? (
     <NavLink to={url}>{display}</NavLink>
   ) : (
-    <ExternalLink href={url}>{display}</ExternalLink>
+    <ExternalLink
+      alignItems="center"
+      display="flex"
+      hasIcon
+      href={url}
+      justifyContent="space-between"
+      w="100%"
+    >
+      {display}
+    </ExternalLink>
   );
 
 export const NavPopoverContent = forwardRef<NavPopoverContentProps, "div">(
