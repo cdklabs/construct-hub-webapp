@@ -48,6 +48,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
         data-heading-title={title}
         id={id}
         replace
+        sx={{ "> code": { color: "blue.800", fontSize: "inherit" } }}
         to={`#${id}`}
       >
         {children}

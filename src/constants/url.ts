@@ -13,9 +13,11 @@ export const QUERY_PARAMS = {
 } as const;
 
 export const ROUTES = {
+  FAQ: "/faq",
   HOME: "/",
   PACKAGES: "/packages",
   SEARCH: "/search",
+  SITE_TERMS: "/terms",
 };
 
 type QueryParams = typeof QUERY_PARAMS;

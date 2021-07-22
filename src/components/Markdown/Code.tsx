@@ -17,7 +17,7 @@ export const Code: FunctionComponent<CodeProps> = ({
   if (inline) {
     return (
       <InlineCode
-        bg="gray.50"
+        bg="gray.100"
         border="1px solid"
         borderColor="gray.100"
         borderRadius="md"
