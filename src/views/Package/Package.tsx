@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
 import { fetchMarkdown } from "../../api/package/docs";
 import { fetchMetadata } from "../../api/package/metadata";
+import { Page } from "../../components/Page";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
@@ -43,25 +44,27 @@ export const Package: FunctionComponent = () => {
   }
 
   return (
-    <Stack maxW="100vw" pt={4} spacing={4}>
-      {/* Operator Area */}
-      <Box px={4}>
-        <PackageDetails
-          assembly={assemblyResponse}
-          metadata={metadataResponse}
-          version={version}
-        />
-      </Box>
-      {/* Readme and Api Reference Area */}
-      {markdownResponse.data &&
-        !markdownResponse.loading &&
-        assemblyResponse.data &&
-        !assemblyResponse.loading && (
-          <PackageDocs
-            assembly={assemblyResponse.data}
-            markdown={markdownResponse.data}
+    <Page pageName="packageProfile">
+      <Stack maxW="100vw" pt={4} spacing={4}>
+        {/* Operator Area */}
+        <Box px={4}>
+          <PackageDetails
+            assembly={assemblyResponse}
+            metadata={metadataResponse}
+            version={version}
           />
-        )}
-    </Stack>
+        </Box>
+        {/* Readme and Api Reference Area */}
+        {markdownResponse.data &&
+          !markdownResponse.loading &&
+          assemblyResponse.data &&
+          !assemblyResponse.loading && (
+            <PackageDocs
+              assembly={assemblyResponse.data}
+              markdown={markdownResponse.data}
+            />
+          )}
+      </Stack>
+    </Page>
   );
 };

@@ -1,6 +1,7 @@
 import { Box, Stack, Heading } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { CatalogSearch } from "../../components/CatalogSearch";
+import { Page } from "../../components/Page";
 import { Picture } from "../../components/Picture";
 import { Results } from "../../components/Results";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
@@ -26,7 +27,7 @@ export const Home: FunctionComponent = () => {
   });
 
   return (
-    <>
+    <Page pageName="home">
       <Picture
         alt={""}
         h="540px"
@@ -63,6 +64,6 @@ export const Home: FunctionComponent = () => {
       <Box p={4} pb={8}>
         <Results results={displayable} skeleton={{ loading, noOfItems: 20 }} />
       </Box>
-    </>
+    </Page>
   );
 };
