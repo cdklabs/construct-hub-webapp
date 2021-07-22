@@ -3,7 +3,6 @@ import { Children, FunctionComponent, ReactNode } from "react";
 import ReactDOMServer from "react-dom/server";
 import { sanitize } from "../../util/sanitize-anchor";
 import { NavLink } from "../NavLink";
-import { Hr } from "./Hr";
 
 interface HeadingResolverProps {
   level: number;
@@ -53,7 +52,6 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
         to={`#${id}`}
       >
         {children}
-        {level < 3 && <Hr />}
       </NavLink>
     </Heading>
   );
