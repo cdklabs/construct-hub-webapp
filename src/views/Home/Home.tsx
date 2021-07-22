@@ -60,7 +60,7 @@ export const Home: FunctionComponent = () => {
       </Stack>
 
       {/* TBD: Trending Libraries in favor of catalog results */}
-      <Box p={4}>
+      <Box p={4} pb={8}>
         <Results results={displayable} skeleton={{ loading, noOfItems: 20 }} />
       </Box>
     </>
