@@ -1,4 +1,4 @@
-import { Grid } from "@chakra-ui/react";
+import { Grid, LinkBox, LinkOverlay } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "../Card";
@@ -6,9 +6,8 @@ import { Card } from "../Card";
 const CardContainer: FunctionComponent = ({ children }) => (
   <Card border="1px solid" borderColor="blue.100" h={64} p={0} w="100%">
     <Grid
-      direction="column"
+      as="article"
       h="100%"
-      justify="space-between"
       overflow="hidden"
       templateColumns="1fr"
       templateRows="2fr 1fr"
@@ -23,9 +22,10 @@ export const CatalogCardContainer: FunctionComponent<{ url?: string }> = ({
   url,
 }) => {
   return url ? (
-    <Link to={url}>
+    <LinkBox>
+      <LinkOverlay as={Link} to={url} />
       <CardContainer>{children}</CardContainer>
-    </Link>
+    </LinkBox>
   ) : (
     <CardContainer>{children}</CardContainer>
   );

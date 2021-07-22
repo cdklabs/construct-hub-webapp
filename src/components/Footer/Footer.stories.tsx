@@ -1,4 +1,5 @@
 import type { Story } from "@storybook/react";
+import { MemoryRouter } from "react-router-dom";
 import { Footer, FooterProps } from "./Footer";
 
 export default {
@@ -6,4 +7,8 @@ export default {
   component: Footer,
 };
 
-export const Primary: Story<FooterProps> = () => <Footer />;
+export const Primary: Story<FooterProps> = () => (
+  <MemoryRouter>
+    <Footer />
+  </MemoryRouter>
+);

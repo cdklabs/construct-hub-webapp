@@ -17,6 +17,7 @@ export const ROUTES = {
   HOME: "/",
   PACKAGES: "/packages",
   SEARCH: "/search",
+  SITE_TERMS: "/terms",
 };
 
 type QueryParams = typeof QUERY_PARAMS;
