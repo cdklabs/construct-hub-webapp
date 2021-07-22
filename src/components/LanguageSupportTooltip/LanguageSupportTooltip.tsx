@@ -21,7 +21,7 @@ export const LanguageSupportTooltip: FunctionComponent<LanguageSupportTooltipPro
     return (
       <Tooltip
         hasArrow
-        label={`Transliteration support for ${LANGUAGE_NAME_MAP[language]} is coming soon!`}
+        label={`Documentation support for ${LANGUAGE_NAME_MAP[language]} is coming soon!`}
         placement="top-start"
       >
         <span>{children}</span>
