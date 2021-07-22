@@ -12,9 +12,7 @@ export interface PageViewConfig {
     name: string; // i.e Search Page Load
     description?: string; // Opt description, 100chars or less
   };
-  /**
-   * Custom Variables that may be passed for a pageview call.
-   */
+  // Custom Variables that may be passed for a pageview call. These may or may not be implemented at a later date
   data?: Record<string, any>;
 }
 
