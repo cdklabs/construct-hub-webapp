@@ -15,7 +15,7 @@ export const LicenseLink = forwardRef<LicenseLinkProps, "a">(
     const url = LICENSE_LINKS[license];
 
     return (
-      <ExternalLink hasWarning href={url} ref={ref} {...linkProps}>
+      <ExternalLink href={url} ref={ref} {...linkProps}>
         {license}
       </ExternalLink>
     );

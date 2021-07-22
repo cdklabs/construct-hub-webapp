@@ -46,6 +46,7 @@ export const Footer: FunctionComponent<FooterProps> = () => {
               <ExternalLink
                 color="currentcolor"
                 data-testid={testIds[testId]}
+                hasWarning={false}
                 href={url}
                 lineHeight={10}
                 mx="auto"

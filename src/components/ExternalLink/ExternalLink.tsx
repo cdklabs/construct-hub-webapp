@@ -8,13 +8,16 @@ export interface ExternalLinkProps extends LinkProps {
    */
   hasIcon?: boolean;
   /**
-   * Prompts the user to confirm leaving the site. `false` by default
+   * Prompts the user to confirm leaving the site. `true` by default
    */
   hasWarning?: boolean;
 }
 
 export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
-  ({ children, hasIcon = true, hasWarning, href, onClick, ...props }, ref) => {
+  (
+    { children, hasIcon = true, hasWarning = true, href, onClick, ...props },
+    ref
+  ) => {
     const withPrompt = useExternalLinkWarning();
 
     return (
