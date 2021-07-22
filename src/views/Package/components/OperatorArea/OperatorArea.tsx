@@ -40,14 +40,14 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
     }
 
     if (username) {
-      const managedBy = authorUrl ? (
+      const author = authorUrl ? (
         <ExternalLink href={authorUrl}>{username}</ExternalLink>
       ) : (
         <Box as="strong" fontWeight="bold">
           {username}
         </Box>
       );
-      items.push(<>Author: {managedBy}</>);
+      items.push(<>Author: {author}</>);
     }
 
     if (repository) {
