@@ -81,12 +81,6 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
       items.push(<>Registry: {registryLink}</>);
     }
 
-    items.push(
-      <Link color="blue.500" href="mailto:abuse@amazon.com">
-        Report Package
-      </Link>
-    );
-
     return items.map((detail: string | ReactNode, i: number) => (
       <ListItem key={`detail-${i}`} listStyleType="none" my={1}>
         <Text color="gray.600">{detail}</Text>
@@ -96,6 +90,17 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
 
   return (
     <Flex direction="column" textAlign={{ base: "center", md: "initial" }}>
+      <Link
+        color="blue.500"
+        fontSize="sm"
+        href={`mailto:abuse@amazon.com?subject=${encodeURIComponent(
+          `ConstructHub - Report of abusive package: ${assembly?.name}`
+        )}`}
+        m={2}
+        textAlign="right"
+      >
+        Report this Package
+      </Link>
       <UnorderedList ml={0}>{details}</UnorderedList>
       {assembly?.dependencies && (
         <Box mt={4}>
