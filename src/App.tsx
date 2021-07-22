@@ -4,15 +4,12 @@ import { Switch, Route } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ROUTES } from "./constants/url";
-import * as shortbread from "./lib/shortbread";
+import { FAQ } from "./views/FAQ";
 import { Home } from "./views/Home";
 import { NotFound } from "./views/NotFound";
 import { Packages } from "./views/Packages";
 import { SearchResults } from "./views/SearchResults";
-
-shortbread
-  .initialize()
-  .then(shortbread.checkForCookieConsent, (err) => console.error(err));
+import { SiteTerms } from "./views/SiteTerms";
 
 export const App: FunctionComponent = () => {
   return (
@@ -21,6 +18,7 @@ export const App: FunctionComponent = () => {
       bg="gray.50"
       gridTemplateColumns="1fr"
       gridTemplateRows="auto 1fr auto"
+      h="100%"
       inset={0}
       maxW="100vw"
       overflow="hidden auto"
@@ -28,8 +26,14 @@ export const App: FunctionComponent = () => {
     >
       <Header />
       <Switch>
+        <Route exact path={ROUTES.FAQ}>
+          <FAQ />
+        </Route>
         <Route exact path={ROUTES.HOME}>
           <Home />
+        </Route>
+        <Route exact path={ROUTES.SITE_TERMS}>
+          <SiteTerms />
         </Route>
         <Route path={ROUTES.PACKAGES}>
           <Packages />

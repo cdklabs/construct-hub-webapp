@@ -1,14 +1,41 @@
 import { Box, HTMLChakraProps, Link, Text } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { ExternalLink } from "../ExternalLink";
 
-export const A: FunctionComponent<HTMLChakraProps<"a">> = ({
-  children,
-  ...linkProps
-}) => (
-  <Link color="blue.500" {...linkProps}>
-    {children}
-  </Link>
-);
+type AnchorComponent = FunctionComponent<HTMLChakraProps<"a">>;
+
+export const A: AnchorComponent = ({ children, href, ...linkProps }) => {
+  let Component: AnchorComponent = Link;
+
+  try {
+    if (href && href.startsWith("http")) {
+      const hostname = new URL(href).hostname;
+
+      if (hostname !== window.location.hostname) {
+        const External: AnchorComponent = (props) => (
+          <ExternalLink hasIcon {...props} />
+        );
+
+        Component = External;
+      }
+    }
+  } catch {
+    Component = Link;
+  }
+
+  return (
+    <Component
+      color="blue.500"
+      href={href}
+      // If we are rendering an img within the link (specifically stability banners),
+      // do not display the external link Icon
+      sx={{ "> img + svg": { display: "none" } }}
+      {...linkProps}
+    >
+      {children}
+    </Component>
+  );
+};
 
 export const Blockquote: FunctionComponent = ({ children }) => (
   <Box

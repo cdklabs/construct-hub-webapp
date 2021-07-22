@@ -20,12 +20,15 @@ export const appendItem = (itemTree: Item[], item: Element): Item[] => {
 
   const { headingId, headingTitle = "", headingLevel = "100" } = item.dataset;
   const level = parseInt(headingLevel);
-  if (level > 3) {
+
+  // Don't create nav items for items with no title / url
+  if (level > 3 || !headingTitle || !headingId) {
     return itemTree;
   }
 
   const last = itemTree[itemTree.length - 1];
-  if (typeof last === "undefined" || last.level === level) {
+
+  if (last == null || last.level >= level) {
     return [
       ...itemTree,
       {
@@ -111,6 +114,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         </Box>
       </Flex>
       <Box
+        h="max-content"
         maxWidth="100%"
         overflow="hidden"
         p={4}

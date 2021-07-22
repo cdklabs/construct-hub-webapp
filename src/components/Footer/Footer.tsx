@@ -3,6 +3,7 @@ import type { FunctionComponent } from "react";
 import { useShortBread } from "../../contexts/Shortbread";
 import { createTestIds } from "../../util/createTestIds";
 import { ExternalLink } from "../ExternalLink";
+import { NavLink } from "../NavLink";
 import { DISCLAIMER, FOOTER_LINKS } from "./constants";
 
 export interface FooterProps {}
@@ -30,7 +31,7 @@ export const Footer: FunctionComponent<FooterProps> = () => {
     >
       <SimpleGrid columnGap={6} columns={[1, 2, 4]} data-testid={testIds.links}>
         {Object.entries(FOOTER_LINKS).map(
-          ([key, { display, testId, url }], index) => (
+          ([key, { display, isExternal = true, testId, url }], index) => (
             <Flex
               align="center"
               direction={{ base: "column", md: "row" }}
@@ -43,15 +44,27 @@ export const Footer: FunctionComponent<FooterProps> = () => {
               >
                 <Divider borderColor="white" mr={6} orientation="vertical" />
               </Box>
-              <ExternalLink
-                color="currentcolor"
-                data-testid={testIds[testId]}
-                href={url}
-                lineHeight={10}
-                mx="auto"
-              >
-                {display}
-              </ExternalLink>
+              {isExternal ? (
+                <ExternalLink
+                  color="currentcolor"
+                  data-testid={testIds[testId]}
+                  href={url}
+                  lineHeight={10}
+                  mx="auto"
+                >
+                  {display}
+                </ExternalLink>
+              ) : (
+                <NavLink
+                  color="currentcolor"
+                  data-testid={testIds[testId]}
+                  lineHeight={10}
+                  mx="auto"
+                  to={url}
+                >
+                  {display}
+                </NavLink>
+              )}
               {/* 2 Row Divider */}
               <Box
                 display={{
