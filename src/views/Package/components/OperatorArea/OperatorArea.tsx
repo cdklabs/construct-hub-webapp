@@ -57,7 +57,7 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
         const repoLink = (
           <ExternalLink href={repo.url}>{repo.hostname}</ExternalLink>
         );
-        items.push(<>Source code: {repoLink}</>);
+        items.push(<>Repository: {repoLink}</>);
       }
     }
 
