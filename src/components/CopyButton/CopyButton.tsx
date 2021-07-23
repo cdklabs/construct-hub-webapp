@@ -20,7 +20,7 @@ export const CopyButton = forwardRef<CopyButtonProps, "button">(
       <IconButton
         aria-label="Copy Button"
         h={6}
-        icon={hasCopied ? <CheckIcon color="green.200" /> : <CopyIcon />}
+        icon={hasCopied ? <CheckIcon color="green.300" /> : <CopyIcon />}
         minW="auto"
         onClick={onCopy}
         ref={ref}
