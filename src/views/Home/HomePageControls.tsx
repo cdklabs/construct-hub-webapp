@@ -36,6 +36,14 @@ export const HomePageControls: FunctionComponent<HomePageControlsProps> = ({
   const nextDisabled = offset === pageLimit;
   const prevDisabled = offset === 0;
 
+  const getNextPage = () => {
+    setOffset(offset + 1);
+  };
+
+  const getPrevPage = () => {
+    setOffset(offset - 1);
+  };
+
   return (
     <Grid
       alignItems="center"
@@ -47,7 +55,7 @@ export const HomePageControls: FunctionComponent<HomePageControlsProps> = ({
         <Button
           colorScheme="blue"
           disabled={nextDisabled}
-          onClick={() => setOffset((o) => o + 1)}
+          onClick={getNextPage}
           rightIcon={<ArrowForwardIcon color="white" />}
         >
           Next Page
@@ -59,14 +67,14 @@ export const HomePageControls: FunctionComponent<HomePageControlsProps> = ({
             aria-label="Previous Page"
             disabled={prevDisabled}
             icon={<ChevronLeftIcon {...iconProps} />}
-            onClick={() => setOffset((o) => o - 1)}
+            onClick={getPrevPage}
             {...iconBtnProps}
           />
           <IconButton
             aria-label="Next Page"
             disabled={nextDisabled}
             icon={<ChevronRightIcon {...iconProps} />}
-            onClick={() => setOffset((o) => o + 1)}
+            onClick={getNextPage}
             {...iconBtnProps}
           />
         </Flex>
