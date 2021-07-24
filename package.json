@@ -83,7 +83,7 @@
     "@jsii/spec": "^1.32.0",
     "case": "^1.6.3",
     "copy-to-clipboard": "^3.3.1",
-    "date-fns": "^2.22.1",
+    "date-fns": "^2.23.0",
     "framer-motion": "^4",
     "jsii-reflect": "^1.32.0",
     "prism-react-renderer": "^1.2.1",
