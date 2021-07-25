@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { PluggableList } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import remarkGfm from "remark-gfm";
@@ -42,11 +42,23 @@ const components = {
   ul: Ul,
 };
 
+// see https://github.com/rehypejs/rehype-sanitize#use
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+var ghSchema = require("hast-util-sanitize/lib/github");
+
+// jsii-docgen adds these attributes to <span> elements embedded inside
+// headings in order to configure custom anchor ids.
+// tell rehype not to strip those out.
+ghSchema.attributes.span = (ghSchema.attributes.span ?? []).concat([
+  "dataHeadingTitle",
+  "dataHeadingId",
+]);
+
 // Note - the default schema for rehypeSanitize is GitHub-style, which is what we need!
-const rehypePlugins = [
-  rehypeRaw,
+const rehypePlugins: PluggableList = [
+  [rehypeRaw],
   // ALWAYS keep rehypeSanitize LAST!
-  rehypeSanitize,
+  [rehypeSanitize, ghSchema],
 ];
 const remarkPlugins = [remarkGfm];
 
