@@ -1,5 +1,4 @@
-import { Box, Stack, Text } from "@chakra-ui/react";
-import * as spec from "@jsii/spec";
+import { Box, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
@@ -8,46 +7,17 @@ import { fetchMetadata } from "../../api/package/metadata";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
-import { useRequest, UseRequestResponse } from "../../hooks/useRequest";
+import { useRequest } from "../../hooks/useRequest";
 import { NotFound } from "../NotFound";
 import { PackageDetails } from "./components/PackageDetails";
 import { PackageDocs } from "./components/PackageDocs";
+import { PackageDocsError } from "./components/PackageDocsError";
 
 interface PathParams {
   name: string;
   scope?: string;
   version: string;
 }
-
-const docsOrError = (
-  markdown: UseRequestResponse<string>,
-  assembly: UseRequestResponse<spec.Assembly>,
-  language: string
-) => {
-  if (markdown.error || assembly.error) {
-    return (
-      <Text
-        align="center"
-        fontSize="xl"
-        fontStyle="oblique"
-        wordBreak="break-word"
-      >
-        Oops, Looks like {language} documentation is not available yet. Checkout
-        other languages in the meantime!
-      </Text>
-    );
-  }
-
-  if (markdown.loading || assembly.loading) {
-    return null;
-  }
-
-  if (!markdown.data || !assembly.data) {
-    return null;
-  }
-
-  return <PackageDocs assembly={assembly.data} markdown={markdown.data} />;
-};
 
 export const Package: FunctionComponent = () => {
   const { name, scope, version }: PathParams = useParams();
@@ -73,6 +43,13 @@ export const Package: FunctionComponent = () => {
     return <NotFound />;
   }
 
+  const hasError = markdownResponse.error || assemblyResponse.error;
+  const hasDocs =
+    !markdownResponse.loading &&
+    !assemblyResponse.loading &&
+    markdownResponse.data &&
+    assemblyResponse.data;
+
   return (
     <Stack maxW="100vw" pt={4} spacing={4}>
       {/* Operator Area */}
@@ -84,7 +61,16 @@ export const Package: FunctionComponent = () => {
         />
       </Box>
       {/* Readme and Api Reference Area */}
-      {docsOrError(markdownResponse, assemblyResponse, language)}
+      {hasError ? (
+        <PackageDocsError language={language}></PackageDocsError>
+      ) : (
+        hasDocs && (
+          <PackageDocs
+            assembly={assemblyResponse.data!}
+            markdown={markdownResponse.data!}
+          />
+        )
+      )}
     </Stack>
   );
 };
