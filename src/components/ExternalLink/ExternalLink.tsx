@@ -24,10 +24,9 @@ export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
       <Link
         color="blue.500"
         href={href}
+        isExternal
         onClick={hasWarning ? withPrompt({ href, onClick }) : onClick}
         ref={ref}
-        rel="noopener noreferrer"
-        target="_blank"
         {...props}
       >
         {children} {hasIcon && <ExternalLinkIcon mb={1} />}
