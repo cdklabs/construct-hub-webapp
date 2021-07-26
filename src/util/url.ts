@@ -41,7 +41,7 @@ export const createURLSearchParams = (
   const searchParams = new URLSearchParams(base);
 
   Object.entries(params)
-    .filter(([, v]) => (v ?? undefined) !== undefined)
+    .filter(([, v]) => v != null)
     .forEach(([k, v]) => {
       searchParams.set(k, `${v}`);
     });
