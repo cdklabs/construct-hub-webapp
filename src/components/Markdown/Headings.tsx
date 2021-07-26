@@ -41,14 +41,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
   const id = dataElement?.dataset.headingId ?? sanitize(title);
 
   return (
-    <Heading
-      _notFirst={{ mt: marginY }}
-      as={elem}
-      color="blue.800"
-      level={level}
-      mb={marginY}
-      size={size}
-    >
+    <Heading as={elem} color="blue.800" level={level} my={marginY} size={size}>
       <NavLink
         data-heading-id={id}
         data-heading-level={level}
