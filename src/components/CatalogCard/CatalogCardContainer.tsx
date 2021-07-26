@@ -1,6 +1,5 @@
-import { Grid, LinkBox, LinkOverlay } from "@chakra-ui/react";
+import { Grid, LinkBox } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
 import { Card } from "../Card";
 
 const CardContainer: FunctionComponent = ({ children }) => (
@@ -17,13 +16,18 @@ const CardContainer: FunctionComponent = ({ children }) => (
   </Card>
 );
 
-export const CatalogCardContainer: FunctionComponent<{ url?: string }> = ({
+export const CatalogCardContainer: FunctionComponent<{ isLink?: boolean }> = ({
   children,
-  url,
+  isLink,
 }) => {
-  return url ? (
-    <LinkBox>
-      <LinkOverlay as={Link} to={url} />
+  return isLink ? (
+    <LinkBox
+      _hover={{
+        "> :first-child": {
+          bg: "gray.50",
+        },
+      }}
+    >
       <CardContainer>{children}</CardContainer>
     </LinkBox>
   ) : (

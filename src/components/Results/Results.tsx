@@ -1,12 +1,12 @@
 import { FunctionComponent, memo } from "react";
 import { Packages } from "../../api/package/packages";
-import { QUERY_PARAMS } from "../../constants/url";
-import { useLanguage } from "../../hooks/useLanguage";
+import { Language } from "../../constants/languages";
 import { CatalogCard } from "../CatalogCard";
 import { ResultsGrid } from "./ResultsGrid";
 import { ResultsSkeleton } from "./ResultsSkeleton";
 
 export interface ResultsProps {
+  language?: Language;
   results: Packages["packages"];
   skeleton?: {
     loading: boolean;
@@ -15,11 +15,10 @@ export interface ResultsProps {
 }
 
 const ResultsComponent: FunctionComponent<ResultsProps> = ({
+  language,
   results,
   skeleton,
 }) => {
-  const [language] = useLanguage();
-
   if (skeleton?.loading) {
     return <ResultsSkeleton noOfItems={skeleton.noOfItems} />;
   }
@@ -27,11 +26,7 @@ const ResultsComponent: FunctionComponent<ResultsProps> = ({
   return (
     <ResultsGrid>
       {results.map((pkg, idx) => (
-        <CatalogCard
-          key={`${pkg.name}-${idx}`}
-          pkg={pkg}
-          url={`/packages/${pkg.name}/v/${pkg.version}?${QUERY_PARAMS.LANGUAGE}=${language}`}
-        />
+        <CatalogCard key={`${pkg.name}-${idx}`} language={language} pkg={pkg} />
       ))}
     </ResultsGrid>
   );

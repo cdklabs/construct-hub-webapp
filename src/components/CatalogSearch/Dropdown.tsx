@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Button,
   Menu,
@@ -39,6 +40,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
         borderColor="blue.100"
         boxShadow="base"
         data-testid={testIds.trigger}
+        rightIcon={<ChevronDownIcon />}
         variant="outline"
       >
         <Text data-testid={testIds.value}>{text}</Text>

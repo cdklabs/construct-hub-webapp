@@ -4,21 +4,62 @@ import {
   useCallback,
   useMemo,
   useState,
+  Dispatch,
+  SetStateAction,
 } from "react";
 import { useHistory } from "react-router-dom";
 import { Language } from "../../constants/languages";
-import { QUERY_PARAMS, ROUTES } from "../../constants/url";
+import { getSearchPath } from "../../util/url";
 
 export interface UseCatalogSearchParams {
   defaultQuery?: string;
   defaultLanguage?: Language | null;
 }
+
+export interface UseCatalogSearchReturn {
+  /**
+   * The language state for this search
+   */
+  language: Language | null;
+  /**
+   * Updates language state
+   */
+  onLanguageChange: (lang: Language | null) => void;
+  /**
+   * Input ChangeEventHandler which wraps the setQuery state setter
+   */
+  onQueryChange: ChangeEventHandler<HTMLInputElement>;
+  /**
+   * Navigates to the search query url
+   */
+  onSearch: () => void;
+  /**
+   * FormEventHandler to handle query submission
+   */
+  onSubmit: FormEventHandler<HTMLFormElement>;
+  /**
+   * The query state for this search
+   */
+  query: string;
+  /**
+   * Language state setter
+   */
+  setLanguage: Dispatch<SetStateAction<Language | null>>;
+  /**
+   * Query state setter
+   */
+  setQuery: Dispatch<SetStateAction<string>>;
+}
+
 /**
  * This hook provides all of the methods required to implement the functionality
- * of a client-side catalog search component
+ * of a client-side catalog search component. It additionally exposes lower-level methods
+ * for custom components which may want to access parts of the search API
  */
-export const useCatalogSearch = (options: UseCatalogSearchParams = {}) => {
-  const [search, setSearch] = useState(options.defaultQuery ?? "");
+export const useCatalogSearch = (
+  options: UseCatalogSearchParams = {}
+): UseCatalogSearchReturn => {
+  const [query, setQuery] = useState(options.defaultQuery ?? "");
 
   const [language, setLanguage] = useState<Language | null>(
     options.defaultLanguage ?? null
@@ -26,29 +67,34 @@ export const useCatalogSearch = (options: UseCatalogSearchParams = {}) => {
 
   const { push } = useHistory();
 
-  const onQueryChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const onQueryChange: UseCatalogSearchReturn["onQueryChange"] = (e) => {
     e.preventDefault();
-    setSearch(e.target.value);
+    setQuery(e.target.value);
   };
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
+  const onSearch = useCallback(() => {
+    push(getSearchPath({ language, query }));
+  }, [language, push, query]);
+
+  const onSubmit: UseCatalogSearchReturn["onSubmit"] = useCallback(
     (e) => {
-      e.preventDefault();
-      const baseUrl = `${ROUTES.SEARCH}?${QUERY_PARAMS.SEARCH_QUERY}=${search}&${QUERY_PARAMS.OFFSET}=0`;
-      const langParam = language ? `&${QUERY_PARAMS.LANGUAGE}=${language}` : "";
-      push(`${baseUrl}${langParam}`);
+      e?.preventDefault();
+      onSearch();
     },
-    [language, push, search]
+    [onSearch]
   );
 
   return useMemo(
     () => ({
-      query: search,
       language,
-      onQueryChange,
       onLanguageChange: setLanguage,
+      onQueryChange,
+      onSearch,
       onSubmit,
+      query,
+      setLanguage,
+      setQuery,
     }),
-    [language, onSubmit, search]
+    [language, onSearch, onSubmit, query]
   );
 };
