@@ -201,6 +201,10 @@
       "type": "runtime"
     },
     {
+      "name": "hast-util-sanitize",
+      "type": "runtime"
+    },
+    {
       "name": "jsii-reflect",
       "type": "runtime"
     },
