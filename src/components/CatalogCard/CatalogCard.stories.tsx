@@ -1,8 +1,8 @@
 import type { Story } from "@storybook/react";
+import { MemoryRouter } from "react-router-dom";
 import catalogFixture from "../../__fixtures__/catalog.json";
 import { CatalogPackage } from "../../api/package/packages";
 import { CatalogCard, CatalogCardProps } from "./CatalogCard";
-import { MemoryRouter } from "react-router-dom";
 
 export default {
   title: "Components / CatalogCard",
