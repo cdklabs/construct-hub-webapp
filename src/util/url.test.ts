@@ -2,8 +2,8 @@ import { Language } from "../constants/languages";
 import { QUERY_PARAMS, ROUTES } from "../constants/url";
 import {
   getRepoUrlAndHost,
-  createUrlSearchParams,
-  createUrl,
+  createURLSearchParams,
+  createURL,
   getSearchPath,
   getPackagePath,
 } from "./url";
@@ -34,7 +34,7 @@ describe("getRepoUrlAndHost", () => {
 
 describe("createUrlSearchParams", () => {
   it("applies params correctly and filters out nullish params", () => {
-    const result = createUrlSearchParams(undefined, {
+    const result = createURLSearchParams({
       a: "foo",
       b: 1,
       c: null,
@@ -45,9 +45,12 @@ describe("createUrlSearchParams", () => {
   });
 
   it("applies params to a base string", () => {
-    const result = createUrlSearchParams("?foo=bar", {
-      baz: "omg",
-    });
+    const result = createURLSearchParams(
+      {
+        baz: "omg",
+      },
+      "?foo=bar"
+    );
 
     expect(result).toEqual("foo=bar&baz=omg");
   });
@@ -55,7 +58,7 @@ describe("createUrlSearchParams", () => {
 
 describe("createUrl", () => {
   it("creates a url with no params", () => {
-    const result = createUrl("/foo", {
+    const result = createURL("/foo", {
       bar: undefined,
     });
 

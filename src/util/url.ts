@@ -34,9 +34,9 @@ export type SearchParamsObject = Record<
   string | number | undefined | null
 >;
 
-export const createUrlSearchParams = (
-  base: string | undefined,
-  params: SearchParamsObject
+export const createURLSearchParams = (
+  params: SearchParamsObject,
+  base?: string
 ) => {
   const searchParams = new URLSearchParams(base);
 
@@ -49,11 +49,11 @@ export const createUrlSearchParams = (
   return searchParams.toString();
 };
 
-export const createUrl = (base: string, params?: SearchParamsObject) => {
+export const createURL = (base: string, params?: SearchParamsObject) => {
   let url = base;
 
   if (params) {
-    const search = createUrlSearchParams(undefined, params);
+    const search = createURLSearchParams(params);
 
     if (search) {
       url += `?${search}`;
@@ -72,7 +72,7 @@ export const getSearchPath = ({
   offset?: string | number;
   language?: Language | null;
 }) =>
-  createUrl(ROUTES.SEARCH, {
+  createURL(ROUTES.SEARCH, {
     [QUERY_PARAMS.SEARCH_QUERY]: query,
     [QUERY_PARAMS.LANGUAGE]: language,
     [QUERY_PARAMS.OFFSET]: offset ?? 0,
@@ -89,7 +89,7 @@ export const getPackagePath = ({
   language?: Language;
   submodule?: string;
 }) =>
-  createUrl(`${ROUTES.PACKAGES}/${name}/v/${version}`, {
+  createURL(`${ROUTES.PACKAGES}/${name}/v/${version}`, {
     [QUERY_PARAMS.SUBMODULE]: submodule,
     [QUERY_PARAMS.LANGUAGE]: language,
   });
