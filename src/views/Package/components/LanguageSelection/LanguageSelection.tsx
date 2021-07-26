@@ -1,15 +1,14 @@
 import type { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
 import { LanguageBar } from "../../../../components/LanguageBar";
-import {
-  Language,
-  TEMP_SUPPORTED_LANGUAGES,
-} from "../../../../constants/languages";
+import { Language, LANGUAGES } from "../../../../constants/languages";
 import { useLanguage } from "../../../../hooks/useLanguage";
 
 export interface LanguageSelectionProps {
   assembly: Assembly;
 }
+
+const languageSet = new Set(LANGUAGES);
 
 export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
   assembly,
@@ -29,10 +28,7 @@ export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
     <LanguageBar
       selectedLanguage={targets.includes(language) ? language : targets[0]}
       setSelectedLanguage={setLanguage}
-      showDisabled
-      targetLanguages={targets.filter((target) =>
-        TEMP_SUPPORTED_LANGUAGES.has(target)
-      )}
+      targetLanguages={targets.filter((target) => languageSet.has(target))}
     />
   );
 };

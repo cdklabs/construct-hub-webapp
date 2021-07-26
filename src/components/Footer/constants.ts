@@ -1,4 +1,13 @@
-export const FOOTER_LINKS = {
+import { ROUTES } from "../../constants/url";
+
+export type Link = {
+  display: string;
+  url: string;
+  testId: string;
+  isExternal?: boolean;
+};
+
+export const FOOTER_LINKS: Record<string, Link> = {
   SERVICE_TERMS: {
     display: "AWS Service Terms",
     url: "https://aws.amazon.com/service-terms/",
@@ -11,8 +20,9 @@ export const FOOTER_LINKS = {
   },
   SITE_TERMS: {
     display: "Site Terms",
-    url: "https://aws.amazon.com/terms/",
+    url: ROUTES.SITE_TERMS,
     testId: "site-terms",
+    isExternal: false,
   },
   LEGAL: {
     display: "Legal",

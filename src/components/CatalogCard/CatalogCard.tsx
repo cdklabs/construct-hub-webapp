@@ -9,6 +9,7 @@ import {
 } from "../../constants/languages";
 import { createTestIds } from "../../util/createTestIds";
 import { ExternalLink } from "../ExternalLink";
+import { LanguageSupportTooltip } from "../LanguageSupportTooltip";
 import { Time } from "../Time";
 import { CatalogCardContainer } from "./CatalogCardContainer";
 import { CatalogCardSkeleton } from "./CatalogCardSkeleton";
@@ -141,27 +142,32 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                   LANGUAGES.indexOf(right as Language)
               )
               .map(([language, info]) => {
-                const isSupported =
+                const isSupportedByLibrary =
+                  language === Language.TypeScript ||
+                  targets.includes(language as Language);
+
+                const isSupportedByConstructHub =
                   language === Language.TypeScript || // TypeScript is always supported
                   // Otherwise, the language must be supported by ConstructHub
-                  (TEMP_SUPPORTED_LANGUAGES.has(language as Language) &&
-                    // AND be in the package's targets
-                    targets.includes(language as Language));
+                  TEMP_SUPPORTED_LANGUAGES.has(language as Language);
+
+                if (!isSupportedByLibrary) return null;
 
                 const { name, icon: Icon } = info;
-                const label = isSupported
-                  ? `Supports ${name}`
-                  : `Does not support ${name}`;
 
                 return (
-                  <Icon
-                    aria-label={label}
-                    data-testid={testIds.language}
-                    h={6}
+                  <LanguageSupportTooltip
                     key={language}
-                    opacity={isSupported ? 1 : 0.2}
-                    w={6}
-                  />
+                    language={language as Language}
+                  >
+                    <Icon
+                      aria-label={`Supports ${name}`}
+                      data-testid={testIds.language}
+                      h={6}
+                      opacity={isSupportedByConstructHub ? 1 : 0.2}
+                      w={6}
+                    />
+                  </LanguageSupportTooltip>
                 );
               })}
           </Stack>

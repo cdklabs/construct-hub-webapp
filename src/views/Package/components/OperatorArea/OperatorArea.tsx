@@ -29,6 +29,7 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
 
     const { date, links } = metadata;
     const username = assembly?.author.name;
+    const authorUrl = assembly?.author.url;
     const repository = assembly?.repository;
     const license = assembly?.license;
     // https://www.npmjs.com/package/aws-cdk/v/1.113.0
@@ -46,12 +47,14 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
     }
 
     if (username) {
-      const managedBy = (
+      const author = authorUrl ? (
+        <ExternalLink href={authorUrl}>{username}</ExternalLink>
+      ) : (
         <Box as="strong" fontWeight="bold">
           {username}
         </Box>
       );
-      items.push(<>Module managed by: {managedBy}</>);
+      items.push(<>Author: {author}</>);
     }
 
     if (repository) {
@@ -61,7 +64,7 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
         const repoLink = (
           <ExternalLink href={repo.url}>{repo.hostname}</ExternalLink>
         );
-        items.push(<>Source code: {repoLink}</>);
+        items.push(<>Repository: {repoLink}</>);
       }
     }
 

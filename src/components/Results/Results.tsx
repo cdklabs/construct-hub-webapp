@@ -26,9 +26,9 @@ const ResultsComponent: FunctionComponent<ResultsProps> = ({
 
   return (
     <ResultsGrid>
-      {results.map((pkg) => (
+      {results.map((pkg, idx) => (
         <CatalogCard
-          key={pkg.name}
+          key={`${pkg.name}-${idx}`}
           pkg={pkg}
           url={`/packages/${pkg.name}/v/${pkg.version}?${QUERY_PARAMS.LANGUAGE}=${language}`}
         />

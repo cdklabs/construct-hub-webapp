@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { App } from "./App";
 import { CatalogProvider } from "./contexts/Catalog";
+import { ExternalLinkWarningProvider } from "./contexts/ExternalLinkWarning";
 import { ShortbreadProvider } from "./contexts/Shortbread";
 import { Theme } from "./contexts/Theme";
 import { register } from "./register-service-worker";
@@ -14,9 +15,11 @@ ReactDOM.render(
     <ShortbreadProvider>
       <Router>
         <Theme>
-          <CatalogProvider>
-            <App />
-          </CatalogProvider>
+          <ExternalLinkWarningProvider>
+            <CatalogProvider>
+              <App />
+            </CatalogProvider>
+          </ExternalLinkWarningProvider>
         </Theme>
       </Router>
     </ShortbreadProvider>

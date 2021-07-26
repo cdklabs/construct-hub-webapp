@@ -22,7 +22,7 @@ const Link: FunctionComponent<ILink> = ({ display, isNavLink, url }) =>
     <ExternalLink
       alignItems="center"
       display="flex"
-      hasIcon
+      hasWarning={false}
       href={url}
       justifyContent="space-between"
       w="100%"

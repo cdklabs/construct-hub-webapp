@@ -68,15 +68,6 @@
           "exec": "npx projen"
         },
         {
-          "spawn": "compile"
-        },
-        {
-          "spawn": "test"
-        },
-        {
-          "exec": "npx projen"
-        },
-        {
           "spawn": "test"
         },
         {

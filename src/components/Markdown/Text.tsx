@@ -13,7 +13,7 @@ export const A: AnchorComponent = ({ children, href, ...linkProps }) => {
 
       if (hostname !== window.location.hostname) {
         const External: AnchorComponent = (props) => (
-          <ExternalLink hasIcon {...props} />
+          <ExternalLink {...props} />
         );
 
         Component = External;

@@ -22,6 +22,8 @@ describe("<CatalogCard />", () => {
     // Bottom details
     expect(queryByTestId(testIds.author)).not.toBeNull();
     expect(queryByTestId(testIds.date)).not.toBeNull();
-    expect(queryAllByTestId(testIds.language)).toHaveLength(LANGUAGES.length);
+    expect(queryAllByTestId(testIds.language)).toHaveLength(
+      Object.keys(pkg.languages).length + 1 // TS will never be in languages, but is always supported
+    );
   });
 });

@@ -33,6 +33,7 @@ const project = new web.ReactTypeScriptProject({
     "@chakra-ui/react",
     "@emotion/react@^11",
     "@emotion/styled@^11",
+    "hast-util-sanitize",
     "@jsii/spec",
     "case",
     "copy-to-clipboard",
@@ -91,11 +92,11 @@ const project = new web.ReactTypeScriptProject({
     description: "run local storybook server",
   });
 
-  const buildTask = project.addTask("storybook:build", {
+  const storybookBuildTask = project.addTask("storybook:build", {
     exec: "build-storybook -s public",
     description: "build storybook static site assets",
   });
-  project.compileTask.prependSpawn(buildTask);
+  project.compileTask.prependSpawn(storybookBuildTask);
 
   project.eslint.addOverride({
     files: ["**/*.stories.*"],
@@ -119,9 +120,6 @@ const project = new web.ReactTypeScriptProject({
 // see https://github.com/projen/projen/issues/754
 const buildTask = project.tasks.tryFind("build");
 buildTask.spawn(project.packageTask);
-buildTask.prependSpawn(project.testTask);
-buildTask.prependSpawn(project.compileTask);
-buildTask.prependExec("npx projen");
 
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
