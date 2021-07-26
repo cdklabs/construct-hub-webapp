@@ -24,6 +24,7 @@ export const DevPreviewBanner: FunctionComponent = () => {
     <Box h="max-content">
       <Collapse in={isOpen}>
         <Card
+          aria-label="Developer Preview Banner"
           bg="blue.500"
           border="none"
           boxShadow="none"
@@ -32,6 +33,7 @@ export const DevPreviewBanner: FunctionComponent = () => {
           mx={4}
           p={4}
           position="relative"
+          role="alertdialog"
         >
           <InfoOutlineIcon h={5} left={4} position="absolute" top={4} w={5} />
           <Text fontSize="md" mx={8} textAlign="center">
