@@ -12,7 +12,6 @@ import { UseConstruct } from "../UseConstruct";
 interface PackageDetailsProps {
   assembly: UseRequestResponse<Assembly>;
   metadata: UseRequestResponse<Metadata>;
-  // Likely will be needed for version dropdown
   version: string;
 }
 
@@ -23,6 +22,7 @@ interface PackageDetailsProps {
 export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
   assembly,
   metadata,
+  version,
 }) => {
   const isLoading = assembly.loading || metadata.loading;
 
@@ -46,6 +46,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
           description={assembly.data.description}
           tags={assembly.data.keywords ?? []}
           title={assembly.data.name}
+          version={version}
         />
         <Divider
           display={{ base: "none", md: "initial" }}

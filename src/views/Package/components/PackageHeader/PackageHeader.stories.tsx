@@ -6,8 +6,18 @@ export default {
   component: PackageHeader,
 };
 
-const Template: Story<PackageHeaderProps> = ({ title, description, tags }) => (
-  <PackageHeader description={description} tags={tags} title={title} />
+const Template: Story<PackageHeaderProps> = ({
+  title,
+  description,
+  tags,
+  version,
+}) => (
+  <PackageHeader
+    description={description}
+    tags={tags}
+    title={title}
+    version={version}
+  />
 );
 
 export const Primary = Template.bind({});
@@ -15,4 +25,5 @@ Primary.args = {
   title: "AWS CDK Lib",
   description: "aws cdk construct library",
   tags: [],
+  version: "0.1.1",
 };

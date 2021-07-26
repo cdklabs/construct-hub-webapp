@@ -19,5 +19,19 @@ export const fetchMarkdown = async (
       `Failed fetching documentation for ${markdownPath}: ${response.statusText}`
     );
   }
+
+  // since CloudFront returns a 200 /index.html for missing documents,
+  // we assert the expected docs content type to detect these errors.
+  // TODO: switch to proper 404 responses in this case (requires backend changes)
+  const expectedContentType = "text/markdown";
+  const contentType = response.headers.get("Content-Type");
+
+  // we check 'includes' and not 'equal' because the content type contains
+  // charset as well (e.g text/markdown; charset=UTF-8)
+  if (!contentType || !contentType.includes(expectedContentType)) {
+    throw new Error(
+      `Invalid content type: ${contentType}. Expected ${expectedContentType}"`
+    );
+  }
   return response.text();
 };
