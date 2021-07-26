@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { App } from "./App";
+import { AnalyticsProvider } from "./contexts/Analytics";
 import { CatalogProvider } from "./contexts/Catalog";
 import { ExternalLinkWarningProvider } from "./contexts/ExternalLinkWarning";
 import { ShortbreadProvider } from "./contexts/Shortbread";
@@ -14,13 +15,15 @@ ReactDOM.render(
   <React.StrictMode>
     <ShortbreadProvider>
       <Router>
-        <Theme>
-          <ExternalLinkWarningProvider>
-            <CatalogProvider>
-              <App />
-            </CatalogProvider>
-          </ExternalLinkWarningProvider>
-        </Theme>
+        <AnalyticsProvider>
+          <Theme>
+            <ExternalLinkWarningProvider>
+              <CatalogProvider>
+                <App />
+              </CatalogProvider>
+            </ExternalLinkWarningProvider>
+          </Theme>
+        </AnalyticsProvider>
       </Router>
     </ShortbreadProvider>
   </React.StrictMode>,
