@@ -1,4 +1,4 @@
-import { CloseIcon } from "@chakra-ui/icons";
+import { CloseIcon, InfoOutlineIcon } from "@chakra-ui/icons";
 import {
   Box,
   IconButton,
@@ -24,33 +24,37 @@ export const DevPreviewBanner: FunctionComponent = () => {
     <Box h="max-content">
       <Collapse in={isOpen}>
         <Card
-          bg="white"
-          color="blue.800"
+          bg="blue.500"
+          border="none"
+          boxShadow="none"
+          color="white"
           mt={4}
           mx={4}
           p={4}
           position="relative"
         >
-          <Text fontSize="md" mr={8} textAlign="center">
+          <InfoOutlineIcon h={5} left={4} position="absolute" top={4} w={5} />
+          <Text fontSize="md" mx={8} textAlign="center">
             This application is in Developer Preview. Some features may change.
             If you find any issues, please report them{" "}
             <ExternalLink
+              color="inherit"
               hasWarning={false}
               href="https://github.com/cdklabs/construct-hub-webapp/issues"
+              textDecoration="underline"
             >
               here
             </ExternalLink>
           </Text>
           <IconButton
             aria-label="Dismiss banner"
-            colorScheme="blue"
+            colorScheme="white"
             icon={<CloseIcon />}
             onClick={onClose}
             position="absolute"
             right={4}
-            size="sm"
-            top="50%"
-            transform="translateY(-50%)"
+            size="xs"
+            top={3}
             variant="ghost"
           />
         </Card>
