@@ -111,7 +111,7 @@ export const Markdown: FunctionComponent<{
           }
 
           const owner = repoConfig.owner;
-          const repo = repoConfig.repo.replace(".git", "");
+          const repo = repoConfig.repo.replace(/\.git$/, "");
           return `https://${githubPrefix}/${owner}/${repo}/${githubSuffix}/${url}`;
         };
 
