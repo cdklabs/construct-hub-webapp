@@ -37,8 +37,8 @@ export const DevPreviewBanner: FunctionComponent = () => {
         >
           <InfoOutlineIcon h={5} left={4} position="absolute" top={4} w={5} />
           <Text fontSize="md" mx={8} textAlign="center">
-            This application is in Beta. Some features may change.
-            If you find any issues, please report them{" "}
+            This application is in Beta. Some features may change. If you find
+            any issues, please report them{" "}
             <ExternalLink
               color="inherit"
               hasWarning={false}
