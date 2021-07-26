@@ -28,7 +28,7 @@ export const Home: FunctionComponent = () => {
   });
 
   return (
-    <>
+    <Box position="relative">
       <Picture
         alt={""}
         h="540px"
@@ -81,6 +81,6 @@ export const Home: FunctionComponent = () => {
           setOffset={setOffset}
         />
       </Box>
-    </>
+    </Box>
   );
 };

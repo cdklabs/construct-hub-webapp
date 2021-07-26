@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Card } from "../Card";
 
 const CardContainer: FunctionComponent = ({ children }) => (
-  <Card border="1px solid" borderColor="blue.100" h={64} p={0} w="100%">
+  <Card h={64} p={0} w="100%">
     <Grid
       as="article"
       h="100%"

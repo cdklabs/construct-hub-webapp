@@ -20,11 +20,12 @@ export const PackageDocsError: FunctionComponent<PackageDocsErrorProps> = ({
       align="center"
       fontSize="xl"
       fontStyle="oblique"
+      px={4}
       wordBreak="break-word"
     >
       Documentation in {language} is still not ready for this package. Come back
-      soon. If this issue persists, please let us know by creting an {issueLink}
-      .
+      soon. If this issue persists, please let us know by creating an{" "}
+      {issueLink}.
     </Text>
   );
 };
