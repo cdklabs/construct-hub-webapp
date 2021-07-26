@@ -33,6 +33,7 @@ const project = new web.ReactTypeScriptProject({
     "@chakra-ui/react",
     "@emotion/react@^11",
     "@emotion/styled@^11",
+    "hast-util-sanitize",
     "@jsii/spec",
     "case",
     "copy-to-clipboard",
