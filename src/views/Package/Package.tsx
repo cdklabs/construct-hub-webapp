@@ -11,6 +11,7 @@ import { useRequest } from "../../hooks/useRequest";
 import { NotFound } from "../NotFound";
 import { PackageDetails } from "./components/PackageDetails";
 import { PackageDocs } from "./components/PackageDocs";
+import { PackageDocsError } from "./components/PackageDocsError";
 
 interface PathParams {
   name: string;
@@ -42,6 +43,13 @@ export const Package: FunctionComponent = () => {
     return <NotFound />;
   }
 
+  const hasError = markdownResponse.error || assemblyResponse.error;
+  const hasDocs =
+    !markdownResponse.loading &&
+    !assemblyResponse.loading &&
+    markdownResponse.data &&
+    assemblyResponse.data;
+
   return (
     <Stack maxW="100vw" pt={4} spacing={4}>
       {/* Operator Area */}
@@ -53,15 +61,16 @@ export const Package: FunctionComponent = () => {
         />
       </Box>
       {/* Readme and Api Reference Area */}
-      {markdownResponse.data &&
-        !markdownResponse.loading &&
-        assemblyResponse.data &&
-        !assemblyResponse.loading && (
+      {hasError ? (
+        <PackageDocsError language={language}></PackageDocsError>
+      ) : (
+        hasDocs && (
           <PackageDocs
-            assembly={assemblyResponse.data}
-            markdown={markdownResponse.data}
+            assembly={assemblyResponse.data!}
+            markdown={markdownResponse.data!}
           />
-        )}
+        )
+      )}
     </Stack>
   );
 };
