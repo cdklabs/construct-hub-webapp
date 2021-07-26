@@ -14,7 +14,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
   children,
 }) => {
   const size: string = ["2xl", "xl", "lg", "md", "sm", "xs"][level - 1];
-  const mb: number = [8, 7, 6, 5, 5, 4][level - 1];
+  const marginY: number = [8, 7, 6, 5, 5, 4][level - 1];
   const elem = `h${level}` as As<any>;
 
   // Use DOMParser to look for data attribute for link ID
@@ -41,7 +41,14 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
   const id = dataElement?.dataset.headingId ?? sanitize(title);
 
   return (
-    <Heading as={elem} color="blue.800" level={level} mb={mb} size={size}>
+    <Heading
+      _notFirst={{ mt: marginY }}
+      as={elem}
+      color="blue.800"
+      level={level}
+      mb={marginY}
+      size={size}
+    >
       <NavLink
         data-heading-id={id}
         data-heading-level={level}

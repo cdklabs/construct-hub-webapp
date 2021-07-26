@@ -74,11 +74,11 @@ export const SearchResults: FunctionComponent = () => {
 
   return (
     <Flex direction="column" maxW="100vw">
-      <Box px={10} py={6}>
+      <Box px={4} py={6}>
         <CatalogSearch {...searchAPI} />
       </Box>
       <Divider />
-      <Box px={10} py={6}>
+      <Box px={4} py={6}>
         <Box pb={6}>
           <ShowingDetails
             count={results.length}

@@ -1,6 +1,7 @@
 import { Grid } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Switch, Route } from "react-router-dom";
+import { DevPreviewBanner } from "./components/DevPreviewBanner";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ROUTES } from "./constants/url";
@@ -17,7 +18,7 @@ export const App: FunctionComponent = () => {
       as="main"
       bg="gray.50"
       gridTemplateColumns="1fr"
-      gridTemplateRows="auto 1fr auto"
+      gridTemplateRows="auto auto 1fr auto"
       h="100%"
       inset={0}
       maxW="100vw"
@@ -25,6 +26,7 @@ export const App: FunctionComponent = () => {
       position="fixed"
     >
       <Header />
+      <DevPreviewBanner />
       <Switch>
         <Route exact path={ROUTES.FAQ}>
           <FAQ />
