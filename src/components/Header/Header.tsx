@@ -1,4 +1,4 @@
-import { Grid, GridItem, GridItemProps } from "@chakra-ui/react";
+import { Box, Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Community } from "./Community";
 import { GettingStarted } from "./GettingStarted";
@@ -16,13 +16,14 @@ export const Header: FunctionComponent = () => {
       alignItems="center"
       as="header"
       bg="white"
+      borderBottom="1px solid"
+      borderBottomColor="blue.100"
       boxShadow="base"
       data-testid="header"
       gap={4}
       gridTemplateColumns={{
         base: "1fr 3fr 1fr",
-        md: "2fr 3fr 2fr",
-        lg: "1fr 2fr 1fr",
+        md: "minmax(200px, 2fr) minmax(200px, 3fr) 2fr",
       }}
       gridTemplateRows="1fr"
       maxW="100vw"
@@ -55,14 +56,18 @@ export const Header: FunctionComponent = () => {
         justifySelf={{ base: "start", md: "end" }}
       >
         <Grid
-          alignItems="center"
           display={{ base: "none", md: "grid" }}
           gridTemplateColumns="1fr 1fr"
           gridTemplateRows="1fr"
+          placeItems="center"
           w="100%"
         >
-          <GettingStarted />
-          <Community />
+          <Box>
+            <GettingStarted />
+          </Box>
+          <Box>
+            <Community />
+          </Box>
         </Grid>
         <NavButton />
       </HeaderItem>

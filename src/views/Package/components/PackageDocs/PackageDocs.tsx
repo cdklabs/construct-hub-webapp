@@ -80,8 +80,6 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
   return (
     <Grid
       bg="white"
-      borderTop="1px solid"
-      borderTopColor="gray.100"
       columnGap={4}
       h="100%"
       templateColumns={{ base: "1fr", md: "1fr 3fr" }}
@@ -90,7 +88,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
       <Flex
         alignSelf="stretch"
         borderRight="1px solid"
-        borderRightColor="gray.100"
+        borderRightColor="blue.50"
         direction="column"
         display={{ base: "none", md: "flex" }}
         maxHeight={`calc(100vh - ${TOP_OFFSET})`}
@@ -102,7 +100,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         {Object.keys(assembly?.submodules ?? {}).length > 0 && (
           <Flex
             borderBottom="1px solid"
-            borderColor="gray.100"
+            borderColor="blue.50"
             justify="center"
             py={4}
           >

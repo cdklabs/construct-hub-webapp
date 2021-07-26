@@ -30,57 +30,62 @@ export const Home: FunctionComponent = () => {
 
   return (
     <Page pageName="home">
-      <Picture
-        alt={""}
-        h="540px"
-        opacity={0.5}
-        position="absolute"
-        sources={sources.optimal}
-        src={sources.fallback}
-        top="0"
-        w="100%"
-        zIndex="hide"
-      />
-      {/* Hero Section */}
-      <Stack
-        align="stretch"
-        direction="column"
-        justify="center"
-        m="0 auto"
-        maxW="container.lg"
-        p={[10, 15, 20]}
-        spacing={8}
-      >
-        <Stack color="blue.800" spacing={4} textAlign="center">
-          <Heading size="2xl">
-            Find reusable components for your cloud applications
-          </Heading>
-          <Heading as="h3" size="md">
-            AWS CDK | CDK for Terraform | CDK For Kubernetes
-          </Heading>
-          <Heading as="h4" mb={8} size="sm">
-            Search from{" "}
-            {!results.length ? (
-              <Skeleton display="inline-block" h={3} w={8} />
-            ) : (
-              <Box as="span" color="blue.500">
-                {results.length}
-              </Box>
-            )}{" "}
-            Constructs
-          </Heading>
-        </Stack>
-        <CatalogSearch {...searchAPI} />
-      </Stack>
-
-      {/* TBD: Trending Libraries in favor of catalog results */}
-      <Box p={4} pb={8}>
-        <Results results={displayable} skeleton={{ loading, noOfItems: 20 }} />
-        <HomePageControls
-          offset={offset}
-          pageLimit={pageLimit}
-          setOffset={setOffset}
+      <Box position="relative">
+        <Picture
+          alt={""}
+          h="540px"
+          opacity={0.5}
+          position="absolute"
+          sources={sources.optimal}
+          src={sources.fallback}
+          top="0"
+          w="100%"
+          zIndex="hide"
         />
+        {/* Hero Section */}
+        <Stack
+          align="stretch"
+          direction="column"
+          justify="center"
+          m="0 auto"
+          maxW="container.lg"
+          p={[10, 15, 20]}
+          spacing={8}
+        >
+          <Stack color="blue.800" spacing={4} textAlign="center">
+            <Heading size="2xl">
+              Find reusable components for your cloud applications
+            </Heading>
+            <Heading as="h3" size="md">
+              AWS CDK | CDK for Terraform | CDK For Kubernetes
+            </Heading>
+            <Heading as="h4" mb={8} size="sm">
+              Search from{" "}
+              {!results.length ? (
+                <Skeleton display="inline-block" h={3} w={8} />
+              ) : (
+                <Box as="span" color="blue.500">
+                  {results.length}
+                </Box>
+              )}{" "}
+              Constructs
+            </Heading>
+          </Stack>
+          <CatalogSearch {...searchAPI} />
+        </Stack>
+
+        {/* TBD: Trending Libraries in favor of catalog results */}
+        <Box p={4} pb={8}>
+          <Results
+            results={displayable}
+            skeleton={{ loading, noOfItems: 20 }}
+          />
+          <HomePageControls
+            offset={offset}
+            pageLimit={pageLimit}
+            setOffset={setOffset}
+          />
+        </Box>
       </Box>
     </Page>
   );

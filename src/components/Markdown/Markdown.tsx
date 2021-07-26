@@ -116,7 +116,7 @@ export const Markdown: FunctionComponent<{
         };
 
   return (
-    <Box sx={{ "& > *": { mb: 4 } }}>
+    <Box sx={{ "& > *": { mb: 4 }, "& > :first-child": { mt: 0 } }}>
       <ReactMarkdown
         components={components}
         rehypePlugins={rehypePlugins}
