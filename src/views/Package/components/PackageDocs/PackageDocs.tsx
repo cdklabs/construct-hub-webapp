@@ -93,8 +93,8 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         display={{ base: "none", md: "flex" }}
         maxHeight={`calc(100vh - ${TOP_OFFSET})`}
         overflow="hidden auto"
-        p={0}
         position="sticky"
+        px={4}
         top={TOP_OFFSET}
       >
         {Object.keys(assembly?.submodules ?? {}).length > 0 && (
@@ -107,7 +107,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
             <ChooseSubmodule assembly={assembly} />
           </Flex>
         )}
-        <Box overflowY="auto" pt={4}>
+        <Box overflowY="auto" py={4}>
           <NavTree items={navItems} />
         </Box>
       </Flex>
