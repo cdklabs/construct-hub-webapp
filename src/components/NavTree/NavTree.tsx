@@ -60,13 +60,13 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   );
 
   return (
-    <Flex direction="column" pl={2}>
+    <Flex direction="column">
       <Flex align="center" color={linkIsActive ? "blue.500" : "gray.800"}>
         {showToggle && (
           <IconButton
             aria-label="expand-toggle"
             borderRadius="md"
-            h={2}
+            h={4}
             icon={
               disclosure.isOpen ? (
                 <ChevronDownIcon {...iconProps} />
@@ -74,17 +74,17 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
                 <ChevronRightIcon {...iconProps} />
               )
             }
-            ml={-2}
+            ml={-1}
             onClick={disclosure.onToggle}
             size="xs"
             variant="link"
-            w={2}
+            w={4}
           />
         )}
         <LinkComponent
           href={url}
           overflow="hidden"
-          pl={!showToggle ? 4 : 0}
+          pl={!showToggle ? 1 : 0}
           textOverflow="ellipsis"
           title={display}
           to={url}
@@ -94,10 +94,21 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
         </LinkComponent>
       </Flex>
       <Box
-        borderLeft={"1px solid"}
-        borderLeftColor="gray.100"
+        _before={{
+          // Creates a border without taking up any box space
+          // This is important to keep items perfectly aligned
+          bg: "gray.100",
+          bottom: 0,
+          content: `""`,
+          left: 0,
+          position: "absolute",
+          top: 0,
+          w: "1px",
+        }}
         display={showChildren ? "initial" : "none"}
-        ml={1}
+        ml={2}
+        pl={2}
+        position="relative"
       >
         {nestedItems}
       </Box>
@@ -107,7 +118,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
 
 export const NavTree: FunctionComponent<NavTreeProps> = ({ items }) => {
   return (
-    <Flex direction="column" maxWidth="100%" overflowX="hidden">
+    <Flex direction="column" maxWidth="100%">
       {items.map((item, idx) => {
         return <NavItem {...item} key={idx} onOpen={undefined} />;
       })}
