@@ -1,5 +1,14 @@
-import { Box, Flex, Stack, Tag, Text, Divider } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  LinkBox,
+  LinkOverlay,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { Link } from "react-router-dom";
 import { CatalogPackage } from "../../api/package/packages";
 import {
   Language,
@@ -8,8 +17,10 @@ import {
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
 import { createTestIds } from "../../util/createTestIds";
+import { getPackagePath } from "../../util/url";
 import { ExternalLink } from "../ExternalLink";
 import { LanguageSupportTooltip } from "../LanguageSupportTooltip";
+import { PackageTag } from "../PackageTag";
 import { Time } from "../Time";
 import { CatalogCardContainer } from "./CatalogCardContainer";
 import { CatalogCardSkeleton } from "./CatalogCardSkeleton";
@@ -26,18 +37,18 @@ export const testIds = createTestIds("catalog-card", [
 
 export interface CatalogCardProps {
   /**
+   * Specifies the language to link to by default
+   */
+  language?: Language;
+  /**
    * If undefined, will render a skeleton
    */
   pkg?: CatalogPackage;
-  /**
-   * If defined, will wrap the card in a <Link />
-   */
-  url?: string;
 }
 
 export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
+  language: currentLanguage,
   pkg,
-  url,
 }) => {
   if (!pkg) {
     return (
@@ -59,31 +70,42 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
   const languages = pkg.languages ?? {};
   const targets = Object.keys(languages) as Language[];
 
+  const getUrl = (params?: Partial<Parameters<typeof getPackagePath>[0]>) =>
+    getPackagePath({
+      name: pkg.name,
+      version: pkg.version,
+      language: currentLanguage,
+      ...params,
+    });
+
   return (
-    <CatalogCardContainer url={url}>
+    <CatalogCardContainer isLink>
       <Stack maxH="100%" maxW="100%" overflow="hidden" p={4} spacing={2}>
         {/* Name & Version */}
-        <Text
-          color="blue.800"
-          data-testid={testIds.name}
-          fontWeight="semibold"
-          isTruncated
-        >
-          {pkg.name}
-
+        <LinkOverlay as={Link} to={getUrl()}>
           <Text
-            as="span"
-            color="blue.500"
-            data-testid={testIds.version}
-            fontSize="xs"
-            ml={2}
+            color="blue.800"
+            data-testid={testIds.name}
+            fontWeight="semibold"
+            isTruncated
           >
-            {pkg.version}
+            {pkg.name}
+
+            <Text
+              as="span"
+              color="blue.500"
+              data-testid={testIds.version}
+              fontSize="xs"
+              ml={2}
+            >
+              {pkg.version}
+            </Text>
           </Text>
-        </Text>
+        </LinkOverlay>
 
         {/* Tags */}
-        <Flex
+        <LinkBox
+          as={Flex}
           data-testid={testIds.tags}
           flexWrap="wrap"
           maxH={6}
@@ -94,12 +116,17 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
             .slice(0, 3)
             .map((tag) => {
               return (
-                <Tag key={tag} mr={1}>
+                <PackageTag
+                  key={tag}
+                  language={currentLanguage}
+                  mr={1}
+                  value={tag}
+                >
                   {tag}
-                </Tag>
+                </PackageTag>
               );
             })}
-        </Flex>
+        </LinkBox>
         <Text data-testid={testIds.description} fontSize="sm" noOfLines={2}>
           {pkg.description}
         </Text>
@@ -133,7 +160,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
           )}
 
           {/* Language Support Icons */}
-          <Stack align="center" direction="row">
+          <LinkBox align="center" as={Stack} direction="row">
             {Object.entries(LANGUAGE_RENDER_MAP)
               // Ensure entries are always sorted in a stable way
               .sort(
@@ -141,36 +168,48 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                   LANGUAGES.indexOf(left as Language) -
                   LANGUAGES.indexOf(right as Language)
               )
-              .map(([language, info]) => {
+              .map(([lang, info]) => {
+                const language = lang as Language;
+
                 const isSupportedByLibrary =
                   language === Language.TypeScript ||
-                  targets.includes(language as Language);
+                  targets.includes(language);
 
                 const isSupportedByConstructHub =
                   language === Language.TypeScript || // TypeScript is always supported
                   // Otherwise, the language must be supported by ConstructHub
-                  TEMP_SUPPORTED_LANGUAGES.has(language as Language);
+                  TEMP_SUPPORTED_LANGUAGES.has(language);
 
                 if (!isSupportedByLibrary) return null;
 
                 const { name, icon: Icon } = info;
 
+                const icon = (
+                  <Icon
+                    aria-label={`Supports ${name}`}
+                    data-testid={testIds.language}
+                    h={6}
+                    opacity={isSupportedByConstructHub ? 1 : 0.2}
+                    w={6}
+                  />
+                );
+
                 return (
-                  <LanguageSupportTooltip
-                    key={language}
-                    language={language as Language}
-                  >
-                    <Icon
-                      aria-label={`Supports ${name}`}
-                      data-testid={testIds.language}
-                      h={6}
-                      opacity={isSupportedByConstructHub ? 1 : 0.2}
-                      w={6}
-                    />
+                  <LanguageSupportTooltip key={language} language={language}>
+                    {isSupportedByConstructHub ? (
+                      <Link
+                        aria-label={`View package docs for ${language}`}
+                        to={getUrl({ language })}
+                      >
+                        {icon}
+                      </Link>
+                    ) : (
+                      icon
+                    )}
                   </LanguageSupportTooltip>
                 );
               })}
-          </Stack>
+          </LinkBox>
         </Stack>
       </Box>
     </CatalogCardContainer>

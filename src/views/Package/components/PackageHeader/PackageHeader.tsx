@@ -1,5 +1,6 @@
 import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { PackageTag } from "../../../../components/PackageTag";
 
 export interface PackageHeaderProps {
   title: string;
@@ -47,16 +48,9 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
             .filter(Boolean)
             .slice(0, 3)
             .map((tag) => (
-              <Flex
-                bg="gray.100"
-                borderRadius="sm"
-                justify="center"
-                key={tag}
-                mr={4}
-                p={2}
-              >
-                <Text>{tag.toUpperCase()}</Text>
-              </Flex>
+              <PackageTag key={tag} mr={2} value={tag}>
+                {tag}
+              </PackageTag>
             ))}
         </Flex>
       )}

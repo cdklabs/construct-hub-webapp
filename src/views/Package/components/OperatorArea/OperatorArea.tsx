@@ -96,11 +96,11 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
       <Link
         color="blue.500"
         fontSize="sm"
-        href={`mailto:abuse@amazon.com?subject=${encodeURIComponent(
+        href={`mailto:abuse@amazonaws.com?subject=${encodeURIComponent(
           `ConstructHub - Report of abusive package: ${assembly?.name}`
         )}`}
         m={2}
-        textAlign="right"
+        textAlign={{ base: "center", md: "right" }}
       >
         Report this Package
       </Link>
