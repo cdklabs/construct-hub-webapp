@@ -20,13 +20,15 @@ export const MultiLineRenderer: FunctionComponent<RendererProps> = ({
       <CopyButton _hover={{ bg: "gray.300" }} color="gray.500" value={code} />
     </Flex>
     <Box maxW="100%" overflowX="auto" p={2}>
-      {tokens.map((line, i) => (
-        <div key={i} {...getLineProps({ line, key: i })}>
-          {line.map((token, key) => (
-            <span key={key} {...getTokenProps({ token, key })} />
-          ))}
-        </div>
-      ))}
+      <Box w="max-content">
+        {tokens.map((line, i) => (
+          <div key={i} {...getLineProps({ line, key: i })}>
+            {line.map((token, key) => (
+              <span key={key} {...getTokenProps({ token, key })} />
+            ))}
+          </div>
+        ))}
+      </Box>
     </Box>
   </>
 );
