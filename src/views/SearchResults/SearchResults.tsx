@@ -2,6 +2,7 @@ import { Box, Divider, Flex } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { CatalogSearch } from "../../components/CatalogSearch";
+import { Page } from "../../components/Page";
 import { Results } from "../../components/Results";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
@@ -83,32 +84,34 @@ export const SearchResults: FunctionComponent = () => {
   }, [searchQuery]);
 
   return (
-    <Flex direction="column" maxW="100vw">
-      <Box px={4} py={4}>
-        <CatalogSearch {...searchAPI} />
-      </Box>
-      <Divider />
-      <Box px={4} py={4}>
-        <Box pb={4}>
-          <ShowingDetails
-            count={results.length}
-            filtered={!!searchQuery}
+    <Page pageName="search">
+      <Flex direction="column" maxW="100vw">
+        <Box p={4}>
+          <CatalogSearch {...searchAPI} />
+        </Box>
+        <Divider />
+        <Box p={4}>
+          <Box pb={4}>
+            <ShowingDetails
+              count={results.length}
+              filtered={!!searchQuery}
+              limit={LIMIT}
+              offset={offset}
+            />
+          </Box>
+          <Results
+            language={languageQuery ?? undefined}
+            results={displayable}
+            skeleton={{ loading, noOfItems: LIMIT }}
+          />
+          <PageControls
+            getPageUrl={getUrl}
             limit={LIMIT}
             offset={offset}
+            pageLimit={pageLimit}
           />
         </Box>
-        <Results
-          language={languageQuery ?? undefined}
-          results={displayable}
-          skeleton={{ loading, noOfItems: LIMIT }}
-        />
-        <PageControls
-          getPageUrl={getUrl}
-          limit={LIMIT}
-          offset={offset}
-          pageLimit={pageLimit}
-        />
-      </Box>
-    </Flex>
+      </Flex>
+    </Page>
   );
 };

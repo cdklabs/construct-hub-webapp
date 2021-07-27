@@ -40,7 +40,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
         borderColor="blue.100"
         boxShadow="base"
         data-testid={testIds.trigger}
-        rightIcon={<ChevronDownIcon />}
+        rightIcon={<ChevronDownIcon color="blue.500" />}
         variant="outline"
       >
         <Text data-testid={testIds.value}>{text}</Text>
