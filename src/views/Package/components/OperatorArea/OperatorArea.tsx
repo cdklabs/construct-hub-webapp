@@ -100,7 +100,7 @@ export const OperatorArea: FunctionComponent<OperatorAreaProps> = ({
           `ConstructHub - Report of abusive package: ${assembly?.name}`
         )}`}
         m={2}
-        textAlign="right"
+        textAlign={{ base: "center", md: "right" }}
       >
         Report this Package
       </Link>
