@@ -1,6 +1,6 @@
 import { Box, Divider, Flex } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { CatalogSearch } from "../../components/CatalogSearch";
 import { Page } from "../../components/Page";
 import { Results } from "../../components/Results";
@@ -9,6 +9,7 @@ import { QUERY_PARAMS } from "../../constants/url";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { useQueryParams } from "../../hooks/useQueryParams";
+import { getSearchPath } from "../../util/url";
 import { PageControls } from "./components/PageControls";
 import { ShowingDetails } from "./components/ShowingDetails";
 import { LIMIT, SearchQueryParam } from "./constants";
@@ -41,7 +42,6 @@ export const SearchResults: FunctionComponent = () => {
 
   const offset = toNum(queryParams.get(QUERY_PARAMS.OFFSET) ?? "0");
 
-  const { pathname } = useLocation();
   const { push } = useHistory();
 
   const { results, displayable, loading, pageLimit } = useCatalogResults({
@@ -54,9 +54,11 @@ export const SearchResults: FunctionComponent = () => {
   const getUrl = (
     params: Partial<{ [key in SearchQueryParam]: number | string }>
   ) => {
-    const newParams = new URLSearchParams(`${queryParams}`);
-    Object.entries(params).forEach(([k, v]) => newParams.set(k, `${v}`));
-    return `${pathname}?${newParams}`;
+    return getSearchPath({
+      query: (params.q ?? searchQuery) as string,
+      language: languageQuery,
+      offset: params.offset ?? offset,
+    });
   };
 
   useEffect(() => {
@@ -72,6 +74,14 @@ export const SearchResults: FunctionComponent = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, results, pageLimit, offset]);
+
+  useEffect(() => {
+    // Reflect changes to queryParam to search input (specifically for tag clicks)
+    if (searchQuery !== searchAPI.query) {
+      searchAPI.setQuery(searchQuery);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
 
   return (
     <Page pageName="search">
@@ -90,6 +100,7 @@ export const SearchResults: FunctionComponent = () => {
             />
           </Box>
           <Results
+            language={languageQuery ?? undefined}
             results={displayable}
             skeleton={{ loading, noOfItems: LIMIT }}
           />
