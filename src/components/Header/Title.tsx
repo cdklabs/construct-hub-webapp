@@ -7,9 +7,7 @@ export const Title: FunctionComponent = () => (
     <Heading as="h1" color="blue.800" size="lg">
       <Box as="span" color="blue.500">
         Construct
-      </Box>
-      {/* Zero-width space - separates the word for screen-readers only */}
-      <wbr />
+      </Box>{" "}
       Hub
     </Heading>
   </Link>

@@ -68,7 +68,7 @@ export const Home: FunctionComponent = () => {
                   {results.length}
                 </Box>
               )}{" "}
-              Constructs
+              construct libraries
             </Heading>
           </Stack>
           <CatalogSearch {...searchAPI} />
