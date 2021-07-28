@@ -28,7 +28,7 @@ export const useCatalogResults = ({
 
     if (query.length) {
       filtered = filtered.filter((item) =>
-        JSON.stringify(item).includes(query)
+        JSON.stringify(item).toLowerCase().includes(query.toLowerCase())
       );
     }
 
