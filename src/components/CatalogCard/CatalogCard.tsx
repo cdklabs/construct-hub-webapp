@@ -3,6 +3,7 @@ import {
   Divider,
   Flex,
   LinkBox,
+  Link as UILnk,
   LinkOverlay,
   Stack,
   Text,
@@ -18,7 +19,6 @@ import {
 } from "../../constants/languages";
 import { createTestIds } from "../../util/createTestIds";
 import { getPackagePath } from "../../util/url";
-import { ExternalLink } from "../ExternalLink";
 import { LanguageSupportTooltip } from "../LanguageSupportTooltip";
 import { PackageTag } from "../PackageTag";
 import { Time } from "../Time";
@@ -77,6 +77,8 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
       language: currentLanguage,
       ...params,
     });
+
+  const authorName = typeof author === "string" ? author : author.name;
 
   return (
     <CatalogCardContainer isLink>
@@ -140,24 +142,14 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
             {publishDate}
           </Text>
 
-          {typeof author === "string" ? (
-            <Text data-testid={testIds.author} fontSize="sm" isTruncated>
-              {author}
-            </Text>
-          ) : author.url ? (
-            <ExternalLink
-              data-testid={testIds.author}
-              fontSize="sm"
-              href={author.url}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {author.name}
-            </ExternalLink>
-          ) : (
-            <Text data-testid={testIds.author} fontSize="sm" isTruncated>
-              {typeof author === "string" ? author : author.name}
-            </Text>
-          )}
+          <UILnk
+            color="blue.500"
+            fontSize="sm"
+            href={`./search?q=${authorName}&offset=0`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {authorName}
+          </UILnk>
 
           {/* Language Support Icons */}
           <LinkBox align="center" as={Stack} direction="row">
