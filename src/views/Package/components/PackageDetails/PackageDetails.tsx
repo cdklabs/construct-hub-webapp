@@ -67,10 +67,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
         spacing={4}
       >
         <LanguageSelection assembly={assembly.data} />
-        <UseConstruct
-          packageName={assembly.data.name}
-          version={assembly.data.version}
-        />
+        <UseConstruct assembly={assembly.data} />
       </Stack>
     </Flex>
   );
