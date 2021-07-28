@@ -1,3 +1,4 @@
+import type { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
 import {
   CodePopover,
@@ -13,16 +14,22 @@ import { useLanguage } from "../../../../hooks/useLanguage";
 // TODO: We'll probably want to get this from BE as we add more languages, however this should do the trick for now...
 const getCodeSample = ({
   language,
-  packageName,
-  version,
+  assembly,
 }: {
   language: Language;
-  packageName: string;
-  version: string;
+  assembly: Assembly;
 }) => {
+  const version = assembly.version;
   if (language === Language.TypeScript) {
+    const packageName = assembly.name;
     return `npm install ${packageName}@${version}`;
   } else if (language === Language.Python) {
+    const packageName = assembly.targets?.python?.distName;
+    if (!packageName) {
+      throw new Error(
+        `Unable to build python installation instructions for ${assembly.name} since it doesn't support python`
+      );
+    }
     return `pip install ${packageName}==${version}`;
   }
 
@@ -30,17 +37,15 @@ const getCodeSample = ({
 };
 
 export interface UseConstructProps {
-  packageName: string;
-  version: string;
+  assembly: Assembly;
 }
 
 export const UseConstruct: FunctionComponent<UseConstructProps> = ({
-  packageName,
-  version,
+  assembly,
 }) => {
   const [language] = useLanguage();
 
-  const code = getCodeSample({ language, packageName, version });
+  const code = getCodeSample({ language, assembly });
   const header = LANGUAGE_NAME_MAP[language];
 
   const trigger = (
