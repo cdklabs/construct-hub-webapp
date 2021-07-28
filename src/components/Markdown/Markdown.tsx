@@ -12,7 +12,7 @@ import { Img } from "./Img";
 import { Ul, Ol, Li } from "./List";
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption } from "./Table";
 import { A, Blockquote, Em, P, Pre, Sup } from "./Text";
-import { ExperimentalMarkdownRenderer } from "./ExperimentalMd";
+import { WindowedMarkdown } from "./WindowedMarkdown";
 
 const components = {
   a: A,
@@ -118,7 +118,7 @@ export const Markdown: FunctionComponent<{
 
   return (
     <Box sx={{ "& > *": { mb: 4 }, "& > :first-child": { mt: 0 } }}>
-      <ExperimentalMarkdownRenderer
+      <WindowedMarkdown
         components={components}
         rehypePlugins={rehypePlugins}
         remarkPlugins={remarkPlugins}
@@ -126,7 +126,7 @@ export const Markdown: FunctionComponent<{
         transformLinkUri={toAbsoluteUri("github.com", "blob/HEAD")}
       >
         {children}
-      </ExperimentalMarkdownRenderer>
+      </WindowedMarkdown>
     </Box>
   );
 };
