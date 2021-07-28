@@ -145,7 +145,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
           <UILnk
             color="blue.500"
             fontSize="sm"
-            href={`./search?q=${authorName}&offset=0`}
+            href={`./search?q=${authorName}`}
             onClick={(e) => e.stopPropagation()}
           >
             {authorName}
