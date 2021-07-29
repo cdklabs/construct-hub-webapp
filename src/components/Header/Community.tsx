@@ -8,7 +8,7 @@ import {
 
 export const Community: FunctionComponent = () => (
   <NavPopover>
-    <NavPopoverTrigger>Resources</NavPopoverTrigger>
+    <NavPopoverTrigger>Community</NavPopoverTrigger>
     <NavPopoverContent items={COMMUNITY} />
   </NavPopover>
 );

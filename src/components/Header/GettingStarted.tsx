@@ -9,7 +9,7 @@ import {
 export const GettingStarted: FunctionComponent = () => {
   return (
     <NavPopover>
-      <NavPopoverTrigger>Documentation</NavPopoverTrigger>
+      <NavPopoverTrigger>Getting Started</NavPopoverTrigger>
       <NavPopoverContent items={GETTING_STARTED} />
     </NavPopover>
   );
