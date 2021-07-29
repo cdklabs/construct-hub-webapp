@@ -82,12 +82,15 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
           />
         )}
         <LinkComponent
+          _hover={{ bg: "rgba(0, 124, 253, 0.05)" }}
           href={url}
           overflow="hidden"
-          pl={!showToggle ? 1 : 0}
+          pl={showToggle ? 1 : 2}
+          py={1.5}
           textOverflow="ellipsis"
           title={display}
           to={url}
+          w="100%"
           whiteSpace="nowrap"
         >
           {display}

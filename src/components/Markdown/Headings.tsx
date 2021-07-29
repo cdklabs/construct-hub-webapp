@@ -3,6 +3,7 @@ import { Children, FunctionComponent, ReactNode } from "react";
 import ReactDOMServer from "react-dom/server";
 import { sanitize } from "../../util/sanitize-anchor";
 import { NavLink } from "../NavLink";
+import { Hr } from "./Hr";
 
 interface HeadingResolverProps {
   level: number;
@@ -14,7 +15,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
   children,
 }) => {
   const size: string = ["2xl", "xl", "lg", "md", "sm", "xs"][level - 1];
-  const marginY: number = [8, 7, 6, 5, 5, 4][level - 1];
+  const marginY: number = [10, 10, 10, 8, 8, 8][level - 1];
   const elem = `h${level}` as As<any>;
 
   // Use DOMParser to look for data attribute for link ID
@@ -40,19 +41,34 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
 
   const id = dataElement?.dataset.headingId ?? sanitize(title);
 
+  const isH3OrLarger = level < 4;
+
   return (
-    <Heading as={elem} color="blue.800" level={level} my={marginY} size={size}>
-      <NavLink
-        data-heading-id={id}
-        data-heading-level={level}
-        data-heading-title={title}
-        id={id}
-        replace
-        sx={{ "> code": { color: "blue.800", fontSize: "inherit" } }}
-        to={`#${id}`}
+    <>
+      <Heading
+        as={elem}
+        color="blue.800"
+        level={level}
+        mb={isH3OrLarger ? 0 : level}
+        mt={marginY}
+        size={size}
       >
-        {children}
-      </NavLink>
-    </Heading>
+        <NavLink
+          data-heading-id={id}
+          data-heading-level={level}
+          data-heading-title={title}
+          id={id}
+          replace
+          sx={{ "> code": { color: "blue.800", fontSize: "inherit" } }}
+          to={`#${id}`}
+        >
+          {children}
+        </NavLink>
+      </Heading>
+      {isH3OrLarger && (
+        // If there's an adjacent HR from the source md, do a magic trick and make it disappear
+        <Hr mb={marginY} mt={0} sx={{ "& + hr": { display: "none" } }} />
+      )}
+    </>
   );
 };
