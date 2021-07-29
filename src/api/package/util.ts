@@ -14,3 +14,11 @@ export const getAssetsPath = (
   const suffix = `/v${version}`;
   return `${prefix}${body}${suffix}`;
 };
+
+export const sanitizeVersion = (ver: string) => {
+  let sanitized = ver;
+  if (sanitized.startsWith("~") || sanitized.startsWith("^")) {
+    sanitized = sanitized.substring(1);
+  }
+  return sanitized;
+};
