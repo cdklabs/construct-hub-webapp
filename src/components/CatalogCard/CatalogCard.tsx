@@ -3,7 +3,7 @@ import {
   Divider,
   Flex,
   LinkBox,
-  Link as UILnk,
+  Link as UILink,
   LinkOverlay,
   Stack,
   Text,
@@ -18,7 +18,7 @@ import {
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
 import { createTestIds } from "../../util/createTestIds";
-import { getPackagePath } from "../../util/url";
+import { getPackagePath, getSearchPath } from "../../util/url";
 import { LanguageSupportTooltip } from "../LanguageSupportTooltip";
 import { PackageTag } from "../PackageTag";
 import { Time } from "../Time";
@@ -142,14 +142,15 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
             {publishDate}
           </Text>
 
-          <UILnk
+          <UILink
+            as={Link}
             color="blue.500"
+            data-testid={testIds.author}
             fontSize="sm"
-            href={`./search?q=${authorName}`}
-            onClick={(e) => e.stopPropagation()}
+            to={getSearchPath({ query: authorName })}
           >
             {authorName}
-          </UILnk>
+          </UILink>
 
           {/* Language Support Icons */}
           <LinkBox align="center" as={Stack} direction="row">
