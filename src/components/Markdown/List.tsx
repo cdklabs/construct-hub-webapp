@@ -12,6 +12,7 @@ export const Ol: FunctionComponent = ({ children }) => (
 export const Li: FunctionComponent = ({ children }) => (
   <ListItem
     lineHeight="tall"
+    mb={2}
     sx={{
       "em:first-of-type": {
         mr: 2,

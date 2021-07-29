@@ -128,7 +128,13 @@ export const Markdown: FunctionComponent<{
     ].join("\n");
   }
   return (
-    <Box sx={{ "& > *": { mb: 8 }, "& > p": { lineHeight: "taller" } }}>
+    <Box
+      px={8}
+      sx={{
+        "& > *": { mb: 8 },
+        "& > p": { lineHeight: "taller" },
+      }}
+    >
       <ReactMarkdown
         components={components}
         rehypePlugins={rehypePlugins}
