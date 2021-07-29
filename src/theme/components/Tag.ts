@@ -33,6 +33,7 @@ export const Tag = {
     ...base.variants,
     subtle: createVariant(base.variants.subtle, {
       background: "#F2F2F2",
+      color: "blue.800",
     }),
     official: createVariant(base.variants.subtle, {
       background: "rgba(33, 150, 83, 0.1)",
