@@ -121,6 +121,12 @@ export const Markdown: FunctionComponent<{
   if (byteLength > ONE_MEGABYTE) {
     console.log(`Doc page is larger than 1MB, showing only README...`);
     children = children.substring(0, children.lastIndexOf("# API Reference"));
+    children = [
+      children,
+      "# API Reference",
+      "The API Reference for this package could not be rendered.",
+      "If this issue persists, please let us know by creating an [issue](https://github.com/cdklabs/construct-hub-webapp/issues/new)",
+    ].join("\n");
   }
   return (
     <Box sx={{ "& > *": { mb: 4 }, "& > :first-child": { mt: 0 } }}>
