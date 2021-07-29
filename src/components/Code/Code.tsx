@@ -21,8 +21,7 @@ export const Code: FunctionComponent<CodeProps> = ({ code, language }) => {
       {(props) => (
         <Box
           as="pre"
-          border="1px solid"
-          borderColor="blue.100"
+          border="base"
           borderRadius="md"
           boxShadow="base"
           className={props.className}
