@@ -13,6 +13,8 @@ import { Ul, Ol, Li } from "./List";
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption } from "./Table";
 import { A, Blockquote, Em, P, Pre, Sup } from "./Text";
 
+const ONE_MEGABYTE = 1024 * 1024;
+
 const components = {
   a: A,
   blockquote: Blockquote,
@@ -115,6 +117,11 @@ export const Markdown: FunctionComponent<{
           return `https://${githubPrefix}/${owner}/${repo}/${githubSuffix}/${url}`;
         };
 
+  const byteLength = Buffer.byteLength(children);
+  if (byteLength > ONE_MEGABYTE) {
+    console.log(`Doc page is larger than 1MB, showing only README...`);
+    children = children.substring(0, children.lastIndexOf("# API Reference"));
+  }
   return (
     <Box sx={{ "& > *": { mb: 4 }, "& > :first-child": { mt: 0 } }}>
       <ReactMarkdown
