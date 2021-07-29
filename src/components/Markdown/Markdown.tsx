@@ -119,7 +119,6 @@ export const Markdown: FunctionComponent<{
 
   const byteLength = Buffer.byteLength(children);
   if (byteLength > ONE_MEGABYTE) {
-    console.log(`Doc page is larger than 1MB, showing only README...`);
     children = children.substring(0, children.lastIndexOf("# API Reference"));
     children = [
       children,
