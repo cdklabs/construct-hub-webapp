@@ -50,7 +50,7 @@ export const UseConstruct: FunctionComponent<UseConstructProps> = ({
 
   const trigger = (
     <CodePopoverTrigger disabled={!TEMP_SUPPORTED_LANGUAGES.has(language)}>
-      Install library
+      Install
     </CodePopoverTrigger>
   );
 
