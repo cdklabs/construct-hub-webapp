@@ -4,7 +4,6 @@ import {
   MenuButton,
   MenuButtonProps,
   forwardRef,
-  Text,
 } from "@chakra-ui/react";
 
 export const NavPopoverTrigger = forwardRef<MenuButtonProps, "button">(
@@ -13,17 +12,14 @@ export const NavPopoverTrigger = forwardRef<MenuButtonProps, "button">(
       <MenuButton
         as={Button}
         color="blue.800"
+        fontWeight="500"
         ref={ref}
         rightIcon={<ChevronDownIcon h={6} w={6} />}
         size="md"
         variant="link"
         {...props}
       >
-        {typeof children === "string" ? (
-          <Text isTruncated>{children}</Text>
-        ) : (
-          children
-        )}
+        {children}
       </MenuButton>
     );
   }

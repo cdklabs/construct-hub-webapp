@@ -9,10 +9,9 @@ export const Card = forwardRef<CardProps, "div">((props, ref) => {
   return (
     <Box
       bg="white"
-      border="1px solid"
-      borderColor="blue.100"
-      borderRadius="md"
-      boxShadow="md"
+      border="base"
+      borderRadius="card"
+      boxShadow="base"
       p={2}
       ref={ref}
       {...props}
