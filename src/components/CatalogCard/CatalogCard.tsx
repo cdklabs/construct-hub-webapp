@@ -3,6 +3,7 @@ import {
   Divider,
   Flex,
   LinkBox,
+  Link as UILink,
   LinkOverlay,
   Stack,
   Text,
@@ -17,8 +18,7 @@ import {
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
 import { createTestIds } from "../../util/createTestIds";
-import { getPackagePath } from "../../util/url";
-import { ExternalLink } from "../ExternalLink";
+import { getPackagePath, getSearchPath } from "../../util/url";
 import { LanguageSupportTooltip } from "../LanguageSupportTooltip";
 import { PackageTag } from "../PackageTag";
 import { Time } from "../Time";
@@ -78,9 +78,11 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
       ...params,
     });
 
+  const authorName = typeof author === "string" ? author : author.name;
+
   return (
     <CatalogCardContainer isLink>
-      <Stack maxH="100%" maxW="100%" overflow="hidden" p={4} spacing={2}>
+      <Stack maxH="100%" maxW="100%" overflow="hidden" p={4} spacing={0}>
         {/* Name & Version */}
         <LinkOverlay as={Link} to={getUrl()}>
           <Text
@@ -111,21 +113,35 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
           maxH={6}
           overflow="hidden"
         >
-          {pkg.keywords
-            .filter(Boolean)
-            .slice(0, 3)
-            .map((tag) => {
-              return (
-                <PackageTag
-                  key={tag}
-                  language={currentLanguage}
-                  mr={1}
-                  value={tag}
-                >
-                  {tag}
-                </PackageTag>
-              );
-            })}
+          {[
+            pkg.name.startsWith("@aws-cdk/") ? (
+              <PackageTag
+                key="official"
+                label="official"
+                language={currentLanguage}
+                mr={1}
+                value="@aws-cdk"
+                variant="official"
+              >
+                Official
+              </PackageTag>
+            ) : null,
+            ...pkg.keywords
+              .filter(Boolean)
+              .slice(0, 3)
+              .map((tag) => {
+                return (
+                  <PackageTag
+                    key={tag}
+                    language={currentLanguage}
+                    mr={1}
+                    value={`"${tag}"`}
+                  >
+                    {tag}
+                  </PackageTag>
+                );
+              }),
+          ]}
         </LinkBox>
         <Text data-testid={testIds.description} fontSize="sm" noOfLines={2}>
           {pkg.description}
@@ -140,24 +156,15 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
             {publishDate}
           </Text>
 
-          {typeof author === "string" ? (
-            <Text data-testid={testIds.author} fontSize="sm" isTruncated>
-              {author}
-            </Text>
-          ) : author.url ? (
-            <ExternalLink
-              data-testid={testIds.author}
-              fontSize="sm"
-              href={author.url}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {author.name}
-            </ExternalLink>
-          ) : (
-            <Text data-testid={testIds.author} fontSize="sm" isTruncated>
-              {typeof author === "string" ? author : author.name}
-            </Text>
-          )}
+          <UILink
+            as={Link}
+            color="blue.500"
+            data-testid={testIds.author}
+            fontSize="sm"
+            to={getSearchPath({ query: authorName })}
+          >
+            {authorName}
+          </UILink>
 
           {/* Language Support Icons */}
           <LinkBox align="center" as={Stack} direction="row">

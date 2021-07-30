@@ -12,14 +12,16 @@
                    frame-src 'none';
                    img-src 'self' https://* http://*.omtrdc.net;
                    object-src 'none';
-                   style-src 'self' 'unsafe-inline';" />
+                   style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+                   font-src 'self' fonts.googleapis.com fonts.gstatic.com;" />
     <% } else { %>
       <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://*.awsstatic.com https://amazonwebservices.d2.sc.omtrdc.net;
                connect-src 'self' https://*.shortbread.aws.dev https://*.awsstatic.com https://amazonwebservices.d2.sc.omtrdc.net;
                frame-src 'none';
                img-src 'self' https://* http://*.omtrdc.net;
                object-src 'none';
-               style-src 'self' 'unsafe-inline';" />
+               style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+               font-src 'self' fonts.googleapis.com fonts.gstatic.com;" />
       <% } %>
 
         <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -27,6 +29,10 @@
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
         <title>Construct Hub</title>
         <script>var AWSMA = { config: { customPageview: true } }</script>
         <script src="https://a0.awsstatic.com/s_code/js/3.0/awshome_s_code.js"></script>

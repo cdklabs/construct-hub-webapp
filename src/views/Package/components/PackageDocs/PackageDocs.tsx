@@ -115,7 +115,7 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         h="max-content"
         maxWidth="100%"
         overflow="hidden"
-        p={4}
+        py={4}
         sx={{
           a: {
             scrollMarginTop: TOP_OFFSET,

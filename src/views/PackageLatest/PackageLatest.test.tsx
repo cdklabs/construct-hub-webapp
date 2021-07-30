@@ -48,7 +48,7 @@ test("throws if missing package", () => {
   expect(() => buildRedirectUrl(catalog, "missing-package")).toThrow();
 });
 
-test("throws if multiple packages", () => {
+test("selects latest major version if multiple versions", () => {
   const catalog: Packages = {
     packages: [
       {
@@ -77,10 +77,11 @@ test("throws if multiple packages", () => {
           date: "publish date",
         },
         name: "my-package",
-        version: "1.109.0",
+        version: "2.109.0",
       },
     ],
   };
 
-  expect(() => buildRedirectUrl(catalog, "my-package")).toThrow();
+  const url = buildRedirectUrl(catalog, "my-package");
+  expect(url).toEqual("/packages/my-package/v/2.109.0");
 });

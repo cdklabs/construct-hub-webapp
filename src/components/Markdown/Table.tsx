@@ -1,4 +1,5 @@
 import {
+  Box,
   Table as ChakraTable,
   Thead,
   Tbody,
@@ -10,8 +11,12 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 
-export const Table: FunctionComponent = ({ children }) => (
-  <ChakraTable variant="striped">{children}</ChakraTable>
+const Table: FunctionComponent = ({ children }) => (
+  <Box maxW="100%" overflowX="auto">
+    <ChakraTable variant="striped" w="min">
+      {children}
+    </ChakraTable>
+  </Box>
 );
 
-export { Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption };
+export { Table, Tfoot, Tbody, Td, Thead, Tr, Th, TableCaption };

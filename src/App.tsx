@@ -16,7 +16,7 @@ export const App: FunctionComponent = () => {
   return (
     <Grid
       as="main"
-      bg="gray.50"
+      bg="bgPrimary"
       gridTemplateColumns="1fr"
       gridTemplateRows="auto auto 1fr auto"
       h="100%"

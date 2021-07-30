@@ -2,13 +2,18 @@ import { Center, Spinner } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { Packages } from "../../api/package/packages";
-import { getFullPackageName } from "../../api/package/util";
+import { getFullPackageName, sanitizeVersion } from "../../api/package/util";
 import { useCatalog } from "../../contexts/Catalog";
 
 interface RouteParams {
   name: string;
   scope?: string;
 }
+
+const extractMajor = (ver: string) => {
+  let sanitized = sanitizeVersion(ver);
+  return sanitized.split(".")[0];
+};
 
 const findPackage = (catalog: Packages, pkg: string) => {
   const packages = catalog.packages.filter((p) => p.name === pkg);
@@ -18,7 +23,11 @@ const findPackage = (catalog: Packages, pkg: string) => {
   }
 
   if (packages.length > 1) {
-    throw new Error(`Multiple packages found for ${pkg} in catalog`);
+    return packages.sort((p1, p2) => {
+      const mv1 = extractMajor(p1.version);
+      const mv2 = extractMajor(p2.version);
+      return mv2.localeCompare(mv1);
+    })[0];
   }
 
   return packages[0];

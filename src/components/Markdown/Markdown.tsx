@@ -13,6 +13,8 @@ import { Ul, Ol, Li } from "./List";
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption } from "./Table";
 import { A, Blockquote, Em, P, Pre, Sup } from "./Text";
 
+const ONE_MEGABYTE = 1024 * 1024;
+
 const components = {
   a: A,
   blockquote: Blockquote,
@@ -115,8 +117,24 @@ export const Markdown: FunctionComponent<{
           return `https://${githubPrefix}/${owner}/${repo}/${githubSuffix}/${url}`;
         };
 
+  const byteLength = Buffer.byteLength(children);
+  if (byteLength > ONE_MEGABYTE) {
+    children = children.substring(0, children.lastIndexOf("# API Reference"));
+    children = [
+      children,
+      "# API Reference",
+      "The API Reference for this package could not be rendered.",
+      "If this issue persists, please let us know by creating an [issue](https://github.com/cdklabs/construct-hub-webapp/issues/new)",
+    ].join("\n");
+  }
   return (
-    <Box sx={{ "& > *": { mb: 4 }, "& > :first-child": { mt: 0 } }}>
+    <Box
+      px={8}
+      sx={{
+        "& > *": { mb: 8 },
+        "& > p": { lineHeight: "taller" },
+      }}
+    >
       <ReactMarkdown
         components={components}
         rehypePlugins={rehypePlugins}
