@@ -3,7 +3,6 @@ import { colors } from "./colors";
 import { radii } from "./radius";
 import { shadows } from "./shadows";
 import { sizes } from "./sizes";
-import { typography } from "./typography";
 
 export const foundations = {
   borders,
@@ -11,5 +10,4 @@ export const foundations = {
   radii,
   sizes,
   shadows,
-  ...typography,
 };
