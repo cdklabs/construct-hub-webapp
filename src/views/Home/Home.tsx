@@ -34,6 +34,7 @@ export const Home: FunctionComponent = () => {
         <Picture
           alt={""}
           h="540px"
+          opacity={0.5}
           position="absolute"
           sources={sources.optimal}
           src={sources.fallback}

@@ -14,5 +14,4 @@ export const colors = {
     800: "#002551",
     900: "#000d21",
   },
-  bgPrimary: "#F8F8F8",
 };

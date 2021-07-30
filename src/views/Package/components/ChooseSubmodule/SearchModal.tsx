@@ -77,7 +77,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
                 value={inputValue}
               />
             </Box>
-            <Divider />
+            <Divider bg="blue.100" />
             <UnorderedList
               data-testid="choose-submodule-modal-results"
               m={0}

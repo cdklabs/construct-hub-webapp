@@ -16,6 +16,8 @@ export const Header: FunctionComponent = () => {
       alignItems="center"
       as="header"
       bg="white"
+      borderBottom="1px solid"
+      borderBottomColor="blue.100"
       boxShadow="base"
       data-testid="header"
       gap={4}
@@ -55,7 +57,6 @@ export const Header: FunctionComponent = () => {
       >
         <Grid
           display={{ base: "none", md: "grid" }}
-          gap={4}
           gridTemplateColumns="1fr 1fr"
           gridTemplateRows="1fr"
           placeItems="center"
