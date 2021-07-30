@@ -26,8 +26,7 @@
     "cypress:run": "npx projen cypress:run",
     "dev:fetch-assemblies": "npx projen dev:fetch-assemblies",
     "release": "npx projen release",
-    "projen": "npx projen",
-    "start": "npx projen start"
+    "projen": "npx projen"
   },
   "author": {
     "name": "Amazon Web Services, Inc.",
@@ -69,7 +68,7 @@
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
     "prettier": "^2.3.2",
-    "projen": "^0.27.11",
+    "projen": "^0.27.12",
     "react-app-rewired": "^2.1.8",
     "standard-version": "^9",
     "storybook-addon-performance": "^0.16.0",
