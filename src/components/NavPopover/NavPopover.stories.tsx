@@ -1,6 +1,6 @@
 import { Text } from "@chakra-ui/react";
 import { MemoryRouter } from "react-router-dom";
-import { GETTING_STARTED } from "../../constants/links";
+import { RESOURCES } from "../../constants/links";
 import { NavPopover } from "./NavPopover";
 import { NavPopoverContent } from "./NavPopoverContent";
 import { NavPopoverTrigger } from "./NavPopoverTrigger";
@@ -14,9 +14,9 @@ export const Primary = () => (
   <MemoryRouter>
     <NavPopover>
       <NavPopoverTrigger>
-        <Text>Getting Started</Text>
+        <Text>Resources</Text>
       </NavPopoverTrigger>
-      <NavPopoverContent items={GETTING_STARTED} />
+      <NavPopoverContent items={RESOURCES} />
     </NavPopover>
   </MemoryRouter>
 );

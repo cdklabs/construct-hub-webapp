@@ -9,8 +9,8 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Community } from "./Community";
-import { GettingStarted } from "./GettingStarted";
+import { Documentation } from "./Documentation";
+import { Resources } from "./Resources";
 import { Title } from "./Title";
 
 export interface MobileNavProps {
@@ -33,8 +33,8 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
           </DrawerHeader>
           <DrawerBody>
             <Stack align="start" justify="start" spacing={4}>
-              <GettingStarted />
-              <Community />
+              <Documentation />
+              <Resources />
             </Stack>
           </DrawerBody>
         </DrawerContent>
