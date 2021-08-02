@@ -10,9 +10,10 @@ export const usePageView = (opts: PageViewOptions) => {
   const options: PageViewConfig = useMemo(
     () => ({
       page: {
+        // This is silly but the analytics library crashes in dev if using localhost as the pageURL :/
         pageURL: window.location.href.replace(
-          "localhost:3000",
-          "constructs.dev"
+          "://localhost:3000",
+          "://constructs.local.dev"
         ),
         ...opts.page,
       },
