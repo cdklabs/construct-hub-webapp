@@ -57,7 +57,7 @@ export const Package: FunctionComponent = () => {
     language === Language.TypeScript ||
     assemblyResponse.loading ||
     assemblyResponse.error ||
-    assemblyResponse.data!.targets?.[language.toString()] != null;
+    assemblyResponse.data?.targets?.[language.toString()] != null;
 
   return (
     <Page pageName="packageProfile">
