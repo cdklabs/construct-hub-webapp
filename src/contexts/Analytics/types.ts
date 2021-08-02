@@ -4,7 +4,6 @@
 export interface PageViewConfig {
   page: {
     pageURL: string; // Can allow hook to infer this
-    pageName: string;
     pageType?: "errorPage"; // Only use for 404
   };
   event: {
@@ -17,9 +16,9 @@ export interface PageViewConfig {
 }
 
 export interface PageViewOptions {
-  page: Omit<PageViewConfig["page"], "pageURL">;
-  event?: {
-    name?: string; // If not defined, will use `${page.pageName} Load`
+  page?: Omit<PageViewConfig["page"], "pageURL">;
+  event: {
+    name: string; // If not defined, will use `${page.pageName} Load`
     description?: string;
   };
 }

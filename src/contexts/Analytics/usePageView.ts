@@ -10,15 +10,19 @@ export const usePageView = (opts: PageViewOptions) => {
   const options: PageViewConfig = useMemo(
     () => ({
       page: {
-        pageURL: pathname,
+        pageURL: window.location.href.replace(
+          "localhost:3000",
+          "constructs.dev"
+        ),
         ...opts.page,
       },
       event: {
         type: "pageview",
-        name: opts.event?.name ?? `${opts.page.pageName} Load`,
-        description: opts.event?.description,
+        name: opts.event.name,
+        description: opts.event.description,
       },
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [pathname, opts]
   );
 

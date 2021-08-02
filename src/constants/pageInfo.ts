@@ -1,33 +1,35 @@
 export const pageInfo = {
   home: {
-    page: {
-      pageName: "Home",
+    event: {
+      name: "Home Load",
     },
   },
   faq: {
-    page: {
-      pageName: "Frequently Asked Questions",
+    event: {
+      name: "Frequently Asked Questions Load",
     },
   },
   packageProfile: {
-    page: {
-      pageName: "Package Profile",
+    event: {
+      name: "Package Profile Load",
     },
   },
   search: {
-    page: {
-      pageName: "Search",
+    event: {
+      name: "Search Load",
     },
   },
   siteTerms: {
-    page: {
-      pageName: "Site Terms",
+    event: {
+      name: "Site Terms Load",
     },
   },
   notFound: {
     page: {
-      pageName: "404 Page",
       pageType: "errorPage",
+    },
+    event: {
+      name: "404 Page Load",
     },
   },
 } as const;
