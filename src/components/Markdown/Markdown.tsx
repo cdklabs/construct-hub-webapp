@@ -1,7 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
-import ReactMarkdown, { PluggableList } from "react-markdown";
+import ReactMarkdown, {
+  PluggableList,
+  ReactMarkdownOptions,
+} from "react-markdown";
+import type { TableCellComponent } from "react-markdown/src/ast-to-react";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import remarkGfm from "remark-gfm";
@@ -15,7 +19,7 @@ import { A, Blockquote, Em, P, Pre, Sup } from "./Text";
 
 const ONE_MEGABYTE = 1024 * 1024;
 
-const components = {
+const components: ReactMarkdownOptions["components"] = {
   a: A,
   blockquote: Blockquote,
   caption: TableCaption,
@@ -36,9 +40,9 @@ const components = {
   sup: Sup,
   table: Table,
   tbody: Tbody,
-  td: Td,
+  td: Td as TableCellComponent, // The react-markdown component has a tighter signature than the one from @chakra-ui
   tfoot: Tfoot,
-  th: Th,
+  th: Th as TableCellComponent, // The react-markdown component has a tighter signature than the one from @chakra-ui
   thead: Thead,
   tr: Tr,
   ul: Ul,
