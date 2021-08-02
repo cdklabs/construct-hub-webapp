@@ -10,7 +10,7 @@ export const Page: FunctionComponent<PageProps> = ({ children, pageName }) => {
   const trackPageView = usePageView(pageInfo[pageName]);
 
   useEffect(() => {
-    trackPageView();
+    // trackPageView();
   }, [trackPageView]);
 
   return <>{children}</>;
