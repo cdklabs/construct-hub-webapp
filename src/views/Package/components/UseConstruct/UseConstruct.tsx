@@ -26,9 +26,7 @@ const getCodeSample = ({
   } else if (language === Language.Python) {
     const packageName = assembly.targets?.python?.distName;
     if (!packageName) {
-      throw new Error(
-        `Unable to build python installation instructions for ${assembly.name} since it doesn't support python`
-      );
+      return "# Unsupported";
     }
     return `pip install ${packageName}==${version}`;
   }
@@ -45,13 +43,17 @@ export const UseConstruct: FunctionComponent<UseConstructProps> = ({
 }) => {
   const [language] = useLanguage();
 
-  const code = getCodeSample({ language, assembly });
   const header = LANGUAGE_NAME_MAP[language];
+  const code = getCodeSample({ language, assembly });
+
+  const supported =
+    language === Language.TypeScript &&
+    assembly.targets?.[language.toString()] != null;
+  const disabled = !TEMP_SUPPORTED_LANGUAGES.has(language) || !supported;
+  const label = supported ? "Install" : "Unsupported";
 
   const trigger = (
-    <CodePopoverTrigger disabled={!TEMP_SUPPORTED_LANGUAGES.has(language)}>
-      Install
-    </CodePopoverTrigger>
+    <CodePopoverTrigger disabled={disabled}>{label}</CodePopoverTrigger>
   );
 
   return <CodePopover code={code} header={header} trigger={trigger} />;

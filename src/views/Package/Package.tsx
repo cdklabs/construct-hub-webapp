@@ -5,6 +5,7 @@ import { fetchAssembly } from "../../api/package/assembly";
 import { fetchMarkdown } from "../../api/package/docs";
 import { fetchMetadata } from "../../api/package/metadata";
 import { Page } from "../../components/Page";
+import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
@@ -13,6 +14,7 @@ import { NotFound } from "../NotFound";
 import { PackageDetails } from "./components/PackageDetails";
 import { PackageDocs } from "./components/PackageDocs";
 import { PackageDocsError } from "./components/PackageDocsError";
+import { PackageDocsUnsupported } from "./components/PackageDocsUnsupported/PackageDocsUnsupported";
 
 interface PathParams {
   name: string;
@@ -50,6 +52,12 @@ export const Package: FunctionComponent = () => {
     !assemblyResponse.loading &&
     markdownResponse.data &&
     assemblyResponse.data;
+  // This will also be true if it cannot be verified (assembly not there)
+  const isSupported =
+    language === Language.TypeScript ||
+    assemblyResponse.loading ||
+    assemblyResponse.error ||
+    assemblyResponse.data!.targets?.[language.toString()] != null;
 
   return (
     <Page pageName="packageProfile">
@@ -63,15 +71,19 @@ export const Package: FunctionComponent = () => {
           />
         </Box>
         {/* Readme and Api Reference Area */}
-        {hasError ? (
-          <PackageDocsError language={language}></PackageDocsError>
-        ) : (
-          hasDocs && (
-            <PackageDocs
-              assembly={assemblyResponse.data!}
-              markdown={markdownResponse.data!}
-            />
+        {isSupported ? (
+          hasError ? (
+            <PackageDocsError language={language}></PackageDocsError>
+          ) : (
+            hasDocs && (
+              <PackageDocs
+                assembly={assemblyResponse.data!}
+                markdown={markdownResponse.data!}
+              />
+            )
           )
+        ) : (
+          <PackageDocsUnsupported language={language}></PackageDocsUnsupported>
         )}
       </Stack>
     </Page>
