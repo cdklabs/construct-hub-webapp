@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import {
   ChangeEventHandler,
   FormEventHandler,
@@ -7,7 +8,6 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
-import { useHistory } from "react-router-dom";
 import { Language } from "../../constants/languages";
 import { getSearchPath } from "../../util/url";
 
@@ -65,7 +65,7 @@ export const useCatalogSearch = (
     options.defaultLanguage ?? null
   );
 
-  const { push } = useHistory();
+  const { push } = useRouter();
 
   const onQueryChange: UseCatalogSearchReturn["onQueryChange"] = (e) => {
     e.preventDefault();
@@ -73,7 +73,7 @@ export const useCatalogSearch = (
   };
 
   const onSearch = useCallback(() => {
-    push(getSearchPath({ language, query }));
+    void push(getSearchPath({ language, query }));
   }, [language, push, query]);
 
   const onSubmit: UseCatalogSearchReturn["onSubmit"] = useCallback(

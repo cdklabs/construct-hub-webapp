@@ -1,6 +1,6 @@
 const { SourceCode, web } = require("projen");
 
-const project = new web.ReactTypeScriptProject({
+const project = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: "main",
   name: "construct-hub-webapp",
   projenUpgradeSecret: "CDK_AUTOMATION_GITHUB_TOKEN",
@@ -19,14 +19,22 @@ const project = new web.ReactTypeScriptProject({
   package: true,
   tsconfig: {
     compilerOptions: {
+      rootDir: ".",
       target: "es6",
+      baseUrl: "src",
+      paths: {
+        "*": ["*"],
+      },
     },
+    include: ["src/**/*.ts", "src/**/*.tsx", "pages/**/*.tsx"],
   },
 
   eslint: true,
   eslintOptions: {
     prettier: true,
   },
+
+  tailwind: false,
 
   deps: [
     "@chakra-ui/icons",
@@ -63,7 +71,6 @@ const project = new web.ReactTypeScriptProject({
     "eslint-plugin-prefer-arrow",
     "eslint-plugin-react-hooks",
     "eslint-plugin-react",
-    "react-app-rewired",
   ],
   autoApproveOptions: {
     allowedUsernames: ["aws-cdk-automation"],
@@ -189,36 +196,4 @@ project.eslint.addOverride({
   },
 });
 
-// rewire cra tasks, all apart from eject.
-rewireCRA(buildTask);
-rewireCRA(project.tasks.tryFind("test"));
-rewireCRA(project.tasks.tryFind("dev"));
-addBuildConfig();
-
 project.synth();
-
-/**
- * Rewire a create-react-app task to use 'react-app-rewired` instead of 'react-scripts'
- * so that our configuration overrides will take affect.
- *
- * @see https://www.npmjs.com/package/react-app-rewired
- */
-function rewireCRA(craTask) {
-  for (const step of craTask.steps) {
-    if (step.exec?.startsWith("react-scripts")) {
-      step.exec = step.exec.replace("react-scripts", "react-app-rewired");
-    }
-  }
-}
-
-/**
- * Add build time configuration values for react-scripts.
- * Use an `.env.local` file to override for local development.
- */
-function addBuildConfig() {
-  project.gitignore?.addPatterns(".env.local");
-
-  const config = new SourceCode(project, ".env");
-  // Remove inline scripts to allow strict CSP policy.
-  config.line("INLINE_RUNTIME_CHUNK=false");
-}

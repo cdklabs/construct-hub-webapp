@@ -38,6 +38,9 @@
       "steps": [
         {
           "spawn": "storybook:build"
+        },
+        {
+          "exec": "tsc --build"
         }
       ]
     },
@@ -54,9 +57,6 @@
         },
         {
           "spawn": "eslint"
-        },
-        {
-          "exec": "react-app-rewired test --watchAll=false"
         }
       ]
     },
@@ -77,7 +77,7 @@
           "spawn": "package"
         },
         {
-          "exec": "react-app-rewired build"
+          "exec": "next build"
         },
         {
           "spawn": "package"
@@ -187,25 +187,43 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools .projenrc.js"
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern pages test build-tools .projenrc.js"
         }
       ]
     },
     "dev": {
       "name": "dev",
-      "description": "Starts the react application",
+      "description": "Starts the Next.js application in development mode",
       "steps": [
         {
-          "exec": "react-app-rewired start"
+          "exec": "next dev"
         }
       ]
     },
-    "eject": {
-      "name": "eject",
-      "description": "Ejects your React application from react-scripts",
+    "export": {
+      "name": "export",
+      "description": "Exports the application for production deployment",
       "steps": [
         {
-          "exec": "react-scripts eject"
+          "exec": "next export"
+        }
+      ]
+    },
+    "server": {
+      "name": "server",
+      "description": "Starts the Next.js application in production mode",
+      "steps": [
+        {
+          "exec": "next start"
+        }
+      ]
+    },
+    "telemetry": {
+      "name": "telemetry",
+      "description": "Checks the status of Next.js telemetry collection",
+      "steps": [
+        {
+          "exec": "next telemetry"
         }
       ]
     },

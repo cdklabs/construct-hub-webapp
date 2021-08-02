@@ -3,13 +3,14 @@
 /.github
 /.idea
 /.mergify.yml
+/.next/
 /.projen
 /.projenrc.js
 /.vscode
 /dist/changelog.md
 /dist/version.txt
+/pages
 /public
-/src
 /test
 /tsconfig.eslint.json
 /tsconfig.json

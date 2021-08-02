@@ -7,11 +7,10 @@
 *.tgz
 *.tsbuildinfo
 .cache
-.env.local
 .eslintcache
 .nyc_output
 .yarn-integrity
-/build
+/.next/
 /dist
 /dist/changelog.md
 /dist/version.txt
@@ -30,7 +29,6 @@ public/data
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 yarn-debug.log*
 yarn-error.log*
-!/.env
 !/.eslintrc.json
 !/.gitattributes
 !/.github/pull_request_template.md
@@ -46,8 +44,7 @@ yarn-error.log*
 !/.projenrc.js
 !/LICENSE
 !/package.json
-!/react-app-env.d.ts
-!/src
+!/pages
 !/test
 !/tsconfig.eslint.json
 !/tsconfig.json

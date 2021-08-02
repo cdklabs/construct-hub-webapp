@@ -59,9 +59,9 @@ export const Footer: FunctionComponent<FooterProps> = () => {
                 <NavLink
                   color="currentcolor"
                   data-testid={testIds[testId]}
+                  href={url}
                   lineHeight={10}
                   mx="auto"
-                  to={url}
                 >
                   {display}
                 </NavLink>

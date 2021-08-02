@@ -1,13 +1,13 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import { Button, IconButton, useDisclosure } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import type { FunctionComponent } from "react";
-import { useLocation } from "react-router-dom";
 import { ROUTES } from "../../constants/url";
 import { SearchModal } from "../SearchModal";
 
 export const SearchButton: FunctionComponent = () => {
   const searchModal = useDisclosure();
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   if ([ROUTES.HOME, ROUTES.SEARCH].some((path) => path === pathname)) {
     return null;

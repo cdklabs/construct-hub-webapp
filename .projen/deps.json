@@ -33,14 +33,6 @@
       "type": "build"
     },
     {
-      "name": "@testing-library/jest-dom",
-      "type": "build"
-    },
-    {
-      "name": "@testing-library/react",
-      "type": "build"
-    },
-    {
       "name": "@testing-library/react-hooks",
       "type": "build"
     },
@@ -49,12 +41,8 @@
       "type": "build"
     },
     {
-      "name": "@types/jest",
-      "type": "build"
-    },
-    {
       "name": "@types/node",
-      "version": "^10.17.0",
+      "version": "^12.13.0",
       "type": "build"
     },
     {
@@ -144,10 +132,6 @@
       "type": "build"
     },
     {
-      "name": "react-app-rewired",
-      "type": "build"
-    },
-    {
       "name": "standard-version",
       "version": "^9",
       "type": "build"
@@ -158,7 +142,6 @@
     },
     {
       "name": "typescript",
-      "version": "^4.0.3",
       "type": "build"
     },
     {
@@ -209,6 +192,10 @@
       "type": "runtime"
     },
     {
+      "name": "next",
+      "type": "runtime"
+    },
+    {
       "name": "prism-react-renderer",
       "type": "runtime"
     },
@@ -229,11 +216,6 @@
       "type": "runtime"
     },
     {
-      "name": "react-scripts",
-      "version": "^4.0.0",
-      "type": "runtime"
-    },
-    {
       "name": "rehype-raw",
       "type": "runtime"
     },
@@ -243,10 +225,6 @@
     },
     {
       "name": "remark-gfm",
-      "type": "runtime"
-    },
-    {
-      "name": "web-vitals",
       "type": "runtime"
     },
     {

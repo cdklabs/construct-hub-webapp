@@ -15,9 +15,10 @@ const STORAGE_KEY = "showing-dev-preview-banner";
 export const DevPreviewBanner: FunctionComponent = () => {
   const { isOpen, onClose } = useDisclosure({
     defaultIsOpen: JSON.parse(
-      window.sessionStorage.getItem(STORAGE_KEY) ?? "true"
+      global?.window?.sessionStorage?.getItem?.(STORAGE_KEY) ?? "true"
     ),
-    onClose: () => window.sessionStorage.setItem(STORAGE_KEY, "false"),
+    onClose: () =>
+      global?.window?.sessionStorage?.setItem?.(STORAGE_KEY, "false"),
   });
 
   return (

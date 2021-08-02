@@ -19,26 +19,34 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "strict": true,
+    "strict": false,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
     "target": "es6",
-    "allowJs": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "isolatedModules": true,
+    "jsx": "preserve",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "rootDir": ".",
+    "baseUrl": "src",
+    "paths": {
+      "*": [
+        "*"
+      ]
+    }
   },
   "include": [
     ".projenrc.js",
-    "src/**/*.ts",
+    "pages/**/*.ts",
     "test/**/*.ts",
-    "src"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "pages/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

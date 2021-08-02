@@ -17,7 +17,7 @@ export interface NavPopoverContentProps extends MenuListProps {
 
 const Link: FunctionComponent<ILink> = ({ display, isNavLink, url }) =>
   isNavLink ? (
-    <NavLink to={url}>{display}</NavLink>
+    <NavLink href={url}>{display}</NavLink>
   ) : (
     <ExternalLink
       alignItems="center"
