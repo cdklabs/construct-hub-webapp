@@ -19,12 +19,10 @@ export const useCatalogResults = ({
   query,
   language,
 }: UseCatalogResultsOptions) => {
-  const { data, loading, error } = useCatalog();
+  const { packages: data } = useCatalog();
 
   const results = useMemo(() => {
-    if (loading || error || !data?.packages) return [];
-
-    let filtered = data.packages;
+    let filtered = data;
 
     if (query.length) {
       filtered = filtered.filter((item) =>
@@ -47,7 +45,7 @@ export const useCatalogResults = ({
       }
       return d1 < d2 ? 1 : -1;
     });
-  }, [data?.packages, error, language, loading, query]);
+  }, [data, language, query]);
 
   const pageLimit = results ? Math.floor(results.length / limit) : 0;
 
@@ -59,7 +57,7 @@ export const useCatalogResults = ({
   }, [limit, offset, pageLimit, results]);
 
   return useMemo(
-    () => ({ loading, results, error, displayable, pageLimit }),
-    [displayable, error, loading, pageLimit, results]
+    () => ({ results, displayable, pageLimit }),
+    [displayable, pageLimit, results]
   );
 };

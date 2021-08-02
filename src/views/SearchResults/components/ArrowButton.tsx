@@ -1,6 +1,6 @@
 import { IconButton, IconProps } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "components/NavLink";
 
 export interface ArrowButtonProps {
   icon: FunctionComponent<IconProps>;
@@ -28,7 +28,14 @@ export const ArrowButton: FunctionComponent<ArrowButtonProps> = ({
   };
 
   if (offset !== undefined) {
-    return <IconButton {...props} as={Link} to={getPageUrl({ offset })} />;
+    return (
+      <IconButton
+        {...props}
+        as={NavLink}
+        href={getPageUrl({ offset })}
+        shallow
+      />
+    );
   }
 
   return <IconButton {...props} disabled />;

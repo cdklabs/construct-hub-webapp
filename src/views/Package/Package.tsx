@@ -1,4 +1,5 @@
 import { Box, Stack } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
@@ -8,7 +9,6 @@ import { Page } from "../../components/Page";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
-import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
 import { NotFound } from "../NotFound";
 import { PackageDetails } from "./components/PackageDetails";
@@ -28,9 +28,9 @@ export const Package: FunctionComponent = () => {
   const [requestAssembly, assemblyResponse] = useRequest(fetchAssembly);
   const [requestMetadata, metadataResponse] = useRequest(fetchMetadata);
 
-  const q = useQueryParams();
+  const { query } = useRouter();
   const [language] = useLanguage();
-  const submodule = q.get(QUERY_PARAMS.SUBMODULE) ?? "";
+  const submodule = (query[QUERY_PARAMS.SUBMODULE] as string) ?? "";
 
   useEffect(() => {
     void requestMetadata(name, version, scope);

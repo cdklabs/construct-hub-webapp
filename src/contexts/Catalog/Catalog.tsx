@@ -1,24 +1,18 @@
-import { createContext, FunctionComponent, useContext, useEffect } from "react";
-import { fetchPackages, Packages } from "../../api/package/packages";
-import { useRequest, UseRequestResponse } from "../../hooks/useRequest";
+import { createContext, FunctionComponent, useContext } from "react";
+import { Packages } from "api/package/packages";
 
-const CatalogContext = createContext<UseRequestResponse<Packages>>({
-  loading: false,
-  data: undefined,
-  error: undefined,
+const CatalogContext = createContext<Packages>({
+  packages: [],
 });
 
 export const useCatalog = () => useContext(CatalogContext);
 
-export const CatalogProvider: FunctionComponent = ({ children }) => {
-  const [requestPackages, catalogResponse] = useRequest(fetchPackages);
-
-  useEffect(() => {
-    void requestPackages();
-  }, [requestPackages]);
-
+export const CatalogProvider: FunctionComponent<{ packages: Packages }> = ({
+  children,
+  packages,
+}) => {
   return (
-    <CatalogContext.Provider value={catalogResponse}>
+    <CatalogContext.Provider value={packages}>
       {children}
     </CatalogContext.Provider>
   );

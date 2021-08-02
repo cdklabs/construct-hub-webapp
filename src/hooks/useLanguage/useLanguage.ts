@@ -1,8 +1,7 @@
+import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useLocation, useHistory } from "react-router-dom";
 import { Language, TEMP_SUPPORTED_LANGUAGES } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
-import { useQueryParams } from "../../hooks/useQueryParams";
 
 // Only supported language atm
 const defaultLang = Language.TypeScript;
@@ -43,10 +42,8 @@ export interface UseLanguageOptions {
 
 export const useLanguage = (options: UseLanguageOptions = {}) => {
   const { updateUrl, updateSaved } = options;
-  const { pathname, hash } = useLocation();
-  const { replace } = useHistory();
-  const params = useQueryParams();
-  const langFromParams = params.get(QUERY_PARAMS.LANGUAGE) as Language;
+  const { pathname, replace, query } = useRouter();
+  const langFromParams = query[QUERY_PARAMS.LANGUAGE] as Language;
 
   // Passed as function to guarantee it runs on hook mount
   const [language, setLanguage] = useState<Language>(() =>
@@ -64,8 +61,8 @@ export const useLanguage = (options: UseLanguageOptions = {}) => {
   // Syncs language changes to URL if updateUrl = true
   useEffect(() => {
     if (langFromParams !== language && updateUrl) {
-      params.set(QUERY_PARAMS.LANGUAGE, language);
-      replace({ pathname, hash, search: params.toString() });
+      query[QUERY_PARAMS.LANGUAGE] = language;
+      void replace({ pathname, search: query.toString() });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language, updateUrl]);

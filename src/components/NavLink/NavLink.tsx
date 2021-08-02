@@ -1,19 +1,19 @@
-import { Link as ChakraLink, PropsOf } from "@chakra-ui/react";
+import { Link as ChakraLink, LinkProps, forwardRef } from "@chakra-ui/react";
 import Link from "next/link";
-import { FunctionComponent } from "react";
 
-export type NavLinkProps = PropsOf<typeof ChakraLink> & {
+export interface NavLinkProps extends LinkProps {
   href: string;
-};
+  shallow?: boolean;
+}
 
-export const NavLink: FunctionComponent<NavLinkProps> = ({
-  children,
-  href,
-  ...props
-}) => {
-  return (
-    <Link href={href} passHref>
-      <ChakraLink {...props}>{children}</ChakraLink>
-    </Link>
-  );
-};
+export const NavLink = forwardRef<NavLinkProps, "a">(
+  ({ children, href, shallow, ...props }, ref) => {
+    return (
+      <Link href={href} passHref shallow={shallow}>
+        <ChakraLink ref={ref} {...props}>
+          {children}
+        </ChakraLink>
+      </Link>
+    );
+  }
+);

@@ -5,7 +5,6 @@ import "index.css";
 import { DevPreviewBanner } from "components/DevPreviewBanner";
 import { Footer } from "components/Footer";
 import { Header } from "components/Header";
-import { CatalogProvider } from "contexts/Catalog";
 import { ExternalLinkWarningProvider } from "contexts/ExternalLinkWarning";
 import { ShortbreadProvider } from "contexts/Shortbread";
 import { Theme } from "contexts/Theme";

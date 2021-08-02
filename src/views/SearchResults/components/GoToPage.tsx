@@ -1,4 +1,5 @@
 import { Flex, Input, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import {
   FormEventHandler,
   FunctionComponent,
@@ -6,7 +7,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useHistory } from "react-router-dom";
 
 export interface GoToPageProps {
   pageLimit: number;
@@ -20,7 +20,7 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
   getPageUrl,
 }) => {
   const [inputValue, setInputValue] = useState((offset + 1).toString());
-  const { push } = useHistory();
+  const { push } = useRouter();
 
   useEffect(() => {
     setInputValue((offset + 1).toString());
@@ -33,7 +33,7 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
 
   const onSubmit: FormEventHandler<HTMLInputElement> = (e) => {
     e.preventDefault();
-    push(getPageUrl({ offset: parseInt(inputValue) - 1 }));
+    void push(getPageUrl({ offset: parseInt(inputValue) - 1 }));
   };
 
   return (

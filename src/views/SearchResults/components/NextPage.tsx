@@ -1,7 +1,7 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { Button } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "components/NavLink";
 
 export interface NextPageProps {
   nextPageUrl?: string;
@@ -18,5 +18,5 @@ export const NextPage: FunctionComponent<NextPageProps> = ({ nextPageUrl }) => {
     return <Button {...btnProps} disabled />;
   }
 
-  return <Button {...btnProps} as={Link} to={nextPageUrl} />;
+  return <Button {...btnProps} as={NavLink} href={nextPageUrl} shallow />;
 };

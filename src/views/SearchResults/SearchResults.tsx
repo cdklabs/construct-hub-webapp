@@ -1,6 +1,6 @@
 import { Box, Divider, Flex } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { FunctionComponent, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { CatalogSearch } from "../../components/CatalogSearch";
 import { Page } from "../../components/Page";
 import { Results } from "../../components/Results";
@@ -8,7 +8,6 @@ import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
-import { useQueryParams } from "../../hooks/useQueryParams";
 import { getSearchPath } from "../../util/url";
 import { PageControls } from "./components/PageControls";
 import { ShowingDetails } from "./components/ShowingDetails";
@@ -25,26 +24,22 @@ const toNum = (val: string) => {
 };
 
 export const SearchResults: FunctionComponent = () => {
-  const queryParams = useQueryParams();
+  const { query: search, push } = useRouter();
 
   const searchQuery = decodeURIComponent(
-    queryParams.get(QUERY_PARAMS.SEARCH_QUERY) ?? ""
+    (search[QUERY_PARAMS.SEARCH_QUERY] as string) ?? ""
   );
 
-  const languageQuery = queryParams.get(
-    QUERY_PARAMS.LANGUAGE
-  ) as Language | null;
+  const languageQuery = search[QUERY_PARAMS.LANGUAGE] as Language | null;
 
   const searchAPI = useCatalogSearch({
     defaultQuery: searchQuery,
     defaultLanguage: languageQuery,
   });
 
-  const offset = toNum(queryParams.get(QUERY_PARAMS.OFFSET) ?? "0");
+  const offset = toNum((search[QUERY_PARAMS.OFFSET] as string) ?? "0");
 
-  const { push } = useHistory();
-
-  const { results, displayable, loading, pageLimit } = useCatalogResults({
+  const { results, displayable, pageLimit } = useCatalogResults({
     query: searchQuery,
     offset,
     limit: LIMIT,
@@ -63,17 +58,17 @@ export const SearchResults: FunctionComponent = () => {
 
   useEffect(() => {
     // If the query has results but the page has nothing to show...
-    if (!loading && results.length && (offset < 0 || offset > pageLimit)) {
+    if (results.length && (offset < 0 || offset > pageLimit)) {
       // Handle an out of bounds offset
       if (offset < 0) {
-        push(getUrl({ offset: 0 }));
+        void push(getUrl({ offset: 0 }));
       } else {
         // Offset is too large, just take last page
-        push(getUrl({ offset: pageLimit }));
+        void push(getUrl({ offset: pageLimit }));
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, results, pageLimit, offset]);
+  }, [results, pageLimit, offset]);
 
   useEffect(() => {
     // Reflect changes to queryParam to search input (specifically for tag clicks)
@@ -102,7 +97,6 @@ export const SearchResults: FunctionComponent = () => {
           <Results
             language={languageQuery ?? undefined}
             results={displayable}
-            skeleton={{ loading, noOfItems: LIMIT }}
           />
           <PageControls
             getPageUrl={getUrl}

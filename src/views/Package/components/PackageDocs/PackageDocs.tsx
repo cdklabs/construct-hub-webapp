@@ -1,7 +1,6 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { useState, useEffect, FunctionComponent, useMemo } from "react";
-import { useLocation } from "react-router-dom";
 import { Markdown } from "../../../../components/Markdown";
 import { NavTree, NavItemConfig } from "../../../../components/NavTree";
 import { ChooseSubmodule } from "../ChooseSubmodule";
@@ -63,10 +62,11 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
     setNavItems(tree);
   }, [source]);
 
-  const { hash } = useLocation();
   useEffect(() => {
-    if (hash) {
-      const target = document.querySelector(`${hash}`) as HTMLElement;
+    if (window?.location?.hash) {
+      const target = document.querySelector(
+        `${window.location.hash}`
+      ) as HTMLElement;
       target?.scrollIntoView(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

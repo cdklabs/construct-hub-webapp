@@ -1,8 +1,8 @@
 import { Button, Center, Flex } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
-import { Page } from "../../components/Page";
-import { Picture } from "../../components/Picture";
+import { NavLink } from "components/NavLink";
+import { Page } from "components/Page";
+import { Picture } from "components/Picture";
 
 const bgSources = {
   optimal: [
@@ -31,7 +31,7 @@ export const NotFound: FunctionComponent = () => {
             sources={[{ srcSet: "/assets/robot.webp" }]}
             src="/assets/robot.png"
           />
-          <Button as={Link} colorScheme="blue" to="/">
+          <Button as={NavLink} colorScheme="blue" href="/">
             Take Me Home
           </Button>
         </Flex>

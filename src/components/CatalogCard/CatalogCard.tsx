@@ -8,8 +8,8 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import type { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
 import { CatalogPackage } from "../../api/package/packages";
 import {
   Language,
@@ -84,26 +84,28 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
     <CatalogCardContainer isLink>
       <Stack maxH="100%" maxW="100%" overflow="hidden" p={4} spacing={0}>
         {/* Name & Version */}
-        <LinkOverlay as={Link} to={getUrl()}>
-          <Text
-            color="blue.800"
-            data-testid={testIds.name}
-            fontWeight="semibold"
-            isTruncated
-          >
-            {pkg.name}
-
+        <Link href={getUrl()} passHref>
+          <LinkOverlay>
             <Text
-              as="span"
-              color="blue.500"
-              data-testid={testIds.version}
-              fontSize="xs"
-              ml={2}
+              color="blue.800"
+              data-testid={testIds.name}
+              fontWeight="semibold"
+              isTruncated
             >
-              {pkg.version}
+              {pkg.name}
+
+              <Text
+                as="span"
+                color="blue.500"
+                data-testid={testIds.version}
+                fontSize="xs"
+                ml={2}
+              >
+                {pkg.version}
+              </Text>
             </Text>
-          </Text>
-        </LinkOverlay>
+          </LinkOverlay>
+        </Link>
 
         {/* Tags */}
         <LinkBox
@@ -161,7 +163,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
             color="blue.500"
             data-testid={testIds.author}
             fontSize="sm"
-            to={getSearchPath({ query: authorName })}
+            href={getSearchPath({ query: authorName })}
           >
             {authorName}
           </UILink>
@@ -206,7 +208,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                     {isSupportedByConstructHub ? (
                       <Link
                         aria-label={`View package docs for ${language}`}
-                        to={getUrl({ language })}
+                        href={getUrl({ language })}
                       >
                         {icon}
                       </Link>

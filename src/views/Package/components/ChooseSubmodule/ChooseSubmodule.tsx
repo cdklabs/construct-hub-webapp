@@ -1,11 +1,12 @@
 import { ArrowBackIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Divider, Stack, useDisclosure } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
+import { useRouter } from "next/router";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import { QUERY_PARAMS } from "../../../../constants/url";
-import { useQueryParams } from "../../../../hooks/useQueryParams";
 import { SearchModal } from "./SearchModal";
+import { Language } from "constants/languages";
+import { QUERY_PARAMS } from "constants/url";
+import { getPackagePath } from "util/url";
 
 export interface ChooseSubmoduleProps {
   assembly?: Assembly;
@@ -14,14 +15,12 @@ export interface ChooseSubmoduleProps {
 export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
   assembly,
 }) => {
-  const { pathname } = useLocation();
-  const { push } = useHistory();
-  const query = useQueryParams();
+  const { pathname, push, query } = useRouter();
 
   const allSubmodules = Object.keys(assembly?.submodules ?? {});
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const currentSubmodule = query.get(QUERY_PARAMS.SUBMODULE);
+  const currentSubmodule = query[QUERY_PARAMS.SUBMODULE];
   const submoduleText = currentSubmodule
     ? `Submodule: ${currentSubmodule}`
     : "Choose Submodule";
@@ -29,8 +28,17 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
   const [filter, setFilter] = useState("");
 
   const onGoBack = () => {
-    const lang = query.get(QUERY_PARAMS.LANGUAGE);
-    push(`${pathname}${lang ? `?${QUERY_PARAMS.LANGUAGE}=${lang}` : ""}`);
+    if (!assembly) return;
+
+    const lang = query[QUERY_PARAMS.LANGUAGE] as Language;
+
+    void push(
+      getPackagePath({
+        name: assembly.name,
+        version: assembly.version,
+        language: lang,
+      })
+    );
   };
 
   const getUrl = useCallback(

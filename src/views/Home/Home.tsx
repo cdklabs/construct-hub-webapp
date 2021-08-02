@@ -21,7 +21,7 @@ export const Home: FunctionComponent = () => {
   const searchAPI = useCatalogSearch();
   const [offset, setOffset] = useState(0);
 
-  const { results, displayable, loading, pageLimit } = useCatalogResults({
+  const { results, displayable, pageLimit } = useCatalogResults({
     offset,
     limit: 20,
     query: "",
@@ -75,10 +75,7 @@ export const Home: FunctionComponent = () => {
 
         {/* TBD: Trending Libraries in favor of catalog results */}
         <Box p={4} pb={8}>
-          <Results
-            results={displayable}
-            skeleton={{ loading, noOfItems: 20 }}
-          />
+          <Results results={displayable} />
           <HomePageControls
             offset={offset}
             pageLimit={pageLimit}

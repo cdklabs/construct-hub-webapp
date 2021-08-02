@@ -1,8 +1,8 @@
-import type { GetStaticProps } from "next";
-import type { FunctionComponent } from "react";
+import { GetStaticProps } from "next";
+import { FunctionComponent } from "react";
 import { fetchPackages, Packages } from "api/package/packages";
 import { CatalogProvider } from "contexts/Catalog";
-import { Home } from "views/Home";
+import { SearchResults } from "views/SearchResults";
 
 interface StaticProps {
   packages: Packages;
@@ -10,6 +10,7 @@ interface StaticProps {
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const data = await fetchPackages();
+
   return {
     props: {
       packages: data,
@@ -17,10 +18,10 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   };
 };
 
-const HomePage: FunctionComponent<StaticProps> = ({ packages }) => (
+const SearchPage: FunctionComponent<StaticProps> = ({ packages }) => (
   <CatalogProvider packages={packages}>
-    <Home />
+    <SearchResults />
   </CatalogProvider>
 );
 
-export default HomePage;
+export default SearchPage;

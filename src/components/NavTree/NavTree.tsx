@@ -1,7 +1,8 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Flex, Link, IconButton, useDisclosure } from "@chakra-ui/react";
 import { FunctionComponent, useEffect, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 import { NavLink } from "../NavLink";
 
 export interface NavItemConfig {
@@ -34,9 +35,10 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   url,
   onOpen,
 }) => {
-  const { pathname, hash } = useLocation();
+  const { pathname, asPath } = useRouter();
+  const [, hash] = asPath.split("#");
   const isHashUrl = url.startsWith("#");
-  const linkIsActive = isHashUrl ? hash === url : pathname === url;
+  const linkIsActive = isHashUrl ? `${hash}` === url : pathname === url;
   const disclosure = useDisclosure({ onOpen });
 
   const showToggle = (children?.length ?? 0) > 0;
