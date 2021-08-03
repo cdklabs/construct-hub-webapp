@@ -1,9 +1,6 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Flex, Link, IconButton, useDisclosure } from "@chakra-ui/react";
-import { FunctionComponent, useEffect, useMemo } from "react";
-// import { useLocation } from "react-router-dom";
-import { useRouter } from "next/router";
-import { NavLink } from "../NavLink";
+import { FunctionComponent, useEffect, useMemo, useState } from "react";
 
 export interface NavItemConfig {
   children?: NavItemConfig[];
@@ -13,6 +10,8 @@ export interface NavItemConfig {
 
 export interface NavItemProps extends NavItemConfig {
   // The following props don't need to be explicitly defined - they are passed internally
+  activeUrl: string | null;
+  setActiveUrl: (url: string) => void;
   onOpen?: () => void;
 }
 
@@ -30,21 +29,30 @@ const iconProps = {
 };
 
 export const NavItem: FunctionComponent<NavItemProps> = ({
+  activeUrl,
   children,
   display,
-  url,
   onOpen,
+  setActiveUrl,
+  url,
 }) => {
-  const { pathname, asPath } = useRouter();
-  const [, hash] = asPath.split("#");
-  const isHashUrl = url.startsWith("#");
-  const linkIsActive = isHashUrl ? `${hash}` === url : pathname === url;
+  const linkIsActive = activeUrl === url;
   const disclosure = useDisclosure({ onOpen });
 
   const showToggle = (children?.length ?? 0) > 0;
   const showChildren = disclosure.isOpen && showToggle;
 
-  const LinkComponent = isHashUrl ? Link : NavLink;
+  useEffect(() => {
+    const isHashLink = url.startsWith("#");
+    const isActive = isHashLink
+      ? window.location.hash === url
+      : window.location.pathname === url;
+
+    if (isActive) {
+      setActiveUrl(url);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (linkIsActive) {
@@ -56,9 +64,18 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   const nestedItems = useMemo(
     () =>
       children?.map((item, idx) => {
-        return <NavItem {...item} key={idx} onOpen={disclosure.onOpen} />;
+        return (
+          <NavItem
+            {...item}
+            activeUrl={activeUrl}
+            key={idx}
+            onOpen={disclosure.onOpen}
+            setActiveUrl={setActiveUrl}
+          />
+        );
       }),
-    [children, disclosure.onOpen]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [activeUrl, children, disclosure.onOpen]
   );
 
   return (
@@ -83,20 +100,20 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
             w={4}
           />
         )}
-        <LinkComponent
+        <Link
           _hover={{ bg: "rgba(0, 124, 253, 0.05)" }}
           href={url}
+          onClick={() => setActiveUrl(url)}
           overflow="hidden"
           pl={showToggle ? 1 : 2}
           py={1.5}
           textOverflow="ellipsis"
           title={display}
-          to={url}
           w="100%"
           whiteSpace="nowrap"
         >
           {display}
-        </LinkComponent>
+        </Link>
       </Flex>
       <Box
         _before={{
@@ -122,10 +139,20 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
 };
 
 export const NavTree: FunctionComponent<NavTreeProps> = ({ items }) => {
+  const [activeUrl, setActiveUrl] = useState<null | string>(null);
+
   return (
     <Flex direction="column" maxWidth="100%">
       {items.map((item, idx) => {
-        return <NavItem {...item} key={idx} onOpen={undefined} />;
+        return (
+          <NavItem
+            {...item}
+            activeUrl={activeUrl}
+            key={idx}
+            onOpen={undefined}
+            setActiveUrl={setActiveUrl}
+          />
+        );
       })}
     </Flex>
   );

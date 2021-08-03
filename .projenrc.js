@@ -50,7 +50,6 @@ const project = new web.NextJsTypeScriptProject({
     "jsii-reflect",
     "prism-react-renderer",
     "react-markdown",
-    "react-router-dom",
     "rehype-raw",
     "rehype-sanitize",
     "remark-gfm",
@@ -65,9 +64,9 @@ const project = new web.NextJsTypeScriptProject({
   gitignore: ["/build"],
 
   devDeps: [
+    "@testing-library/react",
     "@testing-library/react-hooks",
     "@testing-library/user-event",
-    "@types/react-router-dom",
     "cypress",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-prefer-arrow",
@@ -97,7 +96,9 @@ project.addTask("dev:debug", {
     "@storybook/preset-create-react-app",
     "@storybook/react",
     "babel-loader@8.1.0",
-    "storybook-addon-performance"
+    "storybook-addon-performance",
+    "react-scripts",
+    "storybook-addon-next-router"
   );
 
   // Add tasks and config for storybook

@@ -10,7 +10,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import remarkGfm from "remark-gfm";
 import { Code } from "./Code";
-// import { Headings } from "./Headings";
+import { Headings } from "./Headings";
 import { Hr } from "./Hr";
 import { Img } from "./Img";
 import { Ul, Ol, Li } from "./List";
@@ -25,12 +25,12 @@ const components: ReactMarkdownOptions["components"] = {
   caption: TableCaption,
   code: Code,
   em: Em,
-  // h1: Headings,
-  // h2: Headings,
-  // h3: Headings,
-  // h4: Headings,
-  // h5: Headings,
-  // h6: Headings,
+  h1: Headings,
+  h2: Headings,
+  h3: Headings,
+  h4: Headings,
+  h5: Headings,
+  h6: Headings,
   hr: Hr,
   img: Img,
   li: Li,

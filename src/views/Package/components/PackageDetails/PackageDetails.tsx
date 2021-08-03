@@ -1,12 +1,12 @@
 import { Divider, Flex, Grid, Stack } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
-import { LanguageSelection } from "../LanguageSelection";
 import { OperatorArea } from "../OperatorArea";
 import { PackageHeader } from "../PackageHeader";
 import { UseConstruct } from "../UseConstruct";
 import type { Metadata } from "api/package/metadata";
 import { Card } from "components/Card";
+import { LanguageBar } from "components/LanguageBar";
 
 interface PackageDetailsProps {
   assembly: Assembly;
@@ -55,7 +55,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
         py={4}
         spacing={4}
       >
-        <LanguageSelection assembly={assembly} />
+        <LanguageBar assembly={assembly} />
         <UseConstruct assembly={assembly} />
       </Stack>
     </Flex>

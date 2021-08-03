@@ -1,4 +1,5 @@
 import { withPerformance } from "storybook-addon-performance";
+import { RouterContext } from "next/dist/shared/lib/router-context"; // next 11.2
 import { Theme } from "../src/contexts/Theme";
 
 export const decorators = [
@@ -24,4 +25,7 @@ export const parameters = {
       { name: "primary", value: "#F7FAFC" },
     ],
   },
+  nextRouter: {
+    Provider: RouterContext.Provider,
+  }
 };

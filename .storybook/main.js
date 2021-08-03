@@ -13,6 +13,7 @@ module.exports = {
     "@storybook/preset-create-react-app",
     "storybook-addon-performance/register",
     "@storybook/addon-essentials",
+    "storybook-addon-next-router",
   ],
   webpackFinal: async (config) => {
     return {

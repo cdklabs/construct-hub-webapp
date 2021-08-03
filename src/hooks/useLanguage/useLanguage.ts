@@ -31,18 +31,14 @@ const getInitialLang = (langFromParams: string | Language): Language => {
 
 export interface UseLanguageOptions {
   /**
-   * Syncs the preferred language to a query param in URL
-   */
-  updateUrl?: boolean;
-  /**
    * Saves the selected language to localStorage on select
    */
   updateSaved?: boolean;
 }
 
 export const useLanguage = (options: UseLanguageOptions = {}) => {
-  const { updateUrl, updateSaved } = options;
-  const { pathname, replace, query } = useRouter();
+  const { updateSaved } = options;
+  const { query } = useRouter();
   const langFromParams = query[QUERY_PARAMS.LANGUAGE] as Language;
 
   // Passed as function to guarantee it runs on hook mount
@@ -57,15 +53,6 @@ export const useLanguage = (options: UseLanguageOptions = {}) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [langFromParams]);
-
-  // Syncs language changes to URL if updateUrl = true
-  useEffect(() => {
-    if (langFromParams !== language && updateUrl) {
-      query[QUERY_PARAMS.LANGUAGE] = language;
-      void replace({ pathname, search: query.toString() });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [language, updateUrl]);
 
   const update = useCallback(
     (val: Language) => {

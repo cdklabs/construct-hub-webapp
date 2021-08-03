@@ -1,6 +1,6 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
-import { useState, useEffect, FunctionComponent, useMemo } from "react";
+import { useState, FunctionComponent, useMemo, useEffect } from "react";
 import { ChooseSubmodule } from "../ChooseSubmodule";
 import { Markdown } from "components/Markdown";
 import { NavTree, NavItemConfig } from "components/NavTree";
@@ -53,13 +53,15 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
   const [navItems, setNavItems] = useState<Item[]>([]);
 
   useEffect(() => {
-    const tree = [
-      ...document.querySelectorAll(
-        `[data-heading-id][data-heading-title][data-heading-level]`
-      ),
-    ].reduce(appendItem, []);
+    window.requestAnimationFrame(() => {
+      const tree = [
+        ...document.querySelectorAll(
+          `[data-heading-id][data-heading-title][data-heading-level]`
+        ),
+      ].reduce(appendItem, []);
 
-    setNavItems(tree);
+      setNavItems(tree);
+    });
   }, [source]);
 
   useEffect(() => {

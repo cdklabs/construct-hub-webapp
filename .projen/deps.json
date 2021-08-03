@@ -33,6 +33,10 @@
       "type": "build"
     },
     {
+      "name": "@testing-library/react",
+      "type": "build"
+    },
+    {
       "name": "@testing-library/react-hooks",
       "type": "build"
     },
@@ -51,10 +55,6 @@
     },
     {
       "name": "@types/react-dom",
-      "type": "build"
-    },
-    {
-      "name": "@types/react-router-dom",
       "type": "build"
     },
     {
@@ -132,8 +132,16 @@
       "type": "build"
     },
     {
+      "name": "react-scripts",
+      "type": "build"
+    },
+    {
       "name": "standard-version",
       "version": "^9",
+      "type": "build"
+    },
+    {
+      "name": "storybook-addon-next-router",
       "type": "build"
     },
     {
@@ -209,10 +217,6 @@
     },
     {
       "name": "react-markdown",
-      "type": "runtime"
-    },
-    {
-      "name": "react-router-dom",
       "type": "runtime"
     },
     {
