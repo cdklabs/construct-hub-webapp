@@ -22,6 +22,7 @@
     "export": "npx projen export",
     "server": "npx projen server",
     "telemetry": "npx projen telemetry",
+    "dev:debug": "npx projen dev:debug",
     "storybook": "npx projen storybook",
     "storybook:build": "npx projen storybook:build",
     "cypress:open": "npx projen cypress:open",

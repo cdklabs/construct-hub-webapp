@@ -1,17 +1,16 @@
-import { Center, Divider, Flex, Grid, Spinner, Stack } from "@chakra-ui/react";
+import { Divider, Flex, Grid, Stack } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
-import type { Metadata } from "../../../../api/package/metadata";
-import { Card } from "../../../../components/Card";
-import type { UseRequestResponse } from "../../../../hooks/useRequest";
 import { LanguageSelection } from "../LanguageSelection";
 import { OperatorArea } from "../OperatorArea";
 import { PackageHeader } from "../PackageHeader";
 import { UseConstruct } from "../UseConstruct";
+import type { Metadata } from "api/package/metadata";
+import { Card } from "components/Card";
 
 interface PackageDetailsProps {
-  assembly: UseRequestResponse<Assembly>;
-  metadata: UseRequestResponse<Metadata>;
+  assembly: Assembly;
+  metadata: Metadata;
   version: string;
 }
 
@@ -24,16 +23,6 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
   metadata,
   version,
 }) => {
-  const isLoading = assembly.loading || metadata.loading;
-
-  if (isLoading || !assembly.data || !metadata.data) {
-    return (
-      <Center minH="200px">
-        <Spinner size="xl" />
-      </Center>
-    );
-  }
-
   return (
     <Flex as={Card} direction="column">
       <Grid
@@ -43,9 +32,9 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
         templateRows="auto"
       >
         <PackageHeader
-          description={assembly.data.description}
-          tags={assembly.data.keywords ?? []}
-          title={assembly.data.name}
+          description={assembly.description}
+          tags={assembly.keywords ?? []}
+          title={assembly.name}
           version={version}
         />
         <Divider
@@ -56,7 +45,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
           display={{ base: "initial", md: "none" }}
           orientation="horizontal"
         />
-        <OperatorArea assembly={assembly.data} metadata={metadata.data} />
+        <OperatorArea assembly={assembly} metadata={metadata} />
       </Grid>
       <Stack
         align="center"
@@ -66,8 +55,8 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
         py={4}
         spacing={4}
       >
-        <LanguageSelection assembly={assembly.data} />
-        <UseConstruct assembly={assembly.data} />
+        <LanguageSelection assembly={assembly} />
+        <UseConstruct assembly={assembly} />
       </Stack>
     </Flex>
   );

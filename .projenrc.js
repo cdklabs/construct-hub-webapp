@@ -79,6 +79,11 @@ const project = new web.NextJsTypeScriptProject({
   autoApproveUpgrades: true,
 });
 
+// Dev Debug Task
+project.addTask("dev:debug", {
+  exec: "NODE_OPTIONS='--inspect' next dev",
+});
+
 (function addStorybook() {
   project.addDevDeps(
     "@storybook/addon-a11y",

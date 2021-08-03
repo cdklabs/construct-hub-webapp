@@ -1,6 +1,6 @@
 import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { PackageTag } from "../../../../components/PackageTag";
+import { PackageTag } from "components/PackageTag";
 
 export interface PackageHeaderProps {
   title: string;

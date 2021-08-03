@@ -1,7 +1,7 @@
 import { Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { ExternalLink } from "../../../../components/ExternalLink";
-import { Language } from "../../../../constants/languages";
+import { ExternalLink } from "components/ExternalLink";
+import { Language } from "constants/languages";
 
 export interface PackageDocsErrorProps {
   readonly language: Language;

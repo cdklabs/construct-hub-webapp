@@ -8,12 +8,12 @@ import {
 } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent, ReactNode, useMemo } from "react";
-import type { Metadata } from "../../../../api/package/metadata";
-import { ExternalLink } from "../../../../components/ExternalLink";
-import { LicenseLink, LICENSE_LINKS } from "../../../../components/LicenseLink";
-import { Time } from "../../../../components/Time";
-import { getRepoUrlAndHost } from "../../../../util/url";
 import { DependencyDropdown } from "../DependencyDropdown";
+import type { Metadata } from "api/package/metadata";
+import { ExternalLink } from "components/ExternalLink";
+import { LicenseLink, LICENSE_LINKS } from "components/LicenseLink";
+import { Time } from "components/Time";
+import { getRepoUrlAndHost } from "util/url";
 
 export interface OperatorAreaProps {
   assembly?: Assembly;

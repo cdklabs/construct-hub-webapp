@@ -227,6 +227,14 @@
         }
       ]
     },
+    "dev:debug": {
+      "name": "dev:debug",
+      "steps": [
+        {
+          "exec": "NODE_OPTIONS='--inspect' next dev"
+        }
+      ]
+    },
     "storybook": {
       "name": "storybook",
       "description": "run local storybook server",

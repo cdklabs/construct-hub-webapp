@@ -1,8 +1,8 @@
 import type { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
-import { LanguageBar } from "../../../../components/LanguageBar";
-import { Language, LANGUAGES } from "../../../../constants/languages";
-import { useLanguage } from "../../../../hooks/useLanguage";
+import { LanguageBar } from "components/LanguageBar";
+import { Language, LANGUAGES } from "constants/languages";
+import { useLanguage } from "hooks/useLanguage";
 
 export interface LanguageSelectionProps {
   assembly: Assembly;

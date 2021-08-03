@@ -1,15 +1,12 @@
 import type { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
-import {
-  CodePopover,
-  CodePopoverTrigger,
-} from "../../../../components/CodePopover";
+import { CodePopover, CodePopoverTrigger } from "components/CodePopover";
 import {
   TEMP_SUPPORTED_LANGUAGES,
   LANGUAGE_NAME_MAP,
   Language,
-} from "../../../../constants/languages";
-import { useLanguage } from "../../../../hooks/useLanguage";
+} from "constants/languages";
+import { useLanguage } from "hooks/useLanguage";
 
 // TODO: We'll probably want to get this from BE as we add more languages, however this should do the trick for now...
 const getCodeSample = ({

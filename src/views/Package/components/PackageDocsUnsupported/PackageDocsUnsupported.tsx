@@ -1,6 +1,6 @@
 import { Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Language, LANGUAGE_NAME_MAP } from "../../../../constants/languages";
+import { Language, LANGUAGE_NAME_MAP } from "constants/languages";
 
 export interface PackageDocsUnsupportedProps {
   readonly language: Language;

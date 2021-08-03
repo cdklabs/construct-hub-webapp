@@ -5,7 +5,7 @@ import {
   createURLSearchParams,
   createURL,
   getSearchPath,
-  getPackagePath,
+  __getPackagePath,
 } from "./url";
 
 describe("getRepoUrlAndHost", () => {
@@ -89,7 +89,7 @@ describe("getPackagePath", () => {
       language: Language.Go,
     };
 
-    const result = getPackagePath(pkg);
+    const result = __getPackagePath(pkg);
 
     expect(result).toEqual(
       `${ROUTES.PACKAGES}/${pkg.name}/v/${pkg.version}?${QUERY_PARAMS.SUBMODULE}=${pkg.submodule}&${QUERY_PARAMS.LANGUAGE}=${pkg.language}`

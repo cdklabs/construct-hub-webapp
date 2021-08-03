@@ -1,4 +1,8 @@
+import getConfig from "next/config";
 import { getAssetsPath } from "./util";
+
+const { serverRuntimeConfig } = getConfig();
+const { apiUrl } = serverRuntimeConfig;
 
 /**
  * Fetch markdown docs of a specific package from the backend.
@@ -13,7 +17,7 @@ export const fetchMarkdown = async (
   const docsSuffix = `/docs-${submodule ? `${submodule}-` : ""}${language}.md`;
 
   const markdownPath = `${getAssetsPath(name, version, scope)}${docsSuffix}`;
-  const response = await fetch(markdownPath);
+  const response = await fetch([apiUrl, markdownPath].join(""));
   if (!response.ok) {
     throw new Error(
       `Failed fetching documentation for ${markdownPath}: ${response.statusText}`

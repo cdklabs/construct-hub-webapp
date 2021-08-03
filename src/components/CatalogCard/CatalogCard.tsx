@@ -18,12 +18,18 @@ import {
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
 import { createTestIds } from "../../util/createTestIds";
-import { getPackagePath, getSearchPath } from "../../util/url";
+import {
+  getVersionedPackagePath,
+  getFullPackagePath,
+  getSearchPath,
+} from "../../util/url";
 import { LanguageSupportTooltip } from "../LanguageSupportTooltip";
 import { PackageTag } from "../PackageTag";
 import { Time } from "../Time";
 import { CatalogCardContainer } from "./CatalogCardContainer";
 import { CatalogCardSkeleton } from "./CatalogCardSkeleton";
+import { NavLink } from "components/NavLink";
+import { useLanguage } from "hooks/useLanguage";
 
 export const testIds = createTestIds("catalog-card", [
   "name",
@@ -50,6 +56,8 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
   language: currentLanguage,
   pkg,
 }) => {
+  const [savedLanguage] = useLanguage();
+
   if (!pkg) {
     return (
       <CatalogCardContainer>
@@ -70,13 +78,18 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
   const languages = pkg.languages ?? {};
   const targets = Object.keys(languages) as Language[];
 
-  const getUrl = (params?: Partial<Parameters<typeof getPackagePath>[0]>) =>
-    getPackagePath({
+  const getUrl = (
+    params?: Partial<Parameters<typeof getFullPackagePath>[0]>
+  ) => {
+    const baseParams = {
       name: pkg.name,
       version: pkg.version,
-      language: currentLanguage,
-      ...params,
-    });
+    };
+
+    return params?.lang
+      ? getFullPackagePath({ ...baseParams, lang: params.lang })
+      : getVersionedPackagePath(baseParams);
+  };
 
   const authorName = typeof author === "string" ? author : author.name;
 
@@ -84,7 +97,10 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
     <CatalogCardContainer isLink>
       <Stack maxH="100%" maxW="100%" overflow="hidden" p={4} spacing={0}>
         {/* Name & Version */}
-        <Link href={getUrl()} passHref>
+        <Link
+          href={getUrl({ lang: currentLanguage ?? savedLanguage })}
+          passHref
+        >
           <LinkOverlay>
             <Text
               color="blue.800"
@@ -158,15 +174,11 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
             {publishDate}
           </Text>
 
-          <UILink
-            as={Link}
-            color="blue.500"
-            data-testid={testIds.author}
-            fontSize="sm"
-            href={getSearchPath({ query: authorName })}
-          >
-            {authorName}
-          </UILink>
+          <Link href={getSearchPath({ query: authorName })} passHref>
+            <UILink color="blue.500" data-testid={testIds.author} fontSize="sm">
+              {authorName}
+            </UILink>
+          </Link>
 
           {/* Language Support Icons */}
           <LinkBox align="center" as={Stack} direction="row">
@@ -206,12 +218,12 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                 return (
                   <LanguageSupportTooltip key={language} language={language}>
                     {isSupportedByConstructHub ? (
-                      <Link
+                      <NavLink
                         aria-label={`View package docs for ${language}`}
-                        href={getUrl({ language })}
+                        href={getUrl({ lang: language })}
                       >
                         {icon}
-                      </Link>
+                      </NavLink>
                     ) : (
                       icon
                     )}

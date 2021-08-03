@@ -1,13 +1,8 @@
-import getConfig from "next/config";
-
-const { serverRuntimeConfig } = getConfig();
-const { apiUrl } = serverRuntimeConfig;
-
 export const API_PATHS = {
-  PACKAGES_PREFIX: `${apiUrl}/data`,
-  CATALOG_SUFFIX: `${apiUrl}/catalog.json`,
-  ASSEMBLY_SUFFIX: `${apiUrl}/assembly.json`,
-  METADATA_SUFFIX: `${apiUrl}/metadata.json`,
+  PACKAGES_PREFIX: "/data",
+  CATALOG_SUFFIX: "/catalog.json",
+  ASSEMBLY_SUFFIX: "/assembly.json",
+  METADATA_SUFFIX: "/metadata.json",
 } as const;
 
 export const QUERY_PARAMS = {

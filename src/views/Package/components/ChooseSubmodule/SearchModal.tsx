@@ -9,15 +9,15 @@ import {
   ModalOverlay,
   UnorderedList,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import {
   FormEventHandler,
   FunctionComponent,
   useCallback,
   useRef,
 } from "react";
-import { useHistory } from "react-router-dom";
-import { SearchItem } from "../../../../components/SearchItem";
 import { SearchInput } from "./SearchInput";
+import { SearchItem } from "components/SearchItem";
 
 export interface SearchModalProps {
   inputValue: string;
@@ -35,12 +35,12 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
   submodules,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { push } = useHistory();
+  const { push } = useRouter();
 
   const navigate = useCallback(
     (to: string) => {
       onClose();
-      push(to);
+      void push(to);
     },
     [onClose, push]
   );

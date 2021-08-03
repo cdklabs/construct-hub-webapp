@@ -78,7 +78,7 @@ export const getSearchPath = ({
     [QUERY_PARAMS.OFFSET]: offset ?? 0,
   });
 
-export const getPackagePath = ({
+export const __getPackagePath = ({
   name,
   version,
   language,
@@ -93,3 +93,38 @@ export const getPackagePath = ({
     [QUERY_PARAMS.SUBMODULE]: submodule,
     [QUERY_PARAMS.LANGUAGE]: language,
   });
+
+interface VersionedPackagePathParams {
+  name: string;
+  version: string;
+  submodule?: string;
+}
+
+export const getVersionedPackagePath = ({
+  name,
+  version,
+  submodule,
+}: VersionedPackagePathParams) => {
+  return submodule
+    ? createURL(`${ROUTES.PACKAGES}/${name}/v/${version}/s/${submodule}`)
+    : createURL(`${ROUTES.PACKAGES}/${name}/v/${version}`);
+};
+
+export interface PackagePathParams extends VersionedPackagePathParams {
+  lang: Language;
+}
+
+export const getFullPackagePath = ({
+  name,
+  version,
+  submodule,
+  lang,
+}: PackagePathParams) => {
+  let url = `${ROUTES.PACKAGES}/l/${lang}/${name}/v/${version}`;
+
+  if (submodule) {
+    url += `/s/${submodule}`;
+  }
+
+  return createURL(url);
+};

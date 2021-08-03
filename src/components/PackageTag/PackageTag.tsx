@@ -18,13 +18,13 @@ export const PackageTag: FunctionComponent<PackageTagProps> = ({
   ...tagProps
 }) => {
   return (
-    <NavLink
-      aria-label={`Tag: ${label}`}
-      href={getSearchPath({ query: `${value}`, language })}
-    >
-      <Tag {...tagProps}>
+    <Tag {...tagProps}>
+      <NavLink
+        aria-label={`Tag: ${label}`}
+        href={getSearchPath({ query: `${value}`, language })}
+      >
         <TagLabel>{children}</TagLabel>
-      </Tag>
-    </NavLink>
+      </NavLink>
+    </Tag>
   );
 };

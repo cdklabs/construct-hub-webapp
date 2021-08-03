@@ -1,5 +1,9 @@
+import getConfig from "next/config";
 import { API_PATHS } from "../../constants/url";
 import { getAssetsPath } from "./util";
+
+const { serverRuntimeConfig } = getConfig();
+const { apiUrl } = serverRuntimeConfig;
 
 export interface Metadata {
   date: string;
@@ -25,7 +29,7 @@ export const fetchMetadata = async (
   const metadataPath = `${getAssetsPath(name, version, scope)}${
     API_PATHS.METADATA_SUFFIX
   }`;
-  const response = await fetch(metadataPath);
+  const response = await fetch([apiUrl, metadataPath].join(""));
 
   if (!response.ok) {
     throw new Error(

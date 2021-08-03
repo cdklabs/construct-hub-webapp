@@ -6,7 +6,7 @@ import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { SearchModal } from "./SearchModal";
 import { Language } from "constants/languages";
 import { QUERY_PARAMS } from "constants/url";
-import { getPackagePath } from "util/url";
+import { __getPackagePath } from "util/url";
 
 export interface ChooseSubmoduleProps {
   assembly?: Assembly;
@@ -33,7 +33,7 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
     const lang = query[QUERY_PARAMS.LANGUAGE] as Language;
 
     void push(
-      getPackagePath({
+      __getPackagePath({
         name: assembly.name,
         version: assembly.version,
         language: lang,
