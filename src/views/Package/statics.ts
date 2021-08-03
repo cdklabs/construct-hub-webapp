@@ -5,8 +5,8 @@ import { fetchAssembly } from "api/package/assembly";
 import { fetchMarkdown } from "api/package/docs";
 import { fetchMetadata, Metadata } from "api/package/metadata";
 import { fetchPackages } from "api/package/packages";
-import { Language } from "constants/languages";
-import { __getPackagePath } from "util/url";
+import { Language, TEMP_SUPPORTED_LANGUAGES } from "constants/languages";
+import { getFullPackagePath } from "util/url";
 
 export type PackageParams = {
   name: string;
@@ -15,7 +15,13 @@ export type PackageParams = {
   lang: Language;
 };
 
-const getPackageStatics = ({ isScoped }: { isScoped: boolean }) => {
+export const getPackageStatics = ({
+  // isSubmodule, // Implement later
+  isScoped,
+}: {
+  isScoped: boolean;
+  isSubmodule?: boolean;
+}) => {
   const getStaticPaths: GetStaticPaths = async () => {
     const { packages } = await fetchPackages();
 
@@ -24,11 +30,24 @@ const getPackageStatics = ({ isScoped }: { isScoped: boolean }) => {
         const pkgIsScoped = pkg.name.includes("/");
         return isScoped ? pkgIsScoped : !pkgIsScoped;
       })
-      .map((pkg) => {
-        const { name, version } = pkg;
+      .reduce<string[]>((allPaths, pkg) => {
+        const { name, version, languages } = pkg;
 
-        return __getPackagePath({ name, version });
-      });
+        // TS is always supported
+        allPaths.push(
+          getFullPackagePath({ name, version, lang: Language.TypeScript })
+        );
+
+        Object.keys(languages).forEach((language) => {
+          const lang = language as Language;
+
+          if (TEMP_SUPPORTED_LANGUAGES.has(lang)) {
+            allPaths.push(getFullPackagePath({ name, version, lang }));
+          }
+        });
+
+        return allPaths;
+      }, []);
 
     return {
       paths,
@@ -81,10 +100,11 @@ const getPackageStatics = ({ isScoped }: { isScoped: boolean }) => {
     };
   };
 
+  const getServerSideProps = getStaticProps;
+
   return {
     getStaticPaths,
     getStaticProps,
+    getServerSideProps,
   };
 };
-
-export default getPackageStatics;

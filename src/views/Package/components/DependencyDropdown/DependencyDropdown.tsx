@@ -1,8 +1,14 @@
 import { ChevronDownIcon, LinkIcon } from "@chakra-ui/icons";
-import { Menu, MenuButton, Button, MenuItem, MenuList } from "@chakra-ui/react";
+import {
+  Link,
+  Menu,
+  MenuButton,
+  Button,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { sanitizeVersion } from "api/package/util";
-import { NavLink } from "components/NavLink";
 
 export interface DependencyDropdownProps {
   dependencies: {
@@ -35,14 +41,14 @@ export const DependencyDropdown: FunctionComponent<DependencyDropdownProps> = ({
       <MenuList>
         {depEntries.map(([name, version]) => (
           <MenuItem key={`${name}/${version}`} p={0}>
-            <NavLink
+            <Link
               h="100%"
               href={`/packages/${name}/v/${sanitizeVersion(version)}`}
               p={2}
               w="100%"
             >
               {`${name} - ${version}`}
-            </NavLink>
+            </Link>
           </MenuItem>
         ))}
       </MenuList>

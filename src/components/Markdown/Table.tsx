@@ -4,12 +4,16 @@ import {
   Thead,
   Tbody,
   Tfoot,
-  Tr,
+  Tr as ChakraTr,
   Th,
   Td,
   TableCaption,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+
+const Tr: FunctionComponent = ({ children, ...props }) => (
+  <ChakraTr {...props}>{children}</ChakraTr>
+);
 
 const Table: FunctionComponent = ({ children }) => (
   <Box maxW="100%" overflowX="auto">

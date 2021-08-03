@@ -3,12 +3,11 @@ import {
   Divider,
   Flex,
   LinkBox,
-  Link as UILink,
+  Link,
   LinkOverlay,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import Link from "next/link";
 import type { FunctionComponent } from "react";
 import { CatalogPackage } from "../../api/package/packages";
 import {
@@ -97,31 +96,26 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
     <CatalogCardContainer isLink>
       <Stack maxH="100%" maxW="100%" overflow="hidden" p={4} spacing={0}>
         {/* Name & Version */}
-        <Link
-          href={getUrl({ lang: currentLanguage ?? savedLanguage })}
-          passHref
-        >
-          <LinkOverlay>
-            <Text
-              color="blue.800"
-              data-testid={testIds.name}
-              fontWeight="semibold"
-              isTruncated
-            >
-              {pkg.name}
+        <LinkOverlay href={getUrl({ lang: currentLanguage ?? savedLanguage })}>
+          <Text
+            color="blue.800"
+            data-testid={testIds.name}
+            fontWeight="semibold"
+            isTruncated
+          >
+            {pkg.name}
 
-              <Text
-                as="span"
-                color="blue.500"
-                data-testid={testIds.version}
-                fontSize="xs"
-                ml={2}
-              >
-                {pkg.version}
-              </Text>
+            <Text
+              as="span"
+              color="blue.500"
+              data-testid={testIds.version}
+              fontSize="xs"
+              ml={2}
+            >
+              {pkg.version}
             </Text>
-          </LinkOverlay>
-        </Link>
+          </Text>
+        </LinkOverlay>
 
         {/* Tags */}
         <LinkBox
@@ -174,10 +168,13 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
             {publishDate}
           </Text>
 
-          <Link href={getSearchPath({ query: authorName })} passHref>
-            <UILink color="blue.500" data-testid={testIds.author} fontSize="sm">
-              {authorName}
-            </UILink>
+          <Link
+            color="blue.500"
+            data-testid={testIds.author}
+            fontSize="sm"
+            href={getSearchPath({ query: authorName })}
+          >
+            {authorName}
           </Link>
 
           {/* Language Support Icons */}
@@ -218,12 +215,12 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                 return (
                   <LanguageSupportTooltip key={language} language={language}>
                     {isSupportedByConstructHub ? (
-                      <NavLink
+                      <Link
                         aria-label={`View package docs for ${language}`}
                         href={getUrl({ lang: language })}
                       >
                         {icon}
-                      </NavLink>
+                      </Link>
                     ) : (
                       icon
                     )}

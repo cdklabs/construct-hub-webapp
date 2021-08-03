@@ -1,8 +1,12 @@
+import { Center, Spinner } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FunctionComponent, useEffect } from "react";
 import { useLanguage } from "hooks/useLanguage";
 import { getFullPackagePath } from "util/url";
 
+/**
+ * A client side redirect from a versioned package route to the full package route with the user's stored language
+ */
 export const PackageRedirect: FunctionComponent = () => {
   const { query = {}, replace } = useRouter();
   const [language] = useLanguage();
@@ -24,5 +28,9 @@ export const PackageRedirect: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
-  return null;
+  return (
+    <Center>
+      <Spinner size="xl" />
+    </Center>
+  );
 };

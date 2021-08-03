@@ -60,7 +60,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
           id={id}
           replace
           sx={{ "> code": { color: "blue.800", fontSize: "inherit" } }}
-          to={`#${id}`}
+          href={`#${id}`}
         >
           {children}
         </NavLink>

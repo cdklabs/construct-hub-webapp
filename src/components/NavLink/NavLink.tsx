@@ -6,6 +6,10 @@ export interface NavLinkProps extends LinkProps {
   shallow?: boolean;
 }
 
+/**
+ * A Link component intended for client-side navigation. Do not use this
+ * for pages that rely on dynamic data
+ */
 export const NavLink = forwardRef<NavLinkProps, "a">(
   ({ children, href, shallow, ...props }, ref) => {
     return (

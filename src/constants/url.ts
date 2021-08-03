@@ -16,6 +16,7 @@ export const ROUTES = {
   FAQ: "/faq",
   HOME: "/",
   PACKAGES: "/packages",
+  PACKAGE: "/package",
   SEARCH: "/search",
   SITE_TERMS: "/terms",
 };
