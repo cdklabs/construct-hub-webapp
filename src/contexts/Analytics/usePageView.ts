@@ -10,15 +10,20 @@ export const usePageView = (opts: PageViewOptions) => {
   const options: PageViewConfig = useMemo(
     () => ({
       page: {
-        pageURL: pathname,
+        // This is silly but the analytics library crashes in dev if using localhost as the pageURL :/
+        pageURL: window.location.href.replace(
+          "://localhost:3000",
+          "://constructs.local.dev"
+        ),
         ...opts.page,
       },
       event: {
         type: "pageview",
-        name: opts.event?.name ?? `${opts.page.pageName} Load`,
-        description: opts.event?.description,
+        name: opts.event.name,
+        description: opts.event.description,
       },
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [pathname, opts]
   );
 
