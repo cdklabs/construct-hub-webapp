@@ -62,6 +62,8 @@ const project = new web.NextJsTypeScriptProject({
     "workbox-strategies",
   ],
 
+  gitignore: ["/build"],
+
   devDeps: [
     "@testing-library/react-hooks",
     "@testing-library/user-event",

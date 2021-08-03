@@ -11,6 +11,7 @@
 .nyc_output
 .yarn-integrity
 /.next/
+/build
 /dist
 /dist/changelog.md
 /dist/version.txt
