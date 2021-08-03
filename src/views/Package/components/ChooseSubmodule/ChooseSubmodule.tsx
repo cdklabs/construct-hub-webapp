@@ -1,12 +1,12 @@
 import { ArrowBackIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { Button, Divider, Stack, useDisclosure } from "@chakra-ui/react";
+import { Button, Link, Divider, Stack, useDisclosure } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { useRouter } from "next/router";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { SearchModal } from "./SearchModal";
 import { Language } from "constants/languages";
 import { QUERY_PARAMS } from "constants/url";
-import { __getPackagePath } from "util/url";
+import { getFullPackagePath } from "util/url";
 
 export interface ChooseSubmoduleProps {
   assembly?: Assembly;
@@ -15,7 +15,7 @@ export interface ChooseSubmoduleProps {
 export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
   assembly,
 }) => {
-  const { pathname, push, query } = useRouter();
+  const { query } = useRouter();
 
   const allSubmodules = Object.keys(assembly?.submodules ?? {});
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,27 +27,20 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
 
   const [filter, setFilter] = useState("");
 
-  const onGoBack = () => {
-    if (!assembly) return;
-
-    const lang = query[QUERY_PARAMS.LANGUAGE] as Language;
-
-    void push(
-      __getPackagePath({
-        name: assembly.name,
-        version: assembly.version,
-        language: lang,
-      })
-    );
-  };
+  const lang = query[QUERY_PARAMS.LANGUAGE] as Language;
 
   const getUrl = useCallback(
     (submoduleName: string) => {
-      const params = new URLSearchParams(query.toString());
-      params.set("submodule", submoduleName);
-      return `${pathname}?${params}`;
+      if (!assembly) return "";
+
+      return getFullPackagePath({
+        name: assembly?.name,
+        version: assembly?.version,
+        lang,
+        submodule: submoduleName,
+      });
     },
-    [pathname, query]
+    [assembly, lang]
   );
 
   const submodules = useMemo(() => {
@@ -74,13 +67,18 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
 
   return (
     <Stack spacing={4} w="100%">
-      {currentSubmodule && (
+      {assembly && currentSubmodule && (
         <>
           <Button
+            as={Link}
             borderRadius="none"
             data-testid="choose-submodule-go-back"
+            href={getFullPackagePath({
+              name: assembly.name,
+              version: assembly.version,
+              lang,
+            })}
             leftIcon={<ArrowBackIcon aria-label="Back to construct root" />}
-            onClick={onGoBack}
             title="Back to construct root"
             variant="link"
           >

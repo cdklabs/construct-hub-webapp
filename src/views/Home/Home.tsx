@@ -1,4 +1,5 @@
 import { Box, Stack, Heading, Skeleton } from "@chakra-ui/react";
+import Head from "next/head";
 import { FunctionComponent, useState } from "react";
 import { CatalogSearch } from "../../components/CatalogSearch";
 import { Page } from "../../components/Page";
@@ -30,6 +31,13 @@ export const Home: FunctionComponent = () => {
 
   return (
     <Page pageName="home">
+      <Head>
+        <title>Construct Hub</title>
+        <meta
+          content="Construct Hub helps developers find open-source construct libraries for use with AWS CDK, CDK8s, CDKTf and other construct-based tools."
+          name="description"
+        />
+      </Head>
       <Box position="relative">
         <Picture
           alt={""}

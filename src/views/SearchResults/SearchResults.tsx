@@ -1,4 +1,5 @@
 import { Box, Divider, Flex } from "@chakra-ui/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { FunctionComponent, useEffect } from "react";
 import { CatalogSearch } from "../../components/CatalogSearch";
@@ -80,6 +81,13 @@ export const SearchResults: FunctionComponent = () => {
 
   return (
     <Page pageName="search">
+      <Head>
+        <title>{searchQuery ? `${searchQuery} - ` : ""}Construct Hub</title>
+        <meta
+          content={`Construct Hub helps developers find open-source construct libraries for use with AWS CDK, CDK8s, CDKTf and other construct-based tools. Search from ${results.length} libraries.`}
+          name="description"
+        />
+      </Head>
       <Flex direction="column" maxW="100vw">
         <Box p={4}>
           <CatalogSearch {...searchAPI} />

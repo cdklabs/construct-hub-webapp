@@ -79,6 +79,10 @@
       "type": "build"
     },
     {
+      "name": "eslint-config-next",
+      "type": "build"
+    },
+    {
       "name": "eslint-config-prettier",
       "type": "build"
     },

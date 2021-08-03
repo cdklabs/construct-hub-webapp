@@ -1,10 +1,15 @@
 import { Box, Heading, Stack, Text } from "@chakra-ui/react";
+import Head from "next/head";
 import type { FunctionComponent } from "react";
 import { ExternalLink } from "../../components/ExternalLink";
 import { Page } from "../../components/Page";
 
 export const SiteTerms: FunctionComponent = () => (
   <Page pageName="siteTerms">
+    <Head>
+      <title>Site Terms - Construct Hub</title>
+      <meta content="Construct Hub Site Terms" name="description" />
+    </Head>
     <Box bg="white" h="100%" py={16} w="100%">
       <Box
         as="article"

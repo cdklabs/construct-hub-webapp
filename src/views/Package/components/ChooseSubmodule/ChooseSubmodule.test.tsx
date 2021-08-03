@@ -1,9 +1,6 @@
 import type { Assembly } from "@jsii/spec";
 import { act, cleanup, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { createMemoryHistory } from "history";
-import { Router } from "react-router-dom";
 import { ChooseSubmodule } from "./ChooseSubmodule";
 
 // Necessary data shape for <ChooseSubmodule />
@@ -15,19 +12,10 @@ const assembly: Assembly = {
 } as any;
 
 describe("<ChooseSubmodule />", () => {
-  let history: ReturnType<typeof createMemoryHistory>;
-
-  beforeEach(() => {
-    history = createMemoryHistory();
-  });
-
   afterEach(cleanup);
 
   const renderComponent = (asm = assembly) =>
-    render(<ChooseSubmodule assembly={asm} />, {
-      // eslint-disable-next-line react/display-name
-      wrapper: (props) => <Router history={history} {...props} />,
-    });
+    render(<ChooseSubmodule assembly={asm} />);
 
   it("opens the search popover on button click", () => {
     const { getByTestId, queryByTestId } = renderComponent();
@@ -48,19 +36,11 @@ describe("<ChooseSubmodule />", () => {
     let { queryByTestId } = renderComponent();
     expect(queryByTestId("choose-submodule-go-back")).toBeNull();
 
-    history = createMemoryHistory({
-      initialEntries: ["/?submodule=aws_eks"],
-    });
-
     ({ queryByTestId } = renderComponent());
     expect(queryByTestId("choose-submodule-go-back")).not.toBeNull();
   });
 
   it("navigates to correct path on back button click", () => {
-    history = createMemoryHistory({
-      initialEntries: ["/?submodule=aws_eks"],
-    });
-
     const { getByTestId } = renderComponent();
     userEvent.click(getByTestId("choose-submodule-go-back"));
     expect(window.location.search).toEqual("");
@@ -88,16 +68,5 @@ describe("<ChooseSubmodule />", () => {
     });
 
     expect(queryAllByTestId("choose-submodule-result").length).toEqual(1);
-  });
-
-  it("submodules link to correct path", () => {
-    const { getByTestId, queryAllByTestId } = renderComponent();
-
-    userEvent.click(getByTestId("choose-submodule-search-trigger"));
-    userEvent.click(queryAllByTestId("choose-submodule-result")[0]);
-
-    expect(decodeURIComponent(history.location.search)).toEqual(
-      "?submodule=aws_eks"
-    );
   });
 });

@@ -1,12 +1,8 @@
 import { cleanup, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { createMemoryHistory } from "history";
-import { Router } from "react-router-dom";
 import { SearchModal } from "./SearchModal";
 
 describe("<SearchModal />", () => {
-  const history = createMemoryHistory();
   const onClose = jest.fn();
   const onInputChange = jest.fn();
   const submodules = [{ name: "target-name", to: "target-location" }];
@@ -22,11 +18,7 @@ describe("<SearchModal />", () => {
         onClose={onClose}
         onInputChange={onInputChange}
         submodules={submodules}
-      />,
-      {
-        // eslint-disable-next-line react/display-name
-        wrapper: (props) => <Router history={history} {...props} />,
-      }
+      />
     );
 
   it("renders header, search, and submodules", () => {
@@ -48,7 +40,6 @@ describe("<SearchModal />", () => {
     const { getByTestId } = renderPopover();
     const result = getByTestId("choose-submodule-result");
     userEvent.click(result);
-    expect(history.location.pathname).toEqual("/target-location");
     expect(onClose).toHaveBeenCalled();
   });
 });

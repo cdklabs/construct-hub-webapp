@@ -1,4 +1,5 @@
 import { Box, Heading, Accordion } from "@chakra-ui/react";
+import Head from "next/head";
 import type { FunctionComponent } from "react";
 import { Page } from "../../components/Page";
 import { FAQItem } from "./FAQItem";
@@ -7,6 +8,13 @@ import { FAQSection } from "./FAQSection";
 
 export const FAQ: FunctionComponent = () => (
   <Page pageName="faq">
+    <Head>
+      <title>FAQ - Construct Hub</title>
+      <meta
+        content="FAQ - What is Construct Hub? What is a construct? How do I publish a construct?"
+        name="description"
+      />
+    </Head>
     <Box bg="white" color="blue.800" h="100%" w="100%">
       <Box bg="gray.50" py={20} width="100%">
         <Heading as="h1" mx="auto" textAlign="center">

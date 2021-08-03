@@ -31,6 +31,16 @@ export const getPackageStatics = ({
         const pkgIsScoped = pkg.name.includes("/");
         return isScoped ? pkgIsScoped : !pkgIsScoped;
       })
+      .sort((p1, p2) => {
+        // Take most recent
+        const d1 = new Date(p1.metadata.date);
+        const d2 = new Date(p2.metadata.date);
+        if (d1 === d2) {
+          return 0;
+        }
+        return d1 < d2 ? 1 : -1;
+      })
+      .slice(0, 25) // Take 25 most recent
       .reduce<string[]>((allPaths, pkg) => {
         const { name, version, languages } = pkg;
 
@@ -83,14 +93,19 @@ export const getPackageStatics = ({
         notFound: true,
       };
     }
+    let markdown: string | null = null;
 
-    const markdown = await fetchMarkdown(
-      scopedName ?? name,
-      version,
-      lang!, // TODO: Fix typing
-      scopedName ? name : undefined,
-      submodule
-    );
+    try {
+      markdown = await fetchMarkdown(
+        scopedName ?? name,
+        version,
+        lang!, // TODO: Fix typing
+        scopedName ? name : undefined,
+        submodule
+      );
+    } catch (e) {
+      console.error(e);
+    }
 
     return {
       props: {

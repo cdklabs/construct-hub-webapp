@@ -1,5 +1,4 @@
 import type { Story } from "@storybook/react";
-import { MemoryRouter } from "react-router-dom";
 import catalogFixture from "../../__fixtures__/catalog.json";
 import { CatalogPackage } from "../../api/package/packages";
 import { CatalogCard, CatalogCardProps } from "./CatalogCard";
@@ -10,11 +9,7 @@ export default {
 };
 
 export const Primary: Story<CatalogCardProps> = ({ pkg }) => {
-  return (
-    <MemoryRouter>
-      <CatalogCard pkg={pkg} />
-    </MemoryRouter>
-  );
+  return <CatalogCard pkg={pkg} />;
 };
 
 export const Skeleton = () => <CatalogCard />;

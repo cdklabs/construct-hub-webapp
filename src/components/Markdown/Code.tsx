@@ -31,7 +31,7 @@ export const Code: FunctionComponent<CodeProps> = ({
   }
 
   const code = Children.toArray(children)
-    .reduce((accum: string, child): string => {
+    .reduce<string>((accum: string, child): string => {
       if (typeof child === "string") {
         return `${accum}${child}`;
       }

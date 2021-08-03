@@ -90,9 +90,9 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
               {submodules.map(({ name, to }) => (
                 <SearchItem
                   data-testid="choose-submodule-result"
+                  href={to}
                   key={name}
                   name={name}
-                  onClick={() => navigate(to)}
                 />
               ))}
             </UnorderedList>

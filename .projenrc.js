@@ -72,6 +72,7 @@ const project = new web.NextJsTypeScriptProject({
     "eslint-plugin-prefer-arrow",
     "eslint-plugin-react-hooks",
     "eslint-plugin-react",
+    "eslint-config-next",
   ],
   autoApproveOptions: {
     allowedUsernames: ["aws-cdk-automation"],
@@ -184,6 +185,7 @@ project.eslint.addRules({
 project.eslint.addOverride({
   files: ["src/**/*.tsx", "src/**/*.ts"],
   extends: [
+    "next",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",

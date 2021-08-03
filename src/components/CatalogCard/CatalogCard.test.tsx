@@ -1,5 +1,4 @@
 import { render, cleanup } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
 import catalogFixture from "../../__fixtures__/catalog.json";
 import type { CatalogPackage } from "../../api/package/packages";
 import { CatalogCard, testIds } from "./CatalogCard";
@@ -9,10 +8,7 @@ const [pkg] = catalogFixture.packages;
 describe("<CatalogCard />", () => {
   afterEach(cleanup);
 
-  const renderCard = () =>
-    render(<CatalogCard pkg={pkg as CatalogPackage} />, {
-      wrapper: MemoryRouter,
-    });
+  const renderCard = () => render(<CatalogCard pkg={pkg as CatalogPackage} />);
 
   it("renders expected elements", () => {
     const { queryByTestId, queryAllByTestId } = renderCard();

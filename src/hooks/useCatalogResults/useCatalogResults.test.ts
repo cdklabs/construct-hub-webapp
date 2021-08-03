@@ -17,12 +17,6 @@ const defaultOptions: UseCatalogResultsOptions = {
   language: null,
 };
 
-const defaultCatalogContext = {
-  loading: false,
-  error: undefined,
-  data: catalogFixture,
-};
-
 jest.mock("../../contexts/Catalog", () => ({
   useCatalog: jest.fn(),
 }));
@@ -32,7 +26,7 @@ const useCatalogMock = useCatalog as jest.MockedFunction<typeof useCatalog>;
 describe("useCatalogResults", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    useCatalogMock.mockReturnValue(defaultCatalogContext);
+    useCatalogMock.mockReturnValue(catalogFixture);
   });
 
   afterEach(cleanup);
@@ -40,12 +34,10 @@ describe("useCatalogResults", () => {
   const renderUseCatalog = (options: UseCatalogResultsOptions) =>
     renderHook(() => useCatalogResults(options));
 
-  it("returns pageLimit, results, displayable, loadind, and error state", () => {
+  it("returns pageLimit, results, displayable state", () => {
     const { result } = renderUseCatalog(defaultOptions);
-    const { loading, error, pageLimit, results, displayable } = result.current;
+    const { pageLimit, results, displayable } = result.current;
 
-    expect(typeof loading).toBe("boolean");
-    expect(error).toBeUndefined();
     expect(typeof pageLimit).toBe("number");
     expect(typeof results).toBe("object");
     expect(typeof displayable).toBe("object");
@@ -75,37 +67,6 @@ describe("useCatalogResults", () => {
         Object.keys(languages).includes(Language.DotNet)
       )
     );
-  });
-
-  it("returns empty results if catalog data is loading, errored, or undefined", () => {
-    useCatalogMock.mockReturnValue({
-      ...defaultCatalogContext,
-      loading: true,
-    });
-
-    const { result, rerender } = renderUseCatalog(defaultOptions);
-
-    expect(result.current.loading).toEqual(true);
-    expect(result.current.results).toEqual([]);
-
-    const error = new Error("Test error");
-
-    useCatalogMock.mockReturnValue({
-      ...defaultCatalogContext,
-      error,
-    });
-
-    rerender(defaultOptions);
-
-    expect(result.current.error).toEqual(error);
-    expect(result.current.results).toEqual([]);
-
-    useCatalogMock.mockReturnValue({
-      ...defaultCatalogContext,
-      data: undefined,
-    });
-
-    expect(result.current.results).toEqual([]);
   });
 
   it("filters displayable limit", () => {

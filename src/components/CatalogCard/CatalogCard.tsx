@@ -27,7 +27,6 @@ import { PackageTag } from "../PackageTag";
 import { Time } from "../Time";
 import { CatalogCardContainer } from "./CatalogCardContainer";
 import { CatalogCardSkeleton } from "./CatalogCardSkeleton";
-import { NavLink } from "components/NavLink";
 import { useLanguage } from "hooks/useLanguage";
 
 export const testIds = createTestIds("catalog-card", [

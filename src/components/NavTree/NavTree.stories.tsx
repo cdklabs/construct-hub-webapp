@@ -1,5 +1,4 @@
 import { Story } from "@storybook/react";
-import { MemoryRouter } from "react-router-dom";
 import { NavTree, NavTreeProps } from "./NavTree";
 
 export default {
@@ -14,9 +13,7 @@ export default {
 };
 
 export const Primary: Story<NavTreeProps> = ({ items }) => (
-  <MemoryRouter initialEntries={["/#contents-item-1"]}>
-    <NavTree items={items} />
-  </MemoryRouter>
+  <NavTree items={items} />
 );
 
 Primary.args = {
