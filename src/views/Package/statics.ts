@@ -13,10 +13,11 @@ export type PackageParams = {
   scopedName?: string;
   version: string;
   lang: Language;
+  submodule?: string;
 };
 
 export const getPackageStatics = ({
-  // isSubmodule, // Implement later
+  isSubmodule, // Implement later
   isScoped,
 }: {
   isScoped: boolean;
@@ -60,7 +61,7 @@ export const getPackageStatics = ({
     context
   ) => {
     const { params } = context;
-    const { lang, name, version, scopedName } = params ?? {};
+    const { lang, name, version, scopedName, submodule } = params ?? {};
 
     if (!(name && version)) return { notFound: true };
 
@@ -87,7 +88,8 @@ export const getPackageStatics = ({
       scopedName ?? name,
       version,
       lang!, // TODO: Fix typing
-      scopedName ? name : undefined
+      scopedName ? name : undefined,
+      submodule
     );
 
     return {
@@ -96,15 +98,16 @@ export const getPackageStatics = ({
         metadata,
         markdown,
       },
-      revalidate: 60 * 5, // 5 minutes
+      ...(isSubmodule ? {} : { revalidate: 60 * 5 }),
     };
   };
 
-  const getServerSideProps = getStaticProps;
+  if (isSubmodule) {
+    return { getServerSideProps: getStaticProps };
+  }
 
   return {
     getStaticPaths,
     getStaticProps,
-    getServerSideProps,
   };
 };
