@@ -16,7 +16,6 @@
 /dist/changelog.md
 /dist/version.txt
 /lib
-/storybook-static/
 build/Release
 coverage
 cypress/screenshots/

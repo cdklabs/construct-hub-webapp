@@ -95,52 +95,6 @@ project.addTask("next:start", {
   exec: "next start",
 });
 
-(function addStorybook() {
-  project.addDevDeps(
-    "@storybook/addon-a11y",
-    "@storybook/addon-actions",
-    "@storybook/addon-essentials",
-    "@storybook/addon-links",
-    "@storybook/addon-storysource",
-    "@storybook/node-logger",
-    "@storybook/preset-create-react-app",
-    "@storybook/react",
-    "babel-loader@8.1.0",
-    "storybook-addon-performance",
-    "react-scripts",
-    "storybook-addon-next-router"
-  );
-
-  // Add tasks and config for storybook
-  project.addTask("storybook", {
-    exec: "start-storybook -p 6006 -s public",
-    description: "run local storybook server",
-  });
-
-  // TODO: Evaluate if we want to continue maintaining or just shift to cypress
-  project.addTask("storybook:build", {
-    exec: "build-storybook -s public",
-    description: "build storybook static site assets",
-  });
-
-  project.eslint.addOverride({
-    files: ["**/*.stories.*"],
-    rules: {
-      "import/no-anonymous-default-export": "off",
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          devDependencies: ["**/*.stories.*"],
-          optionalDependencies: false,
-          peerDependencies: true,
-        },
-      ],
-    },
-  });
-
-  project.gitignore?.addPatterns("/storybook-static/");
-})();
-
 // synthesize project files before build
 // see https://github.com/projen/projen/issues/754
 const buildTask = project.tasks.tryFind("build");

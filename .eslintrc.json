@@ -135,24 +135,6 @@
     },
     {
       "files": [
-        "**/*.stories.*"
-      ],
-      "rules": {
-        "import/no-anonymous-default-export": "off",
-        "import/no-extraneous-dependencies": [
-          "error",
-          {
-            "devDependencies": [
-              "**/*.stories.*"
-            ],
-            "optionalDependencies": false,
-            "peerDependencies": true
-          }
-        ]
-      }
-    },
-    {
-      "files": [
         "src/**/*.tsx",
         "src/**/*.ts"
       ],
