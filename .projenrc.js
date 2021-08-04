@@ -32,7 +32,6 @@ const project = new web.NextJsTypeScriptProject({
   eslint: true,
   eslintOptions: {
     prettier: true,
-    ignorePatterns: ["node_modules/", "cypress/"],
   },
 
   tailwind: false,
@@ -65,9 +64,6 @@ const project = new web.NextJsTypeScriptProject({
   gitignore: ["/build", "cypress/videos/", "cypress/screenshots/"],
 
   devDeps: [
-    "@testing-library/react",
-    "@testing-library/react-hooks",
-    "@testing-library/user-event",
     "cypress",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-prefer-arrow",
@@ -81,6 +77,25 @@ const project = new web.NextJsTypeScriptProject({
   },
   autoApproveUpgrades: true,
 });
+
+(function addJest() {
+  project.addDevDeps(
+    "jest",
+    "babel-jest",
+    "ts-node",
+    "@testing-library/react",
+    "@testing-library/jest-dom",
+    "@testing-library/react-hooks",
+    "@testing-library/user-event"
+  );
+
+  project.addTask("test:unit", {
+    exec: "jest",
+  });
+})();
+
+project.eslint.addIgnorePattern("cypress/");
+project.eslint.addIgnorePattern("jest.config.ts");
 
 // Dev Debug Task
 project.addTask("dev:debug", {

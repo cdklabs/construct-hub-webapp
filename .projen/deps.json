@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@testing-library/jest-dom",
+      "type": "build"
+    },
+    {
       "name": "@testing-library/react",
       "type": "build"
     },
@@ -31,6 +35,10 @@
     },
     {
       "name": "@typescript-eslint/parser",
+      "type": "build"
+    },
+    {
+      "name": "babel-jest",
       "type": "build"
     },
     {
@@ -82,6 +90,10 @@
       "type": "build"
     },
     {
+      "name": "jest",
+      "type": "build"
+    },
+    {
       "name": "json-schema",
       "type": "build"
     },
@@ -101,6 +113,10 @@
     {
       "name": "standard-version",
       "version": "^9",
+      "type": "build"
+    },
+    {
+      "name": "ts-node",
       "type": "build"
     },
     {

@@ -35,8 +35,14 @@
     }
   },
   "ignorePatterns": [
+    "*.js",
+    "!.projenrc.js",
+    "*.d.ts",
     "node_modules/",
-    "cypress/"
+    "*.generated.ts",
+    "coverage",
+    "cypress/",
+    "jest.config.ts"
   ],
   "rules": {
     "prettier/prettier": [

@@ -2,6 +2,10 @@ import { renderHook } from "@testing-library/react-hooks";
 import * as languageConstants from "../../constants/languages";
 import { useLanguage } from "./useLanguage";
 
+jest.mock("next/router", () => ({
+  useRouter: jest.fn(() => ({ query: {} })),
+}));
+
 describe("useLanguage", () => {
   const getItem = jest.spyOn(window.localStorage.__proto__, "getItem");
 

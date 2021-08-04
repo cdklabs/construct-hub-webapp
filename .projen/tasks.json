@@ -221,6 +221,14 @@
         }
       ]
     },
+    "test:unit": {
+      "name": "test:unit",
+      "steps": [
+        {
+          "exec": "jest"
+        }
+      ]
+    },
     "dev:debug": {
       "name": "dev:debug",
       "steps": [
