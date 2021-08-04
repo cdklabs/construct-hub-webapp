@@ -1,12 +1,13 @@
 import { Box, Stack, Heading, Skeleton } from "@chakra-ui/react";
 import { FunctionComponent, useState } from "react";
-import { CatalogSearch } from "../../components/CatalogSearch";
-import { Page } from "../../components/Page";
-import { Picture } from "../../components/Picture";
-import { Results } from "../../components/Results";
-import { useCatalogResults } from "../../hooks/useCatalogResults";
-import { useCatalogSearch } from "../../hooks/useCatalogSearch";
+import { testIds } from "./constants";
 import { HomePageControls } from "./HomePageControls";
+import { CatalogSearch } from "components/CatalogSearch";
+import { Page } from "components/Page";
+import { Picture } from "components/Picture";
+import { Results } from "components/Results";
+import { useCatalogResults } from "hooks/useCatalogResults";
+import { useCatalogSearch } from "hooks/useCatalogSearch";
 
 const sources = {
   optimal: [
@@ -51,7 +52,12 @@ export const Home: FunctionComponent = () => {
           p={[10, 15, 20]}
           spacing={8}
         >
-          <Stack color="blue.800" spacing={4} textAlign="center">
+          <Stack
+            color="blue.800"
+            data-testid={testIds.headings}
+            spacing={4}
+            textAlign="center"
+          >
             <Heading size="2xl">
               Find reusable components for your cloud applications
             </Heading>

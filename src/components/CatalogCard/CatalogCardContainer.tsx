@@ -1,7 +1,7 @@
 import { Grid, LinkBox } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Card } from "../Card";
-
+import { testIds } from "./constants";
 const CardContainer: FunctionComponent = ({ children }) => (
   <Card h={64} p={0} w="100%">
     <Grid
@@ -27,10 +27,11 @@ export const CatalogCardContainer: FunctionComponent<{ isLink?: boolean }> = ({
           bg: "gray.50",
         },
       }}
+      data-testid={testIds.container}
     >
       <CardContainer>{children}</CardContainer>
     </LinkBox>
   ) : (
-    <CardContainer>{children}</CardContainer>
+    <CardContainer data-testid={testIds.container}>{children}</CardContainer>
   );
 };

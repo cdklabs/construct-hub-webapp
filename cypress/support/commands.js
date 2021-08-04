@@ -24,4 +24,24 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('getByDataTest', (dataTest) => cy.get(`[data-testid="${dataTest}"]`));
+Cypress.Commands.add("getByDataTest", (dataTest) =>
+  cy.get(`[data-testid="${dataTest}"]`)
+);
+
+Cypress.Commands.add("checkHeaderVisibility", () => {
+  cy.getByDataTest("header-container").should("be.visible");
+});
+
+Cypress.Commands.add("checkCatalogSearchInputs", () => {
+  cy.getByDataTest("catalogSearch-input").should("be.visible");
+  cy.getByDataTest("catalogSearch-languageDropdown").should("be.visible");
+  cy.getByDataTest("catalogSearch-submit").should("be.visible");
+});
+
+Cypress.Commands.add("checkResultCount", (count) => {
+  cy.getByDataTest("catalogCard-container").should("have.length", count);
+});
+
+Cypress.Commands.add("checkFooterVisibility", () => {
+  cy.getByDataTest("footer-container").scrollIntoView().should("be.visible");
+});

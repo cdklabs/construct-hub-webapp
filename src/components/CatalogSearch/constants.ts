@@ -1,6 +1,6 @@
 import { createTestIds } from "../../util/createTestIds";
 
-export const testIds = createTestIds("catalog-search", [
+export const testIds = createTestIds("catalogSearch", [
   "form",
   "input",
   "languageDropdown",

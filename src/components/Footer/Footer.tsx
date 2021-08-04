@@ -12,6 +12,7 @@ export const testIds = createTestIds("footer", [
   "container",
   "links",
   "disclaimer",
+  "manageCookies",
   ...Object.values(FOOTER_LINKS).map(({ testId }) => testId),
 ] as const);
 
@@ -86,6 +87,7 @@ export const Footer: FunctionComponent<FooterProps> = () => {
       </Text>
       <Button
         color="white"
+        data-testid={testIds.manageCookies}
         fontSize="xs"
         fontWeight="normal"
         mt={4}
