@@ -89,12 +89,7 @@
     "react-markdown": "^6.0.3",
     "rehype-raw": "^5.1.0",
     "rehype-sanitize": "^4.0.0",
-    "remark-gfm": "^1.0.0",
-    "workbox-core": "^6.1.5",
-    "workbox-expiration": "^6.1.5",
-    "workbox-precaching": "^6.1.5",
-    "workbox-routing": "^6.1.5",
-    "workbox-strategies": "^6.1.5"
+    "remark-gfm": "^1.0.0"
   },
   "bundledDependencies": [],
   "engines": {

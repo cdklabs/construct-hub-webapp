@@ -53,12 +53,6 @@ const project = new web.NextJsTypeScriptProject({
     "rehype-raw",
     "rehype-sanitize",
     "remark-gfm",
-    // PWA Functionality
-    "workbox-core",
-    "workbox-expiration",
-    "workbox-precaching",
-    "workbox-routing",
-    "workbox-strategies",
   ],
 
   gitignore: ["/build", "cypress/videos/", "cypress/screenshots/"],
