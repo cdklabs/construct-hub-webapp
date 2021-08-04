@@ -12,6 +12,9 @@ import { FormEventHandler, FunctionComponent, useRef } from "react";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { CatalogSearchInputs } from "../CatalogSearch";
 import { Form } from "../Form";
+import { createTestIds } from "util/createTestIds";
+
+export const testIds = createTestIds("searchModal", ["container"] as const);
 
 export interface SearchModalProps {
   isOpen: boolean;
@@ -35,7 +38,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
     <Portal>
       <Modal initialFocusRef={inputRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
-          <ModalContent>
+          <ModalContent data-testid={testIds.container} mx={4}>
             <ModalCloseButton />
             <ModalHeader>Search modules or providers</ModalHeader>
             <ModalBody>

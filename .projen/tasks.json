@@ -37,9 +37,6 @@
       "description": "Only compile",
       "steps": [
         {
-          "spawn": "storybook:build"
-        },
-        {
           "exec": "tsc --build"
         }
       ]
@@ -68,16 +65,13 @@
           "exec": "npx projen"
         },
         {
-          "spawn": "test"
+          "spawn": "eslint"
         },
         {
-          "spawn": "compile"
+          "spawn": "next:build"
         },
         {
-          "spawn": "package"
-        },
-        {
-          "exec": "next build"
+          "spawn": "cypress:ci"
         },
         {
           "spawn": "package"
@@ -235,6 +229,22 @@
         }
       ]
     },
+    "next:build": {
+      "name": "next:build",
+      "steps": [
+        {
+          "exec": "next build"
+        }
+      ]
+    },
+    "next:start": {
+      "name": "next:start",
+      "steps": [
+        {
+          "exec": "next start"
+        }
+      ]
+    },
     "storybook": {
       "name": "storybook",
       "description": "run local storybook server",
@@ -268,6 +278,14 @@
       "steps": [
         {
           "exec": "cypress run"
+        }
+      ]
+    },
+    "cypress:ci": {
+      "name": "cypress:ci",
+      "steps": [
+        {
+          "exec": "next start & npx cypress run && npx kill-port --port 3000"
         }
       ]
     },

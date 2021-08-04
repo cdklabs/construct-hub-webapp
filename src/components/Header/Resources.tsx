@@ -5,12 +5,18 @@ import {
   NavPopoverContent,
   NavPopoverTrigger,
 } from "../NavPopover";
+import { testIds } from "./constants";
 
 export const Resources: FunctionComponent = () => {
   return (
     <NavPopover>
-      <NavPopoverTrigger>Resources</NavPopoverTrigger>
-      <NavPopoverContent items={RESOURCES} />
+      <NavPopoverTrigger data-testid={testIds.resourcesTrigger}>
+        Resources
+      </NavPopoverTrigger>
+      <NavPopoverContent
+        data-testid={testIds.resourcesMenu}
+        items={RESOURCES}
+      />
     </NavPopover>
   );
 };

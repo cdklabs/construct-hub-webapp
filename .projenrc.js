@@ -1,4 +1,4 @@
-const { SourceCode, web } = require("projen");
+const { web } = require("projen");
 
 const project = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -61,7 +61,7 @@ const project = new web.NextJsTypeScriptProject({
     "workbox-strategies",
   ],
 
-  gitignore: ["/build"],
+  gitignore: ["/build", "cypress/videos/", "cypress/screenshots/"],
 
   devDeps: [
     "@testing-library/react",
@@ -86,6 +86,14 @@ project.addTask("dev:debug", {
   exec: "NODE_OPTIONS='--inspect' next dev",
 });
 
+const nextBuild = project.addTask("next:build", {
+  exec: "next build",
+});
+
+project.addTask("next:start", {
+  exec: "next start",
+});
+
 (function addStorybook() {
   project.addDevDeps(
     "@storybook/addon-a11y",
@@ -108,11 +116,11 @@ project.addTask("dev:debug", {
     description: "run local storybook server",
   });
 
-  const storybookBuildTask = project.addTask("storybook:build", {
+  // TODO: Evaluate if we want to continue maintaining or just shift to cypress
+  project.addTask("storybook:build", {
     exec: "build-storybook -s public",
     description: "build storybook static site assets",
   });
-  project.compileTask.prependSpawn(storybookBuildTask);
 
   project.eslint.addOverride({
     files: ["**/*.stories.*"],
@@ -154,6 +162,10 @@ project.addTask("cypress:open", {
 project.addTask("cypress:run", {
   exec: "cypress run",
   description: "run the cypress suite in CLI",
+});
+
+const cypressCI = project.addTask("cypress:ci", {
+  exec: "next start & npx cypress run && npx kill-port --port 3000",
 });
 
 const fetchAssemblies = project.addTask("dev:fetch-assemblies");
@@ -205,5 +217,13 @@ project.eslint.addOverride({
     ],
   },
 });
+
+project.buildTask.reset();
+
+project.buildTask.exec("npx projen");
+project.buildTask.spawn(project.tasks.tryFind("eslint"));
+project.buildTask.spawn(nextBuild);
+project.buildTask.spawn(cypressCI);
+project.buildTask.spawn(project.tasks.tryFind("package"));
 
 project.synth();

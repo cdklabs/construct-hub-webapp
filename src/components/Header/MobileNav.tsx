@@ -9,6 +9,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { testIds } from "./constants";
 import { Documentation } from "./Documentation";
 import { Resources } from "./Resources";
 import { Title } from "./Title";
@@ -26,7 +27,7 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
     <Portal>
       <Drawer isOpen={isOpen} onClose={onClose} placement="left" size="xs">
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent data-testid={testIds.mobileNav}>
           <DrawerCloseButton />
           <DrawerHeader display="flex" justifyContent="center">
             <Title />

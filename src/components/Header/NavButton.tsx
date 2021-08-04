@@ -1,6 +1,7 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { IconButton, useDisclosure } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { testIds } from "./constants";
 import { MobileNav } from "./MobileNav";
 
 export const NavButton: FunctionComponent = () => {
@@ -11,6 +12,7 @@ export const NavButton: FunctionComponent = () => {
       <IconButton
         aria-label="Navigation Menu"
         borderRadius="md"
+        data-testid={testIds.navOpen}
         display={{ md: "none" }}
         icon={<HamburgerIcon />}
         onClick={nav.onOpen}
