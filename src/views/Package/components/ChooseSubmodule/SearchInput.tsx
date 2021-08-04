@@ -10,19 +10,30 @@ import { Form } from "components/Form";
 import { useDebounce } from "hooks/useDebounce";
 
 export interface SearchInputProps {
+  url?: string;
   value: string;
   onChange: (s: string) => void;
-  onSubmit: FormEventHandler<HTMLFormElement>;
 }
 
 export const SearchInput = forwardRef<SearchInputProps, "input">(
-  ({ value, onChange, onSubmit }, inputRef) => {
+  ({ value, onChange, url }, inputRef) => {
     const [inputValue, setInputValue] = useState(value);
 
     useDebounce(inputValue, { onChange });
 
+    const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+      if (!url) {
+        e.preventDefault();
+      }
+    };
+
     return (
-      <Form data-testid="choose-submodule-search-form" onSubmit={onSubmit}>
+      <Form
+        action={url}
+        data-testid="choose-submodule-search-form"
+        method="get"
+        onSubmit={onSubmit}
+      >
         <InputGroup>
           <InputLeftElement>
             <SearchIcon color="gray.400" />

@@ -1,6 +1,6 @@
 import { Package, getPackageStatics } from "views/Package";
 
-export const { getServerSideProps } = getPackageStatics({
+export const { getStaticPaths, getStaticProps } = getPackageStatics({
   isSubmodule: true,
   isScoped: false,
 });

@@ -24,6 +24,14 @@ export const getPackageStatics = ({
   isSubmodule?: boolean;
 }) => {
   const getStaticPaths: GetStaticPaths = async () => {
+    // No way to efficiently pre-generate submodules at build time, so we can just generate them on-demand
+    if (isSubmodule) {
+      return {
+        paths: [],
+        fallback: "blocking",
+      };
+    }
+
     const { packages } = await fetchPackages();
 
     const paths = Object.values(packages)
@@ -62,7 +70,6 @@ export const getPackageStatics = ({
 
     return {
       paths,
-      // Means that pages that haven't yet been generated will be served from SSR first, and generated in background on server
       fallback: "blocking",
     };
   };
@@ -113,13 +120,9 @@ export const getPackageStatics = ({
         metadata,
         markdown,
       },
-      ...(isSubmodule ? {} : { revalidate: 60 * 5 }),
+      revalidate: 60 * 5,
     };
   };
-
-  if (isSubmodule) {
-    return { getServerSideProps: getStaticProps };
-  }
 
   return {
     getStaticPaths,

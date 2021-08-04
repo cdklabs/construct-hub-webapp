@@ -1,7 +1,8 @@
 import { GetServerSideProps } from "next";
 import { CatalogPackage, fetchPackages } from "api/package/packages";
 import { sanitizeVersion } from "api/package/util";
-import { getVersionedPackagePath } from "util/url";
+import { Language } from "constants/languages";
+import { getFullPackagePath } from "util/url";
 
 const extractMajor = (ver: string) => {
   let sanitized = sanitizeVersion(ver);
@@ -51,10 +52,11 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     redirect: {
-      destination: getVersionedPackagePath({
+      destination: getFullPackagePath({
         name: packageName,
         submodule: typeof submodule === "string" ? submodule : undefined,
         version,
+        lang: Language.TypeScript,
       }),
       permanent: false,
     },

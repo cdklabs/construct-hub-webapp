@@ -9,13 +9,7 @@ import {
   ModalOverlay,
   UnorderedList,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import {
-  FormEventHandler,
-  FunctionComponent,
-  useCallback,
-  useRef,
-} from "react";
+import { FunctionComponent, useRef } from "react";
 import { SearchInput } from "./SearchInput";
 import { SearchItem } from "components/SearchItem";
 
@@ -35,26 +29,6 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
   submodules,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { push } = useRouter();
-
-  const navigate = useCallback(
-    (to: string) => {
-      onClose();
-      void push(to);
-    },
-    [onClose, push]
-  );
-
-  const onSubmit = useCallback<FormEventHandler<HTMLFormElement>>(
-    (e) => {
-      e.preventDefault();
-
-      if (!submodules.length) return;
-      const { to } = submodules[0];
-      navigate(to);
-    },
-    [navigate, submodules]
-  );
 
   return (
     <Modal initialFocusRef={inputRef} isOpen={isOpen} onClose={onClose}>
@@ -72,8 +46,8 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
             <Box pb={4} px={4}>
               <SearchInput
                 onChange={onInputChange}
-                onSubmit={onSubmit}
                 ref={inputRef}
+                url={submodules[0]?.to}
                 value={inputValue}
               />
             </Box>

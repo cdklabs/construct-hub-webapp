@@ -9,6 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { sanitizeVersion } from "api/package/util";
+import { useLanguage } from "hooks/useLanguage";
+import { getFullPackagePath } from "util/url";
 
 export interface DependencyDropdownProps {
   dependencies: {
@@ -23,6 +25,7 @@ export const DependencyDropdown: FunctionComponent<DependencyDropdownProps> = ({
   dependencies,
 }) => {
   const depEntries = Object.entries(dependencies);
+  const [lang] = useLanguage();
 
   if (!depEntries.length) return null;
 
@@ -43,7 +46,11 @@ export const DependencyDropdown: FunctionComponent<DependencyDropdownProps> = ({
           <MenuItem key={`${name}/${version}`} p={0}>
             <Link
               h="100%"
-              href={`/packages/${name}/v/${sanitizeVersion(version)}`}
+              href={getFullPackagePath({
+                name,
+                version: sanitizeVersion(version),
+                lang,
+              })}
               p={2}
               w="100%"
             >

@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   return {
     props: {
       packages: data,
+      revalidate: 60, // 1 minute
     },
   };
 };

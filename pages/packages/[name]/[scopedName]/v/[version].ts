@@ -1,3 +1,5 @@
-import { PackageRedirect } from "views/PackageRedirect";
+import { PackageRedirect, getServerSideProps } from "views/PackageRedirect";
+
+export { getServerSideProps };
 
 export default PackageRedirect;
