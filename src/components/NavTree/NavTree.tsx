@@ -10,8 +10,10 @@ export interface NavItemConfig {
 
 export interface NavItemProps extends NavItemConfig {
   // The following props don't need to be explicitly defined - they are passed internally
-  activeUrl: string | null;
-  setActiveUrl: (url: string) => void;
+  location: {
+    pathname: string;
+    hash: string;
+  } | null;
   onOpen?: () => void;
 }
 
@@ -29,30 +31,20 @@ const iconProps = {
 };
 
 export const NavItem: FunctionComponent<NavItemProps> = ({
-  activeUrl,
+  location,
   children,
   display,
   onOpen,
-  setActiveUrl,
   url,
 }) => {
-  const linkIsActive = activeUrl === url;
+  const isHashLink = url.startsWith("#");
+  const linkIsActive = isHashLink
+    ? location?.hash === url
+    : location?.pathname === url;
   const disclosure = useDisclosure({ onOpen });
 
   const showToggle = (children?.length ?? 0) > 0;
   const showChildren = disclosure.isOpen && showToggle;
-
-  useEffect(() => {
-    const isHashLink = url.startsWith("#");
-    const isActive = isHashLink
-      ? window.location.hash === url
-      : window.location.pathname === url;
-
-    if (isActive) {
-      setActiveUrl(url);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     if (linkIsActive) {
@@ -67,15 +59,14 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
         return (
           <NavItem
             {...item}
-            activeUrl={activeUrl}
             key={idx}
+            location={location}
             onOpen={disclosure.onOpen}
-            setActiveUrl={setActiveUrl}
           />
         );
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [activeUrl, children, disclosure.onOpen]
+    [location, children, disclosure.onOpen]
   );
 
   return (
@@ -103,7 +94,6 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
         <Link
           _hover={{ bg: "rgba(0, 124, 253, 0.05)" }}
           href={url}
-          onClick={() => setActiveUrl(url)}
           overflow="hidden"
           pl={showToggle ? 1 : 2}
           py={1.5}
@@ -139,19 +129,29 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
 };
 
 export const NavTree: FunctionComponent<NavTreeProps> = ({ items }) => {
-  const [activeUrl, setActiveUrl] = useState<null | string>(null);
+  const [location, setLocation] = useState<NavItemProps["location"]>(null);
+
+  useEffect(() => {
+    const listener = () => {
+      setLocation({
+        pathname: window.location.pathname,
+        hash: window.location.hash,
+      });
+    };
+
+    // Call listener to update on first render
+    listener();
+
+    window.addEventListener("hashchange", listener);
+
+    return () => window.removeEventListener("hashchange", listener);
+  }, []);
 
   return (
     <Flex direction="column" maxWidth="100%">
       {items.map((item, idx) => {
         return (
-          <NavItem
-            {...item}
-            activeUrl={activeUrl}
-            key={idx}
-            onOpen={undefined}
-            setActiveUrl={setActiveUrl}
-          />
+          <NavItem {...item} key={idx} location={location} onOpen={undefined} />
         );
       })}
     </Flex>

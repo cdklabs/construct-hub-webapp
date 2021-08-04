@@ -1,5 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import type { FunctionComponent } from "react";
 import "index.css";
 import { DevPreviewBanner } from "components/DevPreviewBanner";
@@ -12,6 +13,14 @@ import { Theme } from "contexts/Theme";
 const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   return (
     <ShortbreadProvider>
+      <Head>
+        {/* Sets default title / description */}
+        <title>Construct Hub</title>
+        <meta
+          content="Construct Hub helps developers find open-source construct libraries for use with AWS CDK, CDK8s, CDKTf and other construct-based tools."
+          name="description"
+        />
+      </Head>
       <Theme>
         <ExternalLinkWarningProvider>
           <Grid

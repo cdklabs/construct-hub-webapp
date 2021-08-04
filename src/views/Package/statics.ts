@@ -40,7 +40,7 @@ export const getPackageStatics = ({
         return isScoped ? pkgIsScoped : !pkgIsScoped;
       })
       .sort((p1, p2) => {
-        // Take most recent
+        // Sort most recent updated first
         const d1 = new Date(p1.metadata.date);
         const d2 = new Date(p2.metadata.date);
         if (d1 === d2) {
@@ -48,7 +48,7 @@ export const getPackageStatics = ({
         }
         return d1 < d2 ? 1 : -1;
       })
-      .slice(0, 25) // Take 25 most recent
+      .slice(0, 25) // Take 25 of the most recent from sort
       .reduce<string[]>((allPaths, pkg) => {
         const { name, version, languages } = pkg;
 
