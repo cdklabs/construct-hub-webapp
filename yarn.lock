@@ -5943,9 +5943,9 @@ progress@^2.0.0, progress@^2.0.3:
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
 projen@^0.27.13:
-  version "0.27.13"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.27.13.tgz#3bf800a28d64bf30a4f43a796850ada1b0d98045"
-  integrity sha512-vadyVr1+A9PTKfdQDIzb7rf6WZXqLrwRxo20tj43mlAEeF+mE6k40NzV6B2xDec+/7BeUV75Bsf1dDBrvNRuvw==
+  version "0.27.18"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.27.18.tgz#ccf1b1c28ff8ddcf5d721ff61cb334b2400e665d"
+  integrity sha512-AOBDFOQNzOfsmULH3yhUOtVHO8HENwz7zufirhaHjln1tjBIESRfv5zDYGLs0FdDInueKEJ2igXTKKNcZ1wIPw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.2"
@@ -7100,9 +7100,9 @@ table@^6.0.9:
     strip-ansi "^6.0.0"
 
 tar@^6.0.2, tar@^6.1.0:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.2.tgz#1f045a90a6eb23557a603595f41a16c57d47adc6"
-  integrity sha512-EwKEgqJ7nJoS+s8QfLYVGMDmAsj+StbI2AM/RTHeUSsOw6Z8bwNBRv5z3CY0m7laC5qUAqruLX5AhMuc5deY3Q==
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.4.tgz#9f0722b772a5e00dba7d52e1923b37a7ec3799b3"
+  integrity sha512-kcPWrO8S5ABjuZ/v1xQHP8xCEvj1dQ1d9iAb6Qs4jLYzaAIYWwST2IQpz7Ud8VNYRI+fGhFjrnzRKmRggKWg3g==
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
