@@ -1,7 +1,7 @@
 import { Box, Stack, Heading, Skeleton } from "@chakra-ui/react";
 import { FunctionComponent, useState } from "react";
-import { testIds } from "./constants";
 import { HomePageControls } from "./HomePageControls";
+import testIds from "./testIds";
 import { CatalogSearch } from "components/CatalogSearch";
 import { Page } from "components/Page";
 import { Picture } from "components/Picture";

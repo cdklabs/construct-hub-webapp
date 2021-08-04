@@ -5,7 +5,7 @@ import {
   CatalogSearchInputs,
   CatalogSearchInputsProps,
 } from "./CatalogSearchInputs";
-import { testIds } from "./constants";
+import testIds from "./testIds";
 
 export interface CatalogSearchProps extends CatalogSearchInputsProps {
   /**

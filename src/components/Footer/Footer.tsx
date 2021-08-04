@@ -1,20 +1,12 @@
 import { Box, Button, Divider, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { useShortBread } from "../../contexts/Shortbread";
-import { createTestIds } from "../../util/createTestIds";
 import { ExternalLink } from "../ExternalLink";
 import { NavLink } from "../NavLink";
 import { DISCLAIMER, FOOTER_LINKS } from "./constants";
+import testIds from "./testIds";
 
 export interface FooterProps {}
-
-export const testIds = createTestIds("footer", [
-  "container",
-  "links",
-  "disclaimer",
-  "manageCookies",
-  ...Object.values(FOOTER_LINKS).map(({ testId }) => testId),
-] as const);
 
 export const Footer: FunctionComponent<FooterProps> = () => {
   const { customizeCookies } = useShortBread();

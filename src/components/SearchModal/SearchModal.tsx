@@ -12,9 +12,7 @@ import { FormEventHandler, FunctionComponent, useRef } from "react";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { CatalogSearchInputs } from "../CatalogSearch";
 import { Form } from "../Form";
-import { createTestIds } from "util/createTestIds";
-
-export const testIds = createTestIds("searchModal", ["container"] as const);
+import testIds from "./testIds";
 
 export interface SearchModalProps {
   isOpen: boolean;

@@ -1,7 +1,8 @@
 import { Grid, LinkBox } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Card } from "../Card";
-import { testIds } from "./constants";
+import testIds from "./testIds";
+
 const CardContainer: FunctionComponent = ({ children }) => (
   <Card h={64} p={0} w="100%">
     <Grid

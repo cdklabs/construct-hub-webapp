@@ -1,6 +1,6 @@
 import { createTestIds } from "util/createTestIds";
 
-export const testIds = createTestIds("header", [
+const testIds = createTestIds("header", [
   "container",
   "title",
   "gettingStartedTrigger",
@@ -13,3 +13,5 @@ export const testIds = createTestIds("header", [
   "searchIcon",
   "mobileNav",
 ] as const);
+
+export default testIds;

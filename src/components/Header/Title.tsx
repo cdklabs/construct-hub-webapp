@@ -1,6 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { testIds } from "./constants";
+import testIds from "./testIds";
 import { NavLink } from "components/NavLink";
 
 export const Title: FunctionComponent = () => (

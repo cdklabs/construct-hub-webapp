@@ -5,7 +5,7 @@ import {
 } from "@chakra-ui/icons";
 import { Grid, GridItem, Button, Flex, IconButton } from "@chakra-ui/react";
 import type { Dispatch, FunctionComponent, SetStateAction } from "react";
-import { testIds } from "./constants";
+import testIds from "./testIds";
 
 const iconBtnProps = {
   borderRadius: "md",

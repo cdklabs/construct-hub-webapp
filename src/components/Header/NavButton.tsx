@@ -1,8 +1,8 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { IconButton, useDisclosure } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { testIds } from "./constants";
 import { MobileNav } from "./MobileNav";
+import testIds from "./testIds";
 
 export const NavButton: FunctionComponent = () => {
   const nav = useDisclosure();

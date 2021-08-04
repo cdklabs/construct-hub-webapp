@@ -1,6 +1,6 @@
 import { createTestIds } from "util/createTestIds";
 
-export const testIds = createTestIds("catalogCard", [
+const testIds = createTestIds("catalogCard", [
   "container",
   "title",
   "version",
@@ -10,3 +10,5 @@ export const testIds = createTestIds("catalogCard", [
   "author",
   "languages",
 ] as const);
+
+export default testIds;

@@ -9,9 +9,9 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { testIds } from "./constants";
 import { Documentation } from "./Documentation";
 import { Resources } from "./Resources";
+import testIds from "./testIds";
 import { Title } from "./Title";
 
 export interface MobileNavProps {

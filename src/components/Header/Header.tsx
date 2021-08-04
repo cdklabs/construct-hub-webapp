@@ -1,10 +1,10 @@
 import { Box, Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { testIds } from "./constants";
 import { Documentation } from "./Documentation";
 import { NavButton } from "./NavButton";
 import { Resources } from "./Resources";
 import { SearchButton } from "./SearchButton";
+import testIds from "./testIds";
 import { Title } from "./Title";
 
 const HeaderItem: FunctionComponent<GridItemProps> = (props) => (

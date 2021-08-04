@@ -32,6 +32,7 @@ const project = new web.NextJsTypeScriptProject({
   eslint: true,
   eslintOptions: {
     prettier: true,
+    ignorePatterns: ["node_modules/", "cypress/"],
   },
 
   tailwind: false,

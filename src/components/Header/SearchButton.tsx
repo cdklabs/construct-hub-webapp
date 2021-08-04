@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import type { FunctionComponent } from "react";
 import { ROUTES } from "../../constants/url";
 import { SearchModal } from "../SearchModal";
-import { testIds } from "./constants";
+import testIds from "./testIds";
 
 export const SearchButton: FunctionComponent = () => {
   const searchModal = useDisclosure();

@@ -9,5 +9,21 @@ declare namespace Cypress {
      * @example cy.getByDataTest("header")
      */
     getByDataTest(value: string): Chainable<Element>;
+    /**
+     * Checks header visibility
+     */
+    checkHeaderVisibility(): void;
+    /**
+     * Checks footer visibility
+     */
+    checkFooterVisibility(): void;
+    /**
+     * Checks catalog search input presence
+     */
+    checkCatalogSearchInputs(): void;
+    /**
+     * Checks count of catalog cards on page
+     */
+    checkResultCount(count: number): void;
   }
 }

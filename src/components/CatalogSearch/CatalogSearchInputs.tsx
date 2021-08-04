@@ -5,8 +5,8 @@ import {
   TEMP_SUPPORTED_LANGUAGES,
   LANGUAGE_NAME_MAP,
 } from "../../constants/languages";
-import { testIds } from "./constants";
 import { Dropdown, DropdownProps } from "./Dropdown";
+import testIds from "./testIds";
 
 type LanguageItems = Partial<Record<Language, string>>;
 
