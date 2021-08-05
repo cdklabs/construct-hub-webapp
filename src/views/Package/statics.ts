@@ -17,7 +17,7 @@ export type PackageParams = {
 };
 
 export const getPackageStatics = ({
-  isSubmodule, // Implement later
+  isSubmodule,
   isScoped,
 }: {
   isScoped: boolean;
@@ -35,10 +35,6 @@ export const getPackageStatics = ({
     const { packages } = await fetchPackages();
 
     const paths = Object.values(packages)
-      .filter((pkg) => {
-        const pkgIsScoped = pkg.name.includes("/");
-        return isScoped ? pkgIsScoped : !pkgIsScoped;
-      })
       .sort((p1, p2) => {
         // Sort most recent updated first
         const d1 = new Date(p1.metadata.date);
@@ -49,6 +45,11 @@ export const getPackageStatics = ({
         return d1 < d2 ? 1 : -1;
       })
       .slice(0, 25) // Take 25 of the most recent from sort
+      .filter((pkg) => {
+        // Filter out the packages that don't match the route
+        const pkgIsScoped = pkg.name.includes("/");
+        return isScoped ? pkgIsScoped : !pkgIsScoped;
+      })
       .reduce<string[]>((allPaths, pkg) => {
         const { name, version, languages } = pkg;
 

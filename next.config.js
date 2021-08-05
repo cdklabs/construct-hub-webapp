@@ -4,7 +4,8 @@ const imgSrc = "img-src 'self' https://* http://*;";
 let scriptSrc = "script-src 'self' https://*.awsstatic.com;";
 
 if (process.env.NODE_ENV === "development") {
-  scriptSrc = scriptSrc.replace(";", " 'unsafe-eval' 'unsafe-inline';"); // HMR
+  // Hot-module reloading
+  scriptSrc = scriptSrc.replace(";", " 'unsafe-eval' 'unsafe-inline';");
 }
 
 const styleSrc = "style-src 'unsafe-inline' 'self';";
