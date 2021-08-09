@@ -55,10 +55,7 @@ const project = new web.ReactTypeScriptProject({
   ],
 
   devDeps: [
-    "@testing-library/react-hooks",
-    "@testing-library/user-event",
     "@types/react-router-dom",
-    "cypress",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-prefer-arrow",
     "eslint-plugin-react-hooks",
@@ -72,48 +69,64 @@ const project = new web.ReactTypeScriptProject({
   autoApproveUpgrades: true,
 });
 
-(function addStorybook() {
-  project.addDevDeps(
-    "@storybook/addon-a11y",
-    "@storybook/addon-actions",
-    "@storybook/addon-essentials",
-    "@storybook/addon-links",
-    "@storybook/addon-storysource",
-    "@storybook/node-logger",
-    "@storybook/preset-create-react-app",
-    "@storybook/react",
-    "babel-loader@8.1.0",
-    "storybook-addon-performance"
-  );
+(function addCypress() {
+  project.addDevDeps("cypress");
 
-  // Add tasks and config for storybook
-  project.addTask("storybook", {
-    exec: "start-storybook -p 6006 -s public",
-    description: "run local storybook server",
+  project.addTask("cypress:open", {
+    exec: "cypress open",
+    description: "open the cypress test runner UI",
   });
 
-  const storybookBuildTask = project.addTask("storybook:build", {
-    exec: "build-storybook -s public",
-    description: "build storybook static site assets",
+  project.addTask("cypress:run", {
+    exec: "cypress run",
+    description: "run the cypress suite in CLI",
   });
-  project.compileTask.prependSpawn(storybookBuildTask);
 
-  project.eslint.addOverride({
-    files: ["**/*.stories.*"],
-    rules: {
-      "import/no-anonymous-default-export": "off",
-      "import/no-extraneous-dependencies": [
-        "error",
+  project.gitignore.addPatterns("cypress/videos/", "cypress/screenshots/");
+  project.eslint.addIgnorePattern("cypress/");
+
+  project.buildWorkflow.addJobs({
+    cypress: {
+      permissions: {
+        checks: "write",
+        contents: "read",
+      },
+      steps: [
         {
-          devDependencies: ["**/*.stories.*"],
-          optionalDependencies: false,
-          peerDependencies: true,
+          name: "Checkout",
+          uses: "actions/checkout@v2",
+        },
+        {
+          name: "Cypress Run",
+          uses: "cypress-io/gitub-action@v2",
+          with: {
+            install: false,
+            start: "yarn dev",
+            "wait-on": "'localhost:3000'",
+          },
         },
       ],
     },
   });
+})();
 
-  project.gitignore?.addPatterns("/storybook-static/");
+(function addJest() {
+  project.addDevDeps(
+    // "jest",
+    // "babel-jest",
+    // "ts-node",
+    "@testing-library/react",
+    "@testing-library/jest-dom",
+    "@testing-library/react-hooks",
+    "@testing-library/user-event"
+  );
+
+  project.addTask("test:unit", {
+    // exec: "jest",
+    exec: "npx react-app-rewired test",
+  });
+
+  project.eslint.addIgnorePattern("jest.config.ts");
 })();
 
 // synthesize project files before build
@@ -128,17 +141,6 @@ project.npmignore.addPatterns("/public");
 
 // test fixtures
 project.npmignore.addPatterns("src/__fixtures__");
-
-// cypress e2e runner
-project.addTask("cypress:open", {
-  exec: "cypress open",
-  description: "open the cypress test runner UI",
-});
-
-project.addTask("cypress:run", {
-  exec: "cypress run",
-  description: "run the cypress suite in CLI",
-});
 
 const fetchAssemblies = project.addTask("dev:fetch-assemblies");
 fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);

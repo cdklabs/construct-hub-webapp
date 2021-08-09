@@ -16,9 +16,10 @@
 /dist/changelog.md
 /dist/version.txt
 /lib
-/storybook-static/
 build/Release
 coverage
+cypress/screenshots/
+cypress/videos/
 jspm_packages/
 lerna-debug.log*
 lib-cov

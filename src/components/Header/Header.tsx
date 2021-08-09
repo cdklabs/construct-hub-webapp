@@ -4,6 +4,7 @@ import { Documentation } from "./Documentation";
 import { NavButton } from "./NavButton";
 import { Resources } from "./Resources";
 import { SearchButton } from "./SearchButton";
+import testIds from "./testIds";
 import { Title } from "./Title";
 
 const HeaderItem: FunctionComponent<GridItemProps> = (props) => (
@@ -17,7 +18,7 @@ export const Header: FunctionComponent = () => {
       as="header"
       bg="white"
       boxShadow="base"
-      data-testid="header"
+      data-testid={testIds.container}
       gap={4}
       gridTemplateColumns={{
         base: "1fr 3fr 1fr",

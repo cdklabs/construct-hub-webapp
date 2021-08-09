@@ -5,6 +5,7 @@ import {
 } from "@chakra-ui/icons";
 import { Grid, GridItem, Button, Flex, IconButton } from "@chakra-ui/react";
 import type { Dispatch, FunctionComponent, SetStateAction } from "react";
+import testIds from "./testIds";
 
 const iconBtnProps = {
   borderRadius: "md",
@@ -54,6 +55,7 @@ export const HomePageControls: FunctionComponent<HomePageControlsProps> = ({
       <GridItem colStart={2} justifySelf="center">
         <Button
           colorScheme="blue"
+          data-testid={testIds.nextPageBtn}
           disabled={nextDisabled}
           onClick={getNextPage}
           rightIcon={<ArrowForwardIcon color="white" />}
@@ -65,6 +67,7 @@ export const HomePageControls: FunctionComponent<HomePageControlsProps> = ({
         <Flex align="center" justify="center" py={4}>
           <IconButton
             aria-label="Previous Page"
+            data-testid={testIds.prevIcon}
             disabled={prevDisabled}
             icon={<ChevronLeftIcon {...iconProps} />}
             onClick={getPrevPage}
@@ -72,6 +75,7 @@ export const HomePageControls: FunctionComponent<HomePageControlsProps> = ({
           />
           <IconButton
             aria-label="Next Page"
+            data-testid={testIds.nextIcon}
             disabled={nextDisabled}
             icon={<ChevronRightIcon {...iconProps} />}
             onClick={getNextPage}

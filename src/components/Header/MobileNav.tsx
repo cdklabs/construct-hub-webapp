@@ -11,8 +11,8 @@ import {
 import { FunctionComponent } from "react";
 import { Documentation } from "./Documentation";
 import { Resources } from "./Resources";
+import testIds from "./testIds";
 import { Title } from "./Title";
-
 export interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
@@ -26,7 +26,7 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
     <Portal>
       <Drawer isOpen={isOpen} onClose={onClose} placement="left" size="xs">
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent data-testid={testIds.mobileNav}>
           <DrawerCloseButton />
           <DrawerHeader display="flex" justifyContent="center">
             <Title />

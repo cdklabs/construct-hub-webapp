@@ -49,3 +49,16 @@ jobs:
           echo "The self-mutation commit has been marked as successful, and no further action should be necessary."
 
           exit 1
+  cypress:
+    permissions:
+      checks: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress Run
+        uses: cypress-io/gitub-action@v2
+        with:
+          install: false
+          start: yarn dev
+          wait-on: "'localhost:3000'"

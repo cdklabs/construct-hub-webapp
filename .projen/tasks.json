@@ -34,12 +34,7 @@
     },
     "compile": {
       "name": "compile",
-      "description": "Only compile",
-      "steps": [
-        {
-          "spawn": "storybook:build"
-        }
-      ]
+      "description": "Only compile"
     },
     "test:compile": {
       "name": "test:compile",
@@ -209,24 +204,6 @@
         }
       ]
     },
-    "storybook": {
-      "name": "storybook",
-      "description": "run local storybook server",
-      "steps": [
-        {
-          "exec": "start-storybook -p 6006 -s public"
-        }
-      ]
-    },
-    "storybook:build": {
-      "name": "storybook:build",
-      "description": "build storybook static site assets",
-      "steps": [
-        {
-          "exec": "build-storybook -s public"
-        }
-      ]
-    },
     "cypress:open": {
       "name": "cypress:open",
       "description": "open the cypress test runner UI",
@@ -242,6 +219,14 @@
       "steps": [
         {
           "exec": "cypress run"
+        }
+      ]
+    },
+    "test:unit": {
+      "name": "test:unit",
+      "steps": [
+        {
+          "exec": "npx react-app-rewired test"
         }
       ]
     },

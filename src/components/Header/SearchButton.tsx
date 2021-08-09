@@ -4,6 +4,7 @@ import type { FunctionComponent } from "react";
 import { useLocation } from "react-router-dom";
 import { ROUTES } from "../../constants/url";
 import { SearchModal } from "../SearchModal";
+import testIds from "./testIds";
 
 export const SearchButton: FunctionComponent = () => {
   const searchModal = useDisclosure();
@@ -20,6 +21,7 @@ export const SearchButton: FunctionComponent = () => {
         align="center"
         color="gray.600"
         colorScheme="gray"
+        data-testid={testIds.searchButton}
         display={{ base: "none", md: "flex" }}
         fontWeight="medium"
         justifyContent="space-between"
@@ -36,6 +38,7 @@ export const SearchButton: FunctionComponent = () => {
       <IconButton
         aria-label="Search Icon"
         borderRadius="md"
+        data-testid={testIds.searchIcon}
         display={{ base: "initial", md: "none" }}
         icon={<SearchIcon color="gray.600" />}
         onClick={searchModal.onOpen}
