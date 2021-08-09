@@ -29,7 +29,7 @@ export const AnalyticsProvider: FunctionComponent = ({ children }) => {
         return;
       }
 
-      window?.AWSMA?.ready(() => {
+      window?.AWSMA?.ready?.(() => {
         document.dispatchEvent(
           new CustomEvent(window.AWSMA.TRIGGER_EVENT, { detail: opts })
         );

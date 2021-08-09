@@ -1,7 +1,7 @@
 import type { IMenuItems } from "../components/NavPopover";
 
 export const DOCUMENTATION: IMenuItems = [
-  { display: "FAQ", url: "https://constructs.dev/faq" },
+  { display: "FAQ", isNavLink: true, url: "/faq" },
   {
     display: "Construct Hub on GitHub",
     url: "https://github.com/cdklabs/construct-hub",
