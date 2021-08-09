@@ -82,6 +82,10 @@ const project = new web.ReactTypeScriptProject({
     description: "run the cypress suite in CLI",
   });
 
+  project.addTask("start:ci", {
+    exec: "CHOKIDAR_USEPOLLING=1 npx react-app-rewired start",
+  });
+
   project.gitignore.addPatterns("cypress/videos/", "cypress/screenshots/");
   project.eslint.addIgnorePattern("cypress/");
 
@@ -106,7 +110,7 @@ const project = new web.ReactTypeScriptProject({
           name: "Cypress Run",
           uses: "cypress-io/github-action@v2",
           with: {
-            start: "CHOKIDAR_USEPOLLING=1 yarn dev",
+            start: "yarn start:ci",
             "wait-on": "http://localhost:3000",
           },
         },

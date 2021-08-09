@@ -64,5 +64,5 @@ jobs:
       - name: Cypress Run
         uses: cypress-io/github-action@v2
         with:
-          start: CHOKIDAR_USEPOLLING=1 yarn dev
+          start: yarn start:ci
           wait-on: http://localhost:3000

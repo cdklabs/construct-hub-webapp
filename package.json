@@ -22,6 +22,7 @@
     "eject": "npx projen eject",
     "cypress:open": "npx projen cypress:open",
     "cypress:run": "npx projen cypress:run",
+    "start:ci": "npx projen start:ci",
     "test:unit": "npx projen test:unit",
     "dev:fetch-assemblies": "npx projen dev:fetch-assemblies",
     "release": "npx projen release",

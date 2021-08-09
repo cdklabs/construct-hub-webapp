@@ -222,6 +222,14 @@
         }
       ]
     },
+    "start:ci": {
+      "name": "start:ci",
+      "steps": [
+        {
+          "exec": "CHOKIDAR_USEPOLLING=1 npx react-app-rewired start"
+        }
+      ]
+    },
     "test:unit": {
       "name": "test:unit",
       "steps": [
