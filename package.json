@@ -20,7 +20,6 @@
     "eslint": "npx projen eslint",
     "dev": "npx projen dev",
     "eject": "npx projen eject",
-    "dev:ci": "npx projen dev:ci",
     "cypress:open": "npx projen cypress:open",
     "cypress:run": "npx projen cypress:run",
     "test:unit": "npx projen test:unit",

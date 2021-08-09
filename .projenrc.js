@@ -69,10 +69,6 @@ const project = new web.ReactTypeScriptProject({
   autoApproveUpgrades: true,
 });
 
-project.addTask("dev:ci", {
-  exec: "CHOKIDAR_USEPOLLING=1 npx react-app-rewired start",
-});
-
 (function addCypress() {
   project.addDevDeps("cypress");
 
@@ -91,6 +87,7 @@ project.addTask("dev:ci", {
 
   project.buildWorkflow.addJobs({
     cypress: {
+      name: "E2E Tests",
       runsOn: "ubuntu-latest",
       permissions: {
         checks: "write",
@@ -102,10 +99,14 @@ project.addTask("dev:ci", {
           uses: "actions/checkout@v2",
         },
         {
+          name: "Setup kernel for React, increase watchers",
+          run: "echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p",
+        },
+        {
           name: "Cypress Run",
           uses: "cypress-io/github-action@v2",
           with: {
-            start: "yarn dev:ci",
+            start: "CHOKIDAR_USEPOLLING=1 yarn dev",
             "wait-on": "http://localhost:3000",
           },
         },

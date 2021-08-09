@@ -50,6 +50,7 @@ jobs:
 
           exit 1
   cypress:
+    name: E2E Tests
     runs-on: ubuntu-latest
     permissions:
       checks: write
@@ -57,8 +58,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Setup kernel for React, increase watchers
+        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &&
+          sudo sysctl -p
       - name: Cypress Run
         uses: cypress-io/github-action@v2
         with:
-          start: yarn dev:ci
+          start: CHOKIDAR_USEPOLLING=1 yarn dev
           wait-on: http://localhost:3000
