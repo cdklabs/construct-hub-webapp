@@ -102,7 +102,7 @@ const project = new web.ReactTypeScriptProject({
           uses: "cypress-io/github-action@v2",
           with: {
             start: "yarn dev",
-            "wait-on": "localhost:3000",
+            "wait-on": "http://localhost:3000",
           },
         },
       ],
