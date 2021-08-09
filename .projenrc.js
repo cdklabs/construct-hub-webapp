@@ -87,6 +87,7 @@ const project = new web.ReactTypeScriptProject({
 
   project.buildWorkflow.addJobs({
     cypress: {
+      runsOn: "ubuntu-latest",
       permissions: {
         checks: "write",
         contents: "read",
@@ -100,9 +101,8 @@ const project = new web.ReactTypeScriptProject({
           name: "Cypress Run",
           uses: "cypress-io/gitub-action@v2",
           with: {
-            install: false,
             start: "yarn dev",
-            "wait-on": "'localhost:3000'",
+            "wait-on": "localhost:3000",
           },
         },
       ],
