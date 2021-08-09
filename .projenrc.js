@@ -69,6 +69,10 @@ const project = new web.ReactTypeScriptProject({
   autoApproveUpgrades: true,
 });
 
+project.addTask("dev:ci", {
+  exec: "CHOKIDAR_USEPOLLING=1 npx react-app-rewired start",
+});
+
 (function addCypress() {
   project.addDevDeps("cypress");
 
@@ -101,7 +105,7 @@ const project = new web.ReactTypeScriptProject({
           name: "Cypress Run",
           uses: "cypress-io/github-action@v2",
           with: {
-            start: "yarn dev",
+            start: "yarn dev:ci",
             "wait-on": "http://localhost:3000",
           },
         },

@@ -204,6 +204,14 @@
         }
       ]
     },
+    "dev:ci": {
+      "name": "dev:ci",
+      "steps": [
+        {
+          "exec": "CHOKIDAR_USEPOLLING=1 npx react-app-rewired start"
+        }
+      ]
+    },
     "cypress:open": {
       "name": "cypress:open",
       "description": "open the cypress test runner UI",
