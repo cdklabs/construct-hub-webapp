@@ -133,11 +133,6 @@ const project = new web.NextJsTypeScriptProject({
   });
 })();
 
-// synthesize project files before build
-// see https://github.com/projen/projen/issues/754
-const buildTask = project.tasks.tryFind("build");
-buildTask.spawn(project.packageTask);
-
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
 project.npmignore.addPatterns("!/build");
@@ -149,12 +144,6 @@ fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
 // these are development assemblies fetched specifically
 // by each developer.
 project.gitignore.exclude("public/data");
-
-// Proxy requests to awscdk.io for local testing
-project.package.addField(
-  "proxy",
-  "https://construct-hub-testing.dev-tools.aws.dev/"
-);
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
