@@ -16,7 +16,6 @@ import {
   LANGUAGE_RENDER_MAP,
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
-import { createTestIds } from "../../util/createTestIds";
 import {
   getVersionedPackagePath,
   getFullPackagePath,
@@ -27,17 +26,8 @@ import { PackageTag } from "../PackageTag";
 import { Time } from "../Time";
 import { CatalogCardContainer } from "./CatalogCardContainer";
 import { CatalogCardSkeleton } from "./CatalogCardSkeleton";
+import testIds from "./testIds";
 import { useLanguage } from "hooks/useLanguage";
-
-export const testIds = createTestIds("catalog-card", [
-  "name",
-  "version",
-  "tags",
-  "description",
-  "date",
-  "author",
-  "language",
-] as const);
 
 export interface CatalogCardProps {
   /**
@@ -177,7 +167,12 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
           </Link>
 
           {/* Language Support Icons */}
-          <LinkBox align="center" as={Stack} direction="row">
+          <LinkBox
+            align="center"
+            as={Stack}
+            data-testid={testIds.languages}
+            direction="row"
+          >
             {Object.entries(LANGUAGE_RENDER_MAP)
               // Ensure entries are always sorted in a stable way
               .sort(
@@ -204,7 +199,6 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                 const icon = (
                   <Icon
                     aria-label={`Supports ${name}`}
-                    data-testid={testIds.language}
                     h={6}
                     opacity={isSupportedByConstructHub ? 1 : 0.2}
                     w={6}

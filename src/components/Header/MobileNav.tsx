@@ -13,7 +13,6 @@ import { Documentation } from "./Documentation";
 import { Resources } from "./Resources";
 import testIds from "./testIds";
 import { Title } from "./Title";
-
 export interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;

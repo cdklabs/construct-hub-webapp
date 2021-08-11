@@ -41,8 +41,8 @@
     "node_modules/",
     "*.generated.ts",
     "coverage",
-    "cypress/",
-    "jest.config.ts"
+    "jest.config.ts",
+    "cypress/"
   ],
   "rules": {
     "prettier/prettier": [

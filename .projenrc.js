@@ -55,10 +55,7 @@ const project = new web.NextJsTypeScriptProject({
     "remark-gfm",
   ],
 
-  gitignore: ["/build", "cypress/videos/", "cypress/screenshots/"],
-
   devDeps: [
-    "cypress",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-prefer-arrow",
     "eslint-plugin-react-hooks",
@@ -86,17 +83,36 @@ const project = new web.NextJsTypeScriptProject({
   project.addTask("test:unit", {
     exec: "jest",
   });
+
+  project.eslint.addIgnorePattern("jest.config.ts");
 })();
 
-project.eslint.addIgnorePattern("cypress/");
-project.eslint.addIgnorePattern("jest.config.ts");
+(function addCypress() {
+  project.addDevDeps("cypress");
+  project.eslint.addIgnorePattern("cypress/");
+  project.gitignore.addPatterns("cypress/videos/", "cypress/screenshots/");
+
+  project.addTask("cypress:open", {
+    exec: "cypress open",
+    description: "open the cypress test runner UI",
+  });
+
+  project.addTask("cypress:run", {
+    exec: "cypress run",
+    description: "run the cypress suite in CLI",
+  });
+
+  project.addTask("cypress:ci", {
+    exec: "next start & npx cypress run && npx kill-port --port 3000",
+  });
+})();
 
 // Dev Debug Task
 project.addTask("dev:debug", {
   exec: "NODE_OPTIONS='--inspect' next dev",
 });
 
-const nextBuild = project.addTask("next:build", {
+project.addTask("next:build", {
   exec: "next build",
 });
 
@@ -116,21 +132,6 @@ project.npmignore.addPatterns("/public");
 
 // test fixtures
 project.npmignore.addPatterns("src/__fixtures__");
-
-// cypress e2e runner
-project.addTask("cypress:open", {
-  exec: "cypress open",
-  description: "open the cypress test runner UI",
-});
-
-project.addTask("cypress:run", {
-  exec: "cypress run",
-  description: "run the cypress suite in CLI",
-});
-
-const cypressCI = project.addTask("cypress:ci", {
-  exec: "next start & npx cypress run && npx kill-port --port 3000",
-});
 
 const fetchAssemblies = project.addTask("dev:fetch-assemblies");
 fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
@@ -186,8 +187,8 @@ project.buildTask.reset();
 
 project.buildTask.exec("npx projen");
 project.buildTask.spawn(project.tasks.tryFind("eslint"));
-project.buildTask.spawn(nextBuild);
-project.buildTask.spawn(cypressCI);
+project.buildTask.spawn(project.tasks.tryFind("next:build"));
+project.buildTask.spawn(project.tasks.tryFind("cypress:ci"));
 project.buildTask.spawn(project.tasks.tryFind("package"));
 
 project.synth();

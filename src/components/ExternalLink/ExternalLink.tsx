@@ -29,7 +29,7 @@ export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
         ref={ref}
         {...props}
       >
-        {children} {hasIcon && <ExternalLinkIcon mb={1} />}
+        {children} {hasIcon && <ExternalLinkIcon mb={1} ml={2} />}
       </Link>
     );
   }

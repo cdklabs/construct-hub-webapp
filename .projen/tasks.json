@@ -107,9 +107,21 @@
         }
       ]
     },
+    "publish:github": {
+      "name": "publish:github",
+      "description": "Publish this package to GitHub Releases",
+      "requiredEnv": [
+        "GITHUB_TOKEN"
+      ],
+      "steps": [
+        {
+          "exec": "gh release create v$(cat dist/version.txt) -R ${{ github.repository }} -F dist/changelog.md -t v$(cat dist/version.txt)"
+        }
+      ]
+    },
     "publish:npm": {
       "name": "publish:npm",
-      "description": "Publish this package to the npm Registry",
+      "description": "Publish this package to npm",
       "env": {
         "NPM_DIST_TAG": "latest",
         "NPM_REGISTRY": "registry.npmjs.org"
@@ -123,8 +135,8 @@
         }
       ]
     },
-    "upgrade-dependencies": {
-      "name": "upgrade-dependencies",
+    "upgrade": {
+      "name": "upgrade",
       "description": "upgrade dependencies",
       "env": {
         "CI": "0"
@@ -229,30 +241,6 @@
         }
       ]
     },
-    "dev:debug": {
-      "name": "dev:debug",
-      "steps": [
-        {
-          "exec": "NODE_OPTIONS='--inspect' next dev"
-        }
-      ]
-    },
-    "next:build": {
-      "name": "next:build",
-      "steps": [
-        {
-          "exec": "next build"
-        }
-      ]
-    },
-    "next:start": {
-      "name": "next:start",
-      "steps": [
-        {
-          "exec": "next start"
-        }
-      ]
-    },
     "cypress:open": {
       "name": "cypress:open",
       "description": "open the cypress test runner UI",
@@ -276,6 +264,30 @@
       "steps": [
         {
           "exec": "next start & npx cypress run && npx kill-port --port 3000"
+        }
+      ]
+    },
+    "dev:debug": {
+      "name": "dev:debug",
+      "steps": [
+        {
+          "exec": "NODE_OPTIONS='--inspect' next dev"
+        }
+      ]
+    },
+    "next:build": {
+      "name": "next:build",
+      "steps": [
+        {
+          "exec": "next build"
+        }
+      ]
+    },
+    "next:start": {
+      "name": "next:start",
+      "steps": [
+        {
+          "exec": "next start"
         }
       ]
     },

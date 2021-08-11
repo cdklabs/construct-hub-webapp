@@ -1,10 +1,10 @@
-import { createTestIds } from "util/createTestIds";
+import { createTestIds } from "../../util/createTestIds";
 
 const testIds = createTestIds("catalogCard", [
   "container",
-  "title",
+  "name",
   "version",
-  "tag",
+  "tags",
   "description",
   "date",
   "author",
