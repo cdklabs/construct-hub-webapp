@@ -30,6 +30,8 @@
     "dev:debug": "npx projen dev:debug",
     "next:build": "npx projen next:build",
     "next:start": "npx projen next:start",
+    "lint": "npx projen lint",
+    "tsc": "npx projen tsc",
     "dev:fetch-assemblies": "npx projen dev:fetch-assemblies",
     "release": "npx projen release",
     "projen": "npx projen"

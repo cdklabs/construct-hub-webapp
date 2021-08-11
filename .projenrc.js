@@ -84,6 +84,7 @@ const project = new web.NextJsTypeScriptProject({
     exec: "jest",
   });
 
+  project.npmignore.addPatterns("src/__fixtures__");
   project.eslint.addIgnorePattern("jest.config.ts");
 })();
 
@@ -107,18 +108,30 @@ const project = new web.NextJsTypeScriptProject({
   });
 })();
 
-// Dev Debug Task
-project.addTask("dev:debug", {
-  exec: "NODE_OPTIONS='--inspect' next dev",
-});
+(function addNextTasks() {
+  // Dev Debug Task
+  project.addTask("dev:debug", {
+    exec: "NODE_OPTIONS='--inspect' next dev",
+  });
 
-project.addTask("next:build", {
-  exec: "next build",
-});
+  project.addTask("next:build", {
+    exec: "next build",
+  });
 
-project.addTask("next:start", {
-  exec: "next start",
-});
+  project.addTask("next:start", {
+    exec: "next start",
+  });
+})();
+
+(function addLintScripts() {
+  project.addTask("lint", {
+    exec: "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern pages src .projenrc.js",
+  });
+
+  project.addTask("tsc", {
+    exec: "tsc",
+  });
+})();
 
 // synthesize project files before build
 // see https://github.com/projen/projen/issues/754
@@ -129,9 +142,6 @@ buildTask.spawn(project.packageTask);
 // directory, which is the output of our static website.
 project.npmignore.addPatterns("!/build");
 project.npmignore.addPatterns("/public");
-
-// test fixtures
-project.npmignore.addPatterns("src/__fixtures__");
 
 const fetchAssemblies = project.addTask("dev:fetch-assemblies");
 fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
@@ -186,7 +196,9 @@ project.eslint.addOverride({
 project.buildTask.reset();
 
 project.buildTask.exec("npx projen");
-project.buildTask.spawn(project.tasks.tryFind("eslint"));
+project.buildTask.spawn(project.tasks.tryFind("tsc"));
+project.buildTask.spawn(project.tasks.tryFind("lint"));
+project.buildTask.spawn(project.tasks.tryFind("test:unit"));
 project.buildTask.spawn(project.tasks.tryFind("next:build"));
 project.buildTask.spawn(project.tasks.tryFind("cypress:ci"));
 project.buildTask.spawn(project.tasks.tryFind("package"));

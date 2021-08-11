@@ -65,7 +65,13 @@
           "exec": "npx projen"
         },
         {
-          "spawn": "eslint"
+          "spawn": "tsc"
+        },
+        {
+          "spawn": "lint"
+        },
+        {
+          "spawn": "test:unit"
         },
         {
           "spawn": "next:build"
@@ -288,6 +294,22 @@
       "steps": [
         {
           "exec": "next start"
+        }
+      ]
+    },
+    "lint": {
+      "name": "lint",
+      "steps": [
+        {
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern pages src .projenrc.js"
+        }
+      ]
+    },
+    "tsc": {
+      "name": "tsc",
+      "steps": [
+        {
+          "exec": "tsc"
         }
       ]
     },
