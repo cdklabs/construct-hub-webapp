@@ -47,3 +47,20 @@ jobs:
           }}/actions/runs/${{ github.run_id }}/cancel
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  cypress:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup kernel for React, increase watchers
+        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &&
+          sudo sysctl -p
+      - name: Cypress Run
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn start:ci
+          wait-on: http://localhost:3000

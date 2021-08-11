@@ -21,6 +21,7 @@ import { useLanguage } from "../../hooks/useLanguage";
 import { CatalogSearchInputs } from "../CatalogSearch";
 import { Form } from "../Form";
 import { SearchItem } from "../SearchItem";
+import testIds from "./testIds";
 
 export interface SearchModalProps {
   isOpen: boolean;
@@ -63,7 +64,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
     <Portal>
       <Modal initialFocusRef={inputRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
-          <ModalContent>
+          <ModalContent data-testid={testIds.container}>
             <ModalCloseButton />
             <ModalHeader>Search modules or providers</ModalHeader>
             <ModalBody>
