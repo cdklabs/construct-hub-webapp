@@ -16,7 +16,9 @@ const project = new web.NextJsTypeScriptProject({
   // in order to be able to publish this as an npm module.
   releaseToNpm: true,
   releaseWorkflow: true,
-  package: true,
+  // This project will provide it's own pack script
+  package: false,
+  sampleCode: false,
   tsconfig: {
     compilerOptions: {
       rootDir: ".",
@@ -26,7 +28,7 @@ const project = new web.NextJsTypeScriptProject({
         "*": ["*"],
       },
     },
-    include: ["src/**/*.ts", "src/**/*.tsx", "pages/**/*.tsx"],
+    include: ["src/**/*.ts", "src/**/*.tsx"],
   },
 
   eslint: true,
@@ -62,6 +64,7 @@ const project = new web.NextJsTypeScriptProject({
     "eslint-plugin-react",
     "eslint-config-next",
   ],
+
   autoApproveOptions: {
     allowedUsernames: ["aws-cdk-automation"],
     secret: "GITHUB_TOKEN",
@@ -84,13 +87,14 @@ const project = new web.NextJsTypeScriptProject({
     exec: "jest",
   });
 
-  project.npmignore.addPatterns("src/__fixtures__");
+  project.npmignore.addPatterns("src/__fixtures__", "jest.config.js");
   project.eslint.addIgnorePattern("jest.config.ts");
 })();
 
 (function addCypress() {
   project.addDevDeps("cypress");
   project.eslint.addIgnorePattern("cypress/");
+  project.npmignore.addPatterns("cypress/");
   project.gitignore.addPatterns("cypress/videos/", "cypress/screenshots/");
 
   project.addTask("cypress:open", {
@@ -136,16 +140,7 @@ const project = new web.NextJsTypeScriptProject({
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
 project.npmignore.addPatterns("!/build");
-project.npmignore.addPatterns("/public");
 
-const fetchAssemblies = project.addTask("dev:fetch-assemblies");
-fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
-
-// these are development assemblies fetched specifically
-// by each developer.
-project.gitignore.exclude("public/data");
-
-// setup linting for create-react-app specific tools
 project.eslint.addRules({
   "import/no-extraneous-dependencies": [
     "error",
@@ -190,6 +185,5 @@ project.buildTask.spawn(project.tasks.tryFind("lint"));
 project.buildTask.spawn(project.tasks.tryFind("test:unit"));
 project.buildTask.spawn(project.tasks.tryFind("next:build"));
 project.buildTask.spawn(project.tasks.tryFind("cypress:ci"));
-project.buildTask.spawn(project.tasks.tryFind("package"));
 
 project.synth();

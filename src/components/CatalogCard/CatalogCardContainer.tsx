@@ -24,7 +24,7 @@ export const CatalogCardContainer: FunctionComponent<{ isLink?: boolean }> = ({
   return isLink ? (
     <LinkBox
       _hover={{
-        "> :first-child": {
+        "> :first-of-type": {
           bg: "gray.50",
         },
       }}

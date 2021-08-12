@@ -78,9 +78,6 @@
         },
         {
           "spawn": "cypress:ci"
-        },
-        {
-          "spawn": "package"
         }
       ]
     },
@@ -176,21 +173,6 @@
       "steps": [
         {
           "exec": "tsc --build -w"
-        }
-      ]
-    },
-    "package": {
-      "name": "package",
-      "description": "Create an npm tarball",
-      "steps": [
-        {
-          "exec": "mkdir -p dist/js"
-        },
-        {
-          "exec": "yarn pack"
-        },
-        {
-          "exec": "mv *.tgz dist/js/"
         }
       ]
     },
@@ -310,14 +292,6 @@
       "steps": [
         {
           "exec": "tsc"
-        }
-      ]
-    },
-    "dev:fetch-assemblies": {
-      "name": "dev:fetch-assemblies",
-      "steps": [
-        {
-          "exec": "node scripts/fetch-assemblies.js"
         }
       ]
     },

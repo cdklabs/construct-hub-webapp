@@ -10,11 +10,12 @@
 /dist/changelog.md
 /dist/version.txt
 /pages
-/public
 /test
 /tsconfig.eslint.json
 /tsconfig.json
+cypress/
 dist
+jest.config.js
 src/__fixtures__
 tsconfig.tsbuildinfo
 !/build

@@ -22,12 +22,12 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
         />
         {/* Meta */}
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#ffffff" />
-        <link rel="apple-touch-icon" href="/logo192.png" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <link href="/favicon.ico" rel="icon" />
+        <meta content="#ffffff" name="theme-color" />
+        <link href="/logo192.png" rel="apple-touch-icon" />
 
-        <link rel="manifest" href="/manifest.json" />
+        <link href="/manifest.json" rel="manifest" />
         <script src="https://a0.awsstatic.com/s_code/js/3.0/awshome_s_code.js"></script>
       </Head>
       <Theme>
