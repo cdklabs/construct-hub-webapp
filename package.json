@@ -49,7 +49,7 @@
     "cypress": "^7.7.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-node": "^0.3.5",
+    "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -60,7 +60,7 @@
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
     "prettier": "^2.3.2",
-    "projen": "^0.27.28",
+    "projen": "^0.27.30",
     "react-app-rewired": "^2.1.8",
     "standard-version": "^9",
     "typescript": "^4.0.3"
