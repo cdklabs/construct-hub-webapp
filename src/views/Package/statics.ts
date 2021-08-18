@@ -16,13 +16,15 @@ export type PackageParams = {
   submodule?: string;
 };
 
+export interface GetPackageStaticsParams {
+  isScoped: boolean;
+  isSubmodule?: boolean;
+}
+
 export const getPackageStatics = ({
   isSubmodule,
   isScoped,
-}: {
-  isScoped: boolean;
-  isSubmodule?: boolean;
-}) => {
+}: GetPackageStaticsParams) => {
   const getStaticPaths: GetStaticPaths = async () => {
     // No way to efficiently pre-generate submodules at build time, so we can just generate them on-demand
     if (isSubmodule) {
