@@ -1,10 +1,9 @@
-import getConfig from "next/config";
 import { Language } from "../../constants/languages";
 import { API_PATHS } from "../../constants/url";
 import { Metadata } from "./metadata";
+import config from "config";
 
-const { serverRuntimeConfig } = getConfig();
-const { apiUrl } = serverRuntimeConfig;
+const { apiUrl } = config;
 
 export interface Author {
   readonly name: string;

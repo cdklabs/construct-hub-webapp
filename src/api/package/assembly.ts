@@ -1,10 +1,9 @@
 import * as spec from "@jsii/spec";
-import getConfig from "next/config";
 import { API_PATHS } from "../../constants/url";
 import { getAssetsPath } from "./util";
+import config from "config";
 
-const { serverRuntimeConfig } = getConfig();
-const { apiUrl } = serverRuntimeConfig;
+const { apiUrl } = config;
 
 /**
  * Fetch assembly of a specific package from the backend.

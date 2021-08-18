@@ -1,8 +1,7 @@
-import getConfig from "next/config";
 import { getAssetsPath } from "./util";
+import config from "config";
 
-const { serverRuntimeConfig } = getConfig();
-const { apiUrl } = serverRuntimeConfig;
+const { apiUrl } = config;
 
 /**
  * Fetch markdown docs of a specific package from the backend.

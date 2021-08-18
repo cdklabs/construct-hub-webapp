@@ -1,9 +1,8 @@
-import getConfig from "next/config";
 import { API_PATHS } from "../../constants/url";
 import { getAssetsPath } from "./util";
+import config from "config";
 
-const { serverRuntimeConfig } = getConfig();
-const { apiUrl } = serverRuntimeConfig;
+const { apiUrl } = config;
 
 export interface Metadata {
   date: string;

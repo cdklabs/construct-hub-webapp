@@ -9,6 +9,8 @@ const project = new web.NextJsTypeScriptProject({
   authorEmail: "construct-ecosystem-team@amazon.com",
   authorName: "Amazon Web Services, Inc.",
 
+  npmignore: ["!/src", "!/.projenrc.js", "!/tsconfig.json", "/**/.test.ts"],
+
   // Repository information
   repository: "https://github.com/cdklabs/construct-hub-webapp.git",
 
@@ -16,8 +18,6 @@ const project = new web.NextJsTypeScriptProject({
   // in order to be able to publish this as an npm module.
   releaseToNpm: true,
   releaseWorkflow: true,
-  // This project will provide it's own pack script
-  package: false,
   sampleCode: false,
   tsconfig: {
     compilerOptions: {
@@ -136,10 +136,6 @@ const project = new web.NextJsTypeScriptProject({
     exec: "tsc",
   });
 })();
-
-// npm tarball will only include the contents of the "build"
-// directory, which is the output of our static website.
-project.npmignore.addPatterns("!/build");
 
 project.eslint.addRules({
   "import/no-extraneous-dependencies": [

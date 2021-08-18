@@ -94,9 +94,7 @@ export const getPackageStatics = ({
         assembly = await fetchAssembly(name, version);
         metadata = await fetchMetadata(name, version);
       }
-    } catch (e) {
-      console.error(e);
-
+    } catch {
       return {
         notFound: true,
       };
