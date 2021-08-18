@@ -122,6 +122,10 @@ const project = new web.NextJsTypeScriptProject({
     exec: "next build",
   });
 
+  project.addTask("next:build-ci", {
+    exec: 'API_URL="https://constructs.dev" next build',
+  });
+
   project.addTask("next:start", {
     exec: "next start",
   });
@@ -179,7 +183,7 @@ project.buildTask.exec("npx projen");
 project.buildTask.spawn(project.tasks.tryFind("tsc"));
 project.buildTask.spawn(project.tasks.tryFind("lint"));
 project.buildTask.spawn(project.tasks.tryFind("test:unit"));
-project.buildTask.spawn(project.tasks.tryFind("next:build"));
+project.buildTask.spawn(project.tasks.tryFind("next:build-ci"));
 project.buildTask.spawn(project.tasks.tryFind("cypress:ci"));
 
 project.synth();
