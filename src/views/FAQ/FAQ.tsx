@@ -55,7 +55,7 @@ export const FAQ: FunctionComponent = () => (
               to publish it to the{" "}
               <FAQLink href="https://www.npmjs.com/">npmjs.com</FAQLink>{" "}
               registry, use a permissive license (Apache, BSD, MIT), and
-              annotate it with one of the supported keywords (awscdk, cdk8s or
+              annotate it with one of the supported keywords (aws-cdk, cdk8s or
               cdktf).
             </p>
             <p>
