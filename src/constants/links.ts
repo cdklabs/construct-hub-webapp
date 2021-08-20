@@ -1,7 +1,12 @@
 import type { IMenuItems } from "../components/NavPopover";
+import config from "../config";
+
+const { disableContent } = config;
 
 export const DOCUMENTATION: IMenuItems = [
-  { display: "FAQ", isNavLink: true, url: "/faq" },
+  ...(disableContent.faq
+    ? []
+    : [{ display: "FAQ", isNavLink: true, url: "/faq" }]),
   {
     display: "Construct Hub on GitHub",
     url: "https://github.com/cdklabs/construct-hub",

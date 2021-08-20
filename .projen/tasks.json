@@ -69,13 +69,7 @@
           "spawn": "compile"
         },
         {
-          "spawn": "package"
-        },
-        {
           "exec": "react-app-rewired build"
-        },
-        {
-          "spawn": "package"
         }
       ]
     },
@@ -174,21 +168,6 @@
         }
       ]
     },
-    "package": {
-      "name": "package",
-      "description": "Create an npm tarball",
-      "steps": [
-        {
-          "exec": "mkdir -p dist/js"
-        },
-        {
-          "exec": "yarn pack"
-        },
-        {
-          "exec": "mv *.tgz dist/js/"
-        }
-      ]
-    },
     "eslint": {
       "name": "eslint",
       "description": "Runs eslint against the codebase",
@@ -247,14 +226,6 @@
       "steps": [
         {
           "exec": "npx react-app-rewired test"
-        }
-      ]
-    },
-    "dev:fetch-assemblies": {
-      "name": "dev:fetch-assemblies",
-      "steps": [
-        {
-          "exec": "node scripts/fetch-assemblies.js"
         }
       ]
     },

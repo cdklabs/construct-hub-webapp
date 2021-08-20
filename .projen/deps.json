@@ -143,10 +143,6 @@
       "type": "runtime"
     },
     {
-      "name": "case",
-      "type": "runtime"
-    },
-    {
       "name": "copy-to-clipboard",
       "type": "runtime"
     },
