@@ -27,7 +27,6 @@ logs
 node_modules/
 npm-debug.log*
 pids
-public/data
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 yarn-debug.log*
 yarn-error.log*

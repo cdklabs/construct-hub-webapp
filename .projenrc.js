@@ -16,7 +16,7 @@ const project = new web.ReactTypeScriptProject({
   // in order to be able to publish this as an npm module.
   releaseToNpm: true,
   releaseWorkflow: true,
-  package: true,
+  package: false,
   tsconfig: {
     compilerOptions: {
       target: "es6",
@@ -35,8 +35,7 @@ const project = new web.ReactTypeScriptProject({
     "@emotion/styled@^11",
     "hast-util-sanitize",
     "@jsii/spec",
-    "case",
-    "copy-to-clipboard",
+    "copy-to-clipboard", // Used by Chakra-UI, included for testing
     "date-fns",
     "framer-motion@^4",
     "jsii-reflect",
@@ -138,31 +137,11 @@ const project = new web.ReactTypeScriptProject({
   project.eslint.addIgnorePattern("jest.config.ts");
 })();
 
-// synthesize project files before build
-// see https://github.com/projen/projen/issues/754
-const buildTask = project.tasks.tryFind("build");
-buildTask.spawn(project.packageTask);
-
-// npm tarball will only include the contents of the "build"
-// directory, which is the output of our static website.
-project.npmignore.addPatterns("!/build");
-project.npmignore.addPatterns("/public");
-
 // test fixtures
 project.npmignore.addPatterns("src/__fixtures__");
 
-const fetchAssemblies = project.addTask("dev:fetch-assemblies");
-fetchAssemblies.exec(`node scripts/fetch-assemblies.js`);
-
-// these are development assemblies fetched specifically
-// by each developer.
-project.gitignore.exclude("public/data");
-
 // Proxy requests to awscdk.io for local testing
-project.package.addField(
-  "proxy",
-  "https://construct-hub-testing.dev-tools.aws.dev/"
-);
+project.package.addField("proxy", "https://constructs.dev/");
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
@@ -201,7 +180,7 @@ project.eslint.addOverride({
 });
 
 // rewire cra tasks, all apart from eject.
-rewireCRA(buildTask);
+rewireCRA(project.tasks.tryFind("build"));
 rewireCRA(project.tasks.tryFind("test"));
 rewireCRA(project.tasks.tryFind("dev"));
 addBuildConfig();
@@ -227,7 +206,19 @@ function rewireCRA(craTask) {
  * Use an `.env.local` file to override for local development.
  */
 function addBuildConfig() {
-  project.gitignore?.addPatterns(".env.local");
+  project.gitignore.addPatterns(".env.local");
+  project.npmignore.addPatterns(".env.local");
+
+  // This repo will export it's source code, so we'll set the necessary file patterns here
+  project.package.addField("files", [
+    "src/**",
+    "public/**",
+    "config-overrides.js",
+    "react-app-env.d.ts",
+    "tsconfig.json",
+    ".projen/**",
+    ".projenrc.js",
+  ]);
 
   const config = new SourceCode(project, ".env");
   // Remove inline scripts to allow strict CSP policy.
