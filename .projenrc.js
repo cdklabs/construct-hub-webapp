@@ -16,7 +16,7 @@ const project = new web.ReactTypeScriptProject({
   // in order to be able to publish this as an npm module.
   releaseToNpm: true,
   releaseWorkflow: true,
-  package: false,
+  package: true,
   tsconfig: {
     compilerOptions: {
       target: "es6",
