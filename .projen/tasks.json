@@ -69,6 +69,9 @@
           "spawn": "compile"
         },
         {
+          "spawn": "package"
+        },
+        {
           "exec": "react-app-rewired build"
         }
       ]
@@ -165,6 +168,21 @@
       "steps": [
         {
           "exec": "tsc --build -w"
+        }
+      ]
+    },
+    "package": {
+      "name": "package",
+      "description": "Create an npm tarball",
+      "steps": [
+        {
+          "exec": "mkdir -p dist/js"
+        },
+        {
+          "exec": "yarn pack"
+        },
+        {
+          "exec": "mv *.tgz dist/js/"
         }
       ]
     },
