@@ -44,6 +44,7 @@ const project = new web.ReactTypeScriptProject({
     "react-router-dom",
     "rehype-raw",
     "rehype-sanitize",
+    "remark-emoji",
     "remark-gfm",
     // PWA Functionality
     "workbox-core",

@@ -9,6 +9,7 @@ import type { TableCellComponent } from "react-markdown/src/ast-to-react";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import remarkGfm from "remark-gfm";
+import remarkEmoji from "remark-emoji";
 import { Code } from "./Code";
 import { Headings } from "./Headings";
 import { Hr } from "./Hr";
@@ -66,7 +67,7 @@ const rehypePlugins: PluggableList = [
   // ALWAYS keep rehypeSanitize LAST!
   [rehypeSanitize, ghSchema],
 ];
-const remarkPlugins = [remarkGfm];
+const remarkPlugins = [remarkGfm, remarkEmoji];
 
 const GITHUB_REPO_REGEX =
   /^(?:(?:git@)?github\.com:|(?:https?:\/\/)github\.com\/)([^/]+)\/([^/]+)(?:\.git)?$/;
