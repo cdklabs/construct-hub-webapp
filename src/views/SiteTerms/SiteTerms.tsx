@@ -24,7 +24,10 @@ export const SiteTerms: FunctionComponent = () => (
             Welcome to the AWS CDK Construct Hub site (the “AWS Site” or
             “Construct Hub”). Except as specifically follows, the AWS CDK
             Construct Hub site shall be subject to the{" "}
-            <ExternalLink href="https://aws.amazon.com/terms/">
+            <ExternalLink
+              hasWarning={false}
+              href="https://aws.amazon.com/terms/"
+            >
               Site Terms
             </ExternalLink>{" "}
             (“AWS Site Terms”) and considered an AWS Site for purposes of
@@ -34,7 +37,10 @@ export const SiteTerms: FunctionComponent = () => (
           <Text>
             In place of the “License and Site Access” term of the AWS Site
             Terms, the Construct Hub is provided to you under this license:{" "}
-            <ExternalLink href="https://github.com/cdklabs/construct-hub-webapp/blob/main/LICENSE">
+            <ExternalLink
+              hasWarning={false}
+              href="https://github.com/cdklabs/construct-hub-webapp/blob/main/LICENSE"
+            >
               https://github.com/cdklabs/construct-hub-webapp/blob/main/LICENSE
             </ExternalLink>
             . Some AWS Content and Third-Party Content may be provided to you

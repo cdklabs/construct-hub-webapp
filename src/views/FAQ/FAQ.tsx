@@ -35,7 +35,7 @@ export const FAQ: FunctionComponent = () => (
             <p>
               The Construct Hub is a central, trusted venue CDK developers can
               use to discover published constructs to help them build their
-              applications. In the Preview Construct Hub you can discover
+              applications. In the Dev Preview Construct Hub you can discover
               constructs in TypeScript and Python and read their documentation
               and improved API reference in the programming language that the
               package supports.
@@ -162,8 +162,8 @@ export const FAQ: FunctionComponent = () => (
               .
             </p>
           </FAQItem>
-          <FAQItem question="What programming languages are supported in Preview?">
-            <p>The Construct Hub Preview supports Python and TypeScript.</p>
+          <FAQItem question="What programming languages are supported in Dev Preview?">
+            <p>The Construct Hub Dev Preview supports Python and TypeScript.</p>
           </FAQItem>
           <FAQItem question="Is the support for .NET, Java and Go in the roadmap?">
             <p>Yes.</p>
@@ -180,7 +180,7 @@ export const FAQ: FunctionComponent = () => (
           </FAQItem>
           <FAQItem question="How can I install a package?">
             <p>
-              Press “Use Construct” in the package page and you’ll see the
+              Press “Install” in the package page and you’ll see the
               installation instructions.
             </p>
           </FAQItem>
