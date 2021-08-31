@@ -18,11 +18,12 @@ export const appendItem = (itemTree: Item[], item: Element): Item[] => {
     return itemTree;
   }
 
-  const { headingId, headingTitle = "", headingLevel = "100" } = item.dataset;
+  const { headingId, headingLevel = "100" } = item.dataset;
+  const { innerText } = item;
   const level = parseInt(headingLevel);
 
   // Don't create nav items for items with no title / url
-  if (level > 3 || !headingTitle || !headingId) {
+  if (level > 3 || !innerText || !headingId) {
     return itemTree;
   }
 
@@ -32,7 +33,7 @@ export const appendItem = (itemTree: Item[], item: Element): Item[] => {
     return [
       ...itemTree,
       {
-        display: headingTitle,
+        display: innerText,
         url: `#${headingId}`,
         level,
         children: [],
