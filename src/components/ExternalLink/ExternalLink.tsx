@@ -11,14 +11,32 @@ export interface ExternalLinkProps extends LinkProps {
    * Prompts the user to confirm leaving the site. `true` by default
    */
   hasWarning?: boolean;
+  /**
+   * Adds the nofollow annotation to the anchor's rel attribute
+   */
+  noFollow?: boolean;
 }
 
 export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
   (
-    { children, hasIcon = true, hasWarning = true, href, onClick, ...props },
+    {
+      children,
+      hasIcon = true,
+      hasWarning = true,
+      href,
+      onClick,
+      noFollow,
+      ...props
+    },
     ref
   ) => {
     const withPrompt = useExternalLinkWarning();
+
+    let rel = "noopener noreferrer";
+
+    if (hasWarning || noFollow) {
+      rel += " nofollow";
+    }
 
     return (
       <Link
@@ -27,6 +45,7 @@ export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
         isExternal
         onClick={hasWarning ? withPrompt({ href, onClick }) : onClick}
         ref={ref}
+        rel={rel}
         {...props}
       >
         {children} {hasIcon && <ExternalLinkIcon mb={1} ml={2} />}
