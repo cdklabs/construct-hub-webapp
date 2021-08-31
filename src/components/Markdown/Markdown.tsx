@@ -8,8 +8,8 @@ import ReactMarkdown, {
 import type { TableCellComponent } from "react-markdown/src/ast-to-react";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
-import remarkGfm from "remark-gfm";
 import remarkEmoji from "remark-emoji";
+import remarkGfm from "remark-gfm";
 import { Code } from "./Code";
 import { Headings } from "./Headings";
 import { Hr } from "./Hr";
