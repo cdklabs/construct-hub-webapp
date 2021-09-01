@@ -2,7 +2,6 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   Button,
   Checkbox,
-  Link,
   Modal,
   ModalBody,
   ModalContent,
@@ -18,6 +17,7 @@ import {
   MouseEventHandler,
   useState,
 } from "react";
+import { ExternalLink } from "../../components/ExternalLink";
 import {
   ExternalLinkPromptOptions,
   PREFERS_WARN_ON_EXTERNAL_LINK_CLICK,
@@ -93,7 +93,13 @@ export const ExternalLinkWarningModal: FunctionComponent<ExternalLinkWarningModa
               </Button>
 
               <Tooltip hasArrow label={href} placement="top">
-                <Link href={href} isExternal onClick={onProceed}>
+                <ExternalLink
+                  hasIcon={false}
+                  hasWarning={false}
+                  href={href}
+                  noFollow
+                  onClick={onProceed}
+                >
                   <Button
                     colorScheme="blue"
                     ml={4}
@@ -103,7 +109,7 @@ export const ExternalLinkWarningModal: FunctionComponent<ExternalLinkWarningModa
                   >
                     Proceed
                   </Button>
-                </Link>
+                </ExternalLink>
               </Tooltip>
             </ModalFooter>
           </ModalContent>
