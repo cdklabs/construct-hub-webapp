@@ -126,6 +126,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                     language={currentLanguage}
                     mr={1}
                     value={`"${tag}"`}
+                    zIndex="0 !important"
                   >
                     {tag}
                   </PackageTag>

@@ -197,6 +197,10 @@
       "type": "runtime"
     },
     {
+      "name": "remark-emoji",
+      "type": "runtime"
+    },
+    {
       "name": "remark-gfm",
       "type": "runtime"
     },
