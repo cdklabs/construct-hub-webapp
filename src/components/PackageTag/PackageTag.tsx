@@ -1,13 +1,14 @@
 import { Tag, TagLabel, TagProps } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
 import { Language } from "../../constants/languages";
 import { getSearchPath } from "../../util/url";
+import { NavLink } from "../NavLink";
 
 export interface PackageTagProps extends TagProps {
   language?: Language;
   value: string;
   label?: string;
+  zIndex?: string | number;
 }
 
 export const PackageTag: FunctionComponent<PackageTagProps> = ({
@@ -15,16 +16,23 @@ export const PackageTag: FunctionComponent<PackageTagProps> = ({
   language,
   value,
   label = value,
+  zIndex,
   ...tagProps
 }) => {
   return (
-    <Link
+    <NavLink
       aria-label={`Tag: ${label}`}
       to={getSearchPath({ query: `${value}`, language })}
+      zIndex={zIndex}
     >
-      <Tag {...tagProps}>
+      <Tag
+        _hover={{
+          textDecoration: "underline",
+        }}
+        {...tagProps}
+      >
         <TagLabel>{children}</TagLabel>
       </Tag>
-    </Link>
+    </NavLink>
   );
 };

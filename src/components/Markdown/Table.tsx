@@ -13,9 +13,7 @@ import { FunctionComponent } from "react";
 
 const Table: FunctionComponent = ({ children }) => (
   <Box maxW="100%" overflowX="auto">
-    <ChakraTable variant="striped" w="min">
-      {children}
-    </ChakraTable>
+    <ChakraTable variant="striped">{children}</ChakraTable>
   </Box>
 );
 
