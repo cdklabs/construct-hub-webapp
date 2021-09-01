@@ -83,6 +83,7 @@
     "react-scripts": "^4.0.0",
     "rehype-raw": "^5.1.0",
     "rehype-sanitize": "^4.0.0",
+    "remark-emoji": "*",
     "remark-gfm": "^1.0.0",
     "web-vitals": "^1.1.2",
     "workbox-core": "^6.2.4",
