@@ -29,8 +29,10 @@ const project = new web.ReactTypeScriptProject({
   },
 
   deps: [
+    "@chakra-ui/anatomy",
     "@chakra-ui/icons",
     "@chakra-ui/react",
+    "@chakra-ui/theme-tools",
     "@emotion/react@^11",
     "@emotion/styled@^11",
     "hast-util-sanitize",

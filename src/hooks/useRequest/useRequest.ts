@@ -62,7 +62,7 @@ export const useRequest = <T extends PromiseFn>(
           setData(res);
           setLoading(false);
         }
-      } catch (e) {
+      } catch (e: any) {
         console.error(e);
         onError?.(e);
 
