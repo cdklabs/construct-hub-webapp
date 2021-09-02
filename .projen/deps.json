@@ -121,11 +121,19 @@
       "type": "build"
     },
     {
+      "name": "@chakra-ui/anatomy",
+      "type": "runtime"
+    },
+    {
       "name": "@chakra-ui/icons",
       "type": "runtime"
     },
     {
       "name": "@chakra-ui/react",
+      "type": "runtime"
+    },
+    {
+      "name": "@chakra-ui/theme-tools",
       "type": "runtime"
     },
     {

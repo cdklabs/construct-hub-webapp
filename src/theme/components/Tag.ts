@@ -1,14 +1,17 @@
+import type { tagAnatomy } from "@chakra-ui/anatomy";
 import { theme } from "@chakra-ui/react";
+import type {
+  PartsStyleInterpolation,
+  StyleFunctionProps,
+} from "@chakra-ui/theme-tools";
 
 const createVariant =
   (
-    variant: (props: Record<string, any>) => {
-      container: { [key: string]: any };
-    },
+    variant: PartsStyleInterpolation<typeof tagAnatomy>,
     overrides: Record<string, any>
   ) =>
-  (props: Record<string, any>) => {
-    const varBase = variant(props);
+  (props: StyleFunctionProps) => {
+    const varBase = typeof variant === "function" ? variant(props) : variant;
     return {
       ...varBase,
       container: {
