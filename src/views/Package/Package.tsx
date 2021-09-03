@@ -7,6 +7,7 @@ import { fetchMetadata } from "../../api/package/metadata";
 import { Page } from "../../components/Page";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
+import { useConfig } from "../../contexts/Config";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest } from "../../hooks/useRequest";
@@ -27,6 +28,7 @@ export const Package: FunctionComponent = () => {
   const [requestMarkdown, markdownResponse] = useRequest(fetchMarkdown);
   const [requestAssembly, assemblyResponse] = useRequest(fetchAssembly);
   const [requestMetadata, metadataResponse] = useRequest(fetchMetadata);
+  const configResponse = useConfig();
 
   const q = useQueryParams();
   const [language] = useLanguage();
@@ -66,6 +68,7 @@ export const Package: FunctionComponent = () => {
         <Box px={4}>
           <PackageDetails
             assembly={assemblyResponse}
+            config={configResponse}
             metadata={metadataResponse}
             version={version}
           />

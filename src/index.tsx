@@ -5,6 +5,7 @@ import "./index.css";
 import { App } from "./App";
 import { AnalyticsProvider } from "./contexts/Analytics";
 import { CatalogProvider } from "./contexts/Catalog";
+import { ConfigProvider } from "./contexts/Config";
 import { ExternalLinkWarningProvider } from "./contexts/ExternalLinkWarning";
 import { ShortbreadProvider } from "./contexts/Shortbread";
 import { Theme } from "./contexts/Theme";
@@ -13,19 +14,21 @@ import { reportWebVitals } from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ShortbreadProvider>
-      <Router>
-        <AnalyticsProvider>
-          <Theme>
-            <ExternalLinkWarningProvider>
-              <CatalogProvider>
-                <App />
-              </CatalogProvider>
-            </ExternalLinkWarningProvider>
-          </Theme>
-        </AnalyticsProvider>
-      </Router>
-    </ShortbreadProvider>
+    <ConfigProvider>
+      <ShortbreadProvider>
+        <Router>
+          <AnalyticsProvider>
+            <Theme>
+              <ExternalLinkWarningProvider>
+                <CatalogProvider>
+                  <App />
+                </CatalogProvider>
+              </ExternalLinkWarningProvider>
+            </Theme>
+          </AnalyticsProvider>
+        </Router>
+      </ShortbreadProvider>
+    </ConfigProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

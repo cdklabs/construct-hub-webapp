@@ -1,6 +1,7 @@
 import { Center, Divider, Flex, Grid, Spinner, Stack } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
+import { Config } from "../../../../api/config";
 import type { Metadata } from "../../../../api/package/metadata";
 import { Card } from "../../../../components/Card";
 import type { UseRequestResponse } from "../../../../hooks/useRequest";
@@ -10,6 +11,7 @@ import { PackageHeader } from "../PackageHeader";
 import { UseConstruct } from "../UseConstruct";
 
 interface PackageDetailsProps {
+  config: UseRequestResponse<Config>;
   assembly: UseRequestResponse<Assembly>;
   metadata: UseRequestResponse<Metadata>;
   version: string;
@@ -21,6 +23,7 @@ interface PackageDetailsProps {
  */
 export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
   assembly,
+  config,
   metadata,
   version,
 }) => {
@@ -56,7 +59,17 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
           display={{ base: "initial", md: "none" }}
           orientation="horizontal"
         />
-        <OperatorArea assembly={assembly.data} metadata={metadata.data} />
+        {config.loading ? (
+          <Center minH="200px">
+            <Spinner size="xl" />
+          </Center>
+        ) : (
+          <OperatorArea
+            assembly={assembly.data}
+            linksConfig={config.data?.packageLinks}
+            metadata={metadata.data}
+          />
+        )}
       </Grid>
       <Stack
         align="center"

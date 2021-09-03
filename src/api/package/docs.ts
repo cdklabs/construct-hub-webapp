@@ -1,7 +1,4 @@
-import config from "../../config";
 import { getAssetsPath } from "./util";
-
-const { apiUrl } = config;
 
 /**
  * Fetch markdown docs of a specific package from the backend.
@@ -16,7 +13,7 @@ export const fetchMarkdown = async (
   const docsSuffix = `/docs-${submodule ? `${submodule}-` : ""}${language}.md`;
 
   const markdownPath = `${getAssetsPath(name, version, scope)}${docsSuffix}`;
-  const response = await fetch(apiUrl + markdownPath);
+  const response = await fetch(markdownPath);
   if (!response.ok) {
     throw new Error(
       `Failed fetching documentation for ${markdownPath}: ${response.statusText}`
