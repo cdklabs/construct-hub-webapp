@@ -1,9 +1,6 @@
 import * as spec from "@jsii/spec";
-import config from "../../config";
 import { API_PATHS } from "../../constants/url";
 import { getAssetsPath } from "./util";
-
-const { apiUrl } = config;
 
 /**
  * Fetch assembly of a specific package from the backend.
@@ -16,7 +13,7 @@ export const fetchAssembly = async (
   const assemblyPath = `${getAssetsPath(name, version, scope)}${
     API_PATHS.ASSEMBLY_SUFFIX
   }`;
-  const response = await fetch(apiUrl + assemblyPath);
+  const response = await fetch(assemblyPath);
   if (!response.ok) {
     throw new Error(
       `Failed fetching assembly for ${assemblyPath}: ${response.statusText}`

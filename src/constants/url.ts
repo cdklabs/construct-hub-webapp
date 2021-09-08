@@ -3,6 +3,7 @@ export const API_PATHS = {
   CATALOG_SUFFIX: "/catalog.json",
   ASSEMBLY_SUFFIX: "/assembly.json",
   METADATA_SUFFIX: "/metadata.json",
+  CONFIG: "/config.json",
 } as const;
 
 export const QUERY_PARAMS = {

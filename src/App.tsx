@@ -4,7 +4,6 @@ import { Switch, Route } from "react-router-dom";
 import { DevPreviewBanner } from "./components/DevPreviewBanner";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
-import config from "./config";
 import { ROUTES } from "./constants/url";
 import { FAQ } from "./views/FAQ";
 import { Home } from "./views/Home";
@@ -12,8 +11,6 @@ import { NotFound } from "./views/NotFound";
 import { Packages } from "./views/Packages";
 import { SearchResults } from "./views/SearchResults";
 import { SiteTerms } from "./views/SiteTerms";
-
-const { disableContent } = config;
 
 export const App: FunctionComponent = () => {
   return (
@@ -32,7 +29,7 @@ export const App: FunctionComponent = () => {
       <DevPreviewBanner />
       <Switch>
         <Route exact path={ROUTES.FAQ}>
-          {disableContent.faq ? <NotFound /> : <FAQ />}
+          <FAQ />
         </Route>
         <Route exact path={ROUTES.HOME}>
           <Home />

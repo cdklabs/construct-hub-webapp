@@ -1,9 +1,6 @@
-import config from "../../config";
 import { Language } from "../../constants/languages";
 import { API_PATHS } from "../../constants/url";
 import { Metadata } from "./metadata";
-
-const { apiUrl } = config;
 
 export interface Author {
   readonly name: string;
@@ -28,7 +25,7 @@ export interface Packages {
  * Fetch the catalog of all packages from the backend.
  */
 export const fetchPackages = async (): Promise<Packages> => {
-  const response = await fetch(apiUrl + API_PATHS.CATALOG_SUFFIX);
+  const response = await fetch(API_PATHS.CATALOG_SUFFIX);
 
   if (!response.ok) {
     console.error(response.statusText);
