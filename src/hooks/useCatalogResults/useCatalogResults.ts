@@ -6,7 +6,7 @@ export interface UseCatalogResultsOptions {
   limit: number;
   offset?: number;
   query?: string;
-  language: Language | null;
+  language?: Language | null;
 }
 
 /**
@@ -17,7 +17,7 @@ export const useCatalogResults = ({
   limit,
   offset = 0,
   query = "",
-  language,
+  language = null,
 }: UseCatalogResultsOptions) => {
   const { data, loading, error } = useCatalog();
 
