@@ -1,6 +1,6 @@
 import { renderHook, cleanup } from "@testing-library/react-hooks";
 import catalog from "../../__fixtures__/catalog.json";
-import { Packages } from "../../api/package/packages";
+import { CatalogPackage, Packages } from "../../api/package/packages";
 import { Language } from "../../constants/languages";
 import { useCatalog } from "../../contexts/Catalog";
 import {
@@ -9,6 +9,15 @@ import {
 } from "./useCatalogResults";
 
 const catalogFixture = catalog as Packages;
+
+const sortFn = (p1: CatalogPackage, p2: CatalogPackage) => {
+  const d1 = new Date(p1.metadata.date);
+  const d2 = new Date(p2.metadata.date);
+  if (d1 === d2) {
+    return 0;
+  }
+  return d1 < d2 ? 1 : -1;
+};
 
 const defaultOptions: UseCatalogResultsOptions = {
   offset: 0,
@@ -71,9 +80,11 @@ describe("useCatalogResults", () => {
     });
 
     expect(result.current.results).toEqual(
-      catalogFixture.packages.filter(({ languages }) =>
-        Object.keys(languages).includes(Language.DotNet)
-      )
+      catalogFixture.packages
+        .filter(({ languages }) =>
+          Object.keys(languages).includes(Language.DotNet)
+        )
+        .sort(sortFn)
     );
   });
 
@@ -115,7 +126,7 @@ describe("useCatalogResults", () => {
     });
 
     expect(result.current.displayable).toEqual(
-      catalogFixture.packages.slice(0, 50)
+      catalogFixture.packages.sort(sortFn).slice(0, 50)
     );
   });
 
@@ -127,7 +138,7 @@ describe("useCatalogResults", () => {
     });
 
     expect(result.current.displayable).toEqual(
-      catalogFixture.packages.slice(75, 100)
+      catalogFixture.packages.sort(sortFn).slice(75, 100)
     );
   });
 });
