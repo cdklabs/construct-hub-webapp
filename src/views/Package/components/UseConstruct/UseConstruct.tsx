@@ -25,6 +25,18 @@ const getCodeSample = ({
       return undefined;
     }
     return `pip install ${packageName}==${version}`;
+  } else if (language === Language.Java) {
+    const groupId = assembly.targets?.java?.maven?.groupId;
+    const artifactId = assembly.targets?.java?.maven?.artifactId;
+    if (!groupId || !artifactId) return undefined;
+    return [
+      "// add this to your pom.xml",
+      "<dependency>",
+      `    <groupId>${groupId}</groupId>`,
+      `    <artifactId>${artifactId}</artifactId>`,
+      `    <version>${version}</version>`,
+      "</dependency>",
+    ].join("\n");
   }
 
   return undefined;
