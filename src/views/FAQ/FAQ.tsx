@@ -6,7 +6,13 @@ import { FAQLink } from "./FAQLink";
 import { FAQSection } from "./FAQSection";
 
 export const FAQ: FunctionComponent = () => (
-  <Page pageName="faq">
+  <Page
+    meta={{
+      title: "FAQ",
+      description: "Frequently Asked Questions",
+    }}
+    pageName="faq"
+  >
     <Box bg="white" color="blue.800" h="100%" w="100%">
       <Box bg="gray.50" py={20} width="100%">
         <Heading as="h1" mx="auto" textAlign="center">

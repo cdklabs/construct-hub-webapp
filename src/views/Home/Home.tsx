@@ -30,7 +30,14 @@ export const Home: FunctionComponent = () => {
   });
 
   return (
-    <Page pageName="home">
+    <Page
+      meta={{
+        title: "Construct Hub",
+        description: "Find reusable components for your cloud applications",
+        suffix: false,
+      }}
+      pageName="home"
+    >
       <Box position="relative">
         <Picture
           alt={""}

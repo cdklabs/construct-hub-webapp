@@ -84,7 +84,15 @@ export const SearchResults: FunctionComponent = () => {
   }, [searchQuery]);
 
   return (
-    <Page pageName="search">
+    <Page
+      meta={{
+        title: searchQuery || "Search",
+        description: searchQuery
+          ? `${results.length} results for ${searchQuery} at Construct Hub`
+          : "Search reusable components for your cloud application",
+      }}
+      pageName="search"
+    >
       <Flex direction="column" maxW="100vw">
         <Box p={4}>
           <CatalogSearch {...searchAPI} />

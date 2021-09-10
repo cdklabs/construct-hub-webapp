@@ -42,6 +42,7 @@ const project = new web.ReactTypeScriptProject({
     "framer-motion@^4",
     "jsii-reflect",
     "prism-react-renderer",
+    "react-helmet",
     "react-markdown",
     "react-router-dom",
     "rehype-raw",
@@ -57,6 +58,7 @@ const project = new web.ReactTypeScriptProject({
   ],
 
   devDeps: [
+    "@types/react-helmet",
     "@types/react-router-dom",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-prefer-arrow",
