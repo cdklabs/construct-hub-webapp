@@ -6,26 +6,17 @@
   <meta name="description"
     content="Construct Hub helps developers find open-source construct libraries for use with AWS CDK, CDK8s, CDKTf and other construct-based tools." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <% if (process.env.NODE_ENV==='development' ) { %>
-    {% /* IMPORTANT: The "real" CSP policy is served via headers configured in the construct-hub application! */ %}
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://*.awsstatic.com https://amazonwebservices.d2.sc.omtrdc.net;
-                  connect-src 'self' https://*.shortbread.aws.dev ws://localhost:3000 https://*.awsstatic.com https://amazonwebservices.d2.sc.omtrdc.net;
-                  frame-src 'none';
-                  img-src 'self' https://* http://*.omtrdc.net;
-                  object-src 'none';
-                  style-src 'self' 'unsafe-inline';" />
+
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>Construct Hub</title>
+  <% if (process.env.REACT_APP_HAS_ANALYTICS==='true' ) { %>
+    <script>var AWSMA = { config: { customPageview: true } }</script>
+    <script src="https://a0.awsstatic.com/s_code/js/3.0/awshome_s_code.js"></script>
     <% } %>
-
-      <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-      <meta name="theme-color" content="#ffffff" />
-      <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-
-      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-      <title>Construct Hub</title>
-      <% if (process.env.REACT_APP_HAS_ANALYTICS==='true' ) { %>
-        <script>var AWSMA = { config: { customPageview: true } }</script>
-        <script src="https://a0.awsstatic.com/s_code/js/3.0/awshome_s_code.js"></script>
-        <% } %>
 </head>
 
 <body>

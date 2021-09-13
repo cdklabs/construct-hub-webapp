@@ -34,6 +34,10 @@
       "type": "build"
     },
     {
+      "name": "@types/react-helmet",
+      "type": "build"
+    },
+    {
       "name": "@types/react-router-dom",
       "type": "build"
     },
@@ -181,6 +185,10 @@
     },
     {
       "name": "react-dom",
+      "type": "runtime"
+    },
+    {
+      "name": "react-helmet",
       "type": "runtime"
     },
     {
