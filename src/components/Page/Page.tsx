@@ -29,6 +29,16 @@ export const Page: FunctionComponent<PageProps> = ({
   return (
     <>
       <Helmet>
+        {process.env.NODE_ENV === "development" && (
+          <meta
+            content="default-src 'self' 'unsafe-inline' https://*.awsstatic.com https://amazonwebservices.d2.sc.omtrdc.net; connect-src 'self' https://*.shortbread.aws.dev ws://localhost:3000 https://*.awsstatic.com https://amazonwebservices.d2.sc.omtrdc.net; frame-src 'none'; img-src 'self' https://* http://*.omtrdc.net; object-src 'none'; style-src 'self' 'unsafe-inline';"
+            httpEquiv="Content-Security-Policy"
+          />
+        )}
+
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charSet="utf-8" />
+
         <title>{formattedTitle}</title>
         <meta content={formattedTitle} property="og:title" />
         <meta content={formattedTitle} name="twitter:title" />
