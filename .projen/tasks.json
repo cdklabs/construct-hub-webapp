@@ -73,6 +73,9 @@
         },
         {
           "exec": "react-app-rewired build"
+        },
+        {
+          "spawn": "package"
         }
       ]
     },
