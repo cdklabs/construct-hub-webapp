@@ -4,7 +4,13 @@ import { ExternalLink } from "../../components/ExternalLink";
 import { Page } from "../../components/Page";
 
 export const SiteTerms: FunctionComponent = () => (
-  <Page pageName="siteTerms">
+  <Page
+    meta={{
+      title: "Site Terms",
+      description: "View the Construct Hub Site Terms",
+    }}
+    pageName="siteTerms"
+  >
     <Box bg="white" h="100%" py={16} w="100%">
       <Box
         as="article"

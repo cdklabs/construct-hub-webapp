@@ -30,7 +30,15 @@ export const Home: FunctionComponent = () => {
   });
 
   return (
-    <Page pageName="home">
+    <Page
+      meta={{
+        title: "Construct Hub",
+        description:
+          "Construct Hub helps developers find open-source construct libraries for use with AWS CDK, CDK8s, CDKTf and other construct-based tools.",
+        suffix: false,
+      }}
+      pageName="home"
+    >
       <Box position="relative">
         <Picture
           alt={""}
