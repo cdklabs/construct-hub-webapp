@@ -1,6 +1,6 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Flex, Link, IconButton, useDisclosure } from "@chakra-ui/react";
-import { FunctionComponent, useEffect, useMemo } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { NavLink } from "../NavLink";
 
@@ -37,19 +37,12 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   const { pathname, hash } = useLocation();
   const isHashUrl = url.startsWith("#");
   const linkIsActive = isHashUrl ? hash === url : pathname === url;
-  const disclosure = useDisclosure({ onOpen });
+  const disclosure = useDisclosure({ onOpen, defaultIsOpen: true });
 
   const showToggle = (children?.length ?? 0) > 0;
   const showChildren = disclosure.isOpen && showToggle;
 
   const LinkComponent = isHashUrl ? Link : NavLink;
-
-  useEffect(() => {
-    if (linkIsActive) {
-      disclosure.onOpen();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [linkIsActive]);
 
   const nestedItems = useMemo(
     () =>
