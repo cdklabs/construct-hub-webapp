@@ -48,6 +48,5 @@ jspm_packages/
 !/react-app-env.d.ts
 cypress/videos/
 cypress/screenshots/
-.env.local
-!/.env
+public/data
 !/.github/workflows/release.yml

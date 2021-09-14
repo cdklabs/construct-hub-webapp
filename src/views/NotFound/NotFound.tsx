@@ -15,7 +15,13 @@ const bgSources = {
 
 export const NotFound: FunctionComponent = () => {
   return (
-    <Page pageName="notFound">
+    <Page
+      meta={{
+        title: "Not Found",
+        description: "Oops! The page you were looking for does not exist",
+      }}
+      pageName="notFound"
+    >
       <Center h="100%" position="relative" w="100%">
         <Picture
           alt=""

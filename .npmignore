@@ -18,5 +18,6 @@ tsconfig.tsbuildinfo
 /.eslintrc.json
 /tsconfig.eslint.json
 /build/
+!/build
+/public
 src/__fixtures__
-.env.local

@@ -34,6 +34,10 @@ export const Package: FunctionComponent = () => {
   const [language] = useLanguage();
   const submodule = q.get(QUERY_PARAMS.SUBMODULE) ?? "";
 
+  const pageTitle = `${scope ? `${scope}/${name}` : name} ${version}`;
+
+  const pageDescription = assemblyResponse?.data?.description ?? "";
+
   useEffect(() => {
     void requestMetadata(name, version, scope);
     void requestAssembly(name, version, scope);
@@ -62,7 +66,10 @@ export const Package: FunctionComponent = () => {
     assemblyResponse.data?.targets?.[language.toString()] != null;
 
   return (
-    <Page pageName="packageProfile">
+    <Page
+      meta={{ title: pageTitle, description: pageDescription }}
+      pageName="packageProfile"
+    >
       <Stack maxW="100vw" pt={4} spacing={4}>
         {/* Operator Area */}
         <Box px={4}>
