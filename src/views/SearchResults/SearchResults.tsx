@@ -30,7 +30,7 @@ const toNum = (val: string) => {
 
 export const SearchResults: FunctionComponent = () => {
   const queryParams = useQueryParams();
-  const flags = useConfigValue("featureFlags");
+  const featureFlags = useConfigValue("featureFlags");
   const { cardView, CardViewControls } = useCardView();
 
   const searchQuery = decodeURIComponent(
@@ -112,9 +112,9 @@ export const SearchResults: FunctionComponent = () => {
               limit={LIMIT}
               offset={offset}
             />
-            {flags?.showNewCards && <CardViewControls />}
+            {featureFlags?.showNewCards && <CardViewControls />}
           </Flex>
-          {flags?.showNewCards ? (
+          {featureFlags?.showNewCards ? (
             <Suspense
               fallback={
                 <Center>

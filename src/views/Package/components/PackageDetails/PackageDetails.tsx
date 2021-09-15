@@ -79,9 +79,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
         py={4}
         spacing={4}
       >
-        <Stack direction="row" spacing={2}>
-          <LanguageSelection assembly={assembly.data} />
-        </Stack>
+        <LanguageSelection assembly={assembly.data} />
         <UseConstruct assembly={assembly.data} />
       </Stack>
     </Flex>
