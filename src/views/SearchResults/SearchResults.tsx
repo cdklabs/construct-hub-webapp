@@ -1,18 +1,22 @@
-import { Box, Divider, Flex } from "@chakra-ui/react";
-import { FunctionComponent, useEffect } from "react";
+import { Box, Center, Divider, Flex, Spinner } from "@chakra-ui/react";
+import { FunctionComponent, useEffect, lazy, Suspense } from "react";
 import { useHistory } from "react-router-dom";
 import { CatalogSearch } from "../../components/CatalogSearch";
 import { Page } from "../../components/Page";
-import { Results } from "../../components/Results";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
+import { useCardView } from "../../contexts/CardView";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
+import { useConfigValue } from "../../hooks/useConfigValue";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { getSearchPath } from "../../util/url";
 import { PageControls } from "./components/PageControls";
 import { ShowingDetails } from "./components/ShowingDetails";
 import { LIMIT, SearchQueryParam } from "./constants";
+
+const Results = lazy(() => import("../../components/Results"));
+const PackageList = lazy(() => import("../../components/PackageList"));
 
 const toNum = (val: string) => {
   const result = parseInt(val);
@@ -26,6 +30,8 @@ const toNum = (val: string) => {
 
 export const SearchResults: FunctionComponent = () => {
   const queryParams = useQueryParams();
+  const flags = useConfigValue("featureFlags");
+  const { cardView, CardViewControls } = useCardView();
 
   const searchQuery = decodeURIComponent(
     queryParams.get(QUERY_PARAMS.SEARCH_QUERY) ?? ""
@@ -99,19 +105,44 @@ export const SearchResults: FunctionComponent = () => {
         </Box>
         <Divider />
         <Box p={4}>
-          <Box pb={4}>
+          <Flex align="center" justify="space-between" pb={4} wrap="wrap">
             <ShowingDetails
               count={results.length}
               filtered={!!searchQuery}
               limit={LIMIT}
               offset={offset}
             />
-          </Box>
-          <Results
-            language={languageQuery ?? undefined}
-            results={displayable}
-            skeleton={{ loading, noOfItems: LIMIT }}
-          />
+            {flags?.showNewCards && <CardViewControls />}
+          </Flex>
+          {flags?.showNewCards ? (
+            <Suspense
+              fallback={
+                <Center>
+                  <Spinner size="xl"></Spinner>
+                </Center>
+              }
+            >
+              <PackageList
+                cardView={cardView}
+                items={displayable}
+                loading={loading}
+              />
+            </Suspense>
+          ) : (
+            <Suspense
+              fallback={
+                <Center>
+                  <Spinner size="xl"></Spinner>
+                </Center>
+              }
+            >
+              <Results
+                language={languageQuery ?? undefined}
+                results={displayable}
+                skeleton={{ loading, noOfItems: LIMIT }}
+              />
+            </Suspense>
+          )}
           <PageControls
             getPageUrl={getUrl}
             limit={LIMIT}

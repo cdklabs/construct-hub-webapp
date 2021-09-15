@@ -4,7 +4,7 @@ import { Details } from "./Details";
 import { Heading } from "./Heading";
 import { Languages } from "./Languages";
 
-const CompactCard: FunctionComponent = () => {
+export const CompactCard: FunctionComponent = () => {
   return (
     <LinkBox
       _hover={{
@@ -19,12 +19,15 @@ const CompactCard: FunctionComponent = () => {
         border="base"
         borderRadius="sm"
         color="gray.600"
+        h="100%"
+        maxW="100%"
         minW="320px"
         p={5}
         spacing={5}
-        w="100%"
       >
-        <Heading />
+        <Stack flex={1} spacing={2}>
+          <Heading />
+        </Stack>
 
         <Divider bg="blue.50" />
 
@@ -46,5 +49,3 @@ const CompactCard: FunctionComponent = () => {
     </LinkBox>
   );
 };
-
-export default CompactCard;

@@ -4,7 +4,7 @@ import { Details } from "./Details";
 import { Heading } from "./Heading";
 import { Languages } from "./Languages";
 
-const WideCard: FunctionComponent = () => {
+export const WideCard: FunctionComponent = () => {
   return (
     <LinkBox
       _hover={{
@@ -41,5 +41,3 @@ const WideCard: FunctionComponent = () => {
     </LinkBox>
   );
 };
-
-export default WideCard;

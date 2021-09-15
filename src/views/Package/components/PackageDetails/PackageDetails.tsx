@@ -4,8 +4,8 @@ import { FunctionComponent } from "react";
 import { Config } from "../../../../api/config";
 import type { Metadata } from "../../../../api/package/metadata";
 import { Card } from "../../../../components/Card";
-import { PackageLanguages } from "../../../../components/PackageLanguages";
 import type { UseRequestResponse } from "../../../../hooks/useRequest";
+import { LanguageSelection } from "../LanguageSelection";
 import { OperatorArea } from "../OperatorArea";
 import { PackageHeader } from "../PackageHeader";
 import { UseConstruct } from "../UseConstruct";
@@ -80,11 +80,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
         spacing={4}
       >
         <Stack direction="row" spacing={2}>
-          <PackageLanguages
-            languages={assembly?.data?.targets ?? {}}
-            name={assembly?.data?.name ?? ""}
-            version={version}
-          />
+          <LanguageSelection assembly={assembly.data} />
         </Stack>
         <UseConstruct assembly={assembly.data} />
       </Stack>

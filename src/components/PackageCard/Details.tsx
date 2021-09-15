@@ -12,7 +12,7 @@ interface DetailProps {
 }
 
 const Detail: FunctionComponent<DetailProps> = ({ label, value }) => (
-  <Text>
+  <Text fontSize="xs">
     <strong>{label}</strong> {value}
   </Text>
 );

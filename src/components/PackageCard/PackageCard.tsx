@@ -1,12 +1,8 @@
-import {
-  createContext,
-  FunctionComponent,
-  useContext,
-  lazy,
-  Suspense,
-} from "react";
+import { createContext, FunctionComponent, useContext } from "react";
 import { CatalogPackage } from "../../api/package/packages";
+import { CompactCard } from "./CompactCard";
 import { PackageCardType } from "./constants";
+import { WideCard } from "./WideCard";
 
 export interface PackageCardProps {
   pkg: CatalogPackage;
@@ -17,25 +13,14 @@ const PackageCardContext = createContext<CatalogPackage | null>(null);
 
 export const usePackageCard = () => useContext(PackageCardContext)!;
 
-const CompactCard = lazy(() => import("./CompactCard"));
-const WideCard = lazy(() => import("./WideCard"));
-
 export const PackageCard: FunctionComponent<PackageCardProps> = ({
   pkg,
   variant = PackageCardType.Wide,
 }) => {
   return (
     <PackageCardContext.Provider value={pkg}>
-      {variant === PackageCardType.Wide && (
-        <Suspense fallback={null}>
-          <WideCard />
-        </Suspense>
-      )}
-      {variant === PackageCardType.Compact && (
-        <Suspense fallback={null}>
-          <CompactCard />
-        </Suspense>
-      )}
+      {variant === PackageCardType.Wide && <WideCard />}
+      {variant === PackageCardType.Compact && <CompactCard />}
     </PackageCardContext.Provider>
   );
 };
