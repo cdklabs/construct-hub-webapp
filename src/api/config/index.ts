@@ -6,7 +6,12 @@ export interface PackageLinksConfig {
   displayText?: string;
 }
 
+export interface FeatureFlags extends Record<string, boolean | undefined> {
+  showNewCards?: boolean;
+}
+
 export interface Config {
+  featureFlags?: FeatureFlags;
   packageLinks?: PackageLinksConfig[];
 }
 
