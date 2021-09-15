@@ -1,6 +1,7 @@
 import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { PackageTag } from "../../../../components/PackageTag";
+import { useLanguage } from "../../../../hooks/useLanguage";
 
 export interface PackageHeaderProps {
   title: string;
@@ -15,6 +16,7 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
   title,
   version,
 }) => {
+  const [currentLanguage] = useLanguage();
   return (
     <Flex
       direction="column"
@@ -37,18 +39,34 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
       </Stack>
 
       <Text wordBreak="break-word">{description}</Text>
-
       {!!tags.length && (
         <Flex
           direction="row"
           justify={{ base: "center", md: "initial" }}
           mt={3}
         >
+          {title.startsWith("@aws-cdk/") ? (
+            <PackageTag
+              key="official"
+              label="official"
+              language={currentLanguage}
+              mr={2}
+              value="@aws-cdk"
+              variant="official"
+            >
+              Official
+            </PackageTag>
+          ) : null}
           {tags
             .filter(Boolean)
             .slice(0, 3)
             .map((tag) => (
-              <PackageTag key={tag} mr={2} value={tag}>
+              <PackageTag
+                key={tag}
+                language={currentLanguage}
+                mr={2}
+                value={tag}
+              >
                 {tag}
               </PackageTag>
             ))}
