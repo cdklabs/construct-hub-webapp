@@ -35,7 +35,7 @@ describe("Search (Redesign / WIP)", () => {
 
     cy.visit("/search");
 
-    cy.wait("@configStub", { timeout: 10000 });
+    cy.wait("@configStub", { timeout: 30000 });
   });
 
   it("has card view controls which change view when clicked", () => {
