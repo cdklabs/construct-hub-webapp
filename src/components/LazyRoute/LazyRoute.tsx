@@ -7,7 +7,7 @@ export interface LazyRouteProps extends RouteProps {
 }
 
 /**
- * A wrapper around the react-router-dom which takes in a lazy loaded component
+ * A wrapper around the react-router-dom <Route /> which takes in a lazy loaded component
  * and wraps it with <Suspense /> and a generic <PageLoader /> fallback
  *
  * Usage:
