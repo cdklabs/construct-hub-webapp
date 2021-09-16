@@ -5,14 +5,20 @@ import { getSearchPath } from "../../util/url";
 import { NavLink } from "../NavLink";
 import { Time } from "../Time";
 import { usePackageCard } from "./PackageCard";
+import testIds from "./testIds";
 
 interface DetailProps {
+  "data-testid": string;
   label: string;
   value: ReactChild;
 }
 
-const Detail: FunctionComponent<DetailProps> = ({ label, value }) => (
-  <Text fontSize="xs">
+const Detail: FunctionComponent<DetailProps> = ({
+  "data-testid": dataTestid,
+  label,
+  value,
+}) => (
+  <Text data-testid={dataTestid} fontSize="xs">
     <strong>{label}</strong> {value}
   </Text>
 );
@@ -30,14 +36,16 @@ export const Details: FunctionComponent = () => {
 
   return (
     <>
-      <Detail label="Version" value={version} />
+      <Detail data-testid={testIds.version} label="Version" value={version} />
       <Detail
+        data-testid={testIds.published}
         label="Published"
         value={
           <Time date={new Date(date)} fontSize="xs" format="MMM dd, yyyy" />
         }
       />
       <Detail
+        data-testid={testIds.author}
         label="Author"
         value={
           <NavLink

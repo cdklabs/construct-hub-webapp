@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { Details } from "./Details";
 import { Heading } from "./Heading";
 import { Languages } from "./Languages";
+import testIds from "./testIds";
 
 export const WideCard: FunctionComponent = () => {
   return (
@@ -19,6 +20,7 @@ export const WideCard: FunctionComponent = () => {
         border="base"
         borderRadius="sm"
         color="gray.600"
+        data-testid={testIds.wideContainer}
         gap={5}
         p={5}
         templateColumns={{ base: "1fr", md: "2fr 1fr" }}
@@ -34,7 +36,12 @@ export const WideCard: FunctionComponent = () => {
           </Stack>
         </Stack>
 
-        <Stack alignSelf="center" fontSize="xs" spacing={1}>
+        <Stack
+          alignSelf="center"
+          data-testid={testIds.languages}
+          fontSize="xs"
+          spacing={1}
+        >
           <Details />
         </Stack>
       </Grid>

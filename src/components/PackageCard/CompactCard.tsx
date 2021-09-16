@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { Details } from "./Details";
 import { Heading } from "./Heading";
 import { Languages } from "./Languages";
+import testIds from "./testIds";
 
 export const CompactCard: FunctionComponent = () => {
   return (
@@ -19,6 +20,7 @@ export const CompactCard: FunctionComponent = () => {
         border="base"
         borderRadius="sm"
         color="gray.600"
+        data-testid={testIds.compactContainer}
         h="100%"
         maxW="100%"
         minW="320px"
@@ -37,7 +39,7 @@ export const CompactCard: FunctionComponent = () => {
           justify="space-between"
           spacing={5}
         >
-          <Stack direction="row" spacing={2}>
+          <Stack data-testid={testIds.languages} direction="row" spacing={2}>
             <Languages />
           </Stack>
 
