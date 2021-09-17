@@ -24,12 +24,11 @@ export const InfoPanel: FunctionComponent = () => {
         >
           <Flex
             align="center"
-            justify="space-evenly"
+            justifyItems="start"
             sx={{
               "& > *": {
-                maxW: "45%",
-                mx: "auto",
                 mt: 4,
+                mr: 4,
               },
             }}
             wrap="wrap"
