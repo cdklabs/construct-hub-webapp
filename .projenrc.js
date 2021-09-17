@@ -97,7 +97,7 @@ const project = new web.ReactTypeScriptProject({
     });
 
     project.addTask("proxy-server:ci", {
-      exec: "REACT_APP_CYPRESS=true REACT_APP_HAS_ANALYTICS=false npx react-app-rewired build && yarn proxy-server",
+      exec: "npx react-app-rewired build && yarn proxy-server",
     });
   })();
 

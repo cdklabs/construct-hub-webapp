@@ -41,10 +41,6 @@ let instance: Shortbread | undefined;
  */
 export const initialize = async () => {
   return new Promise<void>((resolve, reject) => {
-    if (process.env.REACT_APP_CYPRESS) {
-      reject();
-      return;
-    }
     // Wait until page has loaded first
     window.addEventListener("load", async () => {
       try {
