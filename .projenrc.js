@@ -86,12 +86,20 @@ const project = new web.ReactTypeScriptProject({
     description: "run the cypress suite in CLI",
   });
 
-  project.addTask("start:ci", {
-    exec: "CHOKIDAR_USEPOLLING=1 npx react-app-rewired start",
-  });
-
   project.gitignore.addPatterns("cypress/videos/", "cypress/screenshots/");
   project.eslint.addIgnorePattern("cypress/");
+
+  // Express is used to create a local proxy server used in CI + local build testing
+  (function addExpress() {
+    project.addDevDeps("express", "express-http-proxy");
+    project.addTask("proxy-server", {
+      exec: "node ./proxy",
+    });
+
+    project.addTask("proxy-server:build", {
+      exec: "npx react-app-rewired build && yarn proxy-server",
+    });
+  })();
 
   project.buildWorkflow.addJobs({
     cypress: {
@@ -107,15 +115,11 @@ const project = new web.ReactTypeScriptProject({
           uses: "actions/checkout@v2",
         },
         {
-          name: "Setup kernel for React, increase watchers",
-          run: "echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p",
-        },
-        {
           name: "Cypress Run",
           uses: "cypress-io/github-action@v2",
           with: {
-            start: "yarn start:ci",
-            "wait-on": "http://localhost:3000",
+            start: "yarn proxy-server:build",
+            "wait-on": "http://localhost:3100",
           },
         },
       ],
