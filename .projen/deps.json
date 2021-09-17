@@ -94,6 +94,14 @@
       "type": "build"
     },
     {
+      "name": "express",
+      "type": "build"
+    },
+    {
+      "name": "express-http-proxy",
+      "type": "build"
+    },
+    {
       "name": "json-schema",
       "type": "build"
     },

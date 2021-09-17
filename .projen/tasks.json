@@ -235,11 +235,19 @@
         }
       ]
     },
-    "start:ci": {
-      "name": "start:ci",
+    "proxy-server": {
+      "name": "proxy-server",
       "steps": [
         {
-          "exec": "CHOKIDAR_USEPOLLING=1 npx react-app-rewired start"
+          "exec": "node ./proxy"
+        }
+      ]
+    },
+    "proxy-server:ci": {
+      "name": "proxy-server:ci",
+      "steps": [
+        {
+          "exec": "npx react-app-rewired build && yarn proxy-server"
         }
       ]
     },

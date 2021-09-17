@@ -23,7 +23,8 @@
     "eject": "npx projen eject",
     "cypress:open": "npx projen cypress:open",
     "cypress:run": "npx projen cypress:run",
-    "start:ci": "npx projen start:ci",
+    "proxy-server": "npx projen proxy-server",
+    "proxy-server:ci": "npx projen proxy-server:ci",
     "test:unit": "npx projen test:unit",
     "release": "npx projen release",
     "projen": "npx projen"
@@ -57,6 +58,8 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-react": "^7.25.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.2",
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
     "prettier": "^2.4.1",
