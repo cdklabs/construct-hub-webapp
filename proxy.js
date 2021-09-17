@@ -1,10 +1,14 @@
+/**
+ * @fileoverview A simple proxy server to test the locally built webapp against real data.
+ * This is only intended for local testing + testing in CI
+ */
 const express = require("express");
 const path = require("path");
 const proxy = require("express-http-proxy");
 const proxyUrl = require("./package.json").proxy;
 
 const app = express();
-const port = process.env.PORT || 3100;
+const port = process.env.PORT || 3000;
 
 const buildDir = path.join(__dirname, "build");
 

@@ -119,7 +119,7 @@ const project = new web.ReactTypeScriptProject({
           uses: "cypress-io/github-action@v2",
           with: {
             start: "yarn proxy-server:build",
-            "wait-on": "http://localhost:3100",
+            "wait-on": "http://localhost:3000",
           },
         },
       ],
