@@ -243,8 +243,8 @@
         }
       ]
     },
-    "proxy-server:build": {
-      "name": "proxy-server:build",
+    "proxy-server:ci": {
+      "name": "proxy-server:ci",
       "steps": [
         {
           "exec": "npx react-app-rewired build && yarn proxy-server"

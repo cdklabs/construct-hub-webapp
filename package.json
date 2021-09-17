@@ -24,7 +24,7 @@
     "cypress:open": "npx projen cypress:open",
     "cypress:run": "npx projen cypress:run",
     "proxy-server": "npx projen proxy-server",
-    "proxy-server:build": "npx projen proxy-server:build",
+    "proxy-server:ci": "npx projen proxy-server:ci",
     "test:unit": "npx projen test:unit",
     "release": "npx projen release",
     "projen": "npx projen"

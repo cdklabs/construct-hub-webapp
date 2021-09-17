@@ -96,7 +96,7 @@ const project = new web.ReactTypeScriptProject({
       exec: "node ./proxy",
     });
 
-    project.addTask("proxy-server:build", {
+    project.addTask("proxy-server:ci", {
       exec: "npx react-app-rewired build && yarn proxy-server",
     });
   })();
@@ -118,8 +118,16 @@ const project = new web.ReactTypeScriptProject({
           name: "Cypress Run",
           uses: "cypress-io/github-action@v2",
           with: {
-            start: "yarn proxy-server:build",
+            start: "yarn proxy-server:ci",
             "wait-on": "http://localhost:3000",
+          },
+        },
+        {
+          uses: "actions/upload-artifact@v1",
+          if: "failure()",
+          with: {
+            name: "cypress-screenshots",
+            path: "cypress/screenshots",
           },
         },
       ],
