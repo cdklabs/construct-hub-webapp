@@ -11,6 +11,7 @@ import { useConfig } from "./contexts/Config";
 
 const FAQ = lazy(() => import("./views/FAQ"));
 const Home = lazy(() => import("./views/Home"));
+const HomeRedesign = lazy(() => import("./views/HomeRedesign"));
 const NotFound = lazy(() => import("./views/NotFound"));
 const Packages = lazy(() => import("./views/Packages"));
 const SearchResults = lazy(() => import("./views/SearchResults"));
@@ -20,6 +21,7 @@ const SiteTerms = lazy(() => import("./views/SiteTerms"));
 export const App: FunctionComponent = () => {
   const { data, loading } = useConfig();
   const featureFlags = data?.featureFlags ?? {};
+  const isRedesign = featureFlags?.homeRedesign || featureFlags?.searchRedesign;
 
   return (
     <Grid
@@ -34,13 +36,17 @@ export const App: FunctionComponent = () => {
       position="fixed"
     >
       <Header />
-      <DevPreviewBanner />
+      {!loading && !isRedesign ? <DevPreviewBanner /> : <div />}
       {loading ? (
         <PageLoader />
       ) : (
         <Switch>
           <LazyRoute component={FAQ} exact path={ROUTES.FAQ} />
-          <LazyRoute component={Home} exact path={ROUTES.HOME} />
+          <LazyRoute
+            component={featureFlags?.homeRedesign ? HomeRedesign : Home}
+            exact
+            path={ROUTES.HOME}
+          />
           <LazyRoute component={SiteTerms} exact path={ROUTES.SITE_TERMS} />
           <LazyRoute component={Packages} path={ROUTES.PACKAGES} />
           <LazyRoute

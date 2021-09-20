@@ -7,6 +7,7 @@ export interface PackageLinksConfig {
 }
 
 export interface FeatureFlags {
+  homeRedesign?: boolean;
   searchRedesign?: boolean;
 }
 
