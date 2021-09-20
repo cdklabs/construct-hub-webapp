@@ -14,7 +14,11 @@ const buildDir = path.join(__dirname, "build");
 
 app.use(express.static(buildDir));
 
-app.use(proxy(proxyUrl));
+app.use(
+  proxy(proxyUrl, {
+    filter: (req) => req.url.includes(".json"),
+  })
+);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(buildDir, "index.html"));

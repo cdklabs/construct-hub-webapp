@@ -6,8 +6,9 @@ export interface PackageLinksConfig {
   displayText?: string;
 }
 
-export interface FeatureFlags extends Record<string, boolean | undefined> {
-  showNewCards?: boolean;
+export interface FeatureFlags {
+  homeRedesign?: boolean;
+  searchRedesign?: boolean;
 }
 
 export interface Config {

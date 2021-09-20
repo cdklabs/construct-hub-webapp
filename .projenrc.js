@@ -164,6 +164,10 @@ buildTask.spawn(project.packageTask);
 project.npmignore.addPatterns("!/build");
 project.npmignore.addPatterns("/public");
 
+// Ignore local config.json
+project.npmignore.addPatterns("/build/config.json");
+project.gitignore.addPatterns("/public/config.json");
+
 // test fixtures
 project.npmignore.addPatterns("src/__fixtures__");
 

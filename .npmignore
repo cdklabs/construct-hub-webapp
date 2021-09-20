@@ -20,4 +20,5 @@ tsconfig.tsbuildinfo
 /build/
 !/build
 /public
+/build/config.json
 src/__fixtures__

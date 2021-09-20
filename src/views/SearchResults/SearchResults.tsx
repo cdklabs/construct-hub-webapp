@@ -112,9 +112,9 @@ export const SearchResults: FunctionComponent = () => {
               limit={LIMIT}
               offset={offset}
             />
-            {featureFlags?.showNewCards && <CardViewControls />}
+            {featureFlags?.searchRedesign && <CardViewControls />}
           </Flex>
-          {featureFlags?.showNewCards ? (
+          {featureFlags?.searchRedesign ? (
             <Suspense
               fallback={
                 <Center>
