@@ -24,18 +24,11 @@ describe("Search", () => {
 
 describe("Search (Redesign / WIP)", () => {
   before(() => {
-    cy.intercept("/config.json", {
-      statusCode: 200,
-      body: {
-        featureFlags: {
-          showNewCards: true,
-        },
+    cy.visitWithConfig("/search", {
+      featureFlags: {
+        searchRedesign: true,
       },
-    }).as("configStub");
-
-    cy.visit("/search");
-
-    cy.wait("@configStub", { timeout: 30000 });
+    });
   });
 
   it("has card view controls which change view when clicked", () => {
