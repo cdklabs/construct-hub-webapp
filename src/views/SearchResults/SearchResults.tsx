@@ -99,14 +99,14 @@ export const SearchResults: FunctionComponent = () => {
         </Box>
         <Divider />
         <Box p={4}>
-          <Box pb={4}>
+          <Flex align="center" justify="space-between" pb={4} wrap="wrap">
             <ShowingDetails
               count={results.length}
               filtered={!!searchQuery}
               limit={LIMIT}
               offset={offset}
             />
-          </Box>
+          </Flex>
           <Results
             language={languageQuery ?? undefined}
             results={displayable}

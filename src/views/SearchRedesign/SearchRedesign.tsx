@@ -1,9 +1,19 @@
-import { Center, Grid } from "@chakra-ui/react";
+import { Flex, Grid } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
+import { useCardView } from "../../contexts/CardView";
+import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { FilterPanel } from "./FilterPanel";
 
 export const SearchRedesign: FunctionComponent = () => {
+  const { cardView, CardViewControls } = useCardView();
+
+  // This hook's usage should eventually be replaced by a newer Search implementation
+  const { displayable, loading } = useCatalogResults({
+    limit: 20,
+  });
+
   return (
     <Page
       meta={{
@@ -17,10 +27,17 @@ export const SearchRedesign: FunctionComponent = () => {
         <FilterPanel />
         {/* Results, Info,  and Controls */}
 
-        <Center border="1px solid" borderColor="gray.400">
-          {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
-          🚧 This section is under construction 🚧
-        </Center>
+        <Flex direction="column">
+          <Flex justify="space-between">
+            <Flex>This section is under construction.</Flex>
+            <CardViewControls />
+          </Flex>
+          <PackageList
+            cardView={cardView}
+            items={displayable}
+            loading={loading}
+          />
+        </Flex>
       </Grid>
     </Page>
   );

@@ -19,6 +19,10 @@ export interface Config {
 const defaultConfig: Config = {};
 
 export const fetchConfig = async (): Promise<Config> => {
+  if (window.configOverride) {
+    return window.configOverride;
+  }
+
   const response = await fetch(API_PATHS.CONFIG);
 
   if (!response.ok) {
