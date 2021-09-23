@@ -32,7 +32,7 @@ export const SearchAPIProvider: FunctionComponent = ({ children }) => {
     if (!data?.packages || loading) return;
 
     const instance = new CatalogSearchAPI(data.packages);
-    setResults([...instance.map.values()]);
+    setResults([...instance.search().values()]);
     return instance;
   }, [data?.packages, loading]);
 

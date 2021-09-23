@@ -9,19 +9,15 @@ export interface CatalogPackageWithId extends CatalogPackage {
 }
 
 export interface CatalogSearchFilters {
-  language?: Language;
   // TODO: CDK Type & Tag filters
+  language?: Language;
 }
 
 export type CatalogSearchResults = Map<string, CatalogPackageWithId>;
 
 export class CatalogSearchAPI {
-  public readonly map: CatalogSearchResults;
+  private readonly map: CatalogSearchResults;
   private index: lunr.Index;
-  /**
-   * Contains the map of the most recent search(). If search() hasn't been called
-   * or was called with empty parameters, it returns the complete data set.
-   */
 
   constructor(catalogData: CatalogPackage[]) {
     const catalogMap = catalogData.reduce((map, pkg) => {
@@ -114,7 +110,7 @@ export class CatalogSearchAPI {
   }
 
   /**
-   * Filters query results
+   * Filters query results. Mutates the passed-in map
    */
   private filter(
     results: CatalogSearchResults,
