@@ -2,10 +2,11 @@ import { Box, Divider, Flex } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 // import { useHistory } from "react-router-dom";
 import { CatalogSearch } from "../../components/CatalogSearch";
+import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
-import { Results } from "../../components/Results";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
+import { useCardView } from "../../contexts/CardView";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { usePagination } from "../../hooks/usePagination";
 import { useQueryParams } from "../../hooks/useQueryParams";
@@ -26,6 +27,7 @@ const toNum = (val: string) => {
 };
 
 export const SearchResults: FunctionComponent = () => {
+  const { cardView, CardViewControls } = useCardView();
   const queryParams = useQueryParams();
   const { results, search } = useSearchAPI();
 
@@ -90,15 +92,16 @@ export const SearchResults: FunctionComponent = () => {
         </Box>
         <Divider />
         <Box p={4}>
-          <Box pb={4}>
+          <Flex justify="space-between" pb={4}>
             <ShowingDetails
               count={results.length}
               filtered={!!searchQuery}
               limit={LIMIT}
               offset={offset}
             />
-          </Box>
-          <Results language={languageQuery ?? undefined} results={page} />
+            <CardViewControls />
+          </Flex>
+          <PackageList cardView={cardView} items={page} />
           <PageControls
             getPageUrl={getUrl}
             limit={LIMIT}

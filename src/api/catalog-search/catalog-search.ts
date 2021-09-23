@@ -10,6 +10,7 @@ export interface CatalogPackageWithId extends CatalogPackage {
 
 export interface CatalogSearchFilters {
   language?: Language;
+  // TODO: CDK Type & Tag filters
 }
 
 export type CatalogSearchResults = Map<string, CatalogPackageWithId>;

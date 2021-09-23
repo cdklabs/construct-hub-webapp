@@ -1,5 +1,5 @@
 import { Center, Spinner } from "@chakra-ui/react";
-import { FunctionComponent } from "react";
+import { FunctionComponent, memo } from "react";
 import { CatalogPackage } from "../../api/package/packages";
 import { PackageCardType } from "../PackageCard";
 import { CompactCardList } from "./CompactCardList";
@@ -20,21 +20,25 @@ export interface PackageListProps extends Partial<PackageListViewProps> {
   title?: string;
 }
 
-export const PackageList: FunctionComponent<PackageListProps> = ({
-  cardView = PackageCardType.Wide,
-  items,
-  loading,
-  // title,
-}) => {
-  if (loading || !(items && items.length > 0)) {
-    return (
-      <Center>
-        <Spinner size="xl" />
-      </Center>
-    );
+export const PackageList: FunctionComponent<PackageListProps> = memo(
+  ({
+    cardView = PackageCardType.Wide,
+    items,
+    loading,
+    // title,
+  }) => {
+    if (loading || !items) {
+      return (
+        <Center>
+          <Spinner size="xl" />
+        </Center>
+      );
+    }
+
+    const View = listViews[cardView];
+
+    return <View items={items} />;
   }
+);
 
-  const View = listViews[cardView];
-
-  return <View items={items} />;
-};
+PackageList.displayName = "PackageList";
