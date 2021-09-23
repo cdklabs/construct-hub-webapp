@@ -2,6 +2,15 @@ import header from "components/Header/testIds";
 import footer from "components/Footer/testIds";
 import catalogSearch from "components/CatalogSearch/testIds";
 import catalogCard from "components/CatalogCard/testIds";
+import { Config } from "api/config";
+
+Cypress.Commands.add("visitWithConfig", (url: string, config: Config) => {
+  cy.visit(url, {
+    onBeforeLoad: (win) => {
+      win.configOverride = config;
+    },
+  });
+});
 
 Cypress.Commands.add("getByDataTest", (dataTest) =>
   cy.get(`[data-testid="${dataTest}"]`)

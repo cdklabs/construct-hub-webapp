@@ -25,5 +25,9 @@ declare namespace Cypress {
      * Checks count of catalog cards on page
      */
     checkResultCount(count: number): void;
+    /**
+     * Visits a page with a custom config
+     */
+    visitWithConfig(url: string, config: import("api/config").Config): void;
   }
 }

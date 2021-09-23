@@ -3,7 +3,7 @@ const { SourceCode, web } = require("projen");
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
   name: "construct-hub-webapp",
-  projenUpgradeSecret: "CDK_AUTOMATION_GITHUB_TOKEN",
+  projenUpgradeSecret: "PROJEN_GITHUB_TOKEN",
 
   // Author metadata
   authorEmail: "construct-ecosystem-team@amazon.com",
@@ -69,7 +69,7 @@ const project = new web.ReactTypeScriptProject({
     "react-app-rewired",
   ],
   autoApproveOptions: {
-    allowedUsernames: ["aws-cdk-automation"],
+    allowedUsernames: ["cdklabs-automation"],
     secret: "GITHUB_TOKEN",
   },
   autoApproveUpgrades: true,
