@@ -41,6 +41,7 @@ const project = new web.ReactTypeScriptProject({
     "date-fns",
     "framer-motion@^4",
     "jsii-reflect",
+    "lunr",
     "prism-react-renderer",
     "react-helmet",
     "react-markdown",
@@ -58,6 +59,7 @@ const project = new web.ReactTypeScriptProject({
   ],
 
   devDeps: [
+    "@types/lunr",
     "@types/react-helmet",
     "@types/react-router-dom",
     "eslint-plugin-jsx-a11y",
