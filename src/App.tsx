@@ -1,18 +1,28 @@
 import { Grid } from "@chakra-ui/react";
-import type { FunctionComponent } from "react";
-import { Switch, Route } from "react-router-dom";
+import { FunctionComponent, lazy } from "react";
+import { Switch } from "react-router-dom";
 import { DevPreviewBanner } from "./components/DevPreviewBanner";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
+import { LazyRoute } from "./components/LazyRoute";
+import { PageLoader } from "./components/PageLoader";
 import { ROUTES } from "./constants/url";
-import { FAQ } from "./views/FAQ";
-import { Home } from "./views/Home";
-import { NotFound } from "./views/NotFound";
-import { Packages } from "./views/Packages";
-import { SearchResults } from "./views/SearchResults";
-import { SiteTerms } from "./views/SiteTerms";
+import { useConfig } from "./contexts/Config";
+
+const FAQ = lazy(() => import("./views/FAQ"));
+const Home = lazy(() => import("./views/Home"));
+const HomeRedesign = lazy(() => import("./views/HomeRedesign"));
+const NotFound = lazy(() => import("./views/NotFound"));
+const Packages = lazy(() => import("./views/Packages"));
+const SearchResults = lazy(() => import("./views/SearchResults"));
+const SearchRedesign = lazy(() => import("./views/SearchRedesign"));
+const SiteTerms = lazy(() => import("./views/SiteTerms"));
 
 export const App: FunctionComponent = () => {
+  const { data, loading } = useConfig();
+  const featureFlags = data?.featureFlags ?? {};
+  const isRedesign = featureFlags?.homeRedesign || featureFlags?.searchRedesign;
+
   return (
     <Grid
       as="main"
@@ -26,27 +36,29 @@ export const App: FunctionComponent = () => {
       position="fixed"
     >
       <Header />
-      <DevPreviewBanner />
-      <Switch>
-        <Route exact path={ROUTES.FAQ}>
-          <FAQ />
-        </Route>
-        <Route exact path={ROUTES.HOME}>
-          <Home />
-        </Route>
-        <Route exact path={ROUTES.SITE_TERMS}>
-          <SiteTerms />
-        </Route>
-        <Route path={ROUTES.PACKAGES}>
-          <Packages />
-        </Route>
-        <Route exact path={ROUTES.SEARCH}>
-          <SearchResults />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
+      {!loading && !isRedesign ? <DevPreviewBanner /> : <div />}
+      {loading ? (
+        <PageLoader />
+      ) : (
+        <Switch>
+          <LazyRoute component={FAQ} exact path={ROUTES.FAQ} />
+          <LazyRoute
+            component={featureFlags?.homeRedesign ? HomeRedesign : Home}
+            exact
+            path={ROUTES.HOME}
+          />
+          <LazyRoute component={SiteTerms} exact path={ROUTES.SITE_TERMS} />
+          <LazyRoute component={Packages} path={ROUTES.PACKAGES} />
+          <LazyRoute
+            component={
+              featureFlags?.searchRedesign ? SearchRedesign : SearchResults
+            }
+            exact
+            path={ROUTES.SEARCH}
+          />
+          <LazyRoute component={NotFound} path="*" />
+        </Switch>
+      )}
       <Footer />
     </Grid>
   );

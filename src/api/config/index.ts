@@ -6,13 +6,23 @@ export interface PackageLinksConfig {
   displayText?: string;
 }
 
+export interface FeatureFlags {
+  homeRedesign?: boolean;
+  searchRedesign?: boolean;
+}
+
 export interface Config {
+  featureFlags?: FeatureFlags;
   packageLinks?: PackageLinksConfig[];
 }
 
 const defaultConfig: Config = {};
 
 export const fetchConfig = async (): Promise<Config> => {
+  if (window.configOverride) {
+    return window.configOverride;
+  }
+
   const response = await fetch(API_PATHS.CONFIG);
 
   if (!response.ok) {

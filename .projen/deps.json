@@ -22,7 +22,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^10.17.0",
+      "version": "^14.17.0",
       "type": "build"
     },
     {
@@ -31,6 +31,10 @@
     },
     {
       "name": "@types/react-dom",
+      "type": "build"
+    },
+    {
+      "name": "@types/react-helmet",
       "type": "build"
     },
     {
@@ -87,6 +91,14 @@
     },
     {
       "name": "eslint-plugin-react-hooks",
+      "type": "build"
+    },
+    {
+      "name": "express",
+      "type": "build"
+    },
+    {
+      "name": "express-http-proxy",
       "type": "build"
     },
     {
@@ -181,6 +193,10 @@
     },
     {
       "name": "react-dom",
+      "type": "runtime"
+    },
+    {
+      "name": "react-helmet",
       "type": "runtime"
     },
     {

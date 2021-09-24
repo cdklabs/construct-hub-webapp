@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { App } from "./App";
 import { AnalyticsProvider } from "./contexts/Analytics";
+import { CardViewProvider } from "./contexts/CardView";
 import { CatalogProvider } from "./contexts/Catalog";
 import { ConfigProvider } from "./contexts/Config";
 import { ExternalLinkWarningProvider } from "./contexts/ExternalLinkWarning";
@@ -14,21 +15,23 @@ import { reportWebVitals } from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ConfigProvider>
+    <Router>
       <ShortbreadProvider>
-        <Router>
-          <AnalyticsProvider>
-            <Theme>
-              <ExternalLinkWarningProvider>
-                <CatalogProvider>
-                  <App />
-                </CatalogProvider>
-              </ExternalLinkWarningProvider>
-            </Theme>
-          </AnalyticsProvider>
-        </Router>
+        <AnalyticsProvider>
+          <ConfigProvider>
+            <CatalogProvider>
+              <Theme>
+                <ExternalLinkWarningProvider>
+                  <CardViewProvider>
+                    <App />
+                  </CardViewProvider>
+                </ExternalLinkWarningProvider>
+              </Theme>
+            </CatalogProvider>
+          </ConfigProvider>
+        </AnalyticsProvider>
       </ShortbreadProvider>
-    </ConfigProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

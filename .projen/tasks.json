@@ -73,6 +73,9 @@
         },
         {
           "exec": "react-app-rewired build"
+        },
+        {
+          "spawn": "package"
         }
       ]
     },
@@ -82,7 +85,8 @@
       "env": {
         "OUTFILE": "package.json",
         "CHANGELOG": "dist/changelog.md",
-        "BUMPFILE": "dist/version.txt"
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt"
       },
       "steps": [
         {
@@ -97,7 +101,8 @@
       "env": {
         "OUTFILE": "package.json",
         "CHANGELOG": "dist/changelog.md",
-        "BUMPFILE": "dist/version.txt"
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt"
       },
       "steps": [
         {
@@ -109,11 +114,13 @@
       "name": "publish:github",
       "description": "Publish this package to GitHub Releases",
       "requiredEnv": [
-        "GITHUB_TOKEN"
+        "GITHUB_TOKEN",
+        "GITHUB_REPOSITORY",
+        "GITHUB_REF"
       ],
       "steps": [
         {
-          "exec": "gh release create v$(cat dist/version.txt) -R ${{ github.repository }} -F dist/changelog.md -t v$(cat dist/version.txt)"
+          "exec": "errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \"Release.tag_name already exists\" $errout; then cat $errout; exit $exitcode; fi"
         }
       ]
     },
@@ -231,11 +238,19 @@
         }
       ]
     },
-    "start:ci": {
-      "name": "start:ci",
+    "proxy-server": {
+      "name": "proxy-server",
       "steps": [
         {
-          "exec": "CHOKIDAR_USEPOLLING=1 npx react-app-rewired start"
+          "exec": "node ./proxy"
+        }
+      ]
+    },
+    "proxy-server:ci": {
+      "name": "proxy-server:ci",
+      "steps": [
+        {
+          "exec": "npx react-app-rewired build && yarn proxy-server"
         }
       ]
     },

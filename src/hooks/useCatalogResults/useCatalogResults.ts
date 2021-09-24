@@ -4,9 +4,9 @@ import { useCatalog } from "../../contexts/Catalog";
 
 export interface UseCatalogResultsOptions {
   limit: number;
-  offset: number;
-  query: string;
-  language: Language | null;
+  offset?: number;
+  query?: string;
+  language?: Language | null;
 }
 
 /**
@@ -15,31 +15,38 @@ export interface UseCatalogResultsOptions {
  */
 export const useCatalogResults = ({
   limit,
-  offset,
-  query,
-  language,
+  offset = 0,
+  query = "",
+  language = null,
 }: UseCatalogResultsOptions) => {
   const { data, loading, error } = useCatalog();
 
   const results = useMemo(() => {
     if (loading || error || !data?.packages) return [];
 
-    let filtered = data.packages;
+    const filtered = data.packages.filter((item) => {
+      // Filter out items which do not support the current language
+      if (language && language !== Language.TypeScript) {
+        if (!Object.keys(item.languages).includes(language)) {
+          return false;
+        }
+      }
 
-    if (query.length) {
-      filtered = filtered.filter((item) =>
-        JSON.stringify(item).toLowerCase().includes(query.toLowerCase())
-      );
-    }
+      // Filter items which do not match the current query
+      if (query.length) {
+        const itemStr = JSON.stringify(item).toLowerCase();
+        const queryStr = query.toLowerCase();
 
-    // Omit TS from filters b/c it is always available
-    if (language && language !== Language.TypeScript) {
-      filtered = filtered.filter((item) =>
-        Object.keys(item.languages).includes(language)
-      );
-    }
+        if (!itemStr.includes(queryStr)) {
+          return false;
+        }
+      }
 
-    return filtered.sort((p1, p2) => {
+      return true;
+    });
+
+    // Next sort by most recently updated. (The sort should eventually become a parameter)
+    return [...filtered].sort((p1, p2) => {
       const d1 = new Date(p1.metadata.date);
       const d2 = new Date(p2.metadata.date);
       if (d1 === d2) {

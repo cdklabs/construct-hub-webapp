@@ -3,7 +3,7 @@ const { SourceCode, web } = require("projen");
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
   name: "construct-hub-webapp",
-  projenUpgradeSecret: "CDK_AUTOMATION_GITHUB_TOKEN",
+  projenUpgradeSecret: "PROJEN_GITHUB_TOKEN",
 
   // Author metadata
   authorEmail: "construct-ecosystem-team@amazon.com",
@@ -42,6 +42,7 @@ const project = new web.ReactTypeScriptProject({
     "framer-motion@^4",
     "jsii-reflect",
     "prism-react-renderer",
+    "react-helmet",
     "react-markdown",
     "react-router-dom",
     "rehype-raw",
@@ -57,6 +58,7 @@ const project = new web.ReactTypeScriptProject({
   ],
 
   devDeps: [
+    "@types/react-helmet",
     "@types/react-router-dom",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-prefer-arrow",
@@ -65,7 +67,7 @@ const project = new web.ReactTypeScriptProject({
     "react-app-rewired",
   ],
   autoApproveOptions: {
-    allowedUsernames: ["aws-cdk-automation"],
+    allowedUsernames: ["cdklabs-automation"],
     secret: "GITHUB_TOKEN",
   },
   autoApproveUpgrades: true,
@@ -84,12 +86,20 @@ const project = new web.ReactTypeScriptProject({
     description: "run the cypress suite in CLI",
   });
 
-  project.addTask("start:ci", {
-    exec: "CHOKIDAR_USEPOLLING=1 npx react-app-rewired start",
-  });
-
   project.gitignore.addPatterns("cypress/videos/", "cypress/screenshots/");
   project.eslint.addIgnorePattern("cypress/");
+
+  // Express is used to create a local proxy server used in CI + local build testing
+  (function addExpress() {
+    project.addDevDeps("express", "express-http-proxy");
+    project.addTask("proxy-server", {
+      exec: "node ./proxy",
+    });
+
+    project.addTask("proxy-server:ci", {
+      exec: "npx react-app-rewired build && yarn proxy-server",
+    });
+  })();
 
   project.buildWorkflow.addJobs({
     cypress: {
@@ -105,15 +115,19 @@ const project = new web.ReactTypeScriptProject({
           uses: "actions/checkout@v2",
         },
         {
-          name: "Setup kernel for React, increase watchers",
-          run: "echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p",
-        },
-        {
           name: "Cypress Run",
           uses: "cypress-io/github-action@v2",
           with: {
-            start: "yarn start:ci",
+            start: "yarn proxy-server:ci",
             "wait-on": "http://localhost:3000",
+          },
+        },
+        {
+          uses: "actions/upload-artifact@v1",
+          if: "failure()",
+          with: {
+            name: "cypress-screenshots",
+            path: "cypress/screenshots",
           },
         },
       ],
@@ -140,8 +154,26 @@ const project = new web.ReactTypeScriptProject({
   project.eslint.addIgnorePattern("jest.config.ts");
 })();
 
+// synthesize project files before build
+// see https://github.com/projen/projen/issues/754
+const buildTask = project.tasks.tryFind("build");
+buildTask.spawn(project.packageTask);
+
+// npm tarball will only include the contents of the "build"
+// directory, which is the output of our static website.
+project.npmignore.addPatterns("!/build");
+project.npmignore.addPatterns("/public");
+
+// Ignore local config.json
+project.npmignore.addPatterns("/build/config.json");
+project.gitignore.addPatterns("/public/config.json");
+
 // test fixtures
 project.npmignore.addPatterns("src/__fixtures__");
+
+// these are development assemblies fetched specifically
+// by each developer.
+project.gitignore.exclude("public/data");
 
 // Proxy requests to awscdk.io for local testing
 project.package.addField("proxy", "https://constructs.dev/");
@@ -183,10 +215,9 @@ project.eslint.addOverride({
 });
 
 // rewire cra tasks, all apart from eject.
-rewireCRA(project.tasks.tryFind("build"));
+rewireCRA(buildTask);
 rewireCRA(project.tasks.tryFind("test"));
 rewireCRA(project.tasks.tryFind("dev"));
-addBuildConfig();
 
 project.synth();
 
@@ -202,28 +233,4 @@ function rewireCRA(craTask) {
       step.exec = step.exec.replace("react-scripts", "react-app-rewired");
     }
   }
-}
-
-/**
- * Add build time configuration values for react-scripts.
- * Use an `.env.local` file to override for local development.
- */
-function addBuildConfig() {
-  project.gitignore.addPatterns(".env.local");
-  project.npmignore.addPatterns(".env.local");
-
-  // This repo will export it's source code, so we'll set the necessary file patterns here
-  project.package.addField("files", [
-    "src/**",
-    "public/**",
-    "config-overrides.js",
-    "react-app-env.d.ts",
-    "tsconfig.json",
-    ".projen/**",
-    ".projenrc.js",
-  ]);
-
-  const config = new SourceCode(project, ".env");
-  // Remove inline scripts to allow strict CSP policy.
-  config.line("INLINE_RUNTIME_CHUNK=false");
 }
