@@ -122,6 +122,7 @@ const project = new web.ReactTypeScriptProject({
           with: {
             start: "yarn proxy-server:ci",
             "wait-on": "http://localhost:3000",
+            "wait-on-timeout": 150,
           },
         },
         {

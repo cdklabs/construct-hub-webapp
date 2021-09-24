@@ -61,6 +61,7 @@ jobs:
         with:
           start: yarn proxy-server:ci
           wait-on: http://localhost:3000
+          wait-on-timeout: 150
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
