@@ -36,6 +36,7 @@ export const LANGUAGE_NAME_MAP: { readonly [key in Language]: string } = {
 export const TEMP_SUPPORTED_LANGUAGES: ReadonlySet<Language> = new Set([
   Language.Python,
   Language.TypeScript,
+  Language.Java,
 ]);
 
 export const LANGUAGE_RENDER_MAP: {
