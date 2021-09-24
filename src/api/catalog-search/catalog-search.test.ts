@@ -44,4 +44,32 @@ describe("CatalogSearchAPI", () => {
 
     expect(publishDateAsc).toEqual(publishDateDesc.reverse());
   });
+
+  describe("Snapshots", () => {
+    it("Returns consistent query results", () => {
+      const results = instance.search({
+        query: "lambda libraries",
+      });
+
+      expect(Object.fromEntries(results)).toMatchSnapshot();
+    });
+
+    it("Returns consistent filter results", () => {
+      const results = instance.search({
+        filters: {
+          language: Language.Python,
+        },
+      });
+
+      expect(Object.fromEntries(results)).toMatchSnapshot();
+    });
+
+    it("Returns consistent sort results", () => {
+      const results = instance.search({
+        sort: CatalogSearchSort.NameAsc,
+      });
+
+      expect(Object.fromEntries(results)).toMatchSnapshot();
+    });
+  });
 });

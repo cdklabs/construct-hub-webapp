@@ -1,6 +1,5 @@
 import { Box, Divider, Flex } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
 import { CatalogSearch } from "../../components/CatalogSearch";
 import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
@@ -45,8 +44,6 @@ export const SearchResults: FunctionComponent = () => {
   });
 
   const offset = toNum(queryParams.get(QUERY_PARAMS.OFFSET) ?? "0");
-
-  // const { push } = useHistory();
 
   const { page, pageLimit } = usePagination(results, { offset, limit: LIMIT });
 
