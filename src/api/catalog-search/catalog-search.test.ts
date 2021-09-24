@@ -35,14 +35,29 @@ describe("CatalogSearchAPI", () => {
 
   it("Returns results ordered by Sort", () => {
     const publishDateAsc = [
-      ...instance.search({ sort: CatalogSearchSort.PublishDateAsc }),
+      ...instance.search({ sort: CatalogSearchSort.PublishDateAsc }).values(),
     ];
 
     const publishDateDesc = [
-      ...instance.search({ sort: CatalogSearchSort.PublishDateDesc }),
+      ...instance.search({ sort: CatalogSearchSort.PublishDateDesc }).values(),
     ];
 
-    expect(publishDateAsc).toEqual(publishDateDesc.reverse());
+    publishDateAsc.forEach(({ metadata: { date } }, index) => {
+      expect(date).toEqual(
+        publishDateDesc[publishDateDesc.length - 1 - index].metadata.date
+      );
+    });
+
+    const nameAsc = [
+      ...instance.search({ sort: CatalogSearchSort.NameAsc }).values(),
+    ];
+    const nameDesc = [
+      ...instance.search({ sort: CatalogSearchSort.NameDesc }).values(),
+    ];
+
+    nameAsc.forEach(({ name }, index) => {
+      expect(name).toEqual(nameDesc[nameDesc.length - 1 - index].name);
+    });
   });
 
   describe("Snapshots", () => {

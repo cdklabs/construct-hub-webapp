@@ -1,6 +1,6 @@
 export enum CatalogSearchSort {
-  NameAsc,
-  NameDesc,
-  PublishDateAsc,
-  PublishDateDesc,
+  NameAsc = "NameAsc",
+  NameDesc = "NameDesc",
+  PublishDateAsc = "PublishDateAsc",
+  PublishDateDesc = "PublishDateDesc",
 }

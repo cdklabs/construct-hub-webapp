@@ -20,10 +20,7 @@ const getDateSort =
   };
 
 const getStrSort = (isAscending: boolean): SortFunction => {
-  return (p1, p2) =>
-    isAscending
-      ? p1.name.localeCompare(p2.name)
-      : p2.name.localeCompare(p1.name);
+  return (p1, p2) => p1.name.localeCompare(p2.name) * (isAscending ? 1 : -1);
 };
 
 export const SORT_FUNCTIONS: Record<CatalogSearchSort, SortFunction> = {

@@ -37,13 +37,21 @@ export class CatalogSearchAPI {
     this.index = lunr(function () {
       this.ref("id");
       this.field("name");
+      this.field("scope");
+      this.field("packageName");
       this.field("description");
-      this.field("readme");
       this.field("authorName");
       this.field("authorEmail");
 
       [...catalogMap.values()].forEach((pkg) => {
-        const { author } = pkg;
+        const { author, name } = pkg;
+
+        const [scope, packageName] = name.split("/");
+
+        if (scope && packageName) {
+          pkg.scope = scope;
+          pkg.packageName = packageName;
+        }
 
         if (typeof author === "string") {
           pkg.authorName = author;

@@ -29,12 +29,12 @@ export const SearchAPIProvider: FunctionComponent = ({ children }) => {
   const [results, setResults] = useState<SearchAPI["results"]>([]);
 
   const searchAPI = useMemo(() => {
-    if (!data?.packages || loading) return;
+    if (data?.packages === undefined || loading) return;
 
     const instance = new CatalogSearchAPI(data.packages);
     setResults([...instance.search().values()]);
     return instance;
-  }, [data?.packages, loading]);
+  }, [data, loading]);
 
   const search: SearchAPI["search"] = useCallback(
     (params) => {
