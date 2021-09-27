@@ -8,6 +8,7 @@ import { CardViewProvider } from "./contexts/CardView";
 import { CatalogProvider } from "./contexts/Catalog";
 import { ConfigProvider } from "./contexts/Config";
 import { ExternalLinkWarningProvider } from "./contexts/ExternalLinkWarning";
+import { SearchProvider } from "./contexts/Search";
 import { ShortbreadProvider } from "./contexts/Shortbread";
 import { Theme } from "./contexts/Theme";
 import { register } from "./register-service-worker";
@@ -20,13 +21,15 @@ ReactDOM.render(
         <AnalyticsProvider>
           <ConfigProvider>
             <CatalogProvider>
-              <Theme>
-                <ExternalLinkWarningProvider>
-                  <CardViewProvider>
-                    <App />
-                  </CardViewProvider>
-                </ExternalLinkWarningProvider>
-              </Theme>
+              <SearchProvider>
+                <Theme>
+                  <ExternalLinkWarningProvider>
+                    <CardViewProvider>
+                      <App />
+                    </CardViewProvider>
+                  </ExternalLinkWarningProvider>
+                </Theme>
+              </SearchProvider>
             </CatalogProvider>
           </ConfigProvider>
         </AnalyticsProvider>

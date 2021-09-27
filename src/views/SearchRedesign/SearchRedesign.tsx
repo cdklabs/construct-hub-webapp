@@ -2,7 +2,6 @@ import { Grid } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Page } from "../../components/Page";
 import { FilterPanel } from "./FilterPanel";
-import { SearchAPIProvider } from "./SearchAPI";
 import { SearchResults } from "./SearchResults";
 
 export const SearchRedesign: FunctionComponent = () => {
@@ -14,15 +13,13 @@ export const SearchRedesign: FunctionComponent = () => {
       }}
       pageName="search"
     >
-      <SearchAPIProvider>
-        <Grid gap={4} p={6} templateColumns="1fr 3fr" templateRows="1fr">
-          {/* Filter Panel */}
-          <FilterPanel />
-          {/* Results, Info,  and Controls */}
+      <Grid gap={4} p={6} templateColumns="1fr 3fr" templateRows="1fr">
+        {/* Filter Panel */}
+        <FilterPanel />
+        {/* Results, Info,  and Controls */}
 
-          <SearchResults />
-        </Grid>
-      </SearchAPIProvider>
+        <SearchResults />
+      </Grid>
     </Page>
   );
 };

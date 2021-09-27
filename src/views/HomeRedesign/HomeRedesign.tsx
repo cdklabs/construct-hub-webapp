@@ -10,8 +10,7 @@ import { InfoPanel } from "./InfoPanel";
 export const HomeRedesign: FunctionComponent = () => {
   const { cardView, CardViewControls } = useCardView();
 
-  // This hook's usage should eventually be replaced by a newer Search implementation
-  const { displayable, loading } = useCatalogResults({
+  const { page } = useCatalogResults({
     limit: 10,
   });
 
@@ -43,11 +42,7 @@ export const HomeRedesign: FunctionComponent = () => {
               <CardViewControls />
             </Flex>
 
-            <PackageList
-              cardView={cardView}
-              items={displayable}
-              loading={loading}
-            />
+            <PackageList cardView={cardView} items={page} />
           </Flex>
           <InfoPanel />
         </Grid>

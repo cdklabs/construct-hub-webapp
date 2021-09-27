@@ -44,7 +44,7 @@ export const SearchResults: FunctionComponent = () => {
 
   const { push } = useHistory();
 
-  const { results, displayable, loading, pageLimit } = useCatalogResults({
+  const { results, page, pageLimit } = useCatalogResults({
     query: searchQuery,
     offset,
     limit: LIMIT,
@@ -63,7 +63,7 @@ export const SearchResults: FunctionComponent = () => {
 
   useEffect(() => {
     // If the query has results but the page has nothing to show...
-    if (!loading && results.length && (offset < 0 || offset > pageLimit)) {
+    if (results.length && (offset < 0 || offset > pageLimit)) {
       // Handle an out of bounds offset
       if (offset < 0) {
         push(getUrl({ offset: 0 }));
@@ -73,7 +73,7 @@ export const SearchResults: FunctionComponent = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, results, pageLimit, offset]);
+  }, [results, pageLimit, offset]);
 
   useEffect(() => {
     // Reflect changes to queryParam to search input (specifically for tag clicks)
@@ -107,11 +107,7 @@ export const SearchResults: FunctionComponent = () => {
               offset={offset}
             />
           </Flex>
-          <Results
-            language={languageQuery ?? undefined}
-            results={displayable}
-            skeleton={{ loading, noOfItems: LIMIT }}
-          />
+          <Results language={languageQuery ?? undefined} results={page} />
           <PageControls
             getPageUrl={getUrl}
             limit={LIMIT}
