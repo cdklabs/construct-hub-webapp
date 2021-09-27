@@ -1,9 +1,10 @@
 import { Center, Spinner } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { Packages } from "../../api/package/packages";
+import { CatalogPackage, Packages } from "../../api/package/packages";
 import { getFullPackageName, sanitizeVersion } from "../../api/package/util";
 import { useCatalog } from "../../contexts/Catalog";
+import NotFound from "../NotFound";
 
 interface RouteParams {
   name: string;
@@ -15,12 +16,11 @@ const extractMajor = (ver: string) => {
   return sanitized.split(".")[0];
 };
 
-const findPackage = (catalog: Packages, pkg: string) => {
+const findPackage = (
+  catalog: Packages,
+  pkg: string
+): CatalogPackage | undefined => {
   const packages = catalog.packages.filter((p) => p.name === pkg);
-
-  if (packages.length === 0) {
-    throw new Error(`Package ${pkg} does not exist in catalog`);
-  }
 
   if (packages.length > 1) {
     return packages.sort((p1, p2) => {
@@ -40,7 +40,13 @@ export const buildRedirectUrl = (
 ) => {
   const prefix = "/packages/";
   const packageName = getFullPackageName(name, scope);
-  const version = findPackage(catalog, packageName).version;
+  const pkg = findPackage(catalog, packageName);
+
+  if (!pkg) {
+    return undefined;
+  }
+
+  const { version } = pkg;
   const suffix = `/v/${version}`;
   return `${prefix}${packageName}${suffix}`;
 };
@@ -57,5 +63,7 @@ export const PackageLatest: FunctionComponent = () => {
     );
   }
 
-  return <Redirect to={buildRedirectUrl(catalog.data, name, scope)} />;
+  const url = buildRedirectUrl(catalog.data, name, scope);
+
+  return url ? <Redirect to={url} /> : <NotFound />;
 };
