@@ -1,6 +1,7 @@
 import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { PackageTag } from "../../../../components/PackageTag";
+import { KEYWORD_IGNORE_LIST } from "../../../../constants/keywords";
 import { useLanguage } from "../../../../hooks/useLanguage";
 
 export interface PackageHeaderProps {
@@ -58,7 +59,7 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
             </PackageTag>
           ) : null}
           {tags
-            .filter(Boolean)
+            .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
             .slice(0, 3)
             .map((tag) => (
               <PackageTag
