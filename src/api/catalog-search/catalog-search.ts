@@ -1,16 +1,30 @@
 import lunr from "lunr";
+import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { CatalogSearchSort } from "./constants";
-import { SORT_FUNCTIONS } from "./util";
+import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
 
 export interface CatalogPackageWithId extends CatalogPackage {
   id: string;
 }
 
 export interface CatalogSearchFilters {
-  // TODO: CDK Type & Tag filters
+  /**
+   * The CDK Output Type to filter by. This functionality is not yet deployed on any BE so the implementation on the client is not final.
+   */
+  cdkType?: CDKType;
+  /**
+   * The target language to filter by. This parameter is only used
+   * for backwards compatability with the current search page and should be
+   * avoided moving forward
+   */
   language?: Language;
+  /**
+   * A list of languages to filter by. Constructs that are not yet filtered out, will be
+   * returned if they support any of the languages in this list.
+   */
+  languages?: Language[];
 }
 
 export type CatalogSearchResults = Map<string, CatalogPackageWithId>;
@@ -124,15 +138,28 @@ export class CatalogSearchAPI {
     results: CatalogSearchResults,
     filters: CatalogSearchFilters
   ): CatalogSearchResults {
-    const { language } = filters;
+    const { cdkType, language, languages } = filters;
     const copiedResults = new Map(results);
 
+    const removeItem = (id: string) => copiedResults.delete(id);
+
+    const filterFunctions = [
+      FILTER_FUNCTIONS.cdkType(cdkType),
+      FILTER_FUNCTIONS.language(language),
+      FILTER_FUNCTIONS.languages(languages),
+    ].filter(Boolean) as ((pkg: CatalogPackage) => boolean)[];
+
     copiedResults.forEach((result) => {
-      if (language && language !== Language.TypeScript) {
-        if (result.languages[language] === undefined) {
-          copiedResults.delete(result.id);
-          return;
+      let isFiltered = false;
+
+      filterFunctions.forEach((filterFn) => {
+        if (!isFiltered && !filterFn(result)) {
+          isFiltered = true;
         }
+      });
+
+      if (isFiltered) {
+        removeItem(result.id);
       }
     });
 

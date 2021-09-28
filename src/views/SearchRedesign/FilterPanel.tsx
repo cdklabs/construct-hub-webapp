@@ -1,12 +1,19 @@
 import { Heading, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useState } from "react";
 import { Card } from "../../components/Card";
+import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
 import {
   Language,
   LANGUAGE_NAME_MAP,
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
 import { Filter } from "./Filter";
+import { useSearchState } from "./SearchState";
+
+const cdkTypeOptions = Object.entries(CDKTYPE_NAME_MAP).map(([key, value]) => ({
+  display: value,
+  value: key,
+}));
 
 const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
   .filter(([key]) => TEMP_SUPPORTED_LANGUAGES.has(key as Language))
@@ -18,9 +25,32 @@ const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
 export interface FilterPanelProps {}
 
 export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
-  const [cdkType, setCdkType] = useState<string | undefined>();
-  const [language, setLanguage] = useState<string | undefined>();
-  const [author, setAuthor] = useState<string | undefined>();
+  const { cdkType, languages, setLanguages, setCdkType } =
+    useSearchState().searchAPI;
+  const [authors, setAuthors] = useState<string[]>([]);
+
+  const onCdkTypeChange = (type: string) => {
+    const cdk = type as CDKType;
+    setCdkType(cdk === cdkType ? undefined : cdk);
+  };
+
+  const onLanguagesChange = (lang: string) => {
+    const language = lang as Language;
+
+    setLanguages(
+      languages.includes(language)
+        ? languages.filter((l) => l !== language)
+        : [...languages, language]
+    );
+  };
+
+  const onAuthorsChange = (author: string) => {
+    setAuthors(
+      authors.includes(author)
+        ? authors.filter((a) => a !== author)
+        : [...authors, author]
+    );
+  };
 
   return (
     <Card borderRadius="none" boxShadow="none" p={4}>
@@ -30,32 +60,19 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
         </Heading>
         <Filter
           name="CDK Type"
-          onValueChange={setCdkType}
-          options={[
-            {
-              display: "AWS CDK",
-              value: "awscdk",
-            },
-            {
-              display: "CDK for Terraform",
-              value: "cdktf",
-            },
-            {
-              display: "CDK for Kubernetes",
-              value: "cdk8s",
-            },
-          ]}
-          value={cdkType}
+          onValueChange={onCdkTypeChange}
+          options={cdkTypeOptions}
+          values={cdkType ? [cdkType] : []}
         />
         <Filter
           name="Programming Language"
-          onValueChange={setLanguage}
+          onValueChange={onLanguagesChange}
           options={languageOptions}
-          value={language}
+          values={languages}
         />
         <Filter
           name="Author"
-          onValueChange={setAuthor}
+          onValueChange={onAuthorsChange}
           options={[
             {
               display: "Community",
@@ -66,7 +83,7 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
               value: "aws",
             },
           ]}
-          value={author}
+          values={authors}
         />
       </Stack>
     </Card>

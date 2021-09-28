@@ -7,18 +7,18 @@ export interface FilterProps {
     display: string;
     value: string;
   }[];
-  value: string | undefined;
-  onValueChange: (value: string | undefined) => void;
+  values: string[];
+  onValueChange: (value: string) => void;
 }
 
 export const Filter: FunctionComponent<FilterProps> = ({
   name,
   options,
-  value: checkedValue,
+  values: checkedValues,
   onValueChange,
 }) => {
-  const getOnChange = (v: string) => () => {
-    onValueChange(v === checkedValue ? undefined : v);
+  const getOnChange = (value: string) => () => {
+    onValueChange(value);
   };
 
   return (
@@ -28,7 +28,7 @@ export const Filter: FunctionComponent<FilterProps> = ({
       </Heading>
       {options.map(({ display, value }) => (
         <Checkbox
-          isChecked={value === checkedValue}
+          isChecked={checkedValues.includes(value)}
           key={value}
           onChange={getOnChange(value)}
         >

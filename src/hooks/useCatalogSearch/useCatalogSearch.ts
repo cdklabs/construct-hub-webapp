@@ -8,23 +8,36 @@ import {
   SetStateAction,
 } from "react";
 import { useHistory } from "react-router-dom";
+import { CatalogSearchSort } from "../../api/catalog-search/constants";
+import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { getSearchPath } from "../../util/url";
 
 export interface UseCatalogSearchParams {
+  defaultCdkType?: CDKType;
   defaultQuery?: string;
-  defaultLanguage?: Language | null;
+  defaultLanguage?: UseCatalogSearchReturn["language"];
+  defaultLanguages?: UseCatalogSearchReturn["languages"];
+  defaultSort?: UseCatalogSearchReturn["sort"];
 }
 
 export interface UseCatalogSearchReturn {
   /**
+   * The CDK Type to filter by
+   */
+  cdkType?: CDKType;
+  /**
    * The language state for this search
    */
-  language: Language | null;
+  language?: Language;
+  /**
+   * The list of languages being filtered
+   */
+  languages: Language[];
   /**
    * Updates language state
    */
-  onLanguageChange: (lang: Language | null) => void;
+  onLanguageChange: (lang?: Language) => void;
   /**
    * Input ChangeEventHandler which wraps the setQuery state setter
    */
@@ -42,13 +55,25 @@ export interface UseCatalogSearchReturn {
    */
   query: string;
   /**
+   * CDK Type state setter
+   */
+  setCdkType: Dispatch<SetStateAction<UseCatalogSearchReturn["cdkType"]>>;
+  /**
    * Language state setter
    */
-  setLanguage: Dispatch<SetStateAction<Language | null>>;
+  setLanguage: Dispatch<SetStateAction<UseCatalogSearchReturn["language"]>>;
+  /**
+   * Languages list state setter
+   */
+  setLanguages: Dispatch<SetStateAction<UseCatalogSearchReturn["languages"]>>;
   /**
    * Query state setter
    */
-  setQuery: Dispatch<SetStateAction<string>>;
+  setQuery: Dispatch<SetStateAction<UseCatalogSearchReturn["query"]>>;
+
+  setSort: Dispatch<SetStateAction<UseCatalogSearchReturn["sort"]>>;
+
+  sort?: CatalogSearchSort;
 }
 
 /**
@@ -61,9 +86,19 @@ export const useCatalogSearch = (
 ): UseCatalogSearchReturn => {
   const [query, setQuery] = useState(options.defaultQuery ?? "");
 
-  const [language, setLanguage] = useState<Language | null>(
-    options.defaultLanguage ?? null
+  const [cdkType, setCdkType] = useState<UseCatalogSearchReturn["cdkType"]>(
+    options.defaultCdkType
   );
+
+  const [languages, setLanguages] = useState<
+    UseCatalogSearchReturn["languages"]
+  >(options.defaultLanguages ?? []);
+
+  const [language, setLanguage] = useState<UseCatalogSearchReturn["language"]>(
+    options.defaultLanguage
+  );
+
+  const [sort, setSort] = useState<UseCatalogSearchReturn["sort"]>();
 
   const { push } = useHistory();
 
@@ -73,8 +108,8 @@ export const useCatalogSearch = (
   };
 
   const onSearch = useCallback(() => {
-    push(getSearchPath({ language, query }));
-  }, [language, push, query]);
+    push(getSearchPath({ cdkType, language, languages, query }));
+  }, [cdkType, language, languages, push, query]);
 
   const onSubmit: UseCatalogSearchReturn["onSubmit"] = useCallback(
     (e) => {
@@ -86,15 +121,21 @@ export const useCatalogSearch = (
 
   return useMemo(
     () => ({
+      cdkType,
       language,
+      languages,
       onLanguageChange: setLanguage,
       onQueryChange,
       onSearch,
       onSubmit,
       query,
+      setCdkType,
       setLanguage,
+      setLanguages,
       setQuery,
+      setSort,
+      sort,
     }),
-    [language, onSearch, onSubmit, query]
+    [cdkType, language, languages, onSearch, onSubmit, query, sort]
   );
 };

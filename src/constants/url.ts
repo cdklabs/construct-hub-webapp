@@ -7,9 +7,12 @@ export const API_PATHS = {
 } as const;
 
 export const QUERY_PARAMS = {
+  CDK_TYPE: "cdk",
   LANGUAGE: "lang",
+  LANGUAGES: "langs",
   OFFSET: "offset",
   SEARCH_QUERY: "q",
+  SORT: "sort",
   SUBMODULE: "submodule",
 } as const;
 

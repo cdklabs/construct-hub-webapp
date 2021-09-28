@@ -36,8 +36,8 @@ export const SearchResults: FunctionComponent = () => {
   ) as Language | null;
 
   const searchAPI = useCatalogSearch({
-    defaultQuery: searchQuery,
-    defaultLanguage: languageQuery,
+    defaultQuery: searchQuery ?? undefined,
+    defaultLanguage: languageQuery ?? undefined,
   });
 
   const offset = toNum(queryParams.get(QUERY_PARAMS.OFFSET) ?? "0");
@@ -56,7 +56,7 @@ export const SearchResults: FunctionComponent = () => {
   ) => {
     return getSearchPath({
       query: (params.q ?? searchQuery) as string,
-      language: languageQuery,
+      language: languageQuery ?? undefined,
       offset: params.offset ?? offset,
     });
   };

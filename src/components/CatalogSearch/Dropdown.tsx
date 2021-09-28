@@ -17,8 +17,8 @@ export interface DropdownProps<T = Record<string, string>> {
     value: string;
   };
   placeholder: string;
-  selected: T[keyof T] | null;
-  onSelect: (val: keyof T | null) => void;
+  selected?: T[keyof T];
+  onSelect: (val?: keyof T) => void;
   items: T;
 }
 
@@ -46,7 +46,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
         <Text data-testid={testIds.value}>{text}</Text>
       </MenuButton>
       <MenuList data-testid={testIds.menu}>
-        <MenuItem data-testid={testIds.item} onClick={() => onSelect(null)}>
+        <MenuItem data-testid={testIds.item} onClick={() => onSelect()}>
           Any
         </MenuItem>
         {options.map(([name, displayName]) => (
