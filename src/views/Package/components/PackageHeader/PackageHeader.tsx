@@ -1,13 +1,13 @@
 import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { PackageTagConfig } from "../../../../api/config";
 import { PackageTag } from "../../../../components/PackageTag";
-import { KEYWORD_IGNORE_LIST } from "../../../../constants/keywords";
 import { useLanguage } from "../../../../hooks/useLanguage";
 
 export interface PackageHeaderProps {
   title: string;
   description: string;
-  tags: string[];
+  tags: PackageTagConfig[];
   version: string;
 }
 
@@ -46,31 +46,17 @@ export const PackageHeader: FunctionComponent<PackageHeaderProps> = ({
           justify={{ base: "center", md: "initial" }}
           mt={3}
         >
-          {title.startsWith("@aws-cdk/") ? (
+          {tags.slice(0, 3).map(({ label, color }) => (
             <PackageTag
-              key="official"
-              label="official"
+              key={label}
               language={currentLanguage}
               mr={2}
-              value="@aws-cdk"
-              variant="official"
+              value={label}
+              variant={color}
             >
-              Official
+              {label}
             </PackageTag>
-          ) : null}
-          {tags
-            .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
-            .slice(0, 3)
-            .map((tag) => (
-              <PackageTag
-                key={tag}
-                language={currentLanguage}
-                mr={2}
-                value={tag}
-              >
-                {tag}
-              </PackageTag>
-            ))}
+          ))}
         </Flex>
       )}
     </Flex>

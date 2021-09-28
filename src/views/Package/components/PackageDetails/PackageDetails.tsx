@@ -4,6 +4,7 @@ import { FunctionComponent } from "react";
 import { Config } from "../../../../api/config";
 import type { Metadata } from "../../../../api/package/metadata";
 import { Card } from "../../../../components/Card";
+import { KEYWORD_IGNORE_LIST } from "../../../../constants/keywords";
 import type { UseRequestResponse } from "../../../../hooks/useRequest";
 import { LanguageSelection } from "../LanguageSelection";
 import { OperatorArea } from "../OperatorArea";
@@ -36,6 +37,14 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
       </Center>
     );
   }
+  const tags = [
+    ...(metadata.data?.packageTags ?? []),
+    ...(assembly.data.keywords
+      ?.filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
+      ?.map((label) => ({
+        label,
+      })) ?? []),
+  ];
 
   return (
     <Flex as={Card} direction="column">
@@ -47,7 +56,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
       >
         <PackageHeader
           description={assembly.data.description}
-          tags={assembly.data.keywords ?? []}
+          tags={tags}
           title={assembly.data.name}
           version={version}
         />

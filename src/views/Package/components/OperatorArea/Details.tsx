@@ -1,7 +1,7 @@
 import { Box, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { ReactNode, useMemo } from "react";
-import type { PackageLinksConfig } from "../../../../api/config";
+import type { PackageLinkConfig } from "../../../../api/config";
 import type { Metadata } from "../../../../api/package/metadata";
 import { ExternalLink } from "../../../../components/ExternalLink";
 import { LicenseLink, LICENSE_LINKS } from "../../../../components/LicenseLink";
@@ -10,7 +10,7 @@ import { getRepoUrlAndHost } from "../../../../util/url";
 
 export interface DetailsProps {
   assembly?: Assembly;
-  linksConfig?: PackageLinksConfig[];
+  linksConfig?: PackageLinkConfig[];
   metadata: Metadata;
 }
 
@@ -50,15 +50,15 @@ export const Details = ({ assembly, linksConfig, metadata }: DetailsProps) => {
 
     // Prioritize custom links when available
     if (linksConfig?.length) {
-      linksConfig.forEach(({ name, value, displayText }) => {
-        const target = (metadata?.packageLinks ?? {})[value];
+      linksConfig.forEach(({ linkLabel, configKey, linkText }) => {
+        const target = (metadata?.packageLinks ?? {})[configKey];
         if (target) {
           const link = (
-            <ExternalLink href={target}>{displayText ?? target}</ExternalLink>
+            <ExternalLink href={target}>{linkText ?? target}</ExternalLink>
           );
           items.push(
             <>
-              {name}: {link}
+              {linkLabel}: {link}
             </>
           );
         }

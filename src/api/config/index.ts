@@ -1,9 +1,14 @@
 import { API_PATHS } from "../../constants/url";
 
-export interface PackageLinksConfig {
-  name: string;
-  value: string;
-  displayText?: string;
+export interface PackageLinkConfig {
+  linkLabel: string;
+  configKey: string;
+  linkText?: string;
+}
+
+export interface PackageTagConfig {
+  label: string;
+  color?: string;
 }
 
 export interface FeatureFlags {
@@ -13,7 +18,8 @@ export interface FeatureFlags {
 
 export interface Config {
   featureFlags?: FeatureFlags;
-  packageLinks?: PackageLinksConfig[];
+  packageLinks?: PackageLinkConfig[];
+  packageTags?: PackageTagConfig[];
 }
 
 const defaultConfig: Config = {};

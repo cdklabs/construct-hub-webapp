@@ -1,4 +1,5 @@
 import { API_PATHS } from "../../constants/url";
+import { PackageTagConfig } from "../config";
 import { getAssetsPath } from "./util";
 
 export interface Metadata {
@@ -9,6 +10,7 @@ export interface Metadata {
   packageLinks?: {
     [key: string]: string;
   };
+  packageTags?: PackageTagConfig[];
 }
 
 /**

@@ -1,14 +1,14 @@
 import { Box, Flex, Link } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
-import { PackageLinksConfig } from "../../../../api/config";
+import { PackageLinkConfig } from "../../../../api/config";
 import type { Metadata } from "../../../../api/package/metadata";
 import { DependencyDropdown } from "../DependencyDropdown";
 import { Details } from "./Details";
 
 export interface OperatorAreaProps {
   assembly?: Assembly;
-  linksConfig?: PackageLinksConfig[];
+  linksConfig?: PackageLinkConfig[];
   metadata: Metadata;
 }
 
