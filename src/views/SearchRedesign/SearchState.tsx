@@ -4,7 +4,6 @@
 import { createContext, FunctionComponent, useContext, useEffect } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { CDKType } from "../../constants/constructs";
-import type { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import {
   UseCatalogSearchReturn,
@@ -12,6 +11,7 @@ import {
 } from "../../hooks/useCatalogSearch";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { LIMIT } from "../SearchResults/constants";
+import { parseLangs, toNum } from "./util";
 
 export interface SearchState {
   limit: number;
@@ -32,23 +32,6 @@ export const useSearchState = () => {
   }
 
   return state;
-};
-
-const toNum = (val: string) => {
-  const result = parseInt(val);
-
-  if (`${result}` === "NaN") {
-    return 0;
-  }
-
-  return result;
-};
-
-const parseLangs = (langQuery: string | null) => {
-  if (!langQuery) return [];
-
-  const langs = decodeURIComponent(langQuery).split(",");
-  return langs as Language[];
 };
 
 export const SearchStateProvider: FunctionComponent = ({ children }) => {
