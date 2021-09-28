@@ -2,11 +2,9 @@ import { Center, Spinner } from "@chakra-ui/react";
 import { FunctionComponent, memo } from "react";
 import { CatalogPackage } from "../../api/package/packages";
 import { PackageCardType } from "../PackageCard";
-import { CompactCardList } from "./CompactCardList";
 import { WideCardList } from "./WideCardList";
 
 const listViews = {
-  [PackageCardType.Compact]: CompactCardList,
   [PackageCardType.Wide]: WideCardList,
 };
 
