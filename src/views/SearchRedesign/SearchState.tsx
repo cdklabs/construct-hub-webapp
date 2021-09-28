@@ -18,7 +18,6 @@ export interface SearchState {
   offset: number;
   query: string;
   searchAPI: UseCatalogSearchReturn;
-  sort?: CatalogSearchSort;
 }
 
 const SearchStateContext = createContext<SearchState | undefined>(undefined);
@@ -91,7 +90,6 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
         offset,
         query,
         searchAPI,
-        sort,
       }}
     >
       {children}

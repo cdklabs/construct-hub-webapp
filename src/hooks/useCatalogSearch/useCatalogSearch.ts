@@ -98,7 +98,9 @@ export const useCatalogSearch = (
     options.defaultLanguage
   );
 
-  const [sort, setSort] = useState<UseCatalogSearchReturn["sort"]>();
+  const [sort, setSort] = useState<UseCatalogSearchReturn["sort"]>(
+    options.defaultSort
+  );
 
   const { push } = useHistory();
 
@@ -108,8 +110,8 @@ export const useCatalogSearch = (
   };
 
   const onSearch = useCallback(() => {
-    push(getSearchPath({ cdkType, language, languages, query }));
-  }, [cdkType, language, languages, push, query]);
+    push(getSearchPath({ cdkType, language, languages, query, sort }));
+  }, [cdkType, language, languages, push, query, sort]);
 
   const onSubmit: UseCatalogSearchReturn["onSubmit"] = useCallback(
     (e) => {

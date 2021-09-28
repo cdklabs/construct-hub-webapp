@@ -2,6 +2,7 @@ import catalogFixture from "../../__fixtures__/catalog.json";
 import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
+import { CatalogSearchSort } from "./constants";
 import { SORT_FUNCTIONS, FILTER_FUNCTIONS } from "./util";
 
 const packages = catalogFixture.packages as CatalogPackage[];
@@ -9,16 +10,24 @@ const packages = catalogFixture.packages as CatalogPackage[];
 describe("Catalog Search Utils", () => {
   describe("Sort Functions", () => {
     it("Sorts by Publish Date", () => {
-      const resultsAscending = packages.sort(SORT_FUNCTIONS.PublishDateAsc);
-      const resultsDescending = packages.sort(SORT_FUNCTIONS.PublishDateDesc);
+      const resultsAscending = packages.sort(
+        SORT_FUNCTIONS[CatalogSearchSort.PublishDateAsc]
+      );
+      const resultsDescending = packages.sort(
+        SORT_FUNCTIONS[CatalogSearchSort.PublishDateDesc]
+      );
 
       expect(resultsAscending).toMatchSnapshot();
       expect(resultsDescending).toEqual(resultsAscending.reverse());
     });
 
     it("Sorts by Package Name", () => {
-      const resultsAscending = packages.sort(SORT_FUNCTIONS.NameAsc);
-      const resultsDescending = packages.sort(SORT_FUNCTIONS.NameDesc);
+      const resultsAscending = packages.sort(
+        SORT_FUNCTIONS[CatalogSearchSort.NameAsc]
+      );
+      const resultsDescending = packages.sort(
+        SORT_FUNCTIONS[CatalogSearchSort.NameDesc]
+      );
 
       expect(resultsAscending).toMatchSnapshot();
       expect(resultsDescending).toEqual(resultsAscending.reverse());

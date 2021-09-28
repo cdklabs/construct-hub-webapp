@@ -1,39 +1,41 @@
 import { Box, Divider, Flex } from "@chakra-ui/react";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { CatalogSearch } from "../../components/CatalogSearch";
 import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
-import { useCardView } from "../../contexts/CardView";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { getSearchPath } from "../../util/url";
 import { PageControls } from "../SearchResults/components/PageControls";
 import { ShowingDetails } from "../SearchResults/components/ShowingDetails";
 import { SearchQueryParam } from "../SearchResults/constants";
 import { useSearchState } from "./SearchState";
+import { SortedBy } from "./SortedBy";
 
 export const SearchResults: FunctionComponent = () => {
-  const { cardView, CardViewControls } = useCardView();
+  const isFirstRender = useRef(true);
   const { push } = useHistory();
 
-  const { query, sort, searchAPI, offset, limit } = useSearchState();
+  const { query, searchAPI, offset, limit } = useSearchState();
+  const { languages, sort, cdkType, onSearch } = searchAPI;
 
   const { page, pageLimit, results } = useCatalogResults({
     offset,
     limit,
     query,
-    languages: searchAPI.languages,
-    cdkType: searchAPI.cdkType,
-    sort: sort ?? undefined,
+    languages,
+    cdkType,
+    sort,
   });
 
   const getUrl = (
     params: Partial<{ [key in SearchQueryParam]: number | string }>
   ) => {
     return getSearchPath({
-      cdkType: searchAPI.cdkType,
+      cdkType: cdkType,
       query: (params.q ?? query) as string,
-      languages: searchAPI.languages,
+      languages,
+      sort,
       offset: params.offset ?? offset,
     });
   };
@@ -51,6 +53,18 @@ export const SearchResults: FunctionComponent = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, offset, pageLimit]);
+
+  // Reset offset and update url when filters & sort change
+  // We want to avoid doing this on first render / when a user directly navigates to a search URL
+  // so we keep a ref to prevent this
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    } else {
+      onSearch();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sort, languages, cdkType]);
 
   return (
     <Page
@@ -75,9 +89,9 @@ export const SearchResults: FunctionComponent = () => {
               limit={limit}
               offset={offset}
             />
-            <CardViewControls />
+            <SortedBy />
           </Flex>
-          <PackageList cardView={cardView} items={page} />
+          <PackageList items={page} />
           <PageControls
             getPageUrl={getUrl}
             limit={limit}
