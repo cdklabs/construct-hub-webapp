@@ -22,7 +22,7 @@ describe("Search", () => {
   checkHeaderAndFooter();
 });
 
-describe("Search (Redesign / WIP)", () => {
+describe.skip("Search (Redesign / WIP)", () => {
   before(() => {
     cy.visitWithConfig("/search", {
       featureFlags: {
