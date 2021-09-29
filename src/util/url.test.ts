@@ -79,7 +79,7 @@ describe("getSearchPath", () => {
     });
 
     expect(result).toMatchInlineSnapshot(
-      `"/search?q=%40aws%2Fcdk&cdk=aws-cdk&langs=dotnet%2Cgolang&sort=PublishDateDesc&offset=1"`
+      `"/search?q=%40aws%2Fcdk&cdk=aws-cdk&langs=dotnet%2Cgolang&sort=newest&offset=1"`
     );
   });
 });

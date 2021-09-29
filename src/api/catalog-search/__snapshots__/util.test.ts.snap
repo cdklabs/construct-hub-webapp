@@ -3,6 +3,389 @@
 exports[`Catalog Search Utils Sort Functions Sorts by Package Name 1`] = `
 Array [
   Object {
+    "name": "@aws-cdk/cdk",
+  },
+  Object {
+    "name": "@canahui/medium-posts",
+  },
+  Object {
+    "name": "@cdk-7layer-constructs/kinesis-firehose-transformer",
+  },
+  Object {
+    "name": "@charlesdotfish/smtp-credentials-cdk-construct",
+  },
+  Object {
+    "name": "@cm-madlabs/cdk-constructs",
+  },
+  Object {
+    "name": "@matthewbonig/nightynight",
+  },
+  Object {
+    "name": "@matthewbonig/rds-tools",
+  },
+  Object {
+    "name": "@matthewbonig/sqs-redrive",
+  },
+  Object {
+    "name": "@matthewbonig/wakeywakey",
+  },
+  Object {
+    "name": "@moralesl/billing-alert",
+  },
+  Object {
+    "name": "@opencdk8s/cdk8s-argo-rollout",
+  },
+  Object {
+    "name": "@opencdk8s/cdk8s-argocd-resources",
+  },
+  Object {
+    "name": "@opencdk8s/cdk8s-argoworkflow-resources",
+  },
+  Object {
+    "name": "@opencdk8s/cdk8s-aws-lb-controller-api-object",
+  },
+  Object {
+    "name": "@opencdk8s/cdk8s-redis-sts",
+  },
+  Object {
+    "name": "@pgarbe/cdk-bitbucket-server",
+  },
+  Object {
+    "name": "@pgarbe/cdk-datadog",
+  },
+  Object {
+    "name": "@philcali-cdk/static-website",
+  },
+  Object {
+    "name": "@raykrueger/cdk-valheim-server",
+  },
+  Object {
+    "name": "@rayou/cdk-url-shortener",
+  },
+  Object {
+    "name": "@rhaws/aws-ec2",
+  },
+  Object {
+    "name": "@scaleleap/selling-partner-api-cdk",
+  },
+  Object {
+    "name": "@seeebiii/ses-email-forwarding",
+  },
+  Object {
+    "name": "@skorfmann/cdktf-provider-aws",
+  },
+  Object {
+    "name": "@stefanfreitag/aws-budget-notifier",
+  },
+  Object {
+    "name": "@superluminar-io/super-eks",
+  },
+  Object {
+    "name": "@taimos/cdk-construct-alexa-skill",
+  },
+  Object {
+    "name": "@taimos/cdk-construct-github-notifier",
+  },
+  Object {
+    "name": "@taimos/cdk-construct-gitlab-variable",
+  },
+  Object {
+    "name": "@taimos/cdk-construct-hosting",
+  },
+  Object {
+    "name": "@terrastack/core",
+  },
+  Object {
+    "name": "@umlss/aws-cdk-serverless-timer",
+  },
+  Object {
+    "name": "@wheatstalk/fargate-spot-fallback",
+  },
+  Object {
+    "name": "@wheatstalk/web-carver",
+  },
+  Object {
+    "name": "aws_budget_notifier",
+  },
+  Object {
+    "name": "aws-cdk-appsync-transformer",
+  },
+  Object {
+    "name": "aws-cdk-billing-alarm",
+  },
+  Object {
+    "name": "aws-cdk-dynamodb-seeder",
+  },
+  Object {
+    "name": "aws-cdk-featureflags",
+  },
+  Object {
+    "name": "aws-cdk-image-resize",
+  },
+  Object {
+    "name": "aws-cdk-ssm-parameter",
+  },
+  Object {
+    "name": "aws-cdk-ssm-sdk-parameter",
+  },
+  Object {
+    "name": "aws-lambda-golang",
+  },
+  Object {
+    "name": "aws-sso-mapper",
+  },
+  Object {
+    "name": "cdk-alps-graph-ql",
+  },
+  Object {
+    "name": "cdk-alps-spec-rest-api",
+  },
+  Object {
+    "name": "cdk-apex-cname",
+  },
+  Object {
+    "name": "cdk-athena",
+  },
+  Object {
+    "name": "cdk-athena-workgroup",
+  },
+  Object {
+    "name": "cdk-bar",
+  },
+  Object {
+    "name": "cdk-basic-site-monitor",
+  },
+  Object {
+    "name": "cdk-bucket-deployment-expirator",
+  },
+  Object {
+    "name": "cdk-changelog-slack-notify",
+  },
+  Object {
+    "name": "cdk-changelog-slack-notify",
+  },
+  Object {
+    "name": "cdk-cicd",
+  },
+  Object {
+    "name": "cdk-cloudfront-deploy",
+  },
+  Object {
+    "name": "cdk-constants",
+  },
+  Object {
+    "name": "cdk-datadog-integration",
+  },
+  Object {
+    "name": "cdk-db-migration",
+  },
+  Object {
+    "name": "cdk-distributed-computing",
+  },
+  Object {
+    "name": "cdk-elasticache-monitor",
+  },
+  Object {
+    "name": "cdk-foo-bar",
+  },
+  Object {
+    "name": "cdk-github-import",
+  },
+  Object {
+    "name": "cdk-iam-actions",
+  },
+  Object {
+    "name": "cdk-iam-constants",
+  },
+  Object {
+    "name": "cdk-iam-generator",
+  },
+  Object {
+    "name": "cdk-image-builder-patterns",
+  },
+  Object {
+    "name": "cdk-instance-stop-rule",
+  },
+  Object {
+    "name": "cdk-mediapackage-custom",
+  },
+  Object {
+    "name": "cdk-noob",
+  },
+  Object {
+    "name": "cdk-personalize-datasetgroup",
+  },
+  Object {
+    "name": "cdk-quicksight-constructs",
+  },
+  Object {
+    "name": "cdk-remote-stack",
+  },
+  Object {
+    "name": "cdk-s3-bucketreplication",
+  },
+  Object {
+    "name": "cdk-secrets",
+  },
+  Object {
+    "name": "cdk-serverless-api",
+  },
+  Object {
+    "name": "cdk-serverless-video-transcoder",
+  },
+  Object {
+    "name": "cdk-sns-notify",
+  },
+  Object {
+    "name": "cdk-spa-deploy",
+  },
+  Object {
+    "name": "cdk-sqlserver-seeder",
+  },
+  Object {
+    "name": "cdk-sqs-monitored",
+  },
+  Object {
+    "name": "cdk-ssm-document",
+  },
+  Object {
+    "name": "cdk-ssm-parameter-store",
+  },
+  Object {
+    "name": "cdk-stack-parameters-shared-via-ssm",
+  },
+  Object {
+    "name": "cdk-stack-resource-rename",
+  },
+  Object {
+    "name": "cdk-stepfunctions-patterns",
+  },
+  Object {
+    "name": "cdk-time-bomb",
+  },
+  Object {
+    "name": "cdk-tweet-queue",
+  },
+  Object {
+    "name": "cdk-valheim",
+  },
+  Object {
+    "name": "cdk-watchful-edge",
+  },
+  Object {
+    "name": "cdk-webapp-tools",
+  },
+  Object {
+    "name": "cdk-website",
+  },
+  Object {
+    "name": "cdk-wordpress",
+  },
+  Object {
+    "name": "cdk3",
+  },
+  Object {
+    "name": "cdk8s-aws-alb-ingress-controller",
+  },
+  Object {
+    "name": "cdk8s-aws-load-balancer-controller",
+  },
+  Object {
+    "name": "cdk8s-external-dns",
+  },
+  Object {
+    "name": "cdk8s-image",
+  },
+  Object {
+    "name": "cdk8s-mongo-sts",
+  },
+  Object {
+    "name": "cdk8s-op",
+  },
+  Object {
+    "name": "cdk8s-plus",
+  },
+  Object {
+    "name": "cdk8s-plus-17",
+  },
+  Object {
+    "name": "cdk8s-redis-sts",
+  },
+  Object {
+    "name": "cdkactions",
+  },
+  Object {
+    "name": "cdkfoldingathome",
+  },
+  Object {
+    "name": "cicd-spa-website",
+  },
+  Object {
+    "name": "cloudstructs",
+  },
+  Object {
+    "name": "cloudwatch-dashboard",
+  },
+  Object {
+    "name": "crossplane-cdk8s",
+  },
+  Object {
+    "name": "gradle_s3_uploader",
+  },
+  Object {
+    "name": "halloumi-ses",
+  },
+  Object {
+    "name": "jacobitegboje",
+  },
+  Object {
+    "name": "jfrog-cdk-constructs",
+  },
+  Object {
+    "name": "jossaq-demo-backend",
+  },
+  Object {
+    "name": "mock-cdk-serverless-website-construct",
+  },
+  Object {
+    "name": "monocdk-experiment",
+  },
+  Object {
+    "name": "nodejsfunction-plus",
+  },
+  Object {
+    "name": "p6-barrier",
+  },
+  Object {
+    "name": "p82yf-libocr",
+  },
+  Object {
+    "name": "platform-constructs",
+  },
+  Object {
+    "name": "projen-example",
+  },
+  Object {
+    "name": "secure-bucket",
+  },
+  Object {
+    "name": "sqs-redrive",
+  },
+  Object {
+    "name": "sqs-redrive-construct",
+  },
+  Object {
+    "name": "umami-analytics-construct",
+  },
+  Object {
+    "name": "vpc-export-import",
+  },
+]
+`;
+
+exports[`Catalog Search Utils Sort Functions Sorts by Package Name 2`] = `
+Array [
+  Object {
     "date": "Mon, 01 Jul 2019 18:10:10 GMT",
     "name": "@aws-cdk/cdk",
   },
