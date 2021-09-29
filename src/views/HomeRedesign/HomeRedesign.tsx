@@ -1,15 +1,28 @@
-import { Flex, Grid, Heading } from "@chakra-ui/react";
-import type { FunctionComponent } from "react";
-import { PackageList } from "../../components/PackageList";
+import { Flex, Grid } from "@chakra-ui/react";
+import { FunctionComponent, useEffect, useState } from "react";
+import { DEFAULT_FEATURED_PACKAGES } from "../../api/config";
 import { Page } from "../../components/Page";
-import { useCatalogResults } from "../../hooks/useCatalogResults";
+import { useConfigValue } from "../../hooks/useConfigValue";
 import { Hero } from "./Hero";
+import { HomeSection, HomeSectionProps } from "./HomeSection";
 import { InfoPanel } from "./InfoPanel";
 
 export const HomeRedesign: FunctionComponent = () => {
-  const { page } = useCatalogResults({
-    limit: 10,
-  });
+  const homePackages = useConfigValue("featuredPackages");
+
+  const [sectionData, setSectionData] = useState<HomeSectionProps[]>([]);
+
+  useEffect(() => {
+    let config = homePackages;
+    if (!config) {
+      config = DEFAULT_FEATURED_PACKAGES;
+    }
+    setSectionData(config.sections);
+  }, [homePackages]);
+
+  const sections = sectionData.map((section) => (
+    <HomeSection key={section.name} {...section}></HomeSection>
+  ));
 
   return (
     <Page
@@ -31,13 +44,7 @@ export const HomeRedesign: FunctionComponent = () => {
           templateColumns="2fr 1fr"
           templateRows="1fr"
         >
-          <Flex direction="column">
-            <Heading as="h3" color="blue.800" mb={3} size="md">
-              Recently Updated
-            </Heading>
-
-            <PackageList items={page} />
-          </Flex>
+          <Flex direction="column">{sections}</Flex>
           <InfoPanel />
         </Grid>
       </Flex>
