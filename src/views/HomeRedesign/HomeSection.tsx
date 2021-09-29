@@ -1,6 +1,9 @@
 import { Heading } from "@chakra-ui/react";
 import { Fragment, FunctionComponent, useMemo } from "react";
-import { CatalogPackage } from "../../api/package/packages";
+import { CatalogSearchSort } from "../../api/catalog-search/constants";
+import { SORT_FUNCTIONS } from "../../api/catalog-search/util";
+import type { CatalogPackage } from "../../api/package/packages";
+import { findPackage } from "../../api/package/util";
 import { PackageList } from "../../components/PackageList";
 import { useCatalog } from "../../contexts/Catalog";
 
@@ -20,44 +23,28 @@ export const HomeSection: FunctionComponent<HomeSectionProps> = ({
   const results = useMemo(() => {
     if (loading || error || !data?.packages) return [];
 
-    let packages = data.packages;
-
     if (showLastUpdated) {
-      // sort packages by date
-      packages = [...packages]
-        .sort((p1, p2) => {
-          const d1 = new Date(p1.metadata.date);
-          const d2 = new Date(p2.metadata.date);
-          if (d1 === d2) {
-            return 0;
-          }
-          return d1 < d2 ? 1 : -1;
-        })
+      return data.packages
+        .sort(SORT_FUNCTIONS[CatalogSearchSort.PublishDateDesc])
         .slice(0, showLastUpdated);
     } else if (showPackages) {
-      // find the specific packages from the catalog and
-      // return them in the same order
-      const filteredMap = [...packages].reduce(
-        (accum: { [key: string]: CatalogPackage }, p) => {
-          if (showPackages.includes(p.name)) {
-            return {
-              [p.name]: p,
-              ...accum,
-            };
-          } else {
-            return accum;
-          }
-        },
-        {}
-      );
-      packages = showPackages.map((p) => filteredMap[p]);
+      return showPackages
+        .map((p) => findPackage(data, p))
+        .filter((pkg) => pkg !== undefined) as CatalogPackage[];
+    } else {
+      return undefined;
     }
+  }, [data, error, loading, showLastUpdated, showPackages]);
 
-    return packages;
-  }, [data?.packages, error, loading, showLastUpdated, showPackages]);
+  if (!results) {
+    console.warn(
+      "config.json is invalid - a section must specify showLastUpdated or showPackages."
+    );
+    return null;
+  }
 
   return (
-    <Fragment key={name}>
+    <Fragment>
       <Heading as="h3" color="blue.800" size="md">
         {name}
       </Heading>

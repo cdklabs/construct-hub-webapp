@@ -1,28 +1,15 @@
 import { Flex, Grid } from "@chakra-ui/react";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent } from "react";
 import { DEFAULT_FEATURED_PACKAGES } from "../../api/config";
 import { Page } from "../../components/Page";
 import { useConfigValue } from "../../hooks/useConfigValue";
 import { Hero } from "./Hero";
-import { HomeSection, HomeSectionProps } from "./HomeSection";
+import { HomeSection } from "./HomeSection";
 import { InfoPanel } from "./InfoPanel";
 
 export const HomeRedesign: FunctionComponent = () => {
   const homePackages = useConfigValue("featuredPackages");
-
-  const [sectionData, setSectionData] = useState<HomeSectionProps[]>([]);
-
-  useEffect(() => {
-    let config = homePackages;
-    if (!config) {
-      config = DEFAULT_FEATURED_PACKAGES;
-    }
-    setSectionData(config.sections);
-  }, [homePackages]);
-
-  const sections = sectionData.map((section) => (
-    <HomeSection key={section.name} {...section}></HomeSection>
-  ));
+  const sections = (homePackages ?? DEFAULT_FEATURED_PACKAGES).sections;
 
   return (
     <Page
@@ -44,7 +31,11 @@ export const HomeRedesign: FunctionComponent = () => {
           templateColumns="2fr 1fr"
           templateRows="1fr"
         >
-          <Flex direction="column">{sections}</Flex>
+          <Flex direction="column">
+            {sections.map((section) => (
+              <HomeSection key={section.name} {...section}></HomeSection>
+            ))}
+          </Flex>
           <InfoPanel />
         </Grid>
       </Flex>
