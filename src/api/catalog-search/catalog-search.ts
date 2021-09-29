@@ -18,6 +18,7 @@ export interface CatalogSearchFilters {
    * The target language to filter by. This parameter is only used
    * for backwards compatability with the current search page and should be
    * avoided moving forward
+   * @deprecated = use languages[] instead
    */
   language?: Language;
   /**
@@ -28,6 +29,12 @@ export interface CatalogSearchFilters {
 }
 
 export type CatalogSearchResults = Map<string, CatalogPackageWithId>;
+
+export interface CatalogSearchParams {
+  query?: string;
+  filters?: CatalogSearchFilters;
+  sort?: CatalogSearchSort;
+}
 
 export class CatalogSearchAPI {
   private readonly map: CatalogSearchResults;

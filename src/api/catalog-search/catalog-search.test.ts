@@ -79,7 +79,7 @@ describe("CatalogSearchAPI", () => {
         query: "lambda libraries",
       });
 
-      expect(Object.fromEntries(results)).toMatchSnapshot();
+      expect([...results].map(([id]) => id)).toMatchSnapshot();
     });
 
     it("Returns consistent filter results", () => {
@@ -89,7 +89,7 @@ describe("CatalogSearchAPI", () => {
         },
       });
 
-      expect(Object.fromEntries(results)).toMatchSnapshot();
+      expect([...results].map(([id]) => id)).toMatchSnapshot();
     });
 
     it("Returns consistent sort results", () => {
@@ -97,7 +97,7 @@ describe("CatalogSearchAPI", () => {
         sort: CatalogSearchSort.NameAsc,
       });
 
-      expect(Object.fromEntries(results)).toMatchSnapshot();
+      expect([...results].map(([id]) => id)).toMatchSnapshot();
     });
   });
 });
