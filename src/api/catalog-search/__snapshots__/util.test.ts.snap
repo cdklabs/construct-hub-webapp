@@ -306,6 +306,9 @@ Array [
     "name": "cdk8s-plus",
   },
   Object {
+    "name": "cdk8s-plus-17",
+  },
+  Object {
     "name": "cdk8s-redis-sts",
   },
   Object {
