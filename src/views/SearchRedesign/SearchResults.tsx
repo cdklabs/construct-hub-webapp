@@ -5,7 +5,6 @@ import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
-import { useCardView } from "../../contexts/CardView";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { useQueryParams } from "../../hooks/useQueryParams";
@@ -25,7 +24,6 @@ const toNum = (val: string) => {
 };
 
 export const SearchResults: FunctionComponent = () => {
-  const { cardView, CardViewControls } = useCardView();
   const queryParams = useQueryParams();
 
   const searchQuery = decodeURIComponent(
@@ -91,9 +89,8 @@ export const SearchResults: FunctionComponent = () => {
               limit={LIMIT}
               offset={offset}
             />
-            <CardViewControls />
           </Flex>
-          <PackageList cardView={cardView} items={page} />
+          <PackageList items={page} />
           <PageControls
             getPageUrl={getUrl}
             limit={LIMIT}

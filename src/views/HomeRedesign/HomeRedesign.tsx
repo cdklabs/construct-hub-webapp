@@ -2,14 +2,11 @@ import { Flex, Grid, Heading } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
-import { useCardView } from "../../contexts/CardView";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { Hero } from "./Hero";
 import { InfoPanel } from "./InfoPanel";
 
 export const HomeRedesign: FunctionComponent = () => {
-  const { cardView, CardViewControls } = useCardView();
-
   const { page } = useCatalogResults({
     limit: 10,
   });
@@ -35,14 +32,11 @@ export const HomeRedesign: FunctionComponent = () => {
           templateRows="1fr"
         >
           <Flex direction="column">
-            <Flex align="center" justify="space-between" mb={3}>
-              <Heading as="h3" color="blue.800" size="md">
-                Recently Updated
-              </Heading>
-              <CardViewControls />
-            </Flex>
+            <Heading as="h3" color="blue.800" mb={3} size="md">
+              Recently Updated
+            </Heading>
 
-            <PackageList cardView={cardView} items={page} />
+            <PackageList items={page} />
           </Flex>
           <InfoPanel />
         </Grid>
