@@ -22,6 +22,10 @@ export interface SearchState {
 
 const SearchStateContext = createContext<SearchState | undefined>(undefined);
 
+/**
+ * A hook to access Search Page specific state. This can only be in descendants of the new Search Page
+ * and will otherwise throw an error.
+ */
 export const useSearchState = () => {
   const state = useContext(SearchStateContext);
 

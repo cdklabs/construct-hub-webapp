@@ -10,27 +10,37 @@ const packages = catalogFixture.packages as CatalogPackage[];
 describe("Catalog Search Utils", () => {
   describe("Sort Functions", () => {
     it("Sorts by Publish Date", () => {
-      const resultsAscending = packages.sort(
+      const resultsAscending = [...packages].sort(
         SORT_FUNCTIONS[CatalogSearchSort.PublishDateAsc]
       );
-      const resultsDescending = packages.sort(
+      const resultsDescending = [...packages].sort(
         SORT_FUNCTIONS[CatalogSearchSort.PublishDateDesc]
       );
 
-      expect(resultsAscending).toMatchSnapshot();
-      expect(resultsDescending).toEqual(resultsAscending.reverse());
+      expect(
+        resultsAscending.map(({ name, metadata: { date } }) => ({ name, date }))
+      ).toMatchSnapshot();
+
+      resultsAscending.forEach((res, idx) => {
+        expect(res.metadata.date).toEqual(
+          resultsDescending[resultsDescending.length - 1 - idx].metadata.date
+        );
+      });
     });
 
     it("Sorts by Package Name", () => {
-      const resultsAscending = packages.sort(
+      const resultsAscending = [...packages].sort(
         SORT_FUNCTIONS[CatalogSearchSort.NameAsc]
       );
-      const resultsDescending = packages.sort(
+      const resultsDescending = [...packages].sort(
         SORT_FUNCTIONS[CatalogSearchSort.NameDesc]
       );
 
-      expect(resultsAscending).toMatchSnapshot();
-      expect(resultsDescending).toEqual(resultsAscending.reverse());
+      resultsAscending.forEach((res, idx) => {
+        expect(res.name).toEqual(
+          resultsDescending[resultsDescending.length - 1 - idx].name
+        );
+      });
     });
   });
 

@@ -16,8 +16,8 @@ export interface UseCatalogResultsOptions {
 }
 
 /**
- * A hook which encapsulates logic around applying search filters
- * and determining displayable results
+ * A hook to wrap `useSearch` results with pagination and parameter memoization
+ * This hook depends on an upstream provider - `<SearchProvider />`, which wraps all pages.
  */
 export const useCatalogResults = ({
   cdkType,
