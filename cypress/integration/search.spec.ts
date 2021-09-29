@@ -21,7 +21,7 @@ describe("Search", () => {
   checkHeaderAndFooter();
 });
 
-describe.skip("Search (Redesign / WIP)", () => {
+describe("Search (Redesign / WIP)", () => {
   before(() => {
     cy.visitWithConfig("/search", {
       featureFlags: {
