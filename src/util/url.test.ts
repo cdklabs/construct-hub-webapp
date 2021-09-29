@@ -1,3 +1,5 @@
+import { CatalogSearchSort } from "../api/catalog-search/constants";
+import { CDKType } from "../constants/constructs";
 import { Language } from "../constants/languages";
 import { QUERY_PARAMS, ROUTES } from "../constants/url";
 import {
@@ -70,12 +72,14 @@ describe("getSearchPath", () => {
   it("creates a valid search url", () => {
     const result = getSearchPath({
       offset: 1,
-      language: Language.Python,
       query: "@aws/cdk",
+      cdkType: CDKType.awscdk,
+      languages: [Language.DotNet, Language.Go],
+      sort: CatalogSearchSort.PublishDateDesc,
     });
 
-    expect(result).toEqual(
-      `${ROUTES.SEARCH}?${QUERY_PARAMS.SEARCH_QUERY}=%40aws%2Fcdk&${QUERY_PARAMS.LANGUAGE}=${Language.Python}&${QUERY_PARAMS.OFFSET}=1`
+    expect(result).toMatchInlineSnapshot(
+      `"/search?q=%40aws%2Fcdk&cdk=aws-cdk&langs=dotnet%2Cgolang&sort=PublishDateDesc&offset=1"`
     );
   });
 });
@@ -91,8 +95,8 @@ describe("getPackagePath", () => {
 
     const result = getPackagePath(pkg);
 
-    expect(result).toEqual(
-      `${ROUTES.PACKAGES}/${pkg.name}/v/${pkg.version}?${QUERY_PARAMS.SUBMODULE}=${pkg.submodule}&${QUERY_PARAMS.LANGUAGE}=${pkg.language}`
+    expect(result).toMatchInlineSnapshot(
+      `"/packages/@example/construct/v/1.0.0?submodule=foo&lang=golang"`
     );
   });
 });
