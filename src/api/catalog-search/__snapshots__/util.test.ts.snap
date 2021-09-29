@@ -380,6 +380,511 @@ Array [
 ]
 `;
 
+exports[`Catalog Search Utils Sort Functions Sorts by Package Name 2`] = `
+Array [
+  Object {
+    "date": "Mon, 01 Jul 2019 18:10:10 GMT",
+    "name": "@aws-cdk/cdk",
+  },
+  Object {
+    "date": "Tue, 24 Nov 2020 02:28:14 GMT",
+    "name": "@canahui/medium-posts",
+  },
+  Object {
+    "date": "Wed, 12 Aug 2020 19:14:15 GMT",
+    "name": "@cdk-7layer-constructs/kinesis-firehose-transformer",
+  },
+  Object {
+    "date": "Mon, 05 Jul 2021 04:08:27 GMT",
+    "name": "@charlesdotfish/smtp-credentials-cdk-construct",
+  },
+  Object {
+    "date": "Wed, 07 Apr 2021 14:29:31 GMT",
+    "name": "@cm-madlabs/cdk-constructs",
+  },
+  Object {
+    "date": "Tue, 11 May 2021 21:35:18 GMT",
+    "name": "@matthewbonig/nightynight",
+  },
+  Object {
+    "date": "Tue, 11 May 2021 22:56:01 GMT",
+    "name": "@matthewbonig/rds-tools",
+  },
+  Object {
+    "date": "Mon, 18 Jan 2021 21:24:45 GMT",
+    "name": "@matthewbonig/sqs-redrive",
+  },
+  Object {
+    "date": "Tue, 23 Mar 2021 16:27:15 GMT",
+    "name": "@matthewbonig/wakeywakey",
+  },
+  Object {
+    "date": "Mon, 13 Apr 2020 14:40:50 GMT",
+    "name": "@moralesl/billing-alert",
+  },
+  Object {
+    "date": "Mon, 12 Apr 2021 23:27:49 GMT",
+    "name": "@opencdk8s/cdk8s-argo-rollout",
+  },
+  Object {
+    "date": "Fri, 16 Apr 2021 17:37:40 GMT",
+    "name": "@opencdk8s/cdk8s-argocd-resources",
+  },
+  Object {
+    "date": "Sun, 16 May 2021 17:29:49 GMT",
+    "name": "@opencdk8s/cdk8s-argoworkflow-resources",
+  },
+  Object {
+    "date": "Mon, 15 Feb 2021 22:29:34 GMT",
+    "name": "@opencdk8s/cdk8s-aws-lb-controller-api-object",
+  },
+  Object {
+    "date": "Mon, 15 Feb 2021 18:48:55 GMT",
+    "name": "@opencdk8s/cdk8s-redis-sts",
+  },
+  Object {
+    "date": "Thu, 10 Dec 2020 11:43:03 GMT",
+    "name": "@pgarbe/cdk-bitbucket-server",
+  },
+  Object {
+    "date": "Mon, 29 Mar 2021 13:54:33 GMT",
+    "name": "@pgarbe/cdk-datadog",
+  },
+  Object {
+    "date": "Sat, 06 Jun 2020 13:19:47 GMT",
+    "name": "@philcali-cdk/static-website",
+  },
+  Object {
+    "date": "Tue, 20 Apr 2021 13:27:20 GMT",
+    "name": "@raykrueger/cdk-valheim-server",
+  },
+  Object {
+    "date": "Tue, 01 Sep 2020 11:15:04 GMT",
+    "name": "@rayou/cdk-url-shortener",
+  },
+  Object {
+    "date": "Sat, 15 Aug 2020 18:54:06 GMT",
+    "name": "@rhaws/aws-ec2",
+  },
+  Object {
+    "date": "Fri, 26 Mar 2021 14:32:37 GMT",
+    "name": "@scaleleap/selling-partner-api-cdk",
+  },
+  Object {
+    "date": "Tue, 11 May 2021 06:55:54 GMT",
+    "name": "@seeebiii/ses-email-forwarding",
+  },
+  Object {
+    "date": "Sun, 09 Aug 2020 22:07:09 GMT",
+    "name": "@skorfmann/cdktf-provider-aws",
+  },
+  Object {
+    "date": "Wed, 14 Oct 2020 07:46:20 GMT",
+    "name": "@stefanfreitag/aws-budget-notifier",
+  },
+  Object {
+    "date": "Tue, 13 Apr 2021 08:10:27 GMT",
+    "name": "@superluminar-io/super-eks",
+  },
+  Object {
+    "date": "Fri, 24 Jul 2020 09:25:30 GMT",
+    "name": "@taimos/cdk-construct-alexa-skill",
+  },
+  Object {
+    "date": "Sun, 28 Mar 2021 00:34:49 GMT",
+    "name": "@taimos/cdk-construct-github-notifier",
+  },
+  Object {
+    "date": "Thu, 16 Jan 2020 14:07:43 GMT",
+    "name": "@taimos/cdk-construct-gitlab-variable",
+  },
+  Object {
+    "date": "Sun, 12 Jan 2020 20:46:12 GMT",
+    "name": "@taimos/cdk-construct-hosting",
+  },
+  Object {
+    "date": "Wed, 11 Mar 2020 14:21:03 GMT",
+    "name": "@terrastack/core",
+  },
+  Object {
+    "date": "Fri, 11 Dec 2020 21:33:53 GMT",
+    "name": "@umlss/aws-cdk-serverless-timer",
+  },
+  Object {
+    "date": "Mon, 05 Apr 2021 04:39:41 GMT",
+    "name": "@wheatstalk/fargate-spot-fallback",
+  },
+  Object {
+    "date": "Tue, 16 Mar 2021 04:13:30 GMT",
+    "name": "@wheatstalk/web-carver",
+  },
+  Object {
+    "date": "Mon, 05 Apr 2021 09:14:55 GMT",
+    "name": "aws_budget_notifier",
+  },
+  Object {
+    "date": "Fri, 23 Oct 2020 13:25:31 GMT",
+    "name": "aws-cdk-appsync-transformer",
+  },
+  Object {
+    "date": "Sun, 09 May 2021 20:58:12 GMT",
+    "name": "aws-cdk-billing-alarm",
+  },
+  Object {
+    "date": "Mon, 17 Aug 2020 10:35:50 GMT",
+    "name": "aws-cdk-dynamodb-seeder",
+  },
+  Object {
+    "date": "Tue, 03 Mar 2020 14:20:46 GMT",
+    "name": "aws-cdk-featureflags",
+  },
+  Object {
+    "date": "Sun, 04 Jul 2021 11:45:49 GMT",
+    "name": "aws-cdk-image-resize",
+  },
+  Object {
+    "date": "Sat, 26 Dec 2020 10:22:47 GMT",
+    "name": "aws-cdk-ssm-parameter",
+  },
+  Object {
+    "date": "Mon, 05 Apr 2021 06:23:14 GMT",
+    "name": "aws-cdk-ssm-sdk-parameter",
+  },
+  Object {
+    "date": "Thu, 04 Jun 2020 19:50:33 GMT",
+    "name": "aws-lambda-golang",
+  },
+  Object {
+    "date": "Fri, 16 Apr 2021 13:39:39 GMT",
+    "name": "aws-sso-mapper",
+  },
+  Object {
+    "date": "Sun, 20 Dec 2020 12:41:39 GMT",
+    "name": "cdk-alps-graph-ql",
+  },
+  Object {
+    "date": "Mon, 28 Dec 2020 09:19:14 GMT",
+    "name": "cdk-alps-spec-rest-api",
+  },
+  Object {
+    "date": "Tue, 19 May 2020 09:32:19 GMT",
+    "name": "cdk-apex-cname",
+  },
+  Object {
+    "date": "Sat, 01 May 2021 08:43:58 GMT",
+    "name": "cdk-athena",
+  },
+  Object {
+    "date": "Wed, 08 Jul 2020 13:06:42 GMT",
+    "name": "cdk-athena-workgroup",
+  },
+  Object {
+    "date": "Wed, 23 Dec 2020 07:03:53 GMT",
+    "name": "cdk-bar",
+  },
+  Object {
+    "date": "Fri, 05 Feb 2021 11:06:19 GMT",
+    "name": "cdk-basic-site-monitor",
+  },
+  Object {
+    "date": "Wed, 03 Feb 2021 16:30:46 GMT",
+    "name": "cdk-bucket-deployment-expirator",
+  },
+  Object {
+    "date": "Thu, 03 Dec 2020 04:25:32 GMT",
+    "name": "cdk-changelog-slack-notify",
+  },
+  Object {
+    "date": "Sat, 03 Jul 2021 23:04:09 GMT",
+    "name": "cdk-changelog-slack-notify",
+  },
+  Object {
+    "date": "Sun, 19 Jan 2020 01:41:05 GMT",
+    "name": "cdk-cicd",
+  },
+  Object {
+    "date": "Wed, 30 Dec 2020 01:57:51 GMT",
+    "name": "cdk-cloudfront-deploy",
+  },
+  Object {
+    "date": "Mon, 30 Dec 2019 22:18:41 GMT",
+    "name": "cdk-constants",
+  },
+  Object {
+    "date": "Wed, 12 May 2021 23:59:28 GMT",
+    "name": "cdk-datadog-integration",
+  },
+  Object {
+    "date": "Sat, 01 May 2021 08:57:09 GMT",
+    "name": "cdk-db-migration",
+  },
+  Object {
+    "date": "Mon, 01 Feb 2021 06:31:47 GMT",
+    "name": "cdk-distributed-computing",
+  },
+  Object {
+    "date": "Sat, 08 Aug 2020 08:47:12 GMT",
+    "name": "cdk-elasticache-monitor",
+  },
+  Object {
+    "date": "Wed, 27 Jan 2021 21:28:49 GMT",
+    "name": "cdk-foo-bar",
+  },
+  Object {
+    "date": "Wed, 10 Jun 2020 16:09:48 GMT",
+    "name": "cdk-github-import",
+  },
+  Object {
+    "date": "Fri, 03 Apr 2020 19:48:39 GMT",
+    "name": "cdk-iam-actions",
+  },
+  Object {
+    "date": "Wed, 14 Oct 2020 07:48:12 GMT",
+    "name": "cdk-iam-constants",
+  },
+  Object {
+    "date": "Mon, 13 Jan 2020 19:19:54 GMT",
+    "name": "cdk-iam-generator",
+  },
+  Object {
+    "date": "Mon, 30 Nov 2020 20:17:47 GMT",
+    "name": "cdk-image-builder-patterns",
+  },
+  Object {
+    "date": "Sun, 02 Feb 2020 23:15:07 GMT",
+    "name": "cdk-instance-stop-rule",
+  },
+  Object {
+    "date": "Thu, 10 Dec 2020 14:24:38 GMT",
+    "name": "cdk-mediapackage-custom",
+  },
+  Object {
+    "date": "Mon, 23 Nov 2020 22:52:16 GMT",
+    "name": "cdk-noob",
+  },
+  Object {
+    "date": "Wed, 13 Jan 2021 03:54:38 GMT",
+    "name": "cdk-personalize-datasetgroup",
+  },
+  Object {
+    "date": "Thu, 06 May 2021 14:34:24 GMT",
+    "name": "cdk-quicksight-constructs",
+  },
+  Object {
+    "date": "Wed, 03 Feb 2021 06:23:13 GMT",
+    "name": "cdk-remote-stack",
+  },
+  Object {
+    "date": "Wed, 10 Mar 2021 00:59:05 GMT",
+    "name": "cdk-s3-bucketreplication",
+  },
+  Object {
+    "date": "Tue, 17 Mar 2020 15:11:22 GMT",
+    "name": "cdk-secrets",
+  },
+  Object {
+    "date": "Fri, 28 Aug 2020 15:00:09 GMT",
+    "name": "cdk-serverless-api",
+  },
+  Object {
+    "date": "Wed, 23 Dec 2020 04:01:31 GMT",
+    "name": "cdk-serverless-video-transcoder",
+  },
+  Object {
+    "date": "Wed, 11 Nov 2020 11:19:20 GMT",
+    "name": "cdk-sns-notify",
+  },
+  Object {
+    "date": "Tue, 11 May 2021 18:52:40 GMT",
+    "name": "cdk-spa-deploy",
+  },
+  Object {
+    "date": "Mon, 27 Jul 2020 10:47:34 GMT",
+    "name": "cdk-sqlserver-seeder",
+  },
+  Object {
+    "date": "Fri, 17 Apr 2020 18:59:40 GMT",
+    "name": "cdk-sqs-monitored",
+  },
+  Object {
+    "date": "Sat, 08 May 2021 08:09:43 GMT",
+    "name": "cdk-ssm-document",
+  },
+  Object {
+    "date": "Wed, 21 Apr 2021 00:30:36 GMT",
+    "name": "cdk-ssm-parameter-store",
+  },
+  Object {
+    "date": "Fri, 07 May 2021 07:20:41 GMT",
+    "name": "cdk-stack-parameters-shared-via-ssm",
+  },
+  Object {
+    "date": "Thu, 15 Apr 2021 06:25:38 GMT",
+    "name": "cdk-stack-resource-rename",
+  },
+  Object {
+    "date": "Fri, 28 Aug 2020 12:29:49 GMT",
+    "name": "cdk-stepfunctions-patterns",
+  },
+  Object {
+    "date": "Tue, 21 Jul 2020 14:12:38 GMT",
+    "name": "cdk-time-bomb",
+  },
+  Object {
+    "date": "Mon, 17 Feb 2020 06:34:29 GMT",
+    "name": "cdk-tweet-queue",
+  },
+  Object {
+    "date": "Sun, 02 May 2021 04:29:53 GMT",
+    "name": "cdk-valheim",
+  },
+  Object {
+    "date": "Sun, 21 Jun 2020 04:41:42 GMT",
+    "name": "cdk-watchful-edge",
+  },
+  Object {
+    "date": "Thu, 20 May 2021 17:05:24 GMT",
+    "name": "cdk-webapp-tools",
+  },
+  Object {
+    "date": "Thu, 29 Oct 2020 08:06:24 GMT",
+    "name": "cdk-website",
+  },
+  Object {
+    "date": "Sat, 31 Oct 2020 13:10:17 GMT",
+    "name": "cdk-wordpress",
+  },
+  Object {
+    "date": "Mon, 18 Jan 2021 08:59:52 GMT",
+    "name": "cdk3",
+  },
+  Object {
+    "date": "Mon, 23 Nov 2020 09:47:27 GMT",
+    "name": "cdk8s-aws-alb-ingress-controller",
+  },
+  Object {
+    "date": "Sat, 15 May 2021 02:02:54 GMT",
+    "name": "cdk8s-aws-load-balancer-controller",
+  },
+  Object {
+    "date": "Wed, 31 Mar 2021 00:47:28 GMT",
+    "name": "cdk8s-external-dns",
+  },
+  Object {
+    "date": "Thu, 22 Apr 2021 06:28:08 GMT",
+    "name": "cdk8s-image",
+  },
+  Object {
+    "date": "Mon, 08 Feb 2021 09:47:30 GMT",
+    "name": "cdk8s-mongo-sts",
+  },
+  Object {
+    "date": "Wed, 18 Nov 2020 05:29:35 GMT",
+    "name": "cdk8s-op",
+  },
+  Object {
+    "date": "Mon, 26 Oct 2020 21:05:19 GMT",
+    "name": "cdk8s-plus",
+  },
+  Object {
+    "date": "Thu, 11 Feb 2021 14:33:00 GMT",
+    "name": "cdk8s-redis-sts",
+  },
+  Object {
+    "date": "Wed, 20 Jan 2021 23:26:59 GMT",
+    "name": "cdkactions",
+  },
+  Object {
+    "date": "Sun, 10 Jan 2021 14:53:25 GMT",
+    "name": "cdkfoldingathome",
+  },
+  Object {
+    "date": "Thu, 05 Mar 2020 16:56:06 GMT",
+    "name": "cicd-spa-website",
+  },
+  Object {
+    "date": "Fri, 30 Apr 2021 09:10:22 GMT",
+    "name": "cloudstructs",
+  },
+  Object {
+    "date": "Mon, 01 Feb 2021 16:56:02 GMT",
+    "name": "cloudwatch-dashboard",
+  },
+  Object {
+    "date": "Sun, 20 Dec 2020 22:29:48 GMT",
+    "name": "crossplane-cdk8s",
+  },
+  Object {
+    "date": "Sun, 13 Dec 2020 21:02:11 GMT",
+    "name": "gradle_s3_uploader",
+  },
+  Object {
+    "date": "Wed, 19 May 2021 12:03:12 GMT",
+    "name": "halloumi-ses",
+  },
+  Object {
+    "date": "Tue, 02 Mar 2021 05:42:52 GMT",
+    "name": "jacobitegboje",
+  },
+  Object {
+    "date": "Tue, 27 Apr 2021 18:20:47 GMT",
+    "name": "jfrog-cdk-constructs",
+  },
+  Object {
+    "date": "Wed, 30 Dec 2020 15:33:26 GMT",
+    "name": "jossaq-demo-backend",
+  },
+  Object {
+    "date": "Mon, 17 May 2021 11:01:43 GMT",
+    "name": "mock-cdk-serverless-website-construct",
+  },
+  Object {
+    "date": "Fri, 02 Oct 2020 22:00:32 GMT",
+    "name": "monocdk-experiment",
+  },
+  Object {
+    "date": "Sat, 22 Feb 2020 04:17:06 GMT",
+    "name": "nodejsfunction-plus",
+  },
+  Object {
+    "date": "Mon, 05 Apr 2021 15:00:36 GMT",
+    "name": "p6-barrier",
+  },
+  Object {
+    "date": "Wed, 07 Oct 2020 10:20:51 GMT",
+    "name": "p82yf-libocr",
+  },
+  Object {
+    "date": "Fri, 21 May 2021 13:51:36 GMT",
+    "name": "platform-constructs",
+  },
+  Object {
+    "date": "Sun, 16 May 2021 09:05:53 GMT",
+    "name": "projen-example",
+  },
+  Object {
+    "date": "Fri, 07 Feb 2020 16:22:53 GMT",
+    "name": "secure-bucket",
+  },
+  Object {
+    "date": "Sat, 13 Jun 2020 21:03:23 GMT",
+    "name": "sqs-redrive",
+  },
+  Object {
+    "date": "Thu, 09 Apr 2020 00:21:21 GMT",
+    "name": "sqs-redrive-construct",
+  },
+  Object {
+    "date": "Thu, 04 Feb 2021 13:00:16 GMT",
+    "name": "umami-analytics-construct",
+  },
+  Object {
+    "date": "Wed, 14 Oct 2020 21:57:30 GMT",
+    "name": "vpc-export-import",
+  },
+]
+`;
+
 exports[`Catalog Search Utils Sort Functions Sorts by Publish Date 1`] = `
 Array [
   Object {

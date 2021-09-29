@@ -8,7 +8,7 @@ import { SORT_FUNCTIONS, FILTER_FUNCTIONS } from "./util";
 const packages = catalogFixture.packages as CatalogPackage[];
 
 describe("Catalog Search Utils", () => {
-  describe.only("Sort Functions", () => {
+  describe("Sort Functions", () => {
     it("Sorts by Publish Date", () => {
       const resultsAscending = [...packages].sort(
         SORT_FUNCTIONS[CatalogSearchSort.PublishDateAsc]
@@ -37,6 +37,10 @@ describe("Catalog Search Utils", () => {
       );
 
       expect(resultsAscending.map(({ name }) => ({ name }))).toMatchSnapshot();
+
+      expect(
+        resultsAscending.map(({ name, metadata: { date } }) => ({ name, date }))
+      ).toMatchSnapshot();
 
       resultsAscending.forEach((res, idx) => {
         expect(res.name).toEqual(
