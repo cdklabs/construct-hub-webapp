@@ -262,6 +262,14 @@
         }
       ]
     },
+    "test:update": {
+      "name": "test:update",
+      "steps": [
+        {
+          "exec": "npx react-app-rewired test -u"
+        }
+      ]
+    },
     "release": {
       "name": "release",
       "description": "Prepare a release from \"main\" branch",

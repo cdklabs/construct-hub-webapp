@@ -407,6 +407,10 @@ Array [
     "name": "cdk8s-plus",
   },
   Object {
+    "date": "Mon, 27 Sep 2021 12:11:02 GMT",
+    "name": "cdk8s-plus-17",
+  },
+  Object {
     "date": "Thu, 11 Feb 2021 14:33:00 GMT",
     "name": "cdk8s-redis-sts",
   },
@@ -1006,6 +1010,10 @@ Array [
   Object {
     "date": "Mon, 05 Jul 2021 04:08:27 GMT",
     "name": "@charlesdotfish/smtp-credentials-cdk-construct",
+  },
+  Object {
+    "date": "Mon, 27 Sep 2021 12:11:02 GMT",
+    "name": "cdk8s-plus-17",
   },
 ]
 `;
