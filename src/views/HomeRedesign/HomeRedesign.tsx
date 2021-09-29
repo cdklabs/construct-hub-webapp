@@ -7,8 +7,7 @@ import { Hero } from "./Hero";
 import { InfoPanel } from "./InfoPanel";
 
 export const HomeRedesign: FunctionComponent = () => {
-  // This hook's usage should eventually be replaced by a newer Search implementation
-  const { displayable, loading } = useCatalogResults({
+  const { page } = useCatalogResults({
     limit: 10,
   });
 
@@ -37,7 +36,7 @@ export const HomeRedesign: FunctionComponent = () => {
               Recently Updated
             </Heading>
 
-            <PackageList items={displayable} loading={loading} />
+            <PackageList items={page} />
           </Flex>
           <InfoPanel />
         </Grid>

@@ -35,19 +35,18 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
   const { push } = useHistory();
   const [currentLanguage] = useLanguage();
   const { onSubmit: onSearchSubmit, ...searchAPI } = useCatalogSearch();
-  const { query, language } = useDebounce({
-    query: searchAPI.query,
-    language: searchAPI.language,
-  });
 
-  const { displayable } = useCatalogResults({
+  const query = useDebounce(searchAPI.query);
+  const language = useDebounce(searchAPI.language);
+
+  const { page } = useCatalogResults({
     limit: 5,
     offset: 0,
     query,
     language,
   });
 
-  const showResults = (query || language) && displayable.length > 0;
+  const showResults = (query || language) && page.length > 0;
   const inputRef = useRef<HTMLInputElement>(null);
 
   const navigate = (to: string) => {
@@ -80,9 +79,9 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
                     Suggestions
                   </Heading>
                   <UnorderedList>
-                    {displayable.map((pkg) => (
+                    {page.map((pkg) => (
                       <SearchItem
-                        key={pkg.name}
+                        key={pkg.id}
                         name={pkg.name}
                         onClick={() =>
                           navigate(

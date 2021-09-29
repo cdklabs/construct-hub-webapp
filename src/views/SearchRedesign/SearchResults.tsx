@@ -5,14 +5,13 @@ import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
+import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
-import { usePagination } from "../../hooks/usePagination";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { getSearchPath } from "../../util/url";
 import { PageControls } from "../SearchResults/components/PageControls";
 import { ShowingDetails } from "../SearchResults/components/ShowingDetails";
 import { LIMIT, SearchQueryParam } from "../SearchResults/constants";
-import { useSearchAPI } from "./SearchAPI";
 
 const toNum = (val: string) => {
   const result = parseInt(val);
@@ -26,7 +25,6 @@ const toNum = (val: string) => {
 
 export const SearchResults: FunctionComponent = () => {
   const queryParams = useQueryParams();
-  const { results, search } = useSearchAPI();
 
   const searchQuery = decodeURIComponent(
     queryParams.get(QUERY_PARAMS.SEARCH_QUERY) ?? ""
@@ -43,7 +41,12 @@ export const SearchResults: FunctionComponent = () => {
 
   const offset = toNum(queryParams.get(QUERY_PARAMS.OFFSET) ?? "0");
 
-  const { page, pageLimit } = usePagination(results, { offset, limit: LIMIT });
+  const { page, pageLimit, results } = useCatalogResults({
+    offset,
+    limit: LIMIT,
+    query: searchQuery,
+    language: languageQuery,
+  });
 
   const getUrl = (
     params: Partial<{ [key in SearchQueryParam]: number | string }>
@@ -54,14 +57,6 @@ export const SearchResults: FunctionComponent = () => {
       offset: params.offset ?? offset,
     });
   };
-
-  useEffect(() => {
-    search({
-      query: searchQuery,
-      filters: { language: languageQuery ?? undefined },
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [languageQuery, searchQuery]);
 
   useEffect(() => {
     // Reflect changes to queryParam to search input (specifically for tag clicks)

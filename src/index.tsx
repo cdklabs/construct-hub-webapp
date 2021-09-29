@@ -7,6 +7,7 @@ import { AnalyticsProvider } from "./contexts/Analytics";
 import { CatalogProvider } from "./contexts/Catalog";
 import { ConfigProvider } from "./contexts/Config";
 import { ExternalLinkWarningProvider } from "./contexts/ExternalLinkWarning";
+import { SearchProvider } from "./contexts/Search";
 import { ShortbreadProvider } from "./contexts/Shortbread";
 import { Theme } from "./contexts/Theme";
 import { register } from "./register-service-worker";
@@ -19,11 +20,13 @@ ReactDOM.render(
         <AnalyticsProvider>
           <ConfigProvider>
             <CatalogProvider>
-              <Theme>
-                <ExternalLinkWarningProvider>
-                  <App />
-                </ExternalLinkWarningProvider>
-              </Theme>
+              <SearchProvider>
+                <Theme>
+                  <ExternalLinkWarningProvider>
+                    <App />
+                  </ExternalLinkWarningProvider>
+                </Theme>
+              </SearchProvider>
             </CatalogProvider>
           </ConfigProvider>
         </AnalyticsProvider>

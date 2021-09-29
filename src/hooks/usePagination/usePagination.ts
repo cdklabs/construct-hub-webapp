@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 export interface UsePaginationOptions {
   limit?: number;
@@ -7,10 +7,10 @@ export interface UsePaginationOptions {
 
 const takePage = <T extends any[]>(
   items: T,
-  opts: Required<UsePaginationOptions & { pageLimit: number }>
+  opts: Required<UsePaginationOptions>
 ) => {
-  const { limit, offset, pageLimit } = opts;
-  const start = (offset > pageLimit ? pageLimit : offset) * limit;
+  const { limit, offset } = opts;
+  const start = offset * limit;
   const stop = start + limit;
   return items.slice(start, stop);
 };
@@ -22,14 +22,14 @@ export const usePagination = <T extends any[]>(
   const { limit = 25, offset = 0 } = options ?? {};
   const pageLimit = data ? Math.floor(data.length / limit) : 0;
 
-  const [page, setPage] = useState(
-    takePage(data, { limit, offset, pageLimit })
+  return useMemo(
+    () => ({
+      page: takePage(data, {
+        limit,
+        offset: offset > pageLimit ? pageLimit : offset,
+      }),
+      pageLimit,
+    }),
+    [data, limit, offset, pageLimit]
   );
-
-  useEffect(() => {
-    setPage(takePage(data, { limit, offset, pageLimit }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [limit, offset, data]);
-
-  return useMemo(() => ({ page, pageLimit }), [page, pageLimit]);
 };
