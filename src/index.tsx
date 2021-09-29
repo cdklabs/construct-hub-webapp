@@ -4,7 +4,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { App } from "./App";
 import { AnalyticsProvider } from "./contexts/Analytics";
-import { CardViewProvider } from "./contexts/CardView";
 import { CatalogProvider } from "./contexts/Catalog";
 import { ConfigProvider } from "./contexts/Config";
 import { ExternalLinkWarningProvider } from "./contexts/ExternalLinkWarning";
@@ -24,9 +23,7 @@ ReactDOM.render(
               <SearchProvider>
                 <Theme>
                   <ExternalLinkWarningProvider>
-                    <CardViewProvider>
-                      <App />
-                    </CardViewProvider>
+                    <App />
                   </ExternalLinkWarningProvider>
                 </Theme>
               </SearchProvider>

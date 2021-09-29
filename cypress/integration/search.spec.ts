@@ -1,5 +1,4 @@
 import packageCardIds from "components/PackageCard/testIds";
-import cardViewIds from "contexts/CardView/testIds";
 import { checkHeaderAndFooter } from "../support/helpers";
 
 const checkCard = (cardType: string) => {
@@ -31,26 +30,7 @@ describe.skip("Search (Redesign / WIP)", () => {
     });
   });
 
-  it("has card view controls which change view when clicked", () => {
-    cy.getByDataTest(cardViewIds.controls).should("be.visible");
-
-    cy.getByDataTest(cardViewIds.gridView).click({ force: true });
-    cy.getByDataTest(packageCardIds.compactContainer).should("be.visible");
-
-    cy.getByDataTest(cardViewIds.controls).scrollIntoView();
-    cy.getByDataTest(cardViewIds.listView).click({ force: true });
-    cy.getByDataTest(packageCardIds.wideContainer).should("be.visible");
-  });
-
   it("has expected elements for Wide Cards", () => {
-    cy.getByDataTest(cardViewIds.controls).scrollIntoView();
-    cy.getByDataTest(cardViewIds.listView).click({ force: true });
     checkCard(packageCardIds.wideContainer);
-  });
-
-  it("has expected elements for Compact Cards", () => {
-    cy.getByDataTest(cardViewIds.controls).scrollIntoView();
-    cy.getByDataTest(cardViewIds.gridView).click({ force: true });
-    checkCard(packageCardIds.compactContainer);
   });
 });
