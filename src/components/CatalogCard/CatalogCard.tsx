@@ -117,7 +117,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
                 Official
               </PackageTag>
             ) : null,
-            ...pkg.keywords
+            ...(pkg.keywords ?? [])
               .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
               .slice(0, 3)
               .map((tag) => {
