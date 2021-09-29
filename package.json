@@ -26,6 +26,7 @@
     "proxy-server": "npx projen proxy-server",
     "proxy-server:ci": "npx projen proxy-server:ci",
     "test:unit": "npx projen test:unit",
+    "test:update": "npx projen test:update",
     "release": "npx projen release",
     "projen": "npx projen"
   },

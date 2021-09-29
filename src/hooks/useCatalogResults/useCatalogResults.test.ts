@@ -9,6 +9,7 @@ import {
 } from "./useCatalogResults";
 
 const catalogFixture = catalog as Packages;
+const numPackages = catalogFixture.packages.length;
 
 const defaultOptions: UseCatalogResultsOptions = {
   offset: 0,
@@ -64,6 +65,6 @@ describe("useCatalogResults", () => {
       limit: 50,
     });
 
-    expect(offsetTest.current.page).toHaveLength(25);
+    expect(offsetTest.current.page).toHaveLength(numPackages % 50);
   });
 });

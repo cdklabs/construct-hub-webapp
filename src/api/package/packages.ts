@@ -13,7 +13,7 @@ export interface CatalogPackage {
   version: string;
   description: string;
   author: Author | string;
-  keywords: string[];
+  keywords?: string[];
   metadata: Metadata;
 }
 
