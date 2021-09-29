@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { CatalogSearch } from "../../components/CatalogSearch";
 import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
-import { useCardView } from "../../contexts/CardView";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { getSearchPath } from "../../util/url";
 import { PageControls } from "../SearchResults/components/PageControls";
@@ -13,7 +12,6 @@ import { SearchQueryParam } from "../SearchResults/constants";
 import { useSearchState } from "./SearchState";
 
 export const SearchResults: FunctionComponent = () => {
-  const { cardView, CardViewControls } = useCardView();
   const { push } = useHistory();
 
   const { query, sort, searchAPI, offset, limit } = useSearchState();
@@ -75,9 +73,8 @@ export const SearchResults: FunctionComponent = () => {
               limit={limit}
               offset={offset}
             />
-            <CardViewControls />
           </Flex>
-          <PackageList cardView={cardView} items={page} />
+          <PackageList items={page} />
           <PageControls
             getPageUrl={getUrl}
             limit={limit}

@@ -11,6 +11,7 @@ import {
 import type { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { CatalogPackage } from "../../api/package/packages";
+import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import {
   Language,
   LANGUAGES,
@@ -117,7 +118,7 @@ export const CatalogCard: FunctionComponent<CatalogCardProps> = ({
               </PackageTag>
             ) : null,
             ...pkg.keywords
-              .filter(Boolean)
+              .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
               .slice(0, 3)
               .map((tag) => {
                 return (
