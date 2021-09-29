@@ -1,4 +1,4 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Box, Center, Spinner, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
@@ -64,6 +64,9 @@ export const Package: FunctionComponent = () => {
     assemblyResponse.loading ||
     assemblyResponse.error ||
     assemblyResponse.data?.targets?.[language.toString()] != null;
+  const isLoadingDocs =
+    !metadataResponse.loading &&
+    (assemblyResponse.loading || markdownResponse.loading);
 
   return (
     <Page
@@ -84,6 +87,10 @@ export const Package: FunctionComponent = () => {
         {isSupported ? (
           hasError ? (
             <PackageDocsError language={language}></PackageDocsError>
+          ) : isLoadingDocs ? (
+            <Center minH="200px">
+              <Spinner size="xl" />
+            </Center>
           ) : (
             hasDocs && (
               <PackageDocs
