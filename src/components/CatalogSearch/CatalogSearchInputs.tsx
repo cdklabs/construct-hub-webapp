@@ -31,11 +31,11 @@ export interface CatalogSearchInputsProps {
   /**
    * Controls the language state value
    */
-  language: Language | null;
+  language?: Language;
   /**
    * Controls the language state change event
    */
-  onLanguageChange: (language: Language | null) => void;
+  onLanguageChange: (language?: Language) => void;
 }
 
 export const CatalogSearchInputs = forwardRef<

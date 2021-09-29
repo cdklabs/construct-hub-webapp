@@ -1,33 +1,40 @@
 import { useMemo } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
+import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { usePagination } from "../usePagination";
 import { useSearch } from "../useSearch";
 
 export interface UseCatalogResultsOptions {
+  cdkType?: CDKType;
   limit: number;
   offset?: number;
   query?: string;
   language?: Language | null;
+  languages?: Language[];
   sort?: CatalogSearchSort;
 }
 
 /**
- * A hook which encapsulates logic around applying search filters
- * and determining displayable results
+ * A hook to wrap `useSearch` results with pagination and parameter memoization
+ * This hook depends on an upstream provider - `<SearchProvider />`, which wraps all pages.
  */
 export const useCatalogResults = ({
+  cdkType,
   limit,
   offset = 0,
   query = "",
   language = null,
+  languages,
   sort,
 }: UseCatalogResultsOptions) => {
   const filters = useMemo(
     () => ({
+      cdkType,
       language: language ?? undefined,
+      languages: languages,
     }),
-    [language]
+    [cdkType, language, languages]
   );
 
   const results = useSearch({

@@ -33,6 +33,19 @@ describe("CatalogSearchAPI", () => {
     );
   });
 
+  it("Returns results filtered by multiple languages", () => {
+    const javaAndPythonResults = instance.search({
+      filters: { languages: [Language.Java, Language.Python] },
+    });
+
+    expect(javaAndPythonResults.size).toEqual(
+      catalogFixture.packages.filter(
+        (p) =>
+          p.languages.java !== undefined || p.languages.python !== undefined
+      ).length
+    );
+  });
+
   it("Returns results ordered by Sort", () => {
     const publishDateAsc = [
       ...instance.search({ sort: CatalogSearchSort.PublishDateAsc }).values(),
@@ -66,7 +79,7 @@ describe("CatalogSearchAPI", () => {
         query: "lambda libraries",
       });
 
-      expect(Object.fromEntries(results)).toMatchSnapshot();
+      expect([...results].map(([id]) => id)).toMatchSnapshot();
     });
 
     it("Returns consistent filter results", () => {
@@ -76,7 +89,7 @@ describe("CatalogSearchAPI", () => {
         },
       });
 
-      expect(Object.fromEntries(results)).toMatchSnapshot();
+      expect([...results].map(([id]) => id)).toMatchSnapshot();
     });
 
     it("Returns consistent sort results", () => {
@@ -84,7 +97,7 @@ describe("CatalogSearchAPI", () => {
         sort: CatalogSearchSort.NameAsc,
       });
 
-      expect(Object.fromEntries(results)).toMatchSnapshot();
+      expect([...results].map(([id]) => id)).toMatchSnapshot();
     });
   });
 });

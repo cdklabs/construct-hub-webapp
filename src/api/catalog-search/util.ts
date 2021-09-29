@@ -1,7 +1,13 @@
+import { CatalogSearchFilters } from ".";
+import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { CatalogSearchSort } from "./constants";
 
 type SortFunction = (p1: CatalogPackage, p2: CatalogPackage) => number;
+
+type FilterFunctionBuilder<T> = (
+  filter: T
+) => undefined | ((pkg: CatalogPackage) => boolean);
 
 const getDateSort =
   (isAscending: boolean): SortFunction =>
@@ -23,9 +29,56 @@ const getStrSort = (isAscending: boolean): SortFunction => {
   return (p1, p2) => p1.name.localeCompare(p2.name) * (isAscending ? 1 : -1);
 };
 
+const getLanguageFilter: FilterFunctionBuilder<
+  CatalogSearchFilters["language"]
+> = (language) => {
+  if (!(language && language !== Language.TypeScript)) {
+    return undefined;
+  }
+
+  return (pkg) => {
+    return pkg.languages[language] !== undefined;
+  };
+};
+
+const getLanguagesFilter: FilterFunctionBuilder<
+  CatalogSearchFilters["languages"]
+> = (languages) => {
+  const languageSet =
+    (languages?.length ?? 0) > 0 ? new Set(languages) : undefined;
+
+  if (!languageSet || languageSet.has(Language.TypeScript)) {
+    return undefined;
+  }
+
+  return (pkg) => {
+    const isMatched = Object.keys(pkg.languages).some((lang) =>
+      languageSet.has(lang as Language)
+    );
+
+    return isMatched;
+  };
+};
+
+const getCDKTypeFilter: FilterFunctionBuilder<CatalogSearchFilters["cdkType"]> =
+  (cdkType) => {
+    if (!cdkType) return undefined;
+    return (pkg) => (pkg.metadata as any).cdkType === cdkType;
+  };
+
 export const SORT_FUNCTIONS: Record<CatalogSearchSort, SortFunction> = {
   [CatalogSearchSort.NameAsc]: getStrSort(true),
   [CatalogSearchSort.NameDesc]: getStrSort(false),
   [CatalogSearchSort.PublishDateAsc]: getDateSort(true),
   [CatalogSearchSort.PublishDateDesc]: getDateSort(false),
+};
+
+export const FILTER_FUNCTIONS: {
+  [key in keyof Required<CatalogSearchFilters>]: FilterFunctionBuilder<
+    CatalogSearchFilters[key]
+  >;
+} = {
+  cdkType: getCDKTypeFilter,
+  language: getLanguageFilter,
+  languages: getLanguagesFilter,
 };
