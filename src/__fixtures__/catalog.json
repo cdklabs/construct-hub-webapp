@@ -3466,6 +3466,45 @@
       },
       "name": "platform-constructs",
       "version": "0.0.7"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": false
+      },
+      "description": "High level abstractions on top of cdk8s",
+      "languages": {
+        "java": {
+          "package": "org.cdk8s.plus17",
+          "maven": {
+            "groupId": "org.cdk8s",
+            "artifactId": "cdk8s-plus-17"
+          }
+        },
+        "python": {
+          "distName": "cdk8s-plus-17",
+          "module": "cdk8s_plus_17"
+        },
+        "dotnet": {
+          "namespace": "Org.Cdk8s.Plus17",
+          "packageId": "Org.Cdk8s.Plus17"
+        },
+        "go": {
+          "moduleName": "github.com/cdk8s-team/cdk8s-plus-17-go"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "cdk8s",
+          "majorVersion": 1
+        },
+        "date": "Mon, 27 Sep 2021 12:11:02 GMT"
+      },
+      "name": "cdk8s-plus-17",
+      "version": "1.0.0-beta.83"
     }
   ]
 }

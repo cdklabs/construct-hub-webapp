@@ -26,6 +26,7 @@
     "proxy-server": "npx projen proxy-server",
     "proxy-server:ci": "npx projen proxy-server:ci",
     "test:unit": "npx projen test:unit",
+    "test:update": "npx projen test:update",
     "release": "npx projen release",
     "projen": "npx projen"
   },
@@ -42,7 +43,7 @@
     "@types/jest": "^26.0.24",
     "@types/lunr": "^2.3.4",
     "@types/node": "^14.17.0",
-    "@types/react": "^17.0.24",
+    "@types/react": "^17.0.25",
     "@types/react-dom": "^17.0.9",
     "@types/react-helmet": "^6.1.2",
     "@types/react-router-dom": "^5.3.0",

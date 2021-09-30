@@ -154,6 +154,10 @@ const project = new web.ReactTypeScriptProject({
     exec: "npx react-app-rewired test",
   });
 
+  project.addTask("test:update", {
+    exec: "npx react-app-rewired test -u",
+  });
+
   project.eslint.addIgnorePattern("jest.config.ts");
 })();
 

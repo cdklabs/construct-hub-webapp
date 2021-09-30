@@ -2,6 +2,7 @@
 
 exports[`CatalogSearchAPI Snapshots Returns consistent filter results 1`] = `
 Array [
+  "cdk8s-plus-17@1.0.0-beta.83",
   "@charlesdotfish/smtp-credentials-cdk-construct@1.0.14",
   "cdk-changelog-slack-notify@0.1.15",
   "halloumi-ses@0.0.1",
@@ -217,6 +218,7 @@ Array [
   "cdk8s-mongo-sts@0.0.8",
   "cdk8s-op@0.1.0",
   "cdk8s-plus@0.33.0-pre.713769883c9b4fe0ec443d0e776155d720b65cb6",
+  "cdk8s-plus-17@1.0.0-beta.83",
   "cdk8s-redis-sts@0.0.5",
   "cdkactions@0.2.3",
   "cdkfoldingathome@0.2.3",
