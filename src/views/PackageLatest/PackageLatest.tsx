@@ -1,8 +1,8 @@
 import { Center, Spinner } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { CatalogPackage, Packages } from "../../api/package/packages";
-import { getFullPackageName, sanitizeVersion } from "../../api/package/util";
+import { Packages } from "../../api/package/packages";
+import { getFullPackageName, findPackage } from "../../api/package/util";
 import { useCatalog } from "../../contexts/Catalog";
 import NotFound from "../NotFound";
 
@@ -10,28 +10,6 @@ interface RouteParams {
   name: string;
   scope?: string;
 }
-
-const extractMajor = (ver: string) => {
-  let sanitized = sanitizeVersion(ver);
-  return sanitized.split(".")[0];
-};
-
-const findPackage = (
-  catalog: Packages,
-  pkg: string
-): CatalogPackage | undefined => {
-  const packages = catalog.packages.filter((p) => p.name === pkg);
-
-  if (packages.length > 1) {
-    return packages.sort((p1, p2) => {
-      const mv1 = extractMajor(p1.version);
-      const mv2 = extractMajor(p2.version);
-      return mv2.localeCompare(mv1);
-    })[0];
-  }
-
-  return packages[0];
-};
 
 export const buildRedirectUrl = (
   catalog: Packages,
