@@ -56,7 +56,7 @@ export class CatalogSearchAPI {
   /**
    * A map of detected Construct Frameworks which provides a count of libraries for that framework and a set of major versions detected
    */
-  private constructFrameworks?: CatalogConstructFrameworks;
+  public readonly constructFrameworks: CatalogConstructFrameworks;
 
   constructor(catalogData: CatalogPackage[]) {
     const catalogMap = catalogData.reduce((map, pkg) => {
@@ -72,6 +72,8 @@ export class CatalogSearchAPI {
     }, new Map());
 
     this.map = this.sort(catalogMap, CatalogSearchSort.PublishDateDesc);
+
+    this.constructFrameworks = this.detectConstructFrameworks();
 
     this.index = lunr(function () {
       this.ref("id");
@@ -107,10 +109,6 @@ export class CatalogSearchAPI {
         this.add(pkg);
       });
     });
-  }
-
-  public get cdkFrameworks(): CatalogConstructFrameworks {
-    return this.constructFrameworks ?? this.detectConstructFrameworks();
   }
 
   /**
@@ -240,7 +238,7 @@ export class CatalogSearchAPI {
           }
 
           frameworks[frameworkName] = {
-            pkgCount: entry?.pkgCount ?? 0 + 1,
+            pkgCount: (entry?.pkgCount ?? 0) + 1,
             majorVersions,
           };
         }
@@ -250,7 +248,6 @@ export class CatalogSearchAPI {
       {}
     );
 
-    this.constructFrameworks = results;
-    return this.constructFrameworks;
+    return results;
   }
 }

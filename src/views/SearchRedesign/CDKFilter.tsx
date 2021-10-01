@@ -19,7 +19,7 @@ export const CDKFilter: FunctionComponent = () => {
   const searchAPI = useSearchContext()!;
 
   const cdkOptions = useMemo(() => {
-    const cdkTypes = searchAPI.cdkFrameworks;
+    const cdkTypes = searchAPI.constructFrameworks;
     const options = Object.entries(cdkTypes ?? {}).reduce(
       (opts, [name, meta]) => ({
         ...opts,

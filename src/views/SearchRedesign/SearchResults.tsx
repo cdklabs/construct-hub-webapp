@@ -78,7 +78,7 @@ export const SearchResults: FunctionComponent = () => {
       }}
       pageName="search"
     >
-      <Flex direction="column" maxW="100%" pr={6}>
+      <Flex direction="column" maxW="100%">
         <Box px={4}>
           <CatalogSearch {...searchAPI} />
           <Divider mt={4} />

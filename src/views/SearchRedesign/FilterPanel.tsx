@@ -15,7 +15,6 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
       maxH="full"
       maxW="368px"
       minW="100%"
-      ml={6}
       overflow="hidden auto"
       p={4}
     >

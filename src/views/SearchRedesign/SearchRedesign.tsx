@@ -19,7 +19,7 @@ export const SearchRedesign: FunctionComponent = () => {
           gap={4}
           h="full"
           maxW="100%"
-          py={6}
+          p={6}
           templateColumns="auto 1fr"
           templateRows="1fr"
         >
