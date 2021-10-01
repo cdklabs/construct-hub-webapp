@@ -55,7 +55,7 @@ export const HomeSection: FunctionComponent<HomeSectionProps> = ({
 
   return (
     <Fragment>
-      <Heading as="h3" color="blue.800" marginY="4" size="md">
+      <Heading as="h3" color="blue.800" my="4" size="md">
         {name}
       </Heading>
 

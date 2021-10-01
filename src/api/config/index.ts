@@ -44,7 +44,7 @@ export interface FeaturedPackagesDetail {
   /**
    * An additional comment to include with the package.
    */
-  readonly comment: string;
+  readonly comment?: string;
 }
 
 export interface PackageLinksConfig {
