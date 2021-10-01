@@ -14,6 +14,7 @@ import { Language } from "../../constants/languages";
 import { getSearchPath } from "../../util/url";
 
 export interface UseCatalogSearchParams {
+  defaultCdkMajor?: number;
   defaultCdkType?: CDKType;
   defaultQuery?: string;
   defaultLanguage?: UseCatalogSearchReturn["language"];
@@ -22,6 +23,10 @@ export interface UseCatalogSearchParams {
 }
 
 export interface UseCatalogSearchReturn {
+  /**
+   * The CDK Type's major version to filter by
+   */
+  cdkMajor?: number;
   /**
    * The CDK Type to filter by
    */
@@ -54,6 +59,10 @@ export interface UseCatalogSearchReturn {
    * The query state for this search
    */
   query: string;
+  /**
+   * CDK Major state setter
+   */
+  setCdkMajor: Dispatch<SetStateAction<UseCatalogSearchReturn["cdkMajor"]>>;
   /**
    * CDK Type state setter
    */
@@ -90,6 +99,10 @@ export const useCatalogSearch = (
     options.defaultCdkType
   );
 
+  const [cdkMajor, setCdkMajor] = useState<UseCatalogSearchReturn["cdkMajor"]>(
+    options.defaultCdkMajor
+  );
+
   const [languages, setLanguages] = useState<
     UseCatalogSearchReturn["languages"]
   >(options.defaultLanguages ?? []);
@@ -110,8 +123,10 @@ export const useCatalogSearch = (
   };
 
   const onSearch = useCallback(() => {
-    push(getSearchPath({ cdkType, language, languages, query, sort }));
-  }, [cdkType, language, languages, push, query, sort]);
+    push(
+      getSearchPath({ cdkMajor, cdkType, language, languages, query, sort })
+    );
+  }, [cdkType, cdkMajor, language, languages, push, query, sort]);
 
   const onSubmit: UseCatalogSearchReturn["onSubmit"] = useCallback(
     (e) => {
@@ -123,6 +138,7 @@ export const useCatalogSearch = (
 
   return useMemo(
     () => ({
+      cdkMajor,
       cdkType,
       language,
       languages,
@@ -131,6 +147,7 @@ export const useCatalogSearch = (
       onSearch,
       onSubmit,
       query,
+      setCdkMajor,
       setCdkType,
       setLanguage,
       setLanguages,
@@ -138,6 +155,6 @@ export const useCatalogSearch = (
       setSort,
       sort,
     }),
-    [cdkType, language, languages, onSearch, onSubmit, query, sort]
+    [cdkMajor, cdkType, language, languages, onSearch, onSubmit, query, sort]
   );
 };

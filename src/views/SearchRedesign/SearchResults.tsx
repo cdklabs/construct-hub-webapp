@@ -17,13 +17,14 @@ export const SearchResults: FunctionComponent = () => {
   const { push } = useHistory();
 
   const { query, searchAPI, offset, limit } = useSearchState();
-  const { languages, sort, cdkType, onSearch } = searchAPI;
+  const { languages, sort, cdkType, cdkMajor, onSearch } = searchAPI;
 
   const { page, pageLimit, results } = useCatalogResults({
     offset,
     limit,
     query,
     languages,
+    cdkMajor,
     cdkType,
     sort,
   });
@@ -32,7 +33,8 @@ export const SearchResults: FunctionComponent = () => {
     params: Partial<{ [key in SearchQueryParam]: number | string }>
   ) => {
     return getSearchPath({
-      cdkType: cdkType,
+      cdkMajor,
+      cdkType,
       query: (params.q ?? query) as string,
       languages,
       sort,
@@ -64,7 +66,7 @@ export const SearchResults: FunctionComponent = () => {
       onSearch();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sort, languages, cdkType]);
+  }, [sort, languages, cdkType, cdkMajor]);
 
   return (
     <Page
@@ -76,11 +78,11 @@ export const SearchResults: FunctionComponent = () => {
       }}
       pageName="search"
     >
-      <Flex direction="column" maxW="100vw">
-        <Box p={4}>
+      <Flex direction="column" maxW="100%" pr={6}>
+        <Box px={4}>
           <CatalogSearch {...searchAPI} />
+          <Divider mt={4} />
         </Box>
-        <Divider />
         <Box p={4}>
           <Flex justify="space-between" pb={4}>
             <ShowingDetails

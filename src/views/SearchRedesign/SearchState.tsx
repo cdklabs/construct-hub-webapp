@@ -56,7 +56,11 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
   const cdkType =
     (queryParams.get(QUERY_PARAMS.CDK_TYPE) as CDKType) ?? undefined;
 
+  const cdkMajorParam = queryParams.get(QUERY_PARAMS.CDK_MAJOR);
+  const cdkMajor = cdkMajorParam ? toNum(cdkMajorParam) : undefined;
+
   const searchAPI = useCatalogSearch({
+    defaultCdkMajor: cdkMajor,
     defaultCdkType: cdkType,
     defaultLanguages: languages,
     defaultQuery: query,

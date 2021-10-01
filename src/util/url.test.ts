@@ -1,7 +1,6 @@
 import { CatalogSearchSort } from "../api/catalog-search/constants";
 import { CDKType } from "../constants/constructs";
 import { Language } from "../constants/languages";
-import { QUERY_PARAMS, ROUTES } from "../constants/url";
 import {
   getRepoUrlAndHost,
   createURLSearchParams,
@@ -71,6 +70,7 @@ describe("createUrl", () => {
 describe("getSearchPath", () => {
   it("creates a valid search url", () => {
     const result = getSearchPath({
+      cdkMajor: 1,
       offset: 1,
       query: "@aws/cdk",
       cdkType: CDKType.awscdk,
@@ -79,7 +79,7 @@ describe("getSearchPath", () => {
     });
 
     expect(result).toMatchInlineSnapshot(
-      `"/search?q=%40aws%2Fcdk&cdk=aws-cdk&langs=dotnet%2Cgolang&sort=newest&offset=1"`
+      `"/search?q=%40aws%2Fcdk&cdk=aws-cdk&cdkver=1&langs=dotnet%2Cgolang&sort=newest&offset=1"`
     );
   });
 });

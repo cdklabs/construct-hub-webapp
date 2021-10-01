@@ -1,4 +1,5 @@
 {
+  "updated": "2021-09-30T16:45:28.457Z",
   "packages": [
     {
       "author": {
@@ -36,6 +37,24 @@
     },
     {
       "author": {
+        "name": "geyson",
+        "email": "geyson.ferreira@druid.com.br",
+        "organization": false
+      },
+      "keywords": [
+        "cdk"
+      ],
+      "languages": {},
+      "license": "Apache-2.0",
+      "major": 0,
+      "metadata": {
+        "date": "Mon, 19 Jul 2021 15:03:38 GMT"
+      },
+      "name": "cdk-libs",
+      "version": "0.1.24"
+    },
+    {
+      "author": {
         "email": "kevin@thence.io",
         "name": "Kevin S Lin",
         "url": "https://github.com/kevinslin"
@@ -65,40 +84,6 @@
       },
       "name": "cdk-constants",
       "version": "3.0.3"
-    },
-    {
-      "author": {
-        "email": "thorsten.hoeger@taimos.de",
-        "name": "Thorsten Hoeger",
-        "url": "https://www.taimos.de"
-      },
-      "description": "An AWS CDK Construct that provides website hosting",
-      "keywords": [
-        "cdk",
-        "aws-cdk",
-        "construct",
-        ""
-      ],
-      "languages": {
-        "python": {
-          "distName": "taimos.cdk-construct-hosting",
-          "module": "taimos.cdk_construct_hosting"
-        },
-        "java": {
-          "package": "de.taimos.cdk.construct.hosting",
-          "maven": {
-            "groupId": "de.taimos.cdk.construct",
-            "artifactId": "hosting"
-          }
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Sun, 12 Jan 2020 20:46:12 GMT"
-      },
-      "name": "@taimos/cdk-construct-hosting",
-      "version": "1.0.0"
     },
     {
       "author": {
@@ -149,28 +134,33 @@
         "name": "Thorsten Hoeger",
         "url": "https://www.taimos.de"
       },
-      "description": "An AWS CDK Construct that creates GITLAB CI/CD variables from SecretsManager Secrets",
+      "description": "An AWS CDK Construct that provides website hosting",
       "keywords": [
         "cdk",
         "aws-cdk",
         "construct",
-        "gitlab",
-        "ci",
-        "cd"
+        ""
       ],
       "languages": {
         "python": {
-          "distName": "taimos.cdk-construct-gitlab-variable",
-          "module": "taimos.cdk_construct_gitlab_variable"
+          "distName": "taimos.cdk-construct-hosting",
+          "module": "taimos.cdk_construct_hosting"
+        },
+        "java": {
+          "package": "de.taimos.cdk.construct.hosting",
+          "maven": {
+            "groupId": "de.taimos.cdk.construct",
+            "artifactId": "hosting"
+          }
         }
       },
       "license": "Apache-2.0",
       "major": 1,
       "metadata": {
-        "date": "Thu, 16 Jan 2020 14:07:43 GMT"
+        "date": "Sun, 12 Jan 2020 20:46:12 GMT"
       },
-      "name": "@taimos/cdk-construct-gitlab-variable",
-      "version": "1.0.1"
+      "name": "@taimos/cdk-construct-hosting",
+      "version": "1.0.0"
     },
     {
       "author": {
@@ -211,27 +201,32 @@
     },
     {
       "author": {
-        "name": "Gernot Glawe"
+        "email": "thorsten.hoeger@taimos.de",
+        "name": "Thorsten Hoeger",
+        "url": "https://www.taimos.de"
       },
-      "description": "EC2 instance with cloudwatch rule to stop it",
+      "description": "An AWS CDK Construct that creates GITLAB CI/CD variables from SecretsManager Secrets",
       "keywords": [
         "cdk",
-        "EC2",
-        "cloudwatch rule"
+        "aws-cdk",
+        "construct",
+        "gitlab",
+        "ci",
+        "cd"
       ],
       "languages": {
         "python": {
-          "distName": "tecracer.cdk",
-          "module": "tecracer.ec2stoprule"
+          "distName": "taimos.cdk-construct-gitlab-variable",
+          "module": "taimos.cdk_construct_gitlab_variable"
         }
       },
       "license": "Apache-2.0",
-      "major": 0,
+      "major": 1,
       "metadata": {
-        "date": "Sun, 02 Feb 2020 23:15:07 GMT"
+        "date": "Thu, 16 Jan 2020 14:07:43 GMT"
       },
-      "name": "cdk-instance-stop-rule",
-      "version": "0.1.2"
+      "name": "@taimos/cdk-construct-gitlab-variable",
+      "version": "1.0.1"
     },
     {
       "author": {
@@ -278,40 +273,40 @@
       "author": {
         "name": "Elad Ben-Israel",
         "email": "elad.benisrael@gmail.com",
-        "url": "https://twitter.com/emeshbi"
+        "organization": false
       },
       "description": "Defines an SQS queue with tweet stream from a search",
       "keywords": [
-        "cdk",
         "aws-cdk",
-        "twitter",
-        "constructs"
+        "cdk",
+        "constructs",
+        "twitter"
       ],
       "languages": {
-        "dotnet": {
-          "namespace": "Eladb.CdkTweetQueue",
-          "packageId": "Eladb.CdkTweetQueue",
-          "signAssembly": false
+        "java": {
+          "package": "io.github.cdklabs.tweetqueue",
+          "maven": {
+            "groupId": "io.github.cdklabs",
+            "artifactId": "cdk-tweet-queue"
+          }
         },
         "python": {
           "distName": "cdk-tweet-queue",
           "module": "cdk_tweet_queue"
         },
-        "java": {
-          "package": "com.github.eladb.tweetqueue",
-          "maven": {
-            "groupId": "com.github.eladb",
-            "artifactId": "cdk-tweet-queue"
-          }
+        "dotnet": {
+          "namespace": "Cdklabs.CdkTweetQueue",
+          "packageId": "Cdklabs.CdkTweetQueue"
         }
       },
       "license": "Apache-2.0",
       "major": 1,
       "metadata": {
-        "date": "Mon, 17 Feb 2020 06:34:29 GMT"
+        "date": "Wed, 15 Sep 2021 00:19:48 GMT",
+        "packageLinks": {}
       },
       "name": "cdk-tweet-queue",
-      "version": "1.0.3"
+      "version": "1.0.64"
     },
     {
       "author": {
@@ -485,57 +480,6 @@
     },
     {
       "author": {
-        "name": "Joseph Atkins-Turkish",
-        "url": "https://github.com/spacerat"
-      },
-      "description": "A Typescript library of AWS actions and condition key enums",
-      "keywords": [
-        "aws",
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-iam-actions",
-          "module": "cdk_iam_actions"
-        }
-      },
-      "license": "ISC",
-      "major": 1,
-      "metadata": {
-        "date": "Fri, 03 Apr 2020 19:48:39 GMT"
-      },
-      "name": "cdk-iam-actions",
-      "version": "1.0.0"
-    },
-    {
-      "author": {
-        "name": "Matthew Bonig",
-        "email": "matthew.bonig@gmail.com",
-        "url": "https://matthewbonig.com"
-      },
-      "description": "A redrive construct to use with an SQS queue and it's dead letter queue",
-      "keywords": [
-        "cdk",
-        "sqs",
-        "dead-letter-queues",
-        "redrive"
-      ],
-      "languages": {
-        "python": {
-          "distName": "mbonig.sqs-redrive",
-          "module": "mbonig.sqs_redrive"
-        }
-      },
-      "license": "MIT",
-      "major": 0,
-      "metadata": {
-        "date": "Thu, 09 Apr 2020 00:21:21 GMT"
-      },
-      "name": "sqs-redrive-construct",
-      "version": "0.1.1"
-    },
-    {
-      "author": {
         "name": "Luis Morales",
         "url": "https://github.com/moralesl"
       },
@@ -600,28 +544,62 @@
     },
     {
       "author": {
-        "name": "Stefan De Figueiredo",
-        "url": "https://github.com/maskerade"
+        "name": "Philip Cali"
       },
-      "description": "CDK construct to allow setting an apex record to a cname",
+      "description": "Simple little CDK glue for static websites.",
       "keywords": [
+        "aws",
         "cdk",
-        "aws-cdk",
-        "aws"
+        "static",
+        "website"
       ],
       "languages": {
         "python": {
-          "distName": "cdk-apex-cname",
-          "module": "cdk-apex-cname"
+          "distName": "me.philcali.cdk.website",
+          "module": "me.philcali.cdk.website"
+        },
+        "java": {
+          "package": "me.philcali.cdk.website",
+          "maven": {
+            "groupId": "me.philcali.cdk",
+            "artifactId": "website"
+          }
         }
       },
-      "license": "ISC",
+      "license": "Apache-2.0",
       "major": 0,
       "metadata": {
-        "date": "Tue, 19 May 2020 09:32:19 GMT"
+        "date": "Sat, 06 Jun 2020 13:19:47 GMT"
       },
-      "name": "cdk-apex-cname",
-      "version": "0.1.4"
+      "name": "@philcali-cdk/static-website",
+      "version": "0.0.2"
+    },
+    {
+      "author": {
+        "name": "Matthew Bonig",
+        "email": "matthew.bonig@gmail.com",
+        "url": "https://matthewbonig.com"
+      },
+      "description": "A redrive construct to use with an SQS queue and it's dead letter queue",
+      "keywords": [
+        "cdk",
+        "sqs",
+        "dead-letter-queues",
+        "redrive"
+      ],
+      "languages": {
+        "python": {
+          "distName": "mbonig.sqs-redrive",
+          "module": "mbonig.sqs_redrive"
+        }
+      },
+      "license": "MIT",
+      "major": 0,
+      "metadata": {
+        "date": "Thu, 09 Apr 2020 00:21:21 GMT"
+      },
+      "name": "sqs-redrive-construct",
+      "version": "0.1.1"
     },
     {
       "author": {
@@ -661,38 +639,6 @@
       },
       "name": "aws-lambda-golang",
       "version": "0.1.1"
-    },
-    {
-      "author": {
-        "name": "Philip Cali"
-      },
-      "description": "Simple little CDK glue for static websites.",
-      "keywords": [
-        "aws",
-        "cdk",
-        "static",
-        "website"
-      ],
-      "languages": {
-        "python": {
-          "distName": "me.philcali.cdk.website",
-          "module": "me.philcali.cdk.website"
-        },
-        "java": {
-          "package": "me.philcali.cdk.website",
-          "maven": {
-            "groupId": "me.philcali.cdk",
-            "artifactId": "website"
-          }
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Sat, 06 Jun 2020 13:19:47 GMT"
-      },
-      "name": "@philcali-cdk/static-website",
-      "version": "0.0.2"
     },
     {
       "author": {
@@ -852,6 +798,44 @@
     },
     {
       "author": {
+        "name": "John Belisle",
+        "email": "jmb186@gmail.com",
+        "url": "https://github.com/jmb12686",
+        "organization": false
+      },
+      "description": "Implode your AWS CDK Stack after set amount of time, save money, be happy!",
+      "keywords": [
+        "cdk",
+        "aws-cdk",
+        "aws"
+      ],
+      "languages": {
+        "python": {
+          "module": "cdk-time-bomb",
+          "distName": "cdk-time-bomb"
+        },
+        "java": {
+          "package": "jmb12686.cdk.timebomb",
+          "maven": {
+            "groupId": "jmb12686.cdk",
+            "artifactId": "timebomb"
+          }
+        },
+        "dotnet": {
+          "namespace": "jmb12686.timebomb",
+          "packageId": "jmb12686.timebomb"
+        }
+      },
+      "license": "MIT",
+      "major": 0,
+      "metadata": {
+        "date": "Thu, 14 May 2020 15:21:58 GMT"
+      },
+      "name": "cdk-time-bomb",
+      "version": "0.0.1"
+    },
+    {
+      "author": {
         "email": "thorsten.hoeger@taimos.de",
         "name": "Thorsten Hoeger",
         "url": "https://www.taimos.de"
@@ -876,45 +860,6 @@
       },
       "name": "@taimos/cdk-construct-alexa-skill",
       "version": "1.1.0"
-    },
-    {
-      "author": {
-        "name": "Dmitry Kolomiets",
-        "email": "kolomied@amazon.co.uk",
-        "url": "https://github.com/kolomied"
-      },
-      "description": "A simple CDK seeder for SQL Server RDS databases.",
-      "keywords": [
-        "aws",
-        "cdk",
-        "sqlserver",
-        "seed",
-        "seeder"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-sqlserver-seeder",
-          "module": "Talnakh.SqlServerSeeder"
-        },
-        "dotnet": {
-          "namespace": "Talnakh.SqlServerSeeder",
-          "packageId": "Talnakh.SqlServerSeeder"
-        },
-        "java": {
-          "package": "xyz.talnakh.SqlServerSeeder",
-          "maven": {
-            "groupId": "xyz.talnakh",
-            "artifactId": "SqlServerSeeder"
-          }
-        }
-      },
-      "license": "MIT",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 27 Jul 2020 10:47:34 GMT"
-      },
-      "name": "cdk-sqlserver-seeder",
-      "version": "0.2.3"
     },
     {
       "author": {
@@ -947,34 +892,6 @@
     },
     {
       "author": {
-        "name": "Sebastian Korfmann",
-        "email": "sebastian@korfmann.net",
-        "organization": false
-      },
-      "description": "Prebuilt AWS Provider for Terraform CDK (cdktf)",
-      "keywords": [
-        "cdktf",
-        "terraform",
-        "cdk",
-        "aws",
-        "provider"
-      ],
-      "languages": {
-        "python": {
-          "distName": "skorfmann-cdktf-provider-aws",
-          "module": "skorfmann_cdktf_provider_aws"
-        }
-      },
-      "license": "MPL-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Sun, 09 Aug 2020 22:07:09 GMT"
-      },
-      "name": "@skorfmann/cdktf-provider-aws",
-      "version": "0.0.14"
-    },
-    {
-      "author": {
         "name": "Randy Ridgley",
         "url": "https://github.com/randyridgley"
       },
@@ -1000,46 +917,6 @@
       },
       "name": "@cdk-7layer-constructs/kinesis-firehose-transformer",
       "version": "0.1.36"
-    },
-    {
-      "author": {
-        "name": "Amazon Web Services",
-        "url": "https://aws.amazon.com"
-      },
-      "description": "CDK Constructs for AWS EC2",
-      "keywords": [
-        "aws",
-        "cdk",
-        "constructs",
-        "ec2"
-      ],
-      "languages": {
-        "java": {
-          "package": "software.amazon.awscdk.services.ec2",
-          "maven": {
-            "groupId": "software.amazon.awscdk",
-            "artifactId": "ec2"
-          }
-        },
-        "dotnet": {
-          "namespace": "Amazon.CDK.AWS.EC2",
-          "packageId": "Amazon.CDK.AWS.EC2",
-          "signAssembly": true,
-          "assemblyOriginatorKeyFile": "../../key.snk",
-          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
-        },
-        "python": {
-          "distName": "aws-cdk.aws-ec2",
-          "module": "aws_cdk.aws_ec2"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Sat, 15 Aug 2020 18:54:06 GMT"
-      },
-      "name": "@rhaws/aws-ec2",
-      "version": "1.58.0"
     },
     {
       "author": {
@@ -1079,6 +956,46 @@
       },
       "name": "aws-cdk-dynamodb-seeder",
       "version": "1.56.1"
+    },
+    {
+      "author": {
+        "name": "Ray Ou",
+        "email": "yuhung.ou@live.com",
+        "url": "https://twitter.com/_rayou",
+        "organization": false
+      },
+      "description": "Deploy a URL shortener with custom domain support in just a few lines of code.",
+      "keywords": [
+        "cdk",
+        "url-shortener",
+        "aws",
+        "aws-cdk",
+        "aws-cdk-construct"
+      ],
+      "languages": {
+        "java": {
+          "package": "com.github.rayou.urlshortener",
+          "maven": {
+            "groupId": "com.github.rayou",
+            "artifactId": "cdk-url-shortener"
+          }
+        },
+        "python": {
+          "distName": "rayou.cdk-url-shortener",
+          "module": "rayou.cdk_url_shortener"
+        },
+        "dotnet": {
+          "namespace": "CDK.URLShortener",
+          "packageId": "CDK.URLShortener"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 0,
+      "metadata": {
+        "date": "Tue, 01 Sep 2020 11:15:04 GMT"
+      },
+      "name": "@rayou/cdk-url-shortener",
+      "version": "0.1.2"
     },
     {
       "author": {
@@ -1149,46 +1066,6 @@
     },
     {
       "author": {
-        "name": "Ray Ou",
-        "email": "yuhung.ou@live.com",
-        "url": "https://twitter.com/_rayou",
-        "organization": false
-      },
-      "description": "Deploy a URL shortener with custom domain support in just a few lines of code.",
-      "keywords": [
-        "cdk",
-        "url-shortener",
-        "aws",
-        "aws-cdk",
-        "aws-cdk-construct"
-      ],
-      "languages": {
-        "java": {
-          "package": "com.github.rayou.urlshortener",
-          "maven": {
-            "groupId": "com.github.rayou",
-            "artifactId": "cdk-url-shortener"
-          }
-        },
-        "python": {
-          "distName": "rayou.cdk-url-shortener",
-          "module": "rayou.cdk_url_shortener"
-        },
-        "dotnet": {
-          "namespace": "CDK.URLShortener",
-          "packageId": "CDK.URLShortener"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Tue, 01 Sep 2020 11:15:04 GMT"
-      },
-      "name": "@rayou/cdk-url-shortener",
-      "version": "0.1.2"
-    },
-    {
-      "author": {
         "name": "Paul Maddox",
         "email": "pmaddox@amazon.com",
         "organization": false
@@ -1204,6 +1081,29 @@
       },
       "name": "p82yf-libocr",
       "version": "0.0.22"
+    },
+    {
+      "author": {
+        "name": "Michael Käufl",
+        "email": "michael-k@users.noreply.github.com",
+        "organization": false
+      },
+      "keywords": [
+        "cdk"
+      ],
+      "languages": {
+        "python": {
+          "distName": "cdk-iam-constants-exp",
+          "module": "cdk_iam_constants"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 0,
+      "metadata": {
+        "date": "Wed, 14 Oct 2020 07:48:12 GMT"
+      },
+      "name": "cdk-iam-constants",
+      "version": "0.0.5"
     },
     {
       "author": {
@@ -1248,122 +1148,6 @@
     },
     {
       "author": {
-        "name": "Stefan Freitag",
-        "email": "stefan@stefreitag.de"
-      },
-      "keywords": [
-        "aws",
-        "cdk",
-        "budget"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-budget-notifier",
-          "module": "cdk_budget_notifier"
-        },
-        "java": {
-          "package": "io.github.stefanfreitag.cdk.budgetnotifier",
-          "maven": {
-            "groupId": "io.github.stefanfreitag",
-            "artifactId": "cdkBudgetNotifier"
-          }
-        },
-        "dotnet": {
-          "namespace": "De.Freitag.Stefan.Aws.Cdk",
-          "packageId": "CdkBudgetNotifier"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 14 Oct 2020 07:46:20 GMT"
-      },
-      "name": "@stefanfreitag/aws-budget-notifier",
-      "version": "0.3.1"
-    },
-    {
-      "author": {
-        "name": "Michael Käufl",
-        "email": "michael-k@users.noreply.github.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-iam-constants-exp",
-          "module": "cdk_iam_constants"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 14 Oct 2020 07:48:12 GMT"
-      },
-      "name": "cdk-iam-constants",
-      "version": "0.0.5"
-    },
-    {
-      "author": {
-        "name": "Paul Szabo",
-        "email": "paulszabopnw@gmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk",
-        "vpc"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 14 Oct 2020 21:57:30 GMT"
-      },
-      "name": "vpc-export-import",
-      "version": "0.0.8"
-    },
-    {
-      "author": {
-        "name": "Ken Winner",
-        "url": "https://github.com/kcwinner"
-      },
-      "description": "AWS Amplify inspired CDK construct for creating @directive based AppSync APIs",
-      "keywords": [
-        "aws",
-        "cdk",
-        "aws-cdk",
-        "appsync",
-        "amplify",
-        "transformer"
-      ],
-      "languages": {
-        "python": {
-          "distName": "aws-cdk-appsync-transformer",
-          "module": "aws_cdk_appsync_transformer"
-        },
-        "java": {
-          "package": "io.github.kcwinner.AWSCDKAppSyncTransformer",
-          "maven": {
-            "groupId": "io.github.kcwinner",
-            "artifactId": "AWSCDKAppSyncTransformer"
-          }
-        },
-        "dotnet": {
-          "namespace": "Kcwinner.AWSCDKAppSyncTransformer",
-          "packageId": "Kcwinner.AWSCDKAppSyncTransformer"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Fri, 23 Oct 2020 13:25:31 GMT"
-      },
-      "name": "aws-cdk-appsync-transformer",
-      "version": "1.63.0-rc.3"
-    },
-    {
-      "author": {
         "name": "Amazon Web Services",
         "url": "https://aws.amazon.com",
         "organization": true
@@ -1395,10 +1179,10 @@
       "license": "Apache-2.0",
       "major": 0,
       "metadata": {
-        "date": "Mon, 26 Oct 2020 21:05:19 GMT"
+        "date": "Wed, 21 Oct 2020 07:03:47 GMT"
       },
       "name": "cdk8s-plus",
-      "version": "0.33.0-pre.713769883c9b4fe0ec443d0e776155d720b65cb6"
+      "version": "0.33.0"
     },
     {
       "author": {
@@ -1426,28 +1210,24 @@
     },
     {
       "author": {
-        "name": "Clarence Lin",
-        "email": "mr.lin.clarence@gmail.com",
-        "organization": false
+        "name": "Ryan Li",
+        "organization": true
       },
+      "description": "High level abstractions on top of cdk8s",
       "keywords": [
-        "aws",
         "cdk",
-        "wordpress"
+        "constructs",
+        "k8s",
+        "kubernetes"
       ],
-      "languages": {
-        "python": {
-          "distName": "cdk-wordpress",
-          "module": "cdk_wordpress"
-        }
-      },
+      "languages": {},
       "license": "Apache-2.0",
       "major": 0,
       "metadata": {
-        "date": "Sat, 31 Oct 2020 13:10:17 GMT"
+        "date": "Wed, 18 Nov 2020 05:29:35 GMT"
       },
-      "name": "cdk-wordpress",
-      "version": "0.0.6"
+      "name": "cdk8s-op",
+      "version": "0.1.0"
     },
     {
       "author": {
@@ -1469,31 +1249,34 @@
       "license": "Apache-2.0",
       "major": 0,
       "metadata": {
-        "date": "Wed, 11 Nov 2020 11:19:20 GMT"
+        "date": "Wed, 15 Sep 2021 00:28:28 GMT",
+        "packageLinks": {}
       },
       "name": "cdk-sns-notify",
-      "version": "0.0.1"
+      "version": "0.0.30"
     },
     {
       "author": {
-        "name": "Ryan Li",
-        "organization": true
+        "name": "Blake Green",
+        "email": "blakegreen@msn.com",
+        "organization": false
       },
-      "description": "High level abstractions on top of cdk8s",
       "keywords": [
-        "cdk",
-        "constructs",
-        "k8s",
-        "kubernetes"
+        "cdk"
       ],
-      "languages": {},
+      "languages": {
+        "python": {
+          "distName": "cdk-noob",
+          "module": "cdk_noob"
+        }
+      },
       "license": "Apache-2.0",
       "major": 0,
       "metadata": {
-        "date": "Wed, 18 Nov 2020 05:29:35 GMT"
+        "date": "Mon, 23 Nov 2020 22:52:16 GMT"
       },
-      "name": "cdk8s-op",
-      "version": "0.1.0"
+      "name": "cdk-noob",
+      "version": "0.1.3"
     },
     {
       "author": {
@@ -1524,60 +1307,30 @@
     },
     {
       "author": {
-        "name": "Blake Green",
-        "email": "blakegreen@msn.com",
+        "name": "Neil Kuan",
+        "email": "guan840912@gmail.com",
         "organization": false
       },
+      "description": "cdk8s-aws-alb-ingress-controller is an CDK8S construct library that provides AWS Alb Ingress Controller Deplyment Configure.",
       "keywords": [
-        "cdk"
+        "alb-ingress-controller",
+        "aws",
+        "cdk",
+        "cdk8s"
       ],
       "languages": {
         "python": {
-          "distName": "cdk-noob",
-          "module": "cdk_noob"
+          "distName": "cdk8s-aws-alb-ingress-controller",
+          "module": "cdk8s_aws_alb_ingress_controller"
         }
       },
       "license": "Apache-2.0",
       "major": 0,
       "metadata": {
-        "date": "Mon, 23 Nov 2020 22:52:16 GMT"
+        "date": "Mon, 23 Nov 2020 08:29:12 GMT"
       },
-      "name": "cdk-noob",
-      "version": "0.1.3"
-    },
-    {
-      "author": {
-        "name": "Jose Canahui",
-        "url": "https://canahui.me"
-      },
-      "description": "",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "acme.medium-posts",
-          "module": "acme.medium_posts"
-        },
-        "java": {
-          "package": "com.acme.medium",
-          "maven": {
-            "groupId": "com.acme.medium",
-            "artifactId": "medium-posts"
-          }
-        },
-        "dotnet": {
-          "namespace": "Acme.MediumNamespace",
-          "packageId": "Acme.MediumPackage"
-        }
-      },
-      "license": "MIT",
-      "major": 1,
-      "metadata": {
-        "date": "Tue, 24 Nov 2020 02:28:14 GMT"
-      },
-      "name": "@canahui/medium-posts",
-      "version": "1.0.10"
+      "name": "cdk8s-aws-alb-ingress-controller",
+      "version": "0.0.31"
     },
     {
       "author": {
@@ -1604,62 +1357,6 @@
     },
     {
       "author": {
-        "name": "mikeyangyo",
-        "email": "perryvm06vm06@gmail.com",
-        "organization": false
-      },
-      "description": "A JSII construct lib to deploy a service to send new changes pushed to codecommit to slack channel",
-      "keywords": [
-        "aws",
-        "cdk",
-        "changelog",
-        "codecommit",
-        "slack"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-changelog-slack-notify",
-          "module": "cdk_changelog_slack_notify"
-        }
-      },
-      "license": "MIT",
-      "major": 1,
-      "metadata": {
-        "date": "Thu, 03 Dec 2020 04:25:32 GMT"
-      },
-      "name": "cdk-changelog-slack-notify",
-      "version": "1.74.0"
-    },
-    {
-      "author": {
-        "name": "mikeyangyo",
-        "email": "perryvm06vm06@gmail.com",
-        "organization": false
-      },
-      "description": "A JSII construct lib to deploy a service to send new changes pushed to codecommit to slack channel",
-      "keywords": [
-        "aws",
-        "cdk",
-        "changelog",
-        "codecommit",
-        "slack"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-changelog-slack-notify",
-          "module": "cdk_changelog_slack_notify"
-        }
-      },
-      "license": "MIT",
-      "major": 0,
-      "metadata": {
-        "date": "Sat, 03 Jul 2021 23:04:09 GMT"
-      },
-      "name": "cdk-changelog-slack-notify",
-      "version": "0.1.15"
-    },
-    {
-      "author": {
         "name": "Philipp Garbe",
         "url": "https://garbe.io",
         "organization": false
@@ -1682,32 +1379,6 @@
       },
       "name": "@pgarbe/cdk-bitbucket-server",
       "version": "0.1.1"
-    },
-    {
-      "author": {
-        "name": "Leandro Damascena",
-        "email": "leandro.damascena@gmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk",
-        "livestream",
-        "mediapackage",
-        "mediaservices"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-mediapackage-custom",
-          "module": "cdk_mediapackage_custom"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Thu, 10 Dec 2020 14:24:38 GMT"
-      },
-      "name": "cdk-mediapackage-custom",
-      "version": "0.0.5"
     },
     {
       "author": {
@@ -1762,6 +1433,70 @@
     },
     {
       "author": {
+        "name": "Phil Prasek",
+        "email": "prasek@gmail.com",
+        "organization": false
+      },
+      "description": "CDK for Crossplane",
+      "keywords": [
+        "cdk"
+      ],
+      "languages": {},
+      "license": "Apache-2.0",
+      "major": 0,
+      "metadata": {
+        "date": "Sun, 20 Dec 2020 22:29:48 GMT"
+      },
+      "name": "crossplane-cdk8s",
+      "version": "0.1.13"
+    },
+    {
+      "author": {
+        "name": "Leandro Damascena",
+        "email": "leandro.damascena@gmail.com",
+        "organization": false
+      },
+      "keywords": [
+        "cdk",
+        "livestream",
+        "mediapackage",
+        "mediaservices"
+      ],
+      "languages": {
+        "python": {
+          "distName": "cdk-mediapackage-custom",
+          "module": "cdk_mediapackage_custom"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 0,
+      "metadata": {
+        "date": "Thu, 10 Dec 2020 14:24:38 GMT"
+      },
+      "name": "cdk-mediapackage-custom",
+      "version": "0.0.5"
+    },
+    {
+      "author": {
+        "name": "Thon Becker",
+        "email": "thon.becker@gmail.com",
+        "organization": false
+      },
+      "description": "This is an AWS CDK Construct to simplify deploying a single-page website use CloudFront distributions.",
+      "keywords": [
+        "cdk"
+      ],
+      "languages": {},
+      "license": "Apache-2.0",
+      "major": 0,
+      "metadata": {
+        "date": "Wed, 30 Dec 2020 01:57:51 GMT"
+      },
+      "name": "cdk-cloudfront-deploy",
+      "version": "0.0.20"
+    },
+    {
+      "author": {
         "name": "Martin Mueller",
         "email": "damadden88@googlemail.com",
         "organization": false
@@ -1800,602 +1535,6 @@
     },
     {
       "author": {
-        "name": "Phil Prasek",
-        "email": "prasek@gmail.com",
-        "organization": false
-      },
-      "description": "CDK for Crossplane",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Sun, 20 Dec 2020 22:29:48 GMT"
-      },
-      "name": "crossplane-cdk8s",
-      "version": "0.1.13"
-    },
-    {
-      "author": {
-        "name": "Pahud",
-        "email": "pahudnet@gmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-bar",
-          "module": "cdk_bar"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 23 Dec 2020 07:03:53 GMT"
-      },
-      "name": "cdk-bar",
-      "version": "0.1.22"
-    },
-    {
-      "author": {
-        "name": "readybuilderone",
-        "email": "user@domain.com",
-        "organization": false
-      },
-      "keywords": [
-        "aws",
-        "cdk",
-        "serverless",
-        "video-transcoder"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-serverless-video-transcoder",
-          "module": "cdk_serverless_video_transcoder"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 23 Dec 2020 04:01:31 GMT"
-      },
-      "name": "cdk-serverless-video-transcoder",
-      "version": "0.0.3"
-    },
-    {
-      "author": {
-        "name": "martin.mueller",
-        "email": "damadden88@googlemail.de",
-        "organization": false
-      },
-      "keywords": [
-        "aws",
-        "cdk",
-        "custom-resource",
-        "parameter",
-        "sdk",
-        "ssm"
-      ],
-      "languages": {
-        "python": {
-          "distName": "aws-cdk-ssm-parameter",
-          "module": "aws_cdk_ssm_parameter"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Sat, 26 Dec 2020 10:22:47 GMT"
-      },
-      "name": "aws-cdk-ssm-parameter",
-      "version": "0.0.3"
-    },
-    {
-      "author": {
-        "name": "Martin Mueller",
-        "email": "damadden88@googlemail.com",
-        "organization": false
-      },
-      "keywords": [
-        "alps",
-        "apigateway",
-        "aws",
-        "cdk"
-      ],
-      "languages": {
-        "java": {
-          "package": "com.github.mmuller88.cdkAlpsSpecRestApi",
-          "maven": {
-            "groupId": "com.github.mmuller88",
-            "artifactId": "cdk-alps-spec-rest-api"
-          }
-        },
-        "python": {
-          "distName": "cdk-alps-spec-rest-api",
-          "module": "cdk_alps_spec_rest_api"
-        },
-        "dotnet": {
-          "namespace": "com.github.mmuller88",
-          "packageId": "com.github.mmuller88.CdkAlpsSpecRestApi"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 28 Dec 2020 09:19:14 GMT"
-      },
-      "name": "cdk-alps-spec-rest-api",
-      "version": "0.1.10"
-    },
-    {
-      "author": {
-        "name": "Thon Becker",
-        "email": "thon.becker@gmail.com",
-        "organization": false
-      },
-      "description": "This is an AWS CDK Construct to simplify deploying a single-page website use CloudFront distributions.",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 30 Dec 2020 01:57:51 GMT"
-      },
-      "name": "cdk-cloudfront-deploy",
-      "version": "0.0.20"
-    },
-    {
-      "author": {
-        "name": "Juan Ossa",
-        "email": "jossaq@amazon.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 30 Dec 2020 15:33:26 GMT"
-      },
-      "name": "jossaq-demo-backend",
-      "version": "0.0.16"
-    },
-    {
-      "author": {
-        "name": "Edwin @EdwinRad",
-        "email": "edwin@boring-voice.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Sun, 10 Jan 2021 14:53:25 GMT"
-      },
-      "name": "cdkfoldingathome",
-      "version": "0.2.3"
-    },
-    {
-      "author": {
-        "name": "Ken Winner",
-        "email": "kcswinner@gmail.com",
-        "organization": false
-      },
-      "description": "Create an AWS Personalize Dataset Group, Interaction Schema, and more using the AWS CDK",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-personalize-datasetgroup",
-          "module": "cdk_personalize_datasetgroup"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Wed, 13 Jan 2021 03:54:38 GMT"
-      },
-      "name": "cdk-personalize-datasetgroup",
-      "version": "1.73.1"
-    },
-    {
-      "author": {
-        "name": "Sam Goodwin",
-        "email": "samgood@amazon.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 18 Jan 2021 08:59:52 GMT"
-      },
-      "name": "cdk3",
-      "version": "0.0.0"
-    },
-    {
-      "author": {
-        "name": "Matthew Bonig",
-        "email": "matthew.bonig@gmail.com",
-        "organization": true
-      },
-      "description": "A redrive construct to use with an SQS queue and it's dead letter queue",
-      "keywords": [
-        "cdk",
-        "dead-letter-queues",
-        "redrive",
-        "sqs"
-      ],
-      "languages": {
-        "python": {
-          "distName": "mbonig.sqs-redrive",
-          "module": "mbonig.sqs_redrive"
-        }
-      },
-      "license": "MIT",
-      "major": 1,
-      "metadata": {
-        "date": "Mon, 18 Jan 2021 21:24:45 GMT"
-      },
-      "name": "@matthewbonig/sqs-redrive",
-      "version": "1.85.0"
-    },
-    {
-      "author": {
-        "name": "Armaan Tobaccowalla",
-        "email": "armaan@tobaccowalla.com",
-        "organization": false
-      },
-      "description": "Cloud Development Kit for GitHub Actions",
-      "keywords": [
-        "actions",
-        "cdk",
-        "constructs",
-        "github"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdkactions",
-          "module": "cdkactions"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 20 Jan 2021 23:26:59 GMT"
-      },
-      "name": "cdkactions",
-      "version": "0.2.3"
-    },
-    {
-      "author": {
-        "name": "AyyLam",
-        "email": "anthony.lam@datadoghq.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "foo-bar-construct",
-          "module": "foo-bar-construct"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 27 Jan 2021 21:28:49 GMT"
-      },
-      "name": "cdk-foo-bar",
-      "version": "0.0.2"
-    },
-    {
-      "author": {
-        "name": "Ej Wang",
-        "email": "ej.wang.devs@gmail.com",
-        "organization": false
-      },
-      "description": "A place holds distributed patterns using serverless power",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 01 Feb 2021 06:31:47 GMT"
-      },
-      "name": "cdk-distributed-computing",
-      "version": "0.6.38"
-    },
-    {
-      "author": {
-        "name": "Rafael Z. Kineippe",
-        "email": "rafael.zamana.kineippe@sentia.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "halloumi-cloudwatch-dashboard",
-          "module": "halloumi_cloudwatch_dashboard"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 01 Feb 2021 16:56:02 GMT"
-      },
-      "name": "cloudwatch-dashboard",
-      "version": "0.0.16"
-    },
-    {
-      "author": {
-        "name": "Pahud Hsieh",
-        "email": "hunhsieh@amazon.com",
-        "organization": false
-      },
-      "description": "Get outputs from cross-regional AWS CDK stacks",
-      "keywords": [
-        "aws",
-        "cdk",
-        "cross-account",
-        "cross-region",
-        "cross-stack",
-        "remote"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-remote-stack",
-          "module": "cdk_remote_stack"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 03 Feb 2021 06:23:13 GMT"
-      },
-      "name": "cdk-remote-stack",
-      "version": "0.1.136"
-    },
-    {
-      "author": {
-        "name": "Ken Winner",
-        "email": "kcswinner@gmail.com",
-        "organization": false
-      },
-      "description": "Opinionated CDK Bucket Deployment object pruner for maintaining N old versions",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-bucket-deployment-expirator",
-          "module": "cdk_bucket_deployment_expirator"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Wed, 03 Feb 2021 16:30:46 GMT"
-      },
-      "name": "cdk-bucket-deployment-expirator",
-      "version": "1.87.1"
-    },
-    {
-      "author": {
-        "name": "Ayush Goyal",
-        "email": "ayush987goyal@gmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Thu, 04 Feb 2021 13:00:16 GMT"
-      },
-      "name": "umami-analytics-construct",
-      "version": "0.0.1"
-    },
-    {
-      "author": {
-        "name": "Nick Lynch",
-        "email": "njlynch@gmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Fri, 05 Feb 2021 11:06:19 GMT"
-      },
-      "name": "cdk-basic-site-monitor",
-      "version": "0.0.2"
-    },
-    {
-      "author": {
-        "name": "Hunter Thompson",
-        "email": "aatman@auroville.org.in",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk8s-mongo-sts",
-          "module": "cdk8s_mongo_sts"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 08 Feb 2021 09:47:30 GMT"
-      },
-      "name": "cdk8s-mongo-sts",
-      "version": "0.0.8"
-    },
-    {
-      "author": {
-        "name": "Hunter Thompson",
-        "email": "aatman@auroville.org.in",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk8s-redis-sts",
-          "module": "cdk8s_redis_sts"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Thu, 11 Feb 2021 14:33:00 GMT"
-      },
-      "name": "cdk8s-redis-sts",
-      "version": "0.0.5"
-    },
-    {
-      "author": {
-        "name": "jakeitegsy",
-        "email": "jakeitegsy@yahoo.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "jacobitegboje",
-          "module": "jacobitegboje"
-        },
-        "dotnet": {
-          "namespace": "jakeitegsy.examples",
-          "packageId": "jacobitegboje.Test"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Tue, 02 Mar 2021 05:42:52 GMT"
-      },
-      "name": "jacobitegboje",
-      "version": "0.0.1"
-    },
-    {
-      "author": {
-        "name": "Roger Chi",
-        "email": "roger@rogerchi.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-s3-bucketreplication",
-          "module": "cdk_s3_bucketreplication"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 10 Mar 2021 00:59:05 GMT"
-      },
-      "name": "cdk-s3-bucketreplication",
-      "version": "0.0.8"
-    },
-    {
-      "author": {
-        "name": "Josh Kellendonk",
-        "email": "joshkellendonk@gmail.com",
-        "organization": false
-      },
-      "description": "A micro-framework for building and deploying Fargate tasks into an AWS App Mesh",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Tue, 16 Mar 2021 04:13:30 GMT"
-      },
-      "name": "@wheatstalk/web-carver",
-      "version": "0.0.11"
-    },
-    {
-      "author": {
-        "name": "Matthew Bonig",
-        "email": "matthew.bonig@gmail.com",
-        "organization": false
-      },
-      "description": "A CDK construct that will automatically start a stopped EC2 instance at a given time.",
-      "keywords": [
-        "cdk",
-        "ec2"
-      ],
-      "languages": {
-        "python": {
-          "distName": "mbonig.wakeywakey",
-          "module": "mbonig.wakeywakey"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Tue, 23 Mar 2021 16:27:15 GMT"
-      },
-      "name": "@matthewbonig/wakeywakey",
-      "version": "1.89.2"
-    },
-    {
-      "author": {
-        "name": "Roman Filippov",
-        "email": "roman@scaleleap.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Fri, 26 Mar 2021 14:32:37 GMT"
-      },
-      "name": "@scaleleap/selling-partner-api-cdk",
-      "version": "0.0.2"
-    },
-    {
-      "author": {
         "name": "nlopezm",
         "organization": false
       },
@@ -2415,1096 +1554,2454 @@
       "license": "Apache-2.0",
       "major": 0,
       "metadata": {
-        "date": "Sun, 04 Jul 2021 11:45:49 GMT"
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Mon, 20 Sep 2021 19:04:49 GMT",
+        "packageLinks": {},
+        "packageTags": []
       },
       "name": "aws-cdk-image-resize",
-      "version": "0.0.17"
-    },
-    {
-      "author": {
-        "name": "Taimos GmbH",
-        "email": "info@taimos.de",
-        "organization": true
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Sun, 28 Mar 2021 00:34:49 GMT"
-      },
-      "name": "@taimos/cdk-construct-github-notifier",
-      "version": "0.0.12"
-    },
-    {
-      "author": {
-        "name": "Philipp Garbe",
-        "url": "https://garbe.io",
-        "organization": false
-      },
-      "description": "An CDK Construct to for all DataDog users.",
-      "keywords": [
-        "cdk",
-        "datadog",
-        "ecr",
-        "lambda"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 29 Mar 2021 13:54:33 GMT"
-      },
-      "name": "@pgarbe/cdk-datadog",
-      "version": "0.0.6"
-    },
-    {
-      "author": {
-        "name": "Neil Kuan",
-        "email": "guan840912@gmail.com",
-        "organization": false
-      },
-      "description": "cdk8s-external-dns is an CDK8S construct library that provides External Dns Configure.",
-      "keywords": [
-        "aws",
-        "cdk",
-        "cdk8s",
-        "external-dns"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk8s-external-dns",
-          "module": "cdk8s_external_dns"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 31 Mar 2021 00:47:28 GMT"
-      },
-      "name": "cdk8s-external-dns",
-      "version": "0.0.3"
-    },
-    {
-      "author": {
-        "name": "Josh Kellendonk",
-        "email": "joshkellendonk@gmail.com",
-        "organization": false
-      },
-      "description": "A CDK construct that brings a fallback ECS service online when ECS cannnot acquire Fargate spot capacity.",
-      "keywords": [
-        "cdk",
-        "ecs",
-        "fargate",
-        "fargate spot"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 05 Apr 2021 04:39:41 GMT"
-      },
-      "name": "@wheatstalk/fargate-spot-fallback",
-      "version": "0.0.24"
-    },
-    {
-      "author": {
-        "name": "martin.mueller",
-        "email": "damadden88@googlemail.de",
-        "organization": false
-      },
-      "keywords": [
-        "aws",
-        "cdk",
-        "custom-resource",
-        "parameter",
-        "sdk",
-        "ssm"
-      ],
-      "languages": {
-        "python": {
-          "distName": "aws-cdk-ssm-sdk-parameter",
-          "module": "aws_cdk_ssm_sdk_parameter"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 05 Apr 2021 06:23:14 GMT"
-      },
-      "name": "aws-cdk-ssm-sdk-parameter",
-      "version": "0.0.9"
-    },
-    {
-      "author": {
-        "name": "Stefan Freitag",
-        "email": "stefan.freitag@udo.edu",
-        "organization": false
-      },
-      "description": "A simple AWS budget notifier.",
-      "keywords": [
-        "aws",
-        "budget",
-        "cdk"
-      ],
-      "languages": {
-        "java": {
-          "package": "io.github.stefanfreitag.cdk.budgetnotifier",
-          "maven": {
-            "groupId": "io.github.stefanfreitag",
-            "artifactId": "cdkBudgetNotifier"
-          }
-        },
-        "python": {
-          "distName": "cdk-budget-notifier",
-          "module": "cdk_budget_notifier"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 05 Apr 2021 09:14:55 GMT"
-      },
-      "name": "aws_budget_notifier",
-      "version": "0.3.6"
-    },
-    {
-      "author": {
-        "name": "Philip M. Gollucci",
-        "email": "pgollucci@p6m7g8.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "java": {
-          "package": "com.github.p6m7g8.p6barrier",
-          "maven": {
-            "groupId": "com.github.p6m7g8",
-            "artifactId": "p6-barrier"
-          }
-        },
-        "python": {
-          "distName": "p6-barrier",
-          "module": "p6_barrier"
-        },
-        "dotnet": {
-          "namespace": "P6m7g8.P6Barrier",
-          "packageId": "P6m7g8.P6Barrier"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 05 Apr 2021 15:00:36 GMT"
-      },
-      "name": "p6-barrier",
-      "version": "0.1.75"
-    },
-    {
-      "author": {
-        "name": "classmethod",
-        "url": "https://classmethod.jp/services/mad",
-        "organization": false
-      },
-      "description": "AWS CDK Constructs that can be used universally",
-      "keywords": [
-        "cdk",
-        "cdk-constructs"
-      ],
-      "languages": {},
-      "license": "MIT",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 07 Apr 2021 14:29:31 GMT"
-      },
-      "name": "@cm-madlabs/cdk-constructs",
-      "version": "0.0.6"
-    },
-    {
-      "author": {
-        "name": "Charles Salmon",
-        "email": "me@charles.fish",
-        "organization": false
-      },
-      "description": "A CDK construct that creates SMTP credentials permitting emails to be sent via SES.",
-      "keywords": [
-        "aws",
-        "cdk",
-        "constructs",
-        "smtp credentials"
-      ],
-      "languages": {
-        "java": {
-          "package": "fish.charles.cdk.smtp.credentials.construct",
-          "maven": {
-            "groupId": "fish.charles.cdk-constructs",
-            "artifactId": "smtp-credentials-cdk-construct"
-          }
-        },
-        "python": {
-          "distName": "smtp-credentials-cdk-construct",
-          "module": "smtp_credentials"
-        },
-        "dotnet": {
-          "namespace": "CharlesDotFish.CdkConstructs.SmtpCredentials",
-          "packageId": "CharlesDotFish.CdkConstructs.SmtpCredentials"
-        }
-      },
-      "license": "MIT",
-      "major": 1,
-      "metadata": {
-        "date": "Mon, 05 Jul 2021 04:08:27 GMT"
-      },
-      "name": "@charlesdotfish/smtp-credentials-cdk-construct",
-      "version": "1.0.14"
-    },
-    {
-      "author": {
-        "name": "superluminar",
-        "url": "https://superluminar.io",
-        "organization": true
-      },
-      "keywords": [
-        "aws",
-        "cdk",
-        "eks",
-        "k8s",
-        "kubernetes"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Tue, 13 Apr 2021 08:10:27 GMT"
-      },
-      "name": "@superluminar-io/super-eks",
-      "version": "0.2.1"
-    },
-    {
-      "author": {
-        "name": "Yigong Liu",
-        "email": "ygl.code@gmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "java": {
-          "package": "io.github.yglcode.cdkutils.aspects.resourcerename",
-          "maven": {
-            "groupId": "io.github.yglcode.cdkutils.aspects.resourcerename",
-            "artifactId": "cdk-stack-resource-rename"
-          }
-        },
-        "python": {
-          "distName": "cdk-stack-resource-rename",
-          "module": "cdk_stack_resource_rename"
-        },
-        "dotnet": {
-          "namespace": "CdkUtils.Aspects.ResourceRename",
-          "packageId": "CdkUtils.Aspects.ResourceRename"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Thu, 15 Apr 2021 06:25:38 GMT"
-      },
-      "name": "cdk-stack-resource-rename",
-      "version": "0.0.23"
-    },
-    {
-      "author": {
-        "name": "Eliran Cohen",
-        "email": "eliran89c@gmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Fri, 16 Apr 2021 13:39:39 GMT"
-      },
-      "name": "aws-sso-mapper",
-      "version": "1.0.2"
-    },
-    {
-      "author": {
-        "name": "Ray Krueger",
-        "email": "raykrueger@gmail.com",
-        "organization": false
-      },
-      "description": "A CDK construct library for running a Valheim dedicated server on AWS",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Tue, 20 Apr 2021 13:27:20 GMT"
-      },
-      "name": "@raykrueger/cdk-valheim-server",
-      "version": "0.0.14"
-    },
-    {
-      "author": {
-        "name": "Pahud Hsieh",
-        "email": "pahudnet@gmail.com",
-        "organization": false
-      },
-      "description": "AWS CDK construct that allows you to get the latest Version of the AWS SSM Parameters",
-      "keywords": [
-        "cdk",
-        "parameter",
-        "ssm"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-ssm-parameter-store",
-          "module": "cdk_ssm_parameter_store"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 21 Apr 2021 00:30:36 GMT"
-      },
-      "name": "cdk-ssm-parameter-store",
-      "version": "0.1.91"
-    },
-    {
-      "author": {
-        "name": "Elad Ben-Israel",
-        "email": "benisrae@amazon.com",
-        "organization": false
-      },
-      "description": "CDK8s docker image construct",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Thu, 22 Apr 2021 06:28:08 GMT"
-      },
-      "name": "cdk8s-image",
-      "version": "0.1.152"
-    },
-    {
-      "author": {
-        "name": "Anuj Sharma",
-        "email": "anshrma@amazon.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "jfrog-cdk-constructs",
-          "module": "jfrog_cdk_constructs"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Tue, 27 Apr 2021 18:20:47 GMT"
-      },
-      "name": "jfrog-cdk-constructs",
-      "version": "1.0.6"
-    },
-    {
-      "author": {
-        "name": "Jonathan Goldwasser",
-        "email": "jonathan.goldwasser@gmail.com",
-        "organization": false
-      },
-      "description": "High-level constructs for AWS CDK",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Fri, 30 Apr 2021 09:10:22 GMT"
-      },
-      "name": "cloudstructs",
-      "version": "0.1.33"
-    },
-    {
-      "author": {
-        "name": "Daniel Schroeder",
-        "url": "https://www.udondan.com/",
-        "twitter": "udondan"
-      },
-      "description": "CDK Construct for managing DB migrations",
-      "keywords": [
-        "aws",
-        "cdk",
-        "aws-cdk",
-        "athena",
-        "db",
-        "migration"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-db-migration",
-          "module": "cdk_db_migration"
-        },
-        "dotnet": {
-          "namespace": "CDK.DB.Migration",
-          "packageId": "CDK.DB.Migration"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Sat, 01 May 2021 08:57:09 GMT"
-      },
-      "name": "cdk-db-migration",
-      "version": "1.1.0"
-    },
-    {
-      "author": {
-        "name": "Daniel Schroeder",
-        "url": "https://www.udondan.com/",
-        "twitter": "udondan"
-      },
-      "description": "CDK Construct for creating Athena resources",
-      "keywords": [
-        "aws",
-        "cdk",
-        "aws-cdk",
-        "athena",
-        "workgroup",
-        "namedquery"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-athena",
-          "module": "cdk_athena"
-        },
-        "dotnet": {
-          "namespace": "CDK.Athena",
-          "packageId": "CDK.Athena"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 2,
-      "metadata": {
-        "date": "Sat, 01 May 2021 08:43:58 GMT"
-      },
-      "name": "cdk-athena",
-      "version": "2.1.0"
-    },
-    {
-      "author": {
-        "name": "gotodeploy",
-        "email": "1491134+gotodeploy@users.noreply.github.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-valheim",
-          "module": "cdk_valheim"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Sun, 02 May 2021 04:29:53 GMT"
-      },
-      "name": "cdk-valheim",
-      "version": "0.0.20"
-    },
-    {
-      "author": {
-        "name": "Martin Mueller",
-        "email": "damadden88@googlemail.com",
-        "organization": false
-      },
-      "keywords": [
-        "aws",
-        "cdk",
-        "custom-resource",
-        "dataset",
-        "datasource",
-        "projen",
-        "quicksight",
-        "sdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-quicksight-constructs",
-          "module": "cdk_quicksight_constructs"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Thu, 06 May 2021 14:34:24 GMT"
-      },
-      "name": "cdk-quicksight-constructs",
-      "version": "0.1.5"
-    },
-    {
-      "author": {
-        "name": "viviandelplace",
-        "email": "delplace.vivian@gmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-stack-parameters-shared-via-ssm",
-          "module": "cdk_stack_parameters_shared_via_ssm"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Fri, 07 May 2021 07:20:41 GMT"
-      },
-      "name": "cdk-stack-parameters-shared-via-ssm",
-      "version": "0.1.3"
-    },
-    {
-      "author": {
-        "name": "Daniel Schroeder",
-        "url": "https://www.udondan.com/",
-        "twitter": "udondan"
-      },
-      "description": "CDK Construct for managing SSM Documents",
-      "keywords": [
-        "aws",
-        "cdk",
-        "aws-cdk",
-        "aws-cdk-construct",
-        "ssm",
-        "aws-ssm",
-        "ssm-document",
-        "aws-ssm-document",
-        "cloudformation",
-        "cloudformation-custom-resource"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-ssm-document",
-          "module": "cdk_ssm_document"
-        },
-        "dotnet": {
-          "namespace": "CDK.SSM.Document",
-          "packageId": "CDK.SSM.Document"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 2,
-      "metadata": {
-        "date": "Sat, 08 May 2021 08:09:43 GMT"
-      },
-      "name": "cdk-ssm-document",
-      "version": "2.2.1"
-    },
-    {
-      "author": {
-        "name": "Alvyn Le",
-        "email": "alvyn279@gmail.com"
-      },
-      "keywords": [
-        "aws",
-        "cdk",
-        "constructs",
-        "billing",
-        "alarm",
-        "billing-alarm",
-        "aws-cdk-billing-alarm"
-      ],
-      "languages": {
-        "python": {
-          "distName": "aws-cdk-billing-alarm",
-          "module": "aws-cdk-billing-alarm.core"
-        }
-      },
-      "license": "MIT",
-      "major": 1,
-      "metadata": {
-        "date": "Sun, 09 May 2021 20:58:12 GMT"
-      },
-      "name": "aws-cdk-billing-alarm",
-      "version": "1.0.2"
-    },
-    {
-      "author": {
-        "name": "Hunter Thompson",
-        "email": "aatman@auroville.org.in",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk8s-redis-sts",
-          "module": "cdk8s_redis_sts"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 15 Feb 2021 18:48:55 GMT"
-      },
-      "name": "@opencdk8s/cdk8s-redis-sts",
-      "version": "0.0.7"
-    },
-    {
-      "author": {
-        "name": "Hunter Thompson",
-        "email": "aatman@auroville.org.in",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk8s-aws-lb-controller-api-object",
-          "module": "cdk8s_aws_lb_controller_api_object"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 15 Feb 2021 22:29:34 GMT"
-      },
-      "name": "@opencdk8s/cdk8s-aws-lb-controller-api-object",
-      "version": "0.0.1"
-    },
-    {
-      "author": {
-        "name": "Hunter Thompson",
-        "email": "aatman@auroville.org.in",
-        "organization": false
-      },
-      "keywords": [
-        "aws",
-        "cdk",
-        "cdk8s"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk8s-argocd-resources",
-          "module": "cdk8s_argocd_resources"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Fri, 16 Apr 2021 17:37:40 GMT"
-      },
-      "name": "@opencdk8s/cdk8s-argocd-resources",
-      "version": "0.0.2"
-    },
-    {
-      "author": {
-        "name": "Sumit Agarwal",
-        "email": "sa.sumit@outlook.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk8s-argo-rollout",
-          "module": "cdk8s_argo_rollout"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 12 Apr 2021 23:27:49 GMT"
-      },
-      "name": "@opencdk8s/cdk8s-argo-rollout",
-      "version": "0.0.6"
-    },
-    {
-      "author": {
-        "name": "Sebastian Hesse",
-        "email": "info@sebastianhesse.de",
-        "organization": false
-      },
-      "keywords": [
-        "aws",
-        "aws cdk",
-        "aws ses",
-        "aws-cdk",
-        "aws-ses",
-        "cdk",
-        "cdk-construct",
-        "email",
-        "email forwarding",
-        "gmail"
-      ],
-      "languages": {
-        "java": {
-          "package": "de.sebastianhesse.cdk.ses.email.forwarding",
-          "maven": {
-            "groupId": "de.sebastianhesse.cdk-constructs",
-            "artifactId": "ses-email-forwarding"
-          }
-        },
-        "python": {
-          "distName": "ses-email-forwarding",
-          "module": "ses_email_forwarding"
-        },
-        "dotnet": {
-          "namespace": "SebastianHesse.CdkConstructs",
-          "packageId": "Ses.Email.Forwarding"
-        }
-      },
-      "license": "MIT",
-      "major": 3,
-      "metadata": {
-        "date": "Tue, 11 May 2021 06:55:54 GMT"
-      },
-      "name": "@seeebiii/ses-email-forwarding",
-      "version": "3.1.12"
-    },
-    {
-      "author": "hi@cdkpatterns.com",
-      "description": "This is an AWS CDK Construct to make deploying a single page website (Angular/React/Vue) to AWS S3 behind SSL/Cloudfront as easy as 5 lines of code.",
-      "keywords": [
-        "aws",
-        "cdk",
-        "spa",
-        "website",
-        "deploy",
-        "cloudfront"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-spa-deploy",
-          "module": "spa_deploy"
-        },
-        "java": {
-          "package": "com.cdkpatterns",
-          "maven": {
-            "groupId": "com.cdkpatterns",
-            "artifactId": "CDKSPADeploy"
-          }
-        },
-        "dotnet": {
-          "namespace": "com.cdkpatterns",
-          "packageId": "CDKSPADeploy"
-        }
-      },
-      "license": "MIT",
-      "major": 1,
-      "metadata": {
-        "date": "Tue, 11 May 2021 18:52:40 GMT"
-      },
-      "name": "cdk-spa-deploy",
-      "version": "1.103.1"
-    },
-    {
-      "author": {
-        "name": "Matthew Bonig",
-        "email": "matthew.bonig@gmail.com",
-        "organization": false
-      },
-      "description": "A CDK construct that will automatically stop a running EC2 instance at a given time.",
-      "keywords": [
-        "cdk",
-        "ec2"
-      ],
-      "languages": {
-        "python": {
-          "distName": "mbonig.nightynight",
-          "module": "mbonig.nightynight"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Tue, 11 May 2021 21:35:18 GMT"
-      },
-      "name": "@matthewbonig/nightynight",
-      "version": "0.1.3"
-    },
-    {
-      "author": {
-        "name": "Matthew Bonig",
-        "email": "matthew.bonig@gmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Tue, 11 May 2021 22:56:01 GMT"
-      },
-      "name": "@matthewbonig/rds-tools",
-      "version": "0.2.2"
-    },
-    {
-      "author": {
-        "name": "Ben Limmer",
-        "url": "https://benlimmer.com/consulting"
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk-datadog-integration",
-          "module": "cdk_datadog_integration"
-        },
-        "java": {
-          "package": "com.benlimmer.cdkdatadogintegration",
-          "maven": {
-            "groupId": "com.benlimmer",
-            "artifactId": "cdk-datadog-integration"
-          }
-        },
-        "dotnet": {
-          "namespace": "BenLimmer.CdkDatadogIntegration",
-          "packageId": "BenLimmer.CdkDatadogIntegration"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Wed, 12 May 2021 23:59:28 GMT"
-      },
-      "name": "cdk-datadog-integration",
-      "version": "1.2.2"
-    },
-    {
-      "author": {
-        "name": "Neil Kuan",
-        "email": "guan840912@gmail.com",
-        "organization": false
-      },
-      "description": "cdk8s-aws-load-balancer-controller is an CDK8S construct library that provides AWS Alb Load Balancer Controller Configure.",
-      "keywords": [
-        "aws",
-        "aws-load-balancer-controller",
-        "cdk",
-        "cdk8s"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk8s-aws-load-balancer-controller",
-          "module": "cdk8s_aws_load_balancer_controller"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 1,
-      "metadata": {
-        "date": "Sat, 15 May 2021 02:02:54 GMT"
-      },
-      "name": "cdk8s-aws-load-balancer-controller",
-      "version": "1.0.5"
-    },
-    {
-      "author": {
-        "name": "Shu-Jeng Hsieh",
-        "email": "fantatsicSie@hotmail.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "java": {
-          "package": "io.github.hsiehshujeng.projen.inception",
-          "maven": {
-            "groupId": "io.github.hsiehshujeng",
-            "artifactId": "projen-inception"
-          }
-        },
-        "python": {
-          "distName": "scotthsieh_projen_inception",
-          "module": "scotthsieh_projen_inception"
-        },
-        "dotnet": {
-          "namespace": "ScottHsieh.Examples",
-          "packageId": "Projen.Inception"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Sun, 16 May 2021 09:05:53 GMT"
-      },
-      "name": "projen-example",
-      "version": "0.1.15"
-    },
-    {
-      "author": {
-        "name": "Gagan Singh",
-        "email": "gaganpreet.singh@smallcase.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "cdk8s-argoworkflow-resources",
-          "module": "cdk8s_argoworkflow_resources"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Sun, 16 May 2021 17:29:49 GMT"
-      },
-      "name": "@opencdk8s/cdk8s-argoworkflow-resources",
-      "version": "0.0.1"
-    },
-    {
-      "author": {
-        "name": "Henrique Lima",
-        "email": "henriquemlima7@gmail.com",
-        "organization": false
-      },
-      "description": "[DO NOT USE] This package is made for a study on change analysis in CDK. Never tested and not maintained.",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Mon, 17 May 2021 11:01:43 GMT"
-      },
-      "name": "mock-cdk-serverless-website-construct",
-      "version": "0.0.8"
-    },
-    {
-      "author": {
-        "name": "Sentia",
-        "email": "support.mpc@sentia.com",
-        "organization": false
-      },
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {
-        "python": {
-          "distName": "halloumi-ses-user",
-          "module": "halloumi_ses_user"
-        }
-      },
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Wed, 19 May 2021 12:03:12 GMT"
-      },
-      "name": "halloumi-ses",
-      "version": "0.0.1"
-    },
-    {
-      "author": {
-        "name": "David Tucker",
-        "url": "https://davidtucker.net/",
-        "organization": false
-      },
-      "keywords": [
-        "angular",
-        "aws",
-        "cdk",
-        "config",
-        "deploy",
-        "react",
-        "svelte"
-      ],
-      "languages": {},
-      "license": "MIT",
-      "major": 1,
-      "metadata": {
-        "date": "Thu, 20 May 2021 17:05:24 GMT"
-      },
-      "name": "cdk-webapp-tools",
-      "version": "1.100.12"
-    },
-    {
-      "author": {
-        "name": "Jacob Itegboje",
-        "email": "jacob.itegboje@imageapi.com",
-        "organization": false
-      },
-      "description": "Custom AWS Constructs using best practices from AWS Well Architected Framework",
-      "keywords": [
-        "cdk"
-      ],
-      "languages": {},
-      "license": "Apache-2.0",
-      "major": 0,
-      "metadata": {
-        "date": "Fri, 21 May 2021 13:51:36 GMT"
-      },
-      "name": "platform-constructs",
-      "version": "0.0.7"
+      "version": "0.0.18"
     },
     {
       "author": {
         "name": "Amazon Web Services",
         "url": "https://aws.amazon.com",
-        "organization": false
+        "organization": true
       },
-      "description": "High level abstractions on top of cdk8s",
+      "description": "The CDK Construct Library for AWS::SSM",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "ssm"
+      ],
       "languages": {
         "java": {
-          "package": "org.cdk8s.plus17",
+          "package": "software.amazon.awscdk.services.ssm",
           "maven": {
-            "groupId": "org.cdk8s",
-            "artifactId": "cdk8s-plus-17"
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ssm"
           }
         },
-        "python": {
-          "distName": "cdk8s-plus-17",
-          "module": "cdk8s_plus_17"
-        },
         "dotnet": {
-          "namespace": "Org.Cdk8s.Plus17",
-          "packageId": "Org.Cdk8s.Plus17"
+          "namespace": "Amazon.CDK.AWS.SSM",
+          "packageId": "Amazon.CDK.AWS.SSM",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
         },
-        "go": {
-          "moduleName": "github.com/cdk8s-team/cdk8s-plus-17-go"
+        "python": {
+          "distName": "aws-cdk.aws-ssm",
+          "module": "aws_cdk.aws_ssm",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
         }
       },
       "license": "Apache-2.0",
       "major": 1,
       "metadata": {
         "constructFramework": {
-          "name": "cdk8s",
+          "name": "aws-cdk",
           "majorVersion": 1
         },
-        "date": "Mon, 27 Sep 2021 12:11:02 GMT"
+        "date": "Wed, 29 Sep 2021 22:19:08 GMT",
+        "packageLinks": {},
+        "packageTags": []
       },
-      "name": "cdk8s-plus-17",
-      "version": "1.0.0-beta.83"
+      "name": "@aws-cdk/aws-ssm",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AppStream",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "aws-appstream"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AppStream",
+          "packageId": "Amazon.CDK.AWS.AppStream",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.appstream",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "appstream"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-appstream",
+          "module": "aws_cdk.aws_appstream",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:14:06 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-appstream",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS Lambda in Node.js",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "lambda"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.lambda.nodejs",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "lambda-nodejs"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Lambda.Nodejs",
+          "packageId": "Amazon.CDK.AWS.Lambda.Nodejs",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-lambda-nodejs",
+          "module": "aws_cdk.aws_lambda_nodejs",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:20:26 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-lambda-nodejs",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Authorizers for AWS APIGateway V2",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "apigateway"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.APIGatewayv2.Authorizers",
+          "packageId": "Amazon.CDK.AWS.APIGatewayv2.Authorizers",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.apigatewayv2.authorizers",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "apigatewayv2-authorizers"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-apigatewayv2-authorizers",
+          "module": "aws_cdk.aws_apigatewayv2_authorizers",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:22:45 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-apigatewayv2-authorizers",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::MediaStore",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::MediaStore",
+        "aws-mediastore"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.MediaStore",
+          "packageId": "Amazon.CDK.AWS.MediaStore",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.mediastore",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "mediastore"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-mediastore",
+          "module": "aws_cdk.aws_mediastore",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:17:22 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-mediastore",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ECS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "ecs"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.ecs",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ecs"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ECS",
+          "packageId": "Amazon.CDK.AWS.ECS",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ecs",
+          "module": "aws_cdk.aws_ecs",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:22:48 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-ecs",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ECR",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "ecr"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.ecr",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ecr"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ECR",
+          "packageId": "Amazon.CDK.AWS.ECR",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ecr",
+          "module": "aws_cdk.aws_ecr",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:19:03 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-ecr",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Docker image assets deployed to ECR",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "assets",
+        "docker"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.ecr.assets",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ecr-assets"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Ecr.Assets",
+          "packageId": "Amazon.CDK.ECR.Assets",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ecr-assets",
+          "module": "aws_cdk.aws_ecr_assets",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:19:16 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-ecr-assets",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Backup",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Backup",
+        "aws-backup"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Backup",
+          "packageId": "Amazon.CDK.AWS.Backup",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.backup",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "backup"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-backup",
+          "module": "aws_cdk.aws_backup",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:23:28 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-backup",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::MediaPackage",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::MediaPackage",
+        "aws-mediapackage"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.MediaPackage",
+          "packageId": "Amazon.CDK.AWS.MediaPackage",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.mediapackage",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "mediapackage"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-mediapackage",
+          "module": "aws_cdk.aws_mediapackage"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:17:19 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-mediapackage",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DMS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "dms"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.dms",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "dms"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DMS",
+          "packageId": "Amazon.CDK.AWS.DMS",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-dms",
+          "module": "aws_cdk.aws_dms",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:15:17 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-dms",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CE",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CE",
+        "aws-ce"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CE",
+          "packageId": "Amazon.CDK.AWS.CE",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.ce",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ce"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ce",
+          "module": "aws_cdk.aws_ce",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:14:30 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-ce",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::WorkSpaces",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "workspaces"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.workspaces",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "workspaces"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.WorkSpaces",
+          "packageId": "Amazon.CDK.AWS.WorkSpaces",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-workspaces",
+          "module": "aws_cdk.aws_workspaces",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:18:55 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-workspaces",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Synthetics",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Synthetics",
+        "aws-synthetics"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Synthetics",
+          "packageId": "Amazon.CDK.AWS.Synthetics",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.synthetics",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "synthetics"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-synthetics",
+          "module": "aws_cdk.aws_synthetics",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:19:28 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-synthetics",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::S3ObjectLambda",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::S3ObjectLambda",
+        "aws-s3objectlambda"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.S3ObjectLambda",
+          "packageId": "Amazon.CDK.AWS.S3ObjectLambda",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.s3objectlambda",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "s3objectlambda"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-s3objectlambda",
+          "module": "aws_cdk.aws_s3objectlambda"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:18:11 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-s3objectlambda",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CloudWatch",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudwatch"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.cloudwatch",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cloudwatch"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CloudWatch",
+          "packageId": "Amazon.CDK.AWS.CloudWatch",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-cloudwatch",
+          "module": "aws_cdk.aws_cloudwatch",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:14:32 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-cloudwatch",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Location",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Location",
+        "aws-location"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Location",
+          "packageId": "Amazon.CDK.AWS.Location",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.location",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "location"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-location",
+          "module": "aws_cdk.aws_location"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:16:54 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-location",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::SecurityHub",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::SecurityHub",
+        "aws-securityhub"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.SecurityHub",
+          "packageId": "Amazon.CDK.AWS.SecurityHub",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.securityhub",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "securityhub"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-securityhub",
+          "module": "aws_cdk.aws_securityhub",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:18:26 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-securityhub",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Timestream",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::Timestream",
+        "aws-timestream"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Timestream",
+          "packageId": "Amazon.CDK.AWS.Timestream",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.timestream",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "timestream"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-timestream",
+          "module": "aws_cdk.aws_timestream"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:18:40 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-timestream",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::SQS",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "sqs"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.sqs",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "sqs"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.SQS",
+          "packageId": "Amazon.CDK.AWS.SQS",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-sqs",
+          "module": "aws_cdk.aws_sqs",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:19:21 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-sqs",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DataSync",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::DataSync",
+        "aws-datasync"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DataSync",
+          "packageId": "Amazon.CDK.AWS.DataSync",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.datasync",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "datasync"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-datasync",
+          "module": "aws_cdk.aws_datasync"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:15:00 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-datasync",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeGuruProfiler",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CodeGuruProfiler",
+        "aws-codeguruprofiler"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeGuruProfiler",
+          "packageId": "Amazon.CDK.AWS.CodeGuruProfiler",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.codeguruprofiler",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codeguruprofiler"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-codeguruprofiler",
+          "module": "aws_cdk.aws_codeguruprofiler",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:14:38 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-codeguruprofiler",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "CDK Destinations Constructs for AWS Lambda",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "lambda"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.lambda.destinations",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "lambda-destinations"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Lambda.Destinations",
+          "packageId": "Amazon.CDK.AWS.Lambda.Destinations",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-lambda-destinations",
+          "module": "aws_cdk.aws_lambda_destinations",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:23:16 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-lambda-destinations",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::SSO",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::SSO",
+        "aws-sso"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.SSO",
+          "packageId": "Amazon.CDK.AWS.SSO",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.sso",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "sso"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-sso",
+          "module": "aws_cdk.aws_sso",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:18:38 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-sso",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CodeArtifact",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CodeArtifact",
+        "aws-codeartifact"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CodeArtifact",
+          "packageId": "Amazon.CDK.AWS.CodeArtifact",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.codeartifact",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "codeartifact"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-codeartifact",
+          "module": "aws_cdk.aws_codeartifact"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:14:36 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-codeartifact",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ElasticBeanstalk",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "elasticbeanstalk"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.elasticbeanstalk",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "elasticbeanstalk"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ElasticBeanstalk",
+          "packageId": "Amazon.CDK.AWS.ElasticBeanstalk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-elasticbeanstalk",
+          "module": "aws_cdk.aws_elasticbeanstalk",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:15:24 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-elasticbeanstalk",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ApplicationInsights",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::ApplicationInsights",
+        "aws-applicationinsights"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ApplicationInsights",
+          "packageId": "Amazon.CDK.AWS.ApplicationInsights",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.applicationinsights",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "applicationinsights"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-applicationinsights",
+          "module": "aws_cdk.aws_applicationinsights",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:14:00 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-applicationinsights",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ServiceCatalog",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "servicecatalog"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.servicecatalog",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "servicecatalog"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ServiceCatalog",
+          "packageId": "Amazon.CDK.AWS.ServiceCatalog",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-servicecatalog",
+          "module": "aws_cdk.aws_servicecatalog",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:19:47 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-servicecatalog",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::MediaLive",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::MediaLive",
+        "aws-medialive"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.MediaLive",
+          "packageId": "Amazon.CDK.AWS.MediaLive",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.medialive",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "medialive"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-medialive",
+          "module": "aws_cdk.aws_medialive",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:17:16 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-medialive",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DynamoDB",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "dynamodb"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.dynamodb",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "dynamodb"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DynamoDB",
+          "packageId": "Amazon.CDK.AWS.DynamoDB",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-dynamodb",
+          "module": "aws_cdk.aws_dynamodb",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:21:20 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-dynamodb",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Endpoints for AWS Global Accelerator",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "globalaccelerator"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.GlobalAccelerator.Endpoints",
+          "packageId": "Amazon.CDK.AWS.GlobalAccelerator.Endpoints",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.globalaccelerator.endpoints",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "globalaccelerator-endpoints"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-globalaccelerator-endpoints",
+          "module": "aws_cdk.aws_globalaccelerator_endpoints",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:22:37 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-globalaccelerator-endpoints",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::S3Outposts",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::S3Outposts",
+        "aws-s3outposts"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.S3Outposts",
+          "packageId": "Amazon.CDK.AWS.S3Outposts",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.s3outposts",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "s3outposts"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-s3outposts",
+          "module": "aws_cdk.aws_s3outposts"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:18:14 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-s3outposts",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "This module is deprecated. All types are now available under the core module",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "assets"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.assets",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cdk-assets"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.Assets",
+          "packageId": "Amazon.CDK.Assets",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.assets",
+          "module": "aws_cdk.assets",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:13:42 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/assets",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::DAX",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "dax"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.dax",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "dax"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.DAX",
+          "packageId": "Amazon.CDK.AWS.DAX",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-dax",
+          "module": "aws_cdk.aws_dax",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:15:03 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-dax",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::KinesisFirehose",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "kinesisfirehose"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.kinesisfirehose",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "kinesisfirehose"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.KinesisFirehose",
+          "packageId": "Amazon.CDK.AWS.KinesisFirehose",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-kinesisfirehose",
+          "module": "aws_cdk.aws_kinesisfirehose",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:20:21 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-kinesisfirehose",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Cloud executable protocol",
+      "keywords": [
+        "aws",
+        "cdk"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.cxapi",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "cdk-cx-api"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.CXAPI",
+          "packageId": "Amazon.CDK.CXAPI",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.cx-api",
+          "module": "aws_cdk.cx_api",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:13:14 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/cx-api",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::QLDB",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::QLDB",
+        "aws-qldb"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.QLDB",
+          "packageId": "Amazon.CDK.AWS.QLDB",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.qldb",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "qldb"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-qldb",
+          "module": "aws_cdk.aws_qldb",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:17:50 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-qldb",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::CustomerProfiles",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::CustomerProfiles",
+        "aws-customerprofiles"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.CustomerProfiles",
+          "packageId": "Amazon.CDK.AWS.CustomerProfiles",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.customerprofiles",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "customerprofiles"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-customerprofiles",
+          "module": "aws_cdk.aws_customerprofiles"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:14:52 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-customerprofiles",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::MediaConnect",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::MediaConnect",
+        "aws-mediaconnect"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.MediaConnect",
+          "packageId": "Amazon.CDK.AWS.MediaConnect",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.mediaconnect",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "mediaconnect"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-mediaconnect",
+          "module": "aws_cdk.aws_mediaconnect"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:17:11 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-mediaconnect",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoTWireless",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::IoTWireless",
+        "aws-iotwireless"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoTWireless",
+          "packageId": "Amazon.CDK.AWS.IoTWireless",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.iotwireless",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iotwireless"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-iotwireless",
+          "module": "aws_cdk.aws_iotwireless"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:16:35 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-iotwireless",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "Amazon EventBridge Construct Library",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "cloudwatch",
+        "events",
+        "eventbridge"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.events",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "events"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Events",
+          "packageId": "Amazon.CDK.AWS.Events",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-events",
+          "module": "aws_cdk.aws_events",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:15:32 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-events",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Kinesis",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "kinesis"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.kinesis",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "kinesis"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Kinesis",
+          "packageId": "Amazon.CDK.AWS.Kinesis",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-kinesis",
+          "module": "aws_cdk.aws_kinesis",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:19:41 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-kinesis",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::IoTCoreDeviceAdvisor",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::IoTCoreDeviceAdvisor",
+        "aws-iotcoredeviceadvisor"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.IoTCoreDeviceAdvisor",
+          "packageId": "Amazon.CDK.AWS.IoTCoreDeviceAdvisor",
+          "signAssembly": true,
+          "assemblyOriginatorKeyFile": "../../key.snk",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.iotcoredeviceadvisor",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "iotcoredeviceadvisor"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-iotcoredeviceadvisor",
+          "module": "aws_cdk.aws_iotcoredeviceadvisor"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:16:21 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-iotcoredeviceadvisor",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AuditManager",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::AuditManager",
+        "aws-auditmanager"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AuditManager",
+          "packageId": "Amazon.CDK.AWS.AuditManager",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.auditmanager",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "auditmanager"
+          }
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ],
+          "distName": "aws-cdk.aws-auditmanager",
+          "module": "aws_cdk.aws_auditmanager"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:14:15 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-auditmanager",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::SES",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "ses"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.ses",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "ses"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.SES",
+          "packageId": "Amazon.CDK.AWS.SES",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-ses",
+          "module": "aws_cdk.aws_ses",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:20:42 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-ses",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::AutoScalingPlans",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "autoscalingplans"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.autoscalingplans",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "autoscalingplans"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.AutoScalingPlans",
+          "packageId": "Amazon.CDK.AWS.AutoScalingPlans",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-autoscalingplans",
+          "module": "aws_cdk.aws_autoscalingplans",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:14:20 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-autoscalingplans",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::ManagedBlockchain",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "AWS::ManagedBlockchain",
+        "aws-managedblockchain"
+      ],
+      "languages": {
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.ManagedBlockchain",
+          "packageId": "Amazon.CDK.AWS.ManagedBlockchain",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "java": {
+          "package": "software.amazon.awscdk.services.managedblockchain",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "managedblockchain"
+          }
+        },
+        "python": {
+          "distName": "aws-cdk.aws-managedblockchain",
+          "module": "aws_cdk.aws_managedblockchain",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:17:08 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-managedblockchain",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS::Glue",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "glue"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.glue",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "glue"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Glue",
+          "packageId": "Amazon.CDK.AWS.Glue",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-glue",
+          "module": "aws_cdk.aws_glue",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:20:06 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-glue",
+      "version": "1.125.0"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "The CDK Construct Library for AWS Route53 patterns",
+      "keywords": [
+        "aws",
+        "cdk",
+        "constructs",
+        "route53",
+        "route53-patterns"
+      ],
+      "languages": {
+        "java": {
+          "package": "software.amazon.awscdk.services.route53.patterns",
+          "maven": {
+            "groupId": "software.amazon.awscdk",
+            "artifactId": "route53-patterns"
+          }
+        },
+        "dotnet": {
+          "namespace": "Amazon.CDK.AWS.Route53.Patterns",
+          "packageId": "Amazon.CDK.AWS.Route53.Patterns",
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+        },
+        "python": {
+          "distName": "aws-cdk.aws-route53-patterns",
+          "module": "aws_cdk.aws_route53_patterns",
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 1"
+          ]
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 1,
+      "metadata": {
+        "constructFramework": {
+          "name": "aws-cdk",
+          "majorVersion": 1
+        },
+        "date": "Wed, 29 Sep 2021 22:22:51 GMT",
+        "packageLinks": {},
+        "packageTags": []
+      },
+      "name": "@aws-cdk/aws-route53-patterns",
+      "version": "1.125.0"
     }
   ]
 }

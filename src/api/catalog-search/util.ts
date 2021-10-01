@@ -63,8 +63,15 @@ const getLanguagesFilter: FilterFunctionBuilder<
 const getCDKTypeFilter: FilterFunctionBuilder<CatalogSearchFilters["cdkType"]> =
   (cdkType) => {
     if (!cdkType) return undefined;
-    return (pkg) => (pkg.metadata as any).cdkType === cdkType;
+    return (pkg) => pkg.metadata?.constructFramework?.name === cdkType;
   };
+
+const getCDKMajorFilter: FilterFunctionBuilder<
+  CatalogSearchFilters["cdkMajor"]
+> = (cdkMajor) => {
+  if (!cdkMajor) return undefined;
+  return (pkg) => pkg.metadata?.constructFramework?.majorVersion === cdkMajor;
+};
 
 export const SORT_FUNCTIONS: Record<CatalogSearchSort, SortFunction> = {
   [CatalogSearchSort.NameAsc]: getStrSort(true),
@@ -79,6 +86,7 @@ export const FILTER_FUNCTIONS: {
   >;
 } = {
   cdkType: getCDKTypeFilter,
+  cdkMajor: getCDKMajorFilter,
   language: getLanguageFilter,
   languages: getLanguagesFilter,
 };

@@ -6,6 +6,7 @@ import { usePagination } from "../usePagination";
 import { useSearch } from "../useSearch";
 
 export interface UseCatalogResultsOptions {
+  cdkMajor?: number;
   cdkType?: CDKType;
   limit: number;
   offset?: number;
@@ -20,6 +21,7 @@ export interface UseCatalogResultsOptions {
  * This hook depends on an upstream provider - `<SearchProvider />`, which wraps all pages.
  */
 export const useCatalogResults = ({
+  cdkMajor,
   cdkType,
   limit,
   offset = 0,
@@ -30,11 +32,12 @@ export const useCatalogResults = ({
 }: UseCatalogResultsOptions) => {
   const filters = useMemo(
     () => ({
+      cdkMajor,
       cdkType,
       language: language ?? undefined,
       languages: languages,
     }),
-    [cdkType, language, languages]
+    [cdkMajor, cdkType, language, languages]
   );
 
   const results = useSearch({

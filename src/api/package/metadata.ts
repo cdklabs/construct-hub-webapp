@@ -1,3 +1,4 @@
+import { CDKType } from "../../constants/constructs";
 import { API_PATHS } from "../../constants/url";
 import { getAssetsPath } from "./util";
 
@@ -8,6 +9,10 @@ export interface Metadata {
   };
   packageLinks?: {
     [key: string]: string;
+  };
+  constructFramework?: {
+    name?: CDKType;
+    majorVersion?: number;
   };
 }
 

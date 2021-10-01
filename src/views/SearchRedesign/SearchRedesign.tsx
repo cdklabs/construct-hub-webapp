@@ -15,7 +15,14 @@ export const SearchRedesign: FunctionComponent = () => {
         }}
         pageName="search"
       >
-        <Grid gap={4} p={6} templateColumns="1fr 3fr" templateRows="1fr">
+        <Grid
+          gap={4}
+          h="full"
+          maxW="100%"
+          py={6}
+          templateColumns="auto 1fr"
+          templateRows="1fr"
+        >
           {/* Filter Panel */}
           <FilterPanel />
           {/* Results, Info,  and Controls */}
