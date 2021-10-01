@@ -15,6 +15,7 @@ export interface CatalogPackage {
   author: Author | string;
   keywords?: string[];
   metadata: Metadata;
+  comment: string;
 }
 
 export interface Packages {

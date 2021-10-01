@@ -8,7 +8,7 @@ import testIds from "./testIds";
 
 export const Heading: FunctionComponent = () => {
   const [currentLanguage] = useLanguage();
-  const { name, description, version } = usePackageCard();
+  const { name, description, version, comment } = usePackageCard();
 
   return (
     <>
@@ -38,6 +38,25 @@ export const Heading: FunctionComponent = () => {
       >
         {description || "No description available."}
       </Text>
+      {comment && (
+        <Text
+          data-testid={testIds.comment}
+          fontSize="md"
+          lineHeight="tall"
+          noOfLines={4}
+        >
+          <Text
+            as="span"
+            color="blue.500"
+            fontSize="md"
+            fontWeight="bold"
+            lineHeight="tall"
+          >
+            Editor&apos;s note:{" "}
+          </Text>
+          {comment}
+        </Text>
+      )}
     </>
   );
 };
