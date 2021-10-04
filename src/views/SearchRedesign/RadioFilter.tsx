@@ -1,4 +1,4 @@
-import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
+import { Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { FilterHeading, FilterHeadingProps } from "./FilterHeading";
 
@@ -25,7 +25,9 @@ export const RadioFilter: FunctionComponent<RadioFilterProps> = ({
         <Stack>
           {options.map(({ display, value }) => (
             <Radio key={value} value={value}>
-              {display}
+              <Text color="gray.600" fontSize="sm" isTruncated>
+                {display}
+              </Text>
             </Radio>
           ))}
         </Stack>
