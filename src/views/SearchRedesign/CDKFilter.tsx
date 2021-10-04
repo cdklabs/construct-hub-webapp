@@ -1,7 +1,8 @@
 import { FunctionComponent, useMemo } from "react";
 import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
 import { useSearchContext } from "../../contexts/Search";
-import { Filter } from "./Filter";
+import { CheckboxFilter } from "./CheckboxFilter";
+import { RadioFilter } from "./RadioFilter";
 import { useSearchState } from "./SearchState";
 
 type CDKOptions = Partial<{
@@ -56,7 +57,7 @@ export const CDKFilter: FunctionComponent = () => {
   const onCdkTypeChange = (type: string) => {
     const cdk = type as CDKType;
     setCdkMajor(undefined);
-    setCdkType(cdk === cdkType ? undefined : cdk);
+    setCdkType(type ? cdk : undefined);
   };
 
   const onCdkMajorChange = (major: string) => {
@@ -67,16 +68,19 @@ export const CDKFilter: FunctionComponent = () => {
 
   return (
     <>
-      <Filter
+      <RadioFilter
         hint="Constructs support distinct output types: AWS CDK libraries output Cloudformation Templates, CDK8s libraries output Kubernetes manifests, and CDKtf libraries output Terraform Configuration. The Construct Hub attempts to detect the output type of each library, but results are not guaranteed to be completely accurate."
         name="CDK Type"
         onValueChange={onCdkTypeChange}
-        options={Object.values(cdkOptions)}
-        values={cdkType ? [cdkType] : []}
+        options={[
+          { display: "Any CDK Type", value: "" },
+          ...Object.values(cdkOptions),
+        ]}
+        value={cdkType ?? ""}
       />
       {/* No point in showing major versions if only a single one is available */}
       {!!(majorsOptions && majorsOptions.length > 1) && (
-        <Filter
+        <CheckboxFilter
           hint={`Allows you to filter by a major version of your selected CDK Type: (${
             CDKTYPE_NAME_MAP[cdkType!]
           })`}
