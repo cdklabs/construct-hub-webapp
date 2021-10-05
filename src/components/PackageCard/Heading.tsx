@@ -1,6 +1,14 @@
-import { Heading as ChakraHeading, LinkOverlay, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Heading as ChakraHeading,
+  LinkOverlay,
+  Text,
+  Tooltip,
+} from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
+import { CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 import { useLanguage } from "../../hooks/useLanguage";
 import { getPackagePath } from "../../util/url";
 import { usePackageCard } from "./PackageCard";
@@ -8,7 +16,16 @@ import testIds from "./testIds";
 
 export const Heading: FunctionComponent = () => {
   const [currentLanguage] = useLanguage();
-  const { name, description, version, comment } = usePackageCard();
+  const {
+    comment,
+    description,
+    metadata: { constructFramework },
+    name,
+    version,
+  } = usePackageCard();
+
+  const cdkType = constructFramework?.name;
+  const cdkVersion = constructFramework?.majorVersion;
 
   return (
     <>
@@ -20,15 +37,36 @@ export const Heading: FunctionComponent = () => {
           language: currentLanguage,
         })}
       >
-        <ChakraHeading
-          as="h3"
-          color="blue.800"
-          data-testid={testIds.title}
-          fontSize="md"
-          fontWeight="bold"
-        >
-          {name}
-        </ChakraHeading>
+        <Flex align="center">
+          {cdkType && (
+            <Tooltip
+              hasArrow
+              label={
+                CDKTYPE_RENDER_MAP[cdkType].name +
+                (cdkVersion ? ` v${cdkVersion}` : "")
+              }
+              placement="top"
+            >
+              <Image
+                alt={`${CDKTYPE_RENDER_MAP[cdkType].name} icon`}
+                h={5}
+                mr={2}
+                src={CDKTYPE_RENDER_MAP[cdkType].imgsrc}
+                w={5}
+                zIndex={1}
+              />
+            </Tooltip>
+          )}
+          <ChakraHeading
+            as="h3"
+            color="blue.800"
+            data-testid={testIds.title}
+            fontSize="md"
+            fontWeight="bold"
+          >
+            {name}
+          </ChakraHeading>
+        </Flex>
       </LinkOverlay>
       <Text
         data-testid={testIds.description}
