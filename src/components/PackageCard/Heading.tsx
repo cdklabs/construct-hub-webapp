@@ -25,6 +25,7 @@ export const Heading: FunctionComponent = () => {
   } = usePackageCard();
 
   const cdkType = constructFramework?.name;
+  const cdkVersion = constructFramework?.majorVersion;
 
   return (
     <>
@@ -40,7 +41,10 @@ export const Heading: FunctionComponent = () => {
           {cdkType && (
             <Tooltip
               hasArrow
-              label={CDKTYPE_RENDER_MAP[cdkType].name}
+              label={
+                CDKTYPE_RENDER_MAP[cdkType].name +
+                (cdkVersion ? ` v${cdkVersion}` : "")
+              }
               placement="top"
             >
               <Image
