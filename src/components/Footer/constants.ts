@@ -19,7 +19,7 @@ export const FOOTER_LINKS: Record<string, Link> = {
     testId: "privacy",
   },
   SITE_TERMS: {
-    display: "Site Terms",
+    display: "Construct Hub Site Terms",
     url: ROUTES.SITE_TERMS,
     testId: "site-terms",
     isExternal: false,
