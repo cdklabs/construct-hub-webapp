@@ -24,7 +24,7 @@ export const FilterHeading: FunctionComponent<FilterHeadingProps> = ({
   hint,
 }) => {
   return (
-    <Flex align="center" justify="space-between">
+    <Flex align="center">
       <Heading as="h4" size="sm" w="max-content">
         {name}
       </Heading>
