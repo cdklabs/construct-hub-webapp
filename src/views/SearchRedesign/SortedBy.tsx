@@ -13,17 +13,17 @@ import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { useSearchState } from "./SearchState";
 
 const SORT_RENDER_MAP = {
-  [CatalogSearchSort.NameAsc]: "Alphabetical - Ascending",
-  [CatalogSearchSort.NameDesc]: "Alphabetical - Descending",
-  [CatalogSearchSort.PublishDateAsc]: "Oldest",
-  [CatalogSearchSort.PublishDateDesc]: "Newest",
+  [CatalogSearchSort.NameAsc]: "A-Z",
+  [CatalogSearchSort.NameDesc]: "Z-A",
+  [CatalogSearchSort.PublishDateAsc]: "Oldest first",
+  [CatalogSearchSort.PublishDateDesc]: "Newest first",
 };
 
 export const SortedBy: FunctionComponent = () => {
   const { searchAPI } = useSearchState();
   const { sort, setSort } = searchAPI;
 
-  const selected = sort ? SORT_RENDER_MAP[sort] : "Recommended";
+  const selected = sort ? SORT_RENDER_MAP[sort] : "Relevance";
 
   return (
     <Flex align="center">
@@ -42,8 +42,8 @@ export const SortedBy: FunctionComponent = () => {
           {selected}
         </MenuButton>
         <MenuList zIndex="sticky">
-          <MenuItem key="recommended" onClick={() => setSort(undefined)}>
-            Recommended
+          <MenuItem key="Relevance" onClick={() => setSort(undefined)}>
+            Relevance
           </MenuItem>
           {Object.entries(SORT_RENDER_MAP).map(([value, display]) => (
             <MenuItem

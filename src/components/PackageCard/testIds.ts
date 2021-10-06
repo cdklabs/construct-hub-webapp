@@ -7,6 +7,7 @@ const testIds = createTestIds("packageCard", [
   "published",
   "title",
   "version",
+  "comment",
   "wideContainer",
 ] as const);
 
