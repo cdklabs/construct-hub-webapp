@@ -3,6 +3,10 @@ import { API_PATHS } from "../../constants/url";
 import { getAssetsPath } from "./util";
 
 export interface Metadata {
+  constructFramework?: {
+    name?: CDKType;
+    majorVersion?: number;
+  };
   date: string;
   links?: {
     npm: string;

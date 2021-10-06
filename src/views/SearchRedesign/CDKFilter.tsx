@@ -1,4 +1,5 @@
 import { FunctionComponent, useMemo } from "react";
+import { CatalogConstructFrameworkMeta } from "../../api/catalog-search";
 import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
 import { useSearchContext } from "../../contexts/Search";
 import { CheckboxFilter } from "./CheckboxFilter";
@@ -6,11 +7,9 @@ import { RadioFilter } from "./RadioFilter";
 import { useSearchState } from "./SearchState";
 
 type CDKOptions = Partial<{
-  [key in CDKType]: {
+  [key in CDKType]: CatalogConstructFrameworkMeta & {
     display: string;
     value: key;
-    pkgCount: number;
-    majorVersions: number[];
   };
 }>;
 
@@ -19,19 +18,23 @@ export const CDKFilter: FunctionComponent = () => {
     useSearchState().searchAPI;
   const searchAPI = useSearchContext()!;
 
+  // Options with less than one package will be omitted
   const cdkOptions = useMemo(() => {
     const cdkTypes = searchAPI.constructFrameworks;
-    const options = Object.entries(cdkTypes ?? {}).reduce(
-      (opts, [name, meta]) => ({
+    const options = Object.entries(cdkTypes).reduce((opts, [name, meta]) => {
+      if (meta.pkgCount < 1) {
+        return opts;
+      }
+
+      return {
         ...opts,
         [name]: {
           display: CDKTYPE_NAME_MAP[name as CDKType],
           value: name,
           ...meta,
         },
-      }),
-      {}
-    );
+      };
+    }, {});
 
     return Object.keys(options).length ? (options as CDKOptions) : undefined;
   }, [searchAPI]);

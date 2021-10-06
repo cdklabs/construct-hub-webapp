@@ -2,6 +2,7 @@ import { Heading } from "@chakra-ui/react";
 import { Fragment, FunctionComponent, useMemo } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { SORT_FUNCTIONS } from "../../api/catalog-search/util";
+import { FeaturedPackagesDetail } from "../../api/config";
 import type { CatalogPackage } from "../../api/package/packages";
 import { findPackage } from "../../api/package/util";
 import { PackageList } from "../../components/PackageList";
@@ -10,7 +11,7 @@ import { useCatalog } from "../../contexts/Catalog";
 export interface HomeSectionProps {
   name: string;
   showLastUpdated?: number;
-  showPackages?: string[];
+  showPackages?: FeaturedPackagesDetail[];
 }
 
 export const HomeSection: FunctionComponent<HomeSectionProps> = ({
@@ -29,7 +30,16 @@ export const HomeSection: FunctionComponent<HomeSectionProps> = ({
         .slice(0, showLastUpdated);
     } else if (showPackages) {
       return showPackages
-        .map((p) => findPackage(data, p))
+        .map((p) => {
+          const pkg = findPackage(data, p.name);
+          if (pkg) {
+            return {
+              ...pkg,
+              comment: p.comment,
+            };
+          }
+          return undefined;
+        })
         .filter((pkg) => pkg !== undefined) as CatalogPackage[];
     } else {
       return undefined;
@@ -45,7 +55,7 @@ export const HomeSection: FunctionComponent<HomeSectionProps> = ({
 
   return (
     <Fragment>
-      <Heading as="h3" color="blue.800" size="md">
+      <Heading as="h3" color="blue.800" my="4" size="md">
         {name}
       </Heading>
 

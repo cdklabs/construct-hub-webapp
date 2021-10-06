@@ -41,7 +41,7 @@ export const FilterHeading: FunctionComponent<FilterHeadingProps> = ({
               variant="ghost"
             />
           </PopoverTrigger>
-          <PopoverContent>
+          <PopoverContent fontSize="sm">
             <PopoverArrow />
             <PopoverCloseButton />
             <PopoverHeader>Hint: {name}</PopoverHeader>
