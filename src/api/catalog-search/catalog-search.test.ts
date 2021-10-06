@@ -1,13 +1,32 @@
 import catalogFixture from "../../__fixtures__/catalog.json";
+import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { CatalogSearchAPI } from "./catalog-search";
 import { CatalogSearchSort } from "./constants";
+import * as util from "./util";
 
 describe("CatalogSearchAPI", () => {
   const instance = new CatalogSearchAPI(
     catalogFixture.packages as CatalogPackage[]
   );
+
+  it("exposes a property which returns detected cdk frameworks", () => {
+    const cdkFrameWorkCount = catalogFixture.packages.reduce((sum, i) => {
+      if (i.metadata.constructFramework?.name) {
+        return sum + 1;
+      }
+
+      return sum;
+    }, 0);
+
+    const detectedCount = Object.values(instance.constructFrameworks).reduce(
+      (sum, i) => sum + i.pkgCount,
+      0
+    );
+
+    expect(detectedCount).toEqual(cdkFrameWorkCount);
+  });
 
   it("Returns all results for empty search query", () => {
     expect(instance.search().size).toEqual(catalogFixture.packages.length);
@@ -44,6 +63,27 @@ describe("CatalogSearchAPI", () => {
           p.languages.java !== undefined || p.languages.python !== undefined
       ).length
     );
+  });
+
+  it("Ignores cdkMajor filter if no cdkType is passed", () => {
+    const cdkMajorFilterSpy = jest.spyOn(util.FILTER_FUNCTIONS, "cdkMajor");
+
+    instance.search({
+      filters: {
+        cdkType: CDKType.awscdk,
+        cdkMajor: 2,
+      },
+    });
+
+    expect(cdkMajorFilterSpy).toHaveBeenCalledWith(2);
+
+    instance.search({
+      filters: {
+        cdkMajor: 3,
+      },
+    });
+
+    expect(cdkMajorFilterSpy).toHaveBeenCalledWith(undefined);
   });
 
   it("Returns results ordered by Sort", () => {

@@ -14,6 +14,7 @@ export const QUERY_PARAMS = {
   SEARCH_QUERY: "q",
   SORT: "sort",
   SUBMODULE: "submodule",
+  CDK_MAJOR: "cdkver",
 } as const;
 
 export const ROUTES = {

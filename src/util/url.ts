@@ -66,6 +66,7 @@ export const createURL = (base: string, params?: SearchParamsObject) => {
 };
 
 export const getSearchPath = ({
+  cdkMajor,
   cdkType,
   query,
   offset,
@@ -73,6 +74,7 @@ export const getSearchPath = ({
   languages,
   sort,
 }: {
+  cdkMajor?: string | number;
   query?: string;
   offset?: string | number;
   cdkType?: CDKType;
@@ -83,6 +85,7 @@ export const getSearchPath = ({
   createURL(ROUTES.SEARCH, {
     [QUERY_PARAMS.SEARCH_QUERY]: query,
     [QUERY_PARAMS.CDK_TYPE]: cdkType,
+    [QUERY_PARAMS.CDK_MAJOR]: cdkMajor,
     [QUERY_PARAMS.LANGUAGE]: language,
     [QUERY_PARAMS.LANGUAGES]: languages?.length ? languages.join(",") : null,
     [QUERY_PARAMS.SORT]: sort,

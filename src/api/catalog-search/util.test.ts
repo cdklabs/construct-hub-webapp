@@ -52,10 +52,35 @@ describe("Catalog Search Utils", () => {
 
   describe("Filter Functions", () => {
     // To be implemented, will need new fixture
-    it.skip("Filters by CDK Type", () => {
+    it("Filters by CDK Type", () => {
       const filterByCdk8s = FILTER_FUNCTIONS.cdkType(CDKType.cdk8s)!;
       expect(packages.filter(filterByCdk8s)).toEqual(
-        packages.filter((p) => (p.metadata as any).cdkType === "cdk8s")
+        packages.filter((p) => p.metadata.constructFramework?.name === "cdk8s")
+      );
+    });
+
+    it("Filters by CDK Version", () => {
+      const dataWithMoreVersions: CatalogPackage[] = packages.map((p) => ({
+        ...p,
+        metadata: {
+          ...p.metadata,
+          ...(p.metadata.constructFramework
+            ? {
+                constructFramework: {
+                  ...p.metadata.constructFramework,
+                  majorVersion: Math.round(Math.random()) + 1,
+                },
+              }
+            : {}),
+        },
+      }));
+
+      expect(
+        dataWithMoreVersions.filter(FILTER_FUNCTIONS.cdkMajor(1)!)
+      ).toEqual(
+        dataWithMoreVersions.filter(
+          (p) => p.metadata.constructFramework?.majorVersion === 1
+        )
       );
     });
 
