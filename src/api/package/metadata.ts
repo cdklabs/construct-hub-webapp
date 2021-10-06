@@ -14,10 +14,6 @@ export interface Metadata {
   packageLinks?: {
     [key: string]: string;
   };
-  constructFramework?: {
-    name?: CDKType;
-    majorVersion?: number;
-  };
 }
 
 /**
