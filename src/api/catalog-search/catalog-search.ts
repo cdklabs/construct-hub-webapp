@@ -10,9 +10,9 @@ export interface CatalogPackageWithId extends CatalogPackage {
 }
 
 export interface CatalogConstructFrameworks {
-  [CDKType.awscdk]?: CatalogConstructFrameworkMeta;
-  [CDKType.cdktf]?: CatalogConstructFrameworkMeta;
-  [CDKType.cdk8s]?: CatalogConstructFrameworkMeta;
+  [CDKType.awscdk]: CatalogConstructFrameworkMeta;
+  [CDKType.cdktf]: CatalogConstructFrameworkMeta;
+  [CDKType.cdk8s]: CatalogConstructFrameworkMeta;
 }
 export interface CatalogConstructFrameworkMeta {
   pkgCount: number;
@@ -217,9 +217,7 @@ export class CatalogSearchAPI {
    * of packages for that framework as well as a list of major versions.
    */
   private detectConstructFrameworks() {
-    const results: CatalogConstructFrameworks = Object.values(
-      Object.fromEntries(this.map)
-    ).reduce(
+    const results: CatalogConstructFrameworks = [...this.map.values()].reduce(
       (frameworks: CatalogConstructFrameworks, pkg: CatalogPackageWithId) => {
         const { metadata } = pkg;
 
@@ -227,25 +225,31 @@ export class CatalogSearchAPI {
         const majorVersion = metadata?.constructFramework?.majorVersion;
 
         if (frameworkName) {
-          const entry =
-            frameworks[frameworkName] ??
-            ({} as Partial<CatalogConstructFrameworkMeta>);
+          const entry = frameworks[frameworkName];
 
-          let majorVersions = [...(entry?.majorVersions ?? [])];
-
-          if (majorVersion && !majorVersions.includes(majorVersion)) {
-            majorVersions.push(majorVersion);
+          if (majorVersion && !entry.majorVersions.includes(majorVersion)) {
+            entry.majorVersions.push(majorVersion);
           }
 
-          frameworks[frameworkName] = {
-            pkgCount: (entry?.pkgCount ?? 0) + 1,
-            majorVersions,
-          };
+          entry.pkgCount += 1;
         }
 
         return frameworks;
       },
-      {}
+      {
+        [CDKType.awscdk]: {
+          majorVersions: [],
+          pkgCount: 0,
+        },
+        [CDKType.cdk8s]: {
+          majorVersions: [],
+          pkgCount: 0,
+        },
+        [CDKType.cdktf]: {
+          majorVersions: [],
+          pkgCount: 0,
+        },
+      }
     );
 
     return results;
