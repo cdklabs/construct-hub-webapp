@@ -8,7 +8,9 @@ export interface PackageCardProps {
   variant?: PackageCardType;
 }
 
-const PackageCardContext = createContext<CatalogPackage | null>(null);
+const PackageCardContext = createContext<
+  (CatalogPackage & { comment?: string }) | null
+>(null);
 
 export const usePackageCard = () => useContext(PackageCardContext)!;
 

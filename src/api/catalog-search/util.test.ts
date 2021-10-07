@@ -87,14 +87,28 @@ describe("Catalog Search Utils", () => {
     it("Filters by a single language", () => {
       const filterByPython = FILTER_FUNCTIONS.language(Language.Python)!;
       expect(packages.filter(filterByPython)).toEqual(
-        packages.filter((p) => p.languages.python !== undefined)
+        packages.filter((p) => p.languages?.python !== undefined)
       );
 
       const filterByJava = FILTER_FUNCTIONS.language(Language.Java)!;
 
       expect(packages.filter(filterByJava)).toEqual(
-        packages.filter((p) => p.languages.java !== undefined)
+        packages.filter((p) => p.languages?.java !== undefined)
       );
+    });
+
+    it("does not throw if packages have no language", () => {
+      const withoutLanguages = packages.reduce((pkgs, pkg) => {
+        const { languages, ...p } = pkg;
+
+        pkgs.push(p);
+
+        return pkgs;
+      }, [] as CatalogPackage[]);
+
+      expect(() =>
+        withoutLanguages.filter(FILTER_FUNCTIONS.language(Language.Java)!)
+      ).not.toThrow();
     });
 
     it("Filters by multiple languages", () => {
@@ -106,7 +120,7 @@ describe("Catalog Search Utils", () => {
       expect(packages.filter(filterByJavaOrPython)).toEqual(
         packages.filter(
           (p) =>
-            p.languages.java !== undefined || p.languages.python !== undefined
+            p.languages?.java !== undefined || p.languages?.python !== undefined
         )
       );
 
