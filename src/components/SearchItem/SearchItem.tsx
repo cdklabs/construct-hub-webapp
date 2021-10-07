@@ -9,7 +9,8 @@ export interface SearchItemProps extends HTMLChakraProps<"li"> {
 export const SearchItem = forwardRef<SearchItemProps, "li">(
   ({ name, onClick, ...props }, ref) => {
     const onKeyDown: KeyboardEventHandler<HTMLLIElement> = (e) => {
-      if (e.key === "Enter") {
+      if (["Enter", " "].includes(e.key)) {
+        e.preventDefault();
         onClick();
       }
     };
@@ -18,8 +19,8 @@ export const SearchItem = forwardRef<SearchItemProps, "li">(
       <ListItem
         alignItems="center"
         display="flex"
-        fontSize="lg"
-        h={12}
+        fontSize="md"
+        h={8}
         lineHeight="base"
         listStyleType="none"
         onClick={onClick}

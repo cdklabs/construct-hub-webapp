@@ -1,10 +1,11 @@
-import { Box, Divider, Flex } from "@chakra-ui/react";
+import { Divider, Flex, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import { CatalogSearch } from "../../components/CatalogSearch";
 import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
+import { SearchBar } from "../../components/SearchBar";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
+import { useDebounce } from "../../hooks/useDebounce";
 import { getSearchPath } from "../../util/url";
 import { PageControls } from "../SearchResults/components/PageControls";
 import { ShowingDetails } from "../SearchResults/components/ShowingDetails";
@@ -18,6 +19,7 @@ export const SearchResults: FunctionComponent = () => {
 
   const { query, searchAPI, offset, limit } = useSearchState();
   const { languages, sort, cdkType, cdkMajor, onSearch } = searchAPI;
+  const debouncedQuery = useDebounce(searchAPI.query);
 
   const { page, pageLimit, results } = useCatalogResults({
     offset,
@@ -56,17 +58,18 @@ export const SearchResults: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, offset, pageLimit]);
 
-  // Reset offset and update url when filters & sort change
+  // Reset offset and update url when query, filters, or sort change
   // We want to avoid doing this on first render / when a user directly navigates to a search URL
   // so we keep a ref to prevent this
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
     } else {
-      onSearch();
+      // Trigger a history replace rather than push to avoid bloating browser history
+      onSearch({ replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sort, languages, cdkType, cdkMajor]);
+  }, [debouncedQuery, sort, languages, cdkType, cdkMajor]);
 
   return (
     <Page
@@ -78,30 +81,37 @@ export const SearchResults: FunctionComponent = () => {
       }}
       pageName="search"
     >
-      <Flex direction="column" maxW="100%">
-        <Box px={4}>
-          <CatalogSearch {...searchAPI} />
-          <Divider mt={4} />
-        </Box>
-        <Box p={4}>
-          <Flex justify="space-between" pb={4}>
-            <ShowingDetails
-              count={results.length}
-              filtered={!!query}
-              limit={limit}
-              offset={offset}
-            />
-            <SortedBy />
-          </Flex>
-          <PackageList items={page} />
-          <PageControls
-            getPageUrl={getUrl}
+      <Stack direction="column" maxW="100vw" pb={4} px={4} spacing={4}>
+        <SearchBar
+          bg="white"
+          hasButton
+          onChange={searchAPI.onQueryChange}
+          onSubmit={searchAPI.onSubmit}
+          value={searchAPI.query}
+        />
+
+        <Divider />
+
+        <Flex justify="space-between">
+          <ShowingDetails
+            count={results.length}
+            filtered={!!query}
             limit={limit}
             offset={offset}
-            pageLimit={pageLimit}
           />
-        </Box>
-      </Flex>
+
+          <SortedBy />
+        </Flex>
+
+        <PackageList items={page} />
+
+        <PageControls
+          getPageUrl={getUrl}
+          limit={limit}
+          offset={offset}
+          pageLimit={pageLimit}
+        />
+      </Stack>
     </Page>
   );
 };

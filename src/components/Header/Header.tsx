@@ -1,9 +1,9 @@
 import { Box, Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Documentation } from "./Documentation";
+import { HeaderSearch } from "./HeaderSearch";
 import { NavButton } from "./NavButton";
 import { Resources } from "./Resources";
-import { SearchButton } from "./SearchButton";
 import testIds from "./testIds";
 import { Title } from "./Title";
 
@@ -46,7 +46,7 @@ export const Header: FunctionComponent = () => {
         colStart={{ base: 3, md: 2 }}
         justifySelf={{ base: "end", md: "stretch" }}
       >
-        <SearchButton />
+        <HeaderSearch />
       </HeaderItem>
 
       {/* Navigation */}

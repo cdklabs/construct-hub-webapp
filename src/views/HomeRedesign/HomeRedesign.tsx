@@ -31,7 +31,7 @@ export const HomeRedesign: FunctionComponent = () => {
           templateColumns="2fr 1fr"
           templateRows="1fr"
         >
-          <Flex direction="column">
+          <Flex direction="column" zIndex="base">
             {sections.map((section) => (
               <HomeSection key={section.name} {...section}></HomeSection>
             ))}

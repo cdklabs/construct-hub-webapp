@@ -22,6 +22,10 @@ export interface UseCatalogSearchParams {
   defaultSort?: UseCatalogSearchReturn["sort"];
 }
 
+interface NavigationParams {
+  replace?: boolean;
+}
+
 export interface UseCatalogSearchReturn {
   /**
    * The CDK Type's major version to filter by
@@ -50,7 +54,7 @@ export interface UseCatalogSearchReturn {
   /**
    * Navigates to the search query url
    */
-  onSearch: () => void;
+  onSearch: (p?: NavigationParams) => void;
   /**
    * FormEventHandler to handle query submission
    */
@@ -115,18 +119,22 @@ export const useCatalogSearch = (
     options.defaultSort
   );
 
-  const { push } = useHistory();
+  const { push, replace } = useHistory();
 
   const onQueryChange: UseCatalogSearchReturn["onQueryChange"] = (e) => {
     e.preventDefault();
     setQuery(e.target.value);
   };
 
-  const onSearch = useCallback(() => {
-    push(
-      getSearchPath({ cdkMajor, cdkType, language, languages, query, sort })
-    );
-  }, [cdkType, cdkMajor, language, languages, push, query, sort]);
+  const onSearch: UseCatalogSearchReturn["onSearch"] = useCallback(
+    (opts) => {
+      const navigate = opts?.replace ? replace : push;
+      navigate(
+        getSearchPath({ cdkType, cdkMajor, language, languages, query, sort })
+      );
+    },
+    [cdkType, cdkMajor, language, languages, push, query, replace, sort]
+  );
 
   const onSubmit: UseCatalogSearchReturn["onSubmit"] = useCallback(
     (e) => {
