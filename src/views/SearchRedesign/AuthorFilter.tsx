@@ -1,6 +1,7 @@
 import { FunctionComponent, useState } from "react";
-import { Filter } from "./Filter";
+import { CheckboxFilter } from "./CheckboxFilter";
 
+// TODO: This filter is currently non-functional
 export const AuthorFilter: FunctionComponent = () => {
   const [authors, setAuthors] = useState<string[]>([]);
 
@@ -13,7 +14,7 @@ export const AuthorFilter: FunctionComponent = () => {
   };
 
   return (
-    <Filter
+    <CheckboxFilter
       name="Author"
       onValueChange={onAuthorsChange}
       options={[
