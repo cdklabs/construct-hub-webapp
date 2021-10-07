@@ -1,8 +1,8 @@
 import { HTMLChakraProps, ListItem, forwardRef } from "@chakra-ui/react";
-import type { KeyboardEventHandler } from "react";
+import type { KeyboardEventHandler, ReactNode } from "react";
 
 export interface SearchItemProps extends HTMLChakraProps<"li"> {
-  name: string;
+  name: ReactNode;
   onClick: () => void;
 }
 
@@ -20,9 +20,9 @@ export const SearchItem = forwardRef<SearchItemProps, "li">(
         alignItems="center"
         display="flex"
         fontSize="md"
-        h={8}
         lineHeight="base"
         listStyleType="none"
+        minH={8}
         onClick={onClick}
         onKeyDown={onKeyDown}
         px={4}

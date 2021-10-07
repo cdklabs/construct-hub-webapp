@@ -1,8 +1,8 @@
 import {
-  Heading,
   UnorderedList,
   ListProps,
   forwardRef,
+  Divider,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { useHistory } from "react-router-dom";
@@ -59,25 +59,20 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
       zIndex={2}
       {...props}
     >
-      <Heading
-        fontSize="md"
-        fontWeight="bold"
-        mb={2}
-        mt={4}
-        mx={4}
-        textAlign="left"
-      >
-        Suggestions
-      </Heading>
-      {recommendations.map((pkg) => {
+      {recommendations.map((pkg, i) => {
         const navigate = () => push(getPackagePath(pkg));
         return (
-          <SearchItem
-            data-testid={testIds.suggestion}
-            key={pkg.id}
-            name={pkg.name}
-            onClick={navigate}
-          />
+          <>
+            {i > 0 && <Divider mx={4} w="auto" />}
+            <SearchItem
+              data-testid={testIds.suggestion}
+              key={pkg.id}
+              name={pkg.name}
+              onClick={navigate}
+              py={2}
+              textAlign="left"
+            />
+          </>
         );
       })}
     </Card>

@@ -19,10 +19,10 @@ export const Header: FunctionComponent = () => {
       bg="white"
       boxShadow="base"
       data-testid={testIds.container}
-      gap={4}
+      gap={6}
       gridTemplateColumns={{
-        base: "1fr 3fr 1fr",
-        md: "minmax(200px, 2fr) minmax(200px, 3fr) 2fr",
+        base: "1fr max-content 1fr",
+        md: "max-content minmax(200px, 500px) auto",
       }}
       gridTemplateRows="1fr"
       maxW="100vw"
