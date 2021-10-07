@@ -9,13 +9,12 @@ export interface Author {
 
 export interface CatalogPackage {
   name: string;
-  languages: Partial<Record<Language, Record<string, unknown>>>;
+  languages?: Partial<Record<Language, Record<string, unknown>>>;
   version: string;
   description: string;
   author: Author | string;
   keywords?: string[];
   metadata: Metadata;
-  comment: string;
 }
 
 export interface Packages {

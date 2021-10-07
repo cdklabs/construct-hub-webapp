@@ -17,7 +17,7 @@ const sizes = {
 
 export interface PackageLanguagesProps {
   isRounded?: boolean;
-  languages: Partial<Record<Language, unknown>>;
+  languages?: Partial<Record<Language, unknown>>;
   name: string;
   size?: "sm" | "md" | "lg";
   version: string;
