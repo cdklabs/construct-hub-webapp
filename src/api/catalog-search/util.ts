@@ -37,7 +37,7 @@ const getLanguageFilter: FilterFunctionBuilder<
   }
 
   return (pkg) => {
-    return pkg.languages[language] !== undefined;
+    return pkg.languages?.[language] !== undefined;
   };
 };
 
@@ -52,7 +52,7 @@ const getLanguagesFilter: FilterFunctionBuilder<
   }
 
   return (pkg) => {
-    const isMatched = Object.keys(pkg.languages).some((lang) =>
+    const isMatched = Object.keys(pkg.languages ?? {}).some((lang) =>
       languageSet.has(lang as Language)
     );
 
