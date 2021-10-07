@@ -29,5 +29,14 @@ declare namespace Cypress {
      * Visits a page with a custom config
      */
     visitWithConfig(url: string, config: import("api/config").Config): void;
+
+    /**
+     * Checks SearchBar functionality on a page
+     */
+    checkSearchFunctionality(options?: {
+      expectSuggestions?: boolean;
+      expectOverlay?: boolean;
+      expectSearchPage?: boolean;
+    }): void;
   }
 }

@@ -1,5 +1,6 @@
 import headerTestIds from "components/Header/testIds";
 import searchModalTestIds from "components/SearchModal/testIds";
+import searchBarTestIds from "components/SearchBar/testIds";
 
 const checkBaseElements = () => {
   cy.getByDataTest(headerTestIds.title).should("be.visible");
@@ -43,14 +44,18 @@ describe("Header", () => {
       cy.visit("/faq");
     });
 
-    it("has title, Getting Started, Resources, and Search Button", () => {
+    it("has title, Getting Started, Resources, and SearchBar", () => {
       checkBaseElements();
-      cy.getByDataTest(headerTestIds.searchButton).should("be.visible");
+      cy.getByDataTest(headerTestIds.searchInput).should("be.visible");
     });
 
-    it("opens search modal by clicking the search button", () => {
-      cy.getByDataTest(headerTestIds.searchButton).should("be.visible").click();
-      cy.getByDataTest(searchModalTestIds.container).should("be.visible");
+    it("has search capabilities from header", () => {
+      cy.getByDataTest(headerTestIds.searchInput).should("be.visible");
+
+      cy.getByDataTest(searchBarTestIds.input).should("be.visible").click();
+      cy.getByDataTest(searchBarTestIds.overlay).should("be.visible");
+
+      cy.checkSearchFunctionality();
     });
   });
 
@@ -84,6 +89,17 @@ describe("Header", () => {
     it("opens search modal when search icon is clicked", () => {
       cy.getByDataTest(headerTestIds.searchIcon).should("be.visible").click();
       cy.getByDataTest(searchModalTestIds.container).should("be.visible");
+    });
+
+    it("has search functionality from search modal", () => {
+      cy.getByDataTest(headerTestIds.searchIcon).should("be.visible").click();
+
+      cy.getByDataTest(searchModalTestIds.container).within(() => {
+        cy.checkSearchFunctionality({
+          expectOverlay: false,
+          expectSuggestions: false,
+        });
+      });
     });
   });
 });

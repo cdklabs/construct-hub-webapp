@@ -21,7 +21,10 @@ export const HeaderSearch: FunctionComponent = () => {
   return (
     <>
       {/* Desktop / Tablet Search Trigger */}
-      <Box display={{ base: "none", md: "initial" }}>
+      <Box
+        data-testid={testIds.searchInput}
+        display={{ base: "none", md: "initial" }}
+      >
         <SearchBar bg="gray.50">
           <SearchOverlay />
           <SearchSuggestions />
