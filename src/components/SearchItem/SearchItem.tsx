@@ -17,6 +17,9 @@ export const SearchItem = forwardRef<SearchItemProps, "li">(
 
     return (
       <ListItem
+        _hover={{
+          cursor: "pointer",
+        }}
         alignItems="center"
         display="flex"
         fontSize="md"

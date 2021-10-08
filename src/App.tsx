@@ -29,8 +29,9 @@ export const App: FunctionComponent = () => {
       bg="bgPrimary"
       gridTemplateColumns="1fr"
       gridTemplateRows="auto auto 1fr auto"
+      h="100vh"
       maxH="100%"
-      maxW="100vw"
+      maxW="100%"
       overflow="hidden auto"
     >
       <Header />
