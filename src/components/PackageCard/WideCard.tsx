@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { makeGridAreas } from "../../util/css";
 import { Details } from "./Details";
 import { Heading } from "./Heading";
+import { Highlight } from "./Highlight";
 import { Languages } from "./Languages";
 import { Tags } from "./Tags";
 import testIds from "./testIds";
@@ -65,15 +66,17 @@ export const WideCard: FunctionComponent = () => {
         </Stack>
 
         <Grid
+          alignItems="start"
           alignSelf="center"
           autoColumns={{ base: "initial", md: "1fr" }}
           autoRows={{ base: "initial", md: "auto" }}
           fontSize="xs"
-          gap={1}
+          gap={{ base: 0, md: 1 }}
           gridArea={GRID_AREA.DETAILS}
           templateColumns={{ base: "1fr 1fr", md: "initial" }}
           templateRows={{ base: "1fr 1fr", md: "initial" }}
         >
+          <Highlight />
           <Details />
         </Grid>
 

@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { OFFICIAL_SCOPES } from "../../constants/constructs";
 import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { PackageTag } from "../PackageTag";
 import { usePackageCard } from "./PackageCard";
@@ -10,7 +11,7 @@ export const Tags: FunctionComponent = () => {
   return (
     <>
       {[
-        name.startsWith("@aws-cdk/") ? (
+        OFFICIAL_SCOPES.some((scope) => name.includes(scope)) ? (
           <PackageTag
             key="official"
             label="official"

@@ -24,3 +24,5 @@ export const CDKTYPE_RENDER_MAP = {
     imgsrc: "/assets/cdktf-icon.png",
   },
 };
+
+export const OFFICIAL_SCOPES = ["@aws-cdk/", "@cdktf/"] as const;
