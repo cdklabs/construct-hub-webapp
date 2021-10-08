@@ -126,7 +126,7 @@ const project = new web.ReactTypeScriptProject({
           },
         },
         {
-          uses: "actions/upload-artifact@v1",
+          uses: "actions/upload-artifact@v2",
           if: "failure()",
           with: {
             name: "cypress-screenshots",
@@ -134,7 +134,8 @@ const project = new web.ReactTypeScriptProject({
           },
         },
         {
-          uses: "actions/upload-artifact@v1",
+          uses: "actions/upload-artifact@v2",
+          if: "always()",
           with: {
             name: "cypress-videos",
             path: "cypress/videos",

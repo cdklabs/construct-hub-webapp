@@ -14,7 +14,6 @@
     "unbump": "npx projen unbump",
     "publish:github": "npx projen publish:github",
     "publish:npm": "npx projen publish:npm",
-    "upgrade": "npx projen upgrade",
     "default": "npx projen default",
     "watch": "npx projen watch",
     "package": "npx projen package",
@@ -28,6 +27,7 @@
     "test:unit": "npx projen test:unit",
     "test:update": "npx projen test:update",
     "release": "npx projen release",
+    "upgrade": "npx projen upgrade",
     "projen": "npx projen"
   },
   "author": {
