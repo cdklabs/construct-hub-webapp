@@ -8,7 +8,9 @@ declare namespace Cypress {
      * Custom command to select DOM element by data-test attribute
      * @example cy.getByDataTest("header")
      */
-    getByDataTest(value: string): Chainable<Element>;
+    getByDataTest(
+      ...params: Parameters<Cypress.Chainable["get"]>
+    ): ReturnType<Cypress.Chainable["get"]>;
     /**
      * Checks header visibility
      */

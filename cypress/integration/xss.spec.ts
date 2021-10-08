@@ -84,9 +84,8 @@ const testMarkdown = async (input: string) => {
     );
 
     cy.getByDataTest(header.container).should("be.visible");
-    cy.getByDataTest(markdown.container).should("exist", {
-      timeout: 15000,
-    });
+    // Give extra long timeout for CI
+    cy.getByDataTest(markdown.container, { timeout: 60000 }).should("exist");
   });
 };
 
