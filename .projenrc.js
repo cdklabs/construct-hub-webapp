@@ -133,6 +133,13 @@ const project = new web.ReactTypeScriptProject({
             path: "cypress/screenshots",
           },
         },
+        {
+          uses: "actions/upload-artifact@v1",
+          with: {
+            name: "cypress-videos",
+            path: "cypress/videos",
+          },
+        },
       ],
     },
   });

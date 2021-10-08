@@ -5,7 +5,7 @@
 import catalogSearch from "components/CatalogSearch/testIds";
 import header from "components/Header/testIds";
 import markdown from "components/Markdown/testIds";
-// import searchBar from "components/SearchBar/testIds";
+import searchBar from "components/SearchBar/testIds";
 import { getPackagePath, getSearchPath } from "util/url";
 
 const alertHTML = "<script>window.alert()</script>";
@@ -32,6 +32,8 @@ const testSearchURL = async (query: string, isRedesign = false) => {
         searchRedesign: isRedesign,
       },
     });
+
+    cy.getByDataTest(header.container).should("be.visible");
   });
 };
 
@@ -138,23 +140,23 @@ describe("XSS - Dev Preview Featureset", () => {
 });
 
 describe("XSS - GA Featureset", () => {
-  // describe("Home Page - Input", () => {
-  //   it("will not execute malicious HTML input", () => {
-  //     testInput({
-  //       isRedesign: true,
-  //       input: alertHTML,
-  //       inputSelector: searchBar.input,
-  //     });
-  //   });
+  describe("Home Page - Input", () => {
+    it("will not execute malicious HTML input", () => {
+      testInput({
+        isRedesign: true,
+        input: alertHTML,
+        inputSelector: searchBar.input,
+      });
+    });
 
-  //   it("will not execute malicious JavaScript input", () => {
-  //     testInput({
-  //       isRedesign: true,
-  //       input: alertJS,
-  //       inputSelector: searchBar.input,
-  //     });
-  //   });
-  // });
+    it("will not execute malicious JavaScript input", () => {
+      testInput({
+        isRedesign: true,
+        input: alertJS,
+        inputSelector: searchBar.input,
+      });
+    });
+  });
 
   describe("Search Page - URL & Input", () => {
     it("will not execute malicious HTML urls", () => {
@@ -169,6 +171,7 @@ describe("XSS - GA Featureset", () => {
       testInput({
         url: "/search",
         input: alertHTML,
+        inputSelector: searchBar.input,
         isRedesign: true,
       });
     });
@@ -177,6 +180,7 @@ describe("XSS - GA Featureset", () => {
       testInput({
         url: "/search",
         input: alertJS,
+        inputSelector: searchBar.input,
         isRedesign: true,
       });
     });
