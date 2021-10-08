@@ -1,27 +1,31 @@
 import { HTMLChakraProps, ListItem, forwardRef } from "@chakra-ui/react";
-import type { KeyboardEventHandler } from "react";
+import type { KeyboardEventHandler, ReactNode } from "react";
 
 export interface SearchItemProps extends HTMLChakraProps<"li"> {
-  name: string;
+  name: ReactNode;
   onClick: () => void;
 }
 
 export const SearchItem = forwardRef<SearchItemProps, "li">(
   ({ name, onClick, ...props }, ref) => {
     const onKeyDown: KeyboardEventHandler<HTMLLIElement> = (e) => {
-      if (e.key === "Enter") {
+      if (["Enter", " "].includes(e.key)) {
+        e.preventDefault();
         onClick();
       }
     };
 
     return (
       <ListItem
+        _hover={{
+          cursor: "pointer",
+        }}
         alignItems="center"
         display="flex"
-        fontSize="lg"
-        h={12}
+        fontSize="md"
         lineHeight="base"
         listStyleType="none"
+        minH={8}
         onClick={onClick}
         onKeyDown={onKeyDown}
         px={4}

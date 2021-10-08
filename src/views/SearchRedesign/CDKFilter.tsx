@@ -2,7 +2,6 @@ import { FunctionComponent, useMemo } from "react";
 import { CatalogConstructFrameworkMeta } from "../../api/catalog-search";
 import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
 import { useSearchContext } from "../../contexts/Search";
-import { CheckboxFilter } from "./CheckboxFilter";
 import { RadioFilter } from "./RadioFilter";
 import { useSearchState } from "./SearchState";
 
@@ -64,9 +63,14 @@ export const CDKFilter: FunctionComponent = () => {
   };
 
   const onCdkMajorChange = (major: string) => {
+    if (!major) {
+      setCdkMajor(undefined);
+      return;
+    }
+
     const majorNum = parseInt(major, 10);
 
-    setCdkMajor(majorNum === cdkMajor ? undefined : majorNum);
+    setCdkMajor(majorNum);
   };
 
   return (
@@ -83,14 +87,17 @@ export const CDKFilter: FunctionComponent = () => {
       />
       {/* No point in showing major versions if only a single one is available */}
       {!!(majorsOptions && majorsOptions.length > 1) && (
-        <CheckboxFilter
+        <RadioFilter
           hint={`Allows you to filter by a major version of your selected CDK Type: (${
             CDKTYPE_NAME_MAP[cdkType!]
           })`}
           name="CDK Major Version"
           onValueChange={onCdkMajorChange}
-          options={majorsOptions}
-          values={cdkMajor ? [cdkMajor.toString()] : []}
+          options={[
+            { display: "Any Major Version", value: "" },
+            ...majorsOptions,
+          ]}
+          value={cdkMajor?.toString() ?? ""}
         />
       )}
     </>

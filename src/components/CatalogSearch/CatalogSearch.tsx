@@ -14,6 +14,9 @@ export interface CatalogSearchProps extends CatalogSearchInputsProps {
   onSubmit: FormEventHandler<HTMLFormElement>;
 }
 
+/**
+ * @deprecated Use `<SearchBar />` instead.
+ */
 export const CatalogSearch: FunctionComponent<CatalogSearchProps> = ({
   onSubmit,
   ...props

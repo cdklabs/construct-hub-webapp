@@ -17,7 +17,7 @@ Cypress.Commands.add("getByDataTest", (dataTest, options) =>
 );
 
 Cypress.Commands.add("checkHeaderVisibility", () => {
-  cy.getByDataTest(header.container).should("be.visible");
+  cy.getByDataTest(header.container).scrollIntoView().should("be.visible");
 });
 
 Cypress.Commands.add("checkCatalogSearchInputs", () => {
