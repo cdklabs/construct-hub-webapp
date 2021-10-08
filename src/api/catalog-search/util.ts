@@ -69,7 +69,7 @@ const getCDKTypeFilter: FilterFunctionBuilder<CatalogSearchFilters["cdkType"]> =
 const getCDKMajorFilter: FilterFunctionBuilder<
   CatalogSearchFilters["cdkMajor"]
 > = (cdkMajor) => {
-  if (!cdkMajor) return undefined;
+  if (typeof cdkMajor !== "number") return undefined;
   return (pkg) => pkg.metadata?.constructFramework?.majorVersion === cdkMajor;
 };
 

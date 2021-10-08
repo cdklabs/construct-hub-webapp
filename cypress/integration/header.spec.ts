@@ -1,6 +1,6 @@
 import headerTestIds from "components/Header/testIds";
 import searchModalTestIds from "components/SearchModal/testIds";
-import searchBarTestIds from "components/SearchBar/testIds";
+import searchBar from "components/SearchBar/testIds";
 
 const checkBaseElements = () => {
   cy.getByDataTest(headerTestIds.title).should("be.visible");
@@ -52,10 +52,25 @@ describe("Header", () => {
     it("has search capabilities from header", () => {
       cy.getByDataTest(headerTestIds.searchInput).should("be.visible");
 
-      cy.getByDataTest(searchBarTestIds.input).should("be.visible").click();
-      cy.getByDataTest(searchBarTestIds.overlay).should("be.visible");
+      cy.getByDataTest(searchBar.input).should("be.visible").click();
 
-      cy.checkSearchFunctionality();
+      cy.getByDataTest(searchBar.overlay)
+        .should("be.visible")
+        .click()
+        .should("not.be.visible");
+
+      cy.getByDataTest(searchBar.input).type("@aws-cdk");
+
+      cy.getByDataTest(searchBar.overlay).should("be.visible");
+      cy.getByDataTest(searchBar.suggestionsList).should("be.visible");
+      cy.getByDataTest(searchBar.suggestion).should("have.length", 5);
+
+      cy.get("body").type("{esc}");
+      cy.getByDataTest(searchBar.overlay).should("not.be.visible");
+      cy.getByDataTest(searchBar.suggestionsList).should("not.exist");
+
+      cy.getByDataTest(searchBar.input).type("{enter}");
+      cy.url().should("include", "/search");
     });
   });
 
@@ -95,10 +110,10 @@ describe("Header", () => {
       cy.getByDataTest(headerTestIds.searchIcon).should("be.visible").click();
 
       cy.getByDataTest(searchModalTestIds.container).within(() => {
-        cy.checkSearchFunctionality({
-          expectOverlay: false,
-          expectSuggestions: false,
-        });
+        cy.getByDataTest(searchBar.input)
+          .type("@aws-cdk{enter}")
+          .url()
+          .should("include", "/search");
       });
     });
   });

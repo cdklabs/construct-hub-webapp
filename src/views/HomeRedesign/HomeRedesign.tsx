@@ -6,6 +6,7 @@ import { useConfigValue } from "../../hooks/useConfigValue";
 import { Hero } from "./Hero";
 import { HomeSection } from "./HomeSection";
 import { InfoPanel } from "./InfoPanel";
+import testIds from "./testIds";
 
 export const HomeRedesign: FunctionComponent = () => {
   const homePackages = useConfigValue("featuredPackages");
@@ -21,7 +22,7 @@ export const HomeRedesign: FunctionComponent = () => {
       }}
       pageName="home"
     >
-      <Flex direction="column">
+      <Flex data-testid={testIds.page} direction="column">
         <Hero />
         <Grid
           gap={3}
