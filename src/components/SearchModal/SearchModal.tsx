@@ -1,6 +1,4 @@
 import {
-  Divider,
-  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -9,18 +7,11 @@ import {
   ModalOverlay,
   Portal,
   Stack,
-  UnorderedList,
+  Button,
 } from "@chakra-ui/react";
-import { FormEventHandler, FunctionComponent, useRef } from "react";
-import { useHistory } from "react-router-dom";
-import { QUERY_PARAMS, ROUTES } from "../../constants/url";
-import { useCatalogResults } from "../../hooks/useCatalogResults";
+import { FunctionComponent } from "react";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
-import { useDebounce } from "../../hooks/useDebounce";
-import { useLanguage } from "../../hooks/useLanguage";
-import { CatalogSearchInputs } from "../CatalogSearch";
-import { Form } from "../Form";
-import { SearchItem } from "../SearchItem";
+import { SearchBar } from "../SearchBar";
 import testIds from "./testIds";
 
 export interface SearchModalProps {
@@ -32,69 +23,26 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const { push } = useHistory();
-  const [currentLanguage] = useLanguage();
-  const { onSubmit: onSearchSubmit, ...searchAPI } = useCatalogSearch();
-
-  const query = useDebounce(searchAPI.query);
-  const language = useDebounce(searchAPI.language);
-
-  const { page } = useCatalogResults({
-    limit: 5,
-    offset: 0,
-    query,
-    language,
-  });
-
-  const showResults = (query || language) && page.length > 0;
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const navigate = (to: string) => {
-    onClose();
-    push(to);
-  };
-
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    onClose();
-    onSearchSubmit(e);
-  };
+  const { query, onQueryChange, onSubmit, onSearch } = useCatalogSearch();
 
   return (
     <Portal>
-      <Modal initialFocusRef={inputRef} isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
           <ModalContent data-testid={testIds.container}>
             <ModalCloseButton />
-            <ModalHeader>Search modules or providers</ModalHeader>
+            <ModalHeader>Search</ModalHeader>
             <ModalBody>
-              <Form onSubmit={onSubmit} pb={4}>
-                <Stack spacing={4}>
-                  <CatalogSearchInputs ref={inputRef} {...searchAPI} />
-                </Stack>
-              </Form>
-              {showResults && (
-                <>
-                  <Divider />
-                  <Heading fontSize="md" my={4} textAlign="center">
-                    Suggestions
-                  </Heading>
-                  <UnorderedList>
-                    {page.map((pkg) => (
-                      <SearchItem
-                        key={pkg.id}
-                        name={pkg.name}
-                        onClick={() =>
-                          navigate(
-                            `${ROUTES.PACKAGES}/${pkg.name}/v/${pkg.version}?${
-                              QUERY_PARAMS.LANGUAGE
-                            }=${language ?? currentLanguage}`
-                          )
-                        }
-                      />
-                    ))}
-                  </UnorderedList>
-                </>
-              )}
+              <Stack pb={4} spacing={4}>
+                <SearchBar
+                  onChange={onQueryChange}
+                  onSubmit={onSubmit}
+                  value={query}
+                ></SearchBar>
+                <Button colorScheme="blue" onClick={() => onSearch()}>
+                  Find Constructs
+                </Button>
+              </Stack>
             </ModalBody>
           </ModalContent>
         </ModalOverlay>

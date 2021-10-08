@@ -43,7 +43,7 @@ export const Heading: FunctionComponent = () => {
               hasArrow
               label={
                 CDKTYPE_RENDER_MAP[cdkType].name +
-                (cdkVersion ? ` v${cdkVersion}` : "")
+                (cdkVersion !== undefined ? ` v${cdkVersion}` : "")
               }
               placement="top"
             >
