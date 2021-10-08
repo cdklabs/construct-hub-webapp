@@ -50,7 +50,7 @@ export const Details: FunctionComponent = () => {
         value={
           <NavLink
             to={getSearchPath({
-              query: `"${authorName}"`,
+              query: authorName,
               language: currentLanguage,
             })}
           >
