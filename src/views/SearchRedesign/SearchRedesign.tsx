@@ -4,6 +4,7 @@ import { Page } from "../../components/Page";
 import { FilterPanel } from "./FilterPanel";
 import { SearchResults } from "./SearchResults";
 import { SearchStateProvider } from "./SearchState";
+import testIds from "./testIds";
 
 export const SearchRedesign: FunctionComponent = () => {
   return (
@@ -16,6 +17,7 @@ export const SearchRedesign: FunctionComponent = () => {
         pageName="search"
       >
         <Grid
+          data-testid={testIds.page}
           gap={4}
           h="full"
           maxW="100%"

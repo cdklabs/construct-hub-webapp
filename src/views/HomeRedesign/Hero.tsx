@@ -1,16 +1,10 @@
-import { SearchIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Flex,
-  Heading,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Link,
-  Stack,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Link, Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { Form } from "../../components/Form";
+import {
+  SearchBar,
+  SearchOverlay,
+  SearchSuggestions,
+} from "../../components/SearchBar";
 
 // All elements are currently static / have no real interactions
 export const Hero: FunctionComponent = () => {
@@ -22,6 +16,7 @@ export const Hero: FunctionComponent = () => {
       direction="column"
       justify="center"
       py={12}
+      zIndex="1"
     >
       <Heading as="h1" size="xl">
         Build cloud infrastructure with reusable components
@@ -46,18 +41,12 @@ export const Hero: FunctionComponent = () => {
           <Link>CDK for Terraform</Link>
           <Link>CDK for Kubernetes</Link>
         </Stack>
-        <Form mt={4}>
-          <InputGroup>
-            <Input
-              bg="white"
-              placeholder="Search over 600 construct libraries for all CDKS"
-              variant="filled"
-            />
-            <InputRightElement>
-              <SearchIcon color="gray.500" />
-            </InputRightElement>
-          </InputGroup>
-        </Form>
+        <Box color="initial" mt={4}>
+          <SearchBar hasButton>
+            <SearchOverlay />
+            <SearchSuggestions />
+          </SearchBar>
+        </Box>
       </Flex>
     </Flex>
   );

@@ -1,4 +1,6 @@
 import packageCardIds from "components/PackageCard/testIds";
+import searchBar from "components/SearchBar/testIds";
+import searchRedesign from "views/SearchRedesign/testIds";
 import { checkHeaderAndFooter } from "../support/helpers";
 
 const checkCard = (cardType: string) => {
@@ -32,5 +34,14 @@ describe("Search (Redesign / WIP)", () => {
 
   it("has expected elements for Wide Cards", () => {
     checkCard(packageCardIds.wideContainer);
+  });
+
+  it("has search bar functionality", () => {
+    cy.getByDataTest(searchRedesign.page).within(() => {
+      cy.getByDataTest(searchBar.input)
+        .type("@aws-cdk{enter}")
+        .url()
+        .should("include", `/search?q=${encodeURIComponent("@aws-cd")}`);
+    });
   });
 });

@@ -9,7 +9,7 @@ const testIds = createTestIds("header", [
   "resourcesMenu",
   "navOpen",
   "navClose",
-  "searchButton",
+  "searchInput",
   "searchIcon",
   "mobileNav",
 ] as const);

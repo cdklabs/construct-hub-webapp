@@ -19,6 +19,9 @@ const languageOptions = Object.fromEntries(
 const LanguageDropdown: FunctionComponent<DropdownProps<LanguageItems>> =
   Dropdown;
 
+/**
+ * @deprecated Use `<SearchBar />` instead.
+ */
 export interface CatalogSearchInputsProps {
   /**
    * Controls the query state value

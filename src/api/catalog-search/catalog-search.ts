@@ -227,7 +227,10 @@ export class CatalogSearchAPI {
         if (frameworkName) {
           const entry = frameworks[frameworkName];
 
-          if (majorVersion && !entry.majorVersions.includes(majorVersion)) {
+          if (
+            majorVersion !== undefined &&
+            !entry.majorVersions.includes(majorVersion)
+          ) {
             entry.majorVersions.push(majorVersion);
           }
 
