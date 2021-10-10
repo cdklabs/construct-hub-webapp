@@ -5980,9 +5980,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.857:
-  version "1.3.863"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.863.tgz#74d0e6474f2bd87eb3688b8a35abc0c7a7fd1183"
-  integrity sha512-C+dLP4xM1DCqvEUjtqCGhd6DJGnXq1t03QR2ZxEWUQPkaXxDlzPUyWsSh17LHLQBEfmBCRfTbA3LpjiVikWsxg==
+  version "1.3.864"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.864.tgz#6a993bcc196a2b8b3df84d28d5d4dd912393885f"
+  integrity sha512-v4rbad8GO6/yVI92WOeU9Wgxc4NA0n4f6P1FvZTY+jyY7JHEhw3bduYu60v3Q1h81Cg6eo4ApZrFPuycwd5hGw==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -6280,9 +6280,9 @@ eslint-plugin-import@^2.22.1, eslint-plugin-import@^2.24.2:
     tsconfig-paths "^3.11.0"
 
 eslint-plugin-jest@^24.1.0:
-  version "24.5.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.5.2.tgz#f71f98f27fd18b50f55246ca090f36d1730e36a6"
-  integrity sha512-lrI3sGAyZi513RRmP08sIW241Ti/zMnn/6wbE4ZBhb3M2pJ9ztaZMnSKSKKBUfotVdwqU8W1KtD8ao2/FR8DIg==
+  version "24.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.6.0.tgz#73ac7cd40419a227b3f1b2b686c023563ceb1e51"
+  integrity sha512-xNz0ajbu7ijrNMI1RMDXZis40DWBNTe/i+eXIzovva1Jk2UmI6AdN6xleZiunb1U0G/doMwG3rJjrmlCl5IHkQ==
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.0.1"
 
@@ -11910,10 +11910,10 @@ progress@^2.0.0, progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.29.13:
-  version "0.29.13"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.29.13.tgz#4ceaffd6da53da512a477b8368f971f34669dcf3"
-  integrity sha512-Cpn+VKaRgbnpFquxpKggXQyKO8vLE6IKuyRtEov+HuNg3+fGuli+c9PNhtXu0udP0ZRhOOwjMd+nlhZBrwoHuA==
+projen@^0.29.14:
+  version "0.29.14"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.29.14.tgz#5996088056329e3b3174763ea91fb365a03c8f02"
+  integrity sha512-4Cbr0r/Jt676jHQJtqZsk93WytkXODOMQ7Rf5ERUkmx9Z/DnIbCb6+UlrzQxlvZcB/Xb3cn2livZB9D/fLY26A==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.2"
