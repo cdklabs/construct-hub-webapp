@@ -59,31 +59,38 @@ const testInput = async ({
 
 const testMarkdown = async (input: string) => {
   withWindowAlertCheck(async () => {
-    cy.intercept(
-      {
-        url: "/data/@aws-cdk/region-info/v1.126.0/docs-typescript.md",
-        times: 1,
-      },
-      (req) => {
-        req.on("before:response", (res) => {
-          // force all API responses to not be cached
-          res.headers["cache-control"] = "no-store";
-        });
+    cy.intercept("**/assembly.json", async (req) => {
+      req.reply({
+        fixture: "assembly",
+      });
+    });
 
-        req.continue((res) => {
-          const { body } = res;
-          res.body = input + "\n" + body;
-        });
-      }
-    ).as("docs");
+    cy.intercept("**/metadata.json", async (req) => {
+      req.reply({
+        fixture: "metadata",
+      });
+    });
+
+    cy.intercept("**/docs-typescript.md", async (req) => {
+      req.on("before:response", (res) => {
+        // force all API responses to not be cached
+        res.headers["cache-control"] = "no-store";
+      });
+
+      req.continue((res) => {
+        res.body = `${input} \n # README`;
+      });
+    }).as("getDocs");
 
     cy.visit(
       getPackagePath({
-        name: "@aws-cdk/region-info",
-        version: "1.126.0",
+        name: "construct-hub",
+        version: "0.2.31",
         language: "typescript" as any,
       })
     );
+
+    cy.wait("@getDocs");
 
     cy.getByDataTest(header.container).should("be.visible");
     // Give extra long timeout for CI
@@ -91,7 +98,7 @@ const testMarkdown = async (input: string) => {
   });
 };
 
-describe("XSS - Stable Featureset", () => {
+describe.only("XSS - Stable Featureset", () => {
   describe("Package Page - Markdown Rendering", () => {
     it("will not execute malicious HTML Markdown", () => {
       testMarkdown(alertHTML);
