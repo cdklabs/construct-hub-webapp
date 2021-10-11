@@ -98,7 +98,7 @@ const testMarkdown = async (input: string) => {
   });
 };
 
-describe.only("XSS - Stable Featureset", () => {
+describe("XSS - Stable Featureset", () => {
   describe("Package Page - Markdown Rendering", () => {
     it("will not execute malicious HTML Markdown", () => {
       testMarkdown(alertHTML);
