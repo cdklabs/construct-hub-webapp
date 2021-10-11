@@ -49,6 +49,7 @@ export const Details: FunctionComponent = () => {
         label="Author"
         value={
           <NavLink
+            color="blue.500"
             to={getSearchPath({
               query: authorName,
               language: currentLanguage,
