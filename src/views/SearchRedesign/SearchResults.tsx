@@ -6,9 +6,9 @@ import { Page } from "../../components/Page";
 import { SearchBar } from "../../components/SearchBar";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { getSearchPath } from "../../util/url";
-import { ShowingDetails } from "../SearchResults/components/ShowingDetails";
 import { SearchQueryParam } from "../SearchResults/constants";
 import { PageControls } from "./PageControls";
+import { SearchDetails } from "./SearchDetails";
 import { useSearchState } from "./SearchState";
 import { SortAndFilterDrawer } from "./SortAndFilterDrawer";
 import { SortedBy } from "./SortedBy";
@@ -95,11 +95,12 @@ export const SearchResults: FunctionComponent = () => {
           justify={{ base: "initial", lg: "space-between" }}
           spacing={4}
         >
-          <ShowingDetails
+          <SearchDetails
             count={results.length}
             filtered={!!query}
             limit={limit}
             offset={offset}
+            query={query}
           />
 
           <Box display={{ base: "none", md: "initial" }}>
