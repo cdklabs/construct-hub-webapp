@@ -38,11 +38,11 @@ jspm_packages/
 !/.github/pull_request_template.md
 !/test/
 !/tsconfig.json
+!/tsconfig.dev.json
 !/src/
 /lib
 /dist/
 !/.eslintrc.json
-!/tsconfig.eslint.json
 /build/
 !/react-app-env.d.ts
 cypress/videos/
