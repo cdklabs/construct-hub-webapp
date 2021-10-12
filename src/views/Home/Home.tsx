@@ -41,7 +41,7 @@ export const Home: FunctionComponent = () => {
       }}
       pageName="home"
     >
-      <Box position="relative">
+      <Box position="relative" zIndex={1}>
         <Picture
           alt={""}
           h="540px"

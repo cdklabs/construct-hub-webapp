@@ -22,7 +22,7 @@ export const Header: FunctionComponent = () => {
       gap={6}
       gridTemplateColumns={{
         base: "1fr max-content 1fr",
-        md: "max-content minmax(200px, 500px) auto",
+        md: "max-content minmax(12rem, 31rem) auto",
       }}
       gridTemplateRows="1fr"
       maxW="100vw"

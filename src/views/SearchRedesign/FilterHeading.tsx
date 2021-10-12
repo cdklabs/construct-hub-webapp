@@ -29,7 +29,7 @@ export const FilterHeading: FunctionComponent<FilterHeadingProps> = ({
         {name}
       </Heading>
       {hint ? (
-        <Popover placement="top-end">
+        <Popover colorScheme="dark" placement="top-end" strategy="fixed">
           <PopoverTrigger>
             <IconButton
               aria-label={`Hint: ${name}`}
@@ -41,10 +41,15 @@ export const FilterHeading: FunctionComponent<FilterHeadingProps> = ({
               variant="ghost"
             />
           </PopoverTrigger>
-          <PopoverContent fontSize="sm">
-            <PopoverArrow />
-            <PopoverCloseButton />
+          <PopoverContent
+            bg="gray.700"
+            color="white"
+            fontSize="sm"
+            shadow="whiteAlpha.300"
+          >
             <PopoverHeader>Hint: {name}</PopoverHeader>
+            <PopoverCloseButton />
+            <PopoverArrow />
             <PopoverBody>
               <Text>{hint}</Text>
             </PopoverBody>

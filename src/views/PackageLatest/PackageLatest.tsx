@@ -35,7 +35,7 @@ export const PackageLatest: FunctionComponent = () => {
 
   if (catalog.loading || !catalog.data) {
     return (
-      <Center minH="200px">
+      <Center minH="16rem">
         <Spinner size="xl" />
       </Center>
     );
