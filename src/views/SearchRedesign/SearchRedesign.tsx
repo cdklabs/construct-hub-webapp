@@ -12,7 +12,8 @@ export const SearchRedesign: FunctionComponent = () => {
       <Page
         meta={{
           title: "Search - Construct Hub",
-          description: "This is a placeholder",
+          description:
+            "Search Construct Libraries for AWS CDK, CDK8s, and CDKtf",
         }}
         pageName="search"
       >
@@ -21,14 +22,15 @@ export const SearchRedesign: FunctionComponent = () => {
           gap={4}
           h="full"
           maxW="100%"
-          p={6}
-          templateColumns="auto 1fr"
+          px={{ base: 0, md: 6 }}
+          py={6}
+          templateColumns={{ base: "1fr", md: "auto 1fr" }}
           templateRows="1fr"
         >
-          {/* Filter Panel */}
+          {/* Filter Panel Desktop */}
           <FilterPanel />
-          {/* Results, Info,  and Controls */}
 
+          {/* Results, Info, and Controls */}
           <SearchResults />
         </Grid>
       </Page>

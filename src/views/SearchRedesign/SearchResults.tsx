@@ -1,16 +1,16 @@
-import { Divider, Flex, Stack } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
 import { SearchBar } from "../../components/SearchBar";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
-import { useDebounce } from "../../hooks/useDebounce";
 import { getSearchPath } from "../../util/url";
-import { PageControls } from "../SearchResults/components/PageControls";
-import { ShowingDetails } from "../SearchResults/components/ShowingDetails";
 import { SearchQueryParam } from "../SearchResults/constants";
+import { PageControls } from "./PageControls";
+import { SearchDetails } from "./SearchDetails";
 import { useSearchState } from "./SearchState";
+import { SortAndFilterDrawer } from "./SortAndFilterDrawer";
 import { SortedBy } from "./SortedBy";
 
 export const SearchResults: FunctionComponent = () => {
@@ -19,7 +19,6 @@ export const SearchResults: FunctionComponent = () => {
 
   const { query, searchAPI, offset, limit } = useSearchState();
   const { languages, sort, cdkType, cdkMajor, onSearch } = searchAPI;
-  const debouncedQuery = useDebounce(searchAPI.query);
 
   const { page, pageLimit, results } = useCatalogResults({
     offset,
@@ -44,6 +43,7 @@ export const SearchResults: FunctionComponent = () => {
     });
   };
 
+  // Resets the page number to 1 if query param offset is below 0, or to the last page if offset is higher than page count
   useEffect(() => {
     // If the query has results but the page has nothing to show...
     if (results.length && (offset < 0 || offset > pageLimit)) {
@@ -69,7 +69,7 @@ export const SearchResults: FunctionComponent = () => {
       onSearch({ replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedQuery, sort, languages, cdkType, cdkMajor]);
+  }, [sort, languages, cdkType, cdkMajor]);
 
   return (
     <Page
@@ -84,33 +84,43 @@ export const SearchResults: FunctionComponent = () => {
       <Stack direction="column" maxW="100vw" pb={4} px={4} spacing={4}>
         <SearchBar
           bg="white"
-          hasButton
           onChange={searchAPI.onQueryChange}
           onSubmit={searchAPI.onSubmit}
           value={searchAPI.query}
         />
 
-        <Divider />
-
-        <Flex justify="space-between">
-          <ShowingDetails
+        <Stack
+          align={{ base: "start", lg: "center" }}
+          direction={{ base: "column-reverse", lg: "row" }}
+          justify={{ base: "initial", lg: "space-between" }}
+          spacing={4}
+        >
+          <SearchDetails
             count={results.length}
             filtered={!!query}
             limit={limit}
             offset={offset}
+            query={query}
           />
 
-          <SortedBy />
-        </Flex>
+          <Box display={{ base: "none", md: "initial" }}>
+            <SortedBy />
+          </Box>
+
+          <Box display={{ md: "none" }}>
+            <SortAndFilterDrawer />
+          </Box>
+        </Stack>
 
         <PackageList items={page} />
 
-        <PageControls
-          getPageUrl={getUrl}
-          limit={limit}
-          offset={offset}
-          pageLimit={pageLimit}
-        />
+        <Box w="full">
+          <PageControls
+            getPageUrl={getUrl}
+            offset={offset}
+            pageLimit={pageLimit}
+          />
+        </Box>
       </Stack>
     </Page>
   );

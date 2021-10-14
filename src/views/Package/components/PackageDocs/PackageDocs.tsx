@@ -46,7 +46,7 @@ export const appendItem = (itemTree: Item[], item: Element): Item[] => {
 };
 
 // We want the nav to be sticky, but it should account for the sticky heading as well, which is 72px
-const TOP_OFFSET = "72px";
+const TOP_OFFSET = "4.5rem";
 
 export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
   markdown: source,
