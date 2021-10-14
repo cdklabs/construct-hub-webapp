@@ -16,7 +16,7 @@ app.use(express.static(buildDir));
 
 app.use(
   proxy(proxyUrl, {
-    filter: (req) => req.url.includes(".json"),
+    filter: (req) => req.url.includes(".json") || req.url.includes(".md"),
   })
 );
 
