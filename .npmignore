@@ -4,6 +4,7 @@
 /dist/version.txt
 /.mergify.yml
 /test/
+/tsconfig.dev.json
 /src/
 !/lib/
 !/lib/**/*.js
@@ -16,7 +17,6 @@ dist
 /.projenrc.js
 tsconfig.tsbuildinfo
 /.eslintrc.json
-/tsconfig.eslint.json
 /build/
 !/build
 /public

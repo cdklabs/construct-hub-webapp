@@ -88,7 +88,7 @@ export const Package: FunctionComponent = () => {
           hasError ? (
             <PackageDocsError language={language}></PackageDocsError>
           ) : isLoadingDocs ? (
-            <Center minH="200px">
+            <Center minH="16rem">
               <Spinner size="xl" />
             </Center>
           ) : (

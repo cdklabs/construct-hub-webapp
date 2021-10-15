@@ -10,14 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
+import { SORT_RENDER_MAP } from "./constants";
 import { useSearchState } from "./SearchState";
-
-const SORT_RENDER_MAP = {
-  [CatalogSearchSort.NameAsc]: "A-Z",
-  [CatalogSearchSort.NameDesc]: "Z-A",
-  [CatalogSearchSort.PublishDateAsc]: "Oldest first",
-  [CatalogSearchSort.PublishDateDesc]: "Newest first",
-};
 
 export const SortedBy: FunctionComponent = () => {
   const { searchAPI } = useSearchState();

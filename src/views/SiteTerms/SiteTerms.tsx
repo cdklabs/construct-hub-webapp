@@ -16,7 +16,7 @@ export const SiteTerms: FunctionComponent = () => (
         as="article"
         color="gray.800"
         fontSize="lg"
-        maxW={{ base: "80%", md: "600px" }}
+        maxW={{ base: "80%", md: "38rem" }}
         mx="auto"
         textAlign="justify"
         w="100%"
