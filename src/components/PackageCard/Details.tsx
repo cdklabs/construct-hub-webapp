@@ -1,5 +1,7 @@
+import { DownloadIcon } from "@chakra-ui/icons";
 import { Text } from "@chakra-ui/react";
-import type { FunctionComponent, ReactChild } from "react";
+import { FunctionComponent, ReactChild, useMemo } from "react";
+import { useStats } from "../../contexts/Stats";
 import { useLanguage } from "../../hooks/useLanguage";
 import { getSearchPath } from "../../util/url";
 import { NavLink } from "../NavLink";
@@ -9,16 +11,20 @@ import testIds from "./testIds";
 
 interface DetailProps {
   "data-testid": string;
+  icon?: ReactChild;
   label: string;
   value: ReactChild;
 }
 
 const Detail: FunctionComponent<DetailProps> = ({
   "data-testid": dataTestid,
+  icon,
   label,
   value,
 }) => (
   <Text data-testid={dataTestid} fontSize="xs">
+    {icon}
+    {icon ? " " : ""}
     <strong>{label}</strong> {value}
   </Text>
 );
@@ -30,12 +36,26 @@ export const Details: FunctionComponent = () => {
     author,
     metadata: { date },
     version,
+    name,
   } = usePackageCard();
+
+  const { data } = useStats();
+  const downloads: number | undefined = useMemo(() => {
+    return data?.packages?.[name]?.downloads?.npm;
+  }, [name, data]);
 
   const authorName = typeof author === "string" ? author : author.name;
 
   return (
     <>
+      {downloads !== undefined && downloads >= 10 && (
+        <Detail
+          data-testid={testIds.downloads}
+          icon={<DownloadIcon />}
+          label={downloads.toLocaleString()}
+          value={"Downloads"}
+        />
+      )}
       <Detail data-testid={testIds.version} label="Version" value={version} />
       <Detail
         data-testid={testIds.published}
