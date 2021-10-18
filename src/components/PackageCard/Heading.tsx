@@ -69,6 +69,7 @@ export const Heading: FunctionComponent = () => {
         </Flex>
       </LinkOverlay>
       <Text
+        color="blue.800"
         data-testid={testIds.description}
         fontSize="md"
         lineHeight="tall"
