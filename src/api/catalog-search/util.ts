@@ -1,13 +1,15 @@
-import { CatalogSearchFilters } from ".";
+import { CatalogSearchFilters, ExtendedCatalogPackage } from ".";
 import { Language } from "../../constants/languages";
-import { CatalogPackage } from "../package/packages";
 import { CatalogSearchSort } from "./constants";
 
-type SortFunction = (p1: CatalogPackage, p2: CatalogPackage) => number;
+type SortFunction = (
+  p1: ExtendedCatalogPackage,
+  p2: ExtendedCatalogPackage
+) => number;
 
 type FilterFunctionBuilder<T> = (
   filter: T
-) => undefined | ((pkg: CatalogPackage) => boolean);
+) => undefined | ((pkg: ExtendedCatalogPackage) => boolean);
 
 const getDateSort =
   (isAscending: boolean): SortFunction =>
@@ -27,6 +29,10 @@ const getDateSort =
 
 const getStrSort = (isAscending: boolean): SortFunction => {
   return (p1, p2) => p1.name.localeCompare(p2.name) * (isAscending ? 1 : -1);
+};
+
+const getDownloadsSort = (isAscending: boolean): SortFunction => {
+  return (p1, p2) => (p1.downloads - p2.downloads) * (isAscending ? 1 : -1);
 };
 
 const getLanguageFilter: FilterFunctionBuilder<
@@ -78,6 +84,8 @@ export const SORT_FUNCTIONS: Record<CatalogSearchSort, SortFunction> = {
   [CatalogSearchSort.NameDesc]: getStrSort(false),
   [CatalogSearchSort.PublishDateAsc]: getDateSort(true),
   [CatalogSearchSort.PublishDateDesc]: getDateSort(false),
+  [CatalogSearchSort.DownloadsAsc]: getDownloadsSort(true),
+  [CatalogSearchSort.DownloadsDesc]: getDownloadsSort(false),
 };
 
 export const FILTER_FUNCTIONS: {

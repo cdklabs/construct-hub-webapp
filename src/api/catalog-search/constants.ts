@@ -4,4 +4,6 @@ export enum CatalogSearchSort {
   NameDesc = "desc",
   PublishDateAsc = "oldest",
   PublishDateDesc = "newest",
+  DownloadsAsc = "downloadsAsc",
+  DownloadsDesc = "downloadsDesc",
 }
