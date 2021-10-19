@@ -234,6 +234,26 @@ rewireCRA(buildTask);
 rewireCRA(project.tasks.tryFind("test"));
 rewireCRA(project.tasks.tryFind("dev"));
 
+// trigger construct-hub to pick up changes from construct-hub-webapp
+// whenever a new release is made
+project.release.addJobs({
+  upgrade_construct_hub: {
+    name: "Upgrade construct-hub",
+    runsOn: "ubuntu-latest",
+    permissions: {},
+    needs: ["release", "release_github", "release_npm"],
+    steps: [
+      {
+        name: "Trigger upgrade workflow",
+        run: 'gh api -X POST /repos/cdklabs/construct-hub/actions/workflows/upgrade-main.yml/dispatches --field ref="main"',
+        env: {
+          GITHUB_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
+        },
+      },
+    ],
+  },
+});
+
 project.synth();
 
 /**
