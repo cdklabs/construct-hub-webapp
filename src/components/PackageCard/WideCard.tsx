@@ -12,7 +12,7 @@ const GRID_AREA = {
   DETAILS: "details",
   LANGUAGES: "languages",
   TAGS: "tags",
-  HEADING: "headin",
+  HEADING: "heading",
 };
 
 const gridAreasMd = makeGridAreas(
@@ -46,6 +46,7 @@ export const WideCard: FunctionComponent = () => {
         color="gray.600"
         data-testid={testIds.wideContainer}
         gap={5}
+        h="100%"
         p={5}
         templateAreas={{ base: gridAreasMobile, md: gridAreasMd }}
         w="100%"

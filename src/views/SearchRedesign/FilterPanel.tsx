@@ -17,7 +17,6 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
   return (
     <Card
       borderRadius="none"
-      boxShadow="none"
       display={{ base: "none", md: "flex" }}
       maxH={`calc(100vh - ${TOP_OFFSET} - 1.25rem)`}
       maxW="23rem"

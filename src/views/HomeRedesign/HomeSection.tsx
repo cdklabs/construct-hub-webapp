@@ -1,12 +1,9 @@
 import { Heading } from "@chakra-ui/react";
-import { Fragment, FunctionComponent, useMemo } from "react";
-import { CatalogSearchSort } from "../../api/catalog-search/constants";
-import { SORT_FUNCTIONS } from "../../api/catalog-search/util";
+import { Fragment, FunctionComponent } from "react";
 import { FeaturedPackagesDetail } from "../../api/config";
-import type { CatalogPackage } from "../../api/package/packages";
-import { findPackage } from "../../api/package/util";
 import { PackageList } from "../../components/PackageList";
 import { useCatalog } from "../../contexts/Catalog";
+import { useSection } from "./useSection";
 
 export interface HomeSectionProps {
   name: string;
@@ -19,32 +16,9 @@ export const HomeSection: FunctionComponent<HomeSectionProps> = ({
   showLastUpdated,
   showPackages,
 }) => {
-  const { data, loading, error } = useCatalog();
+  const { loading } = useCatalog();
 
-  const results = useMemo(() => {
-    if (loading || error || !data?.packages) return [];
-
-    if (showLastUpdated) {
-      return data.packages
-        .sort(SORT_FUNCTIONS[CatalogSearchSort.PublishDateDesc])
-        .slice(0, showLastUpdated);
-    } else if (showPackages) {
-      return showPackages
-        .map((p) => {
-          const pkg = findPackage(data, p.name);
-          if (pkg) {
-            return {
-              ...pkg,
-              comment: p.comment,
-            };
-          }
-          return undefined;
-        })
-        .filter((pkg) => pkg !== undefined) as CatalogPackage[];
-    } else {
-      return undefined;
-    }
-  }, [data, error, loading, showLastUpdated, showPackages]);
+  const results = useSection({ showLastUpdated, showPackages });
 
   if (!results) {
     console.warn(

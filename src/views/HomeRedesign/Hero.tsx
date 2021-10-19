@@ -1,53 +1,37 @@
-import { Box, Flex, Heading, Link, Stack } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import {
   SearchBar,
   SearchOverlay,
   SearchSuggestions,
 } from "../../components/SearchBar";
+import { SECTION_PADDING } from "./constants";
 
-// All elements are currently static / have no real interactions
 export const Hero: FunctionComponent = () => {
   return (
     <Flex
       align="center"
-      bg="blue.800"
       color="white"
       direction="column"
+      h="20rem"
       justify="center"
-      py={12}
+      px={SECTION_PADDING.X}
+      py={SECTION_PADDING.Y}
+      textAlign="center"
       zIndex="1"
     >
       <Heading as="h1" size="xl">
         Build cloud infrastructure with reusable components
       </Heading>
-      <Heading as="h2" mt={2} size="lg">
-        Provided by the{" "}
-        <Box as="span" color="yellow.400">
-          community
-        </Box>
-        , backed by{" "}
-        <Box as="span" color="yellow.400">
-          AWS
-        </Box>
-        .
+      <Heading as="h2" fontWeight="normal" mt={4} size="md">
+        Open source registry for AWS CDK, CDKtf and CDK8s
       </Heading>
-      <Flex direction="column" mt={8}>
-        <Stack direction="row" spacing={7}>
-          <Link borderBottom="1px solid" borderBottomColor="yellow.400">
-            All CDKs
-          </Link>
-          <Link>AWS CDK</Link>
-          <Link>CDK for Terraform</Link>
-          <Link>CDK for Kubernetes</Link>
-        </Stack>
-        <Box color="initial" mt={4}>
-          <SearchBar hasButton>
-            <SearchOverlay />
-            <SearchSuggestions />
-          </SearchBar>
-        </Box>
-      </Flex>
+      <Box color="initial" maxW="36rem" mt={8} mx="auto" w="full">
+        <SearchBar hasButton>
+          <SearchOverlay />
+          <SearchSuggestions />
+        </SearchBar>
+      </Box>
     </Flex>
   );
 };
