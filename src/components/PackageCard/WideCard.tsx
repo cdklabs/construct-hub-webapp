@@ -43,6 +43,7 @@ export const WideCard: FunctionComponent = () => {
         bg="white"
         border="base"
         borderRadius="sm"
+        boxShadow="base"
         color="gray.600"
         data-testid={testIds.wideContainer}
         gap={5}
