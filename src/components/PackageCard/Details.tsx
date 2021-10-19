@@ -1,6 +1,6 @@
 import { DownloadIcon } from "@chakra-ui/icons";
 import { Text } from "@chakra-ui/react";
-import { FunctionComponent, ReactChild, useMemo } from "react";
+import { FunctionComponent, ReactChild } from "react";
 import { useStats } from "../../contexts/Stats";
 import { useLanguage } from "../../hooks/useLanguage";
 import { getSearchPath } from "../../util/url";
@@ -40,23 +40,22 @@ export const Details: FunctionComponent = () => {
   } = usePackageCard();
 
   const { data } = useStats();
-  const downloads: number | undefined = useMemo(() => {
-    return data?.packages?.[name]?.downloads?.npm;
-  }, [name, data]);
+  const downloads: number | undefined = data?.packages?.[name]?.downloads?.npm;
 
   const authorName = typeof author === "string" ? author : author.name;
 
   return (
     <>
-      {downloads !== undefined && downloads >= 10 && (
+      {downloads !== undefined && downloads >= 10 ? (
         <Detail
           data-testid={testIds.downloads}
           icon={<DownloadIcon />}
           label={downloads.toLocaleString()}
           value={"Downloads"}
         />
+      ) : (
+        <Detail data-testid={testIds.version} label="Version" value={version} />
       )}
-      <Detail data-testid={testIds.version} label="Version" value={version} />
       <Detail
         data-testid={testIds.published}
         label="Published"
