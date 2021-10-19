@@ -65,7 +65,7 @@ export class CatalogSearchAPI {
       const { name, version } = pkg;
       const id = [name, version].join("@");
 
-      const downloads = stats.packages[name]?.downloads?.npm;
+      const downloads = stats.packages[name]?.downloads?.npm ?? 0;
 
       map.set(id, {
         ...pkg,

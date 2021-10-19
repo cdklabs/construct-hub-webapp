@@ -114,6 +114,19 @@ describe("CatalogSearchAPI", () => {
     nameAsc.forEach(({ name }, index) => {
       expect(name).toEqual(nameDesc[nameDesc.length - 1 - index].name);
     });
+
+    const downloadsAsc = [
+      ...instance.search({ sort: CatalogSearchSort.DownloadsAsc }).values(),
+    ];
+    const downloadsDesc = [
+      ...instance.search({ sort: CatalogSearchSort.DownloadsDesc }).values(),
+    ];
+
+    downloadsAsc.forEach(({ name }, index) => {
+      expect(name).toEqual(
+        downloadsDesc[downloadsDesc.length - 1 - index].name
+      );
+    });
   });
 
   describe("Snapshots", () => {

@@ -32,7 +32,14 @@ const getStrSort = (isAscending: boolean): SortFunction => {
 };
 
 const getDownloadsSort = (isAscending: boolean): SortFunction => {
-  return (p1, p2) => (p1.downloads - p2.downloads) * (isAscending ? 1 : -1);
+  return (p1, p2) => {
+    if (p1.downloads !== p2.downloads) {
+      return (p1.downloads - p2.downloads) * (isAscending ? 1 : -1);
+    } else {
+      // break ties by alphabetical
+      return p1.name.localeCompare(p2.name) * (isAscending ? -1 : 1);
+    }
+  };
 };
 
 const getLanguageFilter: FilterFunctionBuilder<
