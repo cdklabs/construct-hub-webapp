@@ -1,9 +1,11 @@
 import {
   Button,
   Flex,
+  forwardRef,
   Heading,
   Tab,
   TabList,
+  TabPanelProps,
   TabPanel,
   TabPanels,
   Tabs,
@@ -17,22 +19,43 @@ import { getSearchPath } from "../../util/url";
 import { SECTION_PADDING } from "./constants";
 import { PackageGrid } from "./PackageGrid";
 
-const SeeAll: FunctionComponent<{ path: string }> = ({ children, path }) => {
-  const { push } = useHistory();
+interface PackageTabProps {
+  cdkType?: CDKType;
+  data: ReturnType<typeof useCatalogResults>;
+}
 
-  const onClick = () => {
-    window.scrollTo(0, 0);
-    push(path);
-  };
-
+const PackageTab: FunctionComponent<PackageTabProps> = ({ cdkType, data }) => {
   return (
-    <Flex justify="center" w="full">
-      <Button colorScheme="blue" my={8} onClick={onClick}>
-        {children}
-      </Button>
-    </Flex>
+    <Tab isDisabled={data.page.length < 1}>
+      {cdkType ? CDKTYPE_RENDER_MAP[cdkType].name : "All CDKs"} (
+      {data.results.length})
+    </Tab>
   );
 };
+
+const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
+  ({ cdkType, data, ...props }, ref) => {
+    const { push } = useHistory();
+
+    const onSeeAllClick = () => {
+      window.scrollTo(0, 0);
+      push(getSearchPath({ cdkType }));
+    };
+
+    return (
+      <TabPanel ref={ref} {...props} p={0}>
+        <PackageGrid packages={data.page} />
+
+        <Flex justify="center" w="full">
+          <Button colorScheme="blue" my={8} onClick={onSeeAllClick}>
+            See all {cdkType ? CDKTYPE_RENDER_MAP[cdkType].name + " " : ""}
+            constructs
+          </Button>
+        </Flex>
+      </TabPanel>
+    );
+  }
+);
 
 export const CDKTypeTabs: FunctionComponent = () => {
   const anyCDKType = useCatalogResults({ limit: 4 });
@@ -65,43 +88,22 @@ export const CDKTypeTabs: FunctionComponent = () => {
       </Text>
       <Tabs isFitted variant="line">
         <TabList>
-          <Tab>All CDKs ({anyCDKType.results.length})</Tab>
+          <PackageTab data={anyCDKType} />
 
-          <Tab isDisabled={awscdk.page.length < 1}>
-            {CDKTYPE_RENDER_MAP["aws-cdk"].name} ({awscdk.results.length})
-          </Tab>
+          <PackageTab cdkType={CDKType.awscdk} data={awscdk} />
 
-          <Tab isDisabled={cdk8s.page.length < 1}>
-            {CDKTYPE_RENDER_MAP.cdk8s.name} ({cdk8s.results.length})
-          </Tab>
+          <PackageTab cdkType={CDKType.cdk8s} data={cdk8s} />
 
-          <Tab isDisabled={cdktf.page.length < 1}>
-            {CDKTYPE_RENDER_MAP.cdktf.name} ({cdktf.results.length})
-          </Tab>
+          <PackageTab cdkType={CDKType.cdktf} data={cdktf} />
         </TabList>
         <TabPanels minH="28.5rem">
-          <TabPanel p={0}>
-            <PackageGrid packages={anyCDKType.page} />
-            <SeeAll path={getSearchPath({})}>See all constructs</SeeAll>
-          </TabPanel>
-          <TabPanel p={0}>
-            <PackageGrid packages={awscdk.page} />
-            <SeeAll path={getSearchPath({ cdkType: CDKType.awscdk })}>
-              See all {CDKTYPE_RENDER_MAP["aws-cdk"].name} constructs
-            </SeeAll>
-          </TabPanel>
-          <TabPanel p={0}>
-            <PackageGrid packages={cdk8s.page} />
-            <SeeAll path={getSearchPath({ cdkType: CDKType.cdk8s })}>
-              See all {CDKTYPE_RENDER_MAP.cdk8s.name} constructs
-            </SeeAll>
-          </TabPanel>
-          <TabPanel p={0}>
-            <PackageGrid packages={cdktf.page} />
-            <SeeAll path={getSearchPath({ cdkType: CDKType.cdktf })}>
-              See all {CDKTYPE_RENDER_MAP.cdktf.name} constructs
-            </SeeAll>
-          </TabPanel>
+          <PackageTabPanel data={anyCDKType} />
+
+          <PackageTabPanel cdkType={CDKType.awscdk} data={awscdk} />
+
+          <PackageTabPanel cdkType={CDKType.cdk8s} data={cdk8s} />
+
+          <PackageTabPanel cdkType={CDKType.cdktf} data={cdktf} />
         </TabPanels>
       </Tabs>
     </Flex>
