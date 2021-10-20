@@ -89,7 +89,8 @@ jobs:
       - release_github
       - release_npm
     runs-on: ubuntu-latest
-    permissions: {}
+    permissions:
+      actions: write
     steps:
       - name: Trigger upgrade workflow
         run: gh api -X POST

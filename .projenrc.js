@@ -1,4 +1,5 @@
-const { SourceCode, web } = require("projen");
+const { web } = require("projen");
+const { workflows } = require("projen/lib/github");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -240,7 +241,9 @@ project.release.addJobs({
   upgrade_construct_hub: {
     name: "Upgrade construct-hub",
     runsOn: "ubuntu-latest",
-    permissions: {},
+    permissions: {
+      actions: workflows.JobPermission.WRITE,
+    },
     needs: ["release", "release_github", "release_npm"],
     steps: [
       {
