@@ -1,17 +1,14 @@
-import { Flex, Grid } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { DEFAULT_FEATURED_PACKAGES } from "../../api/config";
 import { Page } from "../../components/Page";
-import { useConfigValue } from "../../hooks/useConfigValue";
+import { CDKTypeTabs } from "./CDKTypeTabs";
+import { Featured } from "./Featured";
+import { GradientContainer } from "./GradientContainer";
 import { Hero } from "./Hero";
-import { HomeSection } from "./HomeSection";
-import { InfoPanel } from "./InfoPanel";
+import { Info } from "./Info";
 import testIds from "./testIds";
 
 export const HomeRedesign: FunctionComponent = () => {
-  const homePackages = useConfigValue("featuredPackages");
-  const sections = (homePackages ?? DEFAULT_FEATURED_PACKAGES).sections;
-
   return (
     <Page
       meta={{
@@ -22,24 +19,19 @@ export const HomeRedesign: FunctionComponent = () => {
       }}
       pageName="home"
     >
-      <Flex data-testid={testIds.page} direction="column">
+      <GradientContainer
+        as={Flex}
+        data-testid={testIds.page}
+        direction="column"
+      >
         <Hero />
-        <Grid
-          gap={3}
-          h="full"
-          p={3}
-          pl={12}
-          templateColumns="2fr 1fr"
-          templateRows="1fr"
-        >
-          <Flex direction="column" zIndex="base">
-            {sections.map((section) => (
-              <HomeSection key={section.name} {...section}></HomeSection>
-            ))}
-          </Flex>
-          <InfoPanel />
-        </Grid>
-      </Flex>
+
+        <Info />
+
+        <Featured />
+
+        <CDKTypeTabs />
+      </GradientContainer>
     </Page>
   );
 };

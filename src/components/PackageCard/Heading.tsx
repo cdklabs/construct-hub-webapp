@@ -63,6 +63,7 @@ export const Heading: FunctionComponent = () => {
             data-testid={testIds.title}
             fontSize="md"
             fontWeight="bold"
+            wordBreak="break-all"
           >
             {name}
           </ChakraHeading>

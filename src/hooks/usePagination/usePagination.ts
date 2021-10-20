@@ -27,7 +27,7 @@ export const usePagination = <T extends any[]>(
       page: takePage(data, {
         limit,
         offset: offset > pageLimit ? pageLimit : offset,
-      }),
+      }) as T,
       pageLimit,
     }),
     [data, limit, offset, pageLimit]
