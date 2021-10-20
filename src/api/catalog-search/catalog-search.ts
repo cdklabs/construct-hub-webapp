@@ -2,11 +2,13 @@ import lunr from "lunr";
 import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
+import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
 import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
 
-export interface CatalogPackageWithId extends CatalogPackage {
+export interface ExtendedCatalogPackage extends CatalogPackage {
   id: string;
+  downloads: number;
 }
 
 export interface CatalogConstructFrameworks {
@@ -42,7 +44,7 @@ export interface CatalogSearchFilters {
   languages?: Language[];
 }
 
-export type CatalogSearchResults = Map<string, CatalogPackageWithId>;
+export type CatalogSearchResults = Map<string, ExtendedCatalogPackage>;
 
 export interface CatalogSearchParams {
   query?: string;
@@ -58,13 +60,16 @@ export class CatalogSearchAPI {
    */
   public readonly constructFrameworks: CatalogConstructFrameworks;
 
-  constructor(catalogData: CatalogPackage[]) {
+  constructor(catalogData: CatalogPackage[], stats: PackageStats) {
     const catalogMap = catalogData.reduce((map, pkg) => {
       const { name, version } = pkg;
       const id = [name, version].join("@");
 
+      const downloads = stats.packages[name]?.downloads?.npm ?? 0;
+
       map.set(id, {
         ...pkg,
+        downloads,
         id,
       });
 
@@ -174,7 +179,7 @@ export class CatalogSearchAPI {
       FILTER_FUNCTIONS.cdkMajor(cdkType ? cdkMajor : undefined),
       FILTER_FUNCTIONS.language(language),
       FILTER_FUNCTIONS.languages(languages),
-    ].filter(Boolean) as ((pkg: CatalogPackage) => boolean)[];
+    ].filter(Boolean) as ((pkg: ExtendedCatalogPackage) => boolean)[];
 
     copiedResults.forEach((result) => {
       let isFiltered = false;
@@ -218,7 +223,7 @@ export class CatalogSearchAPI {
    */
   private detectConstructFrameworks() {
     const results: CatalogConstructFrameworks = [...this.map.values()].reduce(
-      (frameworks: CatalogConstructFrameworks, pkg: CatalogPackageWithId) => {
+      (frameworks: CatalogConstructFrameworks, pkg: ExtendedCatalogPackage) => {
         const { metadata } = pkg;
 
         const frameworkName = metadata?.constructFramework?.name;

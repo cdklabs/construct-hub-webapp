@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent, ReactNode } from "react";
 import { useHistory } from "react-router-dom";
-import { CatalogPackageWithId } from "../../api/catalog-search";
+import { ExtendedCatalogPackage } from "../../api/catalog-search";
 import { CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useDebounce } from "../../hooks/useDebounce";
@@ -49,7 +49,7 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
     return null;
   }
 
-  const getSuggestionIcon = (pkg: CatalogPackageWithId): ReactNode => {
+  const getSuggestionIcon = (pkg: ExtendedCatalogPackage): ReactNode => {
     const { metadata } = pkg;
     let icon = null;
     const cdkType = metadata?.constructFramework?.name;
@@ -83,7 +83,7 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
       zIndex={2}
       {...props}
     >
-      {recommendations.map((pkg: CatalogPackageWithId, i) => {
+      {recommendations.map((pkg: ExtendedCatalogPackage, i) => {
         const navigate = () => push(getPackagePath(pkg));
         const icon = getSuggestionIcon(pkg);
 
