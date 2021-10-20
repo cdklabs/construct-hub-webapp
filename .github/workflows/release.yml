@@ -82,3 +82,19 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     container:
       image: jsii/superchain:1-buster-slim-node14
+  upgrade_construct_hub:
+    name: Upgrade construct-hub
+    needs:
+      - release
+      - release_github
+      - release_npm
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Trigger upgrade workflow
+        run: gh api -X POST
+          /repos/cdklabs/construct-hub/actions/workflows/upgrade-main.yml/dispatches
+          --field ref="main"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJEN_GITHUB_TOKEN }}
