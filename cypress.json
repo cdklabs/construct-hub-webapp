@@ -6,5 +6,5 @@
     "*.shortbread.aws.dev"
   ],
   "chromeWebSecurity": false,
-  "defaultTaskTimeout": 15000
+  "defaultCommandTimeout": 15000
 }
