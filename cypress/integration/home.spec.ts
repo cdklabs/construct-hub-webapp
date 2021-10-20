@@ -9,6 +9,7 @@ import {
   TEMP_SUPPORTED_LANGUAGES,
 } from "constants/languages";
 import packageCard from "components/PackageCard/testIds";
+import { CatalogSearchSort } from "api/catalog-search/constants";
 
 describe("Home Page", () => {
   describe("Renders expected content", () => {
@@ -276,7 +277,10 @@ describe("Home (Redesign / WIP)", () => {
         cy.visitWithConfig("/", { featureFlags: { homeRedesign: true } });
         cy.getByDataTest(homeRedesign.cdkTypeTab).eq(index).click();
         cy.getByDataTest(homeRedesign.cdkTypeSeeAllButton).eq(index).click();
-        cy.url().should("contain", getSearchPath({ cdkType }));
+        cy.url().should(
+          "contain",
+          getSearchPath({ cdkType, sort: CatalogSearchSort.DownloadsDesc })
+        );
       };
 
       [undefined, CDKType.awscdk, CDKType.cdk8s, CDKType.cdktf].forEach(
