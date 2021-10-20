@@ -262,9 +262,12 @@ describe("Home (Redesign / WIP)", () => {
             cy.wrap(tab).should("have.attr", "data-cdktype", cdkType);
           }
 
-          cy.getByDataTest(homeRedesign.packageGrid)
-            .eq(index)
-            .should("be.visible");
+          // Verify current tab's package grid is visible and others are not
+          cy.getByDataTest(homeRedesign.packageGrid).each((grid, gridIndex) => {
+            cy.wrap(grid).should(
+              index === gridIndex ? "be.visible" : "not.be.visible"
+            );
+          });
         });
       });
     });
