@@ -1,5 +1,6 @@
-import { Heading, Stack, Text } from "@chakra-ui/react";
+import { Grid, Heading, Text } from "@chakra-ui/react";
 import type { FunctionComponent, ReactNode } from "react";
+import { SECTION_PADDING } from "./constants";
 
 export interface InfoSectionProps {
   title: string;
@@ -11,11 +12,25 @@ export const InfoSection: FunctionComponent<InfoSectionProps> = ({
   description,
   children,
 }) => (
-  <Stack color="blue.800" spacing={4}>
-    <Heading as="h3" size="md">
+  <Grid
+    color="blue.800"
+    px={SECTION_PADDING.X}
+    py={SECTION_PADDING.Y}
+    templateColumns="1fr"
+    templateRows="minmax(4.5rem, min-content) 1fr auto"
+  >
+    <Heading
+      as="h3"
+      fontSize="1.5rem"
+      fontWeight="semibold"
+      lineHeight="lg"
+      mb={4}
+    >
       {title}
     </Heading>
-    <Text size="sm">{description}</Text>
+    <Text fontSize="lg" mb={4}>
+      {description}
+    </Text>
     {children}
-  </Stack>
+  </Grid>
 );

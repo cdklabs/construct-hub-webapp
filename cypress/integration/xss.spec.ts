@@ -57,7 +57,7 @@ const testInput = async ({
   });
 };
 
-const testMarkdown = async (input: string) => {
+const testMarkdown = async () => {
   withWindowAlertCheck(async () => {
     cy.intercept("**/assembly.json", async (req) => {
       req.reply({
@@ -72,13 +72,8 @@ const testMarkdown = async (input: string) => {
     });
 
     cy.intercept("**/docs-typescript.md", async (req) => {
-      req.on("before:response", (res) => {
-        // force all API responses to not be cached
-        res.headers["cache-control"] = "no-store";
-      });
-
-      req.continue((res) => {
-        res.body = `${input} \n # README`;
+      req.reply({
+        fixture: "xss-docs.md",
       });
     }).as("getDocs");
 
@@ -100,12 +95,8 @@ const testMarkdown = async (input: string) => {
 
 describe("XSS - Stable Featureset", () => {
   describe("Package Page - Markdown Rendering", () => {
-    it("will not execute malicious HTML Markdown", () => {
-      testMarkdown(alertHTML);
-    });
-
-    it("will not execute malicious JS Markdown", () => {
-      testMarkdown(alertJS);
+    it("will not execute malicious HTML or JS Markdown", () => {
+      testMarkdown();
     });
   });
 });

@@ -7,7 +7,6 @@
   "scripts": {
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
-    "test:compile": "npx projen test:compile",
     "test": "npx projen test",
     "build": "npx projen build",
     "bump": "npx projen bump",
@@ -65,7 +64,7 @@
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
     "prettier": "^2.4.1",
-    "projen": "^0.30.3",
+    "projen": "^0.31.0",
     "react-app-rewired": "^2.1.8",
     "standard-version": "^9",
     "typescript": "^4.0.3"
