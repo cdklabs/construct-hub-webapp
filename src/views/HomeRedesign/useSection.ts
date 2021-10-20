@@ -20,7 +20,12 @@ export const useSection = ({
 
     if (showLastUpdated) {
       return data.packages
-        .sort(SORT_FUNCTIONS[CatalogSearchSort.PublishDateDesc])
+        .sort(
+          SORT_FUNCTIONS[CatalogSearchSort.PublishDateDesc] as (
+            p1: CatalogPackage,
+            p2: CatalogPackage
+          ) => number
+        )
         .slice(0, showLastUpdated);
     } else if (showPackages) {
       return showPackages

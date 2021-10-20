@@ -1,14 +1,17 @@
 import catalogFixture from "../../__fixtures__/catalog.json";
+import statsFixture from "../../__fixtures__/stats.json";
 import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
+import { PackageStats } from "../stats";
 import { CatalogSearchAPI } from "./catalog-search";
 import { CatalogSearchSort } from "./constants";
 import * as util from "./util";
 
 describe("CatalogSearchAPI", () => {
   const instance = new CatalogSearchAPI(
-    catalogFixture.packages as CatalogPackage[]
+    catalogFixture.packages as CatalogPackage[],
+    statsFixture as PackageStats
   );
 
   it("exposes a property which returns detected cdk frameworks", () => {
@@ -110,6 +113,19 @@ describe("CatalogSearchAPI", () => {
 
     nameAsc.forEach(({ name }, index) => {
       expect(name).toEqual(nameDesc[nameDesc.length - 1 - index].name);
+    });
+
+    const downloadsAsc = [
+      ...instance.search({ sort: CatalogSearchSort.DownloadsAsc }).values(),
+    ];
+    const downloadsDesc = [
+      ...instance.search({ sort: CatalogSearchSort.DownloadsDesc }).values(),
+    ];
+
+    downloadsAsc.forEach(({ name }, index) => {
+      expect(name).toEqual(
+        downloadsDesc[downloadsDesc.length - 1 - index].name
+      );
     });
   });
 

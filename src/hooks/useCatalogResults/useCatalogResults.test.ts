@@ -1,14 +1,18 @@
 import { renderHook, cleanup } from "@testing-library/react-hooks";
 import catalog from "../../__fixtures__/catalog.json";
+import stats from "../../__fixtures__/stats.json";
 import { Packages } from "../../api/package/packages";
+import { PackageStats } from "../../api/stats";
 import { useCatalog } from "../../contexts/Catalog";
 import { SearchProvider } from "../../contexts/Search";
+import { useStats } from "../../contexts/Stats";
 import {
   useCatalogResults,
   UseCatalogResultsOptions,
 } from "./useCatalogResults";
 
 const catalogFixture = catalog as Packages;
+const statsFixture = stats as PackageStats;
 const numPackages = catalogFixture.packages.length;
 
 const defaultOptions: UseCatalogResultsOptions = {
@@ -24,16 +28,28 @@ const defaultCatalogContext = {
   data: catalogFixture,
 };
 
+const defaultStatsContext = {
+  loading: false,
+  error: undefined,
+  data: statsFixture,
+};
+
 jest.mock("../../contexts/Catalog", () => ({
   useCatalog: jest.fn(),
 }));
 
+jest.mock("../../contexts/Stats", () => ({
+  useStats: jest.fn(),
+}));
+
 const useCatalogMock = useCatalog as jest.MockedFunction<typeof useCatalog>;
+const useStatsMock = useStats as jest.MockedFunction<typeof useStats>;
 
 describe("useCatalogResults", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     useCatalogMock.mockReturnValue(defaultCatalogContext);
+    useStatsMock.mockReturnValue(defaultStatsContext);
   });
 
   afterEach(cleanup);
