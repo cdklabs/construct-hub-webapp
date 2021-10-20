@@ -1,112 +1,127 @@
-import { Box, Divider, Flex } from "@chakra-ui/react";
-import { FunctionComponent, useEffect } from "react";
-import { CatalogSearch } from "../../components/CatalogSearch";
+import { Box, Stack } from "@chakra-ui/react";
+import { FunctionComponent, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
-import { Language } from "../../constants/languages";
-import { QUERY_PARAMS } from "../../constants/url";
-import { useCardView } from "../../contexts/CardView";
-import { useCatalogSearch } from "../../hooks/useCatalogSearch";
-import { usePagination } from "../../hooks/usePagination";
-import { useQueryParams } from "../../hooks/useQueryParams";
+import { SearchBar } from "../../components/SearchBar";
+import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { getSearchPath } from "../../util/url";
-import { PageControls } from "../SearchResults/components/PageControls";
-import { ShowingDetails } from "../SearchResults/components/ShowingDetails";
-import { LIMIT, SearchQueryParam } from "../SearchResults/constants";
-import { useSearchAPI } from "./SearchAPI";
-
-const toNum = (val: string) => {
-  const result = parseInt(val);
-
-  if (`${result}` === "NaN") {
-    return 0;
-  }
-
-  return result;
-};
+import { SearchQueryParam } from "../SearchResults/constants";
+import { PageControls } from "./PageControls";
+import { SearchDetails } from "./SearchDetails";
+import { useSearchState } from "./SearchState";
+import { SortAndFilterDrawer } from "./SortAndFilterDrawer";
+import { SortedBy } from "./SortedBy";
 
 export const SearchResults: FunctionComponent = () => {
-  const { cardView, CardViewControls } = useCardView();
-  const queryParams = useQueryParams();
-  const { results, search } = useSearchAPI();
+  const isFirstRender = useRef(true);
+  const { push } = useHistory();
 
-  const searchQuery = decodeURIComponent(
-    queryParams.get(QUERY_PARAMS.SEARCH_QUERY) ?? ""
-  );
+  const { query, searchAPI, offset, limit } = useSearchState();
+  const { languages, sort, cdkType, cdkMajor, onSearch } = searchAPI;
 
-  const languageQuery = queryParams.get(
-    QUERY_PARAMS.LANGUAGE
-  ) as Language | null;
-
-  const searchAPI = useCatalogSearch({
-    defaultQuery: searchQuery,
-    defaultLanguage: languageQuery,
+  const { page, pageLimit, results } = useCatalogResults({
+    offset,
+    limit,
+    query,
+    languages,
+    cdkMajor,
+    cdkType,
+    sort,
   });
-
-  const offset = toNum(queryParams.get(QUERY_PARAMS.OFFSET) ?? "0");
-
-  const { page, pageLimit } = usePagination(results, { offset, limit: LIMIT });
 
   const getUrl = (
     params: Partial<{ [key in SearchQueryParam]: number | string }>
   ) => {
     return getSearchPath({
-      query: (params.q ?? searchQuery) as string,
-      language: languageQuery,
+      cdkMajor,
+      cdkType,
+      query: (params.q ?? query) as string,
+      languages,
+      sort,
       offset: params.offset ?? offset,
     });
   };
 
+  // Resets the page number to 1 if query param offset is below 0, or to the last page if offset is higher than page count
   useEffect(() => {
-    search({
-      query: searchQuery,
-      filters: { language: languageQuery ?? undefined },
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [languageQuery, searchQuery]);
-
-  useEffect(() => {
-    // Reflect changes to queryParam to search input (specifically for tag clicks)
-    if (searchQuery !== searchAPI.query) {
-      searchAPI.setQuery(searchQuery);
+    // If the query has results but the page has nothing to show...
+    if (results.length && (offset < 0 || offset > pageLimit)) {
+      // Handle an out of bounds offset
+      if (offset < 0) {
+        push(getUrl({ offset: 0 }));
+      } else {
+        // Offset is too large, just take last page
+        push(getUrl({ offset: pageLimit }));
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
+  }, [results, offset, pageLimit]);
+
+  // Reset offset and update url when query, filters, or sort change
+  // We want to avoid doing this on first render / when a user directly navigates to a search URL
+  // so we keep a ref to prevent this
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    } else {
+      // Trigger a history replace rather than push to avoid bloating browser history
+      onSearch({ replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sort, languages, cdkType, cdkMajor]);
 
   return (
     <Page
       meta={{
-        title: searchQuery || "Search",
-        description: searchQuery
-          ? `${results.length} results for ${searchQuery} at Construct Hub`
+        title: query || "Search",
+        description: query
+          ? `${results.length} results for ${query} at Construct Hub`
           : "Search reusable components for your cloud application",
       }}
       pageName="search"
     >
-      <Flex direction="column" maxW="100vw">
-        <Box p={4}>
-          <CatalogSearch {...searchAPI} />
-        </Box>
-        <Divider />
-        <Box p={4}>
-          <Flex justify="space-between" pb={4}>
-            <ShowingDetails
-              count={results.length}
-              filtered={!!searchQuery}
-              limit={LIMIT}
-              offset={offset}
-            />
-            <CardViewControls />
-          </Flex>
-          <PackageList cardView={cardView} items={page} />
+      <Stack direction="column" maxW="100vw" pb={4} px={4} spacing={4}>
+        <SearchBar
+          bg="white"
+          onChange={searchAPI.onQueryChange}
+          onSubmit={searchAPI.onSubmit}
+          value={searchAPI.query}
+        />
+
+        <Stack
+          align={{ base: "start", lg: "center" }}
+          direction={{ base: "column-reverse", lg: "row" }}
+          justify={{ base: "initial", lg: "space-between" }}
+          spacing={4}
+        >
+          <SearchDetails
+            count={results.length}
+            filtered={!!query}
+            limit={limit}
+            offset={offset}
+            query={query}
+          />
+
+          <Box display={{ base: "none", md: "initial" }}>
+            <SortedBy />
+          </Box>
+
+          <Box display={{ md: "none" }}>
+            <SortAndFilterDrawer />
+          </Box>
+        </Stack>
+
+        <PackageList items={page} />
+
+        <Box w="full">
           <PageControls
             getPageUrl={getUrl}
-            limit={LIMIT}
             offset={offset}
             pageLimit={pageLimit}
           />
         </Box>
-      </Flex>
+      </Stack>
     </Page>
   );
 };

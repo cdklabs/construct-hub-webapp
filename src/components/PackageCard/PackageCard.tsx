@@ -1,6 +1,5 @@
 import { createContext, FunctionComponent, useContext } from "react";
 import { CatalogPackage } from "../../api/package/packages";
-import { CompactCard } from "./CompactCard";
 import { PackageCardType } from "./constants";
 import { WideCard } from "./WideCard";
 
@@ -9,7 +8,9 @@ export interface PackageCardProps {
   variant?: PackageCardType;
 }
 
-const PackageCardContext = createContext<CatalogPackage | null>(null);
+const PackageCardContext = createContext<
+  (CatalogPackage & { comment?: string }) | null
+>(null);
 
 export const usePackageCard = () => useContext(PackageCardContext)!;
 
@@ -20,7 +21,6 @@ export const PackageCard: FunctionComponent<PackageCardProps> = ({
   return (
     <PackageCardContext.Provider value={pkg}>
       {variant === PackageCardType.Wide && <WideCard />}
-      {variant === PackageCardType.Compact && <CompactCard />}
     </PackageCardContext.Provider>
   );
 };

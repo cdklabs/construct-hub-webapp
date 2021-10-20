@@ -2,6 +2,6 @@
 
 export const sizes = {
   container: {
-    "2xl": "1920px",
+    "2xl": "120rem",
   },
 };

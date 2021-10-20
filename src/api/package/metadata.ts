@@ -1,8 +1,13 @@
+import { CDKType } from "../../constants/constructs";
 import { API_PATHS } from "../../constants/url";
 import { PackageTagConfig } from "../config";
 import { getAssetsPath } from "./util";
 
 export interface Metadata {
+  constructFramework?: {
+    name?: CDKType;
+    majorVersion?: number;
+  };
   date: string;
   links?: {
     npm: string;

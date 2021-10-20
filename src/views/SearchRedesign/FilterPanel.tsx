@@ -1,73 +1,40 @@
 import { Heading, Stack } from "@chakra-ui/react";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 import { Card } from "../../components/Card";
-import {
-  Language,
-  LANGUAGE_NAME_MAP,
-  TEMP_SUPPORTED_LANGUAGES,
-} from "../../constants/languages";
-import { Filter } from "./Filter";
-
-const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
-  .filter(([key]) => TEMP_SUPPORTED_LANGUAGES.has(key as Language))
-  .map(([key, value]) => ({
-    display: value,
-    value: key,
-  }));
+import { AuthorFilter } from "./AuthorFilter";
+import { CDKFilter } from "./CDKFilter";
+import { LanguageFilter } from "./LanguageFilter";
 
 export interface FilterPanelProps {}
 
-export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
-  const [cdkType, setCdkType] = useState<string | undefined>();
-  const [language, setLanguage] = useState<string | undefined>();
-  const [author, setAuthor] = useState<string | undefined>();
+// Header height + section padding
+const TOP_OFFSET = "5.75rem";
 
+/**
+ * The desktop Resolution Filter Panel
+ */
+export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
   return (
-    <Card borderRadius="none" boxShadow="none" p={4}>
-      <Stack color="blue.800" spacing={6}>
+    <Card
+      borderRadius="none"
+      boxShadow="none"
+      display={{ base: "none", md: "flex" }}
+      maxH={`calc(100vh - ${TOP_OFFSET} - 1.25rem)`}
+      maxW="23rem"
+      minW="100%"
+      overflow="hidden auto"
+      p={4}
+      pos="sticky"
+      top={TOP_OFFSET}
+      zIndex="docked"
+    >
+      <Stack color="blue.800" h="max-content" spacing={6} top={4}>
         <Heading as="h3" size="sm">
           Filters
         </Heading>
-        <Filter
-          name="CDK Type"
-          onValueChange={setCdkType}
-          options={[
-            {
-              display: "AWS CDK",
-              value: "awscdk",
-            },
-            {
-              display: "CDK for Terraform",
-              value: "cdktf",
-            },
-            {
-              display: "CDK for Kubernetes",
-              value: "cdk8s",
-            },
-          ]}
-          value={cdkType}
-        />
-        <Filter
-          name="Programming Language"
-          onValueChange={setLanguage}
-          options={languageOptions}
-          value={language}
-        />
-        <Filter
-          name="Author"
-          onValueChange={setAuthor}
-          options={[
-            {
-              display: "Community",
-              value: "community",
-            },
-            {
-              display: "AWS",
-              value: "aws",
-            },
-          ]}
-          value={author}
-        />
+        <CDKFilter />
+        <LanguageFilter />
+        <AuthorFilter />
       </Stack>
     </Card>
   );

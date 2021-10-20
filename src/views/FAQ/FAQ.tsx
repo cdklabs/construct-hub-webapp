@@ -61,11 +61,10 @@ export const FAQ: FunctionComponent = () => (
               to enable an ecosystem of constructs that can be consumed by all
               CDK languages, your library <strong>must</strong> be compiled with{" "}
               <FAQLink href="https://aws.github.io/jsii/">JSII</FAQLink>, which
-              is a TypeScript-based, which is a TypeScript-based programming
-              language for creating multi-language libraries. The Construct Hub
-              leverages the type information produced by the JSII compiler in
-              order to render the rich multi-language API reference displayed at
-              the Construct Hub.
+              is a TypeScript-based programming language for creating
+              multi-language libraries. The Construct Hub uses the type
+              information produced by the JSII compiler in order to render the
+              rich multi-language API reference displayed at the Construct Hub.
             </p>
             <p>
               The Construct Hub monitors all updates to the npm Registry and

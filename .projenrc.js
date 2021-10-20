@@ -1,4 +1,5 @@
-const { SourceCode, web } = require("projen");
+const { web } = require("projen");
+const { workflows } = require("projen/lib/github");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -126,11 +127,19 @@ const project = new web.ReactTypeScriptProject({
           },
         },
         {
-          uses: "actions/upload-artifact@v1",
+          uses: "actions/upload-artifact@v2",
           if: "failure()",
           with: {
             name: "cypress-screenshots",
             path: "cypress/screenshots",
+          },
+        },
+        {
+          uses: "actions/upload-artifact@v2",
+          if: "always()",
+          with: {
+            name: "cypress-videos",
+            path: "cypress/videos",
           },
         },
       ],
@@ -152,6 +161,10 @@ const project = new web.ReactTypeScriptProject({
   project.addTask("test:unit", {
     // exec: "jest",
     exec: "npx react-app-rewired test",
+  });
+
+  project.addTask("test:update", {
+    exec: "npx react-app-rewired test -u",
   });
 
   project.eslint.addIgnorePattern("jest.config.ts");
@@ -221,6 +234,28 @@ project.eslint.addOverride({
 rewireCRA(buildTask);
 rewireCRA(project.tasks.tryFind("test"));
 rewireCRA(project.tasks.tryFind("dev"));
+
+// trigger construct-hub to pick up changes from construct-hub-webapp
+// whenever a new release is made
+project.release.addJobs({
+  upgrade_construct_hub: {
+    name: "Upgrade construct-hub",
+    runsOn: "ubuntu-latest",
+    permissions: {
+      actions: workflows.JobPermission.WRITE,
+    },
+    needs: ["release", "release_github", "release_npm"],
+    steps: [
+      {
+        name: "Trigger upgrade workflow",
+        run: 'gh api -X POST /repos/cdklabs/construct-hub/actions/workflows/upgrade-main.yml/dispatches --field ref="main"',
+        env: {
+          GITHUB_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
+        },
+      },
+    ],
+  },
+});
 
 project.synth();
 

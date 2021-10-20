@@ -12,12 +12,12 @@ Cypress.Commands.add("visitWithConfig", (url: string, config: Config) => {
   });
 });
 
-Cypress.Commands.add("getByDataTest", (dataTest) =>
-  cy.get(`[data-testid="${dataTest}"]`)
+Cypress.Commands.add("getByDataTest", (dataTest, options) =>
+  cy.get(`[data-testid="${dataTest}"]`, options)
 );
 
 Cypress.Commands.add("checkHeaderVisibility", () => {
-  cy.getByDataTest(header.container).should("be.visible");
+  cy.getByDataTest(header.container).scrollIntoView().should("be.visible");
 });
 
 Cypress.Commands.add("checkCatalogSearchInputs", () => {

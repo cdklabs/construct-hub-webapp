@@ -16,6 +16,7 @@ import { Hr } from "./Hr";
 import { Img } from "./Img";
 import { Ul, Ol, Li } from "./List";
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption } from "./Table";
+import testIds from "./testIds";
 import { A, Blockquote, Em, P, Pre, Sup } from "./Text";
 
 const ONE_MEGABYTE = 1024 * 1024;
@@ -134,6 +135,7 @@ export const Markdown: FunctionComponent<{
   }
   return (
     <Box
+      data-testid={testIds.container}
       px={8}
       sx={{
         "& > *": { mb: 8 },

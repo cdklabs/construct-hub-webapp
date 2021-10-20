@@ -30,10 +30,8 @@ export const App: FunctionComponent = () => {
       gridTemplateColumns="1fr"
       gridTemplateRows="auto auto 1fr auto"
       h="100%"
-      inset={0}
-      maxW="100vw"
-      overflow="hidden auto"
-      position="fixed"
+      maxW="100%"
+      minH="100vh"
     >
       <Header />
       {!loading && !isRedesign ? <DevPreviewBanner /> : <div />}

@@ -36,15 +36,15 @@ export const SearchResults: FunctionComponent = () => {
   ) as Language | null;
 
   const searchAPI = useCatalogSearch({
-    defaultQuery: searchQuery,
-    defaultLanguage: languageQuery,
+    defaultQuery: searchQuery ?? undefined,
+    defaultLanguage: languageQuery ?? undefined,
   });
 
   const offset = toNum(queryParams.get(QUERY_PARAMS.OFFSET) ?? "0");
 
   const { push } = useHistory();
 
-  const { results, displayable, loading, pageLimit } = useCatalogResults({
+  const { results, page, pageLimit } = useCatalogResults({
     query: searchQuery,
     offset,
     limit: LIMIT,
@@ -56,14 +56,14 @@ export const SearchResults: FunctionComponent = () => {
   ) => {
     return getSearchPath({
       query: (params.q ?? searchQuery) as string,
-      language: languageQuery,
+      language: languageQuery ?? undefined,
       offset: params.offset ?? offset,
     });
   };
 
   useEffect(() => {
     // If the query has results but the page has nothing to show...
-    if (!loading && results.length && (offset < 0 || offset > pageLimit)) {
+    if (results.length && (offset < 0 || offset > pageLimit)) {
       // Handle an out of bounds offset
       if (offset < 0) {
         push(getUrl({ offset: 0 }));
@@ -73,7 +73,7 @@ export const SearchResults: FunctionComponent = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, results, pageLimit, offset]);
+  }, [results, pageLimit, offset]);
 
   useEffect(() => {
     // Reflect changes to queryParam to search input (specifically for tag clicks)
@@ -107,11 +107,7 @@ export const SearchResults: FunctionComponent = () => {
               offset={offset}
             />
           </Flex>
-          <Results
-            language={languageQuery ?? undefined}
-            results={displayable}
-            skeleton={{ loading, noOfItems: LIMIT }}
-          />
+          <Results language={languageQuery ?? undefined} results={page} />
           <PageControls
             getPageUrl={getUrl}
             limit={LIMIT}

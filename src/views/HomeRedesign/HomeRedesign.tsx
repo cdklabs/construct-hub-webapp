@@ -1,20 +1,14 @@
-import { Flex, Grid, Heading } from "@chakra-ui/react";
-import type { FunctionComponent } from "react";
-import { PackageList } from "../../components/PackageList";
+import { Flex } from "@chakra-ui/react";
+import { FunctionComponent } from "react";
 import { Page } from "../../components/Page";
-import { useCardView } from "../../contexts/CardView";
-import { useCatalogResults } from "../../hooks/useCatalogResults";
+import { CDKTypeTabs } from "./CDKTypeTabs";
+import { Featured } from "./Featured";
+import { GradientContainer } from "./GradientContainer";
 import { Hero } from "./Hero";
-import { InfoPanel } from "./InfoPanel";
+import { Info } from "./Info";
+import testIds from "./testIds";
 
 export const HomeRedesign: FunctionComponent = () => {
-  const { cardView, CardViewControls } = useCardView();
-
-  // This hook's usage should eventually be replaced by a newer Search implementation
-  const { displayable, loading } = useCatalogResults({
-    limit: 10,
-  });
-
   return (
     <Page
       meta={{
@@ -25,33 +19,19 @@ export const HomeRedesign: FunctionComponent = () => {
       }}
       pageName="home"
     >
-      <Flex direction="column">
+      <GradientContainer
+        as={Flex}
+        data-testid={testIds.page}
+        direction="column"
+      >
         <Hero />
-        <Grid
-          gap={3}
-          h="full"
-          p={3}
-          pl={12}
-          templateColumns="2fr 1fr"
-          templateRows="1fr"
-        >
-          <Flex direction="column">
-            <Flex align="center" justify="space-between" mb={3}>
-              <Heading as="h3" color="blue.800" size="md">
-                Recently Updated
-              </Heading>
-              <CardViewControls />
-            </Flex>
 
-            <PackageList
-              cardView={cardView}
-              items={displayable}
-              loading={loading}
-            />
-          </Flex>
-          <InfoPanel />
-        </Grid>
-      </Flex>
+        <Info />
+
+        <Featured />
+
+        <CDKTypeTabs />
+      </GradientContainer>
     </Page>
   );
 };

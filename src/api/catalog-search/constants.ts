@@ -1,6 +1,9 @@
+// These are mapped to user-readable values to keep URL Params clean for users
 export enum CatalogSearchSort {
-  NameAsc = "NameAsc",
-  NameDesc = "NameDesc",
-  PublishDateAsc = "PublishDateAsc",
-  PublishDateDesc = "PublishDateDesc",
+  NameAsc = "asc",
+  NameDesc = "desc",
+  PublishDateAsc = "oldest",
+  PublishDateDesc = "newest",
+  DownloadsAsc = "downloadsAsc",
+  DownloadsDesc = "downloadsDesc",
 }

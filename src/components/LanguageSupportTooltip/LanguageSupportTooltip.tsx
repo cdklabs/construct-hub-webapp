@@ -13,17 +13,14 @@ export interface LanguageSupportTooltipProps {
 export const LanguageSupportTooltip: FunctionComponent<LanguageSupportTooltipProps> =
   ({ children, language }) => {
     const isSupported = TEMP_SUPPORTED_LANGUAGES.has(language);
+    const langName = LANGUAGE_NAME_MAP[language];
 
-    if (isSupported) {
-      return <>{children}</>;
-    }
+    const message = isSupported
+      ? `Click to view documentation in ${langName}`
+      : `Documentation support for ${langName} is coming soon!`;
 
     return (
-      <Tooltip
-        hasArrow
-        label={`Documentation support for ${LANGUAGE_NAME_MAP[language]} is coming soon!`}
-        placement="top-start"
-      >
+      <Tooltip hasArrow label={message} placement="top-start">
         <span>{children}</span>
       </Tooltip>
     );

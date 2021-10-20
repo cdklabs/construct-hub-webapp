@@ -1,13 +1,35 @@
 import catalogFixture from "../../__fixtures__/catalog.json";
+import statsFixture from "../../__fixtures__/stats.json";
+import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
+import { PackageStats } from "../stats";
 import { CatalogSearchAPI } from "./catalog-search";
 import { CatalogSearchSort } from "./constants";
+import * as util from "./util";
 
 describe("CatalogSearchAPI", () => {
   const instance = new CatalogSearchAPI(
-    catalogFixture.packages as CatalogPackage[]
+    catalogFixture.packages as CatalogPackage[],
+    statsFixture as PackageStats
   );
+
+  it("exposes a property which returns detected cdk frameworks", () => {
+    const cdkFrameWorkCount = catalogFixture.packages.reduce((sum, i) => {
+      if (i.metadata.constructFramework?.name) {
+        return sum + 1;
+      }
+
+      return sum;
+    }, 0);
+
+    const detectedCount = Object.values(instance.constructFrameworks).reduce(
+      (sum, i) => sum + i.pkgCount,
+      0
+    );
+
+    expect(detectedCount).toEqual(cdkFrameWorkCount);
+  });
 
   it("Returns all results for empty search query", () => {
     expect(instance.search().size).toEqual(catalogFixture.packages.length);
@@ -31,6 +53,40 @@ describe("CatalogSearchAPI", () => {
       catalogFixture.packages.filter((p) => p.languages.python !== undefined)
         .length
     );
+  });
+
+  it("Returns results filtered by multiple languages", () => {
+    const javaAndPythonResults = instance.search({
+      filters: { languages: [Language.Java, Language.Python] },
+    });
+
+    expect(javaAndPythonResults.size).toEqual(
+      catalogFixture.packages.filter(
+        (p) =>
+          p.languages.java !== undefined || p.languages.python !== undefined
+      ).length
+    );
+  });
+
+  it("Ignores cdkMajor filter if no cdkType is passed", () => {
+    const cdkMajorFilterSpy = jest.spyOn(util.FILTER_FUNCTIONS, "cdkMajor");
+
+    instance.search({
+      filters: {
+        cdkType: CDKType.awscdk,
+        cdkMajor: 2,
+      },
+    });
+
+    expect(cdkMajorFilterSpy).toHaveBeenCalledWith(2);
+
+    instance.search({
+      filters: {
+        cdkMajor: 3,
+      },
+    });
+
+    expect(cdkMajorFilterSpy).toHaveBeenCalledWith(undefined);
   });
 
   it("Returns results ordered by Sort", () => {
@@ -58,6 +114,19 @@ describe("CatalogSearchAPI", () => {
     nameAsc.forEach(({ name }, index) => {
       expect(name).toEqual(nameDesc[nameDesc.length - 1 - index].name);
     });
+
+    const downloadsAsc = [
+      ...instance.search({ sort: CatalogSearchSort.DownloadsAsc }).values(),
+    ];
+    const downloadsDesc = [
+      ...instance.search({ sort: CatalogSearchSort.DownloadsDesc }).values(),
+    ];
+
+    downloadsAsc.forEach(({ name }, index) => {
+      expect(name).toEqual(
+        downloadsDesc[downloadsDesc.length - 1 - index].name
+      );
+    });
   });
 
   describe("Snapshots", () => {
@@ -66,7 +135,7 @@ describe("CatalogSearchAPI", () => {
         query: "lambda libraries",
       });
 
-      expect(Object.fromEntries(results)).toMatchSnapshot();
+      expect([...results].map(([id]) => id)).toMatchSnapshot();
     });
 
     it("Returns consistent filter results", () => {
@@ -76,7 +145,7 @@ describe("CatalogSearchAPI", () => {
         },
       });
 
-      expect(Object.fromEntries(results)).toMatchSnapshot();
+      expect([...results].map(([id]) => id)).toMatchSnapshot();
     });
 
     it("Returns consistent sort results", () => {
@@ -84,7 +153,7 @@ describe("CatalogSearchAPI", () => {
         sort: CatalogSearchSort.NameAsc,
       });
 
-      expect(Object.fromEntries(results)).toMatchSnapshot();
+      expect([...results].map(([id]) => id)).toMatchSnapshot();
     });
   });
 });

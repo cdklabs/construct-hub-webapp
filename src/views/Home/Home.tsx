@@ -1,5 +1,6 @@
 import { Box, Stack, Heading, Skeleton } from "@chakra-ui/react";
 import { FunctionComponent, useState } from "react";
+import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { CatalogSearch } from "../../components/CatalogSearch";
 import { Page } from "../../components/Page";
 import { Picture } from "../../components/Picture";
@@ -22,11 +23,12 @@ export const Home: FunctionComponent = () => {
   const searchAPI = useCatalogSearch();
   const [offset, setOffset] = useState(0);
 
-  const { results, displayable, loading, pageLimit } = useCatalogResults({
+  const { results, page, pageLimit } = useCatalogResults({
     offset,
     limit: 20,
     query: "",
     language: null,
+    sort: CatalogSearchSort.PublishDateDesc,
   });
 
   return (
@@ -39,7 +41,7 @@ export const Home: FunctionComponent = () => {
       }}
       pageName="home"
     >
-      <Box position="relative">
+      <Box position="relative" zIndex={1}>
         <Picture
           alt={""}
           h="540px"
@@ -89,10 +91,7 @@ export const Home: FunctionComponent = () => {
 
         {/* TBD: Trending Libraries in favor of catalog results */}
         <Box p={4} pb={8}>
-          <Results
-            results={displayable}
-            skeleton={{ loading, noOfItems: 20 }}
-          />
+          <Results results={page} />
           <HomePageControls
             offset={offset}
             pageLimit={pageLimit}

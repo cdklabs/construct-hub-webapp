@@ -32,7 +32,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
 
   if (isLoading || !assembly.data || !metadata.data) {
     return (
-      <Center minH="200px">
+      <Center minH="16rem">
         <Spinner size="xl" />
       </Center>
     );
@@ -69,7 +69,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
           orientation="horizontal"
         />
         {config.loading ? (
-          <Center minH="200px">
+          <Center minH="16rem">
             <Spinner size="xl" />
           </Center>
         ) : (

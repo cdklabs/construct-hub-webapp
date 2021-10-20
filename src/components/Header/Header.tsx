@@ -1,9 +1,9 @@
 import { Box, Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Documentation } from "./Documentation";
+import { HeaderSearch } from "./HeaderSearch";
 import { NavButton } from "./NavButton";
 import { Resources } from "./Resources";
-import { SearchButton } from "./SearchButton";
 import testIds from "./testIds";
 import { Title } from "./Title";
 
@@ -19,10 +19,10 @@ export const Header: FunctionComponent = () => {
       bg="white"
       boxShadow="base"
       data-testid={testIds.container}
-      gap={4}
+      gap={6}
       gridTemplateColumns={{
-        base: "1fr 3fr 1fr",
-        md: "minmax(200px, 2fr) minmax(200px, 3fr) 2fr",
+        base: "1fr max-content 1fr",
+        md: "max-content minmax(12rem, 31rem) auto",
       }}
       gridTemplateRows="1fr"
       maxW="100vw"
@@ -46,7 +46,7 @@ export const Header: FunctionComponent = () => {
         colStart={{ base: 3, md: 2 }}
         justifySelf={{ base: "end", md: "stretch" }}
       >
-        <SearchButton />
+        <HeaderSearch />
       </HeaderItem>
 
       {/* Navigation */}

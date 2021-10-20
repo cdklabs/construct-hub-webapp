@@ -1,5 +1,6 @@
 import headerTestIds from "components/Header/testIds";
 import searchModalTestIds from "components/SearchModal/testIds";
+import searchBar from "components/SearchBar/testIds";
 
 const checkBaseElements = () => {
   cy.getByDataTest(headerTestIds.title).should("be.visible");
@@ -43,14 +44,33 @@ describe("Header", () => {
       cy.visit("/faq");
     });
 
-    it("has title, Getting Started, Resources, and Search Button", () => {
+    it("has title, Getting Started, Resources, and SearchBar", () => {
       checkBaseElements();
-      cy.getByDataTest(headerTestIds.searchButton).should("be.visible");
+      cy.getByDataTest(headerTestIds.searchInput).should("be.visible");
     });
 
-    it("opens search modal by clicking the search button", () => {
-      cy.getByDataTest(headerTestIds.searchButton).should("be.visible").click();
-      cy.getByDataTest(searchModalTestIds.container).should("be.visible");
+    it("has search capabilities from header", () => {
+      cy.getByDataTest(headerTestIds.searchInput).should("be.visible");
+
+      cy.getByDataTest(searchBar.input).should("be.visible").click();
+
+      cy.getByDataTest(searchBar.overlay)
+        .should("be.visible")
+        .click()
+        .should("not.be.visible");
+
+      cy.getByDataTest(searchBar.input).type("@aws-cdk");
+
+      cy.getByDataTest(searchBar.overlay).should("be.visible");
+      cy.getByDataTest(searchBar.suggestionsList).should("be.visible");
+      cy.getByDataTest(searchBar.suggestion).should("have.length", 5);
+
+      cy.get("body").type("{esc}");
+      cy.getByDataTest(searchBar.overlay).should("not.be.visible");
+      cy.getByDataTest(searchBar.suggestionsList).should("not.exist");
+
+      cy.getByDataTest(searchBar.input).type("{enter}");
+      cy.url().should("include", "/search");
     });
   });
 
@@ -84,6 +104,17 @@ describe("Header", () => {
     it("opens search modal when search icon is clicked", () => {
       cy.getByDataTest(headerTestIds.searchIcon).should("be.visible").click();
       cy.getByDataTest(searchModalTestIds.container).should("be.visible");
+    });
+
+    it("has search functionality from search modal", () => {
+      cy.getByDataTest(headerTestIds.searchIcon).should("be.visible").click();
+
+      cy.getByDataTest(searchModalTestIds.container).within(() => {
+        cy.getByDataTest(searchBar.input)
+          .type("@aws-cdk{enter}")
+          .url()
+          .should("include", "/search");
+      });
     });
   });
 });

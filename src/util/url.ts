@@ -1,3 +1,5 @@
+import { CatalogSearchSort } from "../api/catalog-search/constants";
+import { CDKType } from "../constants/constructs";
 import { Language } from "../constants/languages";
 import { ROUTES, QUERY_PARAMS } from "../constants/url";
 
@@ -64,17 +66,29 @@ export const createURL = (base: string, params?: SearchParamsObject) => {
 };
 
 export const getSearchPath = ({
+  cdkMajor,
+  cdkType,
   query,
   offset,
   language,
+  languages,
+  sort,
 }: {
+  cdkMajor?: string | number;
   query?: string;
   offset?: string | number;
-  language?: Language | null;
+  cdkType?: CDKType;
+  language?: Language;
+  languages?: Language[];
+  sort?: CatalogSearchSort;
 }) =>
   createURL(ROUTES.SEARCH, {
     [QUERY_PARAMS.SEARCH_QUERY]: query,
+    [QUERY_PARAMS.CDK_TYPE]: cdkType,
+    [QUERY_PARAMS.CDK_MAJOR]: cdkMajor,
     [QUERY_PARAMS.LANGUAGE]: language,
+    [QUERY_PARAMS.LANGUAGES]: languages?.length ? languages.join(",") : null,
+    [QUERY_PARAMS.SORT]: sort,
     [QUERY_PARAMS.OFFSET]: offset ?? 0,
   });
 

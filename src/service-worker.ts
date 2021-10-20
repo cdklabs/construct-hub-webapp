@@ -121,3 +121,12 @@ registerRoute(
     cacheName: "assembly-catalog",
   })
 );
+
+registerRoute(
+  ({ url }) =>
+    url.origin === self.origin && url.pathname.endsWith(API_PATHS.STATS),
+  new StaleWhileRevalidate({
+    fetchOptions,
+    cacheName: "stats",
+  })
+);

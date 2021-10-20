@@ -1,0 +1,2970 @@
+{
+  "packages": {
+    "@taimos/cdk-construct-gitlab-variable": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@taimos/cdk-construct-hosting": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@terrastack/core": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@moralesl/billing-alert": {
+      "downloads": {
+        "npm": 42
+      }
+    },
+    "@philcali-cdk/static-website": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@taimos/cdk-construct-alexa-skill": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "@cdk-7layer-constructs/kinesis-firehose-transformer": {
+      "downloads": {
+        "npm": 4
+      }
+    },
+    "@rayou/cdk-url-shortener": {
+      "downloads": {
+        "npm": 6
+      }
+    },
+    "@pgarbe/cdk-bitbucket-server": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@umlss/aws-cdk-serverless-timer": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@matthewbonig/sqs-redrive": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@wheatstalk/web-carver": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@matthewbonig/wakeywakey": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@scaleleap/selling-partner-api-cdk": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "@taimos/cdk-construct-github-notifier": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "@pgarbe/cdk-datadog": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "@cm-madlabs/cdk-constructs": {
+      "downloads": {
+        "npm": 8
+      }
+    },
+    "@superluminar-io/super-eks": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@raykrueger/cdk-valheim-server": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "@opencdk8s/cdk8s-redis-sts": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@matthewbonig/nightynight": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "@matthewbonig/rds-tools": {
+      "downloads": {
+        "npm": 5
+      }
+    },
+    "@opencdk8s/cdk8s-argoworkflow-resources": {
+      "downloads": {
+        "npm": 5
+      }
+    },
+    "@opencdk8s/cdk8s-mongo-sts": {
+      "downloads": {
+        "npm": 7
+      }
+    },
+    "@wheatstalk/cdk-ecs-keycloak": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "@nomadblacky/cdk-datadog-resources": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "@charlesdotfish/smtp-credentials-cdk-construct": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "@wheatstalk/cdk-ecs-website": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "@opencdk8s/cdk8s-aws-lb-controller": {
+      "downloads": {
+        "npm": 56
+      }
+    },
+    "@opencdk8s/cdk8s-argocd-resources": {
+      "downloads": {
+        "npm": 18
+      }
+    },
+    "@opencdk8s/cdk8s-kuma-types": {
+      "downloads": {
+        "npm": 26
+      }
+    },
+    "@seeebiii/ses-verify-identities": {
+      "downloads": {
+        "npm": 670
+      }
+    },
+    "@cdk-constructs-zone/super-ec2": {
+      "downloads": {
+        "npm": 406
+      }
+    },
+    "@pgarbe/cdk-ecr-sync": {
+      "downloads": {
+        "npm": 11
+      }
+    },
+    "@moia-oss/bastion-host-forward": {
+      "downloads": {
+        "npm": 87
+      }
+    },
+    "@opencdk8s/cdk8s-sealed-secrets-controller": {
+      "downloads": {
+        "npm": 9
+      }
+    },
+    "@opencdk8s/cdk8s-aws-lb-controller-api-object": {
+      "downloads": {
+        "npm": 23
+      }
+    },
+    "@aws-solutions-constructs/aws-apigateway-iot": {
+      "downloads": {
+        "npm": 145
+      }
+    },
+    "@aws-solutions-constructs/aws-apigateway-lambda": {
+      "downloads": {
+        "npm": 428
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-sqs-lambda": {
+      "downloads": {
+        "npm": 338
+      }
+    },
+    "@aws-solutions-constructs/aws-eventbridge-kinesisstreams": {
+      "downloads": {
+        "npm": 70
+      }
+    },
+    "@aws-solutions-constructs/aws-cloudfront-apigateway": {
+      "downloads": {
+        "npm": 600
+      }
+    },
+    "@aws-solutions-constructs/aws-apigateway-dynamodb": {
+      "downloads": {
+        "npm": 203
+      }
+    },
+    "@aws-solutions-constructs/aws-cloudfront-s3": {
+      "downloads": {
+        "npm": 2859
+      }
+    },
+    "@aws-solutions-constructs/aws-events-rule-sqs": {
+      "downloads": {
+        "npm": 263
+      }
+    },
+    "@aws-solutions-constructs/aws-cloudfront-mediastore": {
+      "downloads": {
+        "npm": 154
+      }
+    },
+    "@aws-solutions-constructs/aws-iot-lambda-dynamodb": {
+      "downloads": {
+        "npm": 149
+      }
+    },
+    "@aws-solutions-constructs/aws-events-rule-kinesisfirehose-s3": {
+      "downloads": {
+        "npm": 98
+      }
+    },
+    "@aws-solutions-constructs/aws-eventbridge-kinesisfirehose-s3": {
+      "downloads": {
+        "npm": 91
+      }
+    },
+    "@aws-solutions-constructs/aws-kinesisfirehose-s3": {
+      "downloads": {
+        "npm": 507
+      }
+    },
+    "@aws-solutions-constructs/aws-apigateway-kinesisstreams": {
+      "downloads": {
+        "npm": 260
+      }
+    },
+    "@aws-solutions-constructs/aws-apigateway-sqs": {
+      "downloads": {
+        "npm": 369
+      }
+    },
+    "@aws-solutions-constructs/aws-events-rule-sns": {
+      "downloads": {
+        "npm": 89
+      }
+    },
+    "@aws-solutions-constructs/aws-events-rule-lambda": {
+      "downloads": {
+        "npm": 317
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-step-function": {
+      "downloads": {
+        "npm": 231
+      }
+    },
+    "@aws-solutions-constructs/aws-iot-lambda": {
+      "downloads": {
+        "npm": 209
+      }
+    },
+    "@aws-solutions-constructs/aws-dynamodbstreams-lambda-elasticsearch-kibana": {
+      "downloads": {
+        "npm": 72
+      }
+    },
+    "@aws-solutions-constructs/aws-kinesisstreams-gluejob": {
+      "downloads": {
+        "npm": 100
+      }
+    },
+    "@aws-solutions-constructs/aws-iot-kinesisfirehose-s3": {
+      "downloads": {
+        "npm": 147
+      }
+    },
+    "@tts-cdk/build-pipelines": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "@aws-solutions-constructs/aws-apigateway-sagemakerendpoint": {
+      "downloads": {
+        "npm": 143
+      }
+    },
+    "@aws-solutions-constructs/aws-kinesisfirehose-s3-and-kinesisanalytics": {
+      "downloads": {
+        "npm": 143
+      }
+    },
+    "@aws-solutions-constructs/aws-kinesisstreams-lambda": {
+      "downloads": {
+        "npm": 290
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-ssmstringparameter": {
+      "downloads": {
+        "npm": 84
+      }
+    },
+    "@opencdk8s/cdk8s-argo-rollout": {
+      "downloads": {
+        "npm": 23
+      }
+    },
+    "@cloudgnosis/aws-cdk-app-templates": {
+      "downloads": {
+        "npm": 13
+      }
+    },
+    "@spacecomx/cdk-billing-alarm": {
+      "downloads": {
+        "npm": 42
+      }
+    },
+    "@spacecomx/cdk-organization-billing-alarm": {
+      "downloads": {
+        "npm": 28
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-sqs": {
+      "downloads": {
+        "npm": 378
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-dynamodb": {
+      "downloads": {
+        "npm": 366
+      }
+    },
+    "@aws-solutions-constructs/aws-sns-lambda": {
+      "downloads": {
+        "npm": 156
+      }
+    },
+    "@aws-solutions-constructs/aws-kinesisstreams-kinesisfirehose-s3": {
+      "downloads": {
+        "npm": 215
+      }
+    },
+    "@cloudcomponents/cdk-pull-request-approval-rule": {
+      "downloads": {
+        "npm": 352
+      }
+    },
+    "@cloudcomponents/cdk-dynamodb-seeder": {
+      "downloads": {
+        "npm": 199
+      }
+    },
+    "@cloudcomponents/cdk-container-registry": {
+      "downloads": {
+        "npm": 60
+      }
+    },
+    "@cloudcomponents/cdk-codepipeline-anchore-inline-scan-action": {
+      "downloads": {
+        "npm": 41
+      }
+    },
+    "@cloudcomponents/cdk-codecommit-backup": {
+      "downloads": {
+        "npm": 44
+      }
+    },
+    "@cloudcomponents/cdk-codepipeline-slack": {
+      "downloads": {
+        "npm": 1055
+      }
+    },
+    "@cloudcomponents/cdk-responsive-email-template": {
+      "downloads": {
+        "npm": 46
+      }
+    },
+    "@cloudcomponents/cdk-secret-key": {
+      "downloads": {
+        "npm": 211
+      }
+    },
+    "@cloudcomponents/cdk-static-website": {
+      "downloads": {
+        "npm": 229
+      }
+    },
+    "@cloudcomponents/cdk-developer-tools-notifications": {
+      "downloads": {
+        "npm": 881
+      }
+    },
+    "@cloudcomponents/cdk-github-webhook": {
+      "downloads": {
+        "npm": 49
+      }
+    },
+    "@cloudcomponents/cdk-pull-request-check": {
+      "downloads": {
+        "npm": 357
+      }
+    },
+    "@cloudcomponents/cdk-temp-stack": {
+      "downloads": {
+        "npm": 47
+      }
+    },
+    "@cloudcomponents/cdk-cloudfront-authorization": {
+      "downloads": {
+        "npm": 98
+      }
+    },
+    "@cloudcomponents/cdk-stripe-webhook": {
+      "downloads": {
+        "npm": 56
+      }
+    },
+    "@cloudcomponents/cdk-deletable-bucket": {
+      "downloads": {
+        "npm": 600
+      }
+    },
+    "@cloudcomponents/cdk-chatops": {
+      "downloads": {
+        "npm": 1214
+      }
+    },
+    "@cloudcomponents/cdk-codepipeline-merge-action": {
+      "downloads": {
+        "npm": 36
+      }
+    },
+    "@cloudcomponents/cdk-lambda-at-edge-pattern": {
+      "downloads": {
+        "npm": 508
+      }
+    },
+    "@cloudcomponents/cdk-codepipeline-check-parameter-action": {
+      "downloads": {
+        "npm": 43
+      }
+    },
+    "@cloudcomponents/cdk-contentful-webhook": {
+      "downloads": {
+        "npm": 49
+      }
+    },
+    "@cloudcomponents/cdk-s3-antivirus": {
+      "downloads": {
+        "npm": 44
+      }
+    },
+    "@rayova/cdk-cloudfront-rules": {
+      "downloads": {
+        "npm": 8
+      }
+    },
+    "@softchef/cdk-iot-security": {
+      "downloads": {
+        "npm": 321
+      }
+    },
+    "@cloudcomponents/cdk-blue-green-container-deployment": {
+      "downloads": {
+        "npm": 111
+      }
+    },
+    "@cloudcomponents/cdk-dependency-check": {
+      "downloads": {
+        "npm": 39
+      }
+    },
+    "@cloudcomponents/cdk-codepipeline-dockerfile-linter-action": {
+      "downloads": {
+        "npm": 53
+      }
+    },
+    "@aws-cdk/assets": {
+      "downloads": {
+        "npm": 511522
+      }
+    },
+    "@aws-cdk/region-info": {
+      "downloads": {
+        "npm": 917611
+      }
+    },
+    "@aws-cdk/aws-appintegrations": {
+      "downloads": {
+        "npm": 11325
+      }
+    },
+    "@aws-cdk/yaml-cfn": {
+      "downloads": {
+        "npm": 65647
+      }
+    },
+    "@aws-cdk/aws-codeguruprofiler": {
+      "downloads": {
+        "npm": 494732
+      }
+    },
+    "@aws-cdk/aws-appflow": {
+      "downloads": {
+        "npm": 12730
+      }
+    },
+    "@aws-cdk/aws-cloudwatch": {
+      "downloads": {
+        "npm": 519665
+      }
+    },
+    "@aws-cdk/aws-secretsmanager": {
+      "downloads": {
+        "npm": 389059
+      }
+    },
+    "@aws-cdk/aws-iam": {
+      "downloads": {
+        "npm": 543671
+      }
+    },
+    "@aws-cdk/core": {
+      "downloads": {
+        "npm": 652440
+      }
+    },
+    "@aws-cdk/aws-connect": {
+      "downloads": {
+        "npm": 9609
+      }
+    },
+    "@aws-cdk/aws-greengrass": {
+      "downloads": {
+        "npm": 12755
+      }
+    },
+    "@aws-cdk/aws-budgets": {
+      "downloads": {
+        "npm": 15345
+      }
+    },
+    "@aws-cdk/aws-iotwireless": {
+      "downloads": {
+        "npm": 12229
+      }
+    },
+    "@aws-cdk/aws-autoscalingplans": {
+      "downloads": {
+        "npm": 12756
+      }
+    },
+    "@aws-cdk/aws-accessanalyzer": {
+      "downloads": {
+        "npm": 12836
+      }
+    },
+    "@aws-cdk/aws-lookoutequipment": {
+      "downloads": {
+        "npm": 8948
+      }
+    },
+    "@aws-cdk/aws-groundstation": {
+      "downloads": {
+        "npm": 11312
+      }
+    },
+    "@aws-cdk/cdk-assets-schema": {
+      "downloads": {
+        "npm": 4916
+      }
+    },
+    "@aws-cdk/aws-emrcontainers": {
+      "downloads": {
+        "npm": 12121
+      }
+    },
+    "@aws-cdk/aws-appstream": {
+      "downloads": {
+        "npm": 12750
+      }
+    },
+    "@aws-cdk/aws-emr": {
+      "downloads": {
+        "npm": 16908
+      }
+    },
+    "@aws-cdk/aws-eventschemas": {
+      "downloads": {
+        "npm": 16656
+      }
+    },
+    "@aws-cdk/aws-kms": {
+      "downloads": {
+        "npm": 537036
+      }
+    },
+    "@aws-cdk/aws-databrew": {
+      "downloads": {
+        "npm": 17926
+      }
+    },
+    "@aws-cdk/aws-dax": {
+      "downloads": {
+        "npm": 17054
+      }
+    },
+    "@aws-cdk/aws-codestarnotifications": {
+      "downloads": {
+        "npm": 365312
+      }
+    },
+    "@aws-cdk/aws-gamelift": {
+      "downloads": {
+        "npm": 12749
+      }
+    },
+    "@aws-cdk/aws-cassandra": {
+      "downloads": {
+        "npm": 12745
+      }
+    },
+    "@aws-cdk/aws-athena": {
+      "downloads": {
+        "npm": 26896
+      }
+    },
+    "@aws-cdk/aws-inspector": {
+      "downloads": {
+        "npm": 13593
+      }
+    },
+    "@aws-cdk/aws-kendra": {
+      "downloads": {
+        "npm": 12606
+      }
+    },
+    "@aws-cdk/aws-iotthingsgraph": {
+      "downloads": {
+        "npm": 12720
+      }
+    },
+    "@aws-cdk/aws-customerprofiles": {
+      "downloads": {
+        "npm": 11331
+      }
+    },
+    "@aws-cdk/aws-devopsguru": {
+      "downloads": {
+        "npm": 12214
+      }
+    },
+    "@aws-cdk/aws-medialive": {
+      "downloads": {
+        "npm": 12891
+      }
+    },
+    "@aws-cdk/custom-resources": {
+      "downloads": {
+        "npm": 452042
+      }
+    },
+    "@aws-cdk/aws-opsworks": {
+      "downloads": {
+        "npm": 12868
+      }
+    },
+    "@aws-cdk/aws-resourcegroups": {
+      "downloads": {
+        "npm": 15273
+      }
+    },
+    "@aws-cdk/aws-mwaa": {
+      "downloads": {
+        "npm": 12914
+      }
+    },
+    "@aws-cdk/aws-mediaconvert": {
+      "downloads": {
+        "npm": 13473
+      }
+    },
+    "@aws-cdk/aws-docdb": {
+      "downloads": {
+        "npm": 17584
+      }
+    },
+    "@aws-cdk/aws-certificatemanager": {
+      "downloads": {
+        "npm": 450371
+      }
+    },
+    "@aws-cdk/aws-appmesh": {
+      "downloads": {
+        "npm": 15049
+      }
+    },
+    "@aws-cdk/aws-elasticloadbalancingv2": {
+      "downloads": {
+        "npm": 434812
+      }
+    },
+    "@aws-cdk/aws-codebuild": {
+      "downloads": {
+        "npm": 327293
+      }
+    },
+    "@aws-cdk/aws-apigateway": {
+      "downloads": {
+        "npm": 414597
+      }
+    },
+    "@aws-cdk/aws-amazonmq": {
+      "downloads": {
+        "npm": 13501
+      }
+    },
+    "@aws-cdk/aws-guardduty": {
+      "downloads": {
+        "npm": 14557
+      }
+    },
+    "@aws-cdk/pipelines": {
+      "downloads": {
+        "npm": 64829
+      }
+    },
+    "@randyridgley/cdk-datalake-constructs": {
+      "downloads": {
+        "npm": 505
+      }
+    },
+    "@aws-cdk/aws-frauddetector": {
+      "downloads": {
+        "npm": 11110
+      }
+    },
+    "@aws-cdk/aws-lookoutvision": {
+      "downloads": {
+        "npm": 12063
+      }
+    },
+    "@aws-cdk/aws-location": {
+      "downloads": {
+        "npm": 88234
+      }
+    },
+    "@aws-cdk/aws-codeartifact": {
+      "downloads": {
+        "npm": 15201
+      }
+    },
+    "@aws-cdk/aws-iot1click": {
+      "downloads": {
+        "npm": 12737
+      }
+    },
+    "@aws-cdk/aws-imagebuilder": {
+      "downloads": {
+        "npm": 16698
+      }
+    },
+    "@aws-cdk/aws-eks": {
+      "downloads": {
+        "npm": 60599
+      }
+    },
+    "@aws-cdk/aws-opsworkscm": {
+      "downloads": {
+        "npm": 12861
+      }
+    },
+    "@aws-cdk/aws-ssmcontacts": {
+      "downloads": {
+        "npm": 10553
+      }
+    },
+    "@aws-cdk/aws-elasticbeanstalk": {
+      "downloads": {
+        "npm": 21366
+      }
+    },
+    "@aws-cdk/aws-s3-assets": {
+      "downloads": {
+        "npm": 510853
+      }
+    },
+    "@aws-cdk/aws-workspaces": {
+      "downloads": {
+        "npm": 12804
+      }
+    },
+    "@aws-cdk/aws-sqs": {
+      "downloads": {
+        "npm": 506883
+      }
+    },
+    "@aws-cdk/aws-logs": {
+      "downloads": {
+        "npm": 510445
+      }
+    },
+    "@aws-cdk/aws-synthetics": {
+      "downloads": {
+        "npm": 33071
+      }
+    },
+    "@aws-cdk/aws-kinesisfirehose-destinations": {
+      "downloads": {
+        "npm": 5350
+      }
+    },
+    "@aws-cdk/aws-dynamodb-global": {
+      "downloads": {
+        "npm": 1275
+      }
+    },
+    "@aws-cdk/aws-cloudtrail": {
+      "downloads": {
+        "npm": 23042
+      }
+    },
+    "@aws-cdk/aws-eks-legacy": {
+      "downloads": {
+        "npm": 1101
+      }
+    },
+    "@aws-cdk/aws-cloudfront-origins": {
+      "downloads": {
+        "npm": 62917
+      }
+    },
+    "@aws-cdk/aws-neptune": {
+      "downloads": {
+        "npm": 18539
+      }
+    },
+    "@aws-cdk/aws-servicediscovery": {
+      "downloads": {
+        "npm": 370469
+      }
+    },
+    "@aws-cdk/aws-codedeploy": {
+      "downloads": {
+        "npm": 206591
+      }
+    },
+    "@aws-cdk/aws-pinpointemail": {
+      "downloads": {
+        "npm": 13170
+      }
+    },
+    "@aws-cdk/aws-elasticache": {
+      "downloads": {
+        "npm": 39030
+      }
+    },
+    "@aws-cdk/aws-s3": {
+      "downloads": {
+        "npm": 521008
+      }
+    },
+    "@aws-cdk/aws-qldb": {
+      "downloads": {
+        "npm": 13115
+      }
+    },
+    "@aws-cdk/aws-chatbot": {
+      "downloads": {
+        "npm": 30631
+      }
+    },
+    "@aws-cdk/aws-cloud9": {
+      "downloads": {
+        "npm": 15485
+      }
+    },
+    "@aws-cdk/aws-lambda": {
+      "downloads": {
+        "npm": 506336
+      }
+    },
+    "@aws-cdk/aws-cloudformation": {
+      "downloads": {
+        "npm": 459338
+      }
+    },
+    "@aws-cdk/aws-globalaccelerator-endpoints": {
+      "downloads": {
+        "npm": 1573
+      }
+    },
+    "@aws-cdk/aws-apigatewayv2": {
+      "downloads": {
+        "npm": 229579
+      }
+    },
+    "@aws-cdk/aws-sns-subscriptions": {
+      "downloads": {
+        "npm": 353949
+      }
+    },
+    "@aws-cdk/aws-dynamodb": {
+      "downloads": {
+        "npm": 285496
+      }
+    },
+    "@aws-cdk/aws-batch": {
+      "downloads": {
+        "npm": 158209
+      }
+    },
+    "@aws-cdk/aws-codepipeline-actions": {
+      "downloads": {
+        "npm": 194519
+      }
+    },
+    "@aws-cdk/aws-lambda-destinations": {
+      "downloads": {
+        "npm": 13303
+      }
+    },
+    "@aws-cdk/aws-rds": {
+      "downloads": {
+        "npm": 191805
+      }
+    },
+    "@aws-cdk/app-delivery": {
+      "downloads": {
+        "npm": 2155
+      }
+    },
+    "@aws-cdk/aws-lambda-event-sources": {
+      "downloads": {
+        "npm": 118073
+      }
+    },
+    "@aws-cdk/aws-fis": {
+      "downloads": {
+        "npm": 11675
+      }
+    },
+    "@aws-cdk/aws-securityhub": {
+      "downloads": {
+        "npm": 13120
+      }
+    },
+    "@aws-cdk/assertions": {
+      "downloads": {
+        "npm": 2661
+      }
+    },
+    "@aws-cdk/aws-s3-notifications": {
+      "downloads": {
+        "npm": 124526
+      }
+    },
+    "@aws-cdk/aws-xray": {
+      "downloads": {
+        "npm": 13133
+      }
+    },
+    "@aws-cdk/cloudformation-include": {
+      "downloads": {
+        "npm": 11778
+      }
+    },
+    "@aws-cdk/aws-route53": {
+      "downloads": {
+        "npm": 450829
+      }
+    },
+    "@aws-cdk/aws-config": {
+      "downloads": {
+        "npm": 15698
+      }
+    },
+    "@aws-cdk/aws-wafregional": {
+      "downloads": {
+        "npm": 16009
+      }
+    },
+    "@aws-cdk/aws-ecr": {
+      "downloads": {
+        "npm": 496757
+      }
+    },
+    "@aws-cdk/aws-route53recoverycontrol": {
+      "downloads": {
+        "npm": 8643
+      }
+    },
+    "@aws-cdk/aws-codecommit": {
+      "downloads": {
+        "npm": 325459
+      }
+    },
+    "@aws-cdk/aws-efs": {
+      "downloads": {
+        "npm": 496038
+      }
+    },
+    "@aws-cdk/aws-stepfunctions": {
+      "downloads": {
+        "npm": 317375
+      }
+    },
+    "@aws-cdk/aws-lambda-python": {
+      "downloads": {
+        "npm": 29697
+      }
+    },
+    "@aws-cdk/aws-servicecatalog": {
+      "downloads": {
+        "npm": 122770
+      }
+    },
+    "@aws-cdk/aws-waf": {
+      "downloads": {
+        "npm": 14597
+      }
+    },
+    "@aws-cdk/aws-sns": {
+      "downloads": {
+        "npm": 465659
+      }
+    },
+    "@aws-cdk/aws-glue": {
+      "downloads": {
+        "npm": 39046
+      }
+    },
+    "@aws-cdk/lambda-layer-kubectl": {
+      "downloads": {
+        "npm": 59271
+      }
+    },
+    "@aws-cdk/aws-apigatewayv2-authorizers": {
+      "downloads": {
+        "npm": 19558
+      }
+    },
+    "@aws-cdk/aws-route53-patterns": {
+      "downloads": {
+        "npm": 13995
+      }
+    },
+    "@aws-cdk/aws-backup": {
+      "downloads": {
+        "npm": 21042
+      }
+    },
+    "@aws-cdk/aws-ecs-patterns": {
+      "downloads": {
+        "npm": 50112
+      }
+    },
+    "@aws-cdk/aws-stepfunctions-tasks": {
+      "downloads": {
+        "npm": 51492
+      }
+    },
+    "@aws-cdk/aws-greengrassv2": {
+      "downloads": {
+        "npm": 12488
+      }
+    },
+    "@aws-cdk/aws-ecs": {
+      "downloads": {
+        "npm": 330896
+      }
+    },
+    "@aws-cdk/aws-cognito": {
+      "downloads": {
+        "npm": 418868
+      }
+    },
+    "@aws-cdk/cx-api": {
+      "downloads": {
+        "npm": 1053093
+      }
+    },
+    "@aws-cdk/aws-ec2": {
+      "downloads": {
+        "npm": 508942
+      }
+    },
+    "@aws-cdk/aws-lakeformation": {
+      "downloads": {
+        "npm": 13715
+      }
+    },
+    "@aws-cdk/aws-events": {
+      "downloads": {
+        "npm": 524676
+      }
+    },
+    "@aws-cdk/aws-events-targets": {
+      "downloads": {
+        "npm": 308794
+      }
+    },
+    "@aws-cdk/aws-directoryservice": {
+      "downloads": {
+        "npm": 13170
+      }
+    },
+    "@aws-cdk/aws-datapipeline": {
+      "downloads": {
+        "npm": 13357
+      }
+    },
+    "@aws-cdk/aws-robomaker": {
+      "downloads": {
+        "npm": 12815
+      }
+    },
+    "@aws-cdk/aws-fsx": {
+      "downloads": {
+        "npm": 12978
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-sagemakerendpoint": {
+      "downloads": {
+        "npm": 101
+      }
+    },
+    "@aws-solutions-constructs/aws-eventbridge-lambda": {
+      "downloads": {
+        "npm": 259
+      }
+    },
+    "@aws-solutions-constructs/aws-s3-stepfunctions": {
+      "downloads": {
+        "npm": 72
+      }
+    },
+    "@opencdk8s/cdk8s-external-dns-route53": {
+      "downloads": {
+        "npm": 43
+      }
+    },
+    "@aws-cdk/aws-logs-destinations": {
+      "downloads": {
+        "npm": 36310
+      }
+    },
+    "@aws-cdk/aws-apigatewayv2-integrations": {
+      "downloads": {
+        "npm": 85523
+      }
+    },
+    "@aws-cdk/aws-servicecatalogappregistry": {
+      "downloads": {
+        "npm": 12114
+      }
+    },
+    "@aws-cdk/aws-route53recoveryreadiness": {
+      "downloads": {
+        "npm": 8633
+      }
+    },
+    "@aws-cdk/aws-s3outposts": {
+      "downloads": {
+        "npm": 11930
+      }
+    },
+    "@aws-cdk/aws-elasticloadbalancing": {
+      "downloads": {
+        "npm": 374644
+      }
+    },
+    "@aws-cdk/aws-elasticloadbalancingv2-targets": {
+      "downloads": {
+        "npm": 27059
+      }
+    },
+    "@aws-cdk/aws-codestar": {
+      "downloads": {
+        "npm": 12954
+      }
+    },
+    "@aws-cdk/aws-ses-actions": {
+      "downloads": {
+        "npm": 8550
+      }
+    },
+    "@aws-cdk/aws-s3-deployment": {
+      "downloads": {
+        "npm": 99035
+      }
+    },
+    "@opencdk8s/cdk8s-cluster-autoscaler-aws": {
+      "downloads": {
+        "npm": 43
+      }
+    },
+    "@aws-cdk/aws-route53-targets": {
+      "downloads": {
+        "npm": 361415
+      }
+    },
+    "@aws-cdk/aws-codegurureviewer": {
+      "downloads": {
+        "npm": 12746
+      }
+    },
+    "@aws-cdk/cloud-assembly-schema": {
+      "downloads": {
+        "npm": 1031464
+      }
+    },
+    "@aws-cdk/aws-iotevents": {
+      "downloads": {
+        "npm": 12939
+      }
+    },
+    "@aws-cdk/aws-finspace": {
+      "downloads": {
+        "npm": 11134
+      }
+    },
+    "@aws-cdk/aws-ivs": {
+      "downloads": {
+        "npm": 12902
+      }
+    },
+    "@aws-cdk/aws-licensemanager": {
+      "downloads": {
+        "npm": 12197
+      }
+    },
+    "@aws-cdk/aws-appconfig": {
+      "downloads": {
+        "npm": 14557
+      }
+    },
+    "@aws-cdk/aws-auditmanager": {
+      "downloads": {
+        "npm": 12179
+      }
+    },
+    "@aws-cdk/aws-detective": {
+      "downloads": {
+        "npm": 12649
+      }
+    },
+    "@aws-cdk/aws-dlm": {
+      "downloads": {
+        "npm": 13277
+      }
+    },
+    "@aws-cdk/aws-ram": {
+      "downloads": {
+        "npm": 14567
+      }
+    },
+    "@aws-cdk/aws-mediastore": {
+      "downloads": {
+        "npm": 19191
+      }
+    },
+    "@aws-cdk/aws-lambda-nodejs": {
+      "downloads": {
+        "npm": 113078
+      }
+    },
+    "@aws-cdk/aws-autoscaling-hooktargets": {
+      "downloads": {
+        "npm": 330530
+      }
+    },
+    "@aws-cdk/aws-msk": {
+      "downloads": {
+        "npm": 19963
+      }
+    },
+    "@aws-cdk/aws-cloudfront": {
+      "downloads": {
+        "npm": 384987
+      }
+    },
+    "@aws-cdk/aws-ssmincidents": {
+      "downloads": {
+        "npm": 10535
+      }
+    },
+    "@aws-cdk/aws-timestream": {
+      "downloads": {
+        "npm": 15515
+      }
+    },
+    "@aws-cdk/aws-codepipeline": {
+      "downloads": {
+        "npm": 310378
+      }
+    },
+    "@aws-cdk/aws-kinesis": {
+      "downloads": {
+        "npm": 352336
+      }
+    },
+    "@aws-cdk/aws-appsync": {
+      "downloads": {
+        "npm": 131004
+      }
+    },
+    "@aws-cdk/aws-kinesisfirehose": {
+      "downloads": {
+        "npm": 306488
+      }
+    },
+    "@aws-cdk/aws-elasticloadbalancingv2-actions": {
+      "downloads": {
+        "npm": 6229
+      }
+    },
+    "@aws-cdk/aws-datasync": {
+      "downloads": {
+        "npm": 12363
+      }
+    },
+    "@seeebiii/projen-test": {
+      "downloads": {
+        "npm": 104
+      }
+    },
+    "@aws-cdk/aws-apprunner": {
+      "downloads": {
+        "npm": 10534
+      }
+    },
+    "@aws-cdk/aws-lookoutmetrics": {
+      "downloads": {
+        "npm": 11321
+      }
+    },
+    "@aws-cdk/aws-iot": {
+      "downloads": {
+        "npm": 20252
+      }
+    },
+    "@aws-cdk/aws-applicationinsights": {
+      "downloads": {
+        "npm": 12654
+      }
+    },
+    "@aws-cdk/aws-networkmanager": {
+      "downloads": {
+        "npm": 12684
+      }
+    },
+    "@aws-cdk/aws-nimblestudio": {
+      "downloads": {
+        "npm": 11319
+      }
+    },
+    "@aws-cdk/aws-redshift": {
+      "downloads": {
+        "npm": 16716
+      }
+    },
+    "@aws-cdk/aws-cloudwatch-actions": {
+      "downloads": {
+        "npm": 92875
+      }
+    },
+    "@aws-cdk/aws-sagemaker": {
+      "downloads": {
+        "npm": 23365
+      }
+    },
+    "@aws-cdk/aws-s3objectlambda": {
+      "downloads": {
+        "npm": 11838
+      }
+    },
+    "@aws-cdk/lambda-layer-awscli": {
+      "downloads": {
+        "npm": 136079
+      }
+    },
+    "@aws-cdk/aws-elasticsearch": {
+      "downloads": {
+        "npm": 152946
+      }
+    },
+    "@aws-cdk/alexa-ask": {
+      "downloads": {
+        "npm": 12899
+      }
+    },
+    "@nomadblacky/hello-cdk-lib": {
+      "downloads": {
+        "npm": 16
+      }
+    },
+    "@renovosolutions/aws-cdk-managed-instance-role": {
+      "downloads": {
+        "npm": 4
+      }
+    },
+    "@softchef/cdk-vue": {
+      "downloads": {
+        "npm": 449
+      }
+    },
+    "@wheatstalk/cdk-cloudfront-rules": {
+      "downloads": {
+        "npm": 322
+      }
+    },
+    "@wheatstalk/cdk-git-tags": {
+      "downloads": {
+        "npm": 314
+      }
+    },
+    "@softchef/cdk-restapi": {
+      "downloads": {
+        "npm": 496
+      }
+    },
+    "@wheatstalk/cdk-crashy-task-metrics": {
+      "downloads": {
+        "npm": 322
+      }
+    },
+    "@softchef/cdk-schedule-function": {
+      "downloads": {
+        "npm": 176
+      }
+    },
+    "@wheatstalk/fargate-spot-fallback": {
+      "downloads": {
+        "npm": 23
+      }
+    },
+    "@wheatstalk/cdk-intrinsic-validator": {
+      "downloads": {
+        "npm": 412
+      }
+    },
+    "@aws-cdk/aws-fms": {
+      "downloads": {
+        "npm": 12802
+      }
+    },
+    "@aws-cdk/aws-ce": {
+      "downloads": {
+        "npm": 12792
+      }
+    },
+    "@aws-cdk/aws-managedblockchain": {
+      "downloads": {
+        "npm": 12693
+      }
+    },
+    "@aws-cdk/aws-autoscaling-common": {
+      "downloads": {
+        "npm": 505623
+      }
+    },
+    "@aws-cdk/aws-cur": {
+      "downloads": {
+        "npm": 10311
+      }
+    },
+    "@aws-cdk/aws-networkfirewall": {
+      "downloads": {
+        "npm": 12589
+      }
+    },
+    "@aws-cdk/aws-autoscaling": {
+      "downloads": {
+        "npm": 346976
+      }
+    },
+    "@aws-cdk/aws-kinesisanalytics": {
+      "downloads": {
+        "npm": 20360
+      }
+    },
+    "@aws-cdk/aws-wafv2": {
+      "downloads": {
+        "npm": 55141
+      }
+    },
+    "@aws-cdk/aws-globalaccelerator": {
+      "downloads": {
+        "npm": 317545
+      }
+    },
+    "@aws-cdk/aws-amplify": {
+      "downloads": {
+        "npm": 18915
+      }
+    },
+    "@aws-cdk/aws-acmpca": {
+      "downloads": {
+        "npm": 18320
+      }
+    },
+    "@softchef/cdk-iot-device-management": {
+      "downloads": {
+        "npm": 336
+      }
+    },
+    "@smallcase/aws-cdk-microservice": {
+      "downloads": {
+        "npm": 4
+      }
+    },
+    "@aws-cdk/aws-mediaconnect": {
+      "downloads": {
+        "npm": 12188
+      }
+    },
+    "@aws-cdk/aws-quicksight": {
+      "downloads": {
+        "npm": 14548
+      }
+    },
+    "@aws-cdk/aws-codestarconnections": {
+      "downloads": {
+        "npm": 14402
+      }
+    },
+    "@aws-cdk/aws-dms": {
+      "downloads": {
+        "npm": 17761
+      }
+    },
+    "@aws-cdk/aws-transfer": {
+      "downloads": {
+        "npm": 14913
+      }
+    },
+    "@aws-cdk/aws-applicationautoscaling": {
+      "downloads": {
+        "npm": 503135
+      }
+    },
+    "@aws-cdk/aws-iotcoredeviceadvisor": {
+      "downloads": {
+        "npm": 10317
+      }
+    },
+    "@aws-cdk/aws-pinpoint": {
+      "downloads": {
+        "npm": 15694
+      }
+    },
+    "@aws-cdk/aws-iotsitewise": {
+      "downloads": {
+        "npm": 12618
+      }
+    },
+    "@aws-cdk/aws-ssm": {
+      "downloads": {
+        "npm": 512069
+      }
+    },
+    "@aws-cdk/aws-sam": {
+      "downloads": {
+        "npm": 388855
+      }
+    },
+    "@aws-cdk/aws-kinesisanalytics-flink": {
+      "downloads": {
+        "npm": 3279
+      }
+    },
+    "@aws-cdk/aws-iotfleethub": {
+      "downloads": {
+        "npm": 11321
+      }
+    },
+    "@aws-cdk/aws-ses": {
+      "downloads": {
+        "npm": 23600
+      }
+    },
+    "@aws-cdk/aws-sdb": {
+      "downloads": {
+        "npm": 12779
+      }
+    },
+    "@aws-cdk/aws-ecr-assets": {
+      "downloads": {
+        "npm": 503812
+      }
+    },
+    "@aws-cdk/aws-route53resolver": {
+      "downloads": {
+        "npm": 14577
+      }
+    },
+    "@aws-cdk/aws-lambda-go": {
+      "downloads": {
+        "npm": 2565
+      }
+    },
+    "@aws-cdk/aws-mediapackage": {
+      "downloads": {
+        "npm": 12459
+      }
+    },
+    "@aws-cdk/aws-iotanalytics": {
+      "downloads": {
+        "npm": 12911
+      }
+    },
+    "@aws-cdk/aws-macie": {
+      "downloads": {
+        "npm": 12696
+      }
+    },
+    "@aws-cdk/aws-sso": {
+      "downloads": {
+        "npm": 13102
+      }
+    },
+    "@aws-solutions-constructs/aws-eventbridge-stepfunctions": {
+      "downloads": {
+        "npm": 117
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-secretsmanager": {
+      "downloads": {
+        "npm": 112
+      }
+    },
+    "@aws-solutions-constructs/aws-dynamodbstreams-lambda": {
+      "downloads": {
+        "npm": 143
+      }
+    },
+    "@aws-solutions-constructs/aws-sns-sqs": {
+      "downloads": {
+        "npm": 142
+      }
+    },
+    "@aws-solutions-constructs/aws-dynamodb-stream-lambda-elasticsearch-kibana": {
+      "downloads": {
+        "npm": 105
+      }
+    },
+    "@aws-solutions-constructs/aws-events-rule-kinesisstreams": {
+      "downloads": {
+        "npm": 73
+      }
+    },
+    "@aws-solutions-constructs/aws-s3-lambda": {
+      "downloads": {
+        "npm": 316
+      }
+    },
+    "@aws-solutions-constructs/aws-s3-step-function": {
+      "downloads": {
+        "npm": 155
+      }
+    },
+    "@aws-solutions-constructs/aws-cognito-apigateway-lambda": {
+      "downloads": {
+        "npm": 182
+      }
+    },
+    "@aws-solutions-constructs/aws-events-rule-step-function": {
+      "downloads": {
+        "npm": 275
+      }
+    },
+    "@aws-solutions-constructs/aws-dynamodb-stream-lambda": {
+      "downloads": {
+        "npm": 203
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-elasticsearch-kibana": {
+      "downloads": {
+        "npm": 162
+      }
+    },
+    "@aws-solutions-constructs/aws-sqs-lambda": {
+      "downloads": {
+        "npm": 693
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-sns": {
+      "downloads": {
+        "npm": 226
+      }
+    },
+    "@aws-solutions-constructs/aws-cloudfront-apigateway-lambda": {
+      "downloads": {
+        "npm": 570
+      }
+    },
+    "@aws-solutions-constructs/aws-eventbridge-sns": {
+      "downloads": {
+        "npm": 68
+      }
+    },
+    "@aws-solutions-constructs/aws-s3-sqs": {
+      "downloads": {
+        "npm": 243
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-s3": {
+      "downloads": {
+        "npm": 174
+      }
+    },
+    "@aws-solutions-constructs/aws-eventbridge-sqs": {
+      "downloads": {
+        "npm": 199
+      }
+    },
+    "@cloudcomponents/cdk-wordpress": {
+      "downloads": {
+        "npm": 35
+      }
+    },
+    "@pahud/cdktf-aws-eks": {
+      "downloads": {
+        "npm": 357
+      }
+    },
+    "@aws-cdk/aws-signer": {
+      "downloads": {
+        "npm": 443929
+      }
+    },
+    "@rayova/cdk-serverless-nextjs": {
+      "downloads": {
+        "npm": 1575
+      }
+    },
+    "@pahud/cdktf-aws-ecs": {
+      "downloads": {
+        "npm": 325
+      }
+    },
+    "@aws-cdk/assets-docker": {
+      "downloads": {
+        "npm": 155
+      }
+    },
+    "@aws-cdk/aws-quickstarts": {
+      "downloads": {
+        "npm": 48
+      }
+    },
+    "@aws-cdk/runtime-values": {
+      "downloads": {
+        "npm": 111
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-sagemaker": {
+      "downloads": {
+        "npm": 4
+      }
+    },
+    "@aws-solutions-constructs/aws-iot-kinesisstreams": {
+      "downloads": {
+        "npm": 49
+      }
+    },
+    "@aws-cdk/aws-healthlake": {
+      "downloads": {
+        "npm": 5490
+      }
+    },
+    "@aws-cdk/aws-aps": {
+      "downloads": {
+        "npm": 5497
+      }
+    },
+    "@aws-solutions-constructs/aws-iot-sqs": {
+      "downloads": {
+        "npm": 57
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-eventbridge": {
+      "downloads": {
+        "npm": 75
+      }
+    },
+    "@aws-cdk/aws-opensearchservice": {
+      "downloads": {
+        "npm": 6896
+      }
+    },
+    "@aws-solutions-constructs/aws-wafwebacl-apigateway": {
+      "downloads": {
+        "npm": 72
+      }
+    },
+    "@aws-solutions-constructs/aws-lambda-stepfunctions": {
+      "downloads": {
+        "npm": 193
+      }
+    },
+    "@aws-solutions-constructs/core": {
+      "downloads": {
+        "npm": 4883
+      }
+    },
+    "@epilot/cdk-constructs": {
+      "downloads": {
+        "npm": 49
+      }
+    },
+    "@aws-solutions-constructs/aws-wafwebacl-cloudfront": {
+      "downloads": {
+        "npm": 50
+      }
+    },
+    "@aws-cdk/aws-memorydb": {
+      "downloads": {
+        "npm": 3497
+      }
+    },
+    "@aws-cdk/lambda-layer-node-proxy-agent": {
+      "downloads": {
+        "npm": 18193
+      }
+    },
+    "@aws-cdk/aws-lightsail": {
+      "downloads": {
+        "npm": 3091
+      }
+    },
+    "@aws-cdk/aws-cloud9-alpha": {
+      "downloads": {
+        "npm": 72
+      }
+    },
+    "@aws-cdk/aws-codestar-alpha": {
+      "downloads": {
+        "npm": 66
+      }
+    },
+    "@aws-cdk/aws-neptune-alpha": {
+      "downloads": {
+        "npm": 66
+      }
+    },
+    "@aws-cdk/aws-appsync-alpha": {
+      "downloads": {
+        "npm": 65
+      }
+    },
+    "@aws-cdk/aws-batch-alpha": {
+      "downloads": {
+        "npm": 67
+      }
+    },
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": {
+      "downloads": {
+        "npm": 73
+      }
+    },
+    "@aws-cdk/aws-ivs-alpha": {
+      "downloads": {
+        "npm": 66
+      }
+    },
+    "@aws-cdk/aws-servicecatalogappregistry-alpha": {
+      "downloads": {
+        "npm": 68
+      }
+    },
+    "@aws-cdk/aws-synthetics-alpha": {
+      "downloads": {
+        "npm": 69
+      }
+    },
+    "@aws-cdk/aws-apigatewayv2-alpha": {
+      "downloads": {
+        "npm": 72
+      }
+    },
+    "@aws-cdk/aws-msk-alpha": {
+      "downloads": {
+        "npm": 70
+      }
+    },
+    "@aws-cdk/aws-kinesisfirehose-destinations-alpha": {
+      "downloads": {
+        "npm": 67
+      }
+    },
+    "@aws-cdk/aws-glue-alpha": {
+      "downloads": {
+        "npm": 70
+      }
+    },
+    "@aws-cdk/aws-kinesisanalytics-flink-alpha": {
+      "downloads": {
+        "npm": 72
+      }
+    },
+    "@aws-cdk/aws-kinesisfirehose-alpha": {
+      "downloads": {
+        "npm": 66
+      }
+    },
+    "@aws-cdk/aws-apigatewayv2-authorizers-alpha": {
+      "downloads": {
+        "npm": 68
+      }
+    },
+    "@aws-cdk/aws-servicecatalog-alpha": {
+      "downloads": {
+        "npm": 69
+      }
+    },
+    "@aws-cdk/aws-amplify-alpha": {
+      "downloads": {
+        "npm": 66
+      }
+    },
+    "@aws-cdk/aws-lambda-go-alpha": {
+      "downloads": {
+        "npm": 67
+      }
+    },
+    "@aws-cdk/aws-redshift-alpha": {
+      "downloads": {
+        "npm": 68
+      }
+    },
+    "@aws-cdk/aws-apprunner-alpha": {
+      "downloads": {
+        "npm": 68
+      }
+    },
+    "@aws-cdk/aws-route53resolver-alpha": {
+      "downloads": {
+        "npm": 66
+      }
+    },
+    "@aws-cdk/assertions-alpha": {
+      "downloads": {
+        "npm": 67
+      }
+    },
+    "cdk-constants": {
+      "downloads": {
+        "npm": 5786
+      }
+    },
+    "cdk-iam-generator": {
+      "downloads": {
+        "npm": 282
+      }
+    },
+    "cdk-cicd": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "secure-bucket": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "nodejsfunction-plus": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-tweet-queue": {
+      "downloads": {
+        "npm": 335
+      }
+    },
+    "cicd-spa-website": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-secrets": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "aws-cdk-featureflags": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "sqs-redrive-construct": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-sqs-monitored": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-github-import": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "sqs-redrive": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "aws-lambda-golang": {
+      "downloads": {
+        "npm": 60
+      }
+    },
+    "cdk-athena-workgroup": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-watchful-edge": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-time-bomb": {
+      "downloads": {
+        "npm": 154
+      }
+    },
+    "cdk-elasticache-monitor": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-serverless-api": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "aws-cdk-dynamodb-seeder": {
+      "downloads": {
+        "npm": 805
+      }
+    },
+    "cdk-stepfunctions-patterns": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "p82yf-libocr": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "monocdk-experiment": {
+      "downloads": {
+        "npm": 19
+      }
+    },
+    "cdk-website": {
+      "downloads": {
+        "npm": 5
+      }
+    },
+    "cdk-iam-constants": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk8s-plus": {
+      "downloads": {
+        "npm": 1425
+      }
+    },
+    "cdk8s-op": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk8s-aws-alb-ingress-controller": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-noob": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-image-builder-patterns": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-mediapackage-custom": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "crossplane-cdk8s": {
+      "downloads": {
+        "npm": 3
+      }
+    },
+    "gradle_s3_uploader": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-bar": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-alps-graph-ql": {
+      "downloads": {
+        "npm": 3
+      }
+    },
+    "aws-cdk-ssm-parameter": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-cloudfront-deploy": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "jossaq-demo-backend": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-alps-spec-rest-api": {
+      "downloads": {
+        "npm": 3
+      }
+    },
+    "cdk-serverless-video-transcoder": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk3": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-personalize-datasetgroup": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdkactions": {
+      "downloads": {
+        "npm": 375
+      }
+    },
+    "cdk-distributed-computing": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cloudwatch-dashboard": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-bucket-deployment-expirator": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "umami-analytics-construct": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk8s-redis-sts": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk8s-mongo-sts": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "jacobitegboje": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-basic-site-monitor": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-s3-bucketreplication": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk8s-external-dns": {
+      "downloads": {
+        "npm": 40
+      }
+    },
+    "aws-cdk-ssm-sdk-parameter": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "aws_budget_notifier": {
+      "downloads": {
+        "npm": 35
+      }
+    },
+    "p6-barrier": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "aws-sso-mapper": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-stack-resource-rename": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk8s-image": {
+      "downloads": {
+        "npm": 355
+      }
+    },
+    "cdk-ssm-parameter-store": {
+      "downloads": {
+        "npm": 7
+      }
+    },
+    "jfrog-cdk-constructs": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-db-migration": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-athena": {
+      "downloads": {
+        "npm": 10
+      }
+    },
+    "cdk-valheim": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-quicksight-constructs": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-stack-parameters-shared-via-ssm": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-ssm-document": {
+      "downloads": {
+        "npm": 23
+      }
+    },
+    "aws-cdk-billing-alarm": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "mock-cdk-serverless-website-construct": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-datadog-integration": {
+      "downloads": {
+        "npm": 250
+      }
+    },
+    "projen-example": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "cdk-webapp-tools": {
+      "downloads": {
+        "npm": 21
+      }
+    },
+    "psconstructs": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "aws-cdk-packages": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdktf-nodejs-function": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-ec2-key-pair": {
+      "downloads": {
+        "npm": 4825
+      }
+    },
+    "aws-cdk-build-badge": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-k3s-cluster": {
+      "downloads": {
+        "npm": 56
+      }
+    },
+    "cdk-iot-core-certificates": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "user-pool-identity-provider-github": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-ses-smtp-secret": {
+      "downloads": {
+        "npm": 46
+      }
+    },
+    "cdk-ses-managed-domain": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-ses-helpers": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-serverless-php-mpa": {
+      "downloads": {
+        "npm": 23
+      }
+    },
+    "cdk-appsync-transformer": {
+      "downloads": {
+        "npm": 466
+      }
+    },
+    "cdk-construct-website": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "projen-study": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-changelog-slack-notify": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "aws-cdk-image-resize": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "django-cdk": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-user-pool-identity-provider-github": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "platform-constructs": {
+      "downloads": {
+        "npm": 2
+      }
+    },
+    "datadog-cdk-constructs": {
+      "downloads": {
+        "npm": 7306
+      }
+    },
+    "cdk-libs": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cloudstructs": {
+      "downloads": {
+        "npm": 50
+      }
+    },
+    "cdk8s-aws-load-balancer-controller": {
+      "downloads": {
+        "npm": 131
+      }
+    },
+    "cloudwatch-alarms-to-teams": {
+      "downloads": {
+        "npm": 4
+      }
+    },
+    "cdk8s-grafana": {
+      "downloads": {
+        "npm": 222
+      }
+    },
+    "cdk-spa-deploy": {
+      "downloads": {
+        "npm": 405
+      }
+    },
+    "cdk-vscode-fargate": {
+      "downloads": {
+        "npm": 6
+      }
+    },
+    "initialized-dynamodb-table": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "halloumi-ami-pipelines": {
+      "downloads": {
+        "npm": 41
+      }
+    },
+    "mt-awscdk-construct": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-serverless-lamp": {
+      "downloads": {
+        "npm": 28
+      }
+    },
+    "mt-awscdk-constructs": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-keycloak": {
+      "downloads": {
+        "npm": 107
+      }
+    },
+    "cdk-construct-simple-nat": {
+      "downloads": {
+        "npm": 736
+      }
+    },
+    "spa-website": {
+      "downloads": {
+        "npm": 10
+      }
+    },
+    "cdk-drift-monitor": {
+      "downloads": {
+        "npm": 564
+      }
+    },
+    "cdk-utilities": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-efs-assets": {
+      "downloads": {
+        "npm": 8
+      }
+    },
+    "cdktf-snowflake": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-datalake-constructs": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "aws-rfdk": {
+      "downloads": {
+        "npm": 30
+      }
+    },
+    "cdktf-metaflow": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "halloumi-ses": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "synthetics-canaries-e2e-tests-runner": {
+      "downloads": {
+        "npm": 18
+      }
+    },
+    "cdk-soca": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-alexa-skill": {
+      "downloads": {
+        "npm": 30
+      }
+    },
+    "cdk-lambda-subminute": {
+      "downloads": {
+        "npm": 19
+      }
+    },
+    "projen-statemachine-example": {
+      "downloads": {
+        "npm": 5
+      }
+    },
+    "cdk-comprehend-s3olap": {
+      "downloads": {
+        "npm": 24
+      }
+    },
+    "cdk-databrew-cicd": {
+      "downloads": {
+        "npm": 22
+      }
+    },
+    "aws-cdk-static-https-site": {
+      "downloads": {
+        "npm": 8
+      }
+    },
+    "cdk-kaniko": {
+      "downloads": {
+        "npm": 15
+      }
+    },
+    "aws-cdk-lib": {
+      "downloads": {
+        "npm": 7643
+      }
+    },
+    "cdk-ecr-deployment": {
+      "downloads": {
+        "npm": 689
+      }
+    },
+    "monocdk": {
+      "downloads": {
+        "npm": 6127
+      }
+    },
+    "druid-cdk-construct": {
+      "downloads": {
+        "npm": 229
+      }
+    },
+    "construct-hub": {
+      "downloads": {
+        "npm": 436
+      }
+    },
+    "cdk-prowler": {
+      "downloads": {
+        "npm": 48
+      }
+    },
+    "cdk-ecr-image-scan-notify": {
+      "downloads": {
+        "npm": 74
+      }
+    },
+    "cdk-ecr-asset-scanner": {
+      "downloads": {
+        "npm": 38
+      }
+    },
+    "cdk-fargate-fastautoscaler": {
+      "downloads": {
+        "npm": 158
+      }
+    },
+    "webhook-filtered-pipeline": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-metaflow": {
+      "downloads": {
+        "npm": 4
+      }
+    },
+    "cdk-iam-floyd": {
+      "downloads": {
+        "npm": 6338
+      }
+    },
+    "cdk-remote-stack": {
+      "downloads": {
+        "npm": 482
+      }
+    },
+    "cdk-pipelines-github": {
+      "downloads": {
+        "npm": 108
+      }
+    },
+    "flywaymigrationconstruct": {
+      "downloads": {
+        "npm": 14
+      }
+    },
+    "cdk-codepipeline-bitbucket-build-result-reporter": {
+      "downloads": {
+        "npm": 44
+      }
+    },
+    "aws-analytics-reference-architecture": {
+      "downloads": {
+        "npm": 93
+      }
+    },
+    "cdk-http-pinger": {
+      "downloads": {
+        "npm": 419
+      }
+    },
+    "cdk-eksdistro": {
+      "downloads": {
+        "npm": 89
+      }
+    },
+    "eks-spot-blocks": {
+      "downloads": {
+        "npm": 737
+      }
+    },
+    "cdk-cloudfront-plus": {
+      "downloads": {
+        "npm": 337
+      }
+    },
+    "cdk-lambda-extensions": {
+      "downloads": {
+        "npm": 409
+      }
+    },
+    "cdk-lambda-bash": {
+      "downloads": {
+        "npm": 466
+      }
+    },
+    "cdk-fargate-run-task": {
+      "downloads": {
+        "npm": 422
+      }
+    },
+    "cdk-serverless-clamscan": {
+      "downloads": {
+        "npm": 384
+      }
+    },
+    "cdk-apisix": {
+      "downloads": {
+        "npm": 517
+      }
+    },
+    "cdk-sns-notify": {
+      "downloads": {
+        "npm": 280
+      }
+    },
+    "cdk-gitlab": {
+      "downloads": {
+        "npm": 424
+      }
+    },
+    "cdk-fargate-express": {
+      "downloads": {
+        "npm": 639
+      }
+    },
+    "cdk-aurora-globaldatabase": {
+      "downloads": {
+        "npm": 559
+      }
+    },
+    "cdk-events-notify": {
+      "downloads": {
+        "npm": 590
+      }
+    },
+    "cdk-nag": {
+      "downloads": {
+        "npm": 2841
+      }
+    },
+    "monocdk-serverless-clamscan": {
+      "downloads": {
+        "npm": 396
+      }
+    },
+    "monocdk-nag": {
+      "downloads": {
+        "npm": 586
+      }
+    },
+    "cdk-wordpress": {
+      "downloads": {
+        "npm": 310
+      }
+    },
+    "cdk-s3bucket-ng": {
+      "downloads": {
+        "npm": 619
+      }
+    },
+    "cdk-certbot-dns-route53": {
+      "downloads": {
+        "npm": 364
+      }
+    },
+    "cdk-gitlab-runner": {
+      "downloads": {
+        "npm": 669
+      }
+    },
+    "cdk-kubesphere": {
+      "downloads": {
+        "npm": 358
+      }
+    },
+    "cdk-ec2spot": {
+      "downloads": {
+        "npm": 52
+      }
+    },
+    "cdk-image-moderation": {
+      "downloads": {
+        "npm": 518
+      }
+    },
+    "cdktf-gitlab-runner": {
+      "downloads": {
+        "npm": 418
+      }
+    },
+    "cdk-ecrpublic-gc": {
+      "downloads": {
+        "npm": 379
+      }
+    },
+    "cdk-pipeline-status": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-notify-bucket": {
+      "downloads": {
+        "npm": 409
+      }
+    },
+    "cdk-automated-waf": {
+      "downloads": {
+        "npm": 51
+      }
+    },
+    "constructs": {
+      "downloads": {
+        "npm": 580790
+      }
+    },
+    "cdk-triggers": {
+      "downloads": {
+        "npm": 764
+      }
+    },
+    "cdk8s": {
+      "downloads": {
+        "npm": 17055
+      }
+    },
+    "cdk-spot-one": {
+      "downloads": {
+        "npm": 552
+      }
+    },
+    "cdk-fargate-patterns": {
+      "downloads": {
+        "npm": 172
+      }
+    },
+    "cdk-simplewebsite-deploy": {
+      "downloads": {
+        "npm": 82
+      }
+    },
+    "cdk-watchful": {
+      "downloads": {
+        "npm": 4838
+      }
+    },
+    "cdk-dynamo-table-viewer": {
+      "downloads": {
+        "npm": 1148
+      }
+    },
+    "cdk-serverless-airflow": {
+      "downloads": {
+        "npm": 9
+      }
+    },
+    "export-backend": {
+      "downloads": {
+        "npm": 4
+      }
+    },
+    "hiii-construct-utils": {
+      "downloads": {
+        "npm": 31
+      }
+    },
+    "kong-core": {
+      "downloads": {
+        "npm": 80
+      }
+    },
+    "kong-control-plane": {
+      "downloads": {
+        "npm": 32
+      }
+    },
+    "kong-data-plane": {
+      "downloads": {
+        "npm": 15
+      }
+    },
+    "s3module": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "udondan-test-package": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk8s-xray": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "jsii-publish-test": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "aws-cdk-appsync-transformer": {
+      "downloads": {
+        "npm": 22
+      }
+    },
+    "aws-bootstrap-kit": {
+      "downloads": {
+        "npm": 324
+      }
+    },
+    "my-construct": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "awscdk-81-patch": {
+      "downloads": {
+        "npm": 0
+      }
+    },
+    "cdk-ecr-image-scan-handler": {
+      "downloads": {
+        "npm": 135
+      }
+    },
+    "cdk8s-operator": {
+      "downloads": {
+        "npm": 7
+      }
+    },
+    "cdk8s-plus-17": {
+      "downloads": {
+        "npm": 6495
+      }
+    },
+    "aws-lambda-golang-cdk-v2": {
+      "downloads": {
+        "npm": 3
+      }
+    },
+    "lambda-opensearch-kibana": {
+      "downloads": {
+        "npm": 1
+      }
+    },
+    "cdk-stepfunctions-redshift": {
+      "downloads": {
+        "npm": 81
+      }
+    },
+    "flywaymigrationconstruct-monocdk": {
+      "downloads": {
+        "npm": 0
+      }
+    }
+  },
+  "updated": "2021-10-18T22:15:56.458Z"
+}

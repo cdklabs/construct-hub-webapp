@@ -4,13 +4,18 @@ export const API_PATHS = {
   ASSEMBLY_SUFFIX: "/assembly.json",
   METADATA_SUFFIX: "/metadata.json",
   CONFIG: "/config.json",
+  STATS: "/stats.json",
 } as const;
 
 export const QUERY_PARAMS = {
+  CDK_TYPE: "cdk",
   LANGUAGE: "lang",
+  LANGUAGES: "langs",
   OFFSET: "offset",
   SEARCH_QUERY: "q",
+  SORT: "sort",
   SUBMODULE: "submodule",
+  CDK_MAJOR: "cdkver",
 } as const;
 
 export const ROUTES = {
