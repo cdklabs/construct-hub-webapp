@@ -69,7 +69,9 @@ const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
 );
 
 export const CDKTypeTabs: FunctionComponent = () => {
-  const anyCDKType = useCatalogResults({ limit: 4 });
+  const anyCDKType = useCatalogResults({
+    limit: 4,
+  });
   const awscdk = useCatalogResults({
     cdkType: CDKType.awscdk,
     limit: 4,

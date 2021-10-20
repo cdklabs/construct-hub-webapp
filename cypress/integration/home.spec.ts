@@ -279,7 +279,10 @@ describe("Home (Redesign / WIP)", () => {
         cy.getByDataTest(homeRedesign.cdkTypeSeeAllButton).eq(index).click();
         cy.url().should(
           "contain",
-          getSearchPath({ cdkType, sort: CatalogSearchSort.DownloadsDesc })
+          getSearchPath({
+            cdkType,
+            sort: cdkType ? CatalogSearchSort.DownloadsDesc : undefined,
+          })
         );
       };
 
