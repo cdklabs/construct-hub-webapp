@@ -45,7 +45,12 @@ const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
 
     const onSeeAllClick = () => {
       window.scrollTo(0, 0);
-      push(getSearchPath({ cdkType, sort: CatalogSearchSort.DownloadsDesc }));
+      push(
+        getSearchPath({
+          cdkType,
+          sort: cdkType ? CatalogSearchSort.DownloadsDesc : undefined,
+        })
+      );
     };
 
     return (

@@ -13,7 +13,7 @@ import { CatalogSearchSort } from "api/catalog-search/constants";
 
 describe("Home Page", () => {
   describe("Renders expected content", () => {
-    before(() => {
+    beforeEach(() => {
       cy.visitWithConfig("/", {
         featureFlags: { homeRedesign: false },
       });
@@ -45,15 +45,15 @@ describe("Home Page", () => {
 });
 
 describe("Home (Redesign / WIP)", () => {
-  beforeEach(() => {
-    cy.visitWithConfig("/", {
-      featureFlags: {
-        homeRedesign: true,
-      },
-    });
-  });
-
   describe("Hero Section", () => {
+    beforeEach(() => {
+      cy.visitWithConfig("/", {
+        featureFlags: {
+          homeRedesign: true,
+        },
+      });
+    });
+
     it("has heading and subtitle", () => {
       cy.getByDataTest(homeRedesign.heroHeader).should("be.visible");
       cy.getByDataTest(homeRedesign.heroSubtitle).should("be.visible");
@@ -76,6 +76,14 @@ describe("Home (Redesign / WIP)", () => {
   });
 
   describe("Informational Section", () => {
+    beforeEach(() => {
+      cy.visitWithConfig("/", {
+        featureFlags: {
+          homeRedesign: true,
+        },
+      });
+    });
+
     it("has expected sections and content", () => {
       cy.getByDataTest(homeRedesign.infoContainer)
         .should("be.visible")
@@ -136,6 +144,12 @@ describe("Home (Redesign / WIP)", () => {
 
   describe("Featured Section", () => {
     it("has a header and 4 cards", () => {
+      cy.visitWithConfig("/", {
+        featureFlags: {
+          homeRedesign: true,
+        },
+      });
+
       cy.getByDataTest(homeRedesign.featuredContainer)
         .should("be.visible")
         .within(() => {
