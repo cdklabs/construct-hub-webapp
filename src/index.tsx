@@ -9,6 +9,7 @@ import { ConfigProvider } from "./contexts/Config";
 import { ExternalLinkWarningProvider } from "./contexts/ExternalLinkWarning";
 import { SearchProvider } from "./contexts/Search";
 import { ShortbreadProvider } from "./contexts/Shortbread";
+import { StatsProvider } from "./contexts/Stats";
 import { Theme } from "./contexts/Theme";
 import { register } from "./register-service-worker";
 import { reportWebVitals } from "./reportWebVitals";
@@ -20,13 +21,15 @@ ReactDOM.render(
         <AnalyticsProvider>
           <ConfigProvider>
             <CatalogProvider>
-              <SearchProvider>
-                <Theme>
-                  <ExternalLinkWarningProvider>
-                    <App />
-                  </ExternalLinkWarningProvider>
-                </Theme>
-              </SearchProvider>
+              <StatsProvider>
+                <SearchProvider>
+                  <Theme>
+                    <ExternalLinkWarningProvider>
+                      <App />
+                    </ExternalLinkWarningProvider>
+                  </Theme>
+                </SearchProvider>
+              </StatsProvider>
             </CatalogProvider>
           </ConfigProvider>
         </AnalyticsProvider>
