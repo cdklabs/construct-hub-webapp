@@ -5,6 +5,6 @@ export const SORT_RENDER_MAP = {
   [CatalogSearchSort.NameDesc]: "Z-A",
   [CatalogSearchSort.PublishDateAsc]: "Oldest first",
   [CatalogSearchSort.PublishDateDesc]: "Newest first",
-  [CatalogSearchSort.DownloadsDesc]: "Popularity",
-  [CatalogSearchSort.DownloadsAsc]: "Popularity (reversed)",
+  [CatalogSearchSort.DownloadsDesc]: "Most downloads",
+  [CatalogSearchSort.DownloadsAsc]: "Least downloads",
 };

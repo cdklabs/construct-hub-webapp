@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { useHistory } from "react-router-dom";
+import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { getSearchPath } from "../../util/url";
@@ -59,9 +60,21 @@ const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
 
 export const CDKTypeTabs: FunctionComponent = () => {
   const anyCDKType = useCatalogResults({ limit: 4 });
-  const awscdk = useCatalogResults({ cdkType: CDKType.awscdk, limit: 4 });
-  const cdk8s = useCatalogResults({ cdkType: CDKType.cdk8s, limit: 4 });
-  const cdktf = useCatalogResults({ cdkType: CDKType.cdktf, limit: 4 });
+  const awscdk = useCatalogResults({
+    cdkType: CDKType.awscdk,
+    limit: 4,
+    sort: CatalogSearchSort.DownloadsDesc,
+  });
+  const cdk8s = useCatalogResults({
+    cdkType: CDKType.cdk8s,
+    limit: 4,
+    sort: CatalogSearchSort.DownloadsDesc,
+  });
+  const cdktf = useCatalogResults({
+    cdkType: CDKType.cdktf,
+    limit: 4,
+    sort: CatalogSearchSort.DownloadsDesc,
+  });
 
   return (
     <Flex

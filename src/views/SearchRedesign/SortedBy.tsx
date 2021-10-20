@@ -35,7 +35,7 @@ export const SortedBy: FunctionComponent = () => {
         >
           {selected}
         </MenuButton>
-        <MenuList zIndex="sticky">
+        <MenuList minW="180" zIndex="sticky">
           <MenuItem key="Relevance" onClick={() => setSort(undefined)}>
             Relevance
           </MenuItem>

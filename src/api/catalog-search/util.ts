@@ -37,7 +37,7 @@ const getDownloadsSort = (isAscending: boolean): SortFunction => {
       return (p1.downloads - p2.downloads) * (isAscending ? 1 : -1);
     } else {
       // break ties by alphabetical
-      return p1.name.localeCompare(p2.name) * (isAscending ? -1 : 1);
+      return getStrSort(!isAscending)(p1, p2);
     }
   };
 };
