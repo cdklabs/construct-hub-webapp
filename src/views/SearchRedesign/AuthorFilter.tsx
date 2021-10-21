@@ -1,5 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import { CheckboxFilter } from "./CheckboxFilter";
+import testIds from "./testIds";
 
 // TODO: This filter is currently non-functional
 export const AuthorFilter: FunctionComponent = () => {
@@ -15,6 +16,7 @@ export const AuthorFilter: FunctionComponent = () => {
 
   return (
     <CheckboxFilter
+      data-testid={testIds.authorFilter}
       name="Author"
       onValueChange={onAuthorsChange}
       options={[

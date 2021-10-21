@@ -3,6 +3,7 @@ import { Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { ArrowButton } from "../SearchResults/components/ArrowButton";
 import { GoToPage } from "../SearchResults/components/GoToPage";
+import testIds from "./testIds";
 
 export interface PageControlsProps {
   offset: number;
@@ -29,12 +30,19 @@ export const PageControls: FunctionComponent<PageControlsProps> = ({
       w="full"
     >
       <ArrowButton
+        data-testid={testIds.prevPage}
         getPageUrl={getPageUrl}
         icon={ChevronLeftIcon}
         offset={prevOffset}
       />
-      <GoToPage getPageUrl={getPageUrl} offset={offset} pageLimit={pageLimit} />
+      <GoToPage
+        data-testid={testIds.goToPage}
+        getPageUrl={getPageUrl}
+        offset={offset}
+        pageLimit={pageLimit}
+      />
       <ArrowButton
+        data-testid={testIds.nextPage}
         getPageUrl={getPageUrl}
         icon={ChevronRightIcon}
         offset={nextOffset}

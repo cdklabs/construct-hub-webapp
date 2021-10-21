@@ -5,11 +5,12 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Custom command to select DOM element by data-testid attribute
-     * @example cy.getByDataTest("header")
+     * Custom command to select DOM element by data-testid attribute or multiple data-testid attributes (treated as an OR)
+     * @example cy.getByDataTest("header");
+     * @example cy.getByDataTest(["header", "footer"]);
      */
     getByDataTest(
-      testId: string,
+      testId: string | string[],
       options?: Parameters<Chainable["get"]>[1]
     ): Chainable;
     /**

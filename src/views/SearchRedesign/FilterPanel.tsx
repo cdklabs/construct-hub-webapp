@@ -4,6 +4,7 @@ import { Card } from "../../components/Card";
 import { AuthorFilter } from "./AuthorFilter";
 import { CDKFilter } from "./CDKFilter";
 import { LanguageFilter } from "./LanguageFilter";
+import testIds from "./testIds";
 
 export interface FilterPanelProps {}
 
@@ -18,6 +19,7 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
     <Card
       borderRadius="none"
       boxShadow="none"
+      data-testid={testIds.filtersPanel}
       display={{ base: "none", md: "flex" }}
       maxH={`calc(100vh - ${TOP_OFFSET} - 1.25rem)`}
       maxW="23rem"
