@@ -12,8 +12,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { useHistory } from "react-router-dom";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
+import { NavLink } from "../../components/NavLink";
 import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { getSearchPath } from "../../util/url";
@@ -29,8 +29,8 @@ interface PackageTabProps {
 const PackageTab: FunctionComponent<PackageTabProps> = ({ cdkType, data }) => {
   return (
     <Tab
-      data-cdktype={cdkType}
       data-testid={testIds.cdkTypeTab}
+      data-value={cdkType}
       isDisabled={data.page.length < 1}
     >
       {cdkType ? CDKTYPE_RENDER_MAP[cdkType].name : "All CDKs"} (
@@ -41,32 +41,24 @@ const PackageTab: FunctionComponent<PackageTabProps> = ({ cdkType, data }) => {
 
 const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
   ({ cdkType, data, ...props }, ref) => {
-    const { push } = useHistory();
-
-    const onSeeAllClick = () => {
-      window.scrollTo(0, 0);
-      push(
-        getSearchPath({
-          cdkType,
-          sort: cdkType ? CatalogSearchSort.DownloadsDesc : undefined,
-        })
-      );
-    };
-
     return (
       <TabPanel data-testid={testIds.cdkTypeGrid} ref={ref} {...props} p={0}>
         <PackageGrid packages={data.page} />
 
         <Flex justify="center" w="full">
-          <Button
-            colorScheme="blue"
+          <NavLink
             data-testid={testIds.cdkTypeSeeAllButton}
-            my={8}
-            onClick={onSeeAllClick}
+            onClick={() => window.scrollTo(0, 0)}
+            to={getSearchPath({
+              cdkType,
+              sort: cdkType ? CatalogSearchSort.DownloadsDesc : undefined,
+            })}
           >
-            See all {cdkType ? CDKTYPE_RENDER_MAP[cdkType].name + " " : ""}
-            constructs
-          </Button>
+            <Button colorScheme="blue" my={8}>
+              See all {cdkType ? CDKTYPE_RENDER_MAP[cdkType].name + " " : ""}
+              constructs
+            </Button>
+          </NavLink>
         </Flex>
       </TabPanel>
     );

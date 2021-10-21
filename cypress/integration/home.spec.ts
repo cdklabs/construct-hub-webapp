@@ -13,7 +13,7 @@ import { CatalogSearchSort } from "api/catalog-search/constants";
 
 describe("Home Page", () => {
   describe("Renders expected content", () => {
-    beforeEach(() => {
+    before(() => {
       cy.visitWithConfig("/", {
         featureFlags: { homeRedesign: false },
       });
@@ -274,7 +274,7 @@ describe("Home (Redesign / WIP)", () => {
           cy.wrap(tab).click();
 
           if (cdkType) {
-            cy.wrap(tab).should("have.attr", "data-cdktype", cdkType);
+            cy.wrap(tab).should("have.attr", "data-value", cdkType);
           }
 
           // Verify current tab's package grid is visible and others are not
@@ -288,16 +288,18 @@ describe("Home (Redesign / WIP)", () => {
     });
     it("has a see all button which opens the correct search url", () => {
       const testSeeAll = (cdkType: CDKType | undefined, index: number) => {
-        cy.visitWithConfig("/", { featureFlags: { homeRedesign: true } });
         cy.getByDataTest(homeRedesign.cdkTypeTab).eq(index).click();
-        cy.getByDataTest(homeRedesign.cdkTypeSeeAllButton).eq(index).click();
-        cy.url().should(
-          "contain",
-          getSearchPath({
-            cdkType,
-            sort: cdkType ? CatalogSearchSort.DownloadsDesc : undefined,
-          })
-        );
+
+        cy.getByDataTest(homeRedesign.cdkTypeSeeAllButton)
+          .eq(index)
+          .should(
+            "have.attr",
+            "href",
+            getSearchPath({
+              cdkType,
+              sort: cdkType ? CatalogSearchSort.DownloadsDesc : undefined,
+            })
+          );
       };
 
       [undefined, CDKType.awscdk, CDKType.cdk8s, CDKType.cdktf].forEach(
