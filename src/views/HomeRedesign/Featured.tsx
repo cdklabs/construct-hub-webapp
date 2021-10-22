@@ -4,6 +4,7 @@ import { DEFAULT_FEATURED_PACKAGES } from "../../api/config";
 import { PackageCard } from "../../components/PackageCard";
 import { useConfigValue } from "../../hooks/useConfigValue";
 import { SECTION_PADDING } from "./constants";
+import testIds from "./testIds";
 import { useSection } from "./useSection";
 
 export const Featured: FunctionComponent = () => {
@@ -19,17 +20,28 @@ export const Featured: FunctionComponent = () => {
   }
 
   return (
-    <Flex direction="column" px={SECTION_PADDING.X} py={SECTION_PADDING.Y}>
+    <Flex
+      data-testid={testIds.featuredContainer}
+      direction="column"
+      px={SECTION_PADDING.X}
+      py={SECTION_PADDING.Y}
+    >
       <Heading
         as="h3"
         color="white"
+        data-testid={testIds.featuredHeader}
         fontSize="1.5rem"
         fontWeight="semibold"
         lineHeight="lg"
       >
         {featured.name}
       </Heading>
-      <Grid gap={4} mt={8} templateColumns={{ base: "1fr", lg: "1fr 1fr" }}>
+      <Grid
+        data-testid={testIds.featuredGrid}
+        gap={4}
+        mt={8}
+        templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+      >
         {section?.slice(0, 4).map((pkg) => (
           <PackageCard key={pkg.name} pkg={pkg} />
         ))}

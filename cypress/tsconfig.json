@@ -2,6 +2,11 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es2017", "dom"],
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
     "types": ["cypress"],
     "baseUrl": ".",
     "paths": {
