@@ -6,6 +6,7 @@ import {
 } from "../../constants/languages";
 import { CheckboxFilter } from "./CheckboxFilter";
 import { useSearchState } from "./SearchState";
+import testIds from "./testIds";
 
 const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
   .filter(([key]) => TEMP_SUPPORTED_LANGUAGES.has(key as Language))
@@ -29,6 +30,7 @@ export const LanguageFilter: FunctionComponent = () => {
 
   return (
     <CheckboxFilter
+      data-testid={testIds.languagesFilter}
       hint="Select one or more programming languages to filter by. Results will match at least one of the selected languages. If no languages are selected, results will not be filtered by langauges."
       name="Programming Language"
       onValueChange={onLanguagesChange}

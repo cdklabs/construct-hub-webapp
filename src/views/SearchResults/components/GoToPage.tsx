@@ -9,12 +9,14 @@ import {
 import { useHistory } from "react-router-dom";
 
 export interface GoToPageProps {
+  "data-testid"?: string;
   pageLimit: number;
   offset: number;
   getPageUrl: (params: { offset: number }) => string;
 }
 
 export const GoToPage: FunctionComponent<GoToPageProps> = ({
+  "data-testid": dataTestid,
   pageLimit,
   offset,
   getPageUrl,
@@ -40,6 +42,7 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
     <Flex align="center" as="form" mx={2} onSubmit={onSubmit}>
       <Input
         colorScheme="blue"
+        data-testid={dataTestid}
         h={10}
         max={pageLimit + 1}
         min={1}

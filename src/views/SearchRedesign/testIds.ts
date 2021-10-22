@@ -1,3 +1,21 @@
 import { createTestIds } from "../../util/createTestIds";
 
-export default createTestIds("searchRedesign", ["page"] as const);
+export default createTestIds("searchRedesign", [
+  "page",
+  // Results
+  "searchDetails",
+  "nextPage",
+  "prevPage",
+  "goToPage",
+  // Sorting
+  "sortButton",
+  "sortDropdown",
+  "sortItem",
+  // Filters Panel
+  "filtersPanel",
+  "cdkTypeFilter",
+  "cdkVersionFilter",
+  "filterItem",
+  "languagesFilter",
+  "authorFilter",
+] as const);

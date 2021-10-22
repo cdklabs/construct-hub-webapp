@@ -4,6 +4,7 @@ import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
 import { useSearchContext } from "../../contexts/Search";
 import { RadioFilter } from "./RadioFilter";
 import { useSearchState } from "./SearchState";
+import testIds from "./testIds";
 
 type CDKOptions = Partial<{
   [key in CDKType]: CatalogConstructFrameworkMeta & {
@@ -76,6 +77,7 @@ export const CDKFilter: FunctionComponent = () => {
   return (
     <>
       <RadioFilter
+        data-testid={testIds.cdkTypeFilter}
         hint="Constructs support distinct output types: AWS CDK libraries output Cloudformation Templates, CDK8s libraries output Kubernetes manifests, and CDKtf libraries output Terraform Configuration. The Construct Hub attempts to detect the output type of each library, but results are not guaranteed to be completely accurate."
         name="CDK Type"
         onValueChange={onCdkTypeChange}
@@ -88,6 +90,7 @@ export const CDKFilter: FunctionComponent = () => {
       {/* No point in showing major versions if only a single one is available */}
       {!!(majorsOptions && majorsOptions.length > 1) && (
         <RadioFilter
+          data-testid={testIds.cdkVersionFilter}
           hint={`Allows you to filter by a major version of your selected CDK Type: (${
             CDKTYPE_NAME_MAP[cdkType!]
           })`}
