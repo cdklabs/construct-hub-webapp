@@ -6,6 +6,7 @@ import {
   SearchSuggestions,
 } from "../../components/SearchBar";
 import { SECTION_PADDING } from "./constants";
+import testIds from "./testIds";
 
 export const Hero: FunctionComponent = () => {
   return (
@@ -20,10 +21,16 @@ export const Hero: FunctionComponent = () => {
       textAlign="center"
       zIndex="1"
     >
-      <Heading as="h1" size="xl">
+      <Heading as="h1" data-testid={testIds.heroHeader} size="xl">
         Build cloud infrastructure with reusable components
       </Heading>
-      <Heading as="h2" fontWeight="normal" mt={4} size="md">
+      <Heading
+        as="h2"
+        data-testid={testIds.heroSubtitle}
+        fontWeight="normal"
+        mt={4}
+        size="md"
+      >
         Open source registry for AWS CDK, CDKtf and CDK8s
       </Heading>
       <Box color="initial" maxW="36rem" mt={8} mx="auto" w="full">
