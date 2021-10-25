@@ -1,11 +1,7 @@
 import { Center, Divider, Flex, Grid, Spinner, Stack } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
-import {
-  Config,
-  PackageKeyword,
-  PackageTagConfig,
-} from "../../../../api/config";
+import { Config, PackageTagConfig } from "../../../../api/config";
 import type { Metadata } from "../../../../api/package/metadata";
 import { Card } from "../../../../components/Card";
 import { KEYWORD_IGNORE_LIST } from "../../../../constants/keywords";
@@ -24,7 +20,7 @@ interface PackageDetailsProps {
 
 /**
  * Renders the header section of a package. This includes
- * the Getting Started, Operator Area, and Publisher Area sections
+  //     },
  */
 export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
   assembly,
@@ -42,20 +38,33 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
     );
   }
 
-  const tags: PackageKeyword[] = [
-    ...(metadata?.data?.packageTags?.reduce(
-      (accum: PackageKeyword[], tag: PackageTagConfig): PackageKeyword[] => {
-        if (tag.keyword) {
-          return [...accum, tag.keyword];
-        }
-        return accum;
-      },
-      []
-    ) ?? []),
+  // const tags: PackageKeyword[] = [
+  //   ...(metadata?.data?.packageTags?.reduce(
+  //     (accum: PackageKeyword[], tag: PackageTagConfig): PackageKeyword[] => {
+  //       if (tag.keyword) {
+  //         return [...accum, tag.keyword];
+  //       }
+  //       return accum;
+  //     },
+  //     []
+  //   ) ?? []),
+  //   ...(assembly?.data?.keywords
+  //     ?.filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
+  //     .map((label) => ({
+  //       label,
+  //     })) ?? []),
+  // ];
+
+  const tags: PackageTagConfig[] = [
+    ...(metadata?.data?.packageTags?.filter((tag) => Boolean(tag.keyword)) ??
+      []),
     ...(assembly?.data?.keywords
       ?.filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
       .map((label) => ({
-        label,
+        id: label,
+        keyword: {
+          label,
+        },
       })) ?? []),
   ];
 

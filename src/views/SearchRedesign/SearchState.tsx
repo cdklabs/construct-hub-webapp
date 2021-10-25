@@ -11,7 +11,7 @@ import {
 } from "../../hooks/useCatalogSearch";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { LIMIT } from "../SearchResults/constants";
-import { parseLangs, toNum } from "./util";
+import { parseLangs, parseTags, toNum } from "./util";
 
 export interface SearchState {
   limit: number;
@@ -48,6 +48,7 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
   );
 
   const languages = parseLangs(queryParams.get(QUERY_PARAMS.LANGUAGES));
+  const tags = parseTags(queryParams.get(QUERY_PARAMS.TAGS));
 
   const sort = (queryParams.get(QUERY_PARAMS.SORT) ?? undefined) as
     | CatalogSearchSort
@@ -65,6 +66,7 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
     defaultLanguages: languages,
     defaultQuery: query,
     defaultSort: sort,
+    defaultTags: tags,
   });
 
   useEffect(() => {

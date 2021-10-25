@@ -43,6 +43,7 @@ export const WideCard: FunctionComponent = () => {
       },
       []
     ) ?? [];
+
   return (
     <LinkBox
       _hover={{

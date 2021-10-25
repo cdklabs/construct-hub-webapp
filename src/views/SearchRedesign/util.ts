@@ -16,3 +16,10 @@ export const parseLangs = (langQuery: string | null) => {
   const langs = decodeURIComponent(langQuery).split(",");
   return langs as Language[];
 };
+
+export const parseTags = (tagsQuery: string | null) => {
+  if (!tagsQuery) return [];
+
+  const langs = decodeURIComponent(tagsQuery).split(",");
+  return langs as Language[];
+};

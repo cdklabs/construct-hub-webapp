@@ -16,10 +16,12 @@ export interface PackageHighlight extends PackageKeyword {
 }
 
 export interface PackageTagConfig {
-  keyword: PackageKeyword;
-  highlight: PackageHighlight;
-  searchFilter: {
-    name: string;
+  id: string;
+  keyword?: PackageKeyword;
+  highlight?: PackageHighlight;
+  searchFilter?: {
+    groupBy: string;
+    display: string;
   };
 }
 

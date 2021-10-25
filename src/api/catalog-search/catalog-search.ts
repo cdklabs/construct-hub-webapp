@@ -42,6 +42,10 @@ export interface CatalogSearchFilters {
    * returned if they support any of the languages in this list.
    */
   languages?: Language[];
+  /**
+   * A list of tags to filter by.
+   */
+  tags?: string[];
 }
 
 export type CatalogSearchResults = Map<string, ExtendedCatalogPackage>;
@@ -170,7 +174,7 @@ export class CatalogSearchAPI {
     results: CatalogSearchResults,
     filters: CatalogSearchFilters
   ): CatalogSearchResults {
-    const { cdkType, cdkMajor, language, languages } = filters;
+    const { cdkType, cdkMajor, language, languages, tags } = filters;
     const copiedResults = new Map(results);
 
     const filterFunctions = [
@@ -179,6 +183,7 @@ export class CatalogSearchAPI {
       FILTER_FUNCTIONS.cdkMajor(cdkType ? cdkMajor : undefined),
       FILTER_FUNCTIONS.language(language),
       FILTER_FUNCTIONS.languages(languages),
+      FILTER_FUNCTIONS.tags(tags),
     ].filter(Boolean) as ((pkg: ExtendedCatalogPackage) => boolean)[];
 
     copiedResults.forEach((result) => {
