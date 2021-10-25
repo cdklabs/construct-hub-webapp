@@ -1,5 +1,6 @@
 import { Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import testIds from "./testIds";
 
 export interface SearchDetailsProps {
   limit: number;
@@ -25,7 +26,7 @@ export const SearchDetails: FunctionComponent<SearchDetailsProps> = ({
   const first = limit * offset;
   const last = first + limit;
   return (
-    <Text>
+    <Text data-testid={testIds.searchDetails}>
       Displaying{" "}
       <Em>
         {count ? first + 1 : count} - {last > count ? count : last}

@@ -6,9 +6,21 @@ export interface PackageLinkConfig {
   linkText?: string;
 }
 
-export interface PackageTagConfig {
+export interface PackageKeyword {
   label: string;
   color?: string;
+}
+
+export interface PackageHighlight extends PackageKeyword {
+  icon?: string;
+}
+
+export interface PackageTagConfig {
+  keyword: PackageKeyword;
+  highlight: PackageHighlight;
+  searchFilter: {
+    name: string;
+  };
 }
 
 /**

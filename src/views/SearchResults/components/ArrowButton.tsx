@@ -3,12 +3,14 @@ import type { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
 export interface ArrowButtonProps {
+  "data-testid"?: string;
   icon: FunctionComponent<IconProps>;
   offset?: number;
   getPageUrl: (params: { offset: number }) => string;
 }
 
 export const ArrowButton: FunctionComponent<ArrowButtonProps> = ({
+  "data-testid": dataTestid,
   icon: Icon,
   offset,
   getPageUrl,
@@ -20,6 +22,7 @@ export const ArrowButton: FunctionComponent<ArrowButtonProps> = ({
     borderRadius: "md",
     borderColor: "blue.500",
     colorScheme: "blue",
+    "data-testid": dataTestid,
     icon: <Icon color="blue.500" h={5} w={5} />,
     mx: 2,
     h: 10,

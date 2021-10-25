@@ -28,13 +28,13 @@ const {
 } = theme;
 
 export const makeTag = (config: PackageTagConfig[]) => {
-  const customVariants = config.reduce((accum, { color }) => {
-    return color
+  const customVariants = config.reduce((accum, { keyword }) => {
+    return keyword?.color
       ? {
           ...accum,
-          [color]: createVariant(base.variants.subtle, {
-            background: transparentize(color, 0.1),
-            color: color,
+          [keyword.color]: createVariant(base.variants.subtle, {
+            background: transparentize(keyword.color, 0.1),
+            color: keyword.color,
           }),
         }
       : accum;

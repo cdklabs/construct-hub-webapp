@@ -5,5 +5,10 @@
     "*omtrdc.net",
     "*.shortbread.aws.dev"
   ],
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 15000,
+  "retries": {
+    "runMode": 2,
+    "openMode": 1
+  }
 }

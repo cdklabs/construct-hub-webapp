@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { PackageTagConfig } from "../../api/config";
+import { PackageKeyword, PackageTagConfig } from "../../api/config";
 import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { PackageTag } from "../PackageTag";
 import { usePackageCard } from "./PackageCard";
@@ -11,8 +11,16 @@ export const Tags: FunctionComponent = () => {
   } = usePackageCard();
 
   // Official is special cased and shown in the Highlight
-  const tags: PackageTagConfig[] = [
-    ...packageTags.filter((t) => t.label !== "Official"),
+  const tags: PackageKeyword[] = [
+    ...packageTags.reduce(
+      (accum: PackageKeyword[], tag: PackageTagConfig): PackageKeyword[] => {
+        if (tag.keyword) {
+          return [...accum, tag.keyword];
+        }
+        return accum;
+      },
+      []
+    ),
     ...keywords
       .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
       .map((label) => ({

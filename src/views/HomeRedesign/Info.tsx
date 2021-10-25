@@ -9,10 +9,12 @@ import {
 } from "../../constants/languages";
 import { getSearchPath } from "../../util/url";
 import { InfoSection } from "./InfoSection";
+import testIds from "./testIds";
 
 export const Info: FunctionComponent = () => (
   <Grid
     bg="white"
+    data-testid={testIds.infoContainer}
     templateColumns={{ base: "1fr", lg: "1fr auto 1fr" }}
     templateRows={{ base: "1fr auto 1fr", lg: "1fr" }}
     textAlign="left"
@@ -28,6 +30,7 @@ export const Info: FunctionComponent = () => (
         {Object.entries(CDKTYPE_RENDER_MAP).map(
           ([cdktype, { name, imgsrc }]) => (
             <NavLink
+              data-testid={testIds.infoSectionIcon}
               key={cdktype}
               to={getSearchPath({ cdkType: cdktype as CDKType })}
             >
@@ -63,6 +66,7 @@ export const Info: FunctionComponent = () => (
           )
           .map(([language, { icon: Icon, name }]) => (
             <NavLink
+              data-testid={testIds.infoSectionIcon}
               key={language}
               to={getSearchPath({ languages: [language as Language] })}
             >

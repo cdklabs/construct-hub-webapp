@@ -1,7 +1,11 @@
 import { Center, Divider, Flex, Grid, Spinner, Stack } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
-import { Config } from "../../../../api/config";
+import {
+  Config,
+  PackageKeyword,
+  PackageTagConfig,
+} from "../../../../api/config";
 import type { Metadata } from "../../../../api/package/metadata";
 import { Card } from "../../../../components/Card";
 import { KEYWORD_IGNORE_LIST } from "../../../../constants/keywords";
@@ -37,11 +41,20 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
       </Center>
     );
   }
-  const tags = [
-    ...(metadata.data?.packageTags ?? []),
-    ...(assembly.data.keywords
+
+  const tags: PackageKeyword[] = [
+    ...(metadata?.data?.packageTags?.reduce(
+      (accum: PackageKeyword[], tag: PackageTagConfig): PackageKeyword[] => {
+        if (tag.keyword) {
+          return [...accum, tag.keyword];
+        }
+        return accum;
+      },
+      []
+    ) ?? []),
+    ...(assembly?.data?.keywords
       ?.filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
-      ?.map((label) => ({
+      .map((label) => ({
         label,
       })) ?? []),
   ];

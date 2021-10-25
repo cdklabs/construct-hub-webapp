@@ -1,13 +1,13 @@
 import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { PackageTagConfig } from "../../../../api/config";
+import { PackageKeyword } from "../../../../api/config";
 import { PackageTag } from "../../../../components/PackageTag";
 import { useLanguage } from "../../../../hooks/useLanguage";
 
 export interface PackageHeaderProps {
   title: string;
   description: string;
-  tags: PackageTagConfig[];
+  tags: PackageKeyword[];
   version: string;
 }
 
