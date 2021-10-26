@@ -4,6 +4,7 @@
 import { createContext, FunctionComponent, useContext, useEffect } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { CDKType } from "../../constants/constructs";
+import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import {
   UseCatalogSearchReturn,
@@ -11,7 +12,7 @@ import {
 } from "../../hooks/useCatalogSearch";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { LIMIT } from "../SearchResults/constants";
-import { parseLangs, parseTags, toNum } from "./util";
+import { parseQueryArray, toNum } from "./util";
 
 export interface SearchState {
   limit: number;
@@ -47,8 +48,10 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
     queryParams.get(QUERY_PARAMS.SEARCH_QUERY) ?? ""
   );
 
-  const languages = parseLangs(queryParams.get(QUERY_PARAMS.LANGUAGES));
-  const tags = parseTags(queryParams.get(QUERY_PARAMS.TAGS));
+  const languages: Language[] = parseQueryArray(
+    queryParams.get(QUERY_PARAMS.LANGUAGES)
+  );
+  const tags = parseQueryArray(queryParams.get(QUERY_PARAMS.TAGS));
 
   const sort = (queryParams.get(QUERY_PARAMS.SORT) ?? undefined) as
     | CatalogSearchSort

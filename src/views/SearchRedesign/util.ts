@@ -1,5 +1,3 @@
-import { Language } from "../../constants/languages";
-
 export const toNum = (val: string) => {
   const result = parseInt(val);
 
@@ -10,16 +8,10 @@ export const toNum = (val: string) => {
   return result;
 };
 
-export const parseLangs = (langQuery: string | null) => {
-  if (!langQuery) return [];
+export const parseQueryArray = <T extends string>(
+  queryString: string | null
+) => {
+  if (!queryString) return [];
 
-  const langs = decodeURIComponent(langQuery).split(",");
-  return langs as Language[];
-};
-
-export const parseTags = (tagsQuery: string | null) => {
-  if (!tagsQuery) return [];
-
-  const langs = decodeURIComponent(tagsQuery).split(",");
-  return langs as Language[];
+  return decodeURIComponent(queryString).split(",") as T[];
 };
