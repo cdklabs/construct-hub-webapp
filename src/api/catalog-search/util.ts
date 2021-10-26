@@ -86,6 +86,22 @@ const getCDKMajorFilter: FilterFunctionBuilder<
   return (pkg) => pkg.metadata?.constructFramework?.majorVersion === cdkMajor;
 };
 
+const getTagsFilter: FilterFunctionBuilder<CatalogSearchFilters["tags"]> = (
+  tags
+) => {
+  if (!tags || !tags.length) {
+    return undefined;
+  }
+
+  return (pkg) => {
+    return (
+      pkg.metadata?.packageTags?.some((tag) => {
+        return tags.includes(tag.id);
+      }) ?? false
+    );
+  };
+};
+
 export const SORT_FUNCTIONS: Record<CatalogSearchSort, SortFunction> = {
   [CatalogSearchSort.NameAsc]: getStrSort(true),
   [CatalogSearchSort.NameDesc]: getStrSort(false),
@@ -104,4 +120,5 @@ export const FILTER_FUNCTIONS: {
   cdkMajor: getCDKMajorFilter,
   language: getLanguageFilter,
   languages: getLanguagesFilter,
+  tags: getTagsFilter,
 };

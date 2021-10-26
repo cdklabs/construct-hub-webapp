@@ -1,9 +1,10 @@
 import { Center, Divider, Flex, Grid, Spinner, Stack } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent } from "react";
-import { Config } from "../../../../api/config";
+import { Config, PackageTagConfig } from "../../../../api/config";
 import type { Metadata } from "../../../../api/package/metadata";
 import { Card } from "../../../../components/Card";
+import { KEYWORD_IGNORE_LIST } from "../../../../constants/keywords";
 import type { UseRequestResponse } from "../../../../hooks/useRequest";
 import { LanguageSelection } from "../LanguageSelection";
 import { OperatorArea } from "../OperatorArea";
@@ -37,6 +38,19 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
     );
   }
 
+  const tags: PackageTagConfig[] = [
+    ...(metadata?.data?.packageTags?.filter((tag) => Boolean(tag.keyword)) ??
+      []),
+    ...(assembly?.data?.keywords
+      ?.filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
+      .map((label) => ({
+        id: label,
+        keyword: {
+          label,
+        },
+      })) ?? []),
+  ];
+
   return (
     <Flex as={Card} direction="column">
       <Grid
@@ -47,7 +61,7 @@ export const PackageDetails: FunctionComponent<PackageDetailsProps> = ({
       >
         <PackageHeader
           description={assembly.data.description}
-          tags={assembly.data.keywords ?? []}
+          tags={tags}
           title={assembly.data.name}
           version={version}
         />

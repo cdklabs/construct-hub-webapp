@@ -1,5 +1,30 @@
 import { API_PATHS } from "../../constants/url";
 
+export interface PackageLinkConfig {
+  linkLabel: string;
+  configKey: string;
+  linkText?: string;
+}
+
+export interface PackageKeyword {
+  label: string;
+  color?: string;
+}
+
+export interface PackageHighlight extends PackageKeyword {
+  icon?: string;
+}
+
+export interface PackageTagConfig {
+  id: string;
+  keyword?: PackageKeyword;
+  highlight?: PackageHighlight;
+  searchFilter?: {
+    groupBy: string;
+    display: string;
+  };
+}
+
 /**
  * Configuration for packages to feature on the home page.
  */
@@ -47,12 +72,6 @@ export interface FeaturedPackagesDetail {
   readonly comment?: string;
 }
 
-export interface PackageLinksConfig {
-  name: string;
-  value: string;
-  displayText?: string;
-}
-
 export interface FeatureFlags {
   homeRedesign?: boolean;
   searchRedesign?: boolean;
@@ -60,8 +79,9 @@ export interface FeatureFlags {
 
 export interface Config {
   featureFlags?: FeatureFlags;
-  packageLinks?: PackageLinksConfig[];
+  packageLinks?: PackageLinkConfig[];
   featuredPackages?: FeaturedPackages;
+  packageTags?: PackageTagConfig[];
 }
 
 export const DEFAULT_FEATURED_PACKAGES = {

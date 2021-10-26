@@ -1,10 +1,12 @@
 import { Grid, Stack, LinkBox, Divider } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { PackageTagConfig, PackageHighlight } from "../../api/config";
 import { makeGridAreas } from "../../util/css";
 import { Details } from "./Details";
 import { Heading } from "./Heading";
 import { Highlight } from "./Highlight";
 import { Languages } from "./Languages";
+import { usePackageCard } from "./PackageCard";
 import { Tags } from "./Tags";
 import testIds from "./testIds";
 
@@ -28,6 +30,20 @@ const gridAreasMobile = makeGridAreas(
 );
 
 export const WideCard: FunctionComponent = () => {
+  const highlights =
+    usePackageCard()?.metadata?.packageTags?.reduce(
+      (
+        accum: PackageHighlight[],
+        tag: PackageTagConfig
+      ): PackageHighlight[] => {
+        if (tag.highlight) {
+          return [...accum, tag.highlight];
+        }
+        return accum;
+      },
+      []
+    ) ?? [];
+
   return (
     <LinkBox
       _hover={{
@@ -78,7 +94,9 @@ export const WideCard: FunctionComponent = () => {
           templateColumns={{ base: "1fr 1fr", md: "initial" }}
           templateRows={{ base: "1fr 1fr", md: "initial" }}
         >
-          <Highlight />
+          {highlights.map((highlight) => (
+            <Highlight key={highlight.label} {...highlight} />
+          ))}
           <Details />
         </Grid>
 
