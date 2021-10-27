@@ -93,6 +93,7 @@ export const CDKTypeTabs: FunctionComponent = () => {
       direction="column"
       px={SECTION_PADDING.X}
       py={SECTION_PADDING.Y}
+      zIndex="0"
     >
       <Heading
         as="h3"

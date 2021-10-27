@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
+import githubSchema from "hast-util-sanitize/lib/github.json";
 import { FunctionComponent } from "react";
 import ReactMarkdown, {
   PluggableList,
@@ -50,9 +51,10 @@ const components: ReactMarkdownOptions["components"] = {
   ul: Ul,
 };
 
-// see https://github.com/rehypejs/rehype-sanitize#use
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-var ghSchema = require("hast-util-sanitize/lib/github");
+// see below comment
+const ghSchema: typeof githubSchema & { attributes: { span?: any } } = {
+  ...githubSchema,
+};
 
 // jsii-docgen adds these attributes to <span> elements embedded inside
 // headings in order to configure custom anchor ids.

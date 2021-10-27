@@ -1,15 +1,11 @@
 import { Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { ExternalLink } from "../../../../components/ExternalLink";
-import { Language } from "../../../../constants/languages";
+import { ExternalLink } from "../../components/ExternalLink";
+import { usePackageState } from "./PackageState";
 
-export interface PackageDocsErrorProps {
-  readonly language: Language;
-}
+export const PackageDocsError: FunctionComponent = () => {
+  const { language } = usePackageState();
 
-export const PackageDocsError: FunctionComponent<PackageDocsErrorProps> = ({
-  language,
-}) => {
   const issueLink = (
     <ExternalLink href="https://github.com/cdklabs/construct-hub-webapp/issues/new">
       issue

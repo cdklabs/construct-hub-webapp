@@ -3,8 +3,8 @@ import { Button, Divider, Stack, useDisclosure } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { QUERY_PARAMS } from "../../../../constants/url";
-import { useQueryParams } from "../../../../hooks/useQueryParams";
+import { QUERY_PARAMS } from "../../../constants/url";
+import { useQueryParams } from "../../../hooks/useQueryParams";
 import { SearchModal } from "./SearchModal";
 
 export interface ChooseSubmoduleProps {

@@ -1,8 +1,8 @@
 import { ChevronDownIcon, LinkIcon } from "@chakra-ui/icons";
 import { Menu, MenuButton, Button, MenuItem, MenuList } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { sanitizeVersion } from "../../../../api/package/util";
-import { NavLink } from "../../../../components/NavLink";
+import { sanitizeVersion } from "../../api/package/util";
+import { NavLink } from "../../components/NavLink";
 
 export interface DependencyDropdownProps {
   dependencies: {
@@ -13,6 +13,7 @@ export interface DependencyDropdownProps {
   };
 }
 
+// Keeping for reference when implementing dependency tab
 export const DependencyDropdown: FunctionComponent<DependencyDropdownProps> = ({
   dependencies,
 }) => {
