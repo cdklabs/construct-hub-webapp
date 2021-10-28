@@ -1,10 +1,8 @@
-import { useMediaQuery, useToken } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { LanguageBar } from "../../../components/LanguageBar";
 import { Language, LANGUAGES } from "../../../constants/languages";
 import { useLanguage } from "../../../hooks/useLanguage";
 import { usePackageState } from "../PackageState";
-import { LanguageDropdown } from "./LanguageDropdown";
 
 const languageSet = new Set(LANGUAGES);
 
@@ -12,9 +10,6 @@ export const LanguageSelection: FunctionComponent = () => {
   const state = usePackageState();
   const assembly = state.assembly.data;
   const language = state.language;
-
-  const mdBreakpoint = useToken("breakpoints", "md");
-  const [isMd] = useMediaQuery(`(min-width: ${mdBreakpoint})`);
 
   const [, setLanguage] = useLanguage({
     updateSaved: true,
@@ -45,5 +40,5 @@ export const LanguageSelection: FunctionComponent = () => {
     targetLanguages: targets.filter((target) => languageSet.has(target)),
   };
 
-  return isMd ? <LanguageDropdown {...props} /> : <LanguageBar {...props} />;
+  return <LanguageBar {...props} />;
 };
