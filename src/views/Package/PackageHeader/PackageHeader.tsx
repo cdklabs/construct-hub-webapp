@@ -16,6 +16,7 @@ export const PackageHeader: FunctionComponent = () => {
   return asm && meta ? (
     <HeaderContainer>
       <Heading
+        assembly={asm}
         description={asm.description}
         gridArea={GRID_AREAS.HEADING}
         metadata={meta}
