@@ -1,5 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { DevPreviewBanner } from "../../components/DevPreviewBanner";
 import { Page } from "../../components/Page";
 import { CDKTypeTabs } from "./CDKTypeTabs";
 import { Featured } from "./Featured";
@@ -24,6 +25,8 @@ export const HomeRedesign: FunctionComponent = () => {
         data-testid={testIds.page}
         direction="column"
       >
+        <DevPreviewBanner />
+
         <Hero />
 
         <Info />

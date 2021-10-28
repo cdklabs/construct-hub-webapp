@@ -1,6 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 import { FunctionComponent, lazy } from "react";
-import { Switch } from "react-router-dom";
+import { Switch, useLocation } from "react-router-dom";
 import { DevPreviewBanner } from "./components/DevPreviewBanner";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -22,6 +22,9 @@ export const App: FunctionComponent = () => {
   const { data, loading } = useConfig();
   const featureFlags = data?.featureFlags ?? {};
   const isRedesign = featureFlags?.homeRedesign || featureFlags?.searchRedesign;
+  const { pathname } = useLocation();
+
+  const showBanner = !isRedesign || (isRedesign && pathname !== "/");
 
   return (
     <Grid
@@ -34,7 +37,7 @@ export const App: FunctionComponent = () => {
       minH="100vh"
     >
       <Header />
-      {!loading && !isRedesign ? <DevPreviewBanner /> : <div />}
+      {!loading && showBanner ? <DevPreviewBanner /> : <div />}
       {loading ? (
         <PageLoader />
       ) : (
