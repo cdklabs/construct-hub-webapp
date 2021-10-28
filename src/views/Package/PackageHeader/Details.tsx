@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
 import { Fragment, FunctionComponent, ReactNode } from "react";
-import { PackageLinksConfig } from "../../../api/config";
+import { PackageLinkConfig } from "../../../api/config";
 import { Metadata } from "../../../api/package/metadata";
 import { PackageStats } from "../../../api/stats";
 import { ExternalLink } from "../../../components/ExternalLink";
@@ -57,7 +57,7 @@ const getDetailItemsFromPackage = ({
   assembly?: Assembly;
   metadata?: Metadata;
   stats?: PackageStats;
-  packageLinks?: PackageLinksConfig[];
+  packageLinks?: PackageLinkConfig[];
   name: string;
 }): ReactNode[] => {
   const items: ReactNode[] = [];
@@ -98,15 +98,15 @@ const getDetailItemsFromPackage = ({
 
     // Prioritize custom links when available
     if (packageLinks?.length) {
-      packageLinks.forEach(({ name: linkName, value, displayText }) => {
-        const target = (metadata?.packageLinks ?? {})[value];
+      packageLinks.forEach(({ linkLabel, configKey, linkText }) => {
+        const target = (metadata?.packageLinks ?? {})[configKey];
         if (target) {
           const link = (
-            <ExternalLink href={target}>{displayText ?? target}</ExternalLink>
+            <ExternalLink href={target}>{linkText ?? target}</ExternalLink>
           );
           items.push(
-            <WithLabel label={linkName}>
-              {linkName}: {link}
+            <WithLabel label={linkLabel}>
+              {linkLabel}: {link}
             </WithLabel>
           );
         }

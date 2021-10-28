@@ -14,6 +14,7 @@ export interface UseCatalogResultsOptions {
   language?: Language | null;
   languages?: Language[];
   sort?: CatalogSearchSort;
+  tags?: string[];
 }
 
 /**
@@ -29,15 +30,17 @@ export const useCatalogResults = ({
   language = null,
   languages,
   sort,
+  tags,
 }: UseCatalogResultsOptions) => {
   const filters = useMemo(
     () => ({
       cdkMajor,
       cdkType,
       language: language ?? undefined,
-      languages: languages,
+      languages,
+      tags,
     }),
-    [cdkMajor, cdkType, language, languages]
+    [cdkMajor, cdkType, language, languages, tags]
   );
 
   const results = useSearch({

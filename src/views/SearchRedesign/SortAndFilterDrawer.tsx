@@ -11,17 +11,16 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { AuthorFilter } from "./AuthorFilter";
 import { CDKFilter } from "./CDKFilter";
 import { LanguageFilter } from "./LanguageFilter";
 import { SortFilter } from "./SortFilter";
+import { TagFilter } from "./TagFilter";
 
 /**
  * The mobile filter Drawer (Bottomsheet in iOS terminology)
  */
 export const SortAndFilterDrawer: FunctionComponent = () => {
   const drawer = useDisclosure();
-
   return (
     <>
       <Button
@@ -49,7 +48,7 @@ export const SortAndFilterDrawer: FunctionComponent = () => {
 
               <LanguageFilter />
 
-              <AuthorFilter />
+              <TagFilter />
             </Stack>
           </DrawerBody>
         </DrawerContent>

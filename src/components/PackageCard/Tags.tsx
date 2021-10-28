@@ -1,43 +1,33 @@
 import { FunctionComponent } from "react";
-import { OFFICIAL_SCOPES } from "../../constants/constructs";
+import { PackageTagConfig } from "../../api/config";
 import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { PackageTag } from "../PackageTag";
 import { usePackageCard } from "./PackageCard";
 
-// TODO: Proper tag implemenation, this is only a visual placeholder
 export const Tags: FunctionComponent = () => {
-  const { keywords, name } = usePackageCard();
+  const {
+    keywords = [],
+    metadata: { packageTags = [] },
+  } = usePackageCard();
 
+  const tags: PackageTagConfig[] = [
+    ...packageTags.filter((tag) => Boolean(tag.keyword)),
+    ...keywords
+      .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
+      .map((label) => ({
+        id: label,
+        keyword: {
+          label,
+        },
+      })),
+  ];
   return (
     <>
-      {[
-        OFFICIAL_SCOPES.some((scope) => name.includes(scope)) ? (
-          <PackageTag
-            key="official"
-            label="official"
-            mr={1}
-            value="@aws-cdk"
-            variant="official"
-          >
-            Official
-          </PackageTag>
-        ) : null,
-        ...(keywords ?? [])
-          .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
-          .slice(0, 3)
-          .map((tag) => {
-            return (
-              <PackageTag
-                key={tag}
-                mr={1}
-                value={`"${tag}"`}
-                zIndex="0 !important"
-              >
-                {tag}
-              </PackageTag>
-            );
-          }),
-      ]}
+      {tags.slice(0, 3).map(({ id, keyword: { label, color } = {} }) => (
+        <PackageTag key={id} mr={1} value={id} variant={color}>
+          {label}
+        </PackageTag>
+      ))}
     </>
   );
 };

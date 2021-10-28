@@ -17,5 +17,4 @@ export default createTestIds("searchRedesign", [
   "cdkVersionFilter",
   "filterItem",
   "languagesFilter",
-  "authorFilter",
 ] as const);

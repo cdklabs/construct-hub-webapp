@@ -1,9 +1,9 @@
 import { Heading, Stack } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Card } from "../../components/Card";
-import { AuthorFilter } from "./AuthorFilter";
 import { CDKFilter } from "./CDKFilter";
 import { LanguageFilter } from "./LanguageFilter";
+import { TagFilter } from "./TagFilter";
 import testIds from "./testIds";
 
 export interface FilterPanelProps {}
@@ -36,7 +36,7 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
         </Heading>
         <CDKFilter />
         <LanguageFilter />
-        <AuthorFilter />
+        <TagFilter />
       </Stack>
     </Card>
   );

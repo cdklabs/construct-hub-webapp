@@ -109,7 +109,6 @@ describe("Search (Redesign / WIP)", () => {
           [
             searchRedesign.cdkTypeFilter,
             searchRedesign.languagesFilter,
-            searchRedesign.authorFilter,
           ].forEach((testid) => {
             cy.getByDataTest(testid).should("be.visible");
           });

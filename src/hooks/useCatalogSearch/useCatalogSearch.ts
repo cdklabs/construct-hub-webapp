@@ -20,6 +20,7 @@ export interface UseCatalogSearchParams {
   defaultLanguage?: UseCatalogSearchReturn["language"];
   defaultLanguages?: UseCatalogSearchReturn["languages"];
   defaultSort?: UseCatalogSearchReturn["sort"];
+  defaultTags?: UseCatalogSearchReturn["tags"];
 }
 
 interface NavigationParams {
@@ -43,6 +44,10 @@ export interface UseCatalogSearchReturn {
    * The list of languages being filtered
    */
   languages: Language[];
+  /**
+   * The list of tags being filtered
+   */
+  tags: string[];
   /**
    * Updates language state
    */
@@ -80,6 +85,10 @@ export interface UseCatalogSearchReturn {
    */
   setLanguages: Dispatch<SetStateAction<UseCatalogSearchReturn["languages"]>>;
   /**
+   * Tags list state setter
+   */
+  setTags: Dispatch<SetStateAction<UseCatalogSearchReturn["tags"]>>;
+  /**
    * Query state setter
    */
   setQuery: Dispatch<SetStateAction<UseCatalogSearchReturn["query"]>>;
@@ -111,6 +120,10 @@ export const useCatalogSearch = (
     UseCatalogSearchReturn["languages"]
   >(options.defaultLanguages ?? []);
 
+  const [tags, setTags] = useState<UseCatalogSearchReturn["tags"]>(
+    options.defaultTags ?? []
+  );
+
   const [language, setLanguage] = useState<UseCatalogSearchReturn["language"]>(
     options.defaultLanguage
   );
@@ -130,10 +143,18 @@ export const useCatalogSearch = (
     (opts) => {
       const navigate = opts?.replace ? replace : push;
       navigate(
-        getSearchPath({ cdkType, cdkMajor, language, languages, query, sort })
+        getSearchPath({
+          cdkType,
+          cdkMajor,
+          language,
+          languages,
+          query,
+          sort,
+          tags,
+        })
       );
     },
-    [cdkType, cdkMajor, language, languages, push, query, replace, sort]
+    [cdkType, cdkMajor, language, languages, push, query, replace, sort, tags]
   );
 
   const onSubmit: UseCatalogSearchReturn["onSubmit"] = useCallback(
@@ -159,10 +180,22 @@ export const useCatalogSearch = (
       setCdkType,
       setLanguage,
       setLanguages,
+      setTags,
       setQuery,
       setSort,
       sort,
+      tags,
     }),
-    [cdkMajor, cdkType, language, languages, onSearch, onSubmit, query, sort]
+    [
+      cdkMajor,
+      cdkType,
+      language,
+      languages,
+      onSearch,
+      onSubmit,
+      query,
+      sort,
+      tags,
+    ]
   );
 };

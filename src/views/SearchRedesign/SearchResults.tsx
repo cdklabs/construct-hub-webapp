@@ -18,7 +18,7 @@ export const SearchResults: FunctionComponent = () => {
   const { push } = useHistory();
 
   const { query, searchAPI, offset, limit } = useSearchState();
-  const { languages, sort, cdkType, cdkMajor, onSearch } = searchAPI;
+  const { languages, sort, cdkType, cdkMajor, onSearch, tags } = searchAPI;
 
   const { page, pageLimit, results } = useCatalogResults({
     offset,
@@ -28,6 +28,7 @@ export const SearchResults: FunctionComponent = () => {
     cdkMajor,
     cdkType,
     sort,
+    tags,
   });
 
   const getUrl = (
@@ -69,7 +70,7 @@ export const SearchResults: FunctionComponent = () => {
       onSearch({ replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sort, languages, cdkType, cdkMajor]);
+  }, [sort, languages, cdkType, cdkMajor, tags]);
 
   return (
     <Page

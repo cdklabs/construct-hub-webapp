@@ -73,6 +73,7 @@ export const getSearchPath = ({
   language,
   languages,
   sort,
+  tags,
 }: {
   cdkMajor?: string | number;
   query?: string;
@@ -81,6 +82,7 @@ export const getSearchPath = ({
   language?: Language;
   languages?: Language[];
   sort?: CatalogSearchSort;
+  tags?: string[];
 }) =>
   createURL(ROUTES.SEARCH, {
     [QUERY_PARAMS.SEARCH_QUERY]: query,
@@ -90,6 +92,7 @@ export const getSearchPath = ({
     [QUERY_PARAMS.LANGUAGES]: languages?.length ? languages.join(",") : null,
     [QUERY_PARAMS.SORT]: sort,
     [QUERY_PARAMS.OFFSET]: offset ?? 0,
+    [QUERY_PARAMS.TAGS]: tags?.length ? tags.join(",") : null,
   });
 
 export const getPackagePath = ({
