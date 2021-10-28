@@ -1,7 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 import { FunctionComponent, lazy } from "react";
 import { Switch } from "react-router-dom";
-import { DevPreviewBanner } from "./components/DevPreviewBanner";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { LazyRoute } from "./components/LazyRoute";
@@ -21,7 +20,6 @@ const SiteTerms = lazy(() => import("./views/SiteTerms"));
 export const App: FunctionComponent = () => {
   const { data, loading } = useConfig();
   const featureFlags = data?.featureFlags ?? {};
-  const isRedesign = featureFlags?.homeRedesign || featureFlags?.searchRedesign;
 
   return (
     <Grid
@@ -34,7 +32,6 @@ export const App: FunctionComponent = () => {
       minH="100vh"
     >
       <Header />
-      {!loading && !isRedesign ? <DevPreviewBanner /> : <div />}
       {loading ? (
         <PageLoader />
       ) : (

@@ -11,5 +11,14 @@ export const Title: FunctionComponent = () => (
       </Box>{" "}
       Hub
     </Link>
+    <Box
+      as="span"
+      color="gray.600"
+      fontSize={["xl", "xl", "2xl"]}
+      ml="5"
+      verticalAlign={["2%", "2%", "8%"]}
+    >
+      Developer Preview
+    </Box>
   </Heading>
 );
