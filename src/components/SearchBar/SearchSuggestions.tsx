@@ -65,7 +65,7 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
     >
       {recommendations.map((pkg: ExtendedCatalogPackage, i) => {
         const navigate = () => push(getPackagePath(pkg));
-        const hasIcon = !!pkg.metadata?.constructFramework?.name;
+        const hasIcon = Boolean(pkg.metadata?.constructFramework?.name);
 
         return (
           <>
