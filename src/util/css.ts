@@ -10,8 +10,14 @@
  *  ["aside", "main", "main"],
  *  ["aside", "footer", "footer"]
  * ); // `"header header header" "aside main main" "aside footer footer"`
+ *
+ * const withBlank = makeGridAreas(
+ *   ["header", null, "main"]
+ * ); // `"header . main"`
  * ```
  */
-export const makeGridAreas = (...rows: string[][]): string => {
-  return rows.map((row) => `"${row.join(" ")}"`).join(" ");
+export const makeGridAreas = (...rows: (string | null)[][]): string => {
+  return rows
+    .map((row) => `"${row.map((col) => col ?? ".").join(" ")}"`)
+    .join(" ");
 };

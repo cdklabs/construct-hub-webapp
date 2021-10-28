@@ -74,6 +74,7 @@ export const Install: FunctionComponent<FlexProps> = (props) => {
             closeText="Hide"
             fontSize="inherit"
             isOpen={collapse.isOpen}
+            mt={2}
             onClick={collapse.onToggle}
             openText="Install"
           />
@@ -97,8 +98,8 @@ export const Install: FunctionComponent<FlexProps> = (props) => {
           language={language as PrismLanguage}
           lineHeight="2"
           sx={{
-            "> *": {
-              py: 1,
+            "> div": {
+              p: 1,
             },
           }}
         />

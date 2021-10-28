@@ -1,22 +1,28 @@
-import type { Assembly } from "@jsii/spec";
-import type { FunctionComponent } from "react";
+import { useMediaQuery, useToken } from "@chakra-ui/react";
+import { FunctionComponent, useEffect } from "react";
 import { LanguageBar } from "../../../components/LanguageBar";
 import { Language, LANGUAGES } from "../../../constants/languages";
 import { useLanguage } from "../../../hooks/useLanguage";
-
-export interface LanguageSelectionProps {
-  assembly: Assembly;
-}
+import { usePackageState } from "../PackageState";
+import { LanguageDropdown } from "./LanguageDropdown";
 
 const languageSet = new Set(LANGUAGES);
 
-export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
-  assembly,
-}) => {
-  const [language, setLanguage] = useLanguage({
+export const LanguageSelection: FunctionComponent = () => {
+  const state = usePackageState();
+  const assembly = state.assembly.data;
+  const language = state.language;
+
+  const mdBreakpoint = useToken("breakpoints", "md");
+  const [isMd] = useMediaQuery(`(min-width: ${mdBreakpoint})`);
+
+  const [, setLanguage] = useLanguage({
     updateSaved: true,
     updateUrl: true,
   });
+
+  const [, changeLanguage] = useLanguage({ updateUrl: true });
+
   const targets = [
     ...Object.keys(assembly?.targets ?? {}),
     // typescript is the source language and hence always supported.
@@ -24,11 +30,20 @@ export const LanguageSelection: FunctionComponent<LanguageSelectionProps> = ({
     Language.TypeScript,
   ] as Language[];
 
-  return (
-    <LanguageBar
-      selectedLanguage={targets.includes(language) ? language : targets[0]}
-      setSelectedLanguage={setLanguage}
-      targetLanguages={targets.filter((target) => languageSet.has(target))}
-    />
-  );
+  const selectedIsValid = targets.includes(language);
+
+  useEffect(() => {
+    if (!selectedIsValid) {
+      changeLanguage(Language.TypeScript);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedIsValid]);
+
+  const props = {
+    selectedLanguage: selectedIsValid ? language : Language.TypeScript,
+    setSelectedLanguage: setLanguage,
+    targetLanguages: targets.filter((target) => languageSet.has(target)),
+  };
+
+  return isMd ? <LanguageDropdown {...props} /> : <LanguageBar {...props} />;
 };

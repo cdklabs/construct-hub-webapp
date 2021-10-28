@@ -8,7 +8,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
-import { FunctionComponent, ReactNode } from "react";
+import { Fragment, FunctionComponent, ReactNode } from "react";
 import { PackageLinksConfig } from "../../../api/config";
 import { Metadata } from "../../../api/package/metadata";
 import { PackageStats } from "../../../api/stats";
@@ -37,7 +37,7 @@ const WithLabel: FunctionComponent<{ label: ReactNode }> = ({
 
 const Downloads: FunctionComponent<{ downloads: number }> = ({ downloads }) => (
   <Stack align="center" direction="row" spacing={1}>
-    <DownloadIcon />
+    <DownloadIcon color="gray.700" />
     <Text>
       <Box as="span" color="blue.500">
         {downloads.toLocaleString()}
@@ -132,7 +132,7 @@ const getDetailItemsFromPackage = ({
     }
   }
 
-  return items;
+  return items.map((item, i) => <Fragment key={i}>{item}</Fragment>);
 };
 
 export const Details: FunctionComponent<DetailsProps> = (props) => {
@@ -143,7 +143,7 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
 
   const assembly = state.assembly.data;
   const metadata = state.metadata.data;
-  const name = [state.scope, state.name].join("/");
+  const name = state.scope ? `${state.scope}/${state.name}` : state.name;
 
   const items = getDetailItemsFromPackage({
     assembly,
@@ -155,8 +155,8 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
 
   if (!items.length) return null;
 
-  const alwaysShow = items.slice(0, 5);
-  const showWithCollapse = items.slice(5, items.length);
+  const alwaysShow = items.slice(0, 2);
+  const showWithCollapse = items.slice(2, items.length);
 
   return (
     <Stack
@@ -164,7 +164,7 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
       color="gray.600"
       fontSize=".75rem"
       mt={2}
-      spacing={1}
+      spacing={2}
       {...props}
     >
       {/* TODO: Highlight element */}
@@ -172,14 +172,14 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
       {showWithCollapse.length > 0 && (
         <>
           <Collapse animateOpacity in={collapse.isOpen}>
-            <Stack spacing={1}>{showWithCollapse}</Stack>
+            <Stack spacing={2}>{showWithCollapse}</Stack>
           </Collapse>
           <ToggleButton
-            closeText="Hide"
+            closeText="See less details"
             fontSize="inherit"
             isOpen={collapse.isOpen}
             onClick={collapse.onToggle}
-            openText="Show More"
+            openText="See more details"
           />
         </>
       )}

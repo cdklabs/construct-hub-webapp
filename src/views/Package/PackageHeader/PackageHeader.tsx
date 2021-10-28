@@ -1,4 +1,4 @@
-import { Box, Divider, Spinner } from "@chakra-ui/react";
+import { Divider, Flex, Spinner } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { LanguageSelection } from "../LanguageSelection";
 import { usePackageState } from "../PackageState";
@@ -21,21 +21,21 @@ export const PackageHeader: FunctionComponent = () => {
         metadata={meta}
         name={asm.name}
       />
+      <Flex align="start" gridArea={GRID_AREAS.LANGUAGES}>
+        <LanguageSelection />
+      </Flex>
 
-      <Box gridArea={GRID_AREAS.META}>
-        <Divider borderBottom="base" display={{ md: "none" }} />
+      <Flex direction="column" gridArea={GRID_AREAS.META}>
+        <Divider borderBottom="base" display={{ md: "none" }} mb={2} />
 
         <Details />
 
         <Divider borderBottom="base" display={{ md: "none" }} mt={2} />
-      </Box>
+      </Flex>
 
-      <Box gridArea={GRID_AREAS.LANGUAGES}>
-        <LanguageSelection assembly={asm} />
-        <Box display={{ md: "none" }}></Box>
-      </Box>
-
-      <Install gridArea={GRID_AREAS.INSTALL} />
+      <Flex align="start" gridArea={GRID_AREAS.INSTALL}>
+        <Install />
+      </Flex>
     </HeaderContainer>
   ) : (
     <Spinner mx="auto" my={10} size="xl" />

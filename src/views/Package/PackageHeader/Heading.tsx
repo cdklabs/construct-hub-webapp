@@ -27,7 +27,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
 
     <Text fontSize="1rem">{description}</Text>
 
-    <Stack align="center" direction="row" spacing={2}>
+    <Stack align="center" direction="row" pt={3} spacing={2}>
       <CDKTypeIcon metadata={metadata} />
       <CDKTypeText
         color="gray.700"
