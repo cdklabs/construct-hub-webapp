@@ -12,7 +12,7 @@ import { clientsClaim, setCacheNameDetails } from "workbox-core";
 import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-import { StaleWhileRevalidate } from "workbox-strategies";
+import { NetworkFirst, StaleWhileRevalidate } from "workbox-strategies";
 import { API_PATHS } from "./constants/url";
 
 declare const self: ServiceWorkerGlobalScope;
@@ -94,10 +94,11 @@ registerRoute(
   ({ url }) =>
     url.origin === self.origin &&
     url.pathname.endsWith(API_PATHS.ASSEMBLY_SUFFIX),
-  new StaleWhileRevalidate({
+  new NetworkFirst({
     fetchOptions,
     cacheName: "assembly-jsii",
     plugins: [new ExpirationPlugin({ maxEntries: 100 })],
+    networkTimeoutSeconds: 3,
   })
 );
 
@@ -105,10 +106,11 @@ registerRoute(
   ({ url }) =>
     url.origin === self.origin &&
     url.pathname.endsWith(API_PATHS.METADATA_SUFFIX),
-  new StaleWhileRevalidate({
+  new NetworkFirst({
     fetchOptions,
     cacheName: "assembly-metadata",
     plugins: [new ExpirationPlugin({ maxEntries: 100 })],
+    networkTimeoutSeconds: 3,
   })
 );
 
@@ -116,17 +118,19 @@ registerRoute(
   ({ url }) =>
     url.origin === self.origin &&
     url.pathname.endsWith(API_PATHS.CATALOG_SUFFIX),
-  new StaleWhileRevalidate({
+  new NetworkFirst({
     fetchOptions,
     cacheName: "assembly-catalog",
+    networkTimeoutSeconds: 3,
   })
 );
 
 registerRoute(
   ({ url }) =>
     url.origin === self.origin && url.pathname.endsWith(API_PATHS.STATS),
-  new StaleWhileRevalidate({
+  new NetworkFirst({
     fetchOptions,
     cacheName: "stats",
+    networkTimeoutSeconds: 3,
   })
 );
