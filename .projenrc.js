@@ -192,10 +192,7 @@ project.npmignore.addPatterns("src/__fixtures__");
 project.gitignore.exclude("public/data");
 
 // Proxy requests to awscdk.io for local testing
-project.package.addField(
-  "proxy",
-  "https://construct-hub-testing.dev-tools.aws.dev/"
-);
+project.package.addField("proxy", "https://constructs.dev/");
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
