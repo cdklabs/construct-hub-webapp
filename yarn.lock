@@ -11926,10 +11926,10 @@ progress@^2.0.0, progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.31.17:
-  version "0.31.17"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.31.17.tgz#7a279578591bc7001b2bb854cf6f8f34ffd51e67"
-  integrity sha512-BJ2dAO6eXQdp0joffdtlGHIr3yBiE0m+Rg66KUW/Wn4dgKU8xsht/Vr11HbA+aa6RtEgrFbo0YgBYgP48HqYqA==
+projen@^0.31.19:
+  version "0.31.19"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.31.19.tgz#46b1179ae8afd89006a5f49a1c8bb108fdb21101"
+  integrity sha512-St6KbzkzjiB5EW8gTUa+x1awj2TotxWPuwoGrwCqtQWIWkyxuK7VY/4ydiTbLEf1JgV318gDd7+vk5/tdR0uWA==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.2"
@@ -14145,9 +14145,9 @@ timsort@^0.3.0:
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
 tiny-invariant@^1.0.2, tiny-invariant@^1.0.6:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
-  integrity sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.2.0.tgz#a1141f86b672a9148c72e978a19a73b9b94a15a9"
+  integrity sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==
 
 tiny-warning@^1.0.0, tiny-warning@^1.0.3:
   version "1.0.3"
