@@ -51,7 +51,7 @@ export const Details: FunctionComponent = () => {
           data-testid={testIds.downloads}
           icon={<DownloadIcon />}
           label={downloads.toLocaleString()}
-          value={"Downloads"}
+          value={"Weekly downloads"}
         />
       ) : (
         <Detail data-testid={testIds.version} label="Version" value={version} />
