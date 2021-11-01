@@ -5,7 +5,7 @@ import { fetchAssembly } from "../../api/package/assembly";
 import { fetchMarkdown } from "../../api/package/docs";
 import { fetchMetadata } from "../../api/package/metadata";
 import { Page } from "../../components/Page";
-import { Language } from "../../constants/languages";
+import { Language, languageFilename } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useConfig } from "../../contexts/Config";
 import { useLanguage } from "../../hooks/useLanguage";
@@ -44,7 +44,13 @@ export const Package: FunctionComponent = () => {
   }, [name, requestAssembly, requestMetadata, scope, version]);
 
   useEffect(() => {
-    void requestMarkdown(name, version, language, scope, submodule);
+    void requestMarkdown(
+      name,
+      version,
+      languageFilename[language],
+      scope,
+      submodule
+    );
   }, [name, scope, version, language, submodule, requestMarkdown]);
 
   // Handle missing JSON for assembly
