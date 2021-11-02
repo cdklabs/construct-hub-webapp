@@ -72,13 +72,11 @@ const getDetailItemsFromPackage = ({
     }
 
     const username = assembly?.author.name;
-    const authorUrl = assembly?.author.url;
     const repository = assembly?.repository;
     const license = assembly?.license;
+
     if (username) {
-      const author = authorUrl ? (
-        <ExternalLink href={authorUrl}>{username}</ExternalLink>
-      ) : (
+      const author = (
         <NavLink color="blue.500" to={getSearchPath({ query: username })}>
           {username}
         </NavLink>
