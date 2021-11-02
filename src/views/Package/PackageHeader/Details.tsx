@@ -14,10 +14,11 @@ import { Metadata } from "../../../api/package/metadata";
 import { PackageStats } from "../../../api/stats";
 import { ExternalLink } from "../../../components/ExternalLink";
 import { LicenseLink, LICENSE_LINKS } from "../../../components/LicenseLink";
+import { NavLink } from "../../../components/NavLink";
 import { Time } from "../../../components/Time";
 import { useStats } from "../../../contexts/Stats";
 import { useConfigValue } from "../../../hooks/useConfigValue";
-import { getRepoUrlAndHost } from "../../../util/url";
+import { getRepoUrlAndHost, getSearchPath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
 import { ToggleButton } from "./ToggleButton";
 
@@ -70,6 +71,21 @@ const getDetailItemsFromPackage = ({
       items.push(<Downloads downloads={downloads} />);
     }
 
+    const username = assembly?.author.name;
+    const authorUrl = assembly?.author.url;
+    const repository = assembly?.repository;
+    const license = assembly?.license;
+    if (username) {
+      const author = authorUrl ? (
+        <ExternalLink href={authorUrl}>{username}</ExternalLink>
+      ) : (
+        <NavLink color="blue.500" to={getSearchPath({ query: username })}>
+          {username}
+        </NavLink>
+      );
+      items.push(<WithLabel label="Author">{author}</WithLabel>);
+    }
+
     const date = metadata?.date;
 
     if (date) {
@@ -81,19 +97,6 @@ const getDetailItemsFromPackage = ({
         />
       );
       items.push(<WithLabel label="Published">{publishDate}</WithLabel>);
-    }
-
-    const username = assembly?.author.name;
-    const authorUrl = assembly?.author.url;
-    const repository = assembly?.repository;
-    const license = assembly?.license;
-    if (username) {
-      const author = authorUrl ? (
-        <ExternalLink href={authorUrl}>{username}</ExternalLink>
-      ) : (
-        <Box as="strong">{username}</Box>
-      );
-      items.push(<WithLabel label="Author">{author}</WithLabel>);
     }
 
     // Prioritize custom links when available
