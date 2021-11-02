@@ -114,7 +114,7 @@ describe("Home (Redesign / WIP)", () => {
 
             cy.wrap(el)
               .should("have.text", CDKTYPE_RENDER_MAP[cdkType].name)
-              .should("have.attr", "href", getSearchPath({ cdkType }))
+              .should("have.attr", "href", getSearchPath({ cdkType, sort: CatalogSearchSort.DownloadsDesc }))
               .find("img")
               .should("have.attr", "src", CDKTYPE_RENDER_MAP[cdkType].imgsrc);
           });
@@ -135,7 +135,7 @@ describe("Home (Redesign / WIP)", () => {
               .should(
                 "have.attr",
                 "href",
-                getSearchPath({ languages: [language] })
+                getSearchPath({ languages: [language], sort: CatalogSearchSort.DownloadsDesc })
               );
           });
         });
@@ -297,7 +297,7 @@ describe("Home (Redesign / WIP)", () => {
             "href",
             getSearchPath({
               cdkType,
-              sort: cdkType ? CatalogSearchSort.DownloadsDesc : undefined,
+              sort: cdkType ? CatalogSearchSort.DownloadsDesc : CatalogSearchSort.PublishDateDesc,
             })
           );
       };

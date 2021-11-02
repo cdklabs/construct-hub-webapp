@@ -1,5 +1,6 @@
 import { Divider, Flex, Grid, Image, Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { NavLink } from "../../components/NavLink";
 import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 import {
@@ -32,7 +33,10 @@ export const Info: FunctionComponent = () => (
             <NavLink
               data-testid={testIds.infoSectionIcon}
               key={cdktype}
-              to={getSearchPath({ cdkType: cdktype as CDKType })}
+              to={getSearchPath({
+                cdkType: cdktype as CDKType,
+                sort: CatalogSearchSort.DownloadsDesc,
+              })}
             >
               <Stack align="center" color="blue.500" spacing={2}>
                 <Image aria-label={name} h={8} src={imgsrc} />
@@ -68,7 +72,10 @@ export const Info: FunctionComponent = () => (
             <NavLink
               data-testid={testIds.infoSectionIcon}
               key={language}
-              to={getSearchPath({ languages: [language as Language] })}
+              to={getSearchPath({
+                languages: [language as Language],
+                sort: CatalogSearchSort.DownloadsDesc,
+              })}
             >
               <Stack align="center" color="blue.500" key={language} spacing={2}>
                 <Icon aria-label={name} h={8} w={8} />

@@ -51,7 +51,9 @@ const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
             onClick={() => window.scrollTo(0, 0)}
             to={getSearchPath({
               cdkType,
-              sort: cdkType ? CatalogSearchSort.DownloadsDesc : undefined,
+              sort: cdkType
+                ? CatalogSearchSort.DownloadsDesc
+                : CatalogSearchSort.PublishDateDesc,
             })}
           >
             <Button colorScheme="blue" my={8}>
