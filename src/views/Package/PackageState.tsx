@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
 import { fetchMarkdown } from "../../api/package/docs";
 import { fetchMetadata, Metadata } from "../../api/package/metadata";
-import { Language } from "../../constants/languages";
+import { Language, languageFilename } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
@@ -69,7 +69,13 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
   }, [name, requestAssembly, requestMetadata, scope, version]);
 
   useEffect(() => {
-    void requestMarkdown(name, version, language, scope, submodule);
+    void requestMarkdown(
+      name,
+      version,
+      languageFilename[language],
+      scope,
+      submodule
+    );
   }, [name, scope, version, language, submodule, requestMarkdown]);
 
   const pageTitle = `${scope ? `${scope}/${name}` : name} ${version}`;

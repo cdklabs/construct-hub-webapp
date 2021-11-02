@@ -47,6 +47,10 @@ const getCodeSample = ({
       `    <version>${version}</version>`,
       "</dependency>",
     ].join("\n");
+  } else if (language === Language.DotNet) {
+    const packageId = assembly.targets?.dotnet?.packageId;
+    if (!packageId) return undefined;
+    return `dotnet add package ${packageId} --version ${version}`;
   }
 
   return undefined;

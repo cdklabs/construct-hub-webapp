@@ -14,6 +14,14 @@ export enum Language {
   Java = "java",
 }
 
+export const languageFilename = {
+  [Language.TypeScript]: Language.TypeScript,
+  [Language.Python]: Language.Python,
+  [Language.Go]: Language.Go,
+  [Language.Java]: Language.Java,
+  [Language.DotNet]: "csharp",
+};
+
 /**
  * The sorted list of all available languages.
  */
@@ -37,6 +45,7 @@ export const TEMP_SUPPORTED_LANGUAGES: ReadonlySet<Language> = new Set([
   Language.Python,
   Language.TypeScript,
   Language.Java,
+  Language.DotNet,
 ]);
 
 export const LANGUAGE_RENDER_MAP: {
