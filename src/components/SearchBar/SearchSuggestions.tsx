@@ -65,7 +65,8 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
     >
       {recommendations.map((pkg: ExtendedCatalogPackage, i) => {
         const navigate = () => push(getPackagePath(pkg));
-        const hasIcon = Boolean(pkg.metadata?.constructFramework?.name);
+        const constructFramework = pkg.metadata?.constructFramework ?? {};
+        const hasIcon = Boolean(constructFramework.name);
 
         return (
           <>
@@ -75,7 +76,7 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
               key={pkg.id}
               name={
                 <Stack align="center" direction="row" spacing={4}>
-                  <CDKTypeIcon metadata={pkg.metadata} />
+                  <CDKTypeIcon {...constructFramework} />
                   <Text ml={hasIcon ? 0 : 9}>{pkg.name}</Text>
                 </Stack>
               }

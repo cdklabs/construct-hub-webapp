@@ -1,6 +1,5 @@
 import {
   Flex,
-  Image,
   Heading as ChakraHeading,
   LinkOverlay,
   Text,
@@ -8,9 +7,9 @@ import {
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
-import { CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 import { useLanguage } from "../../hooks/useLanguage";
 import { getPackagePath } from "../../util/url";
+import { CDKTypeIcon, CDKTypeText } from "../CDKType";
 import { usePackageCard } from "./PackageCard";
 import testIds from "./testIds";
 
@@ -41,20 +40,10 @@ export const Heading: FunctionComponent = () => {
           {cdkType && (
             <Tooltip
               hasArrow
-              label={
-                CDKTYPE_RENDER_MAP[cdkType].name +
-                (cdkVersion !== undefined ? ` v${cdkVersion}` : "")
-              }
+              label={<CDKTypeText majorVersion={cdkVersion} name={cdkType} />}
               placement="top"
             >
-              <Image
-                alt={`${CDKTYPE_RENDER_MAP[cdkType].name} icon`}
-                h={5}
-                mr={2}
-                src={CDKTYPE_RENDER_MAP[cdkType].imgsrc}
-                w={5}
-                zIndex={1}
-              />
+              <CDKTypeIcon mr={2} name={cdkType} zIndex={1} />
             </Tooltip>
           )}
           <ChakraHeading

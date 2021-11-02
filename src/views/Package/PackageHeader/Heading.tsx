@@ -38,6 +38,8 @@ export const Heading: FunctionComponent<HeadingProps> = ({
       })),
   ];
 
+  const cdkTypeProps = metadata.constructFramework ?? {};
+
   return (
     <Stack lineHeight="1.5" spacing={2} {...stackProps}>
       <ChakraHeading color="blue.800" fontSize="1.5rem">
@@ -47,12 +49,12 @@ export const Heading: FunctionComponent<HeadingProps> = ({
       <Text fontSize="1rem">{description}</Text>
 
       <Stack align="center" direction="row" pt={3} spacing={2}>
-        <CDKTypeIcon metadata={metadata} />
+        <CDKTypeIcon {...cdkTypeProps} />
         <CDKTypeText
           color="gray.700"
           fontSize=".75rem"
           fontWeight="semibold"
-          metadata={metadata}
+          {...cdkTypeProps}
         />
         {tags.slice(0, 3).map(({ id, keyword: { label, color } = {} }) => (
           <PackageTag key={id} mr={1} value={id} variant={color}>

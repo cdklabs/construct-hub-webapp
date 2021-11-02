@@ -5,15 +5,14 @@ import {
   Text,
   TextProps,
 } from "@chakra-ui/react";
-import type { Metadata } from "../../api/package/metadata";
-import { CDKTYPE_RENDER_MAP } from "../../constants/constructs";
+import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 
-type WithMetadata<T> = T & { metadata?: Metadata };
+interface CDKTypeIconProps extends ImageProps {
+  name?: CDKType;
+}
 
-export const CDKTypeIcon = forwardRef<WithMetadata<ImageProps>, "img">(
-  ({ metadata, ...props }, ref) => {
-    const name = metadata?.constructFramework?.name;
-
+export const CDKTypeIcon = forwardRef<CDKTypeIconProps, "img">(
+  ({ name, ...props }, ref) => {
     if (!name) return null;
 
     return (
@@ -29,11 +28,13 @@ export const CDKTypeIcon = forwardRef<WithMetadata<ImageProps>, "img">(
   }
 );
 
-export const CDKTypeText = forwardRef<WithMetadata<TextProps>, "p">(
-  ({ metadata, ...props }, ref) => {
-    const name = metadata?.constructFramework?.name;
-    const majorVersion = metadata?.constructFramework?.majorVersion;
+interface CDKTypeTextProps extends TextProps {
+  name?: CDKType;
+  majorVersion?: number;
+}
 
+export const CDKTypeText = forwardRef<CDKTypeTextProps, "p">(
+  ({ name, majorVersion, ...props }, ref) => {
     if (!name) return null;
 
     return (
