@@ -1,16 +1,20 @@
-import { Box } from "@chakra-ui/react";
+import { Box, BoxProps } from "@chakra-ui/react";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import nightOwlLight from "prism-react-renderer/themes/nightOwlLight";
 import { FunctionComponent } from "react";
 import { MultiLineRenderer } from "./MultiLineRenderer";
 import { SingleLineRenderer } from "./SingleLineRenderer";
 
-export interface CodeProps {
+export interface CodeProps extends BoxProps {
   code: string;
   language: Language;
 }
 
-export const Code: FunctionComponent<CodeProps> = ({ code, language }) => {
+export const Code: FunctionComponent<CodeProps> = ({
+  code,
+  language,
+  ...boxProps
+}) => {
   return (
     <Highlight
       {...defaultProps}
@@ -25,10 +29,8 @@ export const Code: FunctionComponent<CodeProps> = ({ code, language }) => {
           borderRadius="md"
           boxShadow="base"
           className={props.className}
-          maxW="100%"
-          overflow="hidden"
           style={props.style}
-          w="min-content"
+          {...boxProps}
         >
           {props.tokens.length > 1 ? (
             <MultiLineRenderer {...props} code={code} />

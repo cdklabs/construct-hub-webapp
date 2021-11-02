@@ -4,17 +4,16 @@ import {
   forwardRef,
   Divider,
   Stack,
-  Image,
   Text,
 } from "@chakra-ui/react";
-import { FunctionComponent, ReactNode } from "react";
+import { FunctionComponent } from "react";
 import { useHistory } from "react-router-dom";
 import { ExtendedCatalogPackage } from "../../api/catalog-search";
-import { CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useDebounce } from "../../hooks/useDebounce";
 import { getPackagePath } from "../../util/url";
 import { Card, CardProps } from "../Card";
+import { CDKTypeIcon } from "../CDKType";
 import { SearchItem } from "../SearchItem";
 import { useSearchBarState } from "./SearchBar";
 import testIds from "./testIds";
@@ -49,25 +48,6 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
     return null;
   }
 
-  const getSuggestionIcon = (pkg: ExtendedCatalogPackage): ReactNode => {
-    const { metadata } = pkg;
-    let icon = null;
-    const cdkType = metadata?.constructFramework?.name;
-
-    if (cdkType && cdkType in CDKTYPE_RENDER_MAP) {
-      icon = (
-        <Image
-          alt={`${cdkType} Logo`}
-          h={5}
-          src={CDKTYPE_RENDER_MAP[cdkType].imgsrc}
-          w={5}
-        />
-      );
-    }
-
-    return icon;
-  };
-
   return (
     <Card
       as={UnorderedList}
@@ -85,7 +65,8 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
     >
       {recommendations.map((pkg: ExtendedCatalogPackage, i) => {
         const navigate = () => push(getPackagePath(pkg));
-        const icon = getSuggestionIcon(pkg);
+        const constructFramework = pkg.metadata?.constructFramework ?? {};
+        const hasIcon = Boolean(constructFramework.name);
 
         return (
           <>
@@ -95,8 +76,8 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
               key={pkg.id}
               name={
                 <Stack align="center" direction="row" spacing={4}>
-                  {icon}
-                  <Text ml={icon ? 0 : 9}>{pkg.name}</Text>
+                  <CDKTypeIcon {...constructFramework} />
+                  <Text ml={hasIcon ? 0 : 9}>{pkg.name}</Text>
                 </Stack>
               }
               onClick={navigate}

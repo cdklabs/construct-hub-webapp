@@ -2,9 +2,9 @@ import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { useState, useEffect, FunctionComponent, useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { Markdown } from "../../../../components/Markdown";
-import { NavTree, NavItemConfig } from "../../../../components/NavTree";
-import { ChooseSubmodule } from "../ChooseSubmodule";
+import { Markdown } from "../../components/Markdown";
+import { NavTree, NavItemConfig } from "../../components/NavTree";
+import { ChooseSubmodule } from "./ChooseSubmodule";
 
 export interface PackageDocsProps {
   markdown: string;
