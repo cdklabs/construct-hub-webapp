@@ -10,7 +10,7 @@ const proxyUrl = require("../package.json").proxy;
 const app = express();
 const port = process.env.PORT || 3000;
 
-const buildDir = path.join(__dirname, "build");
+const buildDir = path.join(__dirname, "..", "build");
 
 app.use(express.static(buildDir));
 
