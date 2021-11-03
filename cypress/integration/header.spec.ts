@@ -86,7 +86,12 @@ describe("Header", () => {
       cy.getByDataTest(headerTestIds.navOpen).should("be.visible").click();
       cy.getByDataTest(headerTestIds.mobileNav)
         .should("be.visible")
-        .within(checkMenuInteractions);
+        .within(() => {
+          cy.getByDataTest(headerTestIds.gettingStartedMenu).should(
+            "be.visible"
+          );
+          cy.getByDataTest(headerTestIds.resourcesMenu).should("be.visible");
+        });
     });
   });
 
