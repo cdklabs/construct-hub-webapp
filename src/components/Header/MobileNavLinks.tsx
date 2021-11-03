@@ -65,7 +65,7 @@ const MobileNavLinksContent: FunctionComponent<MobileNavLinksContentProps> = ({
           if ("links" in item) {
             return (
               <Fragment key={`${item.display}-${itemIdx}`}>
-                <Heading as="h4" borderBottom="base" pt={4} pb={2} size="xs">
+                <Heading as="h4" borderBottom="base" pb={2} pt={4} size="xs">
                   {item.display}
                 </Heading>
 
