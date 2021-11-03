@@ -15,7 +15,7 @@ export const PackageGrid: FunctionComponent<{ packages: CatalogPackage[] }> = ({
       templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
     >
       {packages.map((pkg) => (
-        <PackageCard key={pkg.name} pkg={pkg} />
+        <PackageCard key={`${pkg.name}-${pkg.version}`} pkg={pkg} />
       ))}
     </Grid>
   );

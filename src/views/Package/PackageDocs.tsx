@@ -2,9 +2,9 @@ import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { Assembly } from "@jsii/spec";
 import { useState, useEffect, FunctionComponent, useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { Markdown } from "../../../../components/Markdown";
-import { NavTree, NavItemConfig } from "../../../../components/NavTree";
-import { ChooseSubmodule } from "../ChooseSubmodule";
+import { Markdown } from "../../components/Markdown";
+import { NavTree, NavItemConfig } from "../../components/NavTree";
+import { ChooseSubmodule } from "./ChooseSubmodule";
 
 export interface PackageDocsProps {
   markdown: string;
@@ -94,8 +94,9 @@ export const PackageDocs: FunctionComponent<PackageDocsProps> = ({
         display={{ base: "none", md: "flex" }}
         maxHeight={`calc(100vh - ${TOP_OFFSET})`}
         overflow="hidden auto"
+        pl={6}
         position="sticky"
-        px={4}
+        pr={4}
         top={TOP_OFFSET}
       >
         {Object.keys(assembly?.submodules ?? {}).length > 0 && (

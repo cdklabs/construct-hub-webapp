@@ -137,7 +137,10 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
           />
 
           {hasButton ? (
-            <InputRightElement w="9rem">
+            <InputRightElement
+              display={{ base: "none", md: "initial" }}
+              w="9rem"
+            >
               <Button
                 borderLeftRadius="0"
                 colorScheme="blue"

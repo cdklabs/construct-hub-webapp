@@ -102,7 +102,7 @@ export const SearchResults: FunctionComponent = () => {
           <Flex align="center" justify="space-between" pb={4} wrap="wrap">
             <ShowingDetails
               count={results.length}
-              filtered={!!searchQuery}
+              filtered={Boolean(searchQuery)}
               limit={LIMIT}
               offset={offset}
             />

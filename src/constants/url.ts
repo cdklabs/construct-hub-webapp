@@ -16,7 +16,7 @@ export const QUERY_PARAMS = {
   SORT: "sort",
   SUBMODULE: "submodule",
   CDK_MAJOR: "cdkver",
-  TAGS: "TAGS",
+  TAGS: "tags",
 } as const;
 
 export const ROUTES = {
