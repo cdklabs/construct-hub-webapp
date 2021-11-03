@@ -17,6 +17,7 @@ import { PackageDocsError } from "./PackageDocsError";
 import { PackageDocsUnsupported } from "./PackageDocsUnsupported";
 import { PackageHeader } from "./PackageHeader";
 import { usePackageState } from "./PackageState";
+import testIds from "./testIds";
 
 export const PackageLayout: FunctionComponent = () => {
   const {
@@ -35,7 +36,12 @@ export const PackageLayout: FunctionComponent = () => {
       meta={{ title: pageTitle, description: pageDescription }}
       pageName="packageProfile"
     >
-      <Flex bg="white" direction="column" maxW="100vw">
+      <Flex
+        bg="white"
+        data-testid={testIds.page}
+        direction="column"
+        maxW="100vw"
+      >
         <PackageHeader />
 
         <Tabs variant="line">

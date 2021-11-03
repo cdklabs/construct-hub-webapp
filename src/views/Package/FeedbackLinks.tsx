@@ -4,6 +4,7 @@ import type { FunctionComponent, ReactNode } from "react";
 import { ExternalLink } from "../../components/ExternalLink";
 import { GithubIcon } from "../../icons/GithubIcon";
 import { usePackageState } from "./PackageState";
+import testIds from "./testIds";
 
 const iconProps = {
   h: 5,
@@ -35,6 +36,7 @@ export const FeedbackLinks: FunctionComponent = () => {
       <Button
         as={ExternalLink}
         color="black"
+        data-testid={testIds.githubLink}
         hasIcon={false}
         href={`${repoUrl}/issues`}
         rightIcon={<GithubIcon {...iconProps} />}
@@ -51,6 +53,7 @@ export const FeedbackLinks: FunctionComponent = () => {
       borderTop="1px solid"
       borderTopColor="blue.50"
       color="blue.500"
+      data-testid={testIds.feedbackLinks}
       direction="row"
       justify="space-evenly"
       mx={8}
@@ -59,6 +62,7 @@ export const FeedbackLinks: FunctionComponent = () => {
       <Button
         as={Link}
         colorScheme="blue"
+        data-testid={testIds.reportLink}
         href={`mailto:abuse@amazonaws.com?subject=${encodeURIComponent(
           `ConstructHub - Report of abusive package: ${assembly?.name}`
         )}`}
