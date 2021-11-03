@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Page } from "../../components/Page";
+import { FeedbackLinks } from "./FeedbackLinks";
 import { PackageDocs } from "./PackageDocs";
 import { PackageDocsError } from "./PackageDocsError";
 import { PackageDocsUnsupported } from "./PackageDocsUnsupported";
@@ -39,7 +40,8 @@ export const PackageLayout: FunctionComponent = () => {
 
         <Tabs variant="line">
           <TabList
-            borderBottom="base"
+            borderBottom="1px solid"
+            borderBottomColor="blue.50"
             mt={4}
             mx={{ base: 0, lg: 6 }}
             overflowX="auto"
@@ -76,6 +78,7 @@ export const PackageLayout: FunctionComponent = () => {
             <TabPanel>Coming Soon</TabPanel>
           </TabPanels>
         </Tabs>
+        <FeedbackLinks />
       </Flex>
     </Page>
   );
