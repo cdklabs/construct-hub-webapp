@@ -5,6 +5,7 @@ import { NavLink } from "../../components/NavLink";
 import { PageLoader } from "../../components/PageLoader";
 import { getPackagePath } from "../../util/url";
 import { usePackageState } from "./PackageState";
+import testIds from "./testIds";
 
 export const DependenciesList: FunctionComponent = () => {
   const assembly = usePackageState().assembly.data;
@@ -20,10 +21,18 @@ export const DependenciesList: FunctionComponent = () => {
   }
 
   return (
-    <Stack direction="row" justify="center" mx="auto" spacing={4} wrap="wrap">
+    <Stack
+      data-testid={testIds.dependenciesList}
+      direction="row"
+      justify="center"
+      mx="auto"
+      spacing={4}
+      wrap="wrap"
+    >
       {depEntries.map(([name, version]) => (
         <NavLink
           _first={{ ml: 4 }}
+          data-testid={testIds.dependenciesLink}
           fontWeight="semibold"
           key={`${name}-${version}`}
           p={2}

@@ -54,7 +54,7 @@ export const PackageLayout: FunctionComponent = () => {
         <Tabs index={tabIndex} onChange={setTabIndex} pt={4} variant="line">
           <TabList borderBottom="base" mx={{ base: 0, lg: 6 }}>
             <Tab>Documentation</Tab>
-            <Tab>Dependencies</Tab>
+            <Tab data-testid={testIds.dependenciesTab}>Dependencies</Tab>
           </TabList>
           <TabPanels maxW="full">
             <TabPanel p={0}>
