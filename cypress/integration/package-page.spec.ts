@@ -1,6 +1,8 @@
 import { getPackagePath } from "util/url";
 import header from "components/Header/testIds";
 import packagePage from "views/Package/testIds";
+import assemblyFixture from "../fixtures/assembly.json";
+import { sanitizeVersion } from "api/package/util";
 
 describe("Package Page", () => {
   beforeEach(() => {
@@ -56,6 +58,28 @@ describe("Package Page", () => {
             "href",
             "https://github.com/cdklabs/construct-hub/issues"
           );
+      });
+  });
+
+  it("has a dependencies tab with dependency links", () => {
+    const depEntries = Object.entries(assemblyFixture.dependencies);
+
+    cy.getByDataTest(packagePage.dependenciesTab).should("be.visible").click();
+
+    cy.getByDataTest(packagePage.dependenciesList)
+      .should("be.visible")
+      .within(() => {
+        cy.getByDataTest(packagePage.dependenciesLink)
+          .should("have.length", depEntries.length)
+          .each((el, i) => {
+            const [name, version] = depEntries[i];
+
+            cy.wrap(el).should(
+              "have.attr",
+              "href",
+              getPackagePath({ name, version: sanitizeVersion(version) })
+            );
+          });
       });
   });
 });

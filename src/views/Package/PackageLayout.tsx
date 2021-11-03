@@ -1,16 +1,16 @@
 import {
   Center,
   Spinner,
-  Flex,
+  Grid,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
-  Tooltip,
 } from "@chakra-ui/react";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState, useEffect } from "react";
 import { Page } from "../../components/Page";
+import { DependenciesList } from "./DependenciesList";
 import { FeedbackLinks } from "./FeedbackLinks";
 import { PackageDocs } from "./PackageDocs";
 import { PackageDocsError } from "./PackageDocsError";
@@ -31,33 +31,30 @@ export const PackageLayout: FunctionComponent = () => {
     pageTitle,
   } = usePackageState();
 
+  const [tabIndex, setTabIndex] = useState(0);
+
+  useEffect(() => {
+    setTabIndex(0);
+  }, [pageTitle]);
+
   return (
     <Page
       meta={{ title: pageTitle, description: pageDescription }}
       pageName="packageProfile"
     >
-      <Flex
+      <Grid
         bg="white"
         data-testid={testIds.page}
-        direction="column"
         maxW="100vw"
+        templateColumns="1fr"
+        templateRows="auto 1fr auto"
       >
         <PackageHeader />
 
-        <Tabs variant="line">
-          <TabList
-            borderBottom="1px solid"
-            borderBottomColor="blue.50"
-            mt={4}
-            mx={{ base: 0, lg: 6 }}
-            overflowX="auto"
-          >
+        <Tabs index={tabIndex} onChange={setTabIndex} pt={4} variant="line">
+          <TabList borderBottom="base" mx={{ base: 0, lg: 6 }}>
             <Tab>Documentation</Tab>
-            <Tab isDisabled>
-              <Tooltip hasArrow label="Coming Soon!" placement="top">
-                Dependencies
-              </Tooltip>
-            </Tab>
+            <Tab data-testid={testIds.dependenciesTab}>Dependencies</Tab>
           </TabList>
           <TabPanels maxW="full">
             <TabPanel p={0}>
@@ -81,11 +78,15 @@ export const PackageLayout: FunctionComponent = () => {
                 <PackageDocsUnsupported />
               )}
             </TabPanel>
-            <TabPanel>Coming Soon</TabPanel>
+
+            <TabPanel>
+              <DependenciesList />
+            </TabPanel>
           </TabPanels>
         </Tabs>
+
         <FeedbackLinks />
-      </Flex>
+      </Grid>
     </Page>
   );
 };

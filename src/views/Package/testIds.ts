@@ -5,4 +5,7 @@ export default createTestIds("package-page", [
   "feedbackLinks",
   "reportLink",
   "githubLink",
+  "dependenciesTab",
+  "dependenciesList",
+  "dependenciesLink",
 ] as const);
