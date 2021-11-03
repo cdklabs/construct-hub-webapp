@@ -7,7 +7,7 @@ export const PackageDocsError: FunctionComponent = () => {
   const { language } = usePackageState();
 
   const issueLink = (
-    <ExternalLink href="https://github.com/cdklabs/construct-hub-webapp/issues/new">
+    <ExternalLink href="https://github.com/cdklabs/construct-hub/issues/new">
       issue
     </ExternalLink>
   );

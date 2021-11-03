@@ -42,7 +42,7 @@ export const DevPreviewBanner: FunctionComponent = () => {
             <ExternalLink
               color="inherit"
               hasWarning={false}
-              href="https://github.com/cdklabs/construct-hub-webapp/issues"
+              href="https://github.com/cdklabs/construct-hub/issues"
               textDecoration="underline"
             >
               here

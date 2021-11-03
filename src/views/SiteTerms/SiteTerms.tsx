@@ -45,9 +45,9 @@ export const SiteTerms: FunctionComponent = () => (
             Terms, the Construct Hub is provided to you under this license:{" "}
             <ExternalLink
               hasWarning={false}
-              href="https://github.com/cdklabs/construct-hub-webapp/blob/main/LICENSE"
+              href="https://github.com/cdklabs/construct-hub/blob/main/LICENSE"
             >
-              https://github.com/cdklabs/construct-hub-webapp/blob/main/LICENSE
+              https://github.com/cdklabs/construct-hub/blob/main/LICENSE
             </ExternalLink>
             . Some AWS Content and Third-Party Content may be provided to you
             under a separate license, such as the Apache License, Version 2.0,

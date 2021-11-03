@@ -132,7 +132,7 @@ export const Markdown: FunctionComponent<{
       children,
       "# API Reference",
       "The API Reference for this package could not be rendered.",
-      "If this issue persists, please let us know by creating an [issue](https://github.com/cdklabs/construct-hub-webapp/issues/new)",
+      "If this issue persists, please let us know by creating an [issue](https://github.com/cdklabs/construct-hub/issues/new)",
     ].join("\n");
   }
   return (
