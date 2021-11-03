@@ -11,7 +11,7 @@ import { SearchProvider } from "./contexts/Search";
 import { ShortbreadProvider } from "./contexts/Shortbread";
 import { StatsProvider } from "./contexts/Stats";
 import { Theme } from "./contexts/Theme";
-import { register } from "./register-service-worker";
+import { unregister } from "./register-service-worker";
 import { reportWebVitals } from "./reportWebVitals";
 
 ReactDOM.render(
@@ -44,5 +44,13 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-// Register service worker for PWA functionality.
-register();
+// Disable any registered service workers (previously enabled for PWA functionality).
+//
+// This is disabled due to caching issues where users are not receiving
+// the latest versions of content on the first load of the website. This
+// occurs because content is being served from the service worker cache.
+//
+// This should probably not be re-enabled unless we have a mechanism
+// in place to automatically content when new versions of the website are
+// available.
+unregister();
