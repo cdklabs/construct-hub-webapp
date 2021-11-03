@@ -1,2 +1,3 @@
 export * from "./constants";
-export * from "./PackageCard";
+export { PackageCard } from "./PackageCard";
+export type { PackageCardProps } from "./PackageCard";

@@ -1,6 +1,6 @@
 import { API_PATHS } from "../../constants/url";
 
-export const NOT_FOUND = "NOT_FOUND";
+const NOT_FOUND = "NOT_FOUND";
 
 /**
  * Download stats for all packages, indexed by npm package name.
