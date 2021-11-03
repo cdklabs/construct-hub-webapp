@@ -11,11 +11,13 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Page } from "../../components/Page";
+import { FeedbackLinks } from "./FeedbackLinks";
 import { PackageDocs } from "./PackageDocs";
 import { PackageDocsError } from "./PackageDocsError";
 import { PackageDocsUnsupported } from "./PackageDocsUnsupported";
 import { PackageHeader } from "./PackageHeader";
 import { usePackageState } from "./PackageState";
+import testIds from "./testIds";
 
 export const PackageLayout: FunctionComponent = () => {
   const {
@@ -34,12 +36,18 @@ export const PackageLayout: FunctionComponent = () => {
       meta={{ title: pageTitle, description: pageDescription }}
       pageName="packageProfile"
     >
-      <Flex bg="white" direction="column" maxW="100vw">
+      <Flex
+        bg="white"
+        data-testid={testIds.page}
+        direction="column"
+        maxW="100vw"
+      >
         <PackageHeader />
 
         <Tabs variant="line">
           <TabList
-            borderBottom="base"
+            borderBottom="1px solid"
+            borderBottomColor="blue.50"
             mt={4}
             mx={{ base: 0, lg: 6 }}
             overflowX="auto"
@@ -76,6 +84,7 @@ export const PackageLayout: FunctionComponent = () => {
             <TabPanel>Coming Soon</TabPanel>
           </TabPanels>
         </Tabs>
+        <FeedbackLinks />
       </Flex>
     </Page>
   );
