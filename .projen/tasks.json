@@ -214,7 +214,7 @@
       "name": "proxy-server",
       "steps": [
         {
-          "exec": "node ./proxy"
+          "exec": "node ./scripts/proxy-server"
         }
       ]
     },
@@ -239,6 +239,14 @@
       "steps": [
         {
           "exec": "npx react-app-rewired test -u"
+        }
+      ]
+    },
+    "analyze-exports": {
+      "name": "analyze-exports",
+      "steps": [
+        {
+          "exec": "node scripts/analyze-exports"
         }
       ]
     },

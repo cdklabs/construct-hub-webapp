@@ -5,7 +5,7 @@
 const express = require("express");
 const path = require("path");
 const proxy = require("express-http-proxy");
-const proxyUrl = require("./package.json").proxy;
+const proxyUrl = require("../package.json").proxy;
 
 const app = express();
 const port = process.env.PORT || 3000;

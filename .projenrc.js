@@ -96,7 +96,7 @@ const project = new web.ReactTypeScriptProject({
   (function addExpress() {
     project.addDevDeps("express", "express-http-proxy");
     project.addTask("proxy-server", {
-      exec: "node ./proxy",
+      exec: "node ./scripts/proxy-server",
     });
 
     project.addTask("proxy-server:ci", {
@@ -170,6 +170,12 @@ const project = new web.ReactTypeScriptProject({
   project.eslint.addIgnorePattern("jest.config.ts");
 })();
 
+// This task is used to analyze dead code
+(function addAnalyzeExports() {
+  project.addDevDeps("ts-unused-exports");
+  project.addTask("analyze-exports", { exec: "node scripts/analyze-exports" });
+})();
+
 // synthesize project files before build
 // see https://github.com/projen/projen/issues/754
 const buildTask = project.tasks.tryFind("build");
@@ -216,17 +222,17 @@ project.eslint.addOverride({
   ],
   plugins: ["jsx-a11y", "prefer-arrow"],
   rules: {
-    "react/jsx-sort-props": ["warn"],
-    "react/react-in-jsx-scope": ["off"],
-    "react/prop-types": ["off"],
-    "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
+    "no-use-before-define": "off",
     "prefer-arrow/prefer-arrow-functions": [
       "error",
       {
         singleReturnOnly: false,
       },
     ],
+    "react/jsx-sort-props": ["warn"],
+    "react/prop-types": ["off"],
+    "react/react-in-jsx-scope": ["off"],
   },
 });
 
