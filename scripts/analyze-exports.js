@@ -8,6 +8,7 @@ const results = Object.entries(
 );
 
 const underline = "\x1b[4m";
+const green = "\x1b[32m";
 const yellow = "\x1b[33m%s\x1b[0m";
 const reset = "\x1b[0m";
 
@@ -28,4 +29,4 @@ const { files, unusedExports } = results.reduce(
 );
 
 console.log("\n")
-console.log(yellow, `Found ${unusedExports} unused exports in ${files} files`);
+console.log(unusedExports > 0 ? yellow : green, `Found ${unusedExports} unused exports in ${files} files`);

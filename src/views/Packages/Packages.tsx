@@ -1,8 +1,8 @@
 import type { FunctionComponent } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { NotFound } from "../NotFound";
-import { Package } from "../Package";
-import { PackageLatest } from "../PackageLatest";
+import Package from "../Package";
+import PackageLatest from "../PackageLatest";
 
 const nameRegexp = "[^@\\/]+";
 const scopeRegexp = "@[^\\/]+";
