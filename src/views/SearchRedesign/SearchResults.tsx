@@ -6,7 +6,7 @@ import { Page } from "../../components/Page";
 import { SearchBar } from "../../components/SearchBar";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { getSearchPath } from "../../util/url";
-import { SearchQueryParam } from "../SearchResults/constants";
+import { SearchQueryParam } from "../SearchRedesign/constants";
 import { PageControls } from "./PageControls";
 import { SearchDetails } from "./SearchDetails";
 import { useSearchState } from "./SearchState";

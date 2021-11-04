@@ -1,14 +1,17 @@
 import type { IMenuItems } from "../components/NavPopover";
 
+export const CONSTRUCT_HUB_REPO_URL =
+  "https://github.com/cdklabs/construct-hub";
+
 export const GETTING_STARTED: IMenuItems = [
   { display: "FAQ", isNavLink: true, url: "/faq" },
   {
     display: "Construct Hub on GitHub",
-    url: "https://github.com/cdklabs/construct-hub",
+    url: CONSTRUCT_HUB_REPO_URL,
   },
   {
     display: "Issues on GitHub",
-    url: "https://github.com/cdklabs/construct-hub/issues",
+    url: `${CONSTRUCT_HUB_REPO_URL}/issues`,
   },
 ];
 

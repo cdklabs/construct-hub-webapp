@@ -72,10 +72,7 @@ export interface FeaturedPackagesDetail {
   readonly comment?: string;
 }
 
-export interface FeatureFlags {
-  homeRedesign?: boolean;
-  searchRedesign?: boolean;
-}
+export interface FeatureFlags {}
 
 export interface Config {
   featureFlags?: FeatureFlags;
@@ -94,10 +91,7 @@ export const DEFAULT_FEATURED_PACKAGES = {
 };
 
 const defaultConfig: Config = {
-  featureFlags: {
-    homeRedesign: false,
-    searchRedesign: false,
-  },
+  featureFlags: {},
   packageLinks: [],
   featuredPackages: DEFAULT_FEATURED_PACKAGES,
 };
