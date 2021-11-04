@@ -1,5 +1,5 @@
 import searchBar from "components/SearchBar/testIds";
-import homeRedesign from "views/HomeRedesign/testIds";
+import home from "views/Home/testIds";
 import { getSearchPath } from "util/url";
 import { CDKType, CDKTYPE_RENDER_MAP } from "constants/constructs";
 import {
@@ -17,12 +17,12 @@ describe("Home (Redesign / WIP)", () => {
     });
 
     it("has heading and subtitle", () => {
-      cy.getByDataTest(homeRedesign.heroHeader).should("be.visible");
-      cy.getByDataTest(homeRedesign.heroSubtitle).should("be.visible");
+      cy.getByDataTest(home.heroHeader).should("be.visible");
+      cy.getByDataTest(home.heroSubtitle).should("be.visible");
     });
 
     it("has search capabilities from home page", () => {
-      cy.getByDataTest(homeRedesign.page).within(() => {
+      cy.getByDataTest(home.page).within(() => {
         cy.getByDataTest(searchBar.input)
           .should("be.visible")
           .type("@aws-cdk", { force: true });
@@ -43,17 +43,17 @@ describe("Home (Redesign / WIP)", () => {
     });
 
     it("has expected sections and content", () => {
-      cy.getByDataTest(homeRedesign.infoContainer)
+      cy.getByDataTest(home.infoContainer)
         .should("be.visible")
         .within(() => {
-          cy.getByDataTest(homeRedesign.infoSection)
+          cy.getByDataTest(home.infoSection)
             .should("have.length", 2)
             .each((el) => {
               cy.wrap(el).within(() => {
-                cy.getByDataTest(homeRedesign.infoSectionHeading).should(
+                cy.getByDataTest(home.infoSectionHeading).should(
                   "be.visible"
                 );
-                cy.getByDataTest(homeRedesign.infoSectionDescription).should(
+                cy.getByDataTest(home.infoSectionDescription).should(
                   "be.visible"
                 );
               });
@@ -62,10 +62,10 @@ describe("Home (Redesign / WIP)", () => {
     });
 
     it("has cdkType icon links with search urls", () => {
-      cy.getByDataTest(homeRedesign.infoSection)
+      cy.getByDataTest(home.infoSection)
         .first()
         .within(() => {
-          cy.getByDataTest(homeRedesign.infoSectionIcon).each((el, index) => {
+          cy.getByDataTest(home.infoSectionIcon).each((el, index) => {
             const cdkType = [CDKType.awscdk, CDKType.cdk8s, CDKType.cdktf][
               index
             ];
@@ -87,10 +87,10 @@ describe("Home (Redesign / WIP)", () => {
     });
 
     it("has language icon links with search urls", () => {
-      cy.getByDataTest(homeRedesign.infoSection)
+      cy.getByDataTest(home.infoSection)
         .last()
         .within(() => {
-          cy.getByDataTest(homeRedesign.infoSectionIcon).each((el, index) => {
+          cy.getByDataTest(home.infoSectionIcon).each((el, index) => {
             const language = Object.keys(LANGUAGE_NAME_MAP).filter((l) =>
               TEMP_SUPPORTED_LANGUAGES.has(l as Language)
             )[index] as Language;
@@ -113,11 +113,11 @@ describe("Home (Redesign / WIP)", () => {
   describe("Featured Section", () => {
     it("has a header and 4 cards", () => {
       cy.visit("/");
-      cy.getByDataTest(homeRedesign.featuredContainer)
+      cy.getByDataTest(home.featuredContainer)
         .should("be.visible")
         .within(() => {
-          cy.getByDataTest(homeRedesign.featuredHeader).should("be.visible");
-          cy.getByDataTest(homeRedesign.featuredGrid)
+          cy.getByDataTest(home.featuredHeader).should("be.visible");
+          cy.getByDataTest(home.featuredGrid)
             .should("be.visible")
             .within(() => {
               cy.getByDataTest(packageCard.wideContainer).should(
@@ -133,8 +133,8 @@ describe("Home (Redesign / WIP)", () => {
         featuredPackages: undefined,
       });
 
-      cy.getByDataTest(homeRedesign.featuredContainer).within(() => {
-        cy.getByDataTest(homeRedesign.featuredHeader).should(
+      cy.getByDataTest(home.featuredContainer).within(() => {
+        cy.getByDataTest(home.featuredHeader).should(
           "have.text",
           "Recently updated"
         );
@@ -177,8 +177,8 @@ describe("Home (Redesign / WIP)", () => {
         featuredPackages,
       });
 
-      cy.getByDataTest(homeRedesign.featuredContainer).within(() => {
-        cy.getByDataTest(homeRedesign.featuredHeader).should(
+      cy.getByDataTest(home.featuredContainer).within(() => {
+        cy.getByDataTest(home.featuredHeader).should(
           "have.text",
           "Featured packages"
         );
@@ -195,17 +195,17 @@ describe("Home (Redesign / WIP)", () => {
 
   describe("CDK Type Section", () => {
     it("has heading, description, 4 tabs, 4 cards, and a see all button", () => {
-      cy.getByDataTest(homeRedesign.cdkTypeSection).within(() => {
-        cy.getByDataTest(homeRedesign.cdkTypeSectionHeading).should(
+      cy.getByDataTest(home.cdkTypeSection).within(() => {
+        cy.getByDataTest(home.cdkTypeSectionHeading).should(
           "be.visible"
         );
-        cy.getByDataTest(homeRedesign.cdkTypeSectionDescription).should(
+        cy.getByDataTest(home.cdkTypeSectionDescription).should(
           "be.visible"
         );
 
-        cy.getByDataTest(homeRedesign.cdkTypeTab).should("have.length", 4);
+        cy.getByDataTest(home.cdkTypeTab).should("have.length", 4);
 
-        cy.getByDataTest(homeRedesign.packageGrid)
+        cy.getByDataTest(home.packageGrid)
           .first()
           .within(() => {
             cy.getByDataTest(packageCard.wideContainer).should(
@@ -214,13 +214,13 @@ describe("Home (Redesign / WIP)", () => {
             );
           });
 
-        cy.getByDataTest(homeRedesign.cdkTypeSeeAllButton).should("be.visible");
+        cy.getByDataTest(home.cdkTypeSeeAllButton).should("be.visible");
       });
     });
 
     it("reveals different cards for respective tabs", () => {
-      cy.getByDataTest(homeRedesign.cdkTypeSection).within(() => {
-        cy.getByDataTest(homeRedesign.cdkTypeTab).each((tab, index) => {
+      cy.getByDataTest(home.cdkTypeSection).within(() => {
+        cy.getByDataTest(home.cdkTypeTab).each((tab, index) => {
           const cdkType: CDKType | undefined = [
             undefined,
             CDKType.awscdk,
@@ -235,7 +235,7 @@ describe("Home (Redesign / WIP)", () => {
           }
 
           // Verify current tab's package grid is visible and others are not
-          cy.getByDataTest(homeRedesign.packageGrid).each((grid, gridIndex) => {
+          cy.getByDataTest(home.packageGrid).each((grid, gridIndex) => {
             cy.wrap(grid).should(
               index === gridIndex ? "be.visible" : "not.be.visible"
             );
@@ -245,9 +245,9 @@ describe("Home (Redesign / WIP)", () => {
     });
     it("has a see all button which opens the correct search url", () => {
       const testSeeAll = (cdkType: CDKType | undefined, index: number) => {
-        cy.getByDataTest(homeRedesign.cdkTypeTab).eq(index).click();
+        cy.getByDataTest(home.cdkTypeTab).eq(index).click();
 
-        cy.getByDataTest(homeRedesign.cdkTypeSeeAllButton)
+        cy.getByDataTest(home.cdkTypeSeeAllButton)
           .eq(index)
           .should(
             "have.attr",
