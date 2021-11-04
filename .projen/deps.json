@@ -132,6 +132,10 @@
       "type": "build"
     },
     {
+      "name": "ts-unused-exports",
+      "type": "build"
+    },
+    {
       "name": "typescript",
       "version": "^4.0.3",
       "type": "build"

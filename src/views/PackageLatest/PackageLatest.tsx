@@ -11,11 +11,7 @@ interface RouteParams {
   scope?: string;
 }
 
-export const buildRedirectUrl = (
-  catalog: Packages,
-  name: string,
-  scope?: string
-) => {
+const buildRedirectUrl = (catalog: Packages, name: string, scope?: string) => {
   const prefix = "/packages/";
   const packageName = getFullPackageName(name, scope);
   const pkg = findPackage(catalog, packageName);
