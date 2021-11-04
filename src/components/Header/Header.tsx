@@ -1,9 +1,9 @@
 import { Box, Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Documentation } from "./Documentation";
+import { DocumentationDropdown } from "./DocumentationDropdown";
+import { GettingStartedDropdown } from "./GettingStartedDropdown";
 import { HeaderSearch } from "./HeaderSearch";
 import { NavButton } from "./NavButton";
-import { Resources } from "./Resources";
 import testIds from "./testIds";
 import { Title } from "./Title";
 
@@ -63,10 +63,10 @@ export const Header: FunctionComponent = () => {
           w="100%"
         >
           <Box>
-            <Documentation />
+            <GettingStartedDropdown />
           </Box>
           <Box>
-            <Resources />
+            <DocumentationDropdown />
           </Box>
         </Grid>
         <NavButton />

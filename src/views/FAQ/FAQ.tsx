@@ -22,25 +22,6 @@ export const FAQ: FunctionComponent = () => (
       </Box>
       <Accordion allowMultiple defaultIndex={[0, 1]}>
         <FAQSection heading="General">
-          <FAQItem question="What is Construct Hub?">
-            <p>
-              Construct Hub is a place to discover CDK constructs &mdash; a
-              central destination for discovering and sharing cloud application
-              design patterns and reference architectures defined for the AWS
-              CDK, CDK for Kubernetes (CDK8s), CDK for Terraform (CDKtf) and
-              other construct-based tools.
-            </p>
-          </FAQItem>
-          <FAQItem question="Why should I use Construct Hub?">
-            <p>
-              Construct Hub is a central trusted venue where CDK developers can
-              discover construct libraries to help them build their
-              applications. You can find construct libraries in TypeScript,
-              Python, Java and .NET (Go is coming soon!), browse their developer
-              guides and API references, and explore code samples in all the
-              programming language that the package supports.
-            </p>
-          </FAQItem>
           <FAQItem question="How can I add my construct to Construct Hub?">
             <p>
               Constructs intended for Construct Hub must be published to the{" "}
@@ -88,6 +69,28 @@ export const FAQ: FunctionComponent = () => (
               .
             </p>
           </FAQItem>
+
+          <FAQItem question="What is Construct Hub?">
+            <p>
+              Construct Hub is a place to discover CDK constructs &mdash; a
+              central destination for discovering and sharing cloud application
+              design patterns and reference architectures defined for the AWS
+              CDK, CDK for Kubernetes (CDK8s), CDK for Terraform (CDKtf) and
+              other construct-based tools.
+            </p>
+          </FAQItem>
+
+          <FAQItem question="Why should I use Construct Hub?">
+            <p>
+              Construct Hub is a central trusted venue where CDK developers can
+              discover construct libraries to help them build their
+              applications. You can find construct libraries in TypeScript,
+              Python, Java and .NET (Go is coming soon!), browse their developer
+              guides and API references, and explore code samples in all the
+              programming language that the package supports.
+            </p>
+          </FAQItem>
+
           <FAQItem question="What is a construct?">
             <p>
               The Constructs Programming Model (CPM) introduces the notion of{" "}
@@ -99,6 +102,7 @@ export const FAQ: FunctionComponent = () => (
               collective wisdom of the community.
             </p>
           </FAQItem>
+
           <FAQItem question="What are the prerequisites for using a construct library?">
             <p>
               To use a construct library in your code, you need to have your
@@ -132,6 +136,7 @@ export const FAQ: FunctionComponent = () => (
               prerequisites which are unique to their implementation.
             </p>
           </FAQItem>
+
           <FAQItem question="Who owns the constructs in Construct Hub?">
             <p>
               Constructs are user-generated content owned by the publishers of
@@ -141,6 +146,7 @@ export const FAQ: FunctionComponent = () => (
               be accessed directly through the hyperlinked package page.
             </p>
           </FAQItem>
+
           <FAQItem question="Is the content served in Construct Hub meant to be consumed programmatically?">
             <p>
               No. The content displayed in the site is user-generated, with some
@@ -152,6 +158,7 @@ export const FAQ: FunctionComponent = () => (
               <FAQLink href="https://constructs.dev/terms">Site Terms</FAQLink>.
             </p>
           </FAQItem>
+
           <FAQItem question="Which CDK types are available on the Construct Hub?">
             <p>
               Construct Hub currently has constructs for the CDK for
@@ -160,6 +167,7 @@ export const FAQ: FunctionComponent = () => (
               tools as they evolve.
             </p>
           </FAQItem>
+
           <FAQItem question="What is CDK for CloudFormation (AWS CDK)?">
             <p>
               CDK for CloudFormation (AWS CDK) is an open-source software
@@ -174,6 +182,7 @@ export const FAQ: FunctionComponent = () => (
               for more information.
             </p>
           </FAQItem>
+
           <FAQItem question="What is CDK for Kubernetes (CDK8s)?">
             <p>
               CDK for Kubernetes (CDK8s, pronounced “cd kates”) is an
@@ -186,6 +195,7 @@ export const FAQ: FunctionComponent = () => (
               more information.
             </p>
           </FAQItem>
+
           <FAQItem question="What is CDK for Terraform (CDKtf)?">
             <p>
               The community preview of the Cloud Development Kit for Terraform
@@ -199,15 +209,18 @@ export const FAQ: FunctionComponent = () => (
               for more information.
             </p>
           </FAQItem>
+
           <FAQItem question="What programming languages are supported in Dev Preview?">
             <p>
               The Construct Hub GA supports constructs available for Python,
               TypeScript, Java and .NET. Support for Go will be included soon.
             </p>
           </FAQItem>
+
           <FAQItem question="Will Go be supported?">
             <p>Yes! We can’t promise exactly when, but it should be soon.</p>
           </FAQItem>
+
           <FAQItem question="Can I view the source code of a construct?">
             <p>
               Source code is usually available via the repository link provided
@@ -217,12 +230,14 @@ export const FAQ: FunctionComponent = () => (
               package, so exercise care.
             </p>
           </FAQItem>
+
           <FAQItem question="How can I install a package?">
             <p>
               The details vary by construct. Click “Install” in the package page
               to see the construct’s installation instructions.
             </p>
           </FAQItem>
+
           <FAQItem question="How can I report a package?">
             <p>
               Your trust is vital to the success of Construct Hub. If you
@@ -235,6 +250,7 @@ export const FAQ: FunctionComponent = () => (
               removing the package from Construct Hub.
             </p>
           </FAQItem>
+
           <FAQItem question="How can I report a bug or contribute code to a construct?">
             <p>
               Each package is owned by its publisher, so contributions, such as
@@ -244,6 +260,7 @@ export const FAQ: FunctionComponent = () => (
               package’s repository.
             </p>
           </FAQItem>
+
           <FAQItem question="Why isn’t my package displayed on Construct Hub?">
             <p>
               Construct Hub includes publicly-available constructs that are
@@ -257,6 +274,7 @@ export const FAQ: FunctionComponent = () => (
               .
             </p>
           </FAQItem>
+
           <FAQItem question="Can I update my package after it has been displayed?">
             <p>
               Yes, you can and should! After you publish a new valid version to
@@ -264,6 +282,7 @@ export const FAQ: FunctionComponent = () => (
               5-10 minutes.
             </p>
           </FAQItem>
+
           <FAQItem question="How does Construct Hub relates to the Construct Catalog?">
             <p>
               The Construct Catalog was built by the CDK community in
@@ -274,6 +293,7 @@ export const FAQ: FunctionComponent = () => (
               redirects to Construct Hub.
             </p>
           </FAQItem>
+
           <FAQItem question="Is there a cost for using third-party constructs from Construct Hub?">
             <p>
               All packages on Construct Hub have permissive open-source licenses
@@ -281,6 +301,7 @@ export const FAQ: FunctionComponent = () => (
               the package’s license via its repository link.
             </p>
           </FAQItem>
+
           <FAQItem question="How can I participate in the Construct Hub community?">
             <p>
               Construct Hub is itself an open-source construct! Join the{" "}
@@ -293,6 +314,7 @@ export const FAQ: FunctionComponent = () => (
               workspace.
             </p>
           </FAQItem>
+
           <FAQItem question="Is there a community slack channel for the CDK community?">
             <p>
               Please join the CDK Slack channel (
@@ -302,11 +324,14 @@ export const FAQ: FunctionComponent = () => (
             </p>
           </FAQItem>
         </FAQSection>
+
         <Box bg="gray.50" py={5} width="100%"></Box>
+
         <FAQSection heading="Getting Started">
           <FAQItem question="Do I need a user account for Construct Hub?">
             <p>No. Construct Hub doesn’t require any signup.</p>
           </FAQItem>
+
           <FAQItem question="How do I get started?">
             <p>
               Start by exploring featured, community and official libraries for

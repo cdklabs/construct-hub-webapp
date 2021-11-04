@@ -19,7 +19,7 @@ export const InfoSection: FunctionComponent<InfoSectionProps> = ({
     px={SECTION_PADDING.X}
     py={SECTION_PADDING.Y}
     templateColumns="1fr"
-    templateRows="minmax(4.5rem, min-content) 1fr auto"
+    templateRows="auto 1fr auto"
   >
     <Heading
       as="h3"
@@ -27,7 +27,7 @@ export const InfoSection: FunctionComponent<InfoSectionProps> = ({
       fontSize="1.5rem"
       fontWeight="semibold"
       lineHeight="lg"
-      mb={4}
+      mb={2}
     >
       {title}
     </Heading>

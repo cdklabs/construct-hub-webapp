@@ -78,7 +78,7 @@ export const CDKFilter: FunctionComponent = () => {
     <>
       <RadioFilter
         data-testid={testIds.cdkTypeFilter}
-        hint="Constructs support distinct output types: AWS CDK libraries output Cloudformation Templates, CDK8s libraries output Kubernetes manifests, and CDKtf libraries output Terraform Configuration. The Construct Hub attempts to detect the output type of each library, but results are not guaranteed to be completely accurate."
+        hint="Choose the right CDK for your IaC technology: AWS CDK for AWS CloudFormation, CDKtf for Terraform, or CDK8s for Kubernetes."
         name="CDK Type"
         onValueChange={onCdkTypeChange}
         options={[
@@ -91,9 +91,7 @@ export const CDKFilter: FunctionComponent = () => {
       {!!(majorsOptions && majorsOptions.length > 1) && (
         <RadioFilter
           data-testid={testIds.cdkVersionFilter}
-          hint={`Allows you to filter by a major version of your selected CDK Type: (${
-            CDKTYPE_NAME_MAP[cdkType!]
-          })`}
+          hint="Choose the major version of the CDK you're using to see only constructs that will work with that version."
           name="CDK Major Version"
           onValueChange={onCdkMajorChange}
           options={[
