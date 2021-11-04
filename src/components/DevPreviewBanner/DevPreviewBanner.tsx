@@ -7,6 +7,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
 import { Card } from "../Card";
 import { ExternalLink } from "../ExternalLink";
 
@@ -42,7 +43,7 @@ export const DevPreviewBanner: FunctionComponent = () => {
             <ExternalLink
               color="inherit"
               hasWarning={false}
-              href="https://github.com/cdklabs/construct-hub-webapp/issues"
+              href={`${CONSTRUCT_HUB_REPO_URL}/issues`}
               textDecoration="underline"
             >
               here
