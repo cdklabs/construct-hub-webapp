@@ -72,29 +72,21 @@ export const FAQ: FunctionComponent = () => (
 
           <FAQItem question="What is Construct Hub?">
             <p>
-              It is a central destination to discover and share cloud
-              application design patterns and reference architectures defined
-              for the AWS CDK, CDK for Kubernetes (CDK8s), CDK for Terraform
-              (CDKtf) and any other construct-based tool.
+              Construct Hub is a place to discover CDK constructs &mdash; a
+              central destination for discovering and sharing cloud application
+              design patterns and reference architectures defined for the AWS
+              CDK, CDK for Kubernetes (CDK8s), CDK for Terraform (CDKtf) and
+              other construct-based tools.
             </p>
           </FAQItem>
-
           <FAQItem question="Why should I use Construct Hub?">
             <p>
-              Construct Hub is built to serve the community that uses the
-              constructs programming model (CPM) and to allow them find publicly
-              available constructs they can reuse. Before the Construct Hub,
-              developers did not have an easy way to discover construct
-              libraries created by the community since they were published
-              across various package managers and without a central index.
-            </p>
-            <p>
-              The Construct Hub is a central, trusted venue CDK developers can
-              use to discover published constructs to help them build their
-              applications. In the Dev Preview Construct Hub you can discover
-              constructs in TypeScript and Python and read their documentation
-              and improved API reference in the programming language that the
-              package supports.
+              Construct Hub is a central trusted venue where CDK developers can
+              discover construct libraries to help them build their
+              applications. You can find construct libraries in TypeScript,
+              Python, Java and .NET (Go is coming soon!), browse their developer
+              guides and API references, and explore code samples in all the
+              programming language that the package supports.
             </p>
           </FAQItem>
 
