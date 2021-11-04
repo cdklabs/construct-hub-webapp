@@ -1,8 +1,8 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { ArrowButton } from "../SearchResults/components/ArrowButton";
-import { GoToPage } from "../SearchResults/components/GoToPage";
+import { ArrowButton } from "./ArrowButton";
+import { GoToPage } from "./GoToPage";
 import testIds from "./testIds";
 
 export interface PageControlsProps {

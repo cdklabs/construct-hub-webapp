@@ -25,13 +25,9 @@ const checkURL = (params: Parameters<typeof getSearchPath>[0]) => {
   cy.url().should("eq", `http://localhost:3000${getSearchPath(params)}`);
 };
 
-const testSearchURL = async (query: string, isRedesign = false) => {
+const testSearchURL = async (query: string) => {
   withWindowAlertCheck(async () => {
-    cy.visitWithConfig(decodeURIComponent(getSearchPath({ query })), {
-      featureFlags: {
-        searchRedesign: isRedesign,
-      },
-    });
+    cy.visit(decodeURIComponent(getSearchPath({ query })));
 
     cy.getByDataTest(header.container).should("be.visible");
   });
@@ -39,17 +35,11 @@ const testSearchURL = async (query: string, isRedesign = false) => {
 
 const testInput = async ({
   inputSelector = catalogSearch.input,
-  isRedesign = false,
   input = "",
   url = "/",
 }) => {
   withWindowAlertCheck(async () => {
-    cy.visitWithConfig(url, {
-      featureFlags: {
-        homeRedesign: isRedesign,
-        searchRedesign: isRedesign,
-      },
-    });
+    cy.visit(url);
 
     cy.getByDataTest(inputSelector).type(input + "{enter}", { force: true });
 
@@ -101,47 +91,10 @@ describe("XSS - Stable Featureset", () => {
   });
 });
 
-describe("XSS - Dev Preview Featureset", () => {
-  describe("Home Page - Input", () => {
-    it("will not execute malicious HTML input", () => {
-      testInput({ input: alertHTML });
-    });
-
-    it("will not execute malicious JavaScript input", () => {
-      testInput({ input: alertJS });
-    });
-  });
-
-  describe("Search Page - Input & URL", () => {
-    it("will not execute malicious HTML urls", () => {
-      testSearchURL(alertHTML);
-    });
-
-    it("will not execute malicious JavaScript urls", () => {
-      testSearchURL(alertJS);
-    });
-
-    it("will not execute malicious HTML input", () => {
-      testInput({
-        url: "/search",
-        input: alertHTML,
-      });
-    });
-
-    it("will not execute malicious JavaScript input", () => {
-      testInput({
-        url: "/search",
-        input: alertJS,
-      });
-    });
-  });
-});
-
 describe("XSS - GA Featureset", () => {
   describe("Home Page - Input", () => {
     it("will not execute malicious HTML input", () => {
       testInput({
-        isRedesign: true,
         input: alertHTML,
         inputSelector: searchBar.input,
       });
@@ -149,7 +102,6 @@ describe("XSS - GA Featureset", () => {
 
     it("will not execute malicious JavaScript input", () => {
       testInput({
-        isRedesign: true,
         input: alertJS,
         inputSelector: searchBar.input,
       });
@@ -158,11 +110,11 @@ describe("XSS - GA Featureset", () => {
 
   describe("Search Page - URL & Input", () => {
     it("will not execute malicious HTML urls", () => {
-      testSearchURL(alertHTML, true);
+      testSearchURL(alertHTML);
     });
 
     it("will not execute malicious JS urls", () => {
-      testSearchURL(alertJS, true);
+      testSearchURL(alertJS);
     });
 
     it("will not execute malicious HTML input", () => {
@@ -170,7 +122,6 @@ describe("XSS - GA Featureset", () => {
         url: "/search",
         input: alertHTML,
         inputSelector: searchBar.input,
-        isRedesign: true,
       });
     });
 
@@ -179,7 +130,6 @@ describe("XSS - GA Featureset", () => {
         url: "/search",
         input: alertJS,
         inputSelector: searchBar.input,
-        isRedesign: true,
       });
     });
   });
