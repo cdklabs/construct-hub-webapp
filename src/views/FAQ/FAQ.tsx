@@ -1,6 +1,7 @@
 import { Box, Heading, Accordion } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Page } from "../../components/Page";
+import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
 import { FAQItem } from "./FAQItem";
 import { FAQLink } from "./FAQLink";
 import { FAQSection } from "./FAQSection";
@@ -63,7 +64,7 @@ export const FAQ: FunctionComponent = () => (
               that meet the above requirements appear in Construct Hub within
               5-10 minutes. If your package does not appear in Construct Hub,
               but meets these requirements, please file an issue against{" "}
-              <FAQLink href="https://github.com/cdklabs/construct-hub">
+              <FAQLink href={CONSTRUCT_HUB_REPO_URL}>
                 our GitHub repository
               </FAQLink>
               .
@@ -250,7 +251,7 @@ export const FAQ: FunctionComponent = () => (
               permissive open-source license and a CDK keyword: aws-cdk, cdk8s,
               or cdktf. If you believe your package qualifies, but it still does
               not appear in Construct Hub, please raise an issue{" "}
-              <FAQLink href="https://github.com/cdklabs/construct-hub/issues/new">
+              <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
                 here
               </FAQLink>
               .
@@ -283,7 +284,7 @@ export const FAQ: FunctionComponent = () => (
           <FAQItem question="How can I participate in the Construct Hub community?">
             <p>
               Construct Hub is itself an open-source construct! Join the{" "}
-              <FAQLink href="https://github.com/cdklabs/construct-hub">
+              <FAQLink href={CONSTRUCT_HUB_REPO_URL}>
                 Construct Hub GitHub community
               </FAQLink>
               . You are also welcome to join the <code>#construct-hub-dev</code>{" "}

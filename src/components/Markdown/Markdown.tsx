@@ -11,6 +11,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import remarkEmoji from "remark-emoji";
 import remarkGfm from "remark-gfm";
+import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
 import { Code } from "./Code";
 import { Headings } from "./Headings";
 import { Hr } from "./Hr";
@@ -132,7 +133,7 @@ export const Markdown: FunctionComponent<{
       children,
       "# API Reference",
       "The API Reference for this package could not be rendered.",
-      "If this issue persists, please let us know by creating an [issue](https://github.com/cdklabs/construct-hub/issues/new)",
+      `If this issue persists, please let us know by creating an [issue](${CONSTRUCT_HUB_REPO_URL}/issues/new)`,
     ].join("\n");
   }
   return (
