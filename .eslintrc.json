@@ -155,24 +155,24 @@
         "prefer-arrow"
       ],
       "rules": {
-        "react/jsx-sort-props": [
-          "warn"
-        ],
-        "react/react-in-jsx-scope": [
-          "off"
-        ],
-        "react/prop-types": [
-          "off"
-        ],
-        "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": [
           "error"
         ],
+        "no-use-before-define": "off",
         "prefer-arrow/prefer-arrow-functions": [
           "error",
           {
             "singleReturnOnly": false
           }
+        ],
+        "react/jsx-sort-props": [
+          "warn"
+        ],
+        "react/prop-types": [
+          "off"
+        ],
+        "react/react-in-jsx-scope": [
+          "off"
         ]
       }
     }

@@ -13,7 +13,7 @@ export interface PackageDocsProps {
 
 type Item = NavItemConfig & { level: number; children: Item[] };
 
-export const appendItem = (itemTree: Item[], item: Element): Item[] => {
+const appendItem = (itemTree: Item[], item: Element): Item[] => {
   if (!(item instanceof HTMLElement)) {
     return itemTree;
   }

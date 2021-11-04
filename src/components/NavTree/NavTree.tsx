@@ -28,7 +28,7 @@ const iconProps = {
   w: 4,
 };
 
-export const NavItem: FunctionComponent<NavItemProps> = ({
+const NavItem: FunctionComponent<NavItemProps> = ({
   children,
   display,
   url,
