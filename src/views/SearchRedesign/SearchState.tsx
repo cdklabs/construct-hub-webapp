@@ -11,7 +11,7 @@ import {
   useCatalogSearch,
 } from "../../hooks/useCatalogSearch";
 import { useQueryParams } from "../../hooks/useQueryParams";
-import { LIMIT } from "../SearchResults/constants";
+import { LIMIT } from "../SearchRedesign/constants";
 import { parseQueryArray, toNum } from "./util";
 
 export interface SearchState {

@@ -1,4 +1,3 @@
-import { checkHeaderAndFooter } from "../support/helpers";
 import searchBar from "components/SearchBar/testIds";
 import homeRedesign from "views/HomeRedesign/testIds";
 import { getSearchPath } from "util/url";
@@ -11,47 +10,10 @@ import {
 import packageCard from "components/PackageCard/testIds";
 import { CatalogSearchSort } from "api/catalog-search/constants";
 
-describe("Home Page", () => {
-  describe("Renders expected content", () => {
-    beforeEach(() => {
-      cy.visitWithConfig("/", {
-        featureFlags: { homeRedesign: false },
-      });
-    });
-
-    checkHeaderAndFooter();
-
-    it("has hero section headings", () => {
-      cy.getByDataTest("home-headings")
-        .should("be.visible")
-        .children()
-        .should("have.length", 3);
-    });
-
-    it("has search inputs", cy.checkCatalogSearchInputs);
-
-    it("displays 20 packages", () => {
-      cy.checkResultCount(20);
-    });
-
-    it("has page controls", () => {
-      cy.getByDataTest("home-nextPageBtn")
-        .scrollIntoView()
-        .should("be.visible");
-      cy.getByDataTest("home-prevIcon").should("be.visible");
-      cy.getByDataTest("home-nextIcon").should("be.visible");
-    });
-  });
-});
-
 describe("Home (Redesign / WIP)", () => {
   describe("Hero Section", () => {
     beforeEach(() => {
-      cy.visitWithConfig("/", {
-        featureFlags: {
-          homeRedesign: true,
-        },
-      });
+      cy.visit("/");
     });
 
     it("has heading and subtitle", () => {
@@ -77,11 +39,7 @@ describe("Home (Redesign / WIP)", () => {
 
   describe("Informational Section", () => {
     beforeEach(() => {
-      cy.visitWithConfig("/", {
-        featureFlags: {
-          homeRedesign: true,
-        },
-      });
+      cy.visit("/");
     });
 
     it("has expected sections and content", () => {
@@ -154,12 +112,7 @@ describe("Home (Redesign / WIP)", () => {
 
   describe("Featured Section", () => {
     it("has a header and 4 cards", () => {
-      cy.visitWithConfig("/", {
-        featureFlags: {
-          homeRedesign: true,
-        },
-      });
-
+      cy.visit("/");
       cy.getByDataTest(homeRedesign.featuredContainer)
         .should("be.visible")
         .within(() => {
@@ -177,9 +130,6 @@ describe("Home (Redesign / WIP)", () => {
 
     it("shows recently updated if no content is featured", () => {
       cy.visitWithConfig("/", {
-        featureFlags: {
-          homeRedesign: true,
-        },
         featuredPackages: undefined,
       });
 
@@ -224,9 +174,6 @@ describe("Home (Redesign / WIP)", () => {
       };
 
       cy.visitWithConfig("/", {
-        featureFlags: {
-          homeRedesign: true,
-        },
         featuredPackages,
       });
 
