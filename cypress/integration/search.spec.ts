@@ -6,6 +6,7 @@ import { getSearchPath } from "util/url";
 import { CatalogSearchSort } from "api/catalog-search/constants";
 import { CDKType } from "constants/constructs";
 import { SORT_RENDER_MAP } from "views/SearchRedesign/constants";
+import { Language, TEMP_SUPPORTED_LANGUAGES } from "constants/languages";
 
 const checkCard = (cardType: string) => {
   cy.getByDataTest(cardType).within(() => {
@@ -137,6 +138,8 @@ describe("Search (Redesign / WIP)", () => {
         cy.getByDataTest(searchRedesign.filterItem).each((el) => {
           const lang = el.attr("data-value");
 
+          if (!TEMP_SUPPORTED_LANGUAGES.has(lang as Language)) return;
+
           languages.push(lang);
 
           cy.wrap(el)
@@ -147,6 +150,10 @@ describe("Search (Redesign / WIP)", () => {
 
         // Now deselect each language
         cy.getByDataTest(searchRedesign.filterItem).each((el) => {
+          const lang = el.attr("data-value");
+
+          if (!TEMP_SUPPORTED_LANGUAGES.has(lang as Language)) return;
+
           languages.shift();
 
           cy.wrap(el)
