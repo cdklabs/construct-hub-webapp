@@ -1,6 +1,6 @@
 import type { IMenuItems } from "../components/NavPopover";
 
-export const DOCUMENTATION: IMenuItems = [
+export const GETTING_STARTED: IMenuItems = [
   { display: "FAQ", isNavLink: true, url: "/faq" },
   {
     display: "Construct Hub on GitHub",
@@ -12,7 +12,7 @@ export const DOCUMENTATION: IMenuItems = [
   },
 ];
 
-export const RESOURCES: IMenuItems = [
+export const DOCUMENTATION: IMenuItems = [
   {
     display: "AWS CDK",
     links: [

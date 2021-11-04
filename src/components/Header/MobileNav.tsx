@@ -9,7 +9,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { DOCUMENTATION, RESOURCES } from "../../constants/links";
+import { GETTING_STARTED, DOCUMENTATION } from "../../constants/links";
 import { MobileNavLinks } from "./MobileNavLinks";
 import testIds from "./testIds";
 import { Title } from "./Title";
@@ -40,13 +40,13 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
                 sections={[
                   {
                     title: "Getting Started",
-                    items: DOCUMENTATION,
+                    items: GETTING_STARTED,
                     testId: testIds.gettingStartedMenu,
                   },
                   {
-                    title: "Resources",
-                    items: RESOURCES,
-                    testId: testIds.resourcesMenu,
+                    title: "Documentation",
+                    items: DOCUMENTATION,
+                    testId: testIds.documentationMenu,
                   },
                 ]}
               />

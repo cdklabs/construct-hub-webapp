@@ -5,7 +5,7 @@ import searchBar from "components/SearchBar/testIds";
 const checkBaseElements = () => {
   cy.getByDataTest(headerTestIds.title).should("be.visible");
   cy.getByDataTest(headerTestIds.gettingStartedTrigger).should("be.visible");
-  cy.getByDataTest(headerTestIds.resourcesTrigger).should("be.visible");
+  cy.getByDataTest(headerTestIds.documentationTrigger).should("be.visible");
 };
 
 const checkMenuInteractions = () => {
@@ -18,9 +18,9 @@ const checkMenuInteractions = () => {
     .should("be.visible")
     .click(); // To close
 
-  cy.getByDataTest(headerTestIds.resourcesTrigger).should("be.visible").click();
-  cy.getByDataTest(headerTestIds.resourcesMenu).should("be.visible");
-  cy.getByDataTest(headerTestIds.resourcesTrigger).should("be.visible").click(); // To close
+  cy.getByDataTest(headerTestIds.documentationTrigger).should("be.visible").click();
+  cy.getByDataTest(headerTestIds.documentationMenu).should("be.visible");
+  cy.getByDataTest(headerTestIds.documentationTrigger).should("be.visible").click(); // To close
 };
 
 const checkMobileBaseElements = () => {
@@ -90,7 +90,7 @@ describe("Header", () => {
           cy.getByDataTest(headerTestIds.gettingStartedMenu).should(
             "be.visible"
           );
-          cy.getByDataTest(headerTestIds.resourcesMenu).should("be.visible");
+          cy.getByDataTest(headerTestIds.documentationMenu).should("be.visible");
         });
     });
   });
