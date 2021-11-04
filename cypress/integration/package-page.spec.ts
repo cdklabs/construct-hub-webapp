@@ -3,6 +3,7 @@ import header from "components/Header/testIds";
 import packagePage from "views/Package/testIds";
 import assemblyFixture from "../fixtures/assembly.json";
 import { sanitizeVersion } from "api/package/util";
+import { CONSTRUCT_HUB_REPO_URL } from "../../src/constants/links";
 
 describe("Package Page", () => {
   beforeEach(() => {
@@ -56,7 +57,7 @@ describe("Package Page", () => {
           .should(
             "have.attr",
             "href",
-            "https://github.com/cdklabs/construct-hub/issues"
+            `${CONSTRUCT_HUB_REPO_URL}/issues`
           );
       });
   });

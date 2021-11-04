@@ -21,7 +21,7 @@ export const FAQSection: FunctionComponent<FAQSectionProps> = ({
   <AccordionItem>
     <AccordionButton>
       <Box flex="1" textAlign="left">
-        <Heading as="h2" ml={4} size="lg">
+        <Heading as="h2" ml={4} my={4} size="lg">
           {heading}
         </Heading>
       </Box>
