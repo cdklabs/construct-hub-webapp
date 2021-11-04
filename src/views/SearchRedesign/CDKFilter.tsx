@@ -78,7 +78,7 @@ export const CDKFilter: FunctionComponent = () => {
     <>
       <RadioFilter
         data-testid={testIds.cdkTypeFilter}
-        hint="Choose the right CDK for your IAC technology: AWS CDK for AWS CloudFormation, CDKtf for Terraform, or CDK8s for Kubernetes."
+        hint="Choose the right CDK for your IaC technology: AWS CDK for AWS CloudFormation, CDKtf for Terraform, or CDK8s for Kubernetes."
         name="CDK Type"
         onValueChange={onCdkTypeChange}
         options={[
