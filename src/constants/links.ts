@@ -3,7 +3,7 @@ import type { IMenuItems } from "../components/NavPopover";
 export const CONSTRUCT_HUB_REPO_URL =
   "https://github.com/cdklabs/construct-hub";
 
-export const DOCUMENTATION: IMenuItems = [
+export const GETTING_STARTED: IMenuItems = [
   { display: "FAQ", isNavLink: true, url: "/faq" },
   {
     display: "Construct Hub on GitHub",
@@ -15,7 +15,7 @@ export const DOCUMENTATION: IMenuItems = [
   },
 ];
 
-export const RESOURCES: IMenuItems = [
+export const DOCUMENTATION: IMenuItems = [
   {
     display: "AWS CDK",
     links: [
