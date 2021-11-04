@@ -130,7 +130,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
             data-testid={testIds.input}
             onChange={onChange ?? searchAPI.onQueryChange}
             onFocus={disclosure.onOpen}
-            placeholder={`Search construct libraries`}
+            placeholder={`Search 600+ construct libraries`}
             ref={inputRef}
             value={value ?? searchAPI.query}
             {...inputProps}
