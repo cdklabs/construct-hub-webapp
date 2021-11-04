@@ -42,7 +42,7 @@ export const LanguageFilter: FunctionComponent = () => {
   return (
     <CheckboxFilter
       data-testid={testIds.languagesFilter}
-      hint="Select one or more programming languages to filter by. Results will match at least one of the selected languages. If no languages are selected, results will not be filtered by langauges."
+      hint="Choose one or more languages. Results include constructs foruse with at least one of the selected languages."
       name="Programming Language"
       onValueChange={onLanguagesChange}
       options={languageOptions}

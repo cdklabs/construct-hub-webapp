@@ -5,10 +5,8 @@ import {
   Text,
   Popover,
   IconButton,
-  PopoverHeader,
   PopoverTrigger,
   PopoverBody,
-  PopoverCloseButton,
   PopoverArrow,
   PopoverContent,
 } from "@chakra-ui/react";
@@ -29,7 +27,7 @@ export const FilterHeading: FunctionComponent<FilterHeadingProps> = ({
         {name}
       </Heading>
       {hint ? (
-        <Popover colorScheme="dark" placement="top-end" strategy="fixed">
+        <Popover colorScheme="dark" placement="right" strategy="fixed">
           <PopoverTrigger>
             <IconButton
               aria-label={`Hint: ${name}`}
@@ -43,13 +41,12 @@ export const FilterHeading: FunctionComponent<FilterHeadingProps> = ({
           </PopoverTrigger>
           <PopoverContent
             bg="gray.700"
+            borderRadius="base"
             color="white"
             fontSize="sm"
             shadow="whiteAlpha.300"
           >
-            <PopoverHeader>Hint: {name}</PopoverHeader>
-            <PopoverCloseButton />
-            <PopoverArrow />
+            <PopoverArrow bg="gray.700" />
             <PopoverBody>
               <Text>{hint}</Text>
             </PopoverBody>
