@@ -21,24 +21,23 @@ export const Info: FunctionComponent = () => (
     textAlign="left"
   >
     <InfoSection
-      description="The Construct Hub is a central destination for discovering and sharing
-          cloud application design patterns and reference architectures defined
-          for the AWS CDK, CDK for Kubernetes (CDK8s), CDK for Terraform (CDKtf)
-          and other construct-based tools."
-      title="Browse 600+ reusable cloud application libraries for popular IaC frameworks"
+      description="We support CDK for CloudFormation (AWS CDK), which generates CloudFormation templates, CDK for Terraform (CDKtf), which generates Terraform-friendly JSON files, and CDK for Kubernetes (CDK8s), which generates Kubernetes manifests."
+      title="Supported CDKs"
     >
       <Flex align="center" justify="space-evenly" pt={4} wrap="wrap">
         {Object.entries(CDKTYPE_RENDER_MAP).map(
           ([cdktype, { name, imgsrc }]) => (
             <NavLink
+              color="blue.500"
               data-testid={testIds.infoSectionIcon}
+              fontWeight="bold"
               key={cdktype}
               to={getSearchPath({
                 cdkType: cdktype as CDKType,
                 sort: CatalogSearchSort.DownloadsDesc,
               })}
             >
-              <Stack align="center" color="blue.500" spacing={2}>
+              <Stack align="center" spacing={2}>
                 <Image aria-label={name} h={8} src={imgsrc} />
                 <span>{name}</span>
               </Stack>
@@ -57,11 +56,8 @@ export const Info: FunctionComponent = () => (
     <Divider display={{ lg: "none" }} mx={10} w="auto" />
 
     <InfoSection
-      description="Create cloud applications faster with reusable infrastructure building
-          blocks in your favorite programming language. Develop faster by
-          getting helpful API reference + code samples which are automatically
-          generated for Typescript, Python, .NET or Java (Go coming soon)!"
-      title="Build using familiar programming languages. Code samples and API reference included."
+      description="For each CDK library you can find helpful documentation, such as API references and code samples in Java, .NET, TypeScript and Python. Create cloud resources and define your application using loops, conditionals, GitOps, code completion, and manifest testing."
+      title="Supported programming languages"
     >
       <Flex align="center" justify="space-evenly" pt={4} wrap="wrap">
         {Object.entries(LANGUAGE_RENDER_MAP)
@@ -70,14 +66,16 @@ export const Info: FunctionComponent = () => (
           )
           .map(([language, { icon: Icon, name }]) => (
             <NavLink
+              color="blue.500"
               data-testid={testIds.infoSectionIcon}
+              fontWeight="bold"
               key={language}
               to={getSearchPath({
                 languages: [language as Language],
                 sort: CatalogSearchSort.DownloadsDesc,
               })}
             >
-              <Stack align="center" color="blue.500" key={language} spacing={2}>
+              <Stack align="center" key={language} spacing={2}>
                 <Icon aria-label={name} h={8} w={8} />
                 <span>{name}</span>
               </Stack>

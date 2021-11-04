@@ -8,7 +8,7 @@ import { LazyRoute } from "./components/LazyRoute";
 import { ROUTES } from "./constants/url";
 
 const FAQ = lazy(() => import("./views/FAQ"));
-const HomeRedesign = lazy(() => import("./views/HomeRedesign"));
+const Home = lazy(() => import("./views/Home"));
 const NotFound = lazy(() => import("./views/NotFound"));
 const Packages = lazy(() => import("./views/Packages"));
 const SearchRedesign = lazy(() => import("./views/SearchRedesign"));
@@ -33,7 +33,7 @@ export const App: FunctionComponent = () => {
       {showBanner ? <DevPreviewBanner /> : <div />}
       <Switch>
         <LazyRoute component={FAQ} exact path={ROUTES.FAQ} />
-        <LazyRoute component={HomeRedesign} exact path={ROUTES.HOME} />
+        <LazyRoute component={Home} exact path={ROUTES.HOME} />
         <LazyRoute component={SiteTerms} exact path={ROUTES.SITE_TERMS} />
         <LazyRoute component={Packages} path={ROUTES.PACKAGES} />
         <LazyRoute component={SearchRedesign} exact path={ROUTES.SEARCH} />

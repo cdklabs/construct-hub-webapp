@@ -9,7 +9,7 @@ import { Hero } from "./Hero";
 import { Info } from "./Info";
 import testIds from "./testIds";
 
-export const HomeRedesign: FunctionComponent = () => {
+export const Home: FunctionComponent = () => {
   return (
     <Page
       meta={{

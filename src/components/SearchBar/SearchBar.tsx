@@ -17,6 +17,7 @@ import {
   ChangeEventHandler,
   FormEventHandler,
 } from "react";
+import { useCatalog } from "../../contexts/Catalog";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { Form } from "../Form";
 import testIds from "./testIds";
@@ -72,6 +73,14 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
   const disclosure = useDisclosure();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const searchAPI = useCatalogSearch();
+  const catalog = useCatalog();
+
+  const roundedCatalogLength =
+    Math.round((catalog?.data?.packages?.length ?? 0) / 100) * 100;
+
+  const placeholder = `Search ${
+    roundedCatalogLength > 0 ? `${roundedCatalogLength}+ ` : ""
+  }construct libraries`;
 
   useEffect(() => {
     // Handle closing disclosures when user clicks outside of input.
@@ -130,7 +139,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
             data-testid={testIds.input}
             onChange={onChange ?? searchAPI.onQueryChange}
             onFocus={disclosure.onOpen}
-            placeholder={`Search 600+ construct libraries`}
+            placeholder={placeholder}
             ref={inputRef}
             value={value ?? searchAPI.query}
             {...inputProps}
