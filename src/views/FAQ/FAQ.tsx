@@ -79,6 +79,7 @@ export const FAQ: FunctionComponent = () => (
               other construct-based tools.
             </p>
           </FAQItem>
+
           <FAQItem question="Why should I use Construct Hub?">
             <p>
               Construct Hub is a central trusted venue where CDK developers can
