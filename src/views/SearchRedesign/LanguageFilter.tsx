@@ -9,11 +9,22 @@ import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
 
 const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
-  .filter(([key]) => TEMP_SUPPORTED_LANGUAGES.has(key as Language))
   .map(([key, value]) => ({
     display: value,
     value: key,
-  }));
+    ...(TEMP_SUPPORTED_LANGUAGES.has(key as Language)
+      ? { isDisabled: false }
+      : {
+          isDisabled: true,
+          disabledHint: `${
+            LANGUAGE_NAME_MAP[key as Language]
+          } support is coming soon!`,
+        }),
+  }))
+  .sort((l1, l2) => {
+    // Push disabled languages to back of list
+    return l1.isDisabled > l2.isDisabled ? 1 : -1;
+  });
 
 export const LanguageFilter: FunctionComponent = () => {
   const { languages, setLanguages } = useSearchState().searchAPI;
