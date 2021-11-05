@@ -1,10 +1,50 @@
 {
   "tasks": {
-    "analyze-exports": {
-      "name": "analyze-exports",
+    "clobber": {
+      "name": "clobber",
+      "description": "hard resets to HEAD of origin and cleans the local repo",
+      "env": {
+        "BRANCH": "$(git branch --show-current)"
+      },
       "steps": [
         {
-          "exec": "node scripts/analyze-exports"
+          "exec": "git checkout -b scratch",
+          "name": "save current HEAD in \"scratch\" branch"
+        },
+        {
+          "exec": "git checkout $BRANCH"
+        },
+        {
+          "exec": "git fetch origin",
+          "name": "fetch latest changes from origin"
+        },
+        {
+          "exec": "git reset --hard origin/$BRANCH",
+          "name": "hard reset to origin commit"
+        },
+        {
+          "exec": "git clean -fdx",
+          "name": "clean all untracked files"
+        },
+        {
+          "say": "ready to rock! (unpushed commits are under the \"scratch\" branch)"
+        }
+      ],
+      "condition": "git diff --exit-code > /dev/null"
+    },
+    "compile": {
+      "name": "compile",
+      "description": "Only compile"
+    },
+    "test": {
+      "name": "test",
+      "description": "Run tests",
+      "steps": [
+        {
+          "spawn": "eslint"
+        },
+        {
+          "exec": "react-app-rewired test --watchAll=false"
         }
       ]
     },
@@ -48,123 +88,18 @@
       ],
       "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
     },
-    "clobber": {
-      "name": "clobber",
-      "description": "hard resets to HEAD of origin and cleans the local repo",
+    "unbump": {
+      "name": "unbump",
+      "description": "Restores version to 0.0.0",
       "env": {
-        "BRANCH": "$(git branch --show-current)"
+        "OUTFILE": "package.json",
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt"
       },
       "steps": [
         {
-          "exec": "git checkout -b scratch",
-          "name": "save current HEAD in \"scratch\" branch"
-        },
-        {
-          "exec": "git checkout $BRANCH"
-        },
-        {
-          "exec": "git fetch origin",
-          "name": "fetch latest changes from origin"
-        },
-        {
-          "exec": "git reset --hard origin/$BRANCH",
-          "name": "hard reset to origin commit"
-        },
-        {
-          "exec": "git clean -fdx",
-          "name": "clean all untracked files"
-        },
-        {
-          "say": "ready to rock! (unpushed commits are under the \"scratch\" branch)"
-        }
-      ],
-      "condition": "git diff --exit-code > /dev/null"
-    },
-    "compile": {
-      "name": "compile",
-      "description": "Only compile"
-    },
-    "cypress:open": {
-      "name": "cypress:open",
-      "description": "open the cypress test runner UI",
-      "steps": [
-        {
-          "exec": "cypress open"
-        }
-      ]
-    },
-    "cypress:run": {
-      "name": "cypress:run",
-      "description": "run the cypress suite in CLI",
-      "steps": [
-        {
-          "exec": "cypress run"
-        }
-      ]
-    },
-    "default": {
-      "name": "default",
-      "steps": [
-        {
-          "exec": "node .projenrc.js"
-        }
-      ]
-    },
-    "dev": {
-      "name": "dev",
-      "description": "Starts the react application",
-      "steps": [
-        {
-          "exec": "react-app-rewired start"
-        }
-      ]
-    },
-    "eject": {
-      "name": "eject",
-      "description": "Ejects your React application from react-scripts",
-      "steps": [
-        {
-          "exec": "react-scripts eject"
-        }
-      ]
-    },
-    "eslint": {
-      "name": "eslint",
-      "description": "Runs eslint against the codebase",
-      "steps": [
-        {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools .projenrc.js"
-        }
-      ]
-    },
-    "package": {
-      "name": "package",
-      "description": "Create an npm tarball",
-      "steps": [
-        {
-          "exec": "mkdir -p dist/js"
-        },
-        {
-          "exec": "yarn pack"
-        },
-        {
-          "exec": "mv *.tgz dist/js/"
-        }
-      ]
-    },
-    "proxy-server": {
-      "name": "proxy-server",
-      "steps": [
-        {
-          "exec": "node ./scripts/proxy-server"
-        }
-      ]
-    },
-    "proxy-server:ci": {
-      "name": "proxy-server:ci",
-      "steps": [
-        {
-          "exec": "npx react-app-rewired build && yarn proxy-server"
+          "builtin": "release/reset-version"
         }
       ]
     },
@@ -198,6 +133,123 @@
         }
       ]
     },
+    "default": {
+      "name": "default",
+      "steps": [
+        {
+          "exec": "node .projenrc.js"
+        }
+      ]
+    },
+    "watch": {
+      "name": "watch",
+      "description": "Watch & compile in the background",
+      "steps": [
+        {
+          "exec": "tsc --build -w"
+        }
+      ]
+    },
+    "package": {
+      "name": "package",
+      "description": "Create an npm tarball",
+      "steps": [
+        {
+          "exec": "mkdir -p dist/js"
+        },
+        {
+          "exec": "yarn pack"
+        },
+        {
+          "exec": "mv *.tgz dist/js/"
+        }
+      ]
+    },
+    "eslint": {
+      "name": "eslint",
+      "description": "Runs eslint against the codebase",
+      "steps": [
+        {
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools .projenrc.js"
+        }
+      ]
+    },
+    "dev": {
+      "name": "dev",
+      "description": "Starts the react application",
+      "steps": [
+        {
+          "exec": "react-app-rewired start"
+        }
+      ]
+    },
+    "eject": {
+      "name": "eject",
+      "description": "Ejects your React application from react-scripts",
+      "steps": [
+        {
+          "exec": "react-scripts eject"
+        }
+      ]
+    },
+    "cypress:open": {
+      "name": "cypress:open",
+      "description": "open the cypress test runner UI",
+      "steps": [
+        {
+          "exec": "cypress open"
+        }
+      ]
+    },
+    "cypress:run": {
+      "name": "cypress:run",
+      "description": "run the cypress suite in CLI",
+      "steps": [
+        {
+          "exec": "cypress run"
+        }
+      ]
+    },
+    "proxy-server": {
+      "name": "proxy-server",
+      "steps": [
+        {
+          "exec": "node ./scripts/proxy-server"
+        }
+      ]
+    },
+    "proxy-server:ci": {
+      "name": "proxy-server:ci",
+      "steps": [
+        {
+          "exec": "npx react-app-rewired build && yarn proxy-server"
+        }
+      ]
+    },
+    "test:unit": {
+      "name": "test:unit",
+      "steps": [
+        {
+          "exec": "npx react-app-rewired test"
+        }
+      ]
+    },
+    "test:update": {
+      "name": "test:update",
+      "steps": [
+        {
+          "exec": "npx react-app-rewired test -u"
+        }
+      ]
+    },
+    "analyze-exports": {
+      "name": "analyze-exports",
+      "steps": [
+        {
+          "exec": "node scripts/analyze-exports"
+        }
+      ]
+    },
     "release": {
       "name": "release",
       "description": "Prepare a release from \"main\" branch",
@@ -219,49 +271,6 @@
         },
         {
           "exec": "git diff --ignore-space-at-eol --exit-code"
-        }
-      ]
-    },
-    "test": {
-      "name": "test",
-      "description": "Run tests",
-      "steps": [
-        {
-          "spawn": "eslint"
-        },
-        {
-          "exec": "react-app-rewired test --watchAll=false"
-        }
-      ]
-    },
-    "test:unit": {
-      "name": "test:unit",
-      "steps": [
-        {
-          "exec": "npx react-app-rewired test"
-        }
-      ]
-    },
-    "test:update": {
-      "name": "test:update",
-      "steps": [
-        {
-          "exec": "npx react-app-rewired test -u"
-        }
-      ]
-    },
-    "unbump": {
-      "name": "unbump",
-      "description": "Restores version to 0.0.0",
-      "env": {
-        "OUTFILE": "package.json",
-        "CHANGELOG": "dist/changelog.md",
-        "BUMPFILE": "dist/version.txt",
-        "RELEASETAG": "dist/releasetag.txt"
-      },
-      "steps": [
-        {
-          "builtin": "release/reset-version"
         }
       ]
     },
@@ -295,15 +304,6 @@
         },
         {
           "exec": "npx projen"
-        }
-      ]
-    },
-    "watch": {
-      "name": "watch",
-      "description": "Watch & compile in the background",
-      "steps": [
-        {
-          "exec": "tsc --build -w"
         }
       ]
     }

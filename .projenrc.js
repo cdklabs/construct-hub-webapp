@@ -49,6 +49,7 @@ const project = new web.ReactTypeScriptProject({
     "react-router-dom",
     "rehype-raw",
     "rehype-sanitize",
+    "remark",
     "remark-emoji",
     "remark-gfm",
     // PWA Functionality

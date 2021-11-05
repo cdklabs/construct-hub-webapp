@@ -233,6 +233,10 @@
       "type": "runtime"
     },
     {
+      "name": "remark",
+      "type": "runtime"
+    },
+    {
       "name": "remark-emoji",
       "type": "runtime"
     },
