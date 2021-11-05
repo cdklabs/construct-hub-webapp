@@ -67,24 +67,23 @@ export class CatalogSearchAPI {
   constructor(catalogData: CatalogPackage[], stats: PackageStats) {
     const catalogMap = catalogData
       // Packages with the "construct-hub/hide-from-search" keyword are shadow-banned from search results
-      .filter((pkg) => !pkg.keywords?.includes('construct-hub/hide-from-search'))
-      .reduce(
-        (map, pkg) => {
-          const { name, version } = pkg;
-          const id = [name, version].join("@");
+      .filter(
+        (pkg) => !pkg.keywords?.includes("construct-hub/hide-from-search")
+      )
+      .reduce((map, pkg) => {
+        const { name, version } = pkg;
+        const id = [name, version].join("@");
 
-          const downloads = stats.packages[name]?.downloads?.npm ?? 0;
+        const downloads = stats.packages[name]?.downloads?.npm ?? 0;
 
-          map.set(id, {
-            ...pkg,
-            downloads,
-            id,
-          });
+        map.set(id, {
+          ...pkg,
+          downloads,
+          id,
+        });
 
-          return map;
-        },
-        new Map<string, any>(),
-      );
+        return map;
+      }, new Map<string, any>());
 
     this.map = this.sort(catalogMap, CatalogSearchSort.PublishDateDesc);
 
