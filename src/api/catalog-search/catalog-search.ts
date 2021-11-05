@@ -83,7 +83,7 @@ export class CatalogSearchAPI {
 
           return map;
         },
-        new Map<string, CatalogPackage & { readonly downloads: number, readonly id: string; }>(),
+        new Map<string, any>(),
       );
 
     this.map = this.sort(catalogMap, CatalogSearchSort.PublishDateDesc);
