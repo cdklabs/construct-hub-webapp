@@ -56,7 +56,7 @@ export const Details: FunctionComponent = () => {
           data-testid={testIds.downloads}
           icon={<DownloadIcon />}
           label={downloads.toLocaleString()}
-          tooltip="Weekly downloads are sourced from NPM"
+          tooltip="Download numbers are periodically sourced from the NPM registry"
           value={"Weekly downloads"}
         />
       ) : (

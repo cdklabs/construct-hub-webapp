@@ -25,34 +25,35 @@ import { ToggleButton } from "./ToggleButton";
 
 interface DetailsProps extends StackProps {}
 
-const WithLabel: FunctionComponent<{ label: ReactNode }> = ({
+const WithLabel: FunctionComponent<{ label: ReactNode; tooltip?: string }> = ({
   children,
   label,
+  tooltip,
 }) => (
-  <Text fontWeight="bold">
-    {label}:{" "}
-    <Box as="span" fontWeight="normal">
-      {children}
-    </Box>
-  </Text>
+  <Tooltip hasArrow isDisabled={!tooltip} label={tooltip} placement="left">
+    <Text fontWeight="bold">
+      {label}{" "}
+      <Box as="span" fontWeight="normal">
+        {children}
+      </Box>
+    </Text>
+  </Tooltip>
 );
 
 const Downloads: FunctionComponent<{ downloads: number }> = ({ downloads }) => (
-  <Tooltip
-    hasArrow
-    label="Weekly downloads are sourced from NPM"
-    placement="left"
+  <WithLabel
+    label={
+      <>
+        <Box as="span" mr={1}>
+          <DownloadIcon />
+        </Box>
+        {downloads.toLocaleString()}
+      </>
+    }
+    tooltip="Download numbers are periodically sourced from the NPM registry"
   >
-    <Stack align="center" direction="row" spacing={1}>
-      <DownloadIcon color="gray.700" />
-      <Text>
-        <Box as="span" color="blue.500">
-          {downloads.toLocaleString()}
-        </Box>{" "}
-        Weekly Downloads
-      </Text>
-    </Stack>
-  </Tooltip>
+    Weekly downloads
+  </WithLabel>
 );
 
 const getDetailItemsFromPackage = ({
