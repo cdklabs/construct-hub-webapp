@@ -5,6 +5,7 @@ import {
   Stack,
   StackProps,
   Text,
+  Tooltip,
   useDisclosure,
 } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
@@ -24,28 +25,35 @@ import { ToggleButton } from "./ToggleButton";
 
 interface DetailsProps extends StackProps {}
 
-const WithLabel: FunctionComponent<{ label: ReactNode }> = ({
+const WithLabel: FunctionComponent<{ label: ReactNode; tooltip?: string }> = ({
   children,
   label,
+  tooltip,
 }) => (
-  <Text fontWeight="bold">
-    {label}:{" "}
-    <Box as="span" fontWeight="normal">
-      {children}
-    </Box>
-  </Text>
+  <Tooltip hasArrow isDisabled={!tooltip} label={tooltip} placement="left">
+    <Text fontWeight="bold">
+      {label}{" "}
+      <Box as="span" fontWeight="normal">
+        {children}
+      </Box>
+    </Text>
+  </Tooltip>
 );
 
 const Downloads: FunctionComponent<{ downloads: number }> = ({ downloads }) => (
-  <Stack align="center" direction="row" spacing={1}>
-    <DownloadIcon color="gray.700" />
-    <Text>
-      <Box as="span" color="blue.500">
+  <WithLabel
+    label={
+      <>
+        <Box as="span" mr={1}>
+          <DownloadIcon />
+        </Box>
         {downloads.toLocaleString()}
-      </Box>{" "}
-      Downloads
-    </Text>
-  </Stack>
+      </>
+    }
+    tooltip="Download numbers are periodically sourced from the NPM registry"
+  >
+    Weekly downloads
+  </WithLabel>
 );
 
 const getDetailItemsFromPackage = ({
