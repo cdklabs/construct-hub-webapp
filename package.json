@@ -65,7 +65,7 @@
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
     "prettier": "^2.4.1",
-    "projen": "^0.32.5",
+    "projen": "^0.32.6",
     "react-app-rewired": "^2.1.8",
     "standard-version": "^9",
     "ts-unused-exports": "^7.0.3",
