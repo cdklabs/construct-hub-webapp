@@ -101,12 +101,6 @@ export const Install: FunctionComponent<FlexProps> = (props) => {
           fontSize="inherit"
           language={language as PrismLanguage}
           lineHeight="2"
-          mt={1}
-          sx={{
-            "> div": {
-              p: 1,
-            },
-          }}
         />
       )}
     </Flex>

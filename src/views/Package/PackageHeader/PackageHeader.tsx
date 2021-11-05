@@ -8,7 +8,7 @@ import { Heading } from "./Heading";
 import { Install } from "./Install";
 
 export const PackageHeader: FunctionComponent = () => {
-  const { assembly, metadata } = usePackageState();
+  const { assembly, metadata, version } = usePackageState();
 
   const { data: asm } = assembly;
   const { data: meta } = metadata;
@@ -21,6 +21,7 @@ export const PackageHeader: FunctionComponent = () => {
         gridArea={GRID_AREAS.HEADING}
         metadata={meta}
         name={asm.name}
+        version={version}
       />
       <Flex align="start" gridArea={GRID_AREAS.LANGUAGES}>
         <LanguageSelection />

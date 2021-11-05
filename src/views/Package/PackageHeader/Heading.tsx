@@ -1,4 +1,6 @@
 import {
+  Box,
+  Flex,
   Stack,
   StackProps,
   Heading as ChakraHeading,
@@ -17,6 +19,7 @@ interface HeadingProps extends StackProps {
   name: string;
   description?: string;
   metadata: Metadata;
+  version: string;
 }
 
 export const Heading: FunctionComponent<HeadingProps> = ({
@@ -24,6 +27,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   name,
   description,
   metadata,
+  version,
   ...stackProps
 }) => {
   const tags: PackageTagConfig[] = [
@@ -41,10 +45,26 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   const cdkTypeProps = metadata.constructFramework ?? {};
 
   return (
-    <Stack lineHeight="1.5" spacing={2} {...stackProps}>
-      <ChakraHeading color="blue.800" fontSize="1.5rem">
-        {name}
-      </ChakraHeading>
+    <Stack
+      lineHeight="1.5"
+      maxW="full"
+      overflow="hidden"
+      spacing={2}
+      {...stackProps}
+    >
+      <Flex align="center">
+        <ChakraHeading
+          color="blue.800"
+          flexShrink={1}
+          fontSize="1.5rem"
+          isTruncated
+        >
+          {name}
+        </ChakraHeading>
+        <Box as="span" color="blue.500" flex={1} fontSize="sm" ml={4}>
+          {version}
+        </Box>
+      </Flex>
 
       <Text fontSize="1rem">{description}</Text>
 

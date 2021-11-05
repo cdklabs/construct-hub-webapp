@@ -5,6 +5,7 @@ import {
   Stack,
   StackProps,
   Text,
+  Tooltip,
   useDisclosure,
 } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
@@ -37,15 +38,21 @@ const WithLabel: FunctionComponent<{ label: ReactNode }> = ({
 );
 
 const Downloads: FunctionComponent<{ downloads: number }> = ({ downloads }) => (
-  <Stack align="center" direction="row" spacing={1}>
-    <DownloadIcon color="gray.700" />
-    <Text>
-      <Box as="span" color="blue.500">
-        {downloads.toLocaleString()}
-      </Box>{" "}
-      Downloads
-    </Text>
-  </Stack>
+  <Tooltip
+    hasArrow
+    label="Weekly downloads are sourced from NPM"
+    placement="left"
+  >
+    <Stack align="center" direction="row" spacing={1}>
+      <DownloadIcon color="gray.700" />
+      <Text>
+        <Box as="span" color="blue.500">
+          {downloads.toLocaleString()}
+        </Box>{" "}
+        Weekly Downloads
+      </Text>
+    </Stack>
+  </Tooltip>
 );
 
 const getDetailItemsFromPackage = ({
