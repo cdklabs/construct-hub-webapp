@@ -4,6 +4,7 @@ import { Metadata } from "./metadata";
 
 export interface Author {
   readonly name: string;
+  readonly email?: string;
   readonly url: string;
 }
 

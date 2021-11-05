@@ -1,4 +1,4 @@
-import { Box, Grid } from "@chakra-ui/react";
+import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { CopyButton } from "../CopyButton";
 import type { RendererProps } from "./types";
@@ -9,8 +9,8 @@ export const SingleLineRenderer: FunctionComponent<RendererProps> = ({
   getLineProps,
   getTokenProps,
 }) => (
-  <Grid p={2} templateColumns="1fr min-content" w="full">
-    <Box maxW="full" overflow="auto">
+  <Grid p={3} templateColumns="1fr min-content" w="full">
+    <Box m={-3} maxW="full" overflow="auto" p={3}>
       {tokens.map((line, i) => (
         <div key={i} {...getLineProps({ line, key: i })}>
           {line.map((token, key) => (
@@ -19,7 +19,7 @@ export const SingleLineRenderer: FunctionComponent<RendererProps> = ({
         </div>
       ))}
     </Box>
-    <Box borderLeft="base" ml={1}>
+    <Flex align="center" borderLeft="base" ml={1}>
       <CopyButton
         color="blue.500"
         colorScheme="blue"
@@ -27,6 +27,6 @@ export const SingleLineRenderer: FunctionComponent<RendererProps> = ({
         value={code}
         variant="ghost"
       />
-    </Box>
+    </Flex>
   </Grid>
 );

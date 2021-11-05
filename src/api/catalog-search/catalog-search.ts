@@ -9,6 +9,11 @@ import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
 export interface ExtendedCatalogPackage extends CatalogPackage {
   id: string;
   downloads: number;
+
+  scope?: string;
+  packageName?: string;
+  authorName?: string;
+  authorEmail?: string;
 }
 
 export interface CatalogConstructFrameworks {
@@ -65,20 +70,25 @@ export class CatalogSearchAPI {
   public readonly constructFrameworks: CatalogConstructFrameworks;
 
   constructor(catalogData: CatalogPackage[], stats: PackageStats) {
-    const catalogMap = catalogData.reduce((map, pkg) => {
-      const { name, version } = pkg;
-      const id = [name, version].join("@");
+    const catalogMap = catalogData
+      // Packages with the "construct-hub/hide-from-search" keyword are shadow-banned from search results
+      .filter(
+        (pkg) => !pkg.keywords?.includes("construct-hub/hide-from-search")
+      )
+      .reduce((map, pkg) => {
+        const { name, version } = pkg;
+        const id = [name, version].join("@");
 
-      const downloads = stats.packages[name]?.downloads?.npm ?? 0;
+        const downloads = stats.packages[name]?.downloads?.npm ?? 0;
 
-      map.set(id, {
-        ...pkg,
-        downloads,
-        id,
-      });
+        map.set(id, {
+          ...pkg,
+          downloads,
+          id,
+        });
 
-      return map;
-    }, new Map());
+        return map;
+      }, new Map<string, ExtendedCatalogPackage>());
 
     this.map = this.sort(catalogMap, CatalogSearchSort.PublishDateDesc);
 
@@ -105,14 +115,14 @@ export class CatalogSearchAPI {
 
         if (typeof author === "string") {
           pkg.authorName = author;
-        }
+        } else {
+          if (author?.name) {
+            pkg.authorName = author.name;
+          }
 
-        if (author?.name) {
-          pkg.authorName = author.name;
-        }
-
-        if (author?.email) {
-          pkg.authorEmail = author.email;
+          if (author?.email) {
+            pkg.authorEmail = author.email;
+          }
         }
 
         this.add(pkg);

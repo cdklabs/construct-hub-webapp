@@ -1,5 +1,5 @@
 import { DownloadIcon } from "@chakra-ui/icons";
-import { Text } from "@chakra-ui/react";
+import { Text, Tooltip } from "@chakra-ui/react";
 import { FunctionComponent, ReactChild } from "react";
 import { useStats } from "../../contexts/Stats";
 import { useLanguage } from "../../hooks/useLanguage";
@@ -12,6 +12,7 @@ import testIds from "./testIds";
 interface DetailProps {
   "data-testid": string;
   icon?: ReactChild;
+  tooltip?: string;
   label: string;
   value: ReactChild;
 }
@@ -20,13 +21,17 @@ const Detail: FunctionComponent<DetailProps> = ({
   "data-testid": dataTestid,
   icon,
   label,
+  tooltip,
   value,
 }) => (
-  <Text data-testid={dataTestid} fontSize="xs">
-    {icon}
-    {icon ? " " : ""}
-    <strong>{label}</strong> {value}
-  </Text>
+  <Tooltip hasArrow isDisabled={!tooltip} label={tooltip} placement="auto">
+    {/* zIndex required to allow tooltip to display due to card link overlay */}
+    <Text data-testid={dataTestid} fontSize="xs" zIndex={1}>
+      {icon}
+      {icon ? " " : ""}
+      <strong>{label}</strong> {value}
+    </Text>
+  </Tooltip>
 );
 
 export const Details: FunctionComponent = () => {
@@ -51,6 +56,7 @@ export const Details: FunctionComponent = () => {
           data-testid={testIds.downloads}
           icon={<DownloadIcon />}
           label={downloads.toLocaleString()}
+          tooltip="Download numbers are periodically sourced from the NPM registry"
           value={"Weekly downloads"}
         />
       ) : (
