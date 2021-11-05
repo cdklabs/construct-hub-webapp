@@ -166,12 +166,13 @@ export const parseMarkdownStructure = (
   // Add back api reference title for use as menu item
   const apiReferenceParsed = [separator.trim(), ...(apiReferenceSplit ?? [])];
 
+  const baseReadmePath = `${basePath}${langQuery}`;
   const readmeMenuItems = [
     {
       level: 1,
       id: "Readme",
       title: "Readme",
-      path: `${basePath}${langQuery}`,
+      path: baseReadmePath,
       children: readmeSplit.reduce((accum: MenuItem[], str: string) => {
         if (str.startsWith("#")) {
           const { id, title } = getHeaderAttributes(str);
@@ -181,7 +182,7 @@ export const parseMarkdownStructure = (
             id,
             title,
             // root package path plus hash for header on readme item
-            path: `${basePath}${langQuery}#${id}`,
+            path: `${baseReadmePath}#${id}`,
             children: [],
           };
           return appendMenuItem(accum, menuItem);
@@ -194,6 +195,7 @@ export const parseMarkdownStructure = (
   let menuItems: MenuItem[] = [...readmeMenuItems];
   const types: Types = {};
 
+  const getApiPath = (id: string) => `${basePath}/api/${id}${langQuery}`;
   let prevType: { id: string; title: string };
   apiReferenceParsed?.forEach((str) => {
     // TODO get attributes off of embedded html
@@ -204,7 +206,7 @@ export const parseMarkdownStructure = (
 
       // root package path plus type id segment
       // only level 3 headers are types in api reference
-      const path = level === 3 ? `${basePath}/${id}${langQuery}` : undefined;
+      const path = level === 3 ? getApiPath(id) : undefined;
       const menuItem = {
         level,
         id,

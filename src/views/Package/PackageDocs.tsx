@@ -81,7 +81,7 @@ export const PackageDocs: FunctionComponent = () => {
           <Route exact path={path}>
             <PackageReadme />
           </Route>
-          <Route exact path={`${path}/:typeId`}>
+          <Route exact path={`${path}/api/:typeId`}>
             <PackageTypeDocs />
           </Route>
         </Switch>

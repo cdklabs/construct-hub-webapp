@@ -89,6 +89,7 @@ describe("parseMarkdownStructure", () => {
   it("parses out menu items", () => {
     const { menuItems } = parseMarkdownStructure(MARKDOWN_INPUT, packageData);
     const basePath = "/packages/@packageScope/packageName/v/0.0.0";
+    const baseApiPath = `${basePath}/api`;
     const langQuery = "?lang=language";
     const baseHashPath = `${basePath}${langQuery}`;
     expect(menuItems).toEqual([
@@ -129,14 +130,14 @@ describe("parseMarkdownStructure", () => {
                 level: 3,
                 id: `${MY_DATA_TYPE_1}-1`,
                 title: `${MY_DATA_TYPE_1}-1`,
-                path: `${basePath}/${MY_DATA_TYPE_1}-1${langQuery}`,
+                path: `${baseApiPath}/${MY_DATA_TYPE_1}-1${langQuery}`,
                 children: [],
               },
               {
                 level: 3,
                 id: `${MY_DATA_TYPE_1}-2`,
                 title: `${MY_DATA_TYPE_1}-2`,
-                path: `${basePath}/${MY_DATA_TYPE_1}-2${langQuery}`,
+                path: `${baseApiPath}/${MY_DATA_TYPE_1}-2${langQuery}`,
                 children: [],
               },
             ],
@@ -150,14 +151,14 @@ describe("parseMarkdownStructure", () => {
                 level: 3,
                 id: `${MY_DATA_TYPE_2}-1`,
                 title: `${MY_DATA_TYPE_2}-1`,
-                path: `${basePath}/${MY_DATA_TYPE_2}-1${langQuery}`,
+                path: `${baseApiPath}/${MY_DATA_TYPE_2}-1${langQuery}`,
                 children: [],
               },
               {
                 level: 3,
                 id: `${MY_DATA_TYPE_2}-2`,
                 title: `${MY_DATA_TYPE_2}-2`,
-                path: `${basePath}/${MY_DATA_TYPE_2}-2${langQuery}`,
+                path: `${baseApiPath}/${MY_DATA_TYPE_2}-2${langQuery}`,
                 children: [],
               },
             ],
