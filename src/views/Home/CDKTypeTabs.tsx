@@ -16,6 +16,7 @@ import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { NavLink } from "../../components/NavLink";
 import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
+import { useHistoryState } from "../../hooks/useHistoryState";
 import { getSearchPath } from "../../util/url";
 import { SECTION_PADDING } from "./constants";
 import { PackageGrid } from "./PackageGrid";
@@ -87,6 +88,8 @@ export const CDKTypeTabs: FunctionComponent = () => {
     sort: CatalogSearchSort.DownloadsDesc,
   });
 
+  const [tabIndex, setTabIndex] = useHistoryState("cdkTypeTab", 0);
+
   return (
     <Flex
       bg="white"
@@ -118,7 +121,12 @@ export const CDKTypeTabs: FunctionComponent = () => {
         community and companies and organizations like Terraform, CNCF, AWS and
         more.
       </Text>
-      <Tabs isFitted variant="line">
+      <Tabs
+        defaultIndex={tabIndex}
+        isFitted
+        onChange={(index) => setTabIndex(index)}
+        variant="line"
+      >
         <TabList>
           <PackageTab data={anyCDKType} />
 
