@@ -43,13 +43,13 @@ const project = new web.ReactTypeScriptProject({
     "framer-motion@^4",
     "jsii-reflect",
     "lunr",
+    "node-emoji",
     "prism-react-renderer",
     "react-helmet",
     "react-markdown",
     "react-router-dom",
     "rehype-raw",
     "rehype-sanitize",
-    "remark",
     "remark-emoji",
     "remark-gfm",
     // PWA Functionality
@@ -62,6 +62,7 @@ const project = new web.ReactTypeScriptProject({
 
   devDeps: [
     "@types/lunr",
+    "@types/node-emoji",
     "@types/react-helmet",
     "@types/react-router-dom",
     "eslint-plugin-jsx-a11y",

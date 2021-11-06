@@ -1,15 +1,13 @@
 import type { Assembly } from "@jsii/spec";
+import emoji from "node-emoji";
 import {
   createContext,
   FunctionComponent,
   useContext,
   useEffect,
   useMemo,
-  useState,
 } from "react";
 import { useParams } from "react-router-dom";
-import remark from "remark";
-import emoji from "remark-emoji";
 import { fetchAssembly } from "../../api/package/assembly";
 import { fetchMarkdown } from "../../api/package/docs";
 import { fetchMetadata, Metadata } from "../../api/package/metadata";
@@ -121,8 +119,16 @@ const getHeaderAttributes = (hdr: string): { id: string; title: string } => {
     };
   }, {});
 
+  // Use raw title for items that don't specify data attributes, like readme
+  // headers.
   const [_, rawTitle] = /^#*\s*([^<]+?)\s*(?:<|$)/.exec(hdr) ?? [];
-  const title: string = attrs["data-heading-title"] ?? rawTitle;
+  const wEmoji = rawTitle.replace(
+    /:\+1:|:-1:|:[\w-]+:/g,
+    (match: string): string => {
+      return emoji.get(match) ?? match;
+    }
+  );
+  const title: string = attrs["data-heading-title"] ?? wEmoji;
   const id = attrs["data-heading-id"] ?? encodeURIComponent(sanitize(title));
 
   return { id, title };
@@ -283,36 +289,16 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
       (assemblyResponse.loading || markdownResponse.loading)
   );
 
-  const [processedMd, setProcessMd] = useState<string | undefined>();
-
-  useEffect(() => {
-    let isMounted = true;
-    if (markdownResponse.data) {
-      void remark()
-        .use(emoji)
-        .process(markdownResponse.data)
-        .then((file) => {
-          if (isMounted) {
-            setProcessMd(String(file));
-          }
-        });
-    }
-
-    return () => {
-      isMounted = false;
-    };
-  }, [markdownResponse]);
-
   const parsedMd = useMemo(() => {
-    if (!processedMd) return { menuItems: [] };
+    if (!markdownResponse.data) return { menuItems: [] };
 
-    return parseMarkdownStructure(processedMd, {
+    return parseMarkdownStructure(markdownResponse.data, {
       scope,
       name,
       version,
       language,
     });
-  }, [processedMd, name, scope, version, language]);
+  }, [markdownResponse.data, name, scope, version, language]);
 
   // Handle missing JSON for assembly
   if (assemblyResponse.error) {

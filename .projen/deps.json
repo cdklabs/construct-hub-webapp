@@ -25,6 +25,10 @@
       "type": "build"
     },
     {
+      "name": "@types/node-emoji",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^14.17.0",
       "type": "build"
@@ -196,6 +200,10 @@
       "type": "runtime"
     },
     {
+      "name": "node-emoji",
+      "type": "runtime"
+    },
+    {
       "name": "prism-react-renderer",
       "type": "runtime"
     },
@@ -230,10 +238,6 @@
     },
     {
       "name": "rehype-sanitize",
-      "type": "runtime"
-    },
-    {
-      "name": "remark",
       "type": "runtime"
     },
     {
