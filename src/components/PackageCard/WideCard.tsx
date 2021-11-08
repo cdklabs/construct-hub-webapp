@@ -79,6 +79,7 @@ export const WideCard: FunctionComponent = () => {
           gridArea={GRID_AREA.TAGS}
           maxH={6}
           overflow="hidden"
+          spacing={2}
         >
           <Tags />
         </Stack>
@@ -102,7 +103,7 @@ export const WideCard: FunctionComponent = () => {
 
         <Stack gridArea={GRID_AREA.LANGUAGES} spacing={{ base: 4, md: 0 }}>
           <Divider display={{ md: "none" }} />
-          <Stack data-testid={testIds.languages} direction="row" spacing={2}>
+          <Stack data-testid={testIds.languages} direction="row" spacing={1}>
             <Languages />
           </Stack>
         </Stack>

@@ -77,7 +77,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
           {...cdkTypeProps}
         />
         {tags.slice(0, 3).map(({ id, keyword: { label, color } = {} }) => (
-          <PackageTag key={id} mr={1} value={id} variant={color}>
+          <PackageTag key={id} value={id} variant={color}>
             {label}
           </PackageTag>
         ))}

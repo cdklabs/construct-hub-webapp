@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
-import { SORT_FUNCTIONS } from "../../api/catalog-search/util";
 import { FeaturedPackagesDetail } from "../../api/config";
 import { CatalogPackage } from "../../api/package/packages";
 import { findPackage } from "../../api/package/util";
 import { useCatalog } from "../../contexts/Catalog";
+import { useCatalogResults } from "../../hooks/useCatalogResults";
 
 export const useSection = ({
   showLastUpdated,
@@ -13,24 +13,21 @@ export const useSection = ({
   showLastUpdated?: number;
   showPackages?: FeaturedPackagesDetail[];
 }) => {
-  const { data, loading, error } = useCatalog();
+  const { loading, error } = useCatalog();
+  const { results } = useCatalogResults({
+    limit: 25,
+    sort: CatalogSearchSort.PublishDateDesc,
+  });
 
   return useMemo(() => {
-    if (loading || error || !data?.packages) return [];
+    if (loading || error || !results) return [];
 
     if (showLastUpdated) {
-      return data.packages
-        .sort(
-          SORT_FUNCTIONS[CatalogSearchSort.PublishDateDesc] as (
-            p1: CatalogPackage,
-            p2: CatalogPackage
-          ) => number
-        )
-        .slice(0, showLastUpdated);
+      return results.slice(0, showLastUpdated);
     } else if (showPackages) {
       return showPackages
         .map((p) => {
-          const pkg = findPackage(data, p.name);
+          const pkg = findPackage({ packages: results }, p.name);
           if (pkg) {
             return {
               ...pkg,
@@ -43,5 +40,5 @@ export const useSection = ({
     } else {
       return undefined;
     }
-  }, [data, error, loading, showLastUpdated, showPackages]);
+  }, [results, error, loading, showLastUpdated, showPackages]);
 };
