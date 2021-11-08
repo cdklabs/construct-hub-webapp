@@ -150,6 +150,7 @@
     },
     {
       "name": "@chakra-ui/react",
+      "version": "1.6.10",
       "type": "runtime"
     },
     {
