@@ -10,22 +10,22 @@
     },
     "build": {
       "name": "build",
-      "description": "Full release build (test+compile)",
+      "description": "Full release build",
       "steps": [
         {
-          "exec": "npx projen"
+          "spawn": "default"
         },
         {
-          "spawn": "test"
+          "spawn": "pre-compile"
         },
         {
           "spawn": "compile"
         },
         {
-          "spawn": "package"
+          "spawn": "post-compile"
         },
         {
-          "exec": "react-app-rewired build"
+          "spawn": "test"
         },
         {
           "spawn": "package"
@@ -82,7 +82,12 @@
     },
     "compile": {
       "name": "compile",
-      "description": "Only compile"
+      "description": "Only compile",
+      "steps": [
+        {
+          "exec": "react-scripts build"
+        }
+      ]
     },
     "cypress:open": {
       "name": "cypress:open",
@@ -104,6 +109,7 @@
     },
     "default": {
       "name": "default",
+      "description": "Synthesize project files",
       "steps": [
         {
           "exec": "node .projenrc.js"
@@ -139,7 +145,7 @@
     },
     "package": {
       "name": "package",
-      "description": "Create an npm tarball",
+      "description": "Creates the distribution package",
       "steps": [
         {
           "exec": "mkdir -p dist/js"
@@ -149,6 +155,19 @@
         },
         {
           "exec": "mv *.tgz dist/js/"
+        }
+      ]
+    },
+    "post-compile": {
+      "name": "post-compile",
+      "description": "Runs after successful compilation"
+    },
+    "pre-compile": {
+      "name": "pre-compile",
+      "description": "Prepare the project for compilation",
+      "steps": [
+        {
+          "spawn": "package"
         }
       ]
     },
