@@ -164,12 +164,7 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation",
-      "steps": [
-        {
-          "spawn": "package"
-        }
-      ]
+      "description": "Prepare the project for compilation"
     },
     "proxy-server": {
       "name": "proxy-server",
