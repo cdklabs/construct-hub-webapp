@@ -179,9 +179,7 @@ const project = new web.ReactTypeScriptProject({
 })();
 
 // synthesize project files before build
-// see https://github.com/projen/projen/issues/754
-const buildTask = project.tasks.tryFind("build");
-buildTask.spawn(project.packageTask);
+project.projectBuild.preCompileTask.spawn(project.packageTask);
 
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
@@ -239,7 +237,7 @@ project.eslint.addOverride({
 });
 
 // rewire cra tasks, all apart from eject.
-rewireCRA(buildTask);
+rewireCRA(project.tasks.tryFind("build"));
 rewireCRA(project.tasks.tryFind("test"));
 rewireCRA(project.tasks.tryFind("dev"));
 
