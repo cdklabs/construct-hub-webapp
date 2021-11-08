@@ -29,6 +29,10 @@ const project = new web.ReactTypeScriptProject({
     prettier: true,
   },
 
+  depsUpgradeOptions: {
+    exclude: ["@chakra-ui/react"],
+  },
+
   deps: [
     "@chakra-ui/anatomy",
     "@chakra-ui/icons",
@@ -69,10 +73,12 @@ const project = new web.ReactTypeScriptProject({
     "eslint-plugin-react",
     "react-app-rewired",
   ],
+
   autoApproveOptions: {
     allowedUsernames: ["cdklabs-automation"],
     secret: "GITHUB_TOKEN",
   },
+
   autoApproveUpgrades: true,
 });
 
