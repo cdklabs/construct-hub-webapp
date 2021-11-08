@@ -176,9 +176,6 @@ const project = new web.ReactTypeScriptProject({
   project.addTask("analyze-exports", { exec: "node scripts/analyze-exports" });
 })();
 
-// synthesize project files before build
-project.projectBuild.preCompileTask.spawn(project.packageTask);
-
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
 project.npmignore.addPatterns("!/build");
