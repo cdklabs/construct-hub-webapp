@@ -4,7 +4,7 @@ import {
   Heading,
   Text,
   Popover,
-  IconButton,
+  // IconButton,
   PopoverTrigger,
   PopoverBody,
   PopoverArrow,
@@ -22,22 +22,16 @@ export const FilterHeading: FunctionComponent<FilterHeadingProps> = ({
   hint,
 }) => {
   return (
-    <Flex align="center">
+    <Flex align="center" mb={1}>
       <Heading as="h4" size="sm" w="max-content">
         {name}
       </Heading>
       {hint ? (
         <Popover colorScheme="dark" placement="right" strategy="fixed">
           <PopoverTrigger>
-            <IconButton
-              aria-label={`Hint: ${name}`}
-              icon={<QuestionIcon h={4} w={4} />}
-              ml={2}
-              px={0}
-              py={0}
-              size="sm"
-              variant="ghost"
-            />
+            <Flex aria-label={`Hint: ${name}`} as="button" ml={2}>
+              <QuestionIcon h={3.5} w={3.5} />
+            </Flex>
           </PopoverTrigger>
           <PopoverContent
             bg="gray.700"

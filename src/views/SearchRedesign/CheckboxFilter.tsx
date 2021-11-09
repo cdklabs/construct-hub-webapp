@@ -28,7 +28,7 @@ export const CheckboxFilter: FunctionComponent<CheckboxFilterProps> = ({
   };
 
   return (
-    <Stack data-testid={dataTestid} spacing={2}>
+    <Stack data-testid={dataTestid} spacing={1}>
       <FilterHeading hint={hint} name={name} />
       {options.map(({ disabledHint, display, isDisabled, value }) => (
         <Checkbox

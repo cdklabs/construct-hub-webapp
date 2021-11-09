@@ -22,7 +22,7 @@ export const RadioFilter: FunctionComponent<RadioFilterProps> = ({
   hint,
 }) => {
   return (
-    <Stack data-testid={dataTestid} spacing={2}>
+    <Stack data-testid={dataTestid} spacing={1}>
       <FilterHeading hint={hint} name={name} />
       <RadioGroup onChange={onValueChange} value={checkedValue}>
         <Stack>
