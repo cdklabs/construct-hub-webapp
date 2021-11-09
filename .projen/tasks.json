@@ -86,6 +86,9 @@
       "steps": [
         {
           "exec": "react-scripts build"
+        },
+        {
+          "spawn": "replace-worker"
         }
       ]
     },
@@ -233,6 +236,17 @@
         },
         {
           "exec": "git diff --ignore-space-at-eol --exit-code"
+        }
+      ]
+    },
+    "replace-worker": {
+      "name": "replace-worker",
+      "steps": [
+        {
+          "exec": "cp src/no-op-sw.js build/service-worker.js"
+        },
+        {
+          "exec": "rm build/service-worker.js.map"
         }
       ]
     },
