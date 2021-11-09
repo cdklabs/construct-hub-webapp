@@ -22,17 +22,16 @@ export const RadioFilter: FunctionComponent<RadioFilterProps> = ({
   hint,
 }) => {
   return (
-    <Stack data-testid={dataTestid} spacing={2}>
+    <Stack data-testid={dataTestid} spacing={1}>
       <FilterHeading hint={hint} name={name} />
       <RadioGroup onChange={onValueChange} value={checkedValue}>
-        <Stack>
+        <Stack spacing={1}>
           {options.map(({ display, value }) => (
             <Radio key={value} value={value}>
               <Text
                 color="gray.600"
                 data-testid={testIds.filterItem}
                 data-value={value}
-                fontSize="sm"
                 isTruncated
               >
                 {display}
