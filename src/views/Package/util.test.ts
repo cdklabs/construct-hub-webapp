@@ -1,4 +1,5 @@
-import { parseMarkdownStructure } from "./PackageState";
+import { Language } from "../../constants/languages";
+import { parseMarkdownStructure } from "./util";
 
 jest.mock("remark-emoji");
 const README_MARKDOWN = `
@@ -26,8 +27,7 @@ const MY_DATA_TYPE_22Body = `${MY_DATA_TYPE_2}-2Body
 This is not parsed out
 This is another line not parsed out`;
 
-const MARKDOWN_INPUT = `${README_MARKDOWN}
-# API Reference <span data-heading-title="API Reference" data-heading-id="api-reference"></span>
+const MARKDOWN_INPUT = `${README_MARKDOWN}# API Reference <span data-heading-title="API Reference" data-heading-id="api-reference"></span>
 
 ## ${DATA_TYPE_1} <span data-heading-title="${DATA_TYPE_1}" data-heading-id="${DATA_TYPE_1}"></span>
 
@@ -52,7 +52,7 @@ const packageData = {
   scope: "@packageScope",
   name: "packageName",
   version: "0.0.0",
-  language: "language",
+  language: Language.TypeScript,
 };
 
 describe("parseMarkdownStructure", () => {
@@ -90,7 +90,7 @@ describe("parseMarkdownStructure", () => {
     const { menuItems } = parseMarkdownStructure(MARKDOWN_INPUT, packageData);
     const basePath = "/packages/@packageScope/packageName/v/0.0.0";
     const baseApiPath = `${basePath}/api`;
-    const langQuery = "?lang=language";
+    const langQuery = `?lang=${Language.TypeScript}`;
     const baseHashPath = `${basePath}${langQuery}`;
     expect(menuItems).toEqual([
       {

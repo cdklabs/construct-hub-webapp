@@ -9,12 +9,10 @@ const usePackageTypeDocs = () => {
   const { typeId }: { typeId?: string } = useParams();
   const { apiReference } = usePackageState();
 
-  const content = apiReference?.[typeId ?? ""];
-  if (!typeId || !content) {
-    return;
+  if (typeId) {
+    return apiReference?.[typeId];
   }
-
-  return content;
+  return;
 };
 
 export const PackageTypeDocs: FunctionComponent = () => {
