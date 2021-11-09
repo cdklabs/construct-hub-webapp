@@ -30,7 +30,7 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
       top={TOP_OFFSET}
       zIndex="docked"
     >
-      <Stack color="blue.800" h="max-content" spacing={6} top={4}>
+      <Stack color="blue.800" h="max-content" spacing={4} top={4}>
         <Heading as="h3" size="sm">
           Filters
         </Heading>

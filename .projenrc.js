@@ -49,6 +49,7 @@ const project = new web.ReactTypeScriptProject({
     "framer-motion@^4",
     "jsii-reflect",
     "lunr",
+    "node-emoji",
     "prism-react-renderer",
     "react-helmet",
     "react-markdown",
@@ -67,6 +68,7 @@ const project = new web.ReactTypeScriptProject({
 
   devDeps: [
     "@types/lunr",
+    "@types/node-emoji",
     "@types/react-helmet",
     "@types/react-router-dom",
     "eslint-plugin-jsx-a11y",
@@ -265,6 +267,12 @@ project.release.addJobs({
     ],
   },
 });
+
+// replace default service worker script with no-op worker
+const replaceWorker = project.addTask("replace-worker");
+replaceWorker.exec("cp src/no-op-sw.js build/service-worker.js");
+replaceWorker.exec("rm build/service-worker.js.map");
+project.compileTask.spawn(replaceWorker);
 
 project.synth();
 
