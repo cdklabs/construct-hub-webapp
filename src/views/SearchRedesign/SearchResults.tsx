@@ -72,6 +72,11 @@ export const SearchResults: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort, languages, cdkType, cdkMajor, tags]);
 
+  // Scroll to top on page change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
+
   return (
     <Page
       meta={{
