@@ -67,11 +67,15 @@ export const SearchResults: FunctionComponent = () => {
       isFirstRender.current = false;
     } else {
       // Trigger a history replace rather than push to avoid bloating browser history
-      window.scrollTo(0, 0);
       onSearch({ replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort, languages, cdkType, cdkMajor, tags]);
+
+  // Scroll to top on page change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
 
   return (
     <Page
