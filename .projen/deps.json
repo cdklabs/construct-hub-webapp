@@ -30,7 +30,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^14.17.0",
+      "version": "^12.20.0",
       "type": "build"
     },
     {
@@ -154,6 +154,7 @@
     },
     {
       "name": "@chakra-ui/react",
+      "version": "1.6.10",
       "type": "runtime"
     },
     {

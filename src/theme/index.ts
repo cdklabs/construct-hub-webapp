@@ -11,5 +11,9 @@ export const makeTheme = (config: Config) => {
   return extendTheme({
     ...foundations,
     components: makeComponents(componentsConfig),
+    config: {
+      initialColorMode: "light",
+      useSystemColorMode: false,
+    },
   });
 };

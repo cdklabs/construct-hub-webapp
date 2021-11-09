@@ -24,15 +24,21 @@ const project = new web.ReactTypeScriptProject({
     },
   },
 
+  minNodeVersion: "12.20.0",
+
   eslint: true,
   eslintOptions: {
     prettier: true,
   },
 
+  depsUpgradeOptions: {
+    exclude: ["@chakra-ui/react"],
+  },
+
   deps: [
     "@chakra-ui/anatomy",
     "@chakra-ui/icons",
-    "@chakra-ui/react",
+    "@chakra-ui/react@1.6.10",
     "@chakra-ui/theme-tools",
     "@emotion/react@^11",
     "@emotion/styled@^11",
@@ -71,10 +77,12 @@ const project = new web.ReactTypeScriptProject({
     "eslint-plugin-react",
     "react-app-rewired",
   ],
+
   autoApproveOptions: {
     allowedUsernames: ["cdklabs-automation"],
     secret: "GITHUB_TOKEN",
   },
+
   autoApproveUpgrades: true,
 });
 
@@ -178,9 +186,6 @@ const project = new web.ReactTypeScriptProject({
   project.addTask("analyze-exports", { exec: "node scripts/analyze-exports" });
 })();
 
-// synthesize project files before build
-project.projectBuild.preCompileTask.spawn(project.packageTask);
-
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
 project.npmignore.addPatterns("!/build");
@@ -263,6 +268,12 @@ project.release.addJobs({
   },
 });
 
+// replace default service worker script with no-op worker
+const replaceWorker = project.addTask("replace-worker");
+replaceWorker.exec("cp src/no-op-sw.js build/service-worker.js");
+replaceWorker.exec("rm build/service-worker.js.map");
+project.compileTask.spawn(replaceWorker);
+
 project.synth();
 
 /**
@@ -273,7 +284,7 @@ project.synth();
  */
 function rewireCRA(craTask) {
   for (const step of craTask.steps) {
-    if (step.exec?.startsWith("react-scripts")) {
+    if (step.exec && step.exec.startsWith("react-scripts")) {
       step.exec = step.exec.replace("react-scripts", "react-app-rewired");
     }
   }
