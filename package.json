@@ -24,6 +24,7 @@
     "publish:github": "npx projen publish:github",
     "publish:npm": "npx projen publish:npm",
     "release": "npx projen release",
+    "replace-worker": "npx projen replace-worker",
     "test": "npx projen test",
     "test:unit": "npx projen test:unit",
     "test:update": "npx projen test:update",
