@@ -49,6 +49,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
         level={level}
         marginBottom="0em"
         marginTop={level >= 4 ? "1.5em" : undefined}
+        paddingX={level >= 4 ? "0.5em" : undefined}
         paddingY="0.5em"
         size={size}
       >
