@@ -43,13 +43,12 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
     <>
       <Heading
         as={elem}
-        backgroundColor={level === 5 ? "gray.50" : undefined}
+        backgroundColor={level >= 4 ? "gray.50" : undefined}
         borderBottom="1px solid #eee"
         color="gray.800"
         level={level}
         marginBottom="0em"
-        marginTop={level > 1 ? "1.5em" : undefined}
-        paadingX={level === 5 ? "2em" : undefined}
+        marginTop={level >= 4 ? "1.5em" : undefined}
         paddingY="0.5em"
         size={size}
       >

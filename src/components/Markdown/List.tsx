@@ -2,7 +2,7 @@ import { UnorderedList, OrderedList, ListItem } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 
 export const Ul: FunctionComponent = ({ children }) => (
-  <UnorderedList marginTop="2em" padding="0em">
+  <UnorderedList marginTop="1em" padding="0em">
     {children}
   </UnorderedList>
 );

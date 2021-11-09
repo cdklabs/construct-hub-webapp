@@ -52,13 +52,13 @@ export const Blockquote: FunctionComponent = ({ children }) => (
 );
 
 export const Em: FunctionComponent = ({ children }) => (
-  <Box as="em" color="gray.600" fontStyle="normal" fontWeight="semibold">
+  <Box as="em" fontStyle="normal" fontWeight="bold">
     {children}
   </Box>
 );
 
 export const P: FunctionComponent = ({ children }) => (
-  <Text lineHeight="1.5" marginBottom="2em" marginTop="1em" marginX="0.5em">
+  <Text lineHeight="1.5" marginBottom="1em" marginTop="1em" marginX="0.5em">
     {children}
   </Text>
 );
