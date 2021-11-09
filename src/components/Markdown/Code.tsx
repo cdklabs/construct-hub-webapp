@@ -21,7 +21,6 @@ export const Code: FunctionComponent<CodeProps> = ({
         border="1px solid"
         borderColor="gray.50"
         borderRadius="md"
-        // color="blue.500"
         marginTop="0.5"
         px={2}
         py={0}
