@@ -47,7 +47,6 @@ export const CheckboxFilter: FunctionComponent<CheckboxFilterProps> = ({
               color="gray.600"
               data-testid={testIds.filterItem}
               data-value={value}
-              fontSize="sm"
               isTruncated
             >
               {display}

@@ -81,7 +81,7 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   },
   base: {
     control: { h: 3.5, w: 3.5 },
-    label: { fontSize: "md" },
+    label: { fontSize: "sm" },
     icon: { fontSize: "0.5rem" },
   },
   md: {

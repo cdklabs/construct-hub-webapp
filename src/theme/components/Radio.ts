@@ -12,12 +12,16 @@ const baseStyleControl: SystemStyleFunction = (props) => {
   return {
     ...control,
     borderRadius: "full",
+    pos: "relative",
     _checked: {
       ...control._checked,
       _before: {
         content: `""`,
         display: "inline-block",
-        pos: "relative",
+        pos: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
         w: "50%",
         h: "50%",
         borderRadius: "50%",
@@ -39,7 +43,7 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   },
   base: {
     control: { h: 3.5, w: 3.5 },
-    label: { fontSize: "md" },
+    label: { fontSize: "sm" },
   },
   md: {
     control: { h: 4, w: 4 },
