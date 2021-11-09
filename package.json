@@ -45,7 +45,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^26.0.24",
     "@types/lunr": "^2.3.4",
-    "@types/node": "^14.17.0",
+    "@types/node": "^12.20.0",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
     "@types/react-helmet": "^6.1.4",
@@ -65,10 +65,10 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.3",
-    "json-schema": "^0.3.0",
+    "json-schema": "^0.4.0",
     "npm-check-updates": "^11",
     "prettier": "^2.4.1",
-    "projen": "^0.33.1",
+    "projen": "^0.33.2",
     "react-app-rewired": "^2.1.8",
     "standard-version": "^9",
     "ts-unused-exports": "^7.0.3",
@@ -107,6 +107,9 @@
     "workbox-strategies": "^6.4.0"
   },
   "bundledDependencies": [],
+  "engines": {
+    "node": ">= 12.20.0"
+  },
   "license": "Apache-2.0",
   "version": "0.0.0",
   "eslintConfig": {

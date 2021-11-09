@@ -79,6 +79,7 @@ export const WideCard: FunctionComponent = () => {
           gridArea={GRID_AREA.TAGS}
           maxH={6}
           overflow="hidden"
+          spacing={2}
         >
           <Tags />
         </Stack>
