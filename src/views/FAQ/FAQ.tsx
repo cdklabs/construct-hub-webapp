@@ -210,7 +210,7 @@ export const FAQ: FunctionComponent = () => (
             </p>
           </FAQItem>
 
-          <FAQItem question="What programming languages are supported in Dev Preview?">
+          <FAQItem question="What programming languages are supported?">
             <p>
               The Construct Hub GA supports constructs available for Python,
               TypeScript, Java and .NET. Support for Go will be included soon.
