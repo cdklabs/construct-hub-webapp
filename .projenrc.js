@@ -276,7 +276,7 @@ project.synth();
  */
 function rewireCRA(craTask) {
   for (const step of craTask.steps) {
-    if (step.exec?.startsWith("react-scripts")) {
+    if (step.exec && step.exec.startsWith("react-scripts")) {
       step.exec = step.exec.replace("react-scripts", "react-app-rewired");
     }
   }
