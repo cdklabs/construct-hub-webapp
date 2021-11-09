@@ -136,15 +136,9 @@ export const Markdown: FunctionComponent<{
       `If this issue persists, please let us know by creating an [issue](${CONSTRUCT_HUB_REPO_URL}/issues/new)`,
     ].join("\n");
   }
+
   return (
-    <Box
-      data-testid={testIds.container}
-      px={8}
-      sx={{
-        "& > *": { mb: 8 },
-        "& > p": { lineHeight: "taller" },
-      }}
-    >
+    <Box data-testid={testIds.container} px={8}>
       <ReactMarkdown
         components={components}
         rehypePlugins={rehypePlugins}

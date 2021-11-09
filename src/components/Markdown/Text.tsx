@@ -40,11 +40,11 @@ export const A: AnchorComponent = ({ children, href, ...linkProps }) => {
 export const Blockquote: FunctionComponent = ({ children }) => (
   <Box
     as="blockquote"
-    bg="gray.100"
     borderLeft="5px solid"
-    borderLeftColor="gray.200"
-    borderRadius="md"
-    p={2}
+    borderLeftColor="gray.100"
+    marginTop="2em"
+    marginX="0.5em"
+    px="1em"
     wordBreak="break-word"
   >
     {children}
@@ -52,12 +52,16 @@ export const Blockquote: FunctionComponent = ({ children }) => (
 );
 
 export const Em: FunctionComponent = ({ children }) => (
-  <Box as="em" color="blue.500" fontStyle="normal" fontWeight="semibold">
+  <Box as="em" color="gray.600" fontStyle="normal" fontWeight="semibold">
     {children}
   </Box>
 );
 
-export const P: FunctionComponent = ({ children }) => <Text>{children}</Text>;
+export const P: FunctionComponent = ({ children }) => (
+  <Text lineHeight="1.5" marginBottom="2em" marginTop="1em" marginX="0.5em">
+    {children}
+  </Text>
+);
 
 export const Pre: FunctionComponent = ({ children }) => (
   <Box as="pre">{children}</Box>

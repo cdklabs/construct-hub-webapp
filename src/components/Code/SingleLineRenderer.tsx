@@ -9,7 +9,7 @@ export const SingleLineRenderer: FunctionComponent<RendererProps> = ({
   getLineProps,
   getTokenProps,
 }) => (
-  <Grid p={3} templateColumns="1fr min-content" w="full">
+  <Grid marginTop={5} p={3} templateColumns="1fr min-content" w="full">
     <Box m={-3} maxW="full" overflow="auto" p={3}>
       {tokens.map((line, i) => (
         <div key={i} {...getLineProps({ line, key: i })}>

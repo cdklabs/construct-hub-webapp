@@ -2,7 +2,9 @@ import { UnorderedList, OrderedList, ListItem } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 
 export const Ul: FunctionComponent = ({ children }) => (
-  <UnorderedList>{children}</UnorderedList>
+  <UnorderedList marginTop="2em" padding="0em">
+    {children}
+  </UnorderedList>
 );
 
 export const Ol: FunctionComponent = ({ children }) => (
@@ -12,15 +14,14 @@ export const Ol: FunctionComponent = ({ children }) => (
 export const Li: FunctionComponent = ({ children }) => (
   <ListItem
     lineHeight="tall"
-    mb={2}
+    marginX="0.5em"
+    mb={0}
     sx={{
       "em:first-of-type": {
-        mr: 2,
-        fontStyle: "italic",
         fontSize: "small",
       },
       "&::marker": {
-        color: "blue.500",
+        color: "gray.600",
       },
       code: {
         fontSize: "small",

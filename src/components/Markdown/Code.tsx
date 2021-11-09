@@ -17,11 +17,12 @@ export const Code: FunctionComponent<CodeProps> = ({
   if (inline) {
     return (
       <InlineCode
-        bg="gray.100"
+        bg="gray.50"
         border="1px solid"
-        borderColor="gray.100"
+        borderColor="gray.50"
         borderRadius="md"
-        color="blue.500"
+        // color="blue.500"
+        marginTop="0.5"
         px={2}
         py={0}
       >

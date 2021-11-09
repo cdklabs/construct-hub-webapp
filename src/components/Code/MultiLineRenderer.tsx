@@ -12,8 +12,9 @@ export const MultiLineRenderer: FunctionComponent<RendererProps> = ({
   <>
     <Flex
       align="center"
-      bg="rgba(0, 124, 253, 0.15)"
+      bg="gray.100"
       justify="flex-end"
+      marginTop="1.5em"
       px={2}
       py={1}
     >

@@ -67,7 +67,7 @@ const NavItem: FunctionComponent<NavItemProps> = ({
                 <ChevronRightIcon {...iconProps} />
               )
             }
-            ml={-1}
+            ml={1}
             onClick={disclosure.onToggle}
             size="xs"
             variant="link"
@@ -102,8 +102,8 @@ const NavItem: FunctionComponent<NavItemProps> = ({
           w: "1px",
         }}
         display={showChildren ? "initial" : "none"}
-        ml={2}
-        pl={2}
+        ml={4}
+        pl={4}
         position="relative"
       >
         {nestedItems}
