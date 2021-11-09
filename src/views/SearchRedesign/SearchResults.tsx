@@ -67,6 +67,7 @@ export const SearchResults: FunctionComponent = () => {
       isFirstRender.current = false;
     } else {
       // Trigger a history replace rather than push to avoid bloating browser history
+      window.scrollTo(0, 0);
       onSearch({ replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
