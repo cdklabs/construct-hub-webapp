@@ -8,6 +8,7 @@ import { useSearch } from "../useSearch";
 export interface UseCatalogResultsOptions {
   cdkMajor?: number;
   cdkType?: CDKType;
+  keywords?: string[];
   limit: number;
   offset?: number;
   query?: string;
@@ -24,6 +25,7 @@ export interface UseCatalogResultsOptions {
 export const useCatalogResults = ({
   cdkMajor,
   cdkType,
+  keywords,
   limit,
   offset = 0,
   query = "",
@@ -36,11 +38,12 @@ export const useCatalogResults = ({
     () => ({
       cdkMajor,
       cdkType,
+      keywords,
       language: language ?? undefined,
       languages,
       tags,
     }),
-    [cdkMajor, cdkType, language, languages, tags]
+    [cdkMajor, cdkType, keywords, language, languages, tags]
   );
 
   const results = useSearch({

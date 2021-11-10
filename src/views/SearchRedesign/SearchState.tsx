@@ -1,7 +1,13 @@
 /**
  * @fileoverview Exposes page-level state and setters to all components in the new SearchResults View.
  */
-import { createContext, FunctionComponent, useContext, useEffect } from "react";
+import {
+  createContext,
+  FunctionComponent,
+  useContext,
+  useEffect,
+  useMemo,
+} from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
@@ -53,6 +59,9 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
   );
   const tags = parseQueryArray(queryParams.get(QUERY_PARAMS.TAGS));
 
+  const keywordQuery = queryParams.get(QUERY_PARAMS.KEYWORDS);
+  const keywords = useMemo(() => parseQueryArray(keywordQuery), [keywordQuery]);
+
   const sort = (queryParams.get(QUERY_PARAMS.SORT) ?? undefined) as
     | CatalogSearchSort
     | undefined;
@@ -66,6 +75,7 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
   const searchAPI = useCatalogSearch({
     defaultCdkMajor: cdkMajor,
     defaultCdkType: cdkType,
+    defaultKeywords: keywords,
     defaultLanguages: languages,
     defaultQuery: query,
     defaultSort: sort,
@@ -78,6 +88,13 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
+
+  useEffect(() => {
+    if (keywords.some((k) => !searchAPI.keywords.includes(k))) {
+      searchAPI.setKeywords(keywords);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [keywords]);
 
   return (
     <SearchStateContext.Provider

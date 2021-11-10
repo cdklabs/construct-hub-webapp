@@ -18,12 +18,14 @@ export const SearchResults: FunctionComponent = () => {
   const { push } = useHistory();
 
   const { query, searchAPI, offset, limit } = useSearchState();
-  const { languages, sort, cdkType, cdkMajor, onSearch, tags } = searchAPI;
+  const { keywords, languages, sort, cdkType, cdkMajor, onSearch, tags } =
+    searchAPI;
 
   const { page, pageLimit, results } = useCatalogResults({
     offset,
     limit,
     query,
+    keywords,
     languages,
     cdkMajor,
     cdkType,
@@ -37,10 +39,12 @@ export const SearchResults: FunctionComponent = () => {
     return getSearchPath({
       cdkMajor,
       cdkType,
+      keywords,
       query: (params.q ?? query) as string,
       languages,
       sort,
       offset: params.offset ?? offset,
+      tags,
     });
   };
 
@@ -70,7 +74,7 @@ export const SearchResults: FunctionComponent = () => {
       onSearch({ replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sort, languages, cdkType, cdkMajor, tags]);
+  }, [sort, keywords, languages, cdkType, cdkMajor, tags]);
 
   // Scroll to top on page change
   useEffect(() => {

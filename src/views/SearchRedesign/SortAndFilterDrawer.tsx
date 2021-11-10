@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { CDKFilter } from "./CDKFilter";
+import { KeywordsFilter } from "./KeywordsFilter";
 import { LanguageFilter } from "./LanguageFilter";
 import { SortFilter } from "./SortFilter";
 import { TagFilter } from "./TagFilter";
@@ -49,6 +50,8 @@ export const SortAndFilterDrawer: FunctionComponent = () => {
               <LanguageFilter />
 
               <TagFilter />
+
+              <KeywordsFilter />
             </Stack>
           </DrawerBody>
         </DrawerContent>

@@ -17,6 +17,7 @@ export interface UseCatalogSearchParams {
   defaultCdkMajor?: number;
   defaultCdkType?: CDKType;
   defaultQuery?: string;
+  defaultKeywords?: UseCatalogSearchReturn["keywords"];
   defaultLanguage?: UseCatalogSearchReturn["language"];
   defaultLanguages?: UseCatalogSearchReturn["languages"];
   defaultSort?: UseCatalogSearchReturn["sort"];
@@ -36,6 +37,10 @@ export interface UseCatalogSearchReturn {
    * The CDK Type to filter by
    */
   cdkType?: CDKType;
+  /**
+   * The list of user-defined keywords to filter by
+   */
+  keywords: string[];
   /**
    * The language state for this search
    */
@@ -76,6 +81,10 @@ export interface UseCatalogSearchReturn {
    * CDK Type state setter
    */
   setCdkType: Dispatch<SetStateAction<UseCatalogSearchReturn["cdkType"]>>;
+  /**
+   * Keywords list state setter
+   */
+  setKeywords: Dispatch<SetStateAction<UseCatalogSearchReturn["keywords"]>>;
   /**
    * Language state setter
    */
@@ -124,6 +133,10 @@ export const useCatalogSearch = (
     options.defaultTags ?? []
   );
 
+  const [keywords, setKeywords] = useState<UseCatalogSearchReturn["keywords"]>(
+    options.defaultKeywords ?? []
+  );
+
   const [language, setLanguage] = useState<UseCatalogSearchReturn["language"]>(
     options.defaultLanguage
   );
@@ -146,6 +159,7 @@ export const useCatalogSearch = (
         getSearchPath({
           cdkType,
           cdkMajor,
+          keywords,
           language,
           languages,
           query,
@@ -154,7 +168,18 @@ export const useCatalogSearch = (
         })
       );
     },
-    [cdkType, cdkMajor, language, languages, push, query, replace, sort, tags]
+    [
+      replace,
+      push,
+      cdkType,
+      cdkMajor,
+      keywords,
+      language,
+      languages,
+      query,
+      sort,
+      tags,
+    ]
   );
 
   const onSubmit: UseCatalogSearchReturn["onSubmit"] = useCallback(
@@ -169,6 +194,7 @@ export const useCatalogSearch = (
     () => ({
       cdkMajor,
       cdkType,
+      keywords,
       language,
       languages,
       onLanguageChange: setLanguage,
@@ -178,6 +204,7 @@ export const useCatalogSearch = (
       query,
       setCdkMajor,
       setCdkType,
+      setKeywords,
       setLanguage,
       setLanguages,
       setTags,
@@ -189,6 +216,7 @@ export const useCatalogSearch = (
     [
       cdkMajor,
       cdkType,
+      keywords,
       language,
       languages,
       onSearch,

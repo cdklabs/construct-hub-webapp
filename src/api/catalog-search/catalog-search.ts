@@ -1,5 +1,6 @@
 import lunr from "lunr";
 import { CDKType } from "../../constants/constructs";
+import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { PackageStats } from "../stats";
@@ -9,7 +10,6 @@ import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
 export interface ExtendedCatalogPackage extends CatalogPackage {
   id: string;
   downloads: number;
-
   scope?: string;
   packageName?: string;
   authorName?: string;
@@ -48,6 +48,10 @@ export interface CatalogSearchFilters {
    */
   languages?: Language[];
   /**
+   * A list of keywords to filter by.
+   */
+  keywords?: string[];
+  /**
    * A list of tags to filter by.
    */
   tags?: string[];
@@ -64,6 +68,11 @@ export interface CatalogSearchParams {
 export class CatalogSearchAPI {
   private readonly map: CatalogSearchResults;
   private index: lunr.Index;
+  /**
+   * A map of detected keywords with a key representing the keyword, and a value representing the amount of occurences
+   * the keyword has in the catalog.
+   */
+  public readonly keywords: Map<string, number>;
   /**
    * A map of detected Construct Frameworks which provides a count of libraries for that framework and a set of major versions detected
    */
@@ -93,6 +102,7 @@ export class CatalogSearchAPI {
     this.map = this.sort(catalogMap, CatalogSearchSort.PublishDateDesc);
 
     this.constructFrameworks = this.detectConstructFrameworks();
+    this.keywords = this.detectKeywords();
 
     this.index = lunr(function () {
       this.ref("id");
@@ -184,13 +194,14 @@ export class CatalogSearchAPI {
     results: CatalogSearchResults,
     filters: CatalogSearchFilters
   ): CatalogSearchResults {
-    const { cdkType, cdkMajor, language, languages, tags } = filters;
+    const { cdkType, cdkMajor, keywords, language, languages, tags } = filters;
     const copiedResults = new Map(results);
 
     const filterFunctions = [
       FILTER_FUNCTIONS.cdkType(cdkType),
       // Ignore major version filter if no CDK Type is defined
       FILTER_FUNCTIONS.cdkMajor(cdkType ? cdkMajor : undefined),
+      FILTER_FUNCTIONS.keywords(keywords),
       FILTER_FUNCTIONS.language(language),
       FILTER_FUNCTIONS.languages(languages),
       FILTER_FUNCTIONS.tags(tags),
@@ -229,6 +240,27 @@ export class CatalogSearchAPI {
     } else {
       return results;
     }
+  }
+
+  /**
+   * Creates a map of keywords with values representing the occurence of the keyword within the catalog.
+   */
+  private detectKeywords() {
+    const results = [...this.map.values()].reduce(
+      (keywords: Map<string, number>, pkg: ExtendedCatalogPackage) => {
+        pkg.keywords?.forEach((keyword) => {
+          if (!KEYWORD_IGNORE_LIST.has(keyword)) {
+            const entry = keywords.get(keyword);
+            keywords.set(keyword, (entry ?? 0) + 1);
+          }
+        });
+
+        return keywords;
+      },
+      new Map<string, number>()
+    );
+
+    return results;
   }
 
   /**
