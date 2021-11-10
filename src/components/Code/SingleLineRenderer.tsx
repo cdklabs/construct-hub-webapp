@@ -19,14 +19,8 @@ export const SingleLineRenderer: FunctionComponent<RendererProps> = ({
         </div>
       ))}
     </Box>
-    <Flex align="center" borderLeft="base" ml={1}>
-      <CopyButton
-        color="blue.500"
-        colorScheme="blue"
-        ml={1}
-        value={code}
-        variant="ghost"
-      />
+    <Flex align="center" ml={1}>
+      <CopyButton value={code} />
     </Flex>
   </Grid>
 );
