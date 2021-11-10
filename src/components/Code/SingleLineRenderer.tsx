@@ -9,7 +9,7 @@ export const SingleLineRenderer: FunctionComponent<RendererProps> = ({
   getLineProps,
   getTokenProps,
 }) => (
-  <Grid marginTop={5} p={3} templateColumns="1fr min-content" w="full">
+  <Grid p={3} templateColumns="1fr min-content" w="full">
     <Box m={-3} maxW="full" overflow="auto" p={3}>
       {tokens.map((line, i) => (
         <div key={i} {...getLineProps({ line, key: i })}>
@@ -19,14 +19,8 @@ export const SingleLineRenderer: FunctionComponent<RendererProps> = ({
         </div>
       ))}
     </Box>
-    <Flex align="center" borderLeft="base" ml={1}>
-      <CopyButton
-        color="blue.500"
-        colorScheme="blue"
-        ml={1}
-        value={code}
-        variant="ghost"
-      />
+    <Flex align="center" ml={1}>
+      <CopyButton value={code} />
     </Flex>
   </Grid>
 );

@@ -43,8 +43,10 @@ const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
   const sharedProps = {
     _hover: { bg: "rgba(0, 124, 253, 0.05)" },
     overflow: "hidden",
-    pl: showToggle ? 1 : 2,
-    py: 1.5,
+    pl: 1,
+    py: showToggle ? 2 : 1,
+    marginLeft: showToggle ? 0 : 1,
+    fontWeight: showToggle ? "bold" : undefined,
     textOverflow: "ellipsis",
     w: "100%",
   };
@@ -93,11 +95,11 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
                 <ChevronRightIcon {...iconProps} />
               )
             }
-            ml={1}
+            ml={-1}
             onClick={disclosure.onToggle}
             size="xs"
             variant="link"
-            w={4}
+            w={0}
           />
         )}
         <NavItemWrapper path={path} showToggle={showToggle} title={title}>
@@ -117,8 +119,9 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
           w: "1px",
         }}
         display={showChildren ? "initial" : "none"}
-        ml={4}
-        pl={4}
+        ml={2}
+        mr={2}
+        pl={2}
         position="relative"
       >
         {nestedItems}

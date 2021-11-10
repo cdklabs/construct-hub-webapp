@@ -25,10 +25,11 @@ export const Code: FunctionComponent<CodeProps> = ({
       {(props) => (
         <Box
           as="pre"
+          border="base"
           borderRadius="md"
           boxShadow="base"
           className={props.className}
-          marginX="0.5em"
+          marginX={2}
           style={props.style}
           {...boxProps}
         >

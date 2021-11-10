@@ -12,13 +12,13 @@ export const MultiLineRenderer: FunctionComponent<RendererProps> = ({
   <>
     <Flex
       align="center"
-      bg="gray.100"
+      bg="rgba(0, 124, 253, 0.15)"
+      borderTopRadius="md"
       justify="flex-end"
-      marginTop="1.5em"
       px={2}
       py={1}
     >
-      <CopyButton _hover={{ bg: "gray.300" }} color="gray.500" value={code} />
+      <CopyButton value={code} />
     </Flex>
     <Box overflowX="auto" p={2}>
       {tokens.map((line, i) => (

@@ -42,9 +42,8 @@ export const Blockquote: FunctionComponent = ({ children }) => (
     as="blockquote"
     borderLeft="5px solid"
     borderLeftColor="gray.100"
-    marginTop="2em"
-    marginX="0.5em"
-    px="1em"
+    marginX="2"
+    px="2"
     wordBreak="break-word"
   >
     {children}
@@ -58,7 +57,7 @@ export const Em: FunctionComponent = ({ children }) => (
 );
 
 export const P: FunctionComponent = ({ children }) => (
-  <Text lineHeight="1.5" marginBottom="1em" marginTop="1em" marginX="0.5em">
+  <Text lineHeight="1.5" mx={2} my={4}>
     {children}
   </Text>
 );
