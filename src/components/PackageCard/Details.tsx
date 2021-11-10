@@ -2,7 +2,6 @@ import { DownloadIcon } from "@chakra-ui/icons";
 import { Text, Tooltip } from "@chakra-ui/react";
 import { FunctionComponent, ReactChild } from "react";
 import { useStats } from "../../contexts/Stats";
-import { useLanguage } from "../../hooks/useLanguage";
 import { getSearchPath } from "../../util/url";
 import { NavLink } from "../NavLink";
 import { Time } from "../Time";
@@ -35,8 +34,6 @@ const Detail: FunctionComponent<DetailProps> = ({
 );
 
 export const Details: FunctionComponent = () => {
-  const [currentLanguage] = useLanguage();
-
   const {
     author,
     metadata: { date },
@@ -77,7 +74,6 @@ export const Details: FunctionComponent = () => {
             color="blue.500"
             to={getSearchPath({
               query: authorName,
-              language: currentLanguage,
             })}
           >
             {authorName}

@@ -70,7 +70,6 @@ export const getSearchPath = ({
   cdkType,
   query,
   offset,
-  language,
   languages,
   sort,
   tags,
@@ -79,7 +78,6 @@ export const getSearchPath = ({
   query?: string;
   offset?: string | number;
   cdkType?: CDKType;
-  language?: Language;
   languages?: Language[];
   sort?: CatalogSearchSort;
   tags?: string[];
@@ -88,7 +86,6 @@ export const getSearchPath = ({
     [QUERY_PARAMS.SEARCH_QUERY]: query,
     [QUERY_PARAMS.CDK_TYPE]: cdkType,
     [QUERY_PARAMS.CDK_MAJOR]: cdkMajor,
-    [QUERY_PARAMS.LANGUAGE]: language,
     [QUERY_PARAMS.LANGUAGES]: languages?.length ? languages.join(",") : null,
     [QUERY_PARAMS.SORT]: sort,
     [QUERY_PARAMS.OFFSET]: offset ?? 0,
