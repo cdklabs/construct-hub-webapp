@@ -57,7 +57,8 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
   const languages: Language[] = parseQueryArray(
     queryParams.get(QUERY_PARAMS.LANGUAGES)
   );
-  const tags = parseQueryArray(queryParams.get(QUERY_PARAMS.TAGS));
+  const tagQuery = queryParams.get(QUERY_PARAMS.TAGS);
+  const tags = useMemo(() => parseQueryArray(tagQuery), [tagQuery]);
 
   const keywordQuery = queryParams.get(QUERY_PARAMS.KEYWORDS);
   const keywords = useMemo(() => parseQueryArray(keywordQuery), [keywordQuery]);
@@ -95,6 +96,13 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keywords]);
+
+  useEffect(() => {
+    if (tags.some((t) => !searchAPI.tags.includes(t))) {
+      searchAPI.setTags(tags);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tags]);
 
   return (
     <SearchStateContext.Provider
