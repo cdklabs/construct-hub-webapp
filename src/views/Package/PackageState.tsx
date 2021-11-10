@@ -1,5 +1,11 @@
 import type { Assembly } from "@jsii/spec";
-import { createContext, FunctionComponent, useContext, useEffect } from "react";
+import {
+  createContext,
+  FunctionComponent,
+  useContext,
+  useEffect,
+  useMemo,
+} from "react";
 import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
 import { fetchMarkdown } from "../../api/package/docs";
@@ -10,6 +16,7 @@ import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { useRequest, UseRequestResponse } from "../../hooks/useRequest";
 import { NotFound } from "../NotFound";
+import { Types, MenuItem, parseMarkdownStructure } from "./util";
 
 interface PathParams {
   name: string;
@@ -18,6 +25,7 @@ interface PathParams {
 }
 
 interface PackageState {
+  apiReference?: Types;
   assembly: UseRequestResponse<Assembly>;
   hasDocs: boolean;
   hasError: boolean;
@@ -29,8 +37,10 @@ interface PackageState {
   name: string;
   pageDescription: string;
   pageTitle: string;
+  readme?: string;
   scope?: string;
   version: string;
+  menuItems: MenuItem[];
 }
 
 const PackageStateContext = createContext<PackageState | undefined>(undefined);
@@ -104,6 +114,17 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
       (assemblyResponse.loading || markdownResponse.loading)
   );
 
+  const parsedMd = useMemo(() => {
+    if (!markdownResponse.data) return { menuItems: [] };
+
+    return parseMarkdownStructure(markdownResponse.data, {
+      scope,
+      name,
+      version,
+      language,
+    });
+  }, [markdownResponse.data, name, scope, version, language]);
+
   // Handle missing JSON for assembly
   if (assemblyResponse.error) {
     return <NotFound />;
@@ -125,6 +146,7 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
         pageTitle,
         scope,
         version,
+        ...parsedMd,
       }}
     >
       {children}
