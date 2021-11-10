@@ -35,26 +35,6 @@ describe("CatalogSearchAPI", () => {
     expect(instance.search().size).toEqual(catalogFixture.packages.length);
   });
 
-  it("Returns results filtered by language", () => {
-    const javaResults = instance.search({
-      filters: { language: Language.Java },
-    });
-
-    expect(javaResults.size).toEqual(
-      catalogFixture.packages.filter((p) => p.languages.java !== undefined)
-        .length
-    );
-
-    const pythonResults = instance.search({
-      filters: { language: Language.Python },
-    });
-
-    expect(pythonResults.size).toEqual(
-      catalogFixture.packages.filter((p) => p.languages.python !== undefined)
-        .length
-    );
-  });
-
   it("Returns results filtered by multiple languages", () => {
     const javaAndPythonResults = instance.search({
       filters: { languages: [Language.Java, Language.Python] },
@@ -141,7 +121,7 @@ describe("CatalogSearchAPI", () => {
     it("Returns consistent filter results", () => {
       const results = instance.search({
         filters: {
-          language: Language.Python,
+          languages: [Language.Python],
         },
       });
 
