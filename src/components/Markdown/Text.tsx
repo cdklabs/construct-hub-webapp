@@ -80,13 +80,13 @@ export const Sup: FunctionComponent = ({ children }) => {
   }
 
   if (text === "Required") {
-    color = "orange.500";
+    color = "orange.700";
   } else if (text === "Optional") {
-    color = "green.500";
+    color = "green.700";
   }
 
   return (
-    <Box as="sup" color={color} ml={2} top={-1}>
+    <Box as="sup" color={color} fontSize="xs" ml={-1} top={-1}>
       {children}
     </Box>
   );
