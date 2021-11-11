@@ -144,6 +144,8 @@ export class CatalogSearchAPI {
       results = this.sort(results, sort);
     }
 
+    results = this.dedup(results);
+
     return results;
   }
 
@@ -221,6 +223,25 @@ export class CatalogSearchAPI {
     } else {
       return results;
     }
+  }
+
+  /**
+   * De-duplicates packages that appear multiple times, keeping the
+   * one with the latest version.
+   */
+  private dedup(results: CatalogSearchResults): CatalogSearchResults {
+    const dedupedResults: Map<string, ExtendedCatalogPackage> = new Map();
+
+    results.forEach((pkg) => {
+      const maybePkg = dedupedResults.get(pkg.name);
+
+      // include the result if the package is new, or it has a higher major version
+      if (!maybePkg || (maybePkg && maybePkg.major < pkg.major)) {
+        dedupedResults.set(pkg.name, pkg);
+      }
+    });
+
+    return dedupedResults;
   }
 
   /**
