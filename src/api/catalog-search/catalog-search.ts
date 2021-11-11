@@ -36,10 +36,6 @@ const INDEX_FIELDS = {
     name: "scope",
     boost: 5,
   },
-  TOKEN_NAME: {
-    name: "tokenName",
-    boost: 5,
-  },
 } as const;
 
 export interface ExtendedCatalogPackage extends CatalogPackage {
@@ -49,7 +45,6 @@ export interface ExtendedCatalogPackage extends CatalogPackage {
   id: string;
   packageName?: string;
   scope?: string;
-  tokenName?: lunr.Token[];
 }
 
 export interface CatalogConstructFrameworks {
@@ -138,8 +133,6 @@ export class CatalogSearchAPI {
       [...catalogMap.values()].forEach((pkg) => {
         const { author, name } = pkg;
 
-        pkg.tokenName = lunr.tokenizer(name);
-
         const [scope, packageName] = name.split("/");
 
         if (packageName) {
@@ -179,6 +172,7 @@ export class CatalogSearchAPI {
 
     let results = query ? this.query(query) : new Map(this.map);
 
+    // TODO: Investigate if we can leverage lunr for filtering
     if (filters) {
       results = this.filter(results, filters);
     }
