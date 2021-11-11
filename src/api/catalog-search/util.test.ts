@@ -107,5 +107,19 @@ describe("Catalog Search Utils", () => {
 
       expect(filterByTypeScriptOrDotNet).toBeUndefined();
     });
+
+    it("Filters by one or more keywords", () => {
+      const keywords = ["cicd", "s3"];
+
+      [[keywords[0]], [keywords[1]], keywords].forEach((keywordGroup) => {
+        expect(
+          packages.filter(FILTER_FUNCTIONS.keywords(keywordGroup)!)
+        ).toEqual(
+          packages.filter((p) =>
+            keywordGroup.some((keyword) => p.keywords?.includes(keyword))
+          )
+        );
+      });
+    });
   });
 });
