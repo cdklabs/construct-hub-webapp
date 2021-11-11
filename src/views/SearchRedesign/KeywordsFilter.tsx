@@ -40,6 +40,7 @@ export const KeywordsFilter: FunctionComponent = () => {
   return (
     <CheckboxFilter
       data-testid={testIds.languagesFilter}
+      hint="Focus the results by choosing one or more keywords reflecting the kind of construct you're looking for. Keywords are provided by construct authors."
       initialItemCount={5}
       name="Keywords"
       onValueChange={onKeywordChange}

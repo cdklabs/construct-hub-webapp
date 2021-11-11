@@ -145,8 +145,8 @@ export const CheckboxFilter: FunctionComponent<CheckboxFilterProps> = ({
             w="auto"
           >
             {collapse.isOpen
-              ? "Fewer options"
-              : `More options (${showWhenExpanded.length})`}
+              ? `Show fewer options (${alwaysShow.length})`
+              : `Show more options (${showWhenExpanded.length})`}
           </Button>
         </Flex>
       )}
