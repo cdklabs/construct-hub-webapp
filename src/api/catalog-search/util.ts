@@ -42,18 +42,6 @@ const getDownloadsSort = (isAscending: boolean): SortFunction => {
   };
 };
 
-const getLanguageFilter: FilterFunctionBuilder<
-  CatalogSearchFilters["language"]
-> = (language) => {
-  if (!(language && language !== Language.TypeScript)) {
-    return undefined;
-  }
-
-  return (pkg) => {
-    return pkg.languages?.[language] !== undefined;
-  };
-};
-
 const getLanguagesFilter: FilterFunctionBuilder<
   CatalogSearchFilters["languages"]
 > = (languages) => {
@@ -128,7 +116,6 @@ export const FILTER_FUNCTIONS: {
   cdkType: getCDKTypeFilter,
   cdkMajor: getCDKMajorFilter,
   keywords: getKeywordsFilter,
-  language: getLanguageFilter,
   languages: getLanguagesFilter,
   tags: getTagsFilter,
 };

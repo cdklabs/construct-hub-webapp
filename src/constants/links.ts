@@ -13,6 +13,15 @@ export const GETTING_STARTED: IMenuItems = [
     display: "Issues on GitHub",
     url: `${CONSTRUCT_HUB_REPO_URL}/issues`,
   },
+  {
+    display: "Community",
+    links: [
+      {
+        display: "Slack",
+        url: "https://join.slack.com/t/cdk-dev/shared_invite/zt-mso6p56d-qJp7SOTBvMaQuDrx7R2wHg",
+      },
+    ],
+  },
 ];
 
 export const DOCUMENTATION: IMenuItems = [
@@ -27,7 +36,7 @@ export const DOCUMENTATION: IMenuItems = [
       { display: "Workshop", url: "https://cdkworkshop.com/" },
       {
         display: "Best Practices",
-        url: "https://aws.amazon.com/blogs/devops/best-practices-for-developing-cloud-applications-with-aws-cdk",
+        url: "https://docs.aws.amazon.com/cdk/latest/guide/best-practices.html",
       },
     ],
   },
@@ -61,12 +70,6 @@ export const DOCUMENTATION: IMenuItems = [
   },
   {
     display: "Community",
-    links: [
-      {
-        display: "Slack",
-        url: "https://join.slack.com/t/cdk-dev/shared_invite/zt-mso6p56d-qJp7SOTBvMaQuDrx7R2wHg",
-      },
-      { display: "Community Hub", url: "https://cdk.dev" },
-    ],
+    links: [{ display: "Community Hub", url: "https://cdk.dev" }],
   },
 ];

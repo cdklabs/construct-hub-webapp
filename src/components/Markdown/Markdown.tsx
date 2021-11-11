@@ -124,14 +124,7 @@ export const Markdown: FunctionComponent<{
         };
 
   return (
-    <Box
-      data-testid={testIds.container}
-      px={8}
-      sx={{
-        "& > *": { mb: 8 },
-        "& > p": { lineHeight: "taller" },
-      }}
-    >
+    <Box data-testid={testIds.container} px={8}>
       <ReactMarkdown
         components={components}
         rehypePlugins={rehypePlugins}
