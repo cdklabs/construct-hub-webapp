@@ -14,6 +14,10 @@ import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
 
+interface TagObject extends PackageTagConfig {
+  isKeyword?: boolean;
+}
+
 interface HeadingProps extends StackProps {
   assembly: Assembly;
   name: string;
@@ -30,11 +34,13 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   version,
   ...stackProps
 }) => {
-  const tags: PackageTagConfig[] = [
+  const tags: TagObject[] = [
     ...(metadata.packageTags ?? []).filter((tag) => Boolean(tag.keyword)),
+
     ...(assembly.keywords ?? [])
       .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
       .map((label) => ({
+        isKeyword: true,
         id: label,
         keyword: {
           label,
@@ -76,11 +82,18 @@ export const Heading: FunctionComponent<HeadingProps> = ({
           fontWeight="semibold"
           {...cdkTypeProps}
         />
-        {tags.slice(0, 3).map(({ id, keyword: { label, color } = {} }) => (
-          <PackageTag key={id} value={id} variant={color}>
-            {label}
-          </PackageTag>
-        ))}
+        {tags
+          .slice(0, 3)
+          .map(({ id, isKeyword, keyword: { label, color } = {} }) => (
+            <PackageTag
+              isKeyword={isKeyword}
+              key={id}
+              value={id}
+              variant={color}
+            >
+              {label}
+            </PackageTag>
+          ))}
       </Stack>
     </Stack>
   );
