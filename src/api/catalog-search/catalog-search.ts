@@ -11,7 +11,7 @@ export interface ExtendedCatalogPackage extends CatalogPackage {
   downloads: number;
 
   scope?: string;
-  packageName?: string;
+  tokenName?: lunr.Token[];
   authorName?: string;
   authorEmail?: string;
 }
@@ -89,22 +89,29 @@ export class CatalogSearchAPI {
 
     this.index = lunr(function () {
       this.ref("id");
-      this.field("name");
+
+      this.field("tokenName", {
+        boost: 5,
+      });
+      this.field("name", {
+        boost: 4,
+      });
+      this.field("authorName", {
+        boost: 3,
+      });
+      this.field("description", {
+        boost: 2,
+      });
+
       this.field("scope");
       this.field("packageName");
-      this.field("description");
-      this.field("authorName");
       this.field("authorEmail");
+      this.field("keywords");
 
       [...catalogMap.values()].forEach((pkg) => {
         const { author, name } = pkg;
 
-        const [scope, packageName] = name.split("/");
-
-        if (scope && packageName) {
-          pkg.scope = scope;
-          pkg.packageName = packageName;
-        }
+        pkg.tokenName = lunr.tokenizer(name);
 
         if (typeof author === "string") {
           pkg.authorName = author;
