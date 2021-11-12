@@ -74,7 +74,14 @@ export const Heading: FunctionComponent<HeadingProps> = ({
 
       <Text fontSize="1rem">{description}</Text>
 
-      <Stack align="center" direction="row" pt={3} spacing={2}>
+      <Flex
+        align="center"
+        direction="row"
+        pt={3}
+        // Chakra doesn't yet support css gap via style props
+        sx={{ gap: "0.5rem" }}
+        wrap="wrap"
+      >
         <CDKTypeIcon {...cdkTypeProps} />
         <CDKTypeText
           color="gray.700"
@@ -83,7 +90,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
           {...cdkTypeProps}
         />
         {tags
-          .slice(0, 3)
+          // .slice(0, 3)
           .map(({ id, isKeyword, keyword: { label, color } = {} }) => (
             <PackageTag
               isKeyword={isKeyword}
@@ -94,7 +101,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
               {label}
             </PackageTag>
           ))}
-      </Stack>
+      </Flex>
     </Stack>
   );
 };
