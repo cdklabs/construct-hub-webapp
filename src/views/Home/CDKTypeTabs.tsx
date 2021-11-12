@@ -123,7 +123,6 @@ export const CDKTypeTabs: FunctionComponent = () => {
       </Text>
       <Tabs
         defaultIndex={tabIndex}
-        isFitted
         onChange={(index) => setTabIndex(index)}
         variant="line"
       >

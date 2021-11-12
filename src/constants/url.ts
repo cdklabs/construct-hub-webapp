@@ -9,6 +9,7 @@ export const API_PATHS = {
 
 export const QUERY_PARAMS = {
   CDK_TYPE: "cdk",
+  KEYWORDS: "keywords",
   LANGUAGE: "lang",
   LANGUAGES: "langs",
   OFFSET: "offset",

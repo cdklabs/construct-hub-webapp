@@ -14,6 +14,10 @@ import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
 
+interface TagObject extends PackageTagConfig {
+  isKeyword?: boolean;
+}
+
 interface HeadingProps extends StackProps {
   assembly: Assembly;
   name: string;
@@ -30,11 +34,13 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   version,
   ...stackProps
 }) => {
-  const tags: PackageTagConfig[] = [
+  const tags: TagObject[] = [
     ...(metadata.packageTags ?? []).filter((tag) => Boolean(tag.keyword)),
+
     ...(assembly.keywords ?? [])
       .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
       .map((label) => ({
+        isKeyword: true,
         id: label,
         keyword: {
           label,
@@ -61,14 +67,21 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         >
           {name}
         </ChakraHeading>
-        <Box as="span" color="blue.500" flex={1} fontSize="sm" ml={4}>
+        <Box as="span" flex={1} fontSize="sm" ml={4}>
           {version}
         </Box>
       </Flex>
 
       <Text fontSize="1rem">{description}</Text>
 
-      <Stack align="center" direction="row" pt={3} spacing={2}>
+      <Flex
+        align="center"
+        direction="row"
+        pt={3}
+        // Chakra doesn't yet support css gap via style props
+        sx={{ gap: "0.5rem" }}
+        wrap="wrap"
+      >
         <CDKTypeIcon {...cdkTypeProps} />
         <CDKTypeText
           color="gray.700"
@@ -76,12 +89,12 @@ export const Heading: FunctionComponent<HeadingProps> = ({
           fontWeight="semibold"
           {...cdkTypeProps}
         />
-        {tags.slice(0, 3).map(({ id, keyword: { label, color } = {} }) => (
-          <PackageTag key={id} value={id} variant={color}>
+        {tags.map(({ id, isKeyword, keyword: { label, color } = {} }) => (
+          <PackageTag isKeyword={isKeyword} key={id} value={id} variant={color}>
             {label}
           </PackageTag>
         ))}
-      </Stack>
+      </Flex>
     </Stack>
   );
 };

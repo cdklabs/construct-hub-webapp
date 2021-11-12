@@ -98,10 +98,12 @@ Array [
 exports[`CatalogSearchAPI Snapshots Returns consistent query results 1`] = `
 Array [
   "@aws-cdk/aws-lambda-nodejs@1.125.0",
-  "@aws-cdk/aws-lambda-destinations@1.125.0",
   "aws-lambda-golang@0.1.1",
+  "@aws-cdk/aws-lambda-destinations@1.125.0",
   "nodejsfunction-plus@0.0.1",
   "cdk-elasticache-monitor@0.0.13",
+  "aws-cdk-featureflags@0.1.2",
+  "aws-cdk-image-resize@0.0.18",
   "@aws-cdk/aws-ssm@1.125.0",
   "@aws-cdk/aws-appstream@1.125.0",
   "@aws-cdk/aws-mediastore@1.125.0",
