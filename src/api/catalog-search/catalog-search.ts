@@ -7,13 +7,44 @@ import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
 import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
 
+const INDEX_FIELDS = {
+  AUTHOR_EMAIL: {
+    name: "authorEmail",
+    boost: 1,
+  },
+  AUTHOR_NAME: {
+    name: "authorName",
+    boost: 3,
+  },
+  DESCRIPTION: {
+    name: "description",
+    boost: 2,
+  },
+  KEYWORDS: {
+    name: "keywords",
+    boost: 2,
+  },
+  NAME: {
+    name: "name",
+    boost: 5,
+  },
+  PACKAGE_NAME: {
+    name: "packageName",
+    boost: 5,
+  },
+  SCOPE: {
+    name: "scope",
+    boost: 5,
+  },
+} as const;
+
 export interface ExtendedCatalogPackage extends CatalogPackage {
-  id: string;
-  downloads: number;
-  scope?: string;
-  packageName?: string;
-  authorName?: string;
   authorEmail?: string;
+  authorName?: string;
+  downloads: number;
+  id: string;
+  packageName?: string;
+  scope?: string;
 }
 
 export interface CatalogConstructFrameworks {
@@ -85,6 +116,9 @@ export class CatalogSearchAPI {
 
         map.set(id, {
           ...pkg,
+          keywords: pkg.keywords?.filter(
+            (keyword) => !KEYWORD_IGNORE_LIST.has(keyword)
+          ),
           downloads,
           id,
         });
@@ -98,22 +132,24 @@ export class CatalogSearchAPI {
     this.keywords = this.detectKeywords();
 
     this.index = lunr(function () {
+      this.tokenizer.separator = /[\s\-/@]+/;
       this.ref("id");
-      this.field("name");
-      this.field("scope");
-      this.field("packageName");
-      this.field("description");
-      this.field("authorName");
-      this.field("authorEmail");
+
+      for (const key in INDEX_FIELDS) {
+        const field = INDEX_FIELDS[key as keyof typeof INDEX_FIELDS];
+        this.field(field.name, { boost: field.boost });
+      }
 
       [...catalogMap.values()].forEach((pkg) => {
         const { author, name } = pkg;
 
         const [scope, packageName] = name.split("/");
 
-        if (scope && packageName) {
+        if (packageName) {
           pkg.scope = scope;
           pkg.packageName = packageName;
+        } else {
+          pkg.packageName = scope;
         }
 
         if (typeof author === "string") {
@@ -146,6 +182,7 @@ export class CatalogSearchAPI {
 
     let results = query ? this.query(query) : new Map(this.map);
 
+    // TODO: Investigate if we can leverage lunr for filtering
     if (filters) {
       results = this.filter(results, filters);
     }
@@ -164,7 +201,19 @@ export class CatalogSearchAPI {
     let refs: lunr.Index.Result[] = [];
 
     try {
-      refs = this.index.search(query);
+      let tokenizedQuery = lunr.tokenizer(query);
+
+      if (tokenizedQuery.length > 1) {
+        // A large number of libraries include the term cdk within the title - which will lead to an
+        // inflated result count. TODO: determine if there are other terms to filter out
+        tokenizedQuery = tokenizedQuery.filter(
+          (token) => token.toString() !== "cdk"
+        );
+      }
+
+      refs = this.index.query((q) => {
+        q.term(tokenizedQuery, {});
+      });
     } catch (e) {
       console.error(e);
     }
