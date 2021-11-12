@@ -57,8 +57,8 @@ export const FeedbackLinks: FunctionComponent = () => {
       direction={{ base: "column", md: "row" }}
       justify="space-evenly"
       mx={8}
-      spacing={4}
       py={10}
+      spacing={4}
     >
       <Button
         as={Link}
