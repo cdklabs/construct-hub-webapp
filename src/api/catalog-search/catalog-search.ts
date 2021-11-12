@@ -227,7 +227,7 @@ export class CatalogSearchAPI {
 
   /**
    * De-duplicates packages that appear multiple times, keeping the
-   * one with the latest version.
+   * most recently published one.
    */
   private dedup(results: CatalogSearchResults): CatalogSearchResults {
     const dedupedResults: Map<string, ExtendedCatalogPackage> = new Map();
@@ -235,8 +235,10 @@ export class CatalogSearchAPI {
     results.forEach((pkg) => {
       const maybePkg = dedupedResults.get(pkg.name);
 
-      // include the result if the package is new, or it has a higher major version
-      if (!maybePkg || (maybePkg && maybePkg.major < pkg.major)) {
+      if (
+        !maybePkg ||
+        new Date(maybePkg.metadata.date) < new Date(pkg.metadata.date)
+      ) {
         dedupedResults.set(pkg.name, pkg);
       }
     });
