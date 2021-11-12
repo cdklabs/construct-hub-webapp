@@ -1,5 +1,5 @@
 import { EmailIcon } from "@chakra-ui/icons";
-import { Button, Link, Flex } from "@chakra-ui/react";
+import { Button, Link, Stack } from "@chakra-ui/react";
 import type { FunctionComponent, ReactNode } from "react";
 import { ExternalLink } from "../../components/ExternalLink";
 import { GithubIcon } from "../../icons/GithubIcon";
@@ -48,15 +48,16 @@ export const FeedbackLinks: FunctionComponent = () => {
   }
 
   return (
-    <Flex
+    <Stack
       align="center"
       borderTop="1px solid"
       borderTopColor="blue.50"
       color="blue.500"
       data-testid={testIds.feedbackLinks}
-      direction="row"
+      direction={{ base: "column", md: "row" }}
       justify="space-evenly"
       mx={8}
+      spacing={4}
       py={10}
     >
       <Button
@@ -72,6 +73,6 @@ export const FeedbackLinks: FunctionComponent = () => {
       </Button>
 
       {repoLink}
-    </Flex>
+    </Stack>
   );
 };
