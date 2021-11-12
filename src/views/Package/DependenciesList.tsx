@@ -38,7 +38,7 @@ export const DependenciesList: FunctionComponent = () => {
           p={2}
           to={getPackagePath({ name, version: sanitizeVersion(version) })}
         >
-          {name}
+          {name} - {version}
         </NavLink>
       ))}
     </Stack>
