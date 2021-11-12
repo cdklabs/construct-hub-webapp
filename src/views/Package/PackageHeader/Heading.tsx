@@ -67,7 +67,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         >
           {name}
         </ChakraHeading>
-        <Box as="span" color="blue.500" flex={1} fontSize="sm" ml={4}>
+        <Box as="span" flex={1} fontSize="sm" ml={4}>
           {version}
         </Box>
       </Flex>
