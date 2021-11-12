@@ -2,6 +2,7 @@ import { Heading, Stack } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Card } from "../../components/Card";
 import { CDKFilter } from "./CDKFilter";
+import { KeywordsFilter } from "./KeywordsFilter";
 import { LanguageFilter } from "./LanguageFilter";
 import { TagFilter } from "./TagFilter";
 import testIds from "./testIds";
@@ -34,9 +35,14 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
         <Heading as="h3" size="sm">
           Filters
         </Heading>
+
         <CDKFilter />
+
         <LanguageFilter />
+
         <TagFilter />
+
+        <KeywordsFilter />
       </Stack>
     </Card>
   );

@@ -74,6 +74,15 @@ const getCDKMajorFilter: FilterFunctionBuilder<
   return (pkg) => pkg.metadata?.constructFramework?.majorVersion === cdkMajor;
 };
 
+const getKeywordsFilter: FilterFunctionBuilder<
+  CatalogSearchFilters["keywords"]
+> = (keywords) => {
+  if (!keywords?.length) return undefined;
+
+  return (pkg) =>
+    (pkg?.keywords ?? []).some((keyword) => keywords.includes(keyword));
+};
+
 const getTagsFilter: FilterFunctionBuilder<CatalogSearchFilters["tags"]> = (
   tags
 ) => {
@@ -106,6 +115,7 @@ export const FILTER_FUNCTIONS: {
 } = {
   cdkType: getCDKTypeFilter,
   cdkMajor: getCDKMajorFilter,
+  keywords: getKeywordsFilter,
   languages: getLanguagesFilter,
   tags: getTagsFilter,
 };
