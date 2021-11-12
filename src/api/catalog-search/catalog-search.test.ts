@@ -48,6 +48,18 @@ describe("CatalogSearchAPI", () => {
     );
   });
 
+  it("Returns results filtered by keywords", () => {
+    const cicdOrS3Results = instance.search({
+      filters: { keywords: ["cicd", "s3"] },
+    });
+
+    expect(cicdOrS3Results.size).toEqual(
+      catalogFixture.packages.filter(
+        (p) => p.keywords.includes("cicd") || p.keywords.includes("s3")
+      ).length
+    );
+  });
+
   it("Ignores cdkMajor filter if no cdkType is passed", () => {
     const cdkMajorFilterSpy = jest.spyOn(util.FILTER_FUNCTIONS, "cdkMajor");
 
