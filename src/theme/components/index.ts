@@ -4,13 +4,14 @@ import { Checkbox } from "./Checkbox";
 import { Code } from "./Code";
 import { Divider } from "./Divider";
 import { Radio } from "./Radio";
+import { Tabs } from "./Tabs";
 import { makeTag } from "./Tag";
 
 interface ComponentsConfig {
   Tag: PackageTagConfig[];
 }
 
-export const makeComponents = (config: ComponentsConfig) => {
+export const makeComponents: any = (config: ComponentsConfig) => {
   return {
     ...theme.components,
     Checkbox,
@@ -18,5 +19,6 @@ export const makeComponents = (config: ComponentsConfig) => {
     Divider,
     Radio,
     Tag: makeTag(config.Tag),
+    Tabs,
   };
 };
