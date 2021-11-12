@@ -29,7 +29,6 @@ export const Code: FunctionComponent<CodeProps> = ({
           borderRadius="md"
           boxShadow="base"
           className={props.className}
-          marginX={2}
           style={props.style}
           {...boxProps}
         >

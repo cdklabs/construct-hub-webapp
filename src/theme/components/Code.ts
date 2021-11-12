@@ -4,7 +4,7 @@ const {
   components: { Code: base },
 } = theme;
 
-export const Code = {
+export const Code: Record<string, any> = {
   ...base,
   variants: {
     ...base.variants,

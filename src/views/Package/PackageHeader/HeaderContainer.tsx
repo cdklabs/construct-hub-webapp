@@ -24,12 +24,12 @@ const lgGridAreas = makeGridAreas(
 export const HeaderContainer: FunctionComponent = ({ children }) => (
   <Grid
     columnGap={{ md: 6, lg: 10 }}
-    pt={{ base: 3, md: 6 }}
+    pt={{ base: 3, lg: 6 }}
     px={{ base: 5, md: 6, lg: 10 }}
-    rowGap={{ base: 4, md: 0 }}
-    templateAreas={{ base: baseGridAreas, md: lgGridAreas }}
-    templateColumns={{ base: "1fr", md: "1fr auto 15rem" }}
-    templateRows={{ md: "auto 1fr" }}
+    rowGap={{ base: 4, lg: 0 }}
+    templateAreas={{ base: baseGridAreas, lg: lgGridAreas }}
+    templateColumns={{ base: "1fr", lg: "1fr auto 15rem" }}
+    templateRows={{ lg: "auto 1fr" }}
   >
     {children}
   </Grid>

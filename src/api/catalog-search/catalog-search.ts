@@ -1,19 +1,50 @@
 import lunr from "lunr";
 import { CDKType } from "../../constants/constructs";
+import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
 import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
 
-export interface ExtendedCatalogPackage extends CatalogPackage {
-  id: string;
-  downloads: number;
+const INDEX_FIELDS = {
+  AUTHOR_EMAIL: {
+    name: "authorEmail",
+    boost: 1,
+  },
+  AUTHOR_NAME: {
+    name: "authorName",
+    boost: 3,
+  },
+  DESCRIPTION: {
+    name: "description",
+    boost: 2,
+  },
+  KEYWORDS: {
+    name: "keywords",
+    boost: 2,
+  },
+  NAME: {
+    name: "name",
+    boost: 5,
+  },
+  PACKAGE_NAME: {
+    name: "packageName",
+    boost: 5,
+  },
+  SCOPE: {
+    name: "scope",
+    boost: 5,
+  },
+} as const;
 
-  scope?: string;
-  packageName?: string;
-  authorName?: string;
+export interface ExtendedCatalogPackage extends CatalogPackage {
   authorEmail?: string;
+  authorName?: string;
+  downloads: number;
+  id: string;
+  packageName?: string;
+  scope?: string;
 }
 
 export interface CatalogConstructFrameworks {
@@ -41,6 +72,10 @@ export interface CatalogSearchFilters {
    */
   languages?: Language[];
   /**
+   * A list of keywords to filter by.
+   */
+  keywords?: string[];
+  /**
    * A list of tags to filter by.
    */
   tags?: string[];
@@ -57,6 +92,11 @@ export interface CatalogSearchParams {
 export class CatalogSearchAPI {
   private readonly map: CatalogSearchResults;
   private index: lunr.Index;
+  /**
+   * A map of detected keywords with a key representing the keyword, and a value representing the amount of occurences
+   * the keyword has in the catalog.
+   */
+  public readonly keywords: Map<string, number>;
   /**
    * A map of detected Construct Frameworks which provides a count of libraries for that framework and a set of major versions detected
    */
@@ -76,6 +116,9 @@ export class CatalogSearchAPI {
 
         map.set(id, {
           ...pkg,
+          keywords: pkg.keywords?.filter(
+            (keyword) => !KEYWORD_IGNORE_LIST.has(keyword)
+          ),
           downloads,
           id,
         });
@@ -86,24 +129,27 @@ export class CatalogSearchAPI {
     this.map = this.sort(catalogMap, CatalogSearchSort.PublishDateDesc);
 
     this.constructFrameworks = this.detectConstructFrameworks();
+    this.keywords = this.detectKeywords();
 
     this.index = lunr(function () {
+      this.tokenizer.separator = /[\s\-/@]+/;
       this.ref("id");
-      this.field("name");
-      this.field("scope");
-      this.field("packageName");
-      this.field("description");
-      this.field("authorName");
-      this.field("authorEmail");
+
+      for (const key in INDEX_FIELDS) {
+        const field = INDEX_FIELDS[key as keyof typeof INDEX_FIELDS];
+        this.field(field.name, { boost: field.boost });
+      }
 
       [...catalogMap.values()].forEach((pkg) => {
         const { author, name } = pkg;
 
         const [scope, packageName] = name.split("/");
 
-        if (scope && packageName) {
+        if (packageName) {
           pkg.scope = scope;
           pkg.packageName = packageName;
+        } else {
+          pkg.packageName = scope;
         }
 
         if (typeof author === "string") {
@@ -136,6 +182,7 @@ export class CatalogSearchAPI {
 
     let results = query ? this.query(query) : new Map(this.map);
 
+    // TODO: Investigate if we can leverage lunr for filtering
     if (filters) {
       results = this.filter(results, filters);
     }
@@ -154,7 +201,19 @@ export class CatalogSearchAPI {
     let refs: lunr.Index.Result[] = [];
 
     try {
-      refs = this.index.search(query);
+      let tokenizedQuery = lunr.tokenizer(query);
+
+      if (tokenizedQuery.length > 1) {
+        // A large number of libraries include the term cdk within the title - which will lead to an
+        // inflated result count. TODO: determine if there are other terms to filter out
+        tokenizedQuery = tokenizedQuery.filter(
+          (token) => token.toString() !== "cdk"
+        );
+      }
+
+      refs = this.index.query((q) => {
+        q.term(tokenizedQuery, {});
+      });
     } catch (e) {
       console.error(e);
     }
@@ -177,13 +236,14 @@ export class CatalogSearchAPI {
     results: CatalogSearchResults,
     filters: CatalogSearchFilters
   ): CatalogSearchResults {
-    const { cdkType, cdkMajor, languages, tags } = filters;
+    const { cdkType, cdkMajor, keywords, languages, tags } = filters;
     const copiedResults = new Map(results);
 
     const filterFunctions = [
       FILTER_FUNCTIONS.cdkType(cdkType),
       // Ignore major version filter if no CDK Type is defined
       FILTER_FUNCTIONS.cdkMajor(cdkType ? cdkMajor : undefined),
+      FILTER_FUNCTIONS.keywords(keywords),
       FILTER_FUNCTIONS.languages(languages),
       FILTER_FUNCTIONS.tags(tags),
     ].filter(Boolean) as ((pkg: ExtendedCatalogPackage) => boolean)[];
@@ -221,6 +281,27 @@ export class CatalogSearchAPI {
     } else {
       return results;
     }
+  }
+
+  /**
+   * Creates a map of keywords with values representing the occurence of the keyword within the catalog.
+   */
+  private detectKeywords() {
+    const results = [...this.map.values()].reduce(
+      (keywords: Map<string, number>, pkg: ExtendedCatalogPackage) => {
+        pkg.keywords?.forEach((keyword) => {
+          if (!KEYWORD_IGNORE_LIST.has(keyword)) {
+            const entry = keywords.get(keyword);
+            keywords.set(keyword, (entry ?? 0) + 1);
+          }
+        });
+
+        return keywords;
+      },
+      new Map<string, number>()
+    );
+
+    return results;
   }
 
   /**
