@@ -89,18 +89,11 @@ export const Heading: FunctionComponent<HeadingProps> = ({
           fontWeight="semibold"
           {...cdkTypeProps}
         />
-        {tags
-          // .slice(0, 3)
-          .map(({ id, isKeyword, keyword: { label, color } = {} }) => (
-            <PackageTag
-              isKeyword={isKeyword}
-              key={id}
-              value={id}
-              variant={color}
-            >
-              {label}
-            </PackageTag>
-          ))}
+        {tags.map(({ id, isKeyword, keyword: { label, color } = {} }) => (
+          <PackageTag isKeyword={isKeyword} key={id} value={id} variant={color}>
+            {label}
+          </PackageTag>
+        ))}
       </Flex>
     </Stack>
   );
