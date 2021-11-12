@@ -17,7 +17,6 @@ export interface UseCatalogSearchParams {
   defaultCdkMajor?: number;
   defaultCdkType?: CDKType;
   defaultQuery?: string;
-  defaultLanguage?: UseCatalogSearchReturn["language"];
   defaultLanguages?: UseCatalogSearchReturn["languages"];
   defaultSort?: UseCatalogSearchReturn["sort"];
   defaultTags?: UseCatalogSearchReturn["tags"];
@@ -37,10 +36,6 @@ export interface UseCatalogSearchReturn {
    */
   cdkType?: CDKType;
   /**
-   * The language state for this search
-   */
-  language?: Language;
-  /**
    * The list of languages being filtered
    */
   languages: Language[];
@@ -48,10 +43,6 @@ export interface UseCatalogSearchReturn {
    * The list of tags being filtered
    */
   tags: string[];
-  /**
-   * Updates language state
-   */
-  onLanguageChange: (lang?: Language) => void;
   /**
    * Input ChangeEventHandler which wraps the setQuery state setter
    */
@@ -76,10 +67,6 @@ export interface UseCatalogSearchReturn {
    * CDK Type state setter
    */
   setCdkType: Dispatch<SetStateAction<UseCatalogSearchReturn["cdkType"]>>;
-  /**
-   * Language state setter
-   */
-  setLanguage: Dispatch<SetStateAction<UseCatalogSearchReturn["language"]>>;
   /**
    * Languages list state setter
    */
@@ -124,10 +111,6 @@ export const useCatalogSearch = (
     options.defaultTags ?? []
   );
 
-  const [language, setLanguage] = useState<UseCatalogSearchReturn["language"]>(
-    options.defaultLanguage
-  );
-
   const [sort, setSort] = useState<UseCatalogSearchReturn["sort"]>(
     options.defaultSort
   );
@@ -146,7 +129,6 @@ export const useCatalogSearch = (
         getSearchPath({
           cdkType,
           cdkMajor,
-          language,
           languages,
           query,
           sort,
@@ -154,7 +136,7 @@ export const useCatalogSearch = (
         })
       );
     },
-    [cdkType, cdkMajor, language, languages, push, query, replace, sort, tags]
+    [cdkType, cdkMajor, languages, push, query, replace, sort, tags]
   );
 
   const onSubmit: UseCatalogSearchReturn["onSubmit"] = useCallback(
@@ -169,16 +151,13 @@ export const useCatalogSearch = (
     () => ({
       cdkMajor,
       cdkType,
-      language,
       languages,
-      onLanguageChange: setLanguage,
       onQueryChange,
       onSearch,
       onSubmit,
       query,
       setCdkMajor,
       setCdkType,
-      setLanguage,
       setLanguages,
       setTags,
       setQuery,
@@ -186,16 +165,6 @@ export const useCatalogSearch = (
       sort,
       tags,
     }),
-    [
-      cdkMajor,
-      cdkType,
-      language,
-      languages,
-      onSearch,
-      onSubmit,
-      query,
-      sort,
-      tags,
-    ]
+    [cdkMajor, cdkType, languages, onSearch, onSubmit, query, sort, tags]
   );
 };

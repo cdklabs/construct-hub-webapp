@@ -1,11 +1,11 @@
 import catalogFixture from "../../__fixtures__/catalog.json";
 import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
-import { CatalogPackage } from "../package/packages";
+import { ExtendedCatalogPackage } from "./catalog-search";
 import { CatalogSearchSort } from "./constants";
 import { SORT_FUNCTIONS, FILTER_FUNCTIONS } from "./util";
 
-const packages = catalogFixture.packages as CatalogPackage[];
+const packages = catalogFixture.packages as any as ExtendedCatalogPackage[];
 
 describe("Catalog Search Utils", () => {
   describe("Sort Functions", () => {
@@ -60,20 +60,22 @@ describe("Catalog Search Utils", () => {
     });
 
     it("Filters by CDK Version", () => {
-      const dataWithMoreVersions: CatalogPackage[] = packages.map((p) => ({
-        ...p,
-        metadata: {
-          ...p.metadata,
-          ...(p.metadata.constructFramework
-            ? {
-                constructFramework: {
-                  ...p.metadata.constructFramework,
-                  majorVersion: Math.round(Math.random()) + 1,
-                },
-              }
-            : {}),
-        },
-      }));
+      const dataWithMoreVersions: ExtendedCatalogPackage[] = packages.map(
+        (p) => ({
+          ...p,
+          metadata: {
+            ...p.metadata,
+            ...(p.metadata.constructFramework
+              ? {
+                  constructFramework: {
+                    ...p.metadata.constructFramework,
+                    majorVersion: Math.round(Math.random()) + 1,
+                  },
+                }
+              : {}),
+          },
+        })
+      );
 
       expect(
         dataWithMoreVersions.filter(FILTER_FUNCTIONS.cdkMajor(1)!)
@@ -82,33 +84,6 @@ describe("Catalog Search Utils", () => {
           (p) => p.metadata.constructFramework?.majorVersion === 1
         )
       );
-    });
-
-    it("Filters by a single language", () => {
-      const filterByPython = FILTER_FUNCTIONS.language(Language.Python)!;
-      expect(packages.filter(filterByPython)).toEqual(
-        packages.filter((p) => p.languages?.python !== undefined)
-      );
-
-      const filterByJava = FILTER_FUNCTIONS.language(Language.Java)!;
-
-      expect(packages.filter(filterByJava)).toEqual(
-        packages.filter((p) => p.languages?.java !== undefined)
-      );
-    });
-
-    it("does not throw if packages have no language", () => {
-      const withoutLanguages = packages.reduce((pkgs, pkg) => {
-        const { languages, ...p } = pkg;
-
-        pkgs.push(p);
-
-        return pkgs;
-      }, [] as CatalogPackage[]);
-
-      expect(() =>
-        withoutLanguages.filter(FILTER_FUNCTIONS.language(Language.Java)!)
-      ).not.toThrow();
     });
 
     it("Filters by multiple languages", () => {

@@ -40,11 +40,10 @@ export const A: AnchorComponent = ({ children, href, ...linkProps }) => {
 export const Blockquote: FunctionComponent = ({ children }) => (
   <Box
     as="blockquote"
-    bg="gray.100"
     borderLeft="5px solid"
-    borderLeftColor="gray.200"
-    borderRadius="md"
-    p={2}
+    borderLeftColor="gray.100"
+    marginX="2"
+    px="2"
     wordBreak="break-word"
   >
     {children}
@@ -52,12 +51,16 @@ export const Blockquote: FunctionComponent = ({ children }) => (
 );
 
 export const Em: FunctionComponent = ({ children }) => (
-  <Box as="em" color="blue.500" fontStyle="normal" fontWeight="semibold">
+  <Box as="em" fontStyle="normal" fontWeight="bold">
     {children}
   </Box>
 );
 
-export const P: FunctionComponent = ({ children }) => <Text>{children}</Text>;
+export const P: FunctionComponent = ({ children }) => (
+  <Text lineHeight="1.5" mx={2} my={4}>
+    {children}
+  </Text>
+);
 
 export const Pre: FunctionComponent = ({ children }) => (
   <Box as="pre">{children}</Box>
@@ -76,13 +79,13 @@ export const Sup: FunctionComponent = ({ children }) => {
   }
 
   if (text === "Required") {
-    color = "orange.500";
+    color = "orange.700";
   } else if (text === "Optional") {
-    color = "green.500";
+    color = "green.700";
   }
 
   return (
-    <Box as="sup" color={color} ml={2} top={-1}>
+    <Box as="sup" color={color} fontSize="xs" ml={-1} top={-1}>
       {children}
     </Box>
   );

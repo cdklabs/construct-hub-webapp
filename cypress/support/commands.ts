@@ -1,7 +1,5 @@
 import header from "components/Header/testIds";
 import footer from "components/Footer/testIds";
-import catalogSearch from "components/CatalogSearch/testIds";
-import catalogCard from "components/CatalogCard/testIds";
 import { Config } from "api/config";
 
 Cypress.Commands.add("visitWithConfig", (url: string, config: Config) => {
@@ -24,16 +22,6 @@ Cypress.Commands.add("getByDataTest", (dataTest: string | string[], options) =>
 
 Cypress.Commands.add("checkHeaderVisibility", () => {
   cy.getByDataTest(header.container).scrollIntoView().should("be.visible");
-});
-
-Cypress.Commands.add("checkCatalogSearchInputs", () => {
-  cy.getByDataTest(catalogSearch.input).should("be.visible");
-  cy.getByDataTest(catalogSearch.languageDropdown).should("be.visible");
-  cy.getByDataTest(catalogSearch.submit).should("be.visible");
-});
-
-Cypress.Commands.add("checkResultCount", (count) => {
-  cy.getByDataTest(catalogCard.container).should("have.length", count);
 });
 
 Cypress.Commands.add("checkFooterVisibility", () => {

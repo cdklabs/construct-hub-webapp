@@ -1,13 +1,12 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, Flex, Link, IconButton, useDisclosure } from "@chakra-ui/react";
-import { FunctionComponent, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { Box, Flex, IconButton, Text, useDisclosure } from "@chakra-ui/react";
+import { FunctionComponent, useMemo, ReactNode } from "react";
 import { NavLink } from "../NavLink";
 
 export interface NavItemConfig {
-  children?: NavItemConfig[];
-  display: string;
-  url: string;
+  children: NavItemConfig[];
+  title: string;
+  path?: string;
 }
 
 export interface NavItemProps extends NavItemConfig {
@@ -28,21 +27,50 @@ const iconProps = {
   w: 4,
 };
 
-const NavItem: FunctionComponent<NavItemProps> = ({
+interface NavItemWrapperProps {
+  path?: string;
+  title: string;
+  showToggle: boolean;
+  children: ReactNode;
+}
+
+const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
   children,
-  display,
-  url,
+  path,
+  title,
+  showToggle,
+}) => {
+  const sharedProps = {
+    _hover: { bg: "rgba(0, 124, 253, 0.05)" },
+    overflow: "hidden",
+    pl: 1,
+    py: showToggle ? 2 : 1,
+    marginLeft: showToggle ? 0 : 1,
+    fontWeight: showToggle ? "bold" : undefined,
+    textOverflow: "ellipsis",
+    w: "100%",
+  };
+
+  return path ? (
+    <NavLink title={title} to={path} {...sharedProps}>
+      {children}
+    </NavLink>
+  ) : (
+    <Text {...sharedProps}>{children}</Text>
+  );
+};
+
+export const NavItem: FunctionComponent<NavItemProps> = ({
+  children,
+  title,
+  path,
   onOpen,
 }) => {
-  const { pathname, hash } = useLocation();
-  const isHashUrl = url.startsWith("#");
-  const linkIsActive = isHashUrl ? hash === url : pathname === url;
+  const linkIsActive = false;
   const disclosure = useDisclosure({ onOpen, defaultIsOpen: true });
 
   const showToggle = (children?.length ?? 0) > 0;
   const showChildren = disclosure.isOpen && showToggle;
-
-  const LinkComponent = isHashUrl ? Link : NavLink;
 
   const nestedItems = useMemo(
     () =>
@@ -71,23 +99,12 @@ const NavItem: FunctionComponent<NavItemProps> = ({
             onClick={disclosure.onToggle}
             size="xs"
             variant="link"
-            w={4}
+            w={0}
           />
         )}
-        <LinkComponent
-          _hover={{ bg: "rgba(0, 124, 253, 0.05)" }}
-          href={url}
-          overflow="hidden"
-          pl={showToggle ? 1 : 2}
-          py={1.5}
-          textOverflow="ellipsis"
-          title={display}
-          to={url}
-          w="100%"
-          whiteSpace="nowrap"
-        >
-          {display}
-        </LinkComponent>
+        <NavItemWrapper path={path} showToggle={showToggle} title={title}>
+          {title}
+        </NavItemWrapper>
       </Flex>
       <Box
         _before={{
@@ -103,6 +120,7 @@ const NavItem: FunctionComponent<NavItemProps> = ({
         }}
         display={showChildren ? "initial" : "none"}
         ml={2}
+        mr={2}
         pl={2}
         position="relative"
       >

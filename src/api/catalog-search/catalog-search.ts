@@ -36,13 +36,6 @@ export interface CatalogSearchFilters {
    */
   cdkMajor?: number;
   /**
-   * The target language to filter by. This parameter is only used
-   * for backwards compatability with the current search page and should be
-   * avoided moving forward
-   * @deprecated = use languages[] instead
-   */
-  language?: Language;
-  /**
    * A list of languages to filter by. Constructs that are not yet filtered out, will be
    * returned if they support any of the languages in this list.
    */
@@ -184,14 +177,13 @@ export class CatalogSearchAPI {
     results: CatalogSearchResults,
     filters: CatalogSearchFilters
   ): CatalogSearchResults {
-    const { cdkType, cdkMajor, language, languages, tags } = filters;
+    const { cdkType, cdkMajor, languages, tags } = filters;
     const copiedResults = new Map(results);
 
     const filterFunctions = [
       FILTER_FUNCTIONS.cdkType(cdkType),
       // Ignore major version filter if no CDK Type is defined
       FILTER_FUNCTIONS.cdkMajor(cdkType ? cdkMajor : undefined),
-      FILTER_FUNCTIONS.language(language),
       FILTER_FUNCTIONS.languages(languages),
       FILTER_FUNCTIONS.tags(tags),
     ].filter(Boolean) as ((pkg: ExtendedCatalogPackage) => boolean)[];

@@ -2,7 +2,6 @@
  * @fileoverview Tests the potential xss vectors in the application
  * @todo: Commented tests are for code that is not merged yet
  */
-import catalogSearch from "components/CatalogSearch/testIds";
 import header from "components/Header/testIds";
 import markdown from "components/Markdown/testIds";
 import searchBar from "components/SearchBar/testIds";
@@ -33,15 +32,11 @@ const testSearchURL = async (query: string) => {
   });
 };
 
-const testInput = async ({
-  inputSelector = catalogSearch.input,
-  input = "",
-  url = "/",
-}) => {
+const testInput = async ({ input = "", url = "/" }) => {
   withWindowAlertCheck(async () => {
     cy.visit(url);
 
-    cy.getByDataTest(inputSelector).type(input + "{enter}", { force: true });
+    cy.getByDataTest(searchBar.input).type(input + "{enter}", { force: true });
 
     checkURL({ query: input });
   });
@@ -96,14 +91,12 @@ describe("XSS - GA Featureset", () => {
     it("will not execute malicious HTML input", () => {
       testInput({
         input: alertHTML,
-        inputSelector: searchBar.input,
       });
     });
 
     it("will not execute malicious JavaScript input", () => {
       testInput({
         input: alertJS,
-        inputSelector: searchBar.input,
       });
     });
   });
@@ -121,7 +114,6 @@ describe("XSS - GA Featureset", () => {
       testInput({
         url: "/search",
         input: alertHTML,
-        inputSelector: searchBar.input,
       });
     });
 
@@ -129,7 +121,6 @@ describe("XSS - GA Featureset", () => {
       testInput({
         url: "/search",
         input: alertJS,
-        inputSelector: searchBar.input,
       });
     });
   });

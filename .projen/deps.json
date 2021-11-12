@@ -25,6 +25,10 @@
       "type": "build"
     },
     {
+      "name": "@types/node-emoji",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^12.20.0",
       "type": "build"
@@ -194,6 +198,10 @@
     },
     {
       "name": "lunr",
+      "type": "runtime"
+    },
+    {
+      "name": "node-emoji",
       "type": "runtime"
     },
     {

@@ -1,6 +1,4 @@
 import {
-  Center,
-  Spinner,
   Grid,
   Tab,
   TabList,
@@ -13,23 +11,12 @@ import { Page } from "../../components/Page";
 import { DependenciesList } from "./DependenciesList";
 import { FeedbackLinks } from "./FeedbackLinks";
 import { PackageDocs } from "./PackageDocs";
-import { PackageDocsError } from "./PackageDocsError";
-import { PackageDocsUnsupported } from "./PackageDocsUnsupported";
 import { PackageHeader } from "./PackageHeader";
 import { usePackageState } from "./PackageState";
 import testIds from "./testIds";
 
 export const PackageLayout: FunctionComponent = () => {
-  const {
-    assembly,
-    hasDocs,
-    hasError,
-    isLoadingDocs,
-    isSupported,
-    markdown,
-    pageDescription,
-    pageTitle,
-  } = usePackageState();
+  const { pageDescription, pageTitle } = usePackageState();
 
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -58,25 +45,7 @@ export const PackageLayout: FunctionComponent = () => {
           </TabList>
           <TabPanels maxW="full">
             <TabPanel p={0}>
-              {/* Readme and Api Reference Area */}
-              {isSupported ? (
-                hasError ? (
-                  <PackageDocsError />
-                ) : isLoadingDocs ? (
-                  <Center minH="16rem">
-                    <Spinner size="xl" />
-                  </Center>
-                ) : (
-                  hasDocs && (
-                    <PackageDocs
-                      assembly={assembly.data!}
-                      markdown={markdown.data!}
-                    />
-                  )
-                )
-              ) : (
-                <PackageDocsUnsupported />
-              )}
+              <PackageDocs />
             </TabPanel>
 
             <TabPanel>
