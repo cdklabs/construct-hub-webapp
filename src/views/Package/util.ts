@@ -38,15 +38,27 @@ const appendMenuItem = (items: MenuItem[], item: MenuItem): MenuItem[] => {
  * parse to a specified level. Defaults to markdown maximum of `6`
  */
 const splitOnHeaders = (md: string, maxLevel: number = 6): string[] => {
-  const regex = new RegExp(`(^#{1,${maxLevel}}[^#].*)`, "gm");
+  // first matches code blocks to avoid matching any lines starting with '#'
+  // inside of an escaped string.
+  const regex = new RegExp(
+    `(\`{3}[\\s\\S]*?(?:\`{3})|^#{1,${maxLevel}}[^#].*)`,
+    "gm"
+  );
+
   return (
     md
       .split(regex)
-      // Trim lines and remove whitespace only entries
+      // concatenate non-header content back together
       .reduce((accum: string[], str: string) => {
-        const newStr = str.trim();
-        if (newStr === "") return accum;
-        return [...accum, newStr];
+        const prev = accum[accum.length - 1];
+        if (str.startsWith("#") || prev?.startsWith("#")) {
+          return [...accum, str];
+        }
+
+        // Append blocks back to each other when neither are headers
+        // This happens with code blocks.
+        accum[accum.length - 1] += str;
+        return accum;
       }, [])
   );
 };
@@ -105,7 +117,7 @@ export const parseMarkdownStructure = (
   const basePath = `/packages/${nameSegment}/v/${version}`;
   const langQuery = `?${QUERY_PARAMS.LANGUAGE}=${language}`;
   const separator =
-    '# API Reference <span data-heading-title="API Reference" data-heading-id="api-reference"></span>\n';
+    '# API Reference <span data-heading-title="API Reference" data-heading-id="api-reference"></span>';
 
   // split into readme and api reference
   const segments = input.split(separator);
@@ -155,12 +167,14 @@ export const parseMarkdownStructure = (
 
   const getApiPath = (id: string) => `${basePath}/api/${id}${langQuery}`;
   let prevType: { id: string; title: string };
+  let prevLevel: number;
+
   apiReferenceParsed?.forEach((str) => {
-    // TODO get attributes off of embedded html
-    const isHeader = str.match(/(^#{1,3}[^#].*)/gm);
+    const isHeader = str.match(/(^#{1,3}[^#].*)/g);
+    const level = str.match(/(#)/gm)?.length ?? 1;
+
     if (isHeader?.length) {
       const { id, title } = getHeaderAttributes(str);
-      const level = str.match(/(#)/gm)?.length ?? 1;
 
       // root package path plus type id segment
       // only level 3 headers are types in api reference
@@ -175,7 +189,8 @@ export const parseMarkdownStructure = (
 
       menuItems = appendMenuItem(menuItems, menuItem);
       prevType = { id, title };
-    } else {
+      prevLevel = level;
+    } else if (prevLevel === 3) {
       types[prevType.id] = { title: prevType.title, content: str };
     }
   });

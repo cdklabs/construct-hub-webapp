@@ -10,6 +10,16 @@ SomeBodyText
 ## Title 2
 
 SomeBodyText
+
+\`\`\`ts
+# Code in blocks is not interpreted as headers even starting with #
+\`\`\`
+
+### Title 3
+
+\`\`\`ts
+# More code blocks parsed separately from previous
+\`\`\`
 `;
 
 // Data types correspond to headings for `Constructs`, `Structs`, etc.
@@ -20,12 +30,18 @@ const DATA_TYPE_2 = "DATA_TYPE_2";
 const MY_DATA_TYPE_1 = "MY_DATA_TYPE_1";
 const MY_DATA_TYPE_2 = "MY_DATA_TYPE_2";
 
-const MY_DATA_TYPE_22Body = `${MY_DATA_TYPE_2}-2Body
+const MY_DATA_TYPE_22Body = `
+${MY_DATA_TYPE_2}-2Body
 
 #### HEADER4
 
 This is not parsed out
-This is another line not parsed out`;
+This is another line not parsed out
+\`\`\`ts
+# Code in blocks is not interpreted as headers even starting with #
+\`\`\`
+
+Additional content after code block`;
 
 const MARKDOWN_INPUT = `${README_MARKDOWN}# API Reference <span data-heading-title="API Reference" data-heading-id="api-reference"></span>
 
@@ -45,8 +61,7 @@ ${MY_DATA_TYPE_1}-2Body
 
 ${MY_DATA_TYPE_2}-1Body
 
-### ${MY_DATA_TYPE_2}-2 <span data-heading-title="${MY_DATA_TYPE_2}-2" data-heading-id="${MY_DATA_TYPE_2}-2"></span>
-${MY_DATA_TYPE_22Body}`;
+### ${MY_DATA_TYPE_2}-2 <span data-heading-title="${MY_DATA_TYPE_2}-2" data-heading-id="${MY_DATA_TYPE_2}-2"></span>${MY_DATA_TYPE_22Body}`;
 
 const packageData = {
   scope: "@packageScope",
@@ -69,15 +84,15 @@ describe("parseMarkdownStructure", () => {
     expect(apiReference).toEqual({
       [`${MY_DATA_TYPE_1}-1`]: {
         title: `${MY_DATA_TYPE_1}-1`,
-        content: `${MY_DATA_TYPE_1}-1Body`,
+        content: `\n\n${MY_DATA_TYPE_1}-1Body\n\n`,
       },
       [`${MY_DATA_TYPE_1}-2`]: {
         title: `${MY_DATA_TYPE_1}-2`,
-        content: `${MY_DATA_TYPE_1}-2Body`,
+        content: `\n\n${MY_DATA_TYPE_1}-2Body\n\n`,
       },
       [`${MY_DATA_TYPE_2}-1`]: {
         title: `${MY_DATA_TYPE_2}-1`,
-        content: `${MY_DATA_TYPE_2}-1Body`,
+        content: `\n\n${MY_DATA_TYPE_2}-1Body\n\n`,
       },
       [`${MY_DATA_TYPE_2}-2`]: {
         title: `${MY_DATA_TYPE_2}-2`,
@@ -110,7 +125,15 @@ describe("parseMarkdownStructure", () => {
                 id: "title-2",
                 title: "Title 2",
                 path: `${baseHashPath}#title-2`,
-                children: [],
+                children: [
+                  {
+                    level: 3,
+                    id: "title-3",
+                    title: "Title 3",
+                    path: `${baseHashPath}#title-3`,
+                    children: [],
+                  },
+                ],
               },
             ],
           },
