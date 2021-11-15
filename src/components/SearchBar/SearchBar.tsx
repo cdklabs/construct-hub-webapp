@@ -76,7 +76,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
   const catalog = useCatalog();
 
   const roundedCatalogLength =
-    Math.round((catalog?.data?.packages?.length ?? 0) / 100) * 100;
+    Math.floor((catalog?.data?.packages?.length ?? 0) / 100) * 100;
 
   const placeholder = `Search ${
     roundedCatalogLength > 0 ? `${roundedCatalogLength}+ ` : ""
