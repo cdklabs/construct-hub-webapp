@@ -1,7 +1,7 @@
 import { DownloadIcon } from "@chakra-ui/icons";
 import { Text, Tooltip } from "@chakra-ui/react";
+import { formatDistance } from "date-fns";
 import { FunctionComponent, ReactChild } from "react";
-import { FORMATS } from "../../constants/dates";
 import { useStats } from "../../contexts/Stats";
 import { getSearchPath } from "../../util/url";
 import { NavLink } from "../NavLink";
@@ -46,6 +46,7 @@ export const Details: FunctionComponent = () => {
   const downloads: number | undefined = data?.packages?.[name]?.downloads?.npm;
 
   const authorName = typeof author === "string" ? author : author.name;
+  const publishDate = new Date(date);
 
   return (
     <>
@@ -65,9 +66,11 @@ export const Details: FunctionComponent = () => {
         label="Published"
         value={
           <Time
-            date={new Date(date)}
+            date={publishDate}
             fontSize="xs"
-            format={FORMATS.PUBLISH_DATE}
+            formattedDate={formatDistance(publishDate, new Date(), {
+              addSuffix: true,
+            })}
           />
         }
       />
