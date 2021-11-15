@@ -12,6 +12,7 @@ export interface NavItemConfig {
 export interface NavItemProps extends NavItemConfig {
   // The following props don't need to be explicitly defined - they are passed internally
   onOpen?: () => void;
+  level: number;
 }
 
 export interface NavTreeProps {
@@ -64,10 +65,12 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   children,
   title,
   path,
+  level,
   onOpen,
 }) => {
   const linkIsActive = false;
-  const disclosure = useDisclosure({ onOpen, defaultIsOpen: true });
+  const defaultIsOpen = level < 2; // only show first two levels by default
+  const disclosure = useDisclosure({ onOpen, defaultIsOpen });
 
   const showToggle = (children?.length ?? 0) > 0;
   const showChildren = disclosure.isOpen && showToggle;
@@ -75,9 +78,16 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   const nestedItems = useMemo(
     () =>
       children?.map((item, idx) => {
-        return <NavItem {...item} key={idx} onOpen={disclosure.onOpen} />;
+        return (
+          <NavItem
+            {...item}
+            key={idx}
+            level={level + 1}
+            onOpen={disclosure.onOpen}
+          />
+        );
       }),
-    [children, disclosure.onOpen]
+    [children, disclosure.onOpen, level]
   );
 
   return (
@@ -134,7 +144,7 @@ export const NavTree: FunctionComponent<NavTreeProps> = ({ items }) => {
   return (
     <Flex direction="column" maxWidth="100%">
       {items.map((item, idx) => {
-        return <NavItem {...item} key={idx} onOpen={undefined} />;
+        return <NavItem {...item} key={idx} level={0} onOpen={undefined} />;
       })}
     </Flex>
   );
