@@ -109,9 +109,10 @@ export class CatalogSearchAPI {
         (pkg) => !pkg.keywords?.includes("construct-hub/hide-from-search")
       )
       .reduce((map, pkg) => {
-        const { name, version } = pkg;
+        const { name, version, metadata } = pkg;
         const id = [name, version].join("@");
 
+        const publishDate = new Date(metadata.date);
         const downloads = stats.packages[name]?.downloads?.npm ?? 0;
 
         map.set(id, {
@@ -121,6 +122,16 @@ export class CatalogSearchAPI {
           ),
           downloads,
           id,
+          metadata: {
+            ...metadata,
+            date: new Date(
+              publishDate.getFullYear(),
+              publishDate.getMonth(),
+              publishDate.getDate(),
+              publishDate.getHours(),
+              publishDate.getMinutes()
+            ).toISOString(),
+          },
         });
 
         return map;

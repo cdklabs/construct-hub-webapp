@@ -1,6 +1,7 @@
 import { DownloadIcon } from "@chakra-ui/icons";
 import { Text, Tooltip } from "@chakra-ui/react";
 import { FunctionComponent, ReactChild } from "react";
+import { FORMATS } from "../../constants/dates";
 import { useStats } from "../../contexts/Stats";
 import { getSearchPath } from "../../util/url";
 import { NavLink } from "../NavLink";
@@ -63,7 +64,11 @@ export const Details: FunctionComponent = () => {
         data-testid={testIds.published}
         label="Published"
         value={
-          <Time date={new Date(date)} fontSize="xs" format="MMM dd, yyyy" />
+          <Time
+            date={new Date(date)}
+            fontSize="xs"
+            format={FORMATS.PUBLISH_DATE}
+          />
         }
       />
       <Detail
