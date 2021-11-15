@@ -95,7 +95,10 @@ export const SearchResults: FunctionComponent = () => {
         <SearchBar
           bg="white"
           onChange={searchAPI.onQueryChange}
-          onSubmit={searchAPI.onSubmit}
+          onSubmit={(e) => {
+            searchAPI.setSort(undefined);
+            searchAPI.onSubmit(e);
+          }}
           value={searchAPI.query}
         />
 
