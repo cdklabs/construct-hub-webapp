@@ -95,6 +95,19 @@ const getDetailItemsFromPackage = ({
       items.push(<WithLabel label="Author">{author}</WithLabel>);
     }
 
+    const date = metadata?.date;
+
+    if (date) {
+      const publishDate = (
+        <Time
+          date={new Date(date)}
+          fontWeight="normal"
+          format={FORMATS.PUBLISH_DATE}
+        />
+      );
+      items.push(<WithLabel label="Published">{publishDate}</WithLabel>);
+    }
+
     if (repository) {
       const repo = getRepoUrlAndHost(repository.url);
 
@@ -113,20 +126,6 @@ const getDetailItemsFromPackage = ({
       items.push(<WithLabel label="License">{licenseLink}</WithLabel>);
     }
 
-    const date = metadata?.date;
-
-    if (date) {
-      const publishDate = (
-        <Time
-          date={new Date(date)}
-          fontWeight="normal"
-          format={FORMATS.PUBLISH_DATE}
-        />
-      );
-      items.push(<WithLabel label="Published">{publishDate}</WithLabel>);
-    }
-
-    // Prioritize custom links when available
     if (packageLinks?.length) {
       packageLinks.forEach(({ linkLabel, configKey, linkText }) => {
         const target = (metadata?.packageLinks ?? {})[configKey];
@@ -164,7 +163,7 @@ const getDetailItemsFromPackage = ({
 export const Details: FunctionComponent<DetailsProps> = (props) => {
   const state = usePackageState();
   const stats = useStats().data;
-  const collapse = useDisclosure();
+  const collapse = useDisclosure({ defaultIsOpen: true });
   const packageLinks = useConfigValue("packageLinks");
 
   const assembly = state.assembly.data;
@@ -183,8 +182,8 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
 
   if (!items.length) return null;
 
-  const alwaysShow = items.slice(0, 4);
-  const showWithCollapse = items.slice(4, items.length);
+  const alwaysShow = items.slice(0, 2);
+  const showWithCollapse = items.slice(2, items.length);
 
   return (
     <Stack
