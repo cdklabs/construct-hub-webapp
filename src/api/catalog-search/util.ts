@@ -11,13 +11,18 @@ type FilterFunctionBuilder<T> = (
   filter: T
 ) => undefined | ((pkg: ExtendedCatalogPackage) => boolean);
 
+const getStrSort = (isAscending: boolean): SortFunction => {
+  return (p1, p2) => p1.name.localeCompare(p2.name) * (isAscending ? 1 : -1);
+};
+
 const getDateSort =
   (isAscending: boolean): SortFunction =>
   (p1, p2) => {
-    const d1 = new Date(p1.metadata.date);
-    const d2 = new Date(p2.metadata.date);
+    const d1 = new Date(p1.metadata.date).getTime();
+    const d2 = new Date(p2.metadata.date).getTime();
+
     if (d1 === d2) {
-      return 0;
+      return getStrSort(true)(p1, p2);
     }
 
     if (isAscending) {
@@ -26,10 +31,6 @@ const getDateSort =
 
     return d1 < d2 ? 1 : -1;
   };
-
-const getStrSort = (isAscending: boolean): SortFunction => {
-  return (p1, p2) => p1.name.localeCompare(p2.name) * (isAscending ? 1 : -1);
-};
 
 const getDownloadsSort = (isAscending: boolean): SortFunction => {
   return (p1, p2) => {

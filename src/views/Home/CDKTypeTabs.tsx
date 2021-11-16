@@ -34,8 +34,7 @@ const PackageTab: FunctionComponent<PackageTabProps> = ({ cdkType, data }) => {
       data-value={cdkType}
       isDisabled={data.page.length < 1}
     >
-      {cdkType ? CDKTYPE_RENDER_MAP[cdkType].name : "All CDKs"} (
-      {data.results.length})
+      {cdkType ? CDKTYPE_RENDER_MAP[cdkType].name : "Recently Updated"}
     </Tab>
   );
 };
