@@ -1,14 +1,7 @@
-import {
-  Flex,
-  Heading,
-  Text,
-  Button,
-  Wrap,
-  WrapItem,
-  Link,
-} from "@chakra-ui/react";
+import { Flex, Heading, Text, Button, Wrap, WrapItem } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Category } from "../../api/config";
+import { NavLink } from "../../components/NavLink";
 import { useConfigValue } from "../../hooks/useConfigValue";
 import { getSearchPath } from "../../util/url";
 import { SECTION_PADDING } from "./constants";
@@ -27,7 +20,6 @@ const DEFAULT_CATEGORIES: Category[] = [
   { title: "Partners", searchKeyword: "partners" },
   { title: "Websites", searchKeyword: "web" },
   { title: "Security", searchKeyword: "security" },
-  { title: "Cost Management", searchKeyword: "cost" },
 ];
 
 export const Categories: FunctionComponent = () => {
@@ -67,16 +59,14 @@ export const Categories: FunctionComponent = () => {
         {categories.map((category) => (
           <WrapItem key={category.title}>
             <Button
+              as={NavLink}
               color="blue.800"
               colorScheme="gray"
               size="md"
               style={{ boxShadow: "0px 4px 4px rgba(73, 73, 73, 0.63)" }}
+              to={getSearchPath({ query: category.searchKeyword })}
             >
-              <Link
-                href={getSearchPath({ keywords: [category.searchKeyword] })}
-              >
-                {category.title}
-              </Link>
+              {category.title}
             </Button>
           </WrapItem>
         ))}

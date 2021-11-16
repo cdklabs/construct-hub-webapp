@@ -92,6 +92,7 @@ export const CDKTypeTabs: FunctionComponent = () => {
 
   return (
     <Flex
+      color="white"
       data-testid={testIds.cdkTypeSection}
       direction="column"
       px={SECTION_PADDING.X}
@@ -100,7 +101,6 @@ export const CDKTypeTabs: FunctionComponent = () => {
     >
       <Heading
         as="h3"
-        color="white"
         data-testid={testIds.cdkTypeSectionHeading}
         fontSize="1.5rem"
         fontWeight="semibold"
@@ -111,7 +111,6 @@ export const CDKTypeTabs: FunctionComponent = () => {
         location
       </Heading>
       <Text
-        color="white"
         data-testid={testIds.cdkTypeSectionDescription}
         lineHeight="md"
         maxW="60ch"
