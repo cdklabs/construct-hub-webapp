@@ -13,6 +13,7 @@ import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
+import { SelectMajorVersion } from "./SelectMajorVersion";
 
 interface TagObject extends PackageTagConfig {
   isKeyword?: boolean;
@@ -74,10 +75,12 @@ export const Heading: FunctionComponent<HeadingProps> = ({
 
       <Text fontSize="1rem">{description}</Text>
 
+      <SelectMajorVersion />
+
       <Flex
         align="center"
         direction="row"
-        pt={3}
+        pt={1}
         // Chakra doesn't yet support css gap via style props
         sx={{ gap: "0.5rem" }}
         wrap="wrap"

@@ -121,6 +121,19 @@ describe("CatalogSearchAPI", () => {
     });
   });
 
+  it("Returns only exact results when specified", () => {
+    expect(instance.search({ query: "@aws-cdk/aws-ecr" }).size).toBeGreaterThan(
+      1
+    );
+
+    const results = instance.search({
+      query: "@aws-cdk/aws-ecr",
+      exactQuery: true,
+    });
+    expect(results.size).toEqual(1);
+    expect(results.values().next().value.name).toEqual("@aws-cdk/aws-ecr");
+  });
+
   describe("Snapshots", () => {
     it("Returns consistent query results", () => {
       const results = instance.search({

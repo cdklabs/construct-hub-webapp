@@ -12,6 +12,7 @@ export interface UseCatalogResultsOptions {
   limit: number;
   offset?: number;
   query?: string;
+  exactQuery?: boolean;
   language?: Language | null;
   languages?: Language[];
   sort?: CatalogSearchSort;
@@ -29,6 +30,7 @@ export const useCatalogResults = ({
   limit,
   offset = 0,
   query = "",
+  exactQuery,
   language = null,
   languages,
   sort,
@@ -50,6 +52,7 @@ export const useCatalogResults = ({
     filters,
     query,
     sort,
+    exactQuery,
   });
 
   const { page, pageLimit } = usePagination(results, {

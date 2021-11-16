@@ -11,6 +11,7 @@ export const useSearch = ({
   query,
   filters,
   sort,
+  exactQuery,
 }: CatalogSearchParams = {}) => {
   const instance = useSearchContext();
 
@@ -27,10 +28,11 @@ export const useSearch = ({
           query,
           filters,
           sort,
+          exactQuery,
         })
         .values(),
     ],
-    [instance, query, filters, sort]
+    [instance, query, filters, sort, exactQuery]
   );
 
   return results;

@@ -87,6 +87,7 @@ export interface CatalogSearchParams {
   query?: string;
   filters?: CatalogSearchFilters;
   sort?: CatalogSearchSort;
+  exactQuery?: boolean;
 }
 
 export class CatalogSearchAPI {
@@ -177,10 +178,11 @@ export class CatalogSearchAPI {
     query?: string;
     filters?: CatalogSearchFilters;
     sort?: CatalogSearchSort;
+    exactQuery?: boolean;
   }): CatalogSearchResults {
-    const { query, filters, sort } = params ?? {};
+    const { query, filters, sort, exactQuery } = params ?? {};
 
-    let results = query ? this.query(query) : new Map(this.map);
+    let results = query ? this.query(query, exactQuery) : new Map(this.map);
 
     // TODO: Investigate if we can leverage lunr for filtering
     if (filters) {
@@ -197,7 +199,7 @@ export class CatalogSearchAPI {
   /**
    * This calls the index search method and returns a map of results ordered by relevance.
    */
-  private query(query: string): CatalogSearchResults {
+  private query(query: string, exact?: boolean): CatalogSearchResults {
     let refs: lunr.Index.Result[] = [];
 
     try {
@@ -220,6 +222,10 @@ export class CatalogSearchAPI {
 
     return refs.reduce((packages, { ref }) => {
       const pkg = this.map.get(ref);
+
+      if (exact === true && pkg?.name !== query) {
+        return packages;
+      }
 
       if (pkg) {
         packages.set(ref, pkg);
