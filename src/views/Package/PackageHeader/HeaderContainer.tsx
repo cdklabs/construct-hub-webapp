@@ -30,7 +30,7 @@ const lgGridAreas = makeGridAreas(
 
 export const HeaderContainer: FunctionComponent = ({ children }) => (
   <Grid
-    columnGap={{ md: 3, lg: 3 }}
+    columnGap={{ md: 6, lg: 6 }}
     pt={{ base: 3, lg: 6 }}
     px={{ base: 5, md: 6, lg: 10 }}
     rowGap={{ base: 4, lg: 0 }}

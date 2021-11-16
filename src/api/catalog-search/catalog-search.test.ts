@@ -128,7 +128,7 @@ describe("CatalogSearchAPI", () => {
 
     const results = instance.search({
       query: "@aws-cdk/aws-ecr",
-      exactQuery: true,
+      exactMatch: true,
     });
     expect(results.size).toEqual(1);
     expect(results.values().next().value.name).toEqual("@aws-cdk/aws-ecr");

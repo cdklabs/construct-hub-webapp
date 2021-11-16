@@ -92,7 +92,7 @@ export interface CatalogSearchParams {
   query?: string;
   filters?: CatalogSearchFilters;
   sort?: CatalogSearchSort;
-  exactQuery?: boolean;
+  exactMatch?: boolean;
 }
 
 export class CatalogSearchAPI {
@@ -183,11 +183,11 @@ export class CatalogSearchAPI {
     query?: string;
     filters?: CatalogSearchFilters;
     sort?: CatalogSearchSort;
-    exactQuery?: boolean;
+    exactMatch?: boolean;
   }): CatalogSearchResults {
-    const { query, filters, sort, exactQuery } = params ?? {};
+    const { query, filters, sort, exactMatch } = params ?? {};
 
-    let results = query ? this.query(query, exactQuery) : new Map(this.map);
+    let results = query ? this.query(query, exactMatch) : new Map(this.map);
 
     // TODO: Investigate if we can leverage lunr for filtering
     if (filters) {

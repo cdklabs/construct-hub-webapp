@@ -10,7 +10,7 @@ export const SelectVersion: FunctionComponent = () => {
   const pkgName = scope ? `${scope}/${name}` : name;
   const packages = useCatalogResults({
     query: pkgName,
-    exactQuery: true,
+    exactMatch: true,
     limit: 20,
   });
   const { push } = useHistory();
@@ -42,12 +42,7 @@ export const SelectVersion: FunctionComponent = () => {
   };
 
   return (
-    <Box
-      display="flex"
-      ml={{ base: "0", md: "2" }}
-      mt={{ base: "0", md: "2" }}
-      my="1"
-    >
+    <Box display="flex" mt={{ base: "0", md: "2" }}>
       <Text color="gray.700">Version</Text>
       <Select
         fontSize="sm"
