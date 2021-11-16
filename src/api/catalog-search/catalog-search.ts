@@ -92,6 +92,7 @@ export interface CatalogSearchParams {
   query?: string;
   filters?: CatalogSearchFilters;
   sort?: CatalogSearchSort;
+  dedup?: boolean;
 }
 
 export class CatalogSearchAPI {
@@ -179,12 +180,8 @@ export class CatalogSearchAPI {
    * Performs a Search against the catalog and returns a Map with results ordered
    * by search score / relevance
    */
-  public search(params?: {
-    query?: string;
-    filters?: CatalogSearchFilters;
-    sort?: CatalogSearchSort;
-  }): CatalogSearchResults {
-    const { query, filters, sort } = params ?? {};
+  public search(params?: CatalogSearchParams): CatalogSearchResults {
+    const { query, filters, sort, dedup } = params ?? {};
 
     let results = query ? this.query(query) : new Map(this.map);
 
@@ -193,7 +190,9 @@ export class CatalogSearchAPI {
       results = this.filter(results, filters);
     }
 
-    results = this.dedup(results);
+    if (dedup) {
+      results = this.dedup(results);
+    }
 
     if (sort) {
       results = this.sort(results, sort);

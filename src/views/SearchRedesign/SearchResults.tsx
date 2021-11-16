@@ -31,6 +31,7 @@ export const SearchResults: FunctionComponent = () => {
     cdkType,
     sort,
     tags,
+    dedup: true,
   });
 
   const getUrl = (
