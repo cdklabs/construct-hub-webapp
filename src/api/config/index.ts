@@ -25,6 +25,11 @@ export interface PackageTagConfig {
   };
 }
 
+export interface Category {
+  title: string;
+  searchKeyword: string;
+}
+
 /**
  * Configuration for packages to feature on the home page.
  */
@@ -79,6 +84,7 @@ export interface Config {
   packageLinks?: PackageLinkConfig[];
   featuredPackages?: FeaturedPackages;
   packageTags?: PackageTagConfig[];
+  categories?: Category[];
 }
 
 export const DEFAULT_FEATURED_PACKAGES = {

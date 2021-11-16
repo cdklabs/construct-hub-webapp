@@ -30,6 +30,7 @@ interface PackageTabProps {
 const PackageTab: FunctionComponent<PackageTabProps> = ({ cdkType, data }) => {
   return (
     <Tab
+      _selected={{ borderBottom: "4px solid #AED5FF" }}
       data-testid={testIds.cdkTypeTab}
       data-value={cdkType}
       isDisabled={data.page.length < 1}
@@ -91,8 +92,6 @@ export const CDKTypeTabs: FunctionComponent = () => {
 
   return (
     <Flex
-      bg="white"
-      color="blue.800"
       data-testid={testIds.cdkTypeSection}
       direction="column"
       px={SECTION_PADDING.X}
@@ -101,16 +100,18 @@ export const CDKTypeTabs: FunctionComponent = () => {
     >
       <Heading
         as="h3"
+        color="white"
         data-testid={testIds.cdkTypeSectionHeading}
         fontSize="1.5rem"
         fontWeight="semibold"
         lineHeight="lg"
-        mb={3}
+        mb={2}
       >
         Find open-source community constructs and official libraries in one
         location
       </Heading>
       <Text
+        color="white"
         data-testid={testIds.cdkTypeSectionDescription}
         lineHeight="md"
         maxW="60ch"
@@ -121,6 +122,7 @@ export const CDKTypeTabs: FunctionComponent = () => {
         more.
       </Text>
       <Tabs
+        color="white"
         defaultIndex={tabIndex}
         onChange={(index) => setTabIndex(index)}
         variant="line"
