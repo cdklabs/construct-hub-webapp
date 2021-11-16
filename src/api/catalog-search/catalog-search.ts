@@ -36,6 +36,10 @@ const INDEX_FIELDS = {
     name: "scope",
     boost: 5,
   },
+  TAG_NAMES: {
+    name: "tagNames",
+    boost: 2,
+  },
 } as const;
 
 export interface ExtendedCatalogPackage extends CatalogPackage {
@@ -44,6 +48,7 @@ export interface ExtendedCatalogPackage extends CatalogPackage {
   downloads: number;
   id: string;
   packageName?: string;
+  tagNames: string[];
   scope?: string;
 }
 
@@ -109,17 +114,41 @@ export class CatalogSearchAPI {
         (pkg) => !pkg.keywords?.includes("construct-hub/hide-from-search")
       )
       .reduce((map, pkg) => {
-        const { name, version } = pkg;
+        const { author, name, version } = pkg;
         const id = [name, version].join("@");
         const downloads = stats.packages[name]?.downloads?.npm ?? 0;
+        let [scope, packageName] = name.split("/");
 
+        if (!packageName) {
+          packageName = scope;
+        }
+
+        let authorName: string | undefined;
+        let authorEmail: string | undefined;
+
+        if (typeof author === "string") {
+          authorName = author;
+        } else {
+          if (author?.name) {
+            authorName = author.name;
+          }
+
+          if (author?.email) {
+            authorEmail = author.email;
+          }
+        }
         map.set(id, {
           ...pkg,
+          authorName,
+          authorEmail,
           keywords: pkg.keywords?.filter(
             (keyword) => !KEYWORD_IGNORE_LIST.has(keyword)
           ),
           downloads,
           id,
+          packageName,
+          scope,
+          tagNames: (pkg.metadata.packageTags ?? []).map((t) => t.id),
         });
 
         return map;
@@ -140,29 +169,6 @@ export class CatalogSearchAPI {
       }
 
       [...catalogMap.values()].forEach((pkg) => {
-        const { author, name } = pkg;
-
-        const [scope, packageName] = name.split("/");
-
-        if (packageName) {
-          pkg.scope = scope;
-          pkg.packageName = packageName;
-        } else {
-          pkg.packageName = scope;
-        }
-
-        if (typeof author === "string") {
-          pkg.authorName = author;
-        } else {
-          if (author?.name) {
-            pkg.authorName = author.name;
-          }
-
-          if (author?.email) {
-            pkg.authorEmail = author.email;
-          }
-        }
-
         this.add(pkg);
       });
     });
