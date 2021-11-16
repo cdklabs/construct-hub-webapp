@@ -21,11 +21,7 @@ describe("Catalog Search Utils", () => {
         resultsAscending.map(({ name, metadata: { date } }) => ({ name, date }))
       ).toMatchSnapshot();
 
-      resultsAscending.forEach((res, idx) => {
-        expect(res.metadata.date).toEqual(
-          resultsDescending[resultsDescending.length - 1 - idx].metadata.date
-        );
-      });
+      expect(resultsAscending).toEqual(Array.from(resultsDescending).reverse());
     });
 
     it("Sorts by Package Name", () => {

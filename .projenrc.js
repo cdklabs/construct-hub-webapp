@@ -64,6 +64,8 @@ const project = new web.ReactTypeScriptProject({
     "workbox-precaching",
     "workbox-routing",
     "workbox-strategies",
+    // Other
+    "semver",
   ],
 
   devDeps: [
@@ -71,6 +73,7 @@ const project = new web.ReactTypeScriptProject({
     "@types/node-emoji",
     "@types/react-helmet",
     "@types/react-router-dom",
+    "@types/semver",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-prefer-arrow",
     "eslint-plugin-react-hooks",

@@ -90,11 +90,7 @@ describe("CatalogSearchAPI", () => {
       ...instance.search({ sort: CatalogSearchSort.PublishDateDesc }).values(),
     ];
 
-    publishDateAsc.forEach(({ metadata: { date } }, index) => {
-      expect(date).toEqual(
-        publishDateDesc[publishDateDesc.length - 1 - index].metadata.date
-      );
-    });
+    expect(publishDateAsc).toEqual(Array.from(publishDateDesc).reverse());
 
     const nameAsc = [
       ...instance.search({ sort: CatalogSearchSort.NameAsc }).values(),
@@ -103,9 +99,7 @@ describe("CatalogSearchAPI", () => {
       ...instance.search({ sort: CatalogSearchSort.NameDesc }).values(),
     ];
 
-    nameAsc.forEach(({ name }, index) => {
-      expect(name).toEqual(nameDesc[nameDesc.length - 1 - index].name);
-    });
+    expect(nameAsc).toEqual(Array.from(nameDesc).reverse());
 
     const downloadsAsc = [
       ...instance.search({ sort: CatalogSearchSort.DownloadsAsc }).values(),
@@ -114,11 +108,7 @@ describe("CatalogSearchAPI", () => {
       ...instance.search({ sort: CatalogSearchSort.DownloadsDesc }).values(),
     ];
 
-    downloadsAsc.forEach(({ name }, index) => {
-      expect(name).toEqual(
-        downloadsDesc[downloadsDesc.length - 1 - index].name
-      );
-    });
+    expect(downloadsAsc).toEqual(Array.from(downloadsDesc).reverse());
   });
 
   describe("Snapshots", () => {

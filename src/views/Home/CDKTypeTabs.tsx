@@ -70,19 +70,6 @@ const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
 export const CDKTypeTabs: FunctionComponent = () => {
   const anyCDKType = useCatalogResults({
     limit: 4,
-    // Sort _strictly_ by published timestamp (date + time)
-    sort: (left, right) => {
-      const lDate = new Date(left.metadata.date);
-      const rDate = new Date(right.metadata.date);
-
-      if (lDate === rDate) {
-        return 0;
-      } else if (lDate < rDate) {
-        return 1;
-      } else {
-        return -1;
-      }
-    },
   });
   const awscdk = useCatalogResults({
     cdkType: CDKType.awscdk,

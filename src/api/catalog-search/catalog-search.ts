@@ -91,7 +91,7 @@ export type CatalogSearchResults = Map<string, ExtendedCatalogPackage>;
 export interface CatalogSearchParams {
   query?: string;
   filters?: CatalogSearchFilters;
-  sort?: CatalogSearchSort | SortFunction;
+  sort?: CatalogSearchSort;
 }
 
 export class CatalogSearchAPI {
@@ -155,7 +155,22 @@ export class CatalogSearchAPI {
         return map;
       }, new Map<string, ExtendedCatalogPackage>());
 
-    this.map = this.sort(catalogMap, CatalogSearchSort.PublishDateDesc);
+    this.map = this.sort(
+      catalogMap,
+      // Sort strictly by timestamp
+      (left, right) => {
+        const lDate = new Date(left.metadata.date);
+        const rDate = new Date(right.metadata.date);
+
+        if (lDate === rDate) {
+          return 0;
+        } else if (lDate < rDate) {
+          return 1;
+        } else {
+          return -1;
+        }
+      }
+    );
 
     this.constructFrameworks = this.detectConstructFrameworks();
     this.keywords = this.detectKeywords();
@@ -182,7 +197,7 @@ export class CatalogSearchAPI {
   public search(params?: {
     query?: string;
     filters?: CatalogSearchFilters;
-    sort?: CatalogSearchSort | SortFunction;
+    sort?: CatalogSearchSort;
   }): CatalogSearchResults {
     const { query, filters, sort } = params ?? {};
 

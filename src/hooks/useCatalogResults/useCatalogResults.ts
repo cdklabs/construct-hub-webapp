@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
-import { SortFunction } from "../../api/catalog-search/util";
 import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { usePagination } from "../usePagination";
@@ -15,7 +14,7 @@ export interface UseCatalogResultsOptions {
   query?: string;
   language?: Language | null;
   languages?: Language[];
-  sort?: CatalogSearchSort | SortFunction;
+  sort?: CatalogSearchSort;
   tags?: string[];
 }
 

@@ -1,3 +1,4 @@
+import { compare } from "semver";
 import { CatalogSearchFilters, ExtendedCatalogPackage } from ".";
 import { Language } from "../../constants/languages";
 import { CatalogSearchSort } from "./constants";
@@ -11,14 +12,25 @@ type FilterFunctionBuilder<T> = (
   filter: T
 ) => undefined | ((pkg: ExtendedCatalogPackage) => boolean);
 
+const getVersionSort =
+  (isAscending: boolean): SortFunction =>
+  (p1, p2) =>
+    compare(p1.version, p2.version) * (isAscending ? 1 : -1);
+
 const getStrSort = (isAscending: boolean): SortFunction => {
-  return (p1, p2) => p1.name.localeCompare(p2.name) * (isAscending ? 1 : -1);
+  return (p1, p2) => {
+    if (p1.name === p2.name) {
+      // Sort by versions if the names are identical.
+      return getVersionSort(isAscending)(p1, p2);
+    }
+    return p1.name.localeCompare(p2.name) * (isAscending ? 1 : -1);
+  };
 };
 
 const getDateSort =
   (isAscending: boolean): SortFunction =>
   (p1, p2) => {
-    // Sorting only by the DATE portion of the timestamp
+    // Sorting only by the DATE portion of the timestamp. ISOString is YYYY-MM-DD'T'HH:mm:ss.SSSZ
     const d1 = new Date(p1.metadata.date).toISOString().split("T")[0];
     const d2 = new Date(p2.metadata.date).toISOString().split("T")[0];
 
