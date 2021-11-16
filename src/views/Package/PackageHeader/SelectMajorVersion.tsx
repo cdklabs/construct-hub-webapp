@@ -43,7 +43,7 @@ export const SelectMajorVersion: FunctionComponent = () => {
 
   return (
     <Box as="span" display="flex">
-      <Text color="gray.700" fontSize="0.9rem" fontWeight="semibold" mb="0">
+      <Text color="gray.700" fontSize="0.9rem" fontWeight="semibold">
         Select package major version:
       </Text>
       <Select
