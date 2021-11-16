@@ -8,15 +8,10 @@ import {
 } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
-import { PackageTagConfig } from "../../../api/config";
 import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
-import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
-
-interface TagObject extends PackageTagConfig {
-  isKeyword?: boolean;
-}
+import { mapPackageTagsAndKeywords } from "../../../util/package";
 
 interface HeadingProps extends StackProps {
   assembly: Assembly;
@@ -34,19 +29,10 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   version,
   ...stackProps
 }) => {
-  const tags: TagObject[] = [
-    ...(metadata.packageTags ?? []).filter((tag) => Boolean(tag.keyword)),
-
-    ...(assembly.keywords ?? [])
-      .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
-      .map((label) => ({
-        isKeyword: true,
-        id: label,
-        keyword: {
-          label,
-        },
-      })),
-  ];
+  const tags = mapPackageTagsAndKeywords({
+    packageTags: metadata?.packageTags ?? [],
+    keywords: assembly?.keywords ?? [],
+  });
 
   const cdkTypeProps = metadata.constructFramework ?? {};
 

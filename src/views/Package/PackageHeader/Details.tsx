@@ -14,12 +14,14 @@ import { PackageLinkConfig } from "../../../api/config";
 import { Metadata } from "../../../api/package/metadata";
 import { PackageStats } from "../../../api/stats";
 import { ExternalLink } from "../../../components/ExternalLink";
+import { Highlight } from "../../../components/Highlight";
 import { LicenseLink, LICENSE_LINKS } from "../../../components/LicenseLink";
 import { NavLink } from "../../../components/NavLink";
 import { Time } from "../../../components/Time";
 import { FORMATS } from "../../../constants/dates";
 import { useStats } from "../../../contexts/Stats";
 import { useConfigValue } from "../../../hooks/useConfigValue";
+import { reduceHighlights } from "../../../util/package";
 import { getRepoUrlAndHost, getSearchPath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
 import { ToggleButton } from "./ToggleButton";
@@ -93,6 +95,24 @@ const getDetailItemsFromPackage = ({
       items.push(<WithLabel label="Author">{author}</WithLabel>);
     }
 
+    if (repository) {
+      const repo = getRepoUrlAndHost(repository.url);
+
+      if (repo) {
+        const repoLink = (
+          <ExternalLink href={repo.url}>{repo.hostname}</ExternalLink>
+        );
+        items.push(<WithLabel label="Repository">{repoLink}</WithLabel>);
+      }
+    }
+
+    if (license && license in LICENSE_LINKS) {
+      const licenseLink = (
+        <LicenseLink license={license as keyof typeof LICENSE_LINKS} />
+      );
+      items.push(<WithLabel label="License">{licenseLink}</WithLabel>);
+    }
+
     const date = metadata?.date;
 
     if (date) {
@@ -123,24 +143,6 @@ const getDetailItemsFromPackage = ({
       });
     }
 
-    if (repository) {
-      const repo = getRepoUrlAndHost(repository.url);
-
-      if (repo) {
-        const repoLink = (
-          <ExternalLink href={repo.url}>{repo.hostname}</ExternalLink>
-        );
-        items.push(<WithLabel label="Repository">{repoLink}</WithLabel>);
-      }
-    }
-
-    if (license && license in LICENSE_LINKS) {
-      const licenseLink = (
-        <LicenseLink license={license as keyof typeof LICENSE_LINKS} />
-      );
-      items.push(<WithLabel label="License">{licenseLink}</WithLabel>);
-    }
-
     const registry =
       metadata?.links?.npm ??
       `https://www.npmjs.com/package/${assembly?.name}/v/${assembly?.version}`;
@@ -169,6 +171,8 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
   const metadata = state.metadata.data;
   const name = state.scope ? `${state.scope}/${state.name}` : state.name;
 
+  const [highlight] = reduceHighlights(metadata?.packageTags);
+
   const items = getDetailItemsFromPackage({
     assembly,
     metadata,
@@ -179,8 +183,8 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
 
   if (!items.length) return null;
 
-  const alwaysShow = items.slice(0, 6);
-  const showWithCollapse = items.slice(6, items.length);
+  const alwaysShow = items.slice(0, 4);
+  const showWithCollapse = items.slice(4, items.length);
 
   return (
     <Stack
@@ -191,6 +195,7 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
       spacing={2}
       {...props}
     >
+      {highlight && <Highlight {...highlight} />}
       {/* TODO: Highlight element */}
       {alwaysShow}
       {showWithCollapse.length > 0 && (
