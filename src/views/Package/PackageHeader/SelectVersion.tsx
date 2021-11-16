@@ -1,4 +1,12 @@
-import { Box, Text, Select } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import {
+  Menu,
+  MenuButton,
+  Button,
+  MenuList,
+  MenuItem,
+  Box,
+} from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { useHistory } from "react-router-dom";
 import { useCatalogResults } from "../../../hooks/useCatalogResults";
@@ -24,42 +32,46 @@ export const SelectVersion: FunctionComponent = () => {
     (mv) => mv.version === version
   );
 
-  const onChangeVersion: React.ChangeEventHandler<HTMLSelectElement> = (
-    evt
-  ) => {
-    const selectedVersion = packageMajorVersions.find(
-      (mv) => mv.major.toString() === evt.target.value
-    )?.version;
-    if (selectedVersion) {
-      push(
-        getPackagePath({
-          name: pkgName,
-          version: selectedVersion,
-          language,
-        })
-      );
-    }
+  const onChangeVersion = (selectedVersion: string) => {
+    push(
+      getPackagePath({
+        name: pkgName,
+        version: selectedVersion,
+        language,
+      })
+    );
   };
 
   return (
-    <Box display="flex" mt={{ base: "0", md: "2" }}>
-      <Text color="gray.700">Version</Text>
-      <Select
-        fontSize="sm"
-        // fontWeight="semibold"
-        ml="2"
-        onChange={onChangeVersion}
-        size="xs"
-        value={defaultMajor?.major}
-        variant="filled"
-        width="8rem"
-      >
-        {packageMajorVersions.map((mv) => (
-          <option key={mv.major} value={mv.major}>
-            {`v${mv.version}`}
-          </option>
-        ))}
-      </Select>
+    <Box as="span" display="flex">
+      <Menu>
+        <MenuButton
+          as={Button}
+          color="blue.500"
+          // data-testid={testIds.sortButton}
+          mt={1}
+          // pl={2} // For some reason, the px shorthand doesn't work on this Button
+          // pr={2}
+          py={1}
+          rightIcon={<ChevronDownIcon />}
+          variant="link"
+        >
+          {`v${defaultMajor?.version}`}
+        </MenuButton>
+        <MenuList
+          // data-testid={testIds.sortDropdown}
+          minW="180"
+          zIndex="sticky"
+        >
+          {packageMajorVersions.map((mv) => (
+            <MenuItem
+              data-value={mv.version}
+              key={mv.version}
+              onClick={() => onChangeVersion(mv.version)}
+            >{`v${mv.version}`}</MenuItem>
+          ))}
+        </MenuList>
+      </Menu>
     </Box>
   );
 };

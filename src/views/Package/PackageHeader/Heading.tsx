@@ -12,6 +12,7 @@ import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
+import { SelectVersion } from "./SelectVersion";
 
 interface TagObject extends PackageTagConfig {
   isKeyword?: boolean;
@@ -67,6 +68,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         >
           {name}
         </ChakraHeading>
+        <SelectVersion />
       </Flex>
 
       <Text fontSize="1rem">{description}</Text>
