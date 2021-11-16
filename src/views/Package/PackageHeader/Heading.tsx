@@ -58,16 +58,17 @@ export const Heading: FunctionComponent<HeadingProps> = ({
       spacing={2}
       {...stackProps}
     >
-      <Flex align="center">
+      <Flex align="center" wrap="wrap">
         <ChakraHeading
           color="blue.800"
           flexShrink={1}
           fontSize="1.5rem"
           isTruncated
+          mr={4}
         >
           {name}
         </ChakraHeading>
-        <Box as="span" flex={1} fontSize="sm" ml={4}>
+        <Box as="span" flex={1} fontSize="sm">
           {version}
         </Box>
       </Flex>
