@@ -6,6 +6,7 @@ import { Details } from "./Details";
 import { HeaderContainer, GRID_AREAS } from "./HeaderContainer";
 import { Heading } from "./Heading";
 import { Install } from "./Install";
+import { SelectVersion } from "./SelectVersion";
 
 export const PackageHeader: FunctionComponent = () => {
   const { assembly, metadata, version } = usePackageState();
@@ -23,6 +24,9 @@ export const PackageHeader: FunctionComponent = () => {
         name={asm.name}
         version={version}
       />
+      <Flex align="start" gridArea={GRID_AREAS.VERSION}>
+        <SelectVersion />
+      </Flex>
       <Flex align="start" gridArea={GRID_AREAS.LANGUAGES}>
         <LanguageSelection />
       </Flex>

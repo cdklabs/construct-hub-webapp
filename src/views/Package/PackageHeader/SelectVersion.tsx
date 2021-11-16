@@ -5,7 +5,7 @@ import { useCatalogResults } from "../../../hooks/useCatalogResults";
 import { getPackagePath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
 
-export const SelectMajorVersion: FunctionComponent = () => {
+export const SelectVersion: FunctionComponent = () => {
   const { scope, name, version, language } = usePackageState();
   const pkgName = scope ? `${scope}/${name}` : name;
   const packages = useCatalogResults({
@@ -24,7 +24,7 @@ export const SelectMajorVersion: FunctionComponent = () => {
     (mv) => mv.version === version
   );
 
-  const onChangeMajorVersion: React.ChangeEventHandler<HTMLSelectElement> = (
+  const onChangeVersion: React.ChangeEventHandler<HTMLSelectElement> = (
     evt
   ) => {
     const selectedVersion = packageMajorVersions.find(
@@ -42,22 +42,26 @@ export const SelectMajorVersion: FunctionComponent = () => {
   };
 
   return (
-    <Box as="span" display="flex">
-      <Text color="gray.700" fontSize="0.9rem" fontWeight="semibold">
-        Select package major version:
-      </Text>
+    <Box
+      display="flex"
+      ml={{ base: "0", md: "2" }}
+      mt={{ base: "0", md: "2" }}
+      my="1"
+    >
+      <Text color="gray.700">Version</Text>
       <Select
-        fontWeight="bold"
-        ml="3"
-        onChange={onChangeMajorVersion}
+        fontSize="sm"
+        // fontWeight="semibold"
+        ml="2"
+        onChange={onChangeVersion}
         size="xs"
         value={defaultMajor?.major}
         variant="filled"
-        width="6rem"
+        width="8rem"
       >
         {packageMajorVersions.map((mv) => (
           <option key={mv.major} value={mv.major}>
-            {`v${mv.major}`}
+            {`v${mv.version}`}
           </option>
         ))}
       </Select>

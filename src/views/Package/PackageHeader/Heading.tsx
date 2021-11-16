@@ -1,5 +1,4 @@
 import {
-  Box,
   Flex,
   Stack,
   StackProps,
@@ -13,7 +12,7 @@ import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
-import { SelectMajorVersion } from "./SelectMajorVersion";
+// import { SelectVersion } from "./SelectVersion";
 
 interface TagObject extends PackageTagConfig {
   isKeyword?: boolean;
@@ -68,14 +67,10 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         >
           {name}
         </ChakraHeading>
-        <Box as="span" flex={1} fontSize="sm" ml={4}>
-          {version}
-        </Box>
+        {/* <SelectVersion /> */}
       </Flex>
 
       <Text fontSize="1rem">{description}</Text>
-
-      <SelectMajorVersion />
 
       <Flex
         align="center"
