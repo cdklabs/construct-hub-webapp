@@ -2,7 +2,7 @@ import { CatalogSearchFilters, ExtendedCatalogPackage } from ".";
 import { Language } from "../../constants/languages";
 import { CatalogSearchSort } from "./constants";
 
-type SortFunction = (
+export type SortFunction = (
   p1: ExtendedCatalogPackage,
   p2: ExtendedCatalogPackage
 ) => number;
@@ -11,13 +11,20 @@ type FilterFunctionBuilder<T> = (
   filter: T
 ) => undefined | ((pkg: ExtendedCatalogPackage) => boolean);
 
+const getStrSort = (isAscending: boolean): SortFunction => {
+  return (p1, p2) => p1.name.localeCompare(p2.name) * (isAscending ? 1 : -1);
+};
+
 const getDateSort =
   (isAscending: boolean): SortFunction =>
   (p1, p2) => {
-    const d1 = new Date(p1.metadata.date);
-    const d2 = new Date(p2.metadata.date);
+    // Sorting only by the DATE portion of the timestamp
+    const d1 = new Date(p1.metadata.date).toISOString().split("T")[0];
+    const d2 = new Date(p2.metadata.date).toISOString().split("T")[0];
+
+    // If they're equal, fall back to alphanumerical ordering.
     if (d1 === d2) {
-      return 0;
+      return getStrSort(!isAscending)(p1, p2);
     }
 
     if (isAscending) {
@@ -26,10 +33,6 @@ const getDateSort =
 
     return d1 < d2 ? 1 : -1;
   };
-
-const getStrSort = (isAscending: boolean): SortFunction => {
-  return (p1, p2) => p1.name.localeCompare(p2.name) * (isAscending ? 1 : -1);
-};
 
 const getDownloadsSort = (isAscending: boolean): SortFunction => {
   return (p1, p2) => {

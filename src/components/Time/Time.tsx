@@ -11,7 +11,13 @@ export interface TimeProps extends BoxProps, TimeOptions {}
 export const Time = forwardRef<TimeProps, "time">(
   ({ date, format: formatString, ...boxProps }, ref) => {
     return (
-      <Box as="time" dateTime={date.toISOString()} ref={ref} {...boxProps}>
+      <Box
+        as="time"
+        dateTime={date.toISOString()}
+        ref={ref}
+        title={date.toISOString()}
+        {...boxProps}
+      >
         {format(date, formatString)}
       </Box>
     );

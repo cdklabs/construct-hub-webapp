@@ -1,4 +1,5 @@
 import {
+  Box,
   Flex,
   Heading as ChakraHeading,
   LinkOverlay,
@@ -56,6 +57,9 @@ export const Heading: FunctionComponent = () => {
           >
             {name}
           </ChakraHeading>
+          <Box as="span" flex={1} fontSize="sm" ml={4}>
+            {version}
+          </Box>
         </Flex>
       </LinkOverlay>
       <Text

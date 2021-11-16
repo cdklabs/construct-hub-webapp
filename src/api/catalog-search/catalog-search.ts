@@ -5,7 +5,7 @@ import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
-import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
+import { FILTER_FUNCTIONS, SortFunction, SORT_FUNCTIONS } from "./util";
 
 const INDEX_FIELDS = {
   AUTHOR_EMAIL: {
@@ -91,7 +91,7 @@ export type CatalogSearchResults = Map<string, ExtendedCatalogPackage>;
 export interface CatalogSearchParams {
   query?: string;
   filters?: CatalogSearchFilters;
-  sort?: CatalogSearchSort;
+  sort?: CatalogSearchSort | SortFunction;
 }
 
 export class CatalogSearchAPI {
@@ -182,7 +182,7 @@ export class CatalogSearchAPI {
   public search(params?: {
     query?: string;
     filters?: CatalogSearchFilters;
-    sort?: CatalogSearchSort;
+    sort?: CatalogSearchSort | SortFunction;
   }): CatalogSearchResults {
     const { query, filters, sort } = params ?? {};
 
@@ -276,13 +276,13 @@ export class CatalogSearchAPI {
    */
   private sort(
     results: CatalogSearchResults,
-    strategy: CatalogSearchSort
+    strategy: CatalogSearchSort | SortFunction
   ): CatalogSearchResults {
     if (strategy) {
+      const sortFunction =
+        typeof strategy === "function" ? strategy : SORT_FUNCTIONS[strategy];
       return new Map(
-        [...results.entries()].sort(([, p1], [, p2]) =>
-          SORT_FUNCTIONS[strategy](p1, p2)
-        )
+        [...results.entries()].sort(([, p1], [, p2]) => sortFunction(p1, p2))
       );
     } else {
       return results;
