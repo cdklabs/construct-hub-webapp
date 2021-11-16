@@ -40,5 +40,5 @@ export const Code: FunctionComponent<CodeProps> = ({
     }, "")
     .trim();
 
-  return <BlockCode code={code} language={language} />;
+  return <BlockCode code={code} fontSize="0.9rem" language={language} />;
 };

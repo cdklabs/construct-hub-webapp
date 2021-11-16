@@ -17,6 +17,7 @@ import { ExternalLink } from "../../../components/ExternalLink";
 import { LicenseLink, LICENSE_LINKS } from "../../../components/LicenseLink";
 import { NavLink } from "../../../components/NavLink";
 import { Time } from "../../../components/Time";
+import { FORMATS } from "../../../constants/dates";
 import { useStats } from "../../../contexts/Stats";
 import { useConfigValue } from "../../../hooks/useConfigValue";
 import { getRepoUrlAndHost, getSearchPath } from "../../../util/url";
@@ -99,7 +100,7 @@ const getDetailItemsFromPackage = ({
         <Time
           date={new Date(date)}
           fontWeight="normal"
-          format="MMMM dd, yyyy"
+          format={FORMATS.PUBLISH_DATE}
         />
       );
       items.push(<WithLabel label="Published">{publishDate}</WithLabel>);
@@ -139,6 +140,20 @@ const getDetailItemsFromPackage = ({
       );
       items.push(<WithLabel label="License">{licenseLink}</WithLabel>);
     }
+
+    const registry =
+      metadata?.links?.npm ??
+      `https://www.npmjs.com/package/${assembly?.name}/v/${assembly?.version}`;
+
+    if (registry) {
+      const registryLink = (
+        <ExternalLink href={registry}>
+          {new URL(registry).hostname}
+        </ExternalLink>
+      );
+
+      items.push(<WithLabel label="Registry">{registryLink}</WithLabel>);
+    }
   }
 
   return items.map((item, i) => <Fragment key={i}>{item}</Fragment>);
@@ -164,8 +179,8 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
 
   if (!items.length) return null;
 
-  const alwaysShow = items.slice(0, 2);
-  const showWithCollapse = items.slice(2, items.length);
+  const alwaysShow = items.slice(0, 6);
+  const showWithCollapse = items.slice(6, items.length);
 
   return (
     <Stack
@@ -184,11 +199,11 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
             <Stack spacing={2}>{showWithCollapse}</Stack>
           </Collapse>
           <ToggleButton
-            closeText="See less details"
+            closeText={`See less details (${alwaysShow.length})`}
             fontSize="inherit"
             isOpen={collapse.isOpen}
             onClick={collapse.onToggle}
-            openText="See more details"
+            openText={`See more details (${showWithCollapse.length})`}
           />
         </>
       )}

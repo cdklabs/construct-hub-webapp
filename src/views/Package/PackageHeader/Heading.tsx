@@ -12,7 +12,6 @@ import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
-// import { SelectVersion } from "./SelectVersion";
 
 interface TagObject extends PackageTagConfig {
   isKeyword?: boolean;
@@ -58,16 +57,16 @@ export const Heading: FunctionComponent<HeadingProps> = ({
       spacing={2}
       {...stackProps}
     >
-      <Flex align="center">
+      <Flex align="center" wrap="wrap">
         <ChakraHeading
           color="blue.800"
           flexShrink={1}
           fontSize="1.5rem"
           isTruncated
+          mr={4}
         >
           {name}
         </ChakraHeading>
-        {/* <SelectVersion /> */}
       </Flex>
 
       <Text fontSize="1rem">{description}</Text>
