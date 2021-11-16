@@ -116,7 +116,6 @@ export class CatalogSearchAPI {
       .reduce((map, pkg) => {
         const { author, name, version } = pkg;
         const id = [name, version].join("@");
-
         const downloads = stats.packages[name]?.downloads?.npm ?? 0;
         let [scope, packageName] = name.split("/");
 
