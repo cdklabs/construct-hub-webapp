@@ -95,8 +95,8 @@ Array [
 
 exports[`CatalogSearchAPI Snapshots Returns consistent query results 1`] = `
 Array [
-  "@aws-cdk/aws-lambda-nodejs",
   "aws-lambda-golang",
+  "@aws-cdk/aws-lambda-nodejs",
   "@aws-cdk/aws-lambda-destinations",
   "nodejsfunction-plus",
   "cdk-elasticache-monitor",
