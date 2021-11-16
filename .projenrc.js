@@ -1,6 +1,5 @@
-const { web, SourceCode, FileBase } = require("projen");
+const { web } = require("projen");
 const { workflows } = require("projen/lib/github");
-const spdx = require("spdx-license-list");
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -59,6 +58,7 @@ const project = new web.ReactTypeScriptProject({
     "rehype-sanitize",
     "remark-emoji",
     "remark-gfm",
+    "spdx-license-list",
     // PWA Functionality
     "workbox-core",
     "workbox-expiration",
@@ -77,7 +77,6 @@ const project = new web.ReactTypeScriptProject({
     "eslint-plugin-react-hooks",
     "eslint-plugin-react",
     "react-app-rewired",
-    "spdx-license-list",
   ],
 
   autoApproveOptions: {
@@ -276,8 +275,6 @@ replaceWorker.exec("cp src/no-op-sw.js build/service-worker.js");
 replaceWorker.exec("rm build/service-worker.js.map");
 project.compileTask.spawn(replaceWorker);
 
-generateSpdxLicenseLinks();
-
 project.synth();
 
 /**
@@ -292,18 +289,4 @@ function rewireCRA(craTask) {
       step.exec = step.exec.replace("react-scripts", "react-app-rewired");
     }
   }
-}
-
-function generateSpdxLicenseLinks() {
-  const ts = new SourceCode(project, "src/components/LicenseLink/constants.ts");
-
-  ts.line(`// ${FileBase.PROJEN_MARKER}`);
-  ts.line();
-  ts.line("// prettier-ignore");
-  ts.open("export const LICENSE_LINKS = {");
-  for (const [id, { name, url }] of Object.entries(spdx)) {
-    ts.line(`"${id}": "${url}",`);
-  }
-  ts.close("} as const;");
-  ts.line();
 }

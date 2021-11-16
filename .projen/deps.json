@@ -131,10 +131,6 @@
       "type": "build"
     },
     {
-      "name": "spdx-license-list",
-      "type": "build"
-    },
-    {
       "name": "standard-version",
       "version": "^9",
       "type": "build"
@@ -251,6 +247,10 @@
     },
     {
       "name": "remark-gfm",
+      "type": "runtime"
+    },
+    {
+      "name": "spdx-license-list",
       "type": "runtime"
     },
     {
