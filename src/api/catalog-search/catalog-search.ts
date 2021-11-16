@@ -187,11 +187,11 @@ export class CatalogSearchAPI {
       results = this.filter(results, filters);
     }
 
+    results = this.dedup(results);
+
     if (sort) {
       results = this.sort(results, sort);
     }
-
-    results = this.dedup(results);
 
     return results;
   }
@@ -292,7 +292,7 @@ export class CatalogSearchAPI {
   private dedup(results: CatalogSearchResults): CatalogSearchResults {
     const dedupedResults: Map<string, ExtendedCatalogPackage> = new Map();
 
-    results.forEach((pkg) => {
+    for (const [_key, pkg] of results) {
       const maybePkg = dedupedResults.get(pkg.name);
 
       if (
@@ -301,7 +301,7 @@ export class CatalogSearchAPI {
       ) {
         dedupedResults.set(pkg.name, pkg);
       }
-    });
+    }
 
     return dedupedResults;
   }

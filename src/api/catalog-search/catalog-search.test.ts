@@ -14,6 +14,18 @@ describe("CatalogSearchAPI", () => {
     statsFixture as PackageStats
   );
 
+  const dedupedCatalog: CatalogPackage[] = [];
+  for (const pkg of catalogFixture.packages) {
+    const idx = dedupedCatalog.findIndex((p) => p.name === pkg.name);
+    const maybePkg = dedupedCatalog[idx];
+
+    if (!maybePkg) {
+      dedupedCatalog.push(pkg as CatalogPackage);
+    } else if (new Date(maybePkg.metadata.date) < new Date(pkg.metadata.date)) {
+      dedupedCatalog[idx] = pkg as CatalogPackage;
+    }
+  }
+
   it("exposes a property which returns detected cdk frameworks", () => {
     const cdkFrameWorkCount = catalogFixture.packages.reduce((sum, i) => {
       if (i.metadata.constructFramework?.name) {
@@ -31,8 +43,13 @@ describe("CatalogSearchAPI", () => {
     expect(detectedCount).toEqual(cdkFrameWorkCount);
   });
 
-  it("Returns all results for empty search query", () => {
-    expect(instance.search().size).toEqual(catalogFixture.packages.length);
+  it("Returns de-duplicated results", () => {
+    const results = instance.search();
+    const packageNames = [...results.values()].map((pkg) => pkg.name);
+    expect(packageNames.length).toEqual(dedupedCatalog.length);
+    expect(
+      dedupedCatalog.every((pkg) => packageNames.includes(pkg.name))
+    ).toEqual(true);
   });
 
   it("Returns results filtered by multiple languages", () => {
@@ -41,9 +58,9 @@ describe("CatalogSearchAPI", () => {
     });
 
     expect(javaAndPythonResults.size).toEqual(
-      catalogFixture.packages.filter(
+      dedupedCatalog.filter(
         (p) =>
-          p.languages.java !== undefined || p.languages.python !== undefined
+          p.languages?.java !== undefined || p.languages?.python !== undefined
       ).length
     );
   });
@@ -54,8 +71,8 @@ describe("CatalogSearchAPI", () => {
     });
 
     expect(cicdOrS3Results.size).toEqual(
-      catalogFixture.packages.filter(
-        (p) => p.keywords.includes("cicd") || p.keywords.includes("s3")
+      dedupedCatalog.filter(
+        (p) => p.keywords?.includes("cicd") || p.keywords?.includes("s3")
       ).length
     );
   });
@@ -89,6 +106,13 @@ describe("CatalogSearchAPI", () => {
     const publishDateDesc = [
       ...instance.search({ sort: CatalogSearchSort.PublishDateDesc }).values(),
     ];
+
+    console.log(
+      publishDateAsc.map((pkg) => `${pkg.name} ${pkg.metadata.date}`)
+    );
+    console.log(
+      publishDateDesc.map((pkg) => `${pkg.name} ${pkg.metadata.date}`)
+    );
 
     publishDateAsc.forEach(({ metadata: { date } }, index) => {
       expect(date).toEqual(
