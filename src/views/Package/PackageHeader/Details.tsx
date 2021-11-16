@@ -17,6 +17,7 @@ import { ExternalLink } from "../../../components/ExternalLink";
 import { LicenseLink, LICENSE_LINKS } from "../../../components/LicenseLink";
 import { NavLink } from "../../../components/NavLink";
 import { Time } from "../../../components/Time";
+import { FORMATS } from "../../../constants/dates";
 import { useStats } from "../../../contexts/Stats";
 import { useConfigValue } from "../../../hooks/useConfigValue";
 import { getRepoUrlAndHost, getSearchPath } from "../../../util/url";
@@ -99,7 +100,7 @@ const getDetailItemsFromPackage = ({
         <Time
           date={new Date(date)}
           fontWeight="normal"
-          format="MMMM dd, yyyy"
+          format={FORMATS.PUBLISH_DATE}
         />
       );
       items.push(<WithLabel label="Published">{publishDate}</WithLabel>);
