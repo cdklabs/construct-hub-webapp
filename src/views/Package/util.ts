@@ -117,7 +117,7 @@ export const parseMarkdownStructure = (
     language: Language;
     name: string;
     version: string;
-    submodule: string;
+    submodule?: string;
   }
 ): { readme: string; apiReference: Types; menuItems: MenuItem[] } => {
   const nameSegment = scope ? `${scope}/${name}` : `${name}`;
