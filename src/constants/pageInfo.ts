@@ -1,4 +1,9 @@
 export const pageInfo = {
+  contribute: {
+    event: {
+      name: "Contribute Load",
+    },
+  },
   home: {
     event: {
       name: "Home Load",

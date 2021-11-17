@@ -28,7 +28,7 @@ export const FAQItem: FunctionComponent<FAQItemProps> = ({
     </AccordionButton>
     <AccordionPanel px={12} py={4}>
       <Text
-        color="gray.800"
+        color="blue.800"
         fontSize="md"
         sx={{ p: { marginTop: "0", marginBottom: "4" } }}
       >

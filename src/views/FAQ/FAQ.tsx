@@ -1,12 +1,16 @@
-import { Box, Heading, Accordion } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import {
+  FAQ,
+  FAQHeading,
+  FAQSections,
+  FAQSection,
+  FAQItem,
+  FAQLink,
+} from "../../components/FAQ";
 import { Page } from "../../components/Page";
 import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
-import { FAQItem } from "./FAQItem";
-import { FAQLink } from "./FAQLink";
-import { FAQSection } from "./FAQSection";
 
-export const FAQ: FunctionComponent = () => (
+export const FAQPage: FunctionComponent = () => (
   <Page
     meta={{
       title: "FAQ",
@@ -14,13 +18,10 @@ export const FAQ: FunctionComponent = () => (
     }}
     pageName="faq"
   >
-    <Box bg="white" color="blue.800" h="100%" w="100%">
-      <Box bg="gray.50" py={20} width="100%">
-        <Heading as="h1" mx="auto" textAlign="center">
-          Frequently Asked Questions
-        </Heading>
-      </Box>
-      <Accordion allowMultiple defaultIndex={[0, 1]}>
+    <FAQ>
+      <FAQHeading>Frequently Asked Questions</FAQHeading>
+
+      <FAQSections allowMultiple defaultIndex={[0, 1]}>
         <FAQSection heading="General">
           <FAQItem question="How can I add my construct to Construct Hub?">
             <p>
@@ -325,8 +326,6 @@ export const FAQ: FunctionComponent = () => (
           </FAQItem>
         </FAQSection>
 
-        <Box bg="gray.50" py={5} width="100%"></Box>
-
         <FAQSection heading="Getting Started">
           <FAQItem question="Do I need a user account for Construct Hub?">
             <p>No. Construct Hub doesn’t require any signup.</p>
@@ -344,8 +343,7 @@ export const FAQ: FunctionComponent = () => (
             </p>
           </FAQItem>
         </FAQSection>
-      </Accordion>
-      <Box bg="gray.50" py={5} width="100%"></Box>
-    </Box>
+      </FAQSections>
+    </FAQ>
   </Page>
 );

@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { GETTING_STARTED, DOCUMENTATION } from "../../constants/links";
+import { ROUTES } from "../../constants/url";
+import { NavLink } from "../NavLink";
 import { MobileNavLinks } from "./MobileNavLinks";
 import testIds from "./testIds";
 import { Title } from "./Title";
@@ -50,6 +52,10 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
                   },
                 ]}
               />
+
+              <NavLink color="blue.800" fontWeight="500" to={ROUTES.CONTRIBUTE}>
+                Contribute
+              </NavLink>
             </Stack>
           </DrawerBody>
         </DrawerContent>

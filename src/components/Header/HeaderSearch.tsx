@@ -20,7 +20,7 @@ export const HeaderSearch: FunctionComponent = () => {
         {/* Desktop / Tablet Search Trigger */}
         <Box
           data-testid={testIds.searchInput}
-          display={{ base: "none", md: "initial" }}
+          display={{ base: "none", lg: "initial" }}
         >
           <SearchBar bg="gray.50">
             <SearchOverlay />
@@ -28,7 +28,7 @@ export const HeaderSearch: FunctionComponent = () => {
           </SearchBar>
         </Box>
         {/* Mobile Search Trigger */}
-        <Box display={{ base: "initial", md: "none" }}>
+        <Box display={{ base: "initial", lg: "none" }}>
           <IconButton
             aria-label="Search Icon"
             borderRadius="md"
