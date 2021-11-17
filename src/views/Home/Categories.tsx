@@ -3,6 +3,7 @@ import type { FunctionComponent } from "react";
 import { Category } from "../../api/config";
 import { NavLink } from "../../components/NavLink";
 import { useConfigValue } from "../../hooks/useConfigValue";
+import { getSearchPath } from "../../util/url";
 import { SECTION_PADDING } from "./constants";
 import testIds from "./testIds";
 
@@ -10,14 +11,14 @@ import testIds from "./testIds";
  * Categories used if config does not have specific categories
  */
 const DEFAULT_CATEGORIES: Category[] = [
-  { title: "Monitoring", url: "/search?q=monitoring" },
-  { title: "Kubernetes", url: "/search?q=kubernetes" },
-  { title: "Serverless", url: "/search?q=serverless" },
-  { title: "Databases", url: "/search?q=databases" },
-  { title: "Utilities", url: "/search?q=utilities" },
-  { title: "Deployment", url: "/search?q=deployment" },
-  { title: "Websites", url: "/search?q=web" },
-  { title: "Security", url: "/search?q=security" },
+  { title: "Monitoring", url: getSearchPath({ query: "monitoring" }) },
+  { title: "Kubernetes", url: getSearchPath({ query: "kubernetes" }) },
+  { title: "Serverless", url: getSearchPath({ query: "serverless" }) },
+  { title: "Databases", url: getSearchPath({ query: "databases" }) },
+  { title: "Utilities", url: getSearchPath({ query: "utilities" }) },
+  { title: "Deployment", url: getSearchPath({ query: "deployment" }) },
+  { title: "Websites", url: getSearchPath({ query: "web" }) },
+  { title: "Security", url: getSearchPath({ query: "security" }) },
 ];
 
 export const Categories: FunctionComponent = () => {
