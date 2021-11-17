@@ -10,14 +10,15 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../hooks/useLanguage";
 import { getPackagePath } from "../../util/url";
 import { CDKTypeIcon, CDKTypeText } from "../CDKType";
+import { EditorsNote } from "./EditorsNote";
 import { usePackageCard } from "./PackageCard";
 import testIds from "./testIds";
 
 export const Heading: FunctionComponent = () => {
   const [currentLanguage] = useLanguage();
   const {
-    comment,
     description,
+    comment,
     metadata: { constructFramework },
     name,
     version,
@@ -58,32 +59,17 @@ export const Heading: FunctionComponent = () => {
           </ChakraHeading>
         </Flex>
       </LinkOverlay>
-      <Text
-        color="blue.800"
-        data-testid={testIds.description}
-        fontSize="md"
-        lineHeight="tall"
-        noOfLines={4}
-      >
-        {description || "No description available."}
-      </Text>
-      {comment && (
+      {comment ? (
+        <EditorsNote comment={comment} />
+      ) : (
         <Text
-          data-testid={testIds.comment}
+          color="blue.800"
+          data-testid={testIds.description}
           fontSize="md"
           lineHeight="tall"
           noOfLines={4}
         >
-          <Text
-            as="span"
-            color="blue.500"
-            fontSize="md"
-            fontWeight="bold"
-            lineHeight="tall"
-          >
-            Editor&apos;s note:{" "}
-          </Text>
-          {comment}
+          {description || "No description available."}
         </Text>
       )}
     </>
