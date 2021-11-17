@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { mapPackageTagsAndKeywords } from "../../util/package";
+import { tagObjectsFrom } from "../../util/package";
 import { PackageTag } from "../PackageTag";
 import { usePackageCard } from "./PackageCard";
 
@@ -9,7 +9,7 @@ export const Tags: FunctionComponent = () => {
     metadata: { packageTags = [] },
   } = usePackageCard();
 
-  const tags = mapPackageTagsAndKeywords({
+  const tags = tagObjectsFrom({
     packageTags,
     keywords,
   });

@@ -3,8 +3,8 @@ import { KEYWORD_IGNORE_LIST } from "../constants/keywords";
 import {
   mapPackageKeywords,
   mapPackageTags,
-  reduceHighlights,
-  mapPackageTagsAndKeywords,
+  highlightsFrom,
+  tagObjectsFrom,
 } from "./package";
 
 const TAG1 = {
@@ -128,14 +128,14 @@ describe("mapPackageTags", () => {
   });
 });
 
-describe("mapPackageTagsAndKeywords", () => {
+describe("tagObjectsFrom", () => {
   it("Returns an empty array if tags and keywords are undefined", () => {
-    expect(mapPackageTagsAndKeywords({})).toEqual([]);
+    expect(tagObjectsFrom({})).toEqual([]);
   });
 
   it("Returns a list of TagObjects from tags and keywords", () => {
     expect(
-      mapPackageTagsAndKeywords({
+      tagObjectsFrom({
         packageTags: PACKAGE_TAGS,
         keywords: KEYWORDS,
       })
@@ -175,7 +175,7 @@ describe("mapPackageTagsAndKeywords", () => {
   });
 
   it("Returns a list of TagObjects from only tags", () => {
-    expect(mapPackageTagsAndKeywords({ packageTags: PACKAGE_TAGS }))
+    expect(tagObjectsFrom({ packageTags: PACKAGE_TAGS }))
       .toMatchInlineSnapshot(`
       Array [
         Object {
@@ -198,8 +198,7 @@ describe("mapPackageTagsAndKeywords", () => {
   });
 
   it("Returns a list of TagObjects from only Keywords", () => {
-    expect(mapPackageTagsAndKeywords({ keywords: KEYWORDS }))
-      .toMatchInlineSnapshot(`
+    expect(tagObjectsFrom({ keywords: KEYWORDS })).toMatchInlineSnapshot(`
       Array [
         Object {
           "id": "Keyword 1",
@@ -220,13 +219,13 @@ describe("mapPackageTagsAndKeywords", () => {
   });
 });
 
-describe("reduceHighlights", () => {
+describe("highlightsFrom", () => {
   it("Returns an empty array if packageTags are undefined", () => {
-    expect(reduceHighlights(undefined)).toEqual([]);
+    expect(highlightsFrom(undefined)).toEqual([]);
   });
 
   it("Returns a list of package highlights", () => {
-    expect(reduceHighlights(PACKAGE_TAGS)).toMatchInlineSnapshot(`
+    expect(highlightsFrom(PACKAGE_TAGS)).toMatchInlineSnapshot(`
       Array [
         Object {
           "color": "blue",

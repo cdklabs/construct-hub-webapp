@@ -1,7 +1,7 @@
 import { Grid, Stack, LinkBox, Divider } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { makeGridAreas } from "../../util/css";
-import { reduceHighlights } from "../../util/package";
+import { highlightsFrom } from "../../util/package";
 import { Highlight } from "../Highlight";
 import { Details } from "./Details";
 import { Heading } from "./Heading";
@@ -31,7 +31,7 @@ const gridAreasMobile = makeGridAreas(
 
 export const WideCard: FunctionComponent = () => {
   const { packageTags = [] } = usePackageCard()?.metadata ?? {};
-  const highlights = reduceHighlights(packageTags);
+  const highlights = highlightsFrom(packageTags);
 
   return (
     <LinkBox

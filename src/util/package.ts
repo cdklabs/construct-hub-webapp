@@ -8,7 +8,7 @@ export interface TagObject extends PackageTagConfig {
 /**
  * Reduces package tags to only return highlight tags
  */
-export const reduceHighlights = (packageTags?: PackageTagConfig[]) => {
+export const highlightsFrom = (packageTags?: PackageTagConfig[]) => {
   if (!packageTags || packageTags.length < 1) return [];
 
   return packageTags.reduce(
@@ -59,7 +59,7 @@ export const mapPackageKeywords = (keywords?: string[]): TagObject[] => {
 /**
  * Maps packageTags and keywords to a list of TagObjects, using mapPackageTags and mapPackageKeywords
  */
-export const mapPackageTagsAndKeywords = ({
+export const tagObjectsFrom = ({
   packageTags,
   keywords,
 }: {

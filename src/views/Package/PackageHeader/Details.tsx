@@ -21,7 +21,7 @@ import { Time } from "../../../components/Time";
 import { FORMATS } from "../../../constants/dates";
 import { useStats } from "../../../contexts/Stats";
 import { useConfigValue } from "../../../hooks/useConfigValue";
-import { reduceHighlights } from "../../../util/package";
+import { highlightsFrom } from "../../../util/package";
 import { getRepoUrlAndHost, getSearchPath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
 import { ToggleButton } from "./ToggleButton";
@@ -170,7 +170,7 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
   const metadata = state.metadata.data;
   const name = state.scope ? `${state.scope}/${state.name}` : state.name;
 
-  const [highlight] = reduceHighlights(metadata?.packageTags);
+  const [highlight] = highlightsFrom(metadata?.packageTags);
 
   const items = getDetailItemsFromPackage({
     assembly,

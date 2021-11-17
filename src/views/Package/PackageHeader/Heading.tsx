@@ -11,7 +11,7 @@ import type { FunctionComponent } from "react";
 import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
-import { mapPackageTagsAndKeywords } from "../../../util/package";
+import { tagObjectsFrom } from "../../../util/package";
 
 interface HeadingProps extends StackProps {
   assembly: Assembly;
@@ -29,7 +29,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   version,
   ...stackProps
 }) => {
-  const tags = mapPackageTagsAndKeywords({
+  const tags = tagObjectsFrom({
     packageTags: metadata?.packageTags ?? [],
     keywords: assembly?.keywords ?? [],
   });
