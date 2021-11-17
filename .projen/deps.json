@@ -50,6 +50,10 @@
       "type": "build"
     },
     {
+      "name": "@types/semver",
+      "type": "build"
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "type": "build"
     },
@@ -247,6 +251,14 @@
     },
     {
       "name": "remark-gfm",
+      "type": "runtime"
+    },
+    {
+      "name": "semver",
+      "type": "runtime"
+    },
+    {
+      "name": "spdx-license-list",
       "type": "runtime"
     },
     {

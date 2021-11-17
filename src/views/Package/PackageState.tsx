@@ -122,8 +122,9 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
       name,
       version,
       language,
+      submodule,
     });
-  }, [markdownResponse.data, name, scope, version, language]);
+  }, [markdownResponse.data, name, scope, version, language, submodule]);
 
   // Handle missing JSON for assembly
   if (assemblyResponse.error) {

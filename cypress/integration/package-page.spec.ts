@@ -1,39 +1,65 @@
 import { getPackagePath } from "util/url";
 import header from "components/Header/testIds";
 import packagePage from "views/Package/testIds";
-import assemblyFixture from "../fixtures/assembly.json";
+import markdown from "components/Markdown/testIds";
+import assemblyFixture from "../fixtures/assembly-constructs@3.3.161.json";
 import { sanitizeVersion } from "api/package/util";
-import { CONSTRUCT_HUB_REPO_URL } from "../../src/constants/links";
+import { Language } from "constants/languages";
 
 describe("Package Page", () => {
   beforeEach(() => {
-    cy.intercept("**/assembly.json", async (req) => {
+    cy.intercept("**/constructs/v3.3.161/assembly.json", async (req) => {
       req.reply({
-        fixture: "assembly",
+        fixture: "assembly-constructs@3.3.161",
       });
     });
 
-    cy.intercept("**/metadata.json", async (req) => {
+    cy.intercept("**/constructs/v3.3.161/metadata.json", async (req) => {
       req.reply({
-        fixture: "metadata",
+        fixture: "metadata-constructs@3.3.161",
       });
     });
 
-    cy.intercept("**/docs-typescript.md", async (req) => {
+    cy.intercept("**/constructs/v3.3.161/docs-typescript.md", async (req) => {
       req.reply({
-        fixture: "xss-docs.md",
+        fixture: "docs-typescript-constructs@3.3.161.md",
       });
     }).as("getDocs");
 
+    cy.intercept("**/constructs/v10.0.9/assembly.json", async (req) => {
+      req.reply({
+        fixture: "assembly-constructs@10.0.9",
+      });
+    });
+
+    cy.intercept("**/constructs/v10.0.9/metadata.json", async (req) => {
+      req.reply({
+        fixture: "metadata-constructs@10.0.9",
+      });
+    });
+
+    cy.intercept("**/constructs/v10.0.9/docs-typescript.md", async (req) => {
+      req.reply({
+        fixture: "docs-typescript-constructs@10.0.9.md",
+      });
+    });
+
+    cy.intercept("**/catalog.json", async (req) => {
+      req.reply({
+        fixture: "catalog",
+      });
+    }).as("getCatalog");
+
     cy.visit(
       getPackagePath({
-        name: "construct-hub",
-        version: "0.2.31",
+        name: "constructs",
+        version: "3.3.161",
         language: "typescript" as any,
       })
     );
 
     cy.wait("@getDocs");
+    cy.wait("@getCatalog");
 
     cy.getByDataTest(header.container).should("be.visible");
   });
@@ -48,7 +74,7 @@ describe("Package Page", () => {
             "have.attr",
             "href",
             `mailto:abuse@amazonaws.com?subject=${encodeURIComponent(
-              `ConstructHub - Report of abusive package: construct-hub`
+              `ConstructHub - Report of abusive package: constructs`
             )}`
           );
 
@@ -57,9 +83,43 @@ describe("Package Page", () => {
           .should(
             "have.attr",
             "href",
-            `${CONSTRUCT_HUB_REPO_URL}/issues`
+            `https://github.com/aws/constructs/issues`
           );
       });
+  });
+
+  it("Can switch between versions of a package", () => {
+    cy.getByDataTest(markdown.container)
+      .should("contain", "Fake README description for v3.3.161");
+
+    cy.getByDataTest(packagePage.selectVersionButton)
+      .click()
+      .getByDataTest(packagePage.selectVersionDropdown)
+      .should("be.visible")
+      .within(() => {
+        cy.getByDataTest(packagePage.selectVersionItem).last().invoke("click");
+      });
+
+    cy.url().should(
+      "contain",
+      getPackagePath({
+        name: "constructs",
+        version: "10.0.9",
+        language: Language.TypeScript,
+      }),
+    );
+
+    // validate that new metadata has loaded
+    cy.getByDataTest(packagePage.description)
+      .should("contain", "A programming model for software-defined state");
+
+    // validate that new docs have loaded
+    cy.getByDataTest(markdown.container)
+      .should("contain", "Fake README description for v10.0.9");
+
+    cy.getByDataTest(packagePage.selectVersionButton)
+      .should("be.visible")
+      .should("contain", "v10.0.9");
   });
 
   it("has a dependencies tab with dependency links", () => {
