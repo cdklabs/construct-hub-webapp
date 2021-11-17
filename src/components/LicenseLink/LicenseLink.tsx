@@ -1,5 +1,5 @@
 import { forwardRef } from "@chakra-ui/react";
-import * as spdx from "spdx-license-list";
+import spdx from "spdx-license-list";
 import { ExternalLink, ExternalLinkProps } from "../ExternalLink";
 
 export interface LicenseLinkOptions {
