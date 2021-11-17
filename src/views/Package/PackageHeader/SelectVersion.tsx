@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useSearchContext } from "../../../contexts/Search";
 import { getPackagePath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
+import testIds from "../testIds";
 
 export const SelectVersion: FunctionComponent = () => {
   const { scope, name, version, language } = usePackageState();
@@ -42,6 +43,7 @@ export const SelectVersion: FunctionComponent = () => {
       <MenuButton
         as={Button}
         color="blue.500"
+        data-testid={testIds.selectVersionButton}
         mt={1}
         py={1}
         rightIcon={<ChevronDownIcon />}
@@ -49,9 +51,14 @@ export const SelectVersion: FunctionComponent = () => {
       >
         {`v${defaultMajor?.version}`}
       </MenuButton>
-      <MenuList minW="180" zIndex="sticky">
+      <MenuList
+        data-testid={testIds.selectVersionDropdown}
+        minW="180"
+        zIndex="sticky"
+      >
         {majors.map((mv) => (
           <MenuItem
+            data-testid={testIds.selectVersionItem}
             data-value={mv.version}
             key={mv.version}
             onClick={() => onChangeVersion(mv.version)}

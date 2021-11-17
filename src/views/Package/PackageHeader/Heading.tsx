@@ -12,6 +12,7 @@ import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
+import testIds from "../testIds";
 import { SelectVersion } from "./SelectVersion";
 
 interface TagObject extends PackageTagConfig {
@@ -71,7 +72,9 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         <SelectVersion />
       </Flex>
 
-      <Text fontSize="1rem">{description}</Text>
+      <Text data-testid={testIds.description} fontSize="1rem">
+        {description}
+      </Text>
 
       <Flex
         align="center"
