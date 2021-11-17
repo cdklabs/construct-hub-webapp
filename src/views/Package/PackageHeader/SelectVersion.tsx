@@ -7,30 +7,32 @@ import {
   MenuItem,
   Box,
 } from "@chakra-ui/react";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { useHistory } from "react-router-dom";
-import { useCatalogResults } from "../../../hooks/useCatalogResults";
+import { useSearchContext } from "../../../contexts/Search";
 import { getPackagePath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
 
 export const SelectVersion: FunctionComponent = () => {
   const { scope, name, version, language } = usePackageState();
   const pkgName = scope ? `${scope}/${name}` : name;
-  const packages = useCatalogResults({
-    query: pkgName,
-    exactMatch: true,
-    limit: 20,
-  });
+
+  const searchAPI = useSearchContext()!;
   const { push } = useHistory();
 
-  const packageMajorVersions = packages.results.map((pkg) => ({
-    major: pkg.major,
-    version: pkg.version,
-  }));
-  packageMajorVersions.sort((a, b) => a.major - b.major);
-  const defaultMajor = packageMajorVersions.find(
-    (mv) => mv.version === version
-  );
+  const packages = searchAPI.findByName(pkgName);
+
+  const { majors, defaultMajor } = useMemo(() => {
+    const majorVersions = packages.map((pkg) => ({
+      major: pkg.major,
+      version: pkg.version,
+    }));
+    majorVersions.sort((a, b) => a.major - b.major);
+    const defaultMajorVersion = majorVersions.find(
+      (mv) => mv.version === version
+    );
+    return { majors: majorVersions, defaultMajor: defaultMajorVersion };
+  }, [packages, version]);
 
   const onChangeVersion = (selectedVersion: string) => {
     push(
@@ -48,22 +50,15 @@ export const SelectVersion: FunctionComponent = () => {
         <MenuButton
           as={Button}
           color="blue.500"
-          // data-testid={testIds.sortButton}
           mt={1}
-          // pl={2} // For some reason, the px shorthand doesn't work on this Button
-          // pr={2}
           py={1}
           rightIcon={<ChevronDownIcon />}
           variant="link"
         >
           {`v${defaultMajor?.version}`}
         </MenuButton>
-        <MenuList
-          // data-testid={testIds.sortDropdown}
-          minW="180"
-          zIndex="sticky"
-        >
-          {packageMajorVersions.map((mv) => (
+        <MenuList minW="180" zIndex="sticky">
+          {majors.map((mv) => (
             <MenuItem
               data-value={mv.version}
               key={mv.version}

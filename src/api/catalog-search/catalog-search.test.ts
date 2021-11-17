@@ -121,17 +121,16 @@ describe("CatalogSearchAPI", () => {
     });
   });
 
-  it("Returns only exact results when specified", () => {
+  it("Returns only exact instances of a package in findByName", () => {
     expect(instance.search({ query: "@aws-cdk/aws-ecr" }).size).toBeGreaterThan(
       1
     );
 
-    const results = instance.search({
-      query: "@aws-cdk/aws-ecr",
-      exactMatch: true,
-    });
-    expect(results.size).toEqual(1);
-    expect(results.values().next().value.name).toEqual("@aws-cdk/aws-ecr");
+    const results = instance.findByName("@aws-cdk/aws-ecr");
+
+    // does not match @aws-cdk/aws-ecr-assets
+    expect(results.length).toEqual(1);
+    expect(results[0].name).toEqual("@aws-cdk/aws-ecr");
   });
 
   describe("Snapshots", () => {

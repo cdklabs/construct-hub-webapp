@@ -11,7 +11,6 @@ export const useSearch = ({
   query,
   filters,
   sort,
-  exactMatch,
 }: CatalogSearchParams = {}) => {
   const instance = useSearchContext();
 
@@ -28,11 +27,10 @@ export const useSearch = ({
           query,
           filters,
           sort,
-          exactMatch,
         })
         .values(),
     ],
-    [instance, query, filters, sort, exactMatch]
+    [instance, query, filters, sort]
   );
 
   return results;

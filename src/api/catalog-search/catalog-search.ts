@@ -92,7 +92,6 @@ export interface CatalogSearchParams {
   query?: string;
   filters?: CatalogSearchFilters;
   sort?: CatalogSearchSort;
-  exactMatch?: boolean;
 }
 
 export class CatalogSearchAPI {
@@ -183,11 +182,10 @@ export class CatalogSearchAPI {
     query?: string;
     filters?: CatalogSearchFilters;
     sort?: CatalogSearchSort;
-    exactMatch?: boolean;
   }): CatalogSearchResults {
-    const { query, filters, sort, exactMatch } = params ?? {};
+    const { query, filters, sort } = params ?? {};
 
-    let results = query ? this.query(query, exactMatch) : new Map(this.map);
+    let results = query ? this.query(query) : new Map(this.map);
 
     // TODO: Investigate if we can leverage lunr for filtering
     if (filters) {
@@ -204,7 +202,7 @@ export class CatalogSearchAPI {
   /**
    * This calls the index search method and returns a map of results ordered by relevance.
    */
-  private query(query: string, exact?: boolean): CatalogSearchResults {
+  private query(query: string): CatalogSearchResults {
     let refs: lunr.Index.Result[] = [];
 
     try {
@@ -228,16 +226,26 @@ export class CatalogSearchAPI {
     return refs.reduce((packages, { ref }) => {
       const pkg = this.map.get(ref);
 
-      if (exact === true && pkg?.name !== query) {
-        return packages;
-      }
-
       if (pkg) {
         packages.set(ref, pkg);
       }
 
       return packages;
     }, new Map() as CatalogSearchResults);
+  }
+
+  /**
+   * Performs a Search against the catalog and returns an array of all packages matching the query.
+   */
+  public findByName(query: string): ExtendedCatalogPackage[] {
+    const results = this.query(query);
+    const matches = new Array<ExtendedCatalogPackage>();
+    for (const pkg of results.values()) {
+      if (pkg.name === query) {
+        matches.push(pkg);
+      }
+    }
+    return matches;
   }
 
   /**
