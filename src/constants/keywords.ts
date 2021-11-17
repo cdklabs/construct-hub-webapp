@@ -5,6 +5,8 @@ export const KEYWORD_IGNORE_LIST = new Set(
     "awscdk",
     "cdk-construct",
     "cdk",
+    "cdktf",
+    "cdk8s",
     "construct",
     "constructs",
   ].map((x) => x.toLocaleLowerCase())
