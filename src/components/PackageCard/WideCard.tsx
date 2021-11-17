@@ -62,7 +62,7 @@ export const WideCard: FunctionComponent = () => {
             </Stack>
           </Stack>
 
-          <Stack direction="row" spacing={2}>
+          <Stack data-testid={testIds.languages} direction="row" spacing={2}>
             <Languages />
           </Stack>
         </Flex>
