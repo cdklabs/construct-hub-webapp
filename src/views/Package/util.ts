@@ -111,11 +111,22 @@ export const parseMarkdownStructure = (
     language,
     name,
     version,
-  }: { scope?: string; language: Language; name: string; version: string }
+    submodule,
+  }: {
+    scope?: string;
+    language: Language;
+    name: string;
+    version: string;
+    submodule: string;
+  }
 ): { readme: string; apiReference: Types; menuItems: MenuItem[] } => {
   const nameSegment = scope ? `${scope}/${name}` : `${name}`;
   const basePath = `/packages/${nameSegment}/v/${version}`;
-  const langQuery = `?${QUERY_PARAMS.LANGUAGE}=${language}`;
+  let query = `?${QUERY_PARAMS.LANGUAGE}=${language}`;
+  if (submodule) {
+    query += `&submodule=${submodule}`;
+  }
+
   const separator =
     '# API Reference <span data-heading-title="API Reference" data-heading-id="api-reference"></span>';
 
@@ -136,7 +147,7 @@ export const parseMarkdownStructure = (
   // Add back api reference title for use as menu item
   const apiReferenceParsed = [separator.trim(), ...(apiReferenceSplit ?? [])];
 
-  const baseReadmePath = `${basePath}${langQuery}`;
+  const baseReadmePath = `${basePath}${query}`;
   const readmeMenuItems = [
     {
       level: 1,
@@ -165,7 +176,7 @@ export const parseMarkdownStructure = (
   let menuItems: MenuItem[] = [...readmeMenuItems];
   const types: Types = {};
 
-  const getApiPath = (id: string) => `${basePath}/api/${id}${langQuery}`;
+  const getApiPath = (id: string) => `${basePath}/api/${id}${query}`;
   let prevType: { id: string; title: string };
   let prevLevel: number;
 
