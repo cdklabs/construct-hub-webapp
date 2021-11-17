@@ -1,11 +1,10 @@
 import lunr from "lunr";
 import { CDKType } from "../../constants/constructs";
-import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
-import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
+import { FILTER_FUNCTIONS, renderAllKeywords, SORT_FUNCTIONS } from "./util";
 
 const INDEX_FIELDS = {
   AUTHOR_EMAIL: {
@@ -141,9 +140,7 @@ export class CatalogSearchAPI {
           ...pkg,
           authorName,
           authorEmail,
-          keywords: pkg.keywords?.filter(
-            (keyword) => !KEYWORD_IGNORE_LIST.has(keyword)
-          ),
+          keywords: renderAllKeywords(pkg),
           downloads,
           id,
           packageName,
@@ -308,12 +305,10 @@ export class CatalogSearchAPI {
   private detectKeywords() {
     const results = [...this.map.values()].reduce(
       (keywords: Map<string, number>, pkg: ExtendedCatalogPackage) => {
-        pkg.keywords?.forEach((keyword) => {
-          if (!KEYWORD_IGNORE_LIST.has(keyword)) {
-            const entry = keywords.get(keyword);
-            keywords.set(keyword, (entry ?? 0) + 1);
-          }
-        });
+        for (const keyword of renderAllKeywords(pkg)) {
+          const entry = keywords.get(keyword);
+          keywords.set(keyword, (entry ?? 0) + 1);
+        }
 
         return keywords;
       },
