@@ -1,9 +1,9 @@
 import { forwardRef } from "@chakra-ui/react";
+import spdx from "spdx-license-list";
 import { ExternalLink, ExternalLinkProps } from "../ExternalLink";
-import { LICENSE_LINKS } from "./constants";
 
 export interface LicenseLinkOptions {
-  license: keyof typeof LICENSE_LINKS;
+  license: string;
 }
 
 export interface LicenseLinkProps
@@ -12,7 +12,7 @@ export interface LicenseLinkProps
 
 export const LicenseLink = forwardRef<LicenseLinkProps, "a">(
   ({ license, ...linkProps }, ref) => {
-    const url = LICENSE_LINKS[license];
+    const url = spdx[license].url;
 
     return (
       <ExternalLink href={url} ref={ref} {...linkProps}>
