@@ -15,12 +15,14 @@ import { PackageLinkConfig } from "../../../api/config";
 import { Metadata } from "../../../api/package/metadata";
 import { PackageStats } from "../../../api/stats";
 import { ExternalLink } from "../../../components/ExternalLink";
+import { Highlight } from "../../../components/Highlight";
 import { LicenseLink } from "../../../components/LicenseLink";
 import { NavLink } from "../../../components/NavLink";
 import { Time } from "../../../components/Time";
 import { FORMATS } from "../../../constants/dates";
 import { useStats } from "../../../contexts/Stats";
 import { useConfigValue } from "../../../hooks/useConfigValue";
+import { highlightsFrom } from "../../../util/package";
 import { getRepoUrlAndHost, getSearchPath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
 import { ToggleButton } from "./ToggleButton";
@@ -107,23 +109,6 @@ const getDetailItemsFromPackage = ({
       items.push(<WithLabel label="Published">{publishDate}</WithLabel>);
     }
 
-    // Prioritize custom links when available
-    if (packageLinks?.length) {
-      packageLinks.forEach(({ linkLabel, configKey, linkText }) => {
-        const target = (metadata?.packageLinks ?? {})[configKey];
-        if (target) {
-          const link = (
-            <ExternalLink href={target}>{linkText ?? target}</ExternalLink>
-          );
-          items.push(
-            <WithLabel label={linkLabel}>
-              {linkLabel}: {link}
-            </WithLabel>
-          );
-        }
-      });
-    }
-
     if (repository) {
       const repo = getRepoUrlAndHost(repository.url);
 
@@ -138,6 +123,22 @@ const getDetailItemsFromPackage = ({
     if (license && license in spdx) {
       const licenseLink = <LicenseLink license={license} />;
       items.push(<WithLabel label="License">{licenseLink}</WithLabel>);
+    }
+
+    if (packageLinks?.length) {
+      packageLinks.forEach(({ linkLabel, configKey, linkText }) => {
+        const target = (metadata?.packageLinks ?? {})[configKey];
+        if (target) {
+          const link = (
+            <ExternalLink href={target}>{linkText ?? target}</ExternalLink>
+          );
+          items.push(
+            <WithLabel label={linkLabel}>
+              {linkLabel}: {link}
+            </WithLabel>
+          );
+        }
+      });
     }
 
     const registry =
@@ -161,12 +162,14 @@ const getDetailItemsFromPackage = ({
 export const Details: FunctionComponent<DetailsProps> = (props) => {
   const state = usePackageState();
   const stats = useStats().data;
-  const collapse = useDisclosure();
+  const collapse = useDisclosure({ defaultIsOpen: true });
   const packageLinks = useConfigValue("packageLinks");
 
   const assembly = state.assembly.data;
   const metadata = state.metadata.data;
   const name = state.scope ? `${state.scope}/${state.name}` : state.name;
+
+  const [highlight] = highlightsFrom(metadata?.packageTags);
 
   const items = getDetailItemsFromPackage({
     assembly,
@@ -178,8 +181,8 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
 
   if (!items.length) return null;
 
-  const alwaysShow = items.slice(0, 6);
-  const showWithCollapse = items.slice(6, items.length);
+  const alwaysShow = items.slice(0, 2);
+  const showWithCollapse = items.slice(2, items.length);
 
   return (
     <Stack
@@ -190,6 +193,7 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
       spacing={2}
       {...props}
     >
+      {highlight && <Highlight {...highlight} />}
       {/* TODO: Highlight element */}
       {alwaysShow}
       {showWithCollapse.length > 0 && (
