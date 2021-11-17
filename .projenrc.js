@@ -58,6 +58,7 @@ const project = new web.ReactTypeScriptProject({
     "rehype-sanitize",
     "remark-emoji",
     "remark-gfm",
+    "spdx-license-list",
     // PWA Functionality
     "workbox-core",
     "workbox-expiration",

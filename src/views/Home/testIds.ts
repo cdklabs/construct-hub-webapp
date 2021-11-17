@@ -23,4 +23,7 @@ export default createTestIds("homeRedesign", [
   "cdkTypeTab",
   "cdkTypeGrid",
   "cdkTypeSeeAllButton",
+  "categoriesContainer",
+  "categoriesHeader",
+  "categoriesDescription",
 ] as const);

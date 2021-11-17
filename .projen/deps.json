@@ -250,6 +250,10 @@
       "type": "runtime"
     },
     {
+      "name": "spdx-license-list",
+      "type": "runtime"
+    },
+    {
       "name": "web-vitals",
       "type": "runtime"
     },

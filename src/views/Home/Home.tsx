@@ -2,6 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { DevPreviewBanner } from "../../components/DevPreviewBanner";
 import { Page } from "../../components/Page";
+import { Categories } from "./Categories";
 import { CDKTypeTabs } from "./CDKTypeTabs";
 import { Featured } from "./Featured";
 import { GradientContainer } from "./GradientContainer";
@@ -30,6 +31,8 @@ export const Home: FunctionComponent = () => {
         <Hero />
 
         <Info />
+
+        <Categories />
 
         <Featured />
 

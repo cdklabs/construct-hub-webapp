@@ -24,22 +24,18 @@ export const sanitizeVersion = (ver: string) => {
   return sanitized;
 };
 
-const extractMajor = (ver: string) => {
-  let sanitized = sanitizeVersion(ver);
-  return sanitized.split(".")[0];
-};
-
 export const findPackage = (
   catalog: Packages,
   pkg: string
 ): CatalogPackage | undefined => {
   const packages = catalog.packages.filter((p) => p.name === pkg);
 
+  // return the most recently published version
   if (packages.length > 1) {
     return packages.sort((p1, p2) => {
-      const mv1 = extractMajor(p1.version);
-      const mv2 = extractMajor(p2.version);
-      return mv2.localeCompare(mv1);
+      const date1 = new Date(p1.metadata.date);
+      const date2 = new Date(p2.metadata.date);
+      return date2.getTime() - date1.getTime();
     })[0];
   }
 
