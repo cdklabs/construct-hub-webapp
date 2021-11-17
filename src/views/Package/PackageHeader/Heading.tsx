@@ -1,5 +1,4 @@
 import {
-  Box,
   Flex,
   Stack,
   StackProps,
@@ -13,6 +12,8 @@ import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
+import testIds from "../testIds";
+import { SelectVersion } from "./SelectVersion";
 
 interface TagObject extends PackageTagConfig {
   isKeyword?: boolean;
@@ -68,17 +69,17 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         >
           {name}
         </ChakraHeading>
-        <Box as="span" flex={1} fontSize="sm">
-          {version}
-        </Box>
+        <SelectVersion />
       </Flex>
 
-      <Text fontSize="1rem">{description}</Text>
+      <Text data-testid={testIds.description} fontSize="1rem">
+        {description}
+      </Text>
 
       <Flex
         align="center"
         direction="row"
-        pt={3}
+        pt={1}
         // Chakra doesn't yet support css gap via style props
         sx={{ gap: "0.5rem" }}
         wrap="wrap"

@@ -1,0 +1,107 @@
+{
+  "packages": [
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "A programming model for composable configuration",
+      "keywords": ["aws", "cdk", "constructs", "jsii"],
+      "languages": {
+        "java": {
+          "package": "software.constructs",
+          "maven": {
+            "groupId": "software.constructs",
+            "artifactId": "constructs"
+          }
+        },
+        "python": {
+          "distName": "constructs",
+          "module": "constructs"
+        },
+        "dotnet": {
+          "namespace": "Constructs",
+          "packageId": "Constructs"
+        },
+        "go": {
+          "moduleName": "github.com/aws/constructs-go"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 3,
+      "metadata": {
+        "date": "2021-10-07T08:40:26.224Z",
+        "packageLinks": {},
+        "packageTags": [
+          {
+            "id": "aws-official",
+            "highlight": {
+              "label": "AWS published",
+              "color": "#2F855A",
+              "icon": "/assets/checkmark.svg"
+            },
+            "searchFilter": {
+              "groupBy": "Publisher",
+              "display": "AWS published"
+            }
+          }
+        ]
+      },
+      "name": "constructs",
+      "version": "3.3.161"
+    },
+    {
+      "author": {
+        "name": "Amazon Web Services",
+        "url": "https://aws.amazon.com",
+        "organization": true
+      },
+      "description": "A programming model for software-defined state",
+      "keywords": ["aws", "cdk", "constructs", "jsii"],
+      "languages": {
+        "java": {
+          "package": "software.constructs",
+          "maven": {
+            "groupId": "software.constructs",
+            "artifactId": "constructs"
+          }
+        },
+        "python": {
+          "distName": "constructs",
+          "module": "constructs"
+        },
+        "dotnet": {
+          "namespace": "Constructs",
+          "packageId": "Constructs"
+        },
+        "go": {
+          "moduleName": "github.com/aws/constructs-go"
+        }
+      },
+      "license": "Apache-2.0",
+      "major": 10,
+      "metadata": {
+        "date": "2021-10-07T08:40:31.636Z",
+        "packageLinks": {},
+        "packageTags": [
+          {
+            "id": "aws-official",
+            "highlight": {
+              "label": "AWS published",
+              "color": "#2F855A",
+              "icon": "/assets/checkmark.svg"
+            },
+            "searchFilter": {
+              "groupBy": "Publisher",
+              "display": "AWS published"
+            }
+          }
+        ]
+      },
+      "name": "constructs",
+      "version": "10.0.9"
+    }
+  ],
+  "updated": "2021-11-17T00:14:03.444Z"
+}
