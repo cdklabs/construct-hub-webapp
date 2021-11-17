@@ -24,7 +24,7 @@ const Detail: FunctionComponent<DetailProps> = ({
   tooltip,
   value,
 }) => (
-  <Tooltip hasArrow isDisabled={!tooltip} label={tooltip} placement="auto">
+  <Tooltip hasArrow isDisabled={!tooltip} label={tooltip} placement="left">
     {/* zIndex required to allow tooltip to display due to card link overlay */}
     <Text data-testid={dataTestid} fontSize="xs" zIndex={1}>
       {icon}
