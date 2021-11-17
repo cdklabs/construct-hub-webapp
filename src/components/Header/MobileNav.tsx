@@ -53,7 +53,12 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
                 ]}
               />
 
-              <NavLink color="blue.800" fontWeight="500" to={ROUTES.CONTRIBUTE}>
+              <NavLink
+                color="blue.800"
+                fontSize="1rem"
+                fontWeight="bold"
+                to={ROUTES.CONTRIBUTE}
+              >
                 Contribute
               </NavLink>
             </Stack>

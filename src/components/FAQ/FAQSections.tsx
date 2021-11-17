@@ -4,4 +4,8 @@ import type { FunctionComponent } from "react";
 export const FAQSections: FunctionComponent<AccordionProps> = ({
   children,
   ...accordionProps
-}) => <Accordion {...accordionProps}>{children}</Accordion>;
+}) => (
+  <Accordion allowMultiple {...accordionProps}>
+    {children}
+  </Accordion>
+);

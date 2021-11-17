@@ -51,7 +51,7 @@ const MobileNavLinksContent: FunctionComponent<MobileNavLinksContentProps> = ({
   <AccordionItem data-testid={testId} w="full">
     <AccordionButton px={0} py={4}>
       <Box flex="1" textAlign="left">
-        <Heading as="h3" size="sm">
+        <Heading as="h3" color="blue.800" size="sm">
           {title}
         </Heading>
       </Box>
@@ -90,12 +90,7 @@ interface MobileNavLinksProps {
 export const MobileNavLinks: FunctionComponent<MobileNavLinksProps> = ({
   sections,
 }) => (
-  <Accordion
-    allowMultiple
-    allowToggle
-    defaultIndex={sections.map((_, i) => i)}
-    w="full"
-  >
+  <Accordion allowMultiple allowToggle w="full">
     {sections.map((section, idx) => (
       <MobileNavLinksContent key={`section-${idx}`} {...section} />
     ))}
