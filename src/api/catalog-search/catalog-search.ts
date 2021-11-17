@@ -1,11 +1,10 @@
 import lunr from "lunr";
 import { CDKType } from "../../constants/constructs";
-import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
-import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
+import { FILTER_FUNCTIONS, renderAllKeywords, SORT_FUNCTIONS } from "./util";
 
 const INDEX_FIELDS = {
   AUTHOR_EMAIL: {
@@ -117,7 +116,6 @@ export class CatalogSearchAPI {
       .reduce((map, pkg) => {
         const { author, name, version } = pkg;
         const id = [name, version].join("@");
-
         const downloads = stats.packages[name]?.downloads?.npm ?? 0;
         let [scope, packageName] = name.split("/");
 
@@ -143,9 +141,7 @@ export class CatalogSearchAPI {
           ...pkg,
           authorName,
           authorEmail,
-          keywords: pkg.keywords?.filter(
-            (keyword) => !KEYWORD_IGNORE_LIST.has(keyword)
-          ),
+          keywords: renderAllKeywords(pkg),
           downloads,
           id,
           packageName,
@@ -237,6 +233,20 @@ export class CatalogSearchAPI {
   }
 
   /**
+   * Performs a Search against the catalog and returns an array of all packages matching the query.
+   */
+  public findByName(query: string): ExtendedCatalogPackage[] {
+    const results = [...this.map.values()].filter((pkg) => pkg.name === query);
+    const matches = new Array<ExtendedCatalogPackage>();
+    for (const pkg of results.values()) {
+      if (pkg.name === query) {
+        matches.push(pkg);
+      }
+    }
+    return matches;
+  }
+
+  /**
    * Filters query results. Mutates the passed-in map
    */
   private filter(
@@ -317,12 +327,10 @@ export class CatalogSearchAPI {
   private detectKeywords() {
     const results = [...this.map.values()].reduce(
       (keywords: Map<string, number>, pkg: ExtendedCatalogPackage) => {
-        pkg.keywords?.forEach((keyword) => {
-          if (!KEYWORD_IGNORE_LIST.has(keyword)) {
-            const entry = keywords.get(keyword);
-            keywords.set(keyword, (entry ?? 0) + 1);
-          }
-        });
+        for (const keyword of renderAllKeywords(pkg)) {
+          const entry = keywords.get(keyword);
+          keywords.set(keyword, (entry ?? 0) + 1);
+        }
 
         return keywords;
       },

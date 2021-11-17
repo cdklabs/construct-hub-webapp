@@ -11,8 +11,8 @@ export interface Author {
 export interface CatalogPackage {
   name: string;
   languages?: Partial<Record<Language, Record<string, unknown>>>;
-  major: number;
   version: string;
+  major: number;
   description: string;
   author: Author | string;
   keywords?: string[];

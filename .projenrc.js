@@ -58,6 +58,8 @@ const project = new web.ReactTypeScriptProject({
     "rehype-sanitize",
     "remark-emoji",
     "remark-gfm",
+    "semver",
+    "spdx-license-list",
     // PWA Functionality
     "workbox-core",
     "workbox-expiration",
@@ -71,6 +73,7 @@ const project = new web.ReactTypeScriptProject({
     "@types/node-emoji",
     "@types/react-helmet",
     "@types/react-router-dom",
+    "@types/semver",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-prefer-arrow",
     "eslint-plugin-react-hooks",

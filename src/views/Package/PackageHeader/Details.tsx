@@ -10,13 +10,15 @@ import {
 } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
 import { Fragment, FunctionComponent, ReactNode } from "react";
+import spdx from "spdx-license-list";
 import { PackageLinkConfig } from "../../../api/config";
 import { Metadata } from "../../../api/package/metadata";
 import { PackageStats } from "../../../api/stats";
 import { ExternalLink } from "../../../components/ExternalLink";
-import { LicenseLink, LICENSE_LINKS } from "../../../components/LicenseLink";
+import { LicenseLink } from "../../../components/LicenseLink";
 import { NavLink } from "../../../components/NavLink";
 import { Time } from "../../../components/Time";
+import { FORMATS } from "../../../constants/dates";
 import { useStats } from "../../../contexts/Stats";
 import { useConfigValue } from "../../../hooks/useConfigValue";
 import { getRepoUrlAndHost, getSearchPath } from "../../../util/url";
@@ -99,7 +101,7 @@ const getDetailItemsFromPackage = ({
         <Time
           date={new Date(date)}
           fontWeight="normal"
-          format="MMMM dd, yyyy"
+          format={FORMATS.PUBLISH_DATE}
         />
       );
       items.push(<WithLabel label="Published">{publishDate}</WithLabel>);
@@ -133,10 +135,8 @@ const getDetailItemsFromPackage = ({
       }
     }
 
-    if (license && license in LICENSE_LINKS) {
-      const licenseLink = (
-        <LicenseLink license={license as keyof typeof LICENSE_LINKS} />
-      );
+    if (license && license in spdx) {
+      const licenseLink = <LicenseLink license={license} />;
       items.push(<WithLabel label="License">{licenseLink}</WithLabel>);
     }
 

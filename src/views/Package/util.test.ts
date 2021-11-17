@@ -190,4 +190,20 @@ describe("parseMarkdownStructure", () => {
       },
     ]);
   });
+
+  it("adds a submodule query parameter if needed", () => {
+    const result = parseMarkdownStructure(MARKDOWN_INPUT, {
+      ...packageData,
+      submodule: "my_submodule",
+    });
+
+    // filter out items without a path and make sure some items have paths.
+    const items = result.menuItems.filter((i) => i.path);
+    expect(items.length).toBeGreaterThan(0);
+
+    // verify that all urls include a ?submodule query.
+    for (const item of items) {
+      expect(item.path?.includes("&submodule=my_submodule")).toBeTruthy();
+    }
+  });
 });
