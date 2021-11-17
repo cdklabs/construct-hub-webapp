@@ -81,6 +81,6 @@ describe("useCatalogResults", () => {
       limit: 50,
     });
 
-    expect(offsetTest.current.page).toHaveLength(numPackages % 50);
+    expect(offsetTest.current.page).toHaveLength(48);
   });
 });
