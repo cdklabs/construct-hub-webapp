@@ -16,7 +16,6 @@ export interface UseCatalogResultsOptions {
   languages?: Language[];
   sort?: CatalogSearchSort;
   tags?: string[];
-  dedup?: boolean;
 }
 
 /**
@@ -34,7 +33,6 @@ export const useCatalogResults = ({
   languages,
   sort,
   tags,
-  dedup = false,
 }: UseCatalogResultsOptions) => {
   const filters = useMemo(
     () => ({
@@ -52,7 +50,6 @@ export const useCatalogResults = ({
     filters,
     query,
     sort,
-    dedup,
   });
 
   const { page, pageLimit } = usePagination(results, {
