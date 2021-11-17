@@ -3,13 +3,12 @@ import {
   Heading as ChakraHeading,
   LinkOverlay,
   Text,
-  Tooltip,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../hooks/useLanguage";
 import { getPackagePath } from "../../util/url";
-import { CDKTypeIcon, CDKTypeText } from "../CDKType";
+import { CDKTypeBadge } from "../CDKType";
 import { usePackageCard } from "./PackageCard";
 import testIds from "./testIds";
 
@@ -37,15 +36,7 @@ export const Heading: FunctionComponent = () => {
         })}
       >
         <Flex align="center">
-          {cdkType && (
-            <Tooltip
-              hasArrow
-              label={<CDKTypeText majorVersion={cdkVersion} name={cdkType} />}
-              placement="top"
-            >
-              <CDKTypeIcon mr={2} name={cdkType} zIndex={1} />
-            </Tooltip>
-          )}
+          <CDKTypeBadge majorVersion={cdkVersion} mr={2} name={cdkType} />
           <ChakraHeading
             as="h3"
             color="blue.800"
