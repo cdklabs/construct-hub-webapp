@@ -238,7 +238,7 @@ export class CatalogSearchAPI {
    * Performs a Search against the catalog and returns an array of all packages matching the query.
    */
   public findByName(query: string): ExtendedCatalogPackage[] {
-    const results = this.query(query);
+    const results = [...this.map.values()].filter((pkg) => pkg.name === query);
     const matches = new Array<ExtendedCatalogPackage>();
     for (const pkg of results.values()) {
       if (pkg.name === query) {

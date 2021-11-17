@@ -2,13 +2,14 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Menu, MenuButton, Button, MenuList, MenuItem } from "@chakra-ui/react";
 import { FunctionComponent, useMemo } from "react";
 import { useHistory } from "react-router-dom";
+import semver from "semver";
 import { useSearchContext } from "../../../contexts/Search";
 import { getPackagePath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
 import testIds from "../testIds";
 
 export const SelectVersion: FunctionComponent = () => {
-  const { scope, name, version, language } = usePackageState();
+  const { scope, name, version: currentVersion, language } = usePackageState();
   const pkgName = scope ? `${scope}/${name}` : name;
 
   const searchAPI = useSearchContext()!;
@@ -16,17 +17,12 @@ export const SelectVersion: FunctionComponent = () => {
 
   const packages = searchAPI.findByName(pkgName);
 
-  const { majors, defaultMajor } = useMemo(() => {
-    const majorVersions = packages.map((pkg) => ({
-      major: pkg.major,
-      version: pkg.version,
-    }));
-    majorVersions.sort((a, b) => a.major - b.major);
-    const defaultMajorVersion = majorVersions.find(
-      (mv) => mv.version === version
-    );
-    return { majors: majorVersions, defaultMajor: defaultMajorVersion };
-  }, [packages, version]);
+  const versions = useMemo(() => {
+    const majorVersions = packages.map((pkg) => pkg.version);
+    const allVersions = [...new Set([...majorVersions, currentVersion])];
+    allVersions.sort(semver.compare);
+    return allVersions;
+  }, [packages, currentVersion]);
 
   const onChangeVersion = (selectedVersion: string) => {
     push(
@@ -49,20 +45,20 @@ export const SelectVersion: FunctionComponent = () => {
         rightIcon={<ChevronDownIcon />}
         variant="link"
       >
-        {`v${defaultMajor?.version}`}
+        {`v${currentVersion}`}
       </MenuButton>
       <MenuList
         data-testid={testIds.selectVersionDropdown}
         minW="180"
         zIndex="sticky"
       >
-        {majors.map((mv) => (
+        {versions.map((ver) => (
           <MenuItem
             data-testid={testIds.selectVersionItem}
-            data-value={mv.version}
-            key={mv.version}
-            onClick={() => onChangeVersion(mv.version)}
-          >{`v${mv.version}`}</MenuItem>
+            data-value={ver}
+            key={ver}
+            onClick={() => onChangeVersion(ver)}
+          >{`v${ver}`}</MenuItem>
         ))}
       </MenuList>
     </Menu>
