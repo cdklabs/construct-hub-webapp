@@ -1,12 +1,5 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import {
-  Menu,
-  MenuButton,
-  Button,
-  MenuList,
-  MenuItem,
-  Box,
-} from "@chakra-ui/react";
+import { Menu, MenuButton, Button, MenuList, MenuItem } from "@chakra-ui/react";
 import { FunctionComponent, useMemo } from "react";
 import { useHistory } from "react-router-dom";
 import { useSearchContext } from "../../../contexts/Search";
@@ -45,28 +38,26 @@ export const SelectVersion: FunctionComponent = () => {
   };
 
   return (
-    <Box as="span" display="flex">
-      <Menu>
-        <MenuButton
-          as={Button}
-          color="blue.500"
-          mt={1}
-          py={1}
-          rightIcon={<ChevronDownIcon />}
-          variant="link"
-        >
-          {`v${defaultMajor?.version}`}
-        </MenuButton>
-        <MenuList minW="180" zIndex="sticky">
-          {majors.map((mv) => (
-            <MenuItem
-              data-value={mv.version}
-              key={mv.version}
-              onClick={() => onChangeVersion(mv.version)}
-            >{`v${mv.version}`}</MenuItem>
-          ))}
-        </MenuList>
-      </Menu>
-    </Box>
+    <Menu>
+      <MenuButton
+        as={Button}
+        color="blue.500"
+        mt={1}
+        py={1}
+        rightIcon={<ChevronDownIcon />}
+        variant="link"
+      >
+        {`v${defaultMajor?.version}`}
+      </MenuButton>
+      <MenuList minW="180" zIndex="sticky">
+        {majors.map((mv) => (
+          <MenuItem
+            data-value={mv.version}
+            key={mv.version}
+            onClick={() => onChangeVersion(mv.version)}
+          >{`v${mv.version}`}</MenuItem>
+        ))}
+      </MenuList>
+    </Menu>
   );
 };
