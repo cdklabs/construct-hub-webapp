@@ -3,7 +3,6 @@ import type { FunctionComponent } from "react";
 import { Category } from "../../api/config";
 import { NavLink } from "../../components/NavLink";
 import { useConfigValue } from "../../hooks/useConfigValue";
-import { getSearchPath } from "../../util/url";
 import { SECTION_PADDING } from "./constants";
 import testIds from "./testIds";
 
@@ -11,15 +10,14 @@ import testIds from "./testIds";
  * Categories used if config does not have specific categories
  */
 const DEFAULT_CATEGORIES: Category[] = [
-  { title: "Monitoring", searchKeyword: "monitoring" },
-  { title: "Kubernetes", searchKeyword: "kubernetes" },
-  { title: "Serverless", searchKeyword: "serverless" },
-  { title: "Databases", searchKeyword: "databases" },
-  { title: "Utilities", searchKeyword: "utilities" },
-  { title: "Deployment", searchKeyword: "deployment" },
-  { title: "Partners", searchKeyword: "partners" },
-  { title: "Websites", searchKeyword: "web" },
-  { title: "Security", searchKeyword: "security" },
+  { title: "Monitoring", url: "/search?q=monitoring" },
+  { title: "Kubernetes", url: "/search?q=kubernetes" },
+  { title: "Serverless", url: "/search?q=serverless" },
+  { title: "Databases", url: "/search?q=databases" },
+  { title: "Utilities", url: "/search?q=utilities" },
+  { title: "Deployment", url: "/search?q=deployment" },
+  { title: "Websites", url: "/search?q=web" },
+  { title: "Security", url: "/search?q=security" },
 ];
 
 export const Categories: FunctionComponent = () => {
@@ -59,12 +57,13 @@ export const Categories: FunctionComponent = () => {
         {categories.map((category) => (
           <WrapItem key={category.title}>
             <Button
+              _hover={{ backgroundColor: "white" }}
               as={NavLink}
               color="blue.800"
               colorScheme="gray"
               size="md"
               style={{ boxShadow: "0px 4px 4px rgba(73, 73, 73, 0.63)" }}
-              to={getSearchPath({ query: category.searchKeyword })}
+              to={category.url}
             >
               {category.title}
             </Button>

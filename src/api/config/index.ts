@@ -27,7 +27,7 @@ export interface PackageTagConfig {
 
 export interface Category {
   title: string;
-  searchKeyword: string;
+  url: string;
 }
 
 /**
