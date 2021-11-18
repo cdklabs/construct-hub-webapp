@@ -15,6 +15,14 @@ const TAG1 = {
   },
 };
 
+const TAG1_LOOKALIKE = {
+  id: "tag1-x",
+  keyword: {
+    label: "Tag 1",
+    color: "orange",
+  },
+};
+
 const TAG2 = {
   id: "tag2",
   keyword: {
@@ -212,6 +220,46 @@ describe("tagObjectsFrom", () => {
           "isKeyword": true,
           "keyword": Object {
             "label": "Keyword 2",
+          },
+        },
+      ]
+    `);
+  });
+
+  it("Removes keywords with same name as tags", () => {
+    expect(
+      tagObjectsFrom({ packageTags: [TAG1], keywords: ["Tag 1", "Keyword 1"] })
+    ).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "id": "tag1",
+          "isKeyword": false,
+          "keyword": Object {
+            "color": "red",
+            "label": "Tag 1",
+          },
+        },
+        Object {
+          "id": "Keyword 1",
+          "isKeyword": true,
+          "keyword": Object {
+            "label": "Keyword 1",
+          },
+        },
+      ]
+    `);
+  });
+
+  it("Removes tags with same label", () => {
+    expect(tagObjectsFrom({ packageTags: [TAG1, TAG1_LOOKALIKE] }))
+      .toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "id": "tag1",
+          "isKeyword": false,
+          "keyword": Object {
+            "color": "red",
+            "label": "Tag 1",
           },
         },
       ]

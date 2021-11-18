@@ -8,7 +8,7 @@ import {
 import { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
 import { Metadata } from "../../../api/package/metadata";
-import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
+import { CDKTypeBadge } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { tagObjectsFrom } from "../../../util/package";
 import testIds from "../testIds";
@@ -70,13 +70,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         sx={{ gap: "0.5rem" }}
         wrap="wrap"
       >
-        <CDKTypeIcon {...cdkTypeProps} />
-        <CDKTypeText
-          color="gray.700"
-          fontSize=".75rem"
-          fontWeight="semibold"
-          {...cdkTypeProps}
-        />
+        <CDKTypeBadge {...cdkTypeProps} />
         {tags.map(({ id, isKeyword, keyword: { label, color } = {} }) => (
           <PackageTag isKeyword={isKeyword} key={id} value={id} variant={color}>
             {label}

@@ -1,4 +1,6 @@
 import {
+  Badge,
+  BadgeProps,
   forwardRef,
   Image,
   ImageProps,
@@ -43,6 +45,42 @@ export const CDKTypeText = forwardRef<CDKTypeTextProps, "p">(
         {CDKTYPE_RENDER_MAP[name].name}
         {majorVersion !== undefined ? ` v${majorVersion}` : ""}
       </Text>
+    );
+  }
+);
+
+interface CDKTypeBadgeProps extends BadgeProps {
+  name?: CDKType;
+  majorVersion?: number;
+}
+
+const badgeColorMap = {
+  [CDKType.awscdk]: "#CF4A02",
+  [CDKType.cdk8s]: "#005797",
+  [CDKType.cdktf]: "#5C4EE5",
+};
+
+export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
+  ({ name, majorVersion, ...badgeProps }) => {
+    if (!name) return null;
+
+    const bg = badgeColorMap[name];
+
+    return (
+      <Badge
+        alignItems="center"
+        bg={bg}
+        borderRadius="md"
+        color="white"
+        display="flex"
+        h="1.5rem"
+        maxW="5.5rem"
+        px={1.5}
+        textTransform="none"
+        {...badgeProps}
+      >
+        <CDKTypeText majorVersion={majorVersion} name={name} />
+      </Badge>
     );
   }
 );

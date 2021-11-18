@@ -115,25 +115,17 @@ describe("parseMarkdownStructure", () => {
         path: baseHashPath,
         children: [
           {
-            level: 1,
-            id: "title-1",
-            title: "Title 1",
-            path: `${baseHashPath}#title-1`,
+            level: 2,
+            id: "title-2",
+            title: "Title 2",
+            path: `${baseHashPath}#title-2`,
             children: [
               {
-                level: 2,
-                id: "title-2",
-                title: "Title 2",
-                path: `${baseHashPath}#title-2`,
-                children: [
-                  {
-                    level: 3,
-                    id: "title-3",
-                    title: "Title 3",
-                    path: `${baseHashPath}#title-3`,
-                    children: [],
-                  },
-                ],
+                level: 3,
+                id: "title-3",
+                title: "Title 3",
+                path: `${baseHashPath}#title-3`,
+                children: [],
               },
             ],
           },

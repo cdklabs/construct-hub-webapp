@@ -18,7 +18,7 @@ export const GETTING_STARTED: IMenuItems = [
     links: [
       {
         display: "Slack",
-        url: "https://join.slack.com/t/cdk-dev/shared_invite/zt-mso6p56d-qJp7SOTBvMaQuDrx7R2wHg",
+        url: "https://join.slack.com/t/cdk-dev/shared_invite/zt-xtpfmrqt-6ormYTA0hLdpMSAtTkM_2A",
       },
     ],
   },
