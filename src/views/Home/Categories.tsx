@@ -42,7 +42,7 @@ export const Categories: FunctionComponent = () => {
         lineHeight="lg"
         mb={1}
       >
-        Solve for your use case with pre-built constructs
+        Find constructs by use case
       </Heading>
       <Text
         color="white"
@@ -50,8 +50,8 @@ export const Categories: FunctionComponent = () => {
         lineHeight="md"
         mb={5}
       >
-        Constructs solve a lot of helpful use cases you may be trying to solve.
-        They will save you and your team a bunch of time and headaches.
+        With hundreds of constructs available, there may already be one (or
+        more!) that that can serve as a building block for your solution.
       </Text>
 
       <Wrap>

@@ -14,7 +14,7 @@ import {
 import type { FunctionComponent } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { NavLink } from "../../components/NavLink";
-import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
+import { ROUTES } from "../../constants/url";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useHistoryState } from "../../hooks/useHistoryState";
 import { getSearchPath } from "../../util/url";
@@ -23,25 +23,43 @@ import { PackageGrid } from "./PackageGrid";
 import testIds from "./testIds";
 
 interface PackageTabProps {
-  cdkType?: CDKType;
   data: ReturnType<typeof useCatalogResults>;
+  label: string;
 }
 
-const PackageTab: FunctionComponent<PackageTabProps> = ({ cdkType, data }) => {
+interface PackageTabPanelProps extends PackageTabProps, TabPanelProps {
+  tag: string;
+}
+
+const tabs = {
+  community: {
+    label: "Community",
+    tag: "community",
+  },
+  aws: {
+    label: "AWS",
+    tag: "aws-official",
+  },
+  hashicorp: {
+    label: "HashiCorp",
+    tag: "hashicorp-official",
+  },
+};
+
+const PackageTab: FunctionComponent<PackageTabProps> = ({ data, label }) => {
   return (
     <Tab
-      _selected={{ borderBottom: "4px solid #AED5FF" }}
       data-testid={testIds.cdkTypeTab}
-      data-value={cdkType}
+      data-value={label}
       isDisabled={data.page.length < 1}
     >
-      {cdkType ? CDKTYPE_RENDER_MAP[cdkType].name : "Recently Updated"}
+      {label}
     </Tab>
   );
 };
 
-const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
-  ({ cdkType, data, ...props }, ref) => {
+const PackageTabPanel = forwardRef<PackageTabPanelProps, "div">(
+  ({ label, data, tag, ...props }, ref) => {
     return (
       <TabPanel data-testid={testIds.cdkTypeGrid} ref={ref} {...props} p={0}>
         <PackageGrid packages={data.page} />
@@ -51,15 +69,12 @@ const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
             data-testid={testIds.cdkTypeSeeAllButton}
             onClick={() => window.scrollTo(0, 0)}
             to={getSearchPath({
-              cdkType,
-              sort: cdkType
-                ? CatalogSearchSort.DownloadsDesc
-                : CatalogSearchSort.PublishDateDesc,
+              tags: tag ? [tag] : undefined,
+              sort: CatalogSearchSort.DownloadsDesc,
             })}
           >
             <Button colorScheme="blue" my={8}>
-              See all {cdkType ? CDKTYPE_RENDER_MAP[cdkType].name + " " : ""}
-              constructs
+              See all {label} constructs
             </Button>
           </NavLink>
         </Flex>
@@ -69,21 +84,18 @@ const PackageTabPanel = forwardRef<PackageTabProps & TabPanelProps, "div">(
 );
 
 export const CDKTypeTabs: FunctionComponent = () => {
-  const anyCDKType = useCatalogResults({
+  const community = useCatalogResults({
+    tags: [tabs.community.tag],
     limit: 4,
   });
-  const awscdk = useCatalogResults({
-    cdkType: CDKType.awscdk,
-    limit: 4,
-    sort: CatalogSearchSort.DownloadsDesc,
-  });
-  const cdk8s = useCatalogResults({
-    cdkType: CDKType.cdk8s,
+
+  const aws = useCatalogResults({
+    tags: [tabs.aws.tag],
     limit: 4,
     sort: CatalogSearchSort.DownloadsDesc,
   });
-  const cdktf = useCatalogResults({
-    cdkType: CDKType.cdktf,
+  const hashicorp = useCatalogResults({
+    tags: [tabs.hashicorp.tag],
     limit: 4,
     sort: CatalogSearchSort.DownloadsDesc,
   });
@@ -92,7 +104,8 @@ export const CDKTypeTabs: FunctionComponent = () => {
 
   return (
     <Flex
-      color="white"
+      bg="white"
+      color="blue.800"
       data-testid={testIds.cdkTypeSection}
       direction="column"
       px={SECTION_PADDING.X}
@@ -107,42 +120,52 @@ export const CDKTypeTabs: FunctionComponent = () => {
         lineHeight="lg"
         mb={2}
       >
-        Find open-source community constructs and official libraries in one
-        location
+        Find constructs by publisher
       </Heading>
       <Text
         data-testid={testIds.cdkTypeSectionDescription}
         lineHeight="md"
-        maxW="60ch"
         mb={5}
       >
-        Use Construct Hub to find CDKs’ libraries owned by the open source
-        community and companies and organizations like Terraform, CNCF, AWS and
-        more.
+        Find constructs published by the open-source community, AWS, and
+        HashiCorp in one location. You can also have your own construct
+        libraries listed on Construct Hub by publishing them on npm registry.
+        More concrete guidance can be found in the{" "}
+        <NavLink color="blue.500" to={ROUTES.CONTRIBUTE}>
+          Contribute
+        </NavLink>{" "}
+        page.
       </Text>
       <Tabs
-        color="white"
         defaultIndex={tabIndex}
         onChange={(index) => setTabIndex(index)}
         variant="line"
       >
         <TabList>
-          <PackageTab data={anyCDKType} />
+          <PackageTab data={community} label={tabs.community.label} />
 
-          <PackageTab cdkType={CDKType.awscdk} data={awscdk} />
+          <PackageTab data={aws} label={tabs.aws.label} />
 
-          <PackageTab cdkType={CDKType.cdk8s} data={cdk8s} />
-
-          <PackageTab cdkType={CDKType.cdktf} data={cdktf} />
+          <PackageTab data={hashicorp} label={tabs.hashicorp.label} />
         </TabList>
         <TabPanels minH="28.5rem">
-          <PackageTabPanel data={anyCDKType} />
+          <PackageTabPanel
+            data={community}
+            label={tabs.community.label.toLowerCase()}
+            tag={tabs.community.tag}
+          />
 
-          <PackageTabPanel cdkType={CDKType.awscdk} data={awscdk} />
+          <PackageTabPanel
+            data={aws}
+            label={tabs.aws.label}
+            tag={tabs.aws.tag}
+          />
 
-          <PackageTabPanel cdkType={CDKType.cdk8s} data={cdk8s} />
-
-          <PackageTabPanel cdkType={CDKType.cdktf} data={cdktf} />
+          <PackageTabPanel
+            data={hashicorp}
+            label={tabs.hashicorp.label}
+            tag={tabs.hashicorp.tag}
+          />
         </TabPanels>
       </Tabs>
     </Flex>
