@@ -96,6 +96,13 @@ const getHeaderAttributes = (hdr: string): { id: string; title: string } => {
   return { id, title };
 };
 
+const normalizeTitle = (title: string): string => {
+  if (title.endsWith(".") || title.endsWith(":")) {
+    title = title.slice(0, -1);
+  }
+  return title;
+};
+
 /**
  * Accept's markdown document from jsii-docgen with readme and api reference
  * documentation and parses the content into a traversable map of menu items
@@ -146,30 +153,38 @@ export const parseMarkdownStructure = (
 
   // Add back api reference title for use as menu item
   const apiReferenceParsed = [separator.trim(), ...(apiReferenceSplit ?? [])];
-
   const baseReadmePath = `${basePath}${query}`;
+  let readmeChildren = readmeSplit.reduce((accum: MenuItem[], str: string) => {
+    if (str.startsWith("#")) {
+      const { id, title } = getHeaderAttributes(str);
+      const level = str.match(/(#)/gm)?.length ?? 1;
+
+      const normalizedTitle = normalizeTitle(title);
+
+      const menuItem = {
+        level,
+        id,
+        title: normalizedTitle,
+        // root package path plus hash for header on readme item
+        path: `${baseReadmePath}#${id}`,
+        children: [],
+      };
+      return appendMenuItem(accum, menuItem);
+    }
+    return accum;
+  }, []);
+
+  if (readmeChildren.length === 1) {
+    readmeChildren = readmeChildren[0].children;
+  }
+
   const readmeMenuItems = [
     {
       level: 1,
       id: "Readme",
       title: "Readme",
       path: baseReadmePath,
-      children: readmeSplit.reduce((accum: MenuItem[], str: string) => {
-        if (str.startsWith("#")) {
-          const { id, title } = getHeaderAttributes(str);
-          const level = str.match(/(#)/gm)?.length ?? 1;
-          const menuItem = {
-            level,
-            id,
-            title,
-            // root package path plus hash for header on readme item
-            path: `${baseReadmePath}#${id}`,
-            children: [],
-          };
-          return appendMenuItem(accum, menuItem);
-        }
-        return accum;
-      }, []),
+      children: readmeChildren,
     },
   ];
 
