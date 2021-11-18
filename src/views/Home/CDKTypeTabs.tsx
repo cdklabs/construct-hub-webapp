@@ -87,6 +87,7 @@ export const CDKTypeTabs: FunctionComponent = () => {
   const community = useCatalogResults({
     tags: [tabs.community.tag],
     limit: 4,
+    sort: CatalogSearchSort.DownloadsDesc,
   });
 
   const aws = useCatalogResults({
