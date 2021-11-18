@@ -46,7 +46,6 @@ export const PackageDocs: FunctionComponent = () => {
       target?.scrollIntoView(true);
     } else if (isApiPath(pathname)) {
       const target = document.getElementById(DOCS_ROOT_ID) as HTMLElement;
-      console.log(target);
       target?.scrollIntoView(true);
     } else {
       window.scrollTo(0, 0);
