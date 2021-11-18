@@ -1,6 +1,6 @@
 import { Heading } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { Markdown } from "../../components/Markdown";
 import { PackageDocsError } from "./PackageDocsError";
 import { usePackageState } from "./PackageState";
@@ -15,7 +15,10 @@ const usePackageTypeDocs = () => {
   return;
 };
 
-export const PackageTypeDocs: FunctionComponent = () => {
+export const PackageTypeDocs: FunctionComponent<{ rootId: string }> = ({
+  rootId,
+}) => {
+  const { pathname, hash, search } = useLocation();
   const {
     isLoadingDocs,
     assembly: { data: assembly },
@@ -28,11 +31,13 @@ export const PackageTypeDocs: FunctionComponent = () => {
     return <PackageDocsError />;
   }
   const { title, content } = docs;
-
+  const url = `${pathname}${search}#${hash}`;
   return (
     <>
       <Heading as="h2" p={8} size="2xl">
-        {title}
+        <NavLink id={rootId} to={url}>
+          {title}
+        </NavLink>
       </Heading>
       <Markdown repository={assembly.repository}>{content}</Markdown>
     </>
