@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { GETTING_STARTED, DOCUMENTATION } from "../../constants/links";
+import { ROUTES } from "../../constants/url";
+import { NavLink } from "../NavLink";
 import { MobileNavLinks } from "./MobileNavLinks";
 import testIds from "./testIds";
 import { Title } from "./Title";
@@ -35,7 +37,7 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
           </DrawerHeader>
 
           <DrawerBody>
-            <Stack align="start" justify="start" spacing={4}>
+            <Stack align="start" justify="start" spacing={0}>
               <MobileNavLinks
                 sections={[
                   {
@@ -50,6 +52,21 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
                   },
                 ]}
               />
+
+              <NavLink
+                _hover={{ bg: "blackAlpha.50" }}
+                borderBottom="1px solid"
+                borderBottomColor="gray.200"
+                color="blue.800"
+                fontSize="1rem"
+                fontWeight="bold"
+                h="3.25rem"
+                lineHeight="3.25rem"
+                to={ROUTES.CONTRIBUTE}
+                w="full"
+              >
+                Contribute
+              </NavLink>
             </Stack>
           </DrawerBody>
         </DrawerContent>
