@@ -191,6 +191,81 @@ describe("parseMarkdownStructure", () => {
     ]);
   });
 
+  it("parses out menu items (custom anchor prefix)", () => {
+    const markdown = `
+# <a name="custom-anchor"/>Title 1
+
+# <a name="custom-anchor-2"></a> Title 2
+`;
+
+    const { menuItems } = parseMarkdownStructure(markdown, packageData);
+    const basePath = "/packages/@packageScope/packageName/v/0.0.0";
+    const langQuery = `?lang=${Language.TypeScript}`;
+    const baseHashPath = `${basePath}${langQuery}`;
+    expect(menuItems).toEqual([
+      {
+        level: 1,
+        id: "Readme",
+        title: "Readme",
+        path: baseHashPath,
+        children: [
+          {
+            level: 1,
+            id: "title-1",
+            title: "Title 1",
+            path: `${baseHashPath}#title-1`,
+            children: [],
+          },
+          {
+            level: 1,
+            id: "title-2",
+            title: "Title 2",
+            path: `${baseHashPath}#title-2`,
+            children: [],
+          },
+        ],
+      }, {
+        level: 1,
+        id: 'api-reference',
+        title: 'API Reference',
+        children: [],
+      }
+    ]);
+  });
+
+  it("parses out menu items (embedded link)", () => {
+    const markdown = `
+# Title with [embedded][embedded-href] [links](links-href)
+`;
+
+    const { menuItems } = parseMarkdownStructure(markdown, packageData);
+    const basePath = "/packages/@packageScope/packageName/v/0.0.0";
+    const langQuery = `?lang=${Language.TypeScript}`;
+    const baseHashPath = `${basePath}${langQuery}`;
+    expect(menuItems).toEqual([
+      {
+        level: 1,
+        id: "Readme",
+        title: "Readme",
+        path: baseHashPath,
+        children: [
+          {
+            level: 1,
+            id: "title-with-embedded-links",
+            title: "Title with embedded links",
+            path: `${baseHashPath}#title-with-embedded-links`,
+            children: [],
+          },
+        ],
+      }, {
+        level: 1,
+        id: 'api-reference',
+        title: 'API Reference',
+        children: [],
+      }
+    ]);
+  });
+
   it("adds a submodule query parameter if needed", () => {
     const result = parseMarkdownStructure(MARKDOWN_INPUT, {
       ...packageData,

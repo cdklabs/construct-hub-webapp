@@ -83,7 +83,11 @@ const getHeaderAttributes = (hdr: string): { id: string; title: string } => {
 
   // Use raw title for items that don't specify data attributes, like readme
   // headers.
-  const [_, rawTitle] = /^#*\s*([^<]+?)\s*(?:<|$)/.exec(hdr) ?? [hdr, hdr];
+  const [_, rawTitle] =
+    /^#*\s*(?:<a\s.*?(?:\/>|<\/a>))?\s*([^<]+?)\s*(?:<|$)/.exec(hdr) ?? [
+      hdr,
+      hdr,
+    ];
   const noLinkTitle = rawTitle.replace(
     // Matches [label](text) and [label][text], replaces with just label.
     /\[([^\]]+)\](?:\([^)]+\)|\[[^\]]+\])/g,
