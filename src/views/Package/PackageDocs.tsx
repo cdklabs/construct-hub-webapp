@@ -10,6 +10,7 @@ import { PackageTypeDocs } from "./PackageTypeDocs";
 // We want the nav to be sticky, but it should account for the sticky heading as well, which is 72px
 const TOP_OFFSET = "4.5rem";
 const DOCS_ROOT_ID = "apidocs_header";
+const API_URL_RESOURCE = "api";
 
 const SubmoduleSelector: FunctionComponent = () => {
   const {
@@ -30,7 +31,7 @@ const SubmoduleSelector: FunctionComponent = () => {
 
 const isApiPath = (path: string) => {
   const parts = path.split("/");
-  return parts[parts.length - 2] === "api";
+  return parts[parts.length - 2] === API_URL_RESOURCE;
 };
 
 export const PackageDocs: FunctionComponent = () => {
@@ -93,7 +94,7 @@ export const PackageDocs: FunctionComponent = () => {
           <Route exact path={path}>
             <PackageReadme />
           </Route>
-          <Route exact path={`${path}/api/:typeId`}>
+          <Route exact path={`${path}/${API_URL_RESOURCE}/:typeId`}>
             <PackageTypeDocs rootId={DOCS_ROOT_ID} />
           </Route>
         </Switch>
