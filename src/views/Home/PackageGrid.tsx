@@ -12,7 +12,7 @@ export const PackageGrid: FunctionComponent<{ packages: CatalogPackage[] }> = ({
       data-testid={testIds.packageGrid}
       gap={4}
       mt={8}
-      templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+      templateColumns={{ base: "1fr", xl: "1fr 1fr" }}
     >
       {packages.map((pkg) => (
         <PackageCard key={`${pkg.name}-${pkg.version}`} pkg={pkg} />
