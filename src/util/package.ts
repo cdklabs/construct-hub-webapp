@@ -66,5 +66,24 @@ export const tagObjectsFrom = ({
   packageTags?: PackageTagConfig[];
   keywords?: string[];
 }): TagObject[] => {
-  return [...mapPackageTags(packageTags), ...mapPackageKeywords(keywords)];
+  const tagObjects = new Array<TagObject>();
+  const tagLabels = new Set<string>();
+
+  for (const tag of mapPackageTags(packageTags)) {
+    const label = tag.keyword!.label.toLowerCase();
+    if (!tagLabels.has(label)) {
+      tagObjects.push(tag);
+      tagLabels.add(label);
+    }
+  }
+
+  for (const tag of mapPackageKeywords(keywords)) {
+    const label = tag.keyword!.label.toLowerCase();
+    if (!tagLabels.has(label)) {
+      tagObjects.push(tag);
+      tagLabels.add(label);
+    }
+  }
+
+  return tagObjects;
 };
