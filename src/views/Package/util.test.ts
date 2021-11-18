@@ -224,12 +224,13 @@ describe("parseMarkdownStructure", () => {
             children: [],
           },
         ],
-      }, {
+      },
+      {
         level: 1,
-        id: 'api-reference',
-        title: 'API Reference',
+        id: "api-reference",
+        title: "API Reference",
         children: [],
-      }
+      },
     ]);
   });
 
@@ -257,12 +258,13 @@ describe("parseMarkdownStructure", () => {
             children: [],
           },
         ],
-      }, {
+      },
+      {
         level: 1,
-        id: 'api-reference',
-        title: 'API Reference',
+        id: "api-reference",
+        title: "API Reference",
         children: [],
-      }
+      },
     ]);
   });
 
