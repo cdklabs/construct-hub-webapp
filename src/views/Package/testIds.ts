@@ -8,4 +8,9 @@ export default createTestIds("package-page", [
   "dependenciesTab",
   "dependenciesList",
   "dependenciesLink",
+  "description",
+  "markdown",
+  "selectVersionButton",
+  "selectVersionDropdown",
+  "selectVersionItem",
 ] as const);

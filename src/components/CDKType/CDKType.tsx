@@ -9,10 +9,11 @@ import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 
 interface CDKTypeIconProps extends ImageProps {
   name?: CDKType;
+  majorVersion?: number;
 }
 
 export const CDKTypeIcon = forwardRef<CDKTypeIconProps, "img">(
-  ({ name, ...props }, ref) => {
+  ({ name, majorVersion, ...props }, ref) => {
     if (!name) return null;
 
     return (
