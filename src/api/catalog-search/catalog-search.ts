@@ -166,7 +166,8 @@ export class CatalogSearchAPI {
       }
 
       [...catalogMap.values()].forEach((pkg) => {
-        this.add(pkg);
+        const downloadBoost = Math.log(Math.max(pkg.downloads, 1));
+        this.add(pkg, { boost: downloadBoost });
       });
     });
   }
