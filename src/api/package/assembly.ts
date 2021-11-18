@@ -27,8 +27,5 @@ export const fetchAssembly = async (
       `Failed fetching assembly for ${assemblyPath}: ${response.statusText}`
     );
   }
-  const json = (await response.json()) as spec.Assembly;
-  delete json.types;
-  delete json.readme;
-  return json;
+  return response.json();
 };
