@@ -3,7 +3,7 @@ import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { ExtendedCatalogPackage } from "./catalog-search";
 import { CatalogSearchSort } from "./constants";
-import { SORT_FUNCTIONS, FILTER_FUNCTIONS } from "./util";
+import { SORT_FUNCTIONS, FILTER_FUNCTIONS, renderAllKeywords } from "./util";
 
 const packages = catalogFixture.packages as any as ExtendedCatalogPackage[];
 
@@ -121,5 +121,67 @@ describe("Catalog Search Utils", () => {
         );
       });
     });
+
+    it("Treats tags as keywords", () => {
+      const query = (...keywords: string[]) =>
+        packages
+          .filter(FILTER_FUNCTIONS.keywords(keywords)!)
+          .map((r) => r.name);
+
+      expect(query("databases")).toStrictEqual([
+        "aws-cdk-image-resize",
+        "@aws-cdk/aws-lambda-nodejs",
+      ]);
+
+      expect(query("partners")).toStrictEqual(["aws-cdk-image-resize"]);
+      expect(query("databases", "partners")).toStrictEqual([
+        "aws-cdk-image-resize",
+        "@aws-cdk/aws-lambda-nodejs",
+      ]);
+
+      // only search in tags that are associated with keywords and not highlights.
+      expect(query("non-keyword")).toStrictEqual([]);
+    });
+  });
+});
+
+describe("renderAllKeywords", () => {
+  it("returns a normalized set (all lowercase)", () => {
+    expect(
+      renderAllKeywords({
+        ...packages[0],
+        keywords: ["Foo", "foo", "FoO", "bar", "eh"],
+      })
+    ).toStrictEqual(["foo", "bar", "eh"]);
+  });
+
+  it("includes both publisher keywords and tag keywords", () => {
+    expect(
+      renderAllKeywords({
+        ...packages[0],
+        keywords: ["Foo", "foo", "FoO", "bar", "eh"],
+        metadata: {
+          date: "DATE",
+          packageTags: [
+            { id: "id1", keyword: { label: "boom" } },
+            { id: "id2", keyword: { label: "bar" } },
+            { id: "id3", highlight: { label: "baz" } },
+          ],
+        },
+      })
+    ).toStrictEqual(["foo", "bar", "eh", "boom"]);
+  });
+
+  it("filters out certain keywords", () => {
+    expect(
+      renderAllKeywords({
+        ...packages[0],
+        keywords: ["cdk-construct", "foo"],
+        metadata: {
+          date: "DATE",
+          packageTags: [{ id: "id1", keyword: { label: "construct" } }],
+        },
+      })
+    ).toStrictEqual(["foo"]);
   });
 });

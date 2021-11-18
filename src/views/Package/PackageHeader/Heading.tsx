@@ -1,5 +1,4 @@
 import {
-  Box,
   Flex,
   Stack,
   StackProps,
@@ -8,15 +7,12 @@ import {
 } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
-import { PackageTagConfig } from "../../../api/config";
 import { Metadata } from "../../../api/package/metadata";
-import { CDKTypeIcon, CDKTypeText } from "../../../components/CDKType";
+import { CDKTypeBadge } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
-import { KEYWORD_IGNORE_LIST } from "../../../constants/keywords";
-
-interface TagObject extends PackageTagConfig {
-  isKeyword?: boolean;
-}
+import { tagObjectsFrom } from "../../../util/package";
+import testIds from "../testIds";
+import { SelectVersion } from "./SelectVersion";
 
 interface HeadingProps extends StackProps {
   assembly: Assembly;
@@ -34,19 +30,10 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   version,
   ...stackProps
 }) => {
-  const tags: TagObject[] = [
-    ...(metadata.packageTags ?? []).filter((tag) => Boolean(tag.keyword)),
-
-    ...(assembly.keywords ?? [])
-      .filter((v) => Boolean(v) && !KEYWORD_IGNORE_LIST.has(v))
-      .map((label) => ({
-        isKeyword: true,
-        id: label,
-        keyword: {
-          label,
-        },
-      })),
-  ];
+  const tags = tagObjectsFrom({
+    packageTags: metadata?.packageTags ?? [],
+    keywords: assembly?.keywords ?? [],
+  });
 
   const cdkTypeProps = metadata.constructFramework ?? {};
 
@@ -68,28 +55,22 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         >
           {name}
         </ChakraHeading>
-        <Box as="span" flex={1} fontSize="sm">
-          {version}
-        </Box>
+        <SelectVersion />
       </Flex>
 
-      <Text fontSize="1rem">{description}</Text>
+      <Text data-testid={testIds.description} fontSize="1rem">
+        {description}
+      </Text>
 
       <Flex
         align="center"
         direction="row"
-        pt={3}
+        pt={1}
         // Chakra doesn't yet support css gap via style props
         sx={{ gap: "0.5rem" }}
         wrap="wrap"
       >
-        <CDKTypeIcon {...cdkTypeProps} />
-        <CDKTypeText
-          color="gray.700"
-          fontSize=".75rem"
-          fontWeight="semibold"
-          {...cdkTypeProps}
-        />
+        <CDKTypeBadge {...cdkTypeProps} />
         {tags.map(({ id, isKeyword, keyword: { label, color } = {} }) => (
           <PackageTag isKeyword={isKeyword} key={id} value={id} variant={color}>
             {label}

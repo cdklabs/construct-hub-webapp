@@ -1560,7 +1560,20 @@
         },
         "date": "Mon, 20 Sep 2021 19:04:49 GMT",
         "packageLinks": {},
-        "packageTags": []
+        "packageTags": [
+          {
+            "id": "databases",
+            "keyword": { "label": "databases" }
+          },
+          {
+            "id": "partners",
+            "keyword": { "label": "partners" }
+          },
+          {
+            "id": "non-keyword",
+            "highlight": { "label": "non-keyword" }
+          }
+        ]
       },
       "name": "aws-cdk-image-resize",
       "version": "0.0.18"
@@ -1707,7 +1720,12 @@
         },
         "date": "Wed, 29 Sep 2021 22:20:26 GMT",
         "packageLinks": {},
-        "packageTags": []
+        "packageTags": [
+          {
+            "id": "databases",
+            "keyword": { "label": "databases" }
+          }
+        ]
       },
       "name": "@aws-cdk/aws-lambda-nodejs",
       "version": "1.125.0"

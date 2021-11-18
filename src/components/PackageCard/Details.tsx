@@ -1,6 +1,5 @@
-import { DownloadIcon } from "@chakra-ui/icons";
 import { Text, Tooltip } from "@chakra-ui/react";
-import { formatDistance } from "date-fns";
+import { formatDistanceToNowStrict } from "date-fns";
 import { FunctionComponent, ReactChild } from "react";
 import { useStats } from "../../contexts/Stats";
 import { getSearchPath } from "../../util/url";
@@ -11,25 +10,20 @@ import testIds from "./testIds";
 
 interface DetailProps {
   "data-testid": string;
-  icon?: ReactChild;
+
   tooltip?: string;
-  label: string;
   value: ReactChild;
 }
 
 const Detail: FunctionComponent<DetailProps> = ({
   "data-testid": dataTestid,
-  icon,
-  label,
   tooltip,
   value,
 }) => (
-  <Tooltip hasArrow isDisabled={!tooltip} label={tooltip} placement="auto">
+  <Tooltip hasArrow isDisabled={!tooltip} label={tooltip} placement="left">
     {/* zIndex required to allow tooltip to display due to card link overlay */}
     <Text data-testid={dataTestid} fontSize="xs" zIndex={1}>
-      {icon}
-      {icon ? " " : ""}
-      <strong>{label}</strong> {value}
+      {value}
     </Text>
   </Tooltip>
 );
@@ -38,7 +32,6 @@ export const Details: FunctionComponent = () => {
   const {
     author,
     metadata: { date },
-    version,
     name,
   } = usePackageCard();
 
@@ -50,25 +43,20 @@ export const Details: FunctionComponent = () => {
 
   return (
     <>
-      {downloads !== undefined && downloads >= 10 ? (
+      {downloads !== undefined && (
         <Detail
           data-testid={testIds.downloads}
-          icon={<DownloadIcon />}
-          label={downloads.toLocaleString()}
           tooltip="Download numbers are periodically sourced from the NPM registry"
-          value={"Weekly downloads"}
+          value={`${downloads.toLocaleString()} weekly downloads`}
         />
-      ) : (
-        <Detail data-testid={testIds.version} label="Version" value={version} />
       )}
       <Detail
         data-testid={testIds.published}
-        label="Published"
         value={
           <Time
             date={publishDate}
             fontSize="xs"
-            formattedDate={formatDistance(publishDate, new Date(), {
+            formattedDate={formatDistanceToNowStrict(publishDate, {
               addSuffix: true,
             })}
           />
@@ -76,16 +64,18 @@ export const Details: FunctionComponent = () => {
       />
       <Detail
         data-testid={testIds.author}
-        label="Author"
         value={
-          <NavLink
-            color="blue.500"
-            to={getSearchPath({
-              query: authorName,
-            })}
-          >
-            {authorName}
-          </NavLink>
+          <>
+            By{" "}
+            <NavLink
+              color="blue.500"
+              to={getSearchPath({
+                query: authorName,
+              })}
+            >
+              {authorName}
+            </NavLink>
+          </>
         }
       />
     </>

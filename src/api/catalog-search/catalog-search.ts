@@ -1,11 +1,10 @@
 import lunr from "lunr";
 import { CDKType } from "../../constants/constructs";
-import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
-import { FILTER_FUNCTIONS, SORT_FUNCTIONS } from "./util";
+import { FILTER_FUNCTIONS, renderAllKeywords, SORT_FUNCTIONS } from "./util";
 
 const INDEX_FIELDS = {
   AUTHOR_EMAIL: {
@@ -141,9 +140,7 @@ export class CatalogSearchAPI {
           ...pkg,
           authorName,
           authorEmail,
-          keywords: pkg.keywords?.filter(
-            (keyword) => !KEYWORD_IGNORE_LIST.has(keyword)
-          ),
+          keywords: renderAllKeywords(pkg),
           downloads,
           id,
           packageName,
@@ -178,11 +175,7 @@ export class CatalogSearchAPI {
    * Performs a Search against the catalog and returns a Map with results ordered
    * by search score / relevance
    */
-  public search(params?: {
-    query?: string;
-    filters?: CatalogSearchFilters;
-    sort?: CatalogSearchSort;
-  }): CatalogSearchResults {
+  public search(params?: CatalogSearchParams): CatalogSearchResults {
     const { query, filters, sort } = params ?? {};
 
     let results = query ? this.query(query) : new Map(this.map);
@@ -191,6 +184,8 @@ export class CatalogSearchAPI {
     if (filters) {
       results = this.filter(results, filters);
     }
+
+    results = this.dedup(results);
 
     if (sort) {
       results = this.sort(results, sort);
@@ -232,6 +227,20 @@ export class CatalogSearchAPI {
 
       return packages;
     }, new Map() as CatalogSearchResults);
+  }
+
+  /**
+   * Performs a Search against the catalog and returns an array of all packages matching the query.
+   */
+  public findByName(query: string): ExtendedCatalogPackage[] {
+    const results = [...this.map.values()].filter((pkg) => pkg.name === query);
+    const matches = new Array<ExtendedCatalogPackage>();
+    for (const pkg of results.values()) {
+      if (pkg.name === query) {
+        matches.push(pkg);
+      }
+    }
+    return matches;
   }
 
   /**
@@ -289,17 +298,36 @@ export class CatalogSearchAPI {
   }
 
   /**
+   * De-duplicates packages that appear multiple times, keeping the
+   * most recently published one.
+   */
+  private dedup(results: CatalogSearchResults): CatalogSearchResults {
+    const dedupedResults: Map<string, ExtendedCatalogPackage> = new Map();
+
+    for (const [_key, pkg] of results) {
+      const maybePkg = dedupedResults.get(pkg.name);
+
+      if (
+        !maybePkg ||
+        new Date(maybePkg.metadata.date) < new Date(pkg.metadata.date)
+      ) {
+        dedupedResults.set(pkg.name, pkg);
+      }
+    }
+
+    return dedupedResults;
+  }
+
+  /**
    * Creates a map of keywords with values representing the occurence of the keyword within the catalog.
    */
   private detectKeywords() {
     const results = [...this.map.values()].reduce(
       (keywords: Map<string, number>, pkg: ExtendedCatalogPackage) => {
-        pkg.keywords?.forEach((keyword) => {
-          if (!KEYWORD_IGNORE_LIST.has(keyword)) {
-            const entry = keywords.get(keyword);
-            keywords.set(keyword, (entry ?? 0) + 1);
-          }
-        });
+        for (const keyword of renderAllKeywords(pkg)) {
+          const entry = keywords.get(keyword);
+          keywords.set(keyword, (entry ?? 0) + 1);
+        }
 
         return keywords;
       },

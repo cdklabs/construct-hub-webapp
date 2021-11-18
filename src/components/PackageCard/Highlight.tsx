@@ -1,23 +1,16 @@
-import { Stack, Image, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { highlightsFrom } from "../../util/package";
+import { Highlight as HighlightComponent } from "../Highlight";
+import { usePackageCard } from "./PackageCard";
 
-interface HighlightProps {
-  label: string;
-  color?: string;
-  icon?: string;
-}
+export const Highlight: FunctionComponent = () => {
+  const { packageTags = [] } = usePackageCard()?.metadata ?? {};
+  const [highlight] = highlightsFrom(packageTags);
 
-export const Highlight: FunctionComponent<HighlightProps> = ({
-  label,
-  color,
-  icon,
-}: HighlightProps) => {
   return (
-    <Stack align="center" direction="row" spacing={2}>
-      <Image alt={`${label} icon`} src={icon} w={4} />
-      <Text color={color} fontWeight="bold">
-        {label}
-      </Text>
-    </Stack>
+    <Box fontSize="xs">
+      <HighlightComponent {...highlight} />
+    </Box>
   );
 };
