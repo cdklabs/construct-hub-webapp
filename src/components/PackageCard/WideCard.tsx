@@ -26,7 +26,7 @@ export const WideCard: FunctionComponent = () => {
         data-testid={testIds.wideContainer}
         h="full"
         minH="12.5rem"
-        templateColumns={{ base: "1fr", lg: "1fr 12rem" }}
+        templateColumns={{ base: "1fr", lg: "1fr 14rem" }}
         w="full"
       >
         {/* Top / Left side of card */}

@@ -1,4 +1,5 @@
 import {
+  Box,
   UnorderedList,
   ListProps,
   forwardRef,
@@ -13,7 +14,7 @@ import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useDebounce } from "../../hooks/useDebounce";
 import { getPackagePath } from "../../util/url";
 import { Card, CardProps } from "../Card";
-import { CDKTypeIcon } from "../CDKType";
+import { CDKTypeBadge } from "../CDKType";
 import { SearchItem } from "../SearchItem";
 import { useSearchBarState } from "./SearchBar";
 import testIds from "./testIds";
@@ -66,7 +67,6 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
       {recommendations.map((pkg: ExtendedCatalogPackage, i) => {
         const navigate = () => push(getPackagePath(pkg));
         const constructFramework = pkg.metadata?.constructFramework ?? {};
-        const hasIcon = Boolean(constructFramework.name);
 
         return (
           <>
@@ -76,8 +76,10 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
               key={pkg.id}
               name={
                 <Stack align="center" direction="row" spacing={4}>
-                  <CDKTypeIcon {...constructFramework} />
-                  <Text ml={hasIcon ? 0 : 9}>{pkg.name}</Text>
+                  <Box w="5.5rem">
+                    <CDKTypeBadge w="min-content" {...constructFramework} />
+                  </Box>
+                  <Text>{pkg.name}</Text>
                 </Stack>
               }
               onClick={navigate}
