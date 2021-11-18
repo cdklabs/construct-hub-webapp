@@ -1,5 +1,7 @@
 import { Box, Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { ROUTES } from "../../constants/url";
+import { NavLink } from "../NavLink";
 import { DocumentationDropdown } from "./DocumentationDropdown";
 import { GettingStartedDropdown } from "./GettingStartedDropdown";
 import { HeaderSearch } from "./HeaderSearch";
@@ -22,7 +24,7 @@ export const Header: FunctionComponent = () => {
       gap={6}
       gridTemplateColumns={{
         base: "1fr max-content 1fr",
-        md: "max-content minmax(12rem, 31rem) auto",
+        lg: "max-content minmax(12rem, 31rem) auto",
       }}
       gridTemplateRows="1fr"
       maxW="100vw"
@@ -35,31 +37,31 @@ export const Header: FunctionComponent = () => {
     >
       {/* Logo / Header */}
       <HeaderItem
-        colStart={{ base: 2, md: 1 }}
-        justifySelf={{ base: "center", md: "start" }}
+        colStart={{ base: 2, lg: 1 }}
+        justifySelf={{ base: "center", lg: "start" }}
       >
         <Title />
       </HeaderItem>
 
       {/* Search Trigger */}
       <HeaderItem
-        colStart={{ base: 3, md: 2 }}
-        justifySelf={{ base: "end", md: "stretch" }}
+        colStart={{ base: 3, lg: 2 }}
+        justifySelf={{ base: "end", lg: "stretch" }}
       >
         <HeaderSearch />
       </HeaderItem>
 
       {/* Navigation */}
       <HeaderItem
-        colStart={{ base: 1, md: 3 }}
-        justifySelf={{ base: "start", md: "end" }}
+        colStart={{ base: 1, lg: 3 }}
+        justifySelf={{ base: "start", lg: "end" }}
       >
         <Grid
-          display={{ base: "none", md: "grid" }}
+          display={{ base: "none", lg: "grid" }}
           gap={4}
-          gridTemplateColumns="1fr 1fr"
           gridTemplateRows="1fr"
           placeItems="center"
+          templateColumns="1fr 1fr auto"
           w="100%"
         >
           <Box>
@@ -68,6 +70,10 @@ export const Header: FunctionComponent = () => {
           <Box>
             <DocumentationDropdown />
           </Box>
+
+          <NavLink color="blue.800" fontWeight="500" to={ROUTES.CONTRIBUTE}>
+            Contribute
+          </NavLink>
         </Grid>
         <NavButton />
       </HeaderItem>

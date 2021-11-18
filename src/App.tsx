@@ -7,6 +7,7 @@ import { Header } from "./components/Header";
 import { LazyRoute } from "./components/LazyRoute";
 import { ROUTES } from "./constants/url";
 
+const Contribute = lazy(() => import("./views/Contribute"));
 const FAQ = lazy(() => import("./views/FAQ"));
 const Home = lazy(() => import("./views/Home"));
 const NotFound = lazy(() => import("./views/NotFound"));
@@ -32,6 +33,7 @@ export const App: FunctionComponent = () => {
       <Header />
       {showBanner ? <DevPreviewBanner /> : <div />}
       <Switch>
+        <LazyRoute component={Contribute} exact path={ROUTES.CONTRIBUTE} />
         <LazyRoute component={FAQ} exact path={ROUTES.FAQ} />
         <LazyRoute component={Home} exact path={ROUTES.HOME} />
         <LazyRoute component={SiteTerms} exact path={ROUTES.SITE_TERMS} />

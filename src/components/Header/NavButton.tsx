@@ -13,7 +13,7 @@ export const NavButton: FunctionComponent = () => {
         aria-label="Navigation Menu"
         borderRadius="md"
         data-testid={testIds.navOpen}
-        display={{ md: "none" }}
+        display={{ lg: "none" }}
         icon={<HamburgerIcon />}
         onClick={nav.onOpen}
         variant="ghost"
