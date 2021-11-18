@@ -175,11 +175,7 @@ export class CatalogSearchAPI {
    * Performs a Search against the catalog and returns a Map with results ordered
    * by search score / relevance
    */
-  public search(params?: {
-    query?: string;
-    filters?: CatalogSearchFilters;
-    sort?: CatalogSearchSort;
-  }): CatalogSearchResults {
+  public search(params?: CatalogSearchParams): CatalogSearchResults {
     const { query, filters, sort } = params ?? {};
 
     let results = query ? this.query(query) : new Map(this.map);
@@ -188,6 +184,8 @@ export class CatalogSearchAPI {
     if (filters) {
       results = this.filter(results, filters);
     }
+
+    results = this.dedup(results);
 
     if (sort) {
       results = this.sort(results, sort);
@@ -297,6 +295,27 @@ export class CatalogSearchAPI {
     } else {
       return results;
     }
+  }
+
+  /**
+   * De-duplicates packages that appear multiple times, keeping the
+   * most recently published one.
+   */
+  private dedup(results: CatalogSearchResults): CatalogSearchResults {
+    const dedupedResults: Map<string, ExtendedCatalogPackage> = new Map();
+
+    for (const [_key, pkg] of results) {
+      const maybePkg = dedupedResults.get(pkg.name);
+
+      if (
+        !maybePkg ||
+        new Date(maybePkg.metadata.date) < new Date(pkg.metadata.date)
+      ) {
+        dedupedResults.set(pkg.name, pkg);
+      }
+    }
+
+    return dedupedResults;
   }
 
   /**

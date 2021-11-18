@@ -42,7 +42,7 @@ export const Featured: FunctionComponent = () => {
         data-testid={testIds.featuredGrid}
         gap={4}
         mt={8}
-        templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+        templateColumns={{ base: "1fr", xl: "1fr 1fr" }}
       >
         {section?.slice(0, 4).map((pkg) => (
           <PackageCard key={pkg.name} pkg={pkg} />
