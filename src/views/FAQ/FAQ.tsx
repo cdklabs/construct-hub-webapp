@@ -84,12 +84,12 @@ export const FAQPage: FunctionComponent = () => (
 
           <FAQItem question="Why should I use Construct Hub?">
             <Text>
-              Construct Hub is a central trusted venue where CDK developers can
-              discover construct libraries to help them build their
-              applications. You can find construct libraries in TypeScript,
-              Python, Java and .NET (Go is coming soon!), browse their developer
-              guides and API references, and explore code samples in all the
-              programming language that the package supports.
+              Construct Hub is a central venue where CDK developers can discover
+              construct libraries to help them build their applications. You can
+              find construct libraries in TypeScript, Python, Java and .NET (Go
+              is coming soon!), browse their developer guides and API
+              references, and explore code samples in all the programming
+              language that the package supports.
             </Text>
           </FAQItem>
 

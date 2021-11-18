@@ -8,6 +8,7 @@ import {
 import type { FunctionComponent } from "react";
 import { FAQ, FAQHeading, FAQItem, FAQLink } from "../../components/FAQ";
 import { Page } from "../../components/Page";
+import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
 
 export const Contribute: FunctionComponent = () => (
   <Page
@@ -43,21 +44,23 @@ export const Contribute: FunctionComponent = () => (
 
           <Text>
             Construct Hub continuously monitors the NPM Registry. Packages that
-            meet the above requirements appear in Construct Hub within 5-10
+            meet the above requirements appear in Construct Hub in about 5-10
             minutes. If your package does not appear in Construct Hub, but meets
-            these requirements, please file an issue against our GitHub
-            repository.
+            these requirements, please file an issue against our{" "}
+            <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
+              GitHub repository.
+            </FAQLink>
           </Text>
 
           <Text>
             The community has provided some great resources about publishing
             construct libraries that meet Construct Hub requirements. For
-            example, see “A Beginner&apos;s Guide to Create AWS CDK Construct
-            Library with{" "}
+            example, see{" "}
             <FAQLink href="https://dev.to/aws-builders/a-beginner-s-guide-to-create-aws-cdk-construct-library-with-projen-5eh4">
-              projen
-            </FAQLink>
-            ” by <FAQLink href="https://hayao-k.dev/">hayao-k</FAQLink>.
+              “A Beginner&apos;s Guide to Create AWS CDK ConstructLibrary with{" "}
+              projen”
+            </FAQLink>{" "}
+            by <FAQLink href="https://hayao-k.dev/">hayao-k</FAQLink>.
           </Text>
 
           <Text>
@@ -134,9 +137,9 @@ export const Contribute: FunctionComponent = () => (
             </ListItem>
 
             <ListItem>
-              <strong>Amazon Partner Network (APN) badge.</strong> If you’re an
-              AWS partner and you are publishing a library for your service,
-              please reach out to us and we will be happy to add a badge to your
+              <strong>AWS Partner Network (APN) badge.</strong> If you’re an AWS
+              partner and you are publishing a library for your service, please
+              reach out to us and we will be happy to add a badge to your
               libraries with your company’s name.
             </ListItem>
 
@@ -160,7 +163,7 @@ export const Contribute: FunctionComponent = () => (
               </strong>{" "}
               Describe technologies and services the construct is integrating
               with by using their official names. For example, don’t mention
-              ‘eks’ or ‘EKS’ but ‘AWS EKS’; Don’t mention ‘vue’ or ‘Vue’ but
+              ‘eks’ or ‘EKS’ but Amazon EKS’; Don’t mention ‘vue’ or ‘Vue’ but
               ‘Vue.js’.
             </ListItem>
           </OrderedList>
@@ -252,7 +255,7 @@ export const Contribute: FunctionComponent = () => (
             permissive open-source license and a CDK keyword: aws-cdk, cdk8s, or
             cdktf. If you believe your package qualifies, but it still does not
             appear in Construct Hub, please raise an issue{" "}
-            <FAQLink href="https://github.com/cdklabs/construct-hub/issues/new">
+            <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
               here
             </FAQLink>
             .
@@ -262,7 +265,7 @@ export const Contribute: FunctionComponent = () => (
         <FAQItem question="Can I update my package after it has been displayed?">
           <Text>
             Yes, you can and should! After you publish a new valid version to
-            the public NPM registry, it should appear on Construct Hub within
+            the public NPM registry, it should appear on Construct Hub in about
             5-10 minutes.
           </Text>
         </FAQItem>
