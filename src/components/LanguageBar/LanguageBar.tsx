@@ -1,6 +1,7 @@
 import { IconButton, Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { useHistory } from "react-router-dom";
+import { getFullPackageName } from "../../api/package/util";
 import {
   Language,
   TEMP_SUPPORTED_LANGUAGES,
@@ -21,7 +22,7 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
   targetLanguages,
   selectedLanguage,
 }) => {
-  const { name, version } = usePackageState();
+  const { name, scope, version } = usePackageState();
   const { push } = useHistory();
   return (
     <Stack
@@ -46,7 +47,7 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
             // differs between languages.
             push(
               getPackagePath({
-                name,
+                name: getFullPackageName(name, scope),
                 version,
                 language,
               })
