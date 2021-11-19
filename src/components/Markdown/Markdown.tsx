@@ -80,7 +80,11 @@ const GITHUB_REPO_REGEX =
  * @returns the `owner` and `repo` for the configured repository, if it looks
  *          like a GitHub repository URL.
  */
-const parseGitHubRepository = ({ type, url }: Assembly["repository"]) => {
+const parseGitHubRepository = ({
+  type,
+  url,
+  directory,
+}: Assembly["repository"]) => {
   if (type !== "git") {
     return undefined;
   }
@@ -92,7 +96,7 @@ const parseGitHubRepository = ({ type, url }: Assembly["repository"]) => {
   }
 
   const [, owner, repo] = match;
-  return { owner, repo };
+  return { owner, repo, directory };
 };
 
 export const Markdown: FunctionComponent<{
@@ -120,7 +124,8 @@ export const Markdown: FunctionComponent<{
 
           const owner = repoConfig.owner;
           const repo = repoConfig.repo.replace(/\.git$/, "");
-          return `https://${githubPrefix}/${owner}/${repo}/${githubSuffix}/${url}`;
+          const subdir = repoConfig.directory ? `${repoConfig.directory}/` : "";
+          return `https://${githubPrefix}/${owner}/${repo}/${githubSuffix}/${subdir}${url}`;
         };
 
   return (
