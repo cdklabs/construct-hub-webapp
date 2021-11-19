@@ -7,6 +7,7 @@ import {
   InputRightElement,
   useDisclosure,
   Button,
+  IconButton,
 } from "@chakra-ui/react";
 import {
   useContext,
@@ -161,7 +162,13 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
             </InputRightElement>
           ) : (
             <InputRightElement>
-              <SearchIcon data-testid={testIds.searchIcon} />
+              <IconButton
+                aria-label="Run search"
+                data-testid={testIds.searchIcon}
+                icon={<SearchIcon />}
+                type="submit"
+                variant="ghost"
+              ></IconButton>
             </InputRightElement>
           )}
         </InputGroup>

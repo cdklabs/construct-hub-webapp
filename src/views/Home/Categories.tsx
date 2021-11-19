@@ -11,14 +11,24 @@ import testIds from "./testIds";
  * Categories used if config does not have specific categories
  */
 const DEFAULT_CATEGORIES: Category[] = [
-  { title: "Monitoring", url: getSearchPath({ query: "monitoring" }) },
-  { title: "Kubernetes", url: getSearchPath({ query: "kubernetes" }) },
-  { title: "Serverless", url: getSearchPath({ query: "serverless" }) },
-  { title: "Databases", url: getSearchPath({ query: "databases" }) },
-  { title: "Utilities", url: getSearchPath({ query: "utilities" }) },
-  { title: "Deployment", url: getSearchPath({ query: "deployment" }) },
-  { title: "Websites", url: getSearchPath({ query: "web" }) },
-  { title: "Security", url: getSearchPath({ query: "security" }) },
+  { title: "Monitoring", url: getSearchPath({ keywords: ["monitoring"] }) },
+  { title: "Containers", url: getSearchPath({ keywords: ["containers"] }) },
+  { title: "Serverless", url: getSearchPath({ keywords: ["serverless"] }) },
+  { title: "Databases", url: getSearchPath({ keywords: ["databases"] }) },
+  { title: "Utilities", url: getSearchPath({ keywords: ["utilities"] }) },
+  { title: "Deployment", url: getSearchPath({ keywords: ["deployment"] }) },
+  { title: "Websites", url: getSearchPath({ keywords: ["web"] }) },
+  { title: "Security", url: getSearchPath({ keywords: ["security"] }) },
+  { title: "Compliance", url: getSearchPath({ keywords: ["compliance"] }) },
+  { title: "Network", url: getSearchPath({ keywords: ["network"] }) },
+  {
+    title: "Artificial Intelligence (AI)",
+    url: getSearchPath({ keywords: ["artificial intelligence (ai)"] }),
+  },
+  {
+    title: "Cloud Services Integrations",
+    url: getSearchPath({ keywords: ["cloud services integrations"] }),
+  },
 ];
 
 export const Categories: FunctionComponent = () => {

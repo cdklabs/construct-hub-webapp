@@ -1,6 +1,12 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
-import { Route, Switch, useRouteMatch, useLocation } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  useRouteMatch,
+  useLocation,
+  Redirect,
+} from "react-router-dom";
 import { NavTree } from "../../components/NavTree";
 import { ChooseSubmodule } from "./ChooseSubmodule";
 import { PackageReadme } from "./PackageReadme";
@@ -38,7 +44,7 @@ export const PackageDocs: FunctionComponent = () => {
   const { path } = useRouteMatch();
   const { menuItems } = usePackageState();
 
-  const { hash, pathname } = useLocation();
+  const { hash, pathname, search } = useLocation();
 
   useEffect(() => {
     if (hash) {
@@ -90,6 +96,11 @@ export const PackageDocs: FunctionComponent = () => {
         }}
       >
         <Switch>
+          <Redirect
+            exact
+            from={`${path}/${API_URL_RESOURCE}`}
+            to={{ pathname: path, search }}
+          />
           <Route exact path={path}>
             <PackageReadme />
           </Route>

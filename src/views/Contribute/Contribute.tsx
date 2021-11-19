@@ -25,7 +25,7 @@ export const Contribute: FunctionComponent = () => (
         <FAQItem question="How can I add my construct to Construct Hub?">
           <Text>
             Constructs intended for Construct Hub must be published to the{" "}
-            <FAQLink href="https://www.npmjs.com/">NPM registry</FAQLink> under
+            <FAQLink href="https://www.npmjs.com/">npm Registry</FAQLink> under
             a permissive license (such as Apache, BSD, EPL, MPL-2.0, ISC and
             CDDL or MIT) and annotated with a keyword recognized by Construct
             Hub (awscdk, cdk8s, or cdktf).
@@ -43,7 +43,7 @@ export const Contribute: FunctionComponent = () => (
           </Text>
 
           <Text>
-            Construct Hub continuously monitors the NPM Registry. Packages that
+            Construct Hub continuously monitors the npm Registry. Packages that
             meet the above requirements appear in Construct Hub in about 5-10
             minutes. If your package does not appear in Construct Hub, but meets
             these requirements, please file an issue against our{" "}
@@ -138,7 +138,7 @@ export const Contribute: FunctionComponent = () => (
 
             <ListItem>
               <strong>AWS Partner Network (APN) badge.</strong> If you’re an AWS
-              partner and you are publishing a library for your service, please
+              partner and you are publishing a library for your offering, please
               reach out to us and we will be happy to add a badge to your
               libraries with your company’s name.
             </ListItem>
@@ -154,17 +154,6 @@ export const Contribute: FunctionComponent = () => (
               reference and transliterate code samples. All you need to do is to
               follow the instructions under *“Q: How can I add my construct to
               Construct Hub?”.*
-            </ListItem>
-
-            <ListItem>
-              <strong>
-                Mention official names of technologies and services your’e using
-                in your documentation.
-              </strong>{" "}
-              Describe technologies and services the construct is integrating
-              with by using their official names. For example, don’t mention
-              ‘eks’ or ‘EKS’ but Amazon EKS’; Don’t mention ‘vue’ or ‘Vue’ but
-              ‘Vue.js’.
             </ListItem>
           </OrderedList>
         </FAQItem>
@@ -224,8 +213,8 @@ export const Contribute: FunctionComponent = () => (
               <strong>License and support.</strong> Include a “License” and
               “Contributing” sections that invite users to contribute via links
               to your source code repository and issue tracker. (Construct Hub
-              provides these links in your library’s package page, but it’s
-              convenient to have them in the README too.)
+              provides “License” and “Provide Feedback” in your library’s
+              package page, but it’s convenient to have them in the README too.)
             </ListItem>
 
             <ListItem>
@@ -251,7 +240,7 @@ export const Contribute: FunctionComponent = () => (
         <FAQItem question="Why isn’t my package displayed on Construct Hub?">
           <Text>
             Construct Hub includes publicly-available constructs that are
-            JSII-compatible and that were published to the NPM registry with a
+            JSII-compatible and that were published to the npm Registry with a
             permissive open-source license and a CDK keyword: aws-cdk, cdk8s, or
             cdktf. If you believe your package qualifies, but it still does not
             appear in Construct Hub, please raise an issue{" "}
@@ -265,7 +254,7 @@ export const Contribute: FunctionComponent = () => (
         <FAQItem question="Can I update my package after it has been displayed?">
           <Text>
             Yes, you can and should! After you publish a new valid version to
-            the public NPM registry, it should appear on Construct Hub in about
+            the public npm Registry, it should appear on Construct Hub in about
             5-10 minutes.
           </Text>
         </FAQItem>

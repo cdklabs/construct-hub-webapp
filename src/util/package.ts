@@ -1,9 +1,7 @@
 import { PackageHighlight, PackageTagConfig } from "../api/config";
 import { KEYWORD_IGNORE_LIST } from "../constants/keywords";
 
-export interface TagObject extends PackageTagConfig {
-  isKeyword?: boolean;
-}
+export interface TagObject extends PackageTagConfig {}
 
 /**
  * Reduces package tags to only return highlight tags
@@ -35,7 +33,7 @@ export const mapPackageTags = (
     })
     .map((tag) => ({
       ...tag,
-      isKeyword: false,
+      id: tag.keyword?.label!,
     }));
 };
 
@@ -49,7 +47,6 @@ export const mapPackageKeywords = (keywords?: string[]): TagObject[] => {
     .filter((label) => Boolean(label) && !KEYWORD_IGNORE_LIST.has(label))
     .map((label) => ({
       id: label,
-      isKeyword: true,
       keyword: {
         label,
       },

@@ -21,6 +21,7 @@ export const KeywordsFilter: FunctionComponent = () => {
       .sort(([, count1], [, count2]) => {
         return count1 < count2 ? 1 : -1;
       })
+      .filter(([keyword]) => !keywords.includes(keyword))
       .map(([keyword]) => ({
         display: keyword,
         value: keyword,
