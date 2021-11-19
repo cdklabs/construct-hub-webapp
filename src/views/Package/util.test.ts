@@ -229,6 +229,9 @@ describe("parseMarkdownStructure", () => {
   it("parses out menu items (embedded link)", () => {
     const markdown = `
 # Title with [embedded][embedded-href] [links](links-href)
+
+# Other Title
+
 `;
 
     const { menuItems } = parseMarkdownStructure(markdown, packageData);
@@ -247,6 +250,13 @@ describe("parseMarkdownStructure", () => {
             id: "title-with-embedded-links",
             title: "Title with embedded links",
             path: `${baseHashPath}#title-with-embedded-links`,
+            children: [],
+          },
+          {
+            level: 1,
+            id: "other-title",
+            title: "Other Title",
+            path: `${baseHashPath}#other-title`,
             children: [],
           },
         ],
