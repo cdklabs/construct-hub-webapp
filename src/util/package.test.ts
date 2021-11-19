@@ -65,14 +65,12 @@ describe("mapPackageKeywords", () => {
       Array [
         Object {
           "id": "Keyword 1",
-          "isKeyword": true,
           "keyword": Object {
             "label": "Keyword 1",
           },
         },
         Object {
           "id": "Keyword 2",
-          "isKeyword": true,
           "keyword": Object {
             "label": "Keyword 2",
           },
@@ -105,16 +103,14 @@ describe("mapPackageTags", () => {
     expect(mapPackageTags(PACKAGE_TAGS)).toMatchInlineSnapshot(`
       Array [
         Object {
-          "id": "tag1",
-          "isKeyword": false,
+          "id": "Tag 1",
           "keyword": Object {
             "color": "red",
             "label": "Tag 1",
           },
         },
         Object {
-          "id": "tag2",
-          "isKeyword": false,
+          "id": "Tag 2",
           "keyword": Object {
             "label": "Tag 2",
           },
@@ -150,30 +146,26 @@ describe("tagObjectsFrom", () => {
     ).toMatchInlineSnapshot(`
       Array [
         Object {
-          "id": "tag1",
-          "isKeyword": false,
+          "id": "Tag 1",
           "keyword": Object {
             "color": "red",
             "label": "Tag 1",
           },
         },
         Object {
-          "id": "tag2",
-          "isKeyword": false,
+          "id": "Tag 2",
           "keyword": Object {
             "label": "Tag 2",
           },
         },
         Object {
           "id": "Keyword 1",
-          "isKeyword": true,
           "keyword": Object {
             "label": "Keyword 1",
           },
         },
         Object {
           "id": "Keyword 2",
-          "isKeyword": true,
           "keyword": Object {
             "label": "Keyword 2",
           },
@@ -187,16 +179,14 @@ describe("tagObjectsFrom", () => {
       .toMatchInlineSnapshot(`
       Array [
         Object {
-          "id": "tag1",
-          "isKeyword": false,
+          "id": "Tag 1",
           "keyword": Object {
             "color": "red",
             "label": "Tag 1",
           },
         },
         Object {
-          "id": "tag2",
-          "isKeyword": false,
+          "id": "Tag 2",
           "keyword": Object {
             "label": "Tag 2",
           },
@@ -210,14 +200,12 @@ describe("tagObjectsFrom", () => {
       Array [
         Object {
           "id": "Keyword 1",
-          "isKeyword": true,
           "keyword": Object {
             "label": "Keyword 1",
           },
         },
         Object {
           "id": "Keyword 2",
-          "isKeyword": true,
           "keyword": Object {
             "label": "Keyword 2",
           },
@@ -232,8 +220,7 @@ describe("tagObjectsFrom", () => {
     ).toMatchInlineSnapshot(`
       Array [
         Object {
-          "id": "tag1",
-          "isKeyword": false,
+          "id": "Tag 1",
           "keyword": Object {
             "color": "red",
             "label": "Tag 1",
@@ -241,7 +228,6 @@ describe("tagObjectsFrom", () => {
         },
         Object {
           "id": "Keyword 1",
-          "isKeyword": true,
           "keyword": Object {
             "label": "Keyword 1",
           },
@@ -255,8 +241,7 @@ describe("tagObjectsFrom", () => {
       .toMatchInlineSnapshot(`
       Array [
         Object {
-          "id": "tag1",
-          "isKeyword": false,
+          "id": "Tag 1",
           "keyword": Object {
             "color": "red",
             "label": "Tag 1",
