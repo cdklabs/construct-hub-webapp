@@ -110,7 +110,7 @@ describe("Home (Redesign / WIP)", () => {
 
   describe("Featured Section", () => {
     it("has a header and 4 cards", () => {
-      cy.visit("/");
+      cy.visit("/?ff-fullSite");
       cy.getByDataTest(home.featuredContainer)
         .should("be.visible")
         .within(() => {
@@ -127,7 +127,7 @@ describe("Home (Redesign / WIP)", () => {
     });
 
     it("shows recently updated if no content is featured", () => {
-      cy.visitWithConfig("/", {
+      cy.visitWithConfig("/?ff-fullSite", {
         featuredPackages: undefined,
       });
 
@@ -171,7 +171,7 @@ describe("Home (Redesign / WIP)", () => {
         ],
       };
 
-      cy.visitWithConfig("/", {
+      cy.visitWithConfig("/?ff-fullSite", {
         featuredPackages,
       });
 
@@ -193,6 +193,8 @@ describe("Home (Redesign / WIP)", () => {
 
   describe("CDK Type Section", () => {
     it("has heading, description, 3 tabs, 4 cards, and a see all button", () => {
+      cy.visit("/?ff-fullSite");
+
       cy.getByDataTest(home.cdkTypeSection).within(() => {
         cy.getByDataTest(home.cdkTypeSectionHeading).should("be.visible");
         cy.getByDataTest(home.cdkTypeSectionDescription).should("be.visible");
@@ -213,6 +215,8 @@ describe("Home (Redesign / WIP)", () => {
     });
 
     it("reveals different cards for respective tabs", () => {
+      cy.visit("/?ff-fullSite");
+
       cy.getByDataTest(home.cdkTypeSection).within(() => {
         cy.getByDataTest(home.cdkTypeTab).each((tab, index) => {
           const tabName: string = ["Community", "AWS", "HashiCorp"][index];
@@ -230,7 +234,10 @@ describe("Home (Redesign / WIP)", () => {
         });
       });
     });
+
     it("has a see all button which opens the correct search url", () => {
+      cy.visit("/?ff-fullSite");
+
       const testSeeAll = (tagName: string, index: number) => {
         cy.getByDataTest(home.cdkTypeTab).eq(index).click();
 
