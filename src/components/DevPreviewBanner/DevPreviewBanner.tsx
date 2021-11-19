@@ -8,18 +8,25 @@ import {
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
+import { useConfig } from "../../contexts/Config";
 import { Card } from "../Card";
 import { ExternalLink } from "../ExternalLink";
 
 const STORAGE_KEY = "showing-dev-preview-banner";
 
 export const DevPreviewBanner: FunctionComponent = () => {
+  const { data: config } = useConfig();
   const { isOpen, onClose } = useDisclosure({
     defaultIsOpen: JSON.parse(
       window.sessionStorage.getItem(STORAGE_KEY) ?? "true"
     ),
     onClose: () => window.sessionStorage.setItem(STORAGE_KEY, "false"),
   });
+
+  // we keep the box because otherwise layout breaks
+  if (config?.featureFlags?.fullSite) {
+    return <Box h="max-content" />;
+  }
 
   return (
     <Box h="max-content">
