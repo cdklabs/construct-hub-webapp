@@ -2,6 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { DevPreviewBanner } from "../../components/DevPreviewBanner";
 import { Page } from "../../components/Page";
+import { useConfig } from "../../contexts/Config";
 import { Categories } from "./Categories";
 import { CDKTypeTabs } from "./CDKTypeTabs";
 import { Featured } from "./Featured";
@@ -11,6 +12,8 @@ import { Info } from "./Info";
 import testIds from "./testIds";
 
 export const Home: FunctionComponent = () => {
+  const { data: config } = useConfig();
+  const fullSite = config?.featureFlags?.fullSite ?? false;
   return (
     <Page
       meta={{
@@ -32,11 +35,11 @@ export const Home: FunctionComponent = () => {
 
         <Info />
 
-        <Categories />
+        {fullSite ? <Categories /> : <></>}
 
-        <Featured />
+        {fullSite ? <CDKTypeTabs /> : <></>}
 
-        <CDKTypeTabs />
+        {fullSite ? <Featured /> : <></>}
       </GradientContainer>
     </Page>
   );

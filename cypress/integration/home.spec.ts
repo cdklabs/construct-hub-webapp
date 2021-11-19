@@ -50,9 +50,7 @@ describe("Home (Redesign / WIP)", () => {
             .should("have.length", 2)
             .each((el) => {
               cy.wrap(el).within(() => {
-                cy.getByDataTest(home.infoSectionHeading).should(
-                  "be.visible"
-                );
+                cy.getByDataTest(home.infoSectionHeading).should("be.visible");
                 cy.getByDataTest(home.infoSectionDescription).should(
                   "be.visible"
                 );
@@ -112,7 +110,7 @@ describe("Home (Redesign / WIP)", () => {
 
   describe("Featured Section", () => {
     it("has a header and 4 cards", () => {
-      cy.visit("/");
+      cy.visit("/?ff-fullSite");
       cy.getByDataTest(home.featuredContainer)
         .should("be.visible")
         .within(() => {
@@ -129,7 +127,7 @@ describe("Home (Redesign / WIP)", () => {
     });
 
     it("shows recently updated if no content is featured", () => {
-      cy.visitWithConfig("/", {
+      cy.visitWithConfig("/?ff-fullSite", {
         featuredPackages: undefined,
       });
 
@@ -173,7 +171,7 @@ describe("Home (Redesign / WIP)", () => {
         ],
       };
 
-      cy.visitWithConfig("/", {
+      cy.visitWithConfig("/?ff-fullSite", {
         featuredPackages,
       });
 
@@ -194,16 +192,14 @@ describe("Home (Redesign / WIP)", () => {
   });
 
   describe("CDK Type Section", () => {
-    it("has heading, description, 4 tabs, 4 cards, and a see all button", () => {
-      cy.getByDataTest(home.cdkTypeSection).within(() => {
-        cy.getByDataTest(home.cdkTypeSectionHeading).should(
-          "be.visible"
-        );
-        cy.getByDataTest(home.cdkTypeSectionDescription).should(
-          "be.visible"
-        );
+    it("has heading, description, 3 tabs, 4 cards, and a see all button", () => {
+      cy.visit("/?ff-fullSite");
 
-        cy.getByDataTest(home.cdkTypeTab).should("have.length", 4);
+      cy.getByDataTest(home.cdkTypeSection).within(() => {
+        cy.getByDataTest(home.cdkTypeSectionHeading).should("be.visible");
+        cy.getByDataTest(home.cdkTypeSectionDescription).should("be.visible");
+
+        cy.getByDataTest(home.cdkTypeTab).should("have.length", 3);
 
         cy.getByDataTest(home.packageGrid)
           .first()
@@ -219,20 +215,15 @@ describe("Home (Redesign / WIP)", () => {
     });
 
     it("reveals different cards for respective tabs", () => {
+      cy.visit("/?ff-fullSite");
+
       cy.getByDataTest(home.cdkTypeSection).within(() => {
         cy.getByDataTest(home.cdkTypeTab).each((tab, index) => {
-          const cdkType: CDKType | undefined = [
-            undefined,
-            CDKType.awscdk,
-            CDKType.cdk8s,
-            CDKType.cdktf,
-          ][index];
+          const tabName: string = ["Community", "AWS", "HashiCorp"][index];
 
           cy.wrap(tab).click();
 
-          if (cdkType) {
-            cy.wrap(tab).should("have.attr", "data-value", cdkType);
-          }
+          cy.wrap(tab).should("have.attr", "data-value", tabName);
 
           // Verify current tab's package grid is visible and others are not
           cy.getByDataTest(home.packageGrid).each((grid, gridIndex) => {
@@ -243,8 +234,11 @@ describe("Home (Redesign / WIP)", () => {
         });
       });
     });
+
     it("has a see all button which opens the correct search url", () => {
-      const testSeeAll = (cdkType: CDKType | undefined, index: number) => {
+      cy.visit("/?ff-fullSite");
+
+      const testSeeAll = (tagName: string, index: number) => {
         cy.getByDataTest(home.cdkTypeTab).eq(index).click();
 
         cy.getByDataTest(home.cdkTypeSeeAllButton)
@@ -253,17 +247,13 @@ describe("Home (Redesign / WIP)", () => {
             "have.attr",
             "href",
             getSearchPath({
-              cdkType,
-              sort: cdkType
-                ? CatalogSearchSort.DownloadsDesc
-                : CatalogSearchSort.PublishDateDesc,
+              tags: [tagName],
+              sort: CatalogSearchSort.DownloadsDesc,
             })
           );
       };
 
-      [undefined, CDKType.awscdk, CDKType.cdk8s, CDKType.cdktf].forEach(
-        testSeeAll
-      );
+      ["community", "aws-official", "hashicorp-official"].forEach(testSeeAll);
     });
   });
 });

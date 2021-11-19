@@ -21,8 +21,7 @@ export const Featured: FunctionComponent = () => {
 
   return (
     <Flex
-      bg="white"
-      color="blue.800"
+      color="white"
       data-testid={testIds.featuredContainer}
       direction="column"
       px={SECTION_PADDING.X}
