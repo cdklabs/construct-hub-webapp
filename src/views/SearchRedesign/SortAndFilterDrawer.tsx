@@ -36,8 +36,8 @@ export const SortAndFilterDrawer: FunctionComponent = () => {
       <Drawer {...drawer} placement="bottom">
         <DrawerOverlay />
 
-        <DrawerContent color="blue.800">
-          <DrawerHeader>Sorting and Filters</DrawerHeader>
+        <DrawerContent color="blue.800" maxH="full">
+          <DrawerHeader borderBottom="base">Sorting and Filters</DrawerHeader>
 
           <DrawerCloseButton />
 
