@@ -74,7 +74,7 @@ export const Info: FunctionComponent = () => (
       <Divider display={{ lg: "none" }} mx={10} w="auto" />
 
       <InfoSection
-        description="Find documentation, API reference, and code samples in CDK-supported languages, such as Java, C#, TypeScript, and Python. Define, test, and deploy cloud infrastructure using loops, conditionals, unit testing, and data structures."
+        description="Find documentation, API reference, and code samples in CDK-supported languages, such as Java, .NET, TypeScript, and Python. Define, test, and deploy cloud infrastructure using loops, conditionals, unit testing, and data structures."
         title="Support across languages"
       >
         <Flex align="center" pt={4} sx={{ gap: "4rem" }} wrap="wrap">
