@@ -16,13 +16,11 @@ export const Tags: FunctionComponent = () => {
 
   return (
     <>
-      {tags
-        .slice(0, 10)
-        .map(({ id, isKeyword, keyword: { label, color } = {} }) => (
-          <PackageTag isKeyword={isKeyword} key={id} value={id} variant={color}>
-            {label}
-          </PackageTag>
-        ))}
+      {tags.slice(0, 10).map(({ id, keyword: { label, color } = {} }) => (
+        <PackageTag key={id} value={id} variant={color}>
+          {label}
+        </PackageTag>
+      ))}
     </>
   );
 };

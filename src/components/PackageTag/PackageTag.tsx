@@ -4,7 +4,6 @@ import { getSearchPath } from "../../util/url";
 import { NavLink } from "../NavLink";
 
 export interface PackageTagProps extends TagProps {
-  isKeyword?: boolean;
   value: string;
   label?: string;
   zIndex?: string | number;
@@ -12,18 +11,15 @@ export interface PackageTagProps extends TagProps {
 
 export const PackageTag: FunctionComponent<PackageTagProps> = ({
   children,
-  isKeyword = false,
   value,
   label = value,
   zIndex,
   ...tagProps
 }) => {
-  const prop = isKeyword ? "keywords" : "tags";
-
   return (
     <NavLink
       aria-label={`Tag: ${label}`}
-      to={getSearchPath({ [prop]: [value] })}
+      to={getSearchPath({ keywords: [value] })}
       zIndex={zIndex}
     >
       <Tag
