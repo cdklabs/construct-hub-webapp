@@ -71,8 +71,8 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         wrap="wrap"
       >
         <CDKTypeBadge {...cdkTypeProps} />
-        {tags.map(({ id, isKeyword, keyword: { label, color } = {} }) => (
-          <PackageTag isKeyword={isKeyword} key={id} value={id} variant={color}>
+        {tags.map(({ id, keyword: { label, color } = {} }) => (
+          <PackageTag key={id} value={id} variant={color}>
             {label}
           </PackageTag>
         ))}
