@@ -9,6 +9,27 @@ interface HeadingResolverProps {
   children: ReactNode;
 }
 
+/**
+ * Extracts the string leaves from the provided ReactNode.
+ *
+ * @param node the node from which string data should be fetched.
+ *
+ * @returns the visible string content from the node.
+ */
+const stringContent = (node: ReactNode): string => {
+  return Children.toArray(node)
+    .reduce((acc: string, child) => {
+      if (typeof child === "string") {
+        return acc + child;
+      }
+      if (typeof child === "object" && "props" in child) {
+        return acc + stringContent(child.props.children);
+      }
+      return acc;
+    }, "")
+    .trim();
+};
+
 export const Headings: FunctionComponent<HeadingResolverProps> = ({
   level,
   children,
@@ -26,16 +47,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
   const dataElement = doc.querySelector(
     "span[data-heading-title][data-heading-id]"
   ) as HTMLElement;
-  const title =
-    dataElement?.dataset.headingTitle ??
-    Children.toArray(children)
-      .reduce((accum: string, child): string => {
-        if (typeof child === "string") {
-          return `${accum}${child}`;
-        }
-        return accum;
-      }, "")
-      .trim();
+  const title = dataElement?.dataset.headingTitle ?? stringContent(children);
 
   const id = dataElement?.dataset.headingId ?? sanitize(title);
 

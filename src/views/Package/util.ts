@@ -83,8 +83,17 @@ const getHeaderAttributes = (hdr: string): { id: string; title: string } => {
 
   // Use raw title for items that don't specify data attributes, like readme
   // headers.
-  const [_, rawTitle] = /^#*\s*([^<]+?)\s*(?:<|$)/.exec(hdr) ?? [];
-  const wEmoji = rawTitle.replace(
+  const [_, rawTitle] =
+    /^#*\s*(?:<a\s.*?(?:\/>|<\/a>))?\s*([^<]+?)\s*(?:<|$)/.exec(hdr) ?? [
+      hdr,
+      hdr,
+    ];
+  const noLinkTitle = rawTitle.replace(
+    // Matches [label](text) and [label][text], replaces with just label.
+    /\[([^\]]+)\](?:\([^)]+\)|\[[^\]]+\])/g,
+    "$1"
+  );
+  const wEmoji = noLinkTitle.replace(
     /:\+1:|:-1:|:[\w-]+:/g,
     (match: string): string => {
       return emoji.get(match) ?? match;
