@@ -22,7 +22,7 @@ export const Hero: FunctionComponent = () => {
       zIndex="1"
     >
       <Heading as="h1" data-testid={testIds.heroHeader} size="xl">
-        Build cloud infrastructure faster
+        Simplify cloud development with constructs
       </Heading>
       <Heading
         as="h2"
@@ -31,8 +31,7 @@ export const Hero: FunctionComponent = () => {
         mt={4}
         size="md"
       >
-        Construct Hub is a registry for open-source cloud development kit (CDK)
-        libraries.
+        Find and use open-source Cloud Development Kit (CDK) libraries
       </Heading>
       <Box color="initial" maxW="36rem" mt={8} mx="auto" w="full">
         <SearchBar hasButton>

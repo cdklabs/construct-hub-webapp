@@ -34,9 +34,9 @@ export const Home: FunctionComponent = () => {
 
         <Categories />
 
-        <Featured />
-
         <CDKTypeTabs />
+
+        <Featured />
       </GradientContainer>
     </Page>
   );
