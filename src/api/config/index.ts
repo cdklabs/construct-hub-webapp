@@ -113,13 +113,14 @@ export const fetchConfig = async (): Promise<Config> => {
   const response = await fetch(API_PATHS.CONFIG);
 
   if (!response.ok) {
-    console.log("Failed to fetch application config, using default values");
+    console.error(response.statusText);
+    console.warn("Failed to fetch application config, using default values");
     return defaultConfig;
   }
 
   return response.json().catch((err) => {
     console.error(err);
-    console.log("Invalid config response, using default values");
+    console.warn("Invalid config response, using default values");
     return defaultConfig;
   });
 };

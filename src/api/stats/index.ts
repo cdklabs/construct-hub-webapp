@@ -23,13 +23,14 @@ export const fetchStats = async (): Promise<PackageStats> => {
   const response = await fetch(API_PATHS.STATS);
 
   if (!response.ok) {
-    console.error("Could not retrieve package stats. Using empty stats.");
+    console.error(response.statusText);
+    console.warn("Could not retrieve package stats. Using empty stats.");
     return defaultStats;
   }
 
   return response.json().catch((err) => {
     console.error(err);
-    console.error("Error in package stats response. Using empty stats.");
+    console.warn("Error in package stats response. Using empty stats.");
     return defaultStats;
   });
 };
