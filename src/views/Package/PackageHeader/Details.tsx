@@ -202,7 +202,7 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
             <Stack spacing={2}>{showWithCollapse}</Stack>
           </Collapse>
           <ToggleButton
-            closeText={`See less details (${alwaysShow.length})`}
+            closeText={`See fewer details (${alwaysShow.length})`}
             fontSize="inherit"
             isOpen={collapse.isOpen}
             onClick={collapse.onToggle}
