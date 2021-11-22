@@ -27,10 +27,10 @@ export const FAQPage: FunctionComponent = () => (
           <FAQItem question="How can I add my construct to Construct Hub?">
             <Text>
               Constructs intended for Construct Hub must be published to the{" "}
-              <FAQLink href="https://www.npmjs.com/">NPM registry</FAQLink>{" "}
-              under a permissive license (such as Apache, BSD, EPL, MPL-2.0, ISC
-              and CDDL or MIT) and annotated with a keyword recognized by
-              Construct Hub (awscdk, cdk8s, or cdktf).
+              <FAQLink href="https://www.npmjs.com/">npm Registry</FAQLink>{" "}
+              under Apache, BSD, EPL, MPL-2.0, ISC and CDDL or MIT open source
+              licenses and annotated with a keyword recognized by Construct Hub
+              (awscdk, cdk8s, or cdktf).
             </Text>
 
             <Text>
@@ -45,22 +45,24 @@ export const FAQPage: FunctionComponent = () => (
             </Text>
 
             <Text>
-              Construct Hub continuously monitors the NPM Registry. Packages
-              that meet the above requirements appear in Construct Hub within
+              Construct Hub continuously monitors the npm Registry. Packages
+              that meet the above requirements appear in Construct Hub in about
               5-10 minutes. If your package does not appear in Construct Hub,
-              but meets these requirements, please file an issue against our
-              GitHub repository.
+              but meets these requirements, please file an issue against our{" "}
+              <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
+                GitHub repository.
+              </FAQLink>
             </Text>
 
             <Text>
               The community has provided some great resources about publishing
               construct libraries that meet Construct Hub requirements. For
-              example, see “A Beginner&apos;s Guide to Create AWS CDK Construct
-              Library with{" "}
+              example, see{" "}
               <FAQLink href="https://dev.to/aws-builders/a-beginner-s-guide-to-create-aws-cdk-construct-library-with-projen-5eh4">
-                projen
-              </FAQLink>
-              ” by <FAQLink href="https://hayao-k.dev/">hayao-k</FAQLink>.
+                “A Beginner&apos;s Guide to Create AWS CDK ConstructLibrary with{" "}
+                projen”
+              </FAQLink>{" "}
+              by <FAQLink href="https://hayao-k.dev/">hayao-k</FAQLink>.
             </Text>
 
             <Text>
@@ -267,7 +269,7 @@ export const FAQPage: FunctionComponent = () => (
           <FAQItem question="Why isn’t my package displayed on Construct Hub?">
             <Text>
               Construct Hub includes publicly-available constructs that are
-              JSII-compatible and that were published to the NPM registry with a
+              JSII-compatible and that were published to the npm Registry with a
               permissive open-source license and a CDK keyword: aws-cdk, cdk8s,
               or cdktf. If you believe your package qualifies, but it still does
               not appear in Construct Hub, please raise an issue{" "}
@@ -281,8 +283,8 @@ export const FAQPage: FunctionComponent = () => (
           <FAQItem question="Can I update my package after it has been displayed?">
             <Text>
               Yes, you can and should! After you publish a new valid version to
-              the public NPM registry, it should appear on Construct Hub within
-              5-10 minutes.
+              the public npm Registry, it should appear on Construct Hub in
+              about 5-10 minutes.
             </Text>
           </FAQItem>
 

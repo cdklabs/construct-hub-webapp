@@ -26,9 +26,9 @@ export const Contribute: FunctionComponent = () => (
           <Text>
             Constructs intended for Construct Hub must be published to the{" "}
             <FAQLink href="https://www.npmjs.com/">npm Registry</FAQLink> under
-            a permissive license (such as Apache, BSD, EPL, MPL-2.0, ISC and
-            CDDL or MIT) and annotated with a keyword recognized by Construct
-            Hub (awscdk, cdk8s, or cdktf).
+            Apache, BSD, EPL, MPL-2.0, ISC and CDDL or MIT open source licenses
+            and annotated with a keyword recognized by Construct Hub (awscdk,
+            cdk8s, or cdktf).
           </Text>
 
           <Text>
