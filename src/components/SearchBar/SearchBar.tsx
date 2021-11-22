@@ -18,8 +18,8 @@ import {
   ChangeEventHandler,
   FormEventHandler,
 } from "react";
-import { useCatalog } from "../../contexts/Catalog";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
+import { useSearch } from "../../hooks/useSearch";
 import { Form } from "../Form";
 import testIds from "./testIds";
 
@@ -74,10 +74,9 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
   const disclosure = useDisclosure();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const searchAPI = useCatalogSearch();
-  const catalog = useCatalog();
+  const catalog = useSearch();
 
-  const roundedCatalogLength =
-    Math.floor((catalog?.data?.packages?.length ?? 0) / 100) * 100;
+  const roundedCatalogLength = Math.floor((catalog.length ?? 0) / 100) * 100;
 
   const placeholder = `Search ${
     roundedCatalogLength > 0 ? `${roundedCatalogLength}+ ` : ""
