@@ -39,11 +39,13 @@ export const Home: FunctionComponent = () => {
 
         <Info />
 
-        {hasPackages && fullSite ? <Categories /> : <></>}
-
-        {hasPackages && fullSite ? <CDKTypeTabs /> : <></>}
-
-        {hasPackages && fullSite ? <Featured /> : <></>}
+        {hasPackages && fullSite ? (
+          <>
+            <Categories />
+            <CDKTypeTabs />
+            <Featured />
+          </>
+        ) : null}
       </GradientContainer>
     </Page>
   );
