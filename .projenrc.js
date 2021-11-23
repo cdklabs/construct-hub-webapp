@@ -1,6 +1,8 @@
 const { web } = require("projen");
 const { workflows } = require("projen/lib/github");
 
+const PROXY_URL = "https://constructs.dev/";
+
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
   name: "construct-hub-webapp",
@@ -206,7 +208,7 @@ project.npmignore.addPatterns("src/__fixtures__");
 project.gitignore.exclude("public/data");
 
 // Proxy requests to awscdk.io for local testing
-project.package.addField("proxy", "https://constructs.dev/");
+project.package.addField("proxy", PROXY_URL);
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
