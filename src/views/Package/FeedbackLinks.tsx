@@ -1,19 +1,29 @@
 import { EmailIcon } from "@chakra-ui/icons";
-import { Button, Link, Stack } from "@chakra-ui/react";
-import type { FunctionComponent, ReactNode } from "react";
+import { Divider, Stack, useBreakpointValue } from "@chakra-ui/react";
+import type { FunctionComponent } from "react";
 import { ExternalLink } from "../../components/ExternalLink";
+import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
 import { GithubIcon } from "../../icons/GithubIcon";
 import { usePackageState } from "./PackageState";
 import testIds from "./testIds";
 
 const iconProps = {
-  h: 5,
+  h: 6,
   ml: 2,
-  w: 5,
+  w: 6,
 };
 
 export const FeedbackLinks: FunctionComponent = () => {
   const state = usePackageState();
+
+  const orientation = useBreakpointValue<"vertical" | "horizontal">({
+    base: "horizontal",
+    md: "vertical",
+  });
+  const divider = (
+    <Divider borderColor="white" mr={6} orientation={orientation} />
+  );
+
   const metadata = state.metadata.data;
   const assembly = state.assembly.data;
 
@@ -21,58 +31,76 @@ export const FeedbackLinks: FunctionComponent = () => {
 
   const repo = assembly?.repository ?? {};
 
-  let repoLink: ReactNode = null;
+  let repoUrl = undefined;
 
   if (repo.type === "git") {
-    let repoUrl = repo.url?.endsWith(".git")
+    repoUrl = repo.url?.endsWith(".git")
       ? repo.url.replace(".git", "")
       : repo.url;
 
     if (repoUrl.endsWith("/")) {
       repoUrl = repoUrl.slice(0, repoUrl.length - 1);
     }
-
-    repoLink = (
-      <Button
-        as={ExternalLink}
-        color="black"
-        data-testid={testIds.githubLink}
-        hasIcon={false}
-        href={`${repoUrl}/issues`}
-        rightIcon={<GithubIcon {...iconProps} />}
-        variant="solid"
-      >
-        Provide Feedback
-      </Button>
-    );
   }
+
+  // const orientation = { base: "horizontal", md: "vertical" };
 
   return (
     <Stack
       align="center"
+      backgroundColor="blue.600"
       borderTop="1px solid"
       borderTopColor="blue.50"
-      color="blue.500"
+      color="white"
       data-testid={testIds.feedbackLinks}
       direction={{ base: "column", md: "row" }}
       justify="space-evenly"
-      mx={8}
-      py={10}
+      px={8}
+      py={5}
       spacing={4}
     >
-      <Button
-        as={Link}
-        colorScheme="blue"
+      {repoUrl && (
+        <>
+          <ExternalLink
+            color="currentcolor"
+            data-testid={testIds.githubLink}
+            fontSize="lg"
+            fontWeight="semibold"
+            hasIcon={false}
+            href={`${repoUrl}/issues`}
+            rightIcon={<GithubIcon color="white" {...iconProps} />}
+            variant="solid"
+          >
+            Provide feedback to publisher
+          </ExternalLink>
+          {divider}
+        </>
+      )}
+      <ExternalLink
+        color="currentcolor"
         data-testid={testIds.reportLink}
+        fontSize="lg"
+        fontWeight="semibold"
+        hasIcon={false}
+        href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}
+        rightIcon={<GithubIcon color="white" {...iconProps} />}
+      >
+        Provide feedback to Construct Hub
+      </ExternalLink>
+      {divider}
+      <ExternalLink
+        color="currentcolor"
+        data-testid={testIds.reportAbuseLink}
+        fontSize="lg"
+        fontWeight="semibold"
+        hasIcon={false}
         href={`mailto:abuse@amazonaws.com?subject=${encodeURIComponent(
           `ConstructHub - Report of abusive package: ${assembly?.name}`
         )}`}
         rightIcon={<EmailIcon {...iconProps} />}
       >
-        Report this package
-      </Button>
-
-      {repoLink}
+        Report abuse
+      </ExternalLink>
     </Stack>
   );
 };
