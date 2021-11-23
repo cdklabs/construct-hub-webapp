@@ -52,7 +52,7 @@ export const Categories: FunctionComponent = () => {
         lineHeight="lg"
         mb={1}
       >
-        Find constructs by use case
+        Search by use case
       </Heading>
       <Text
         color="white"
@@ -60,8 +60,8 @@ export const Categories: FunctionComponent = () => {
         lineHeight="md"
         mb={5}
       >
-        With hundreds of constructs available, there may already be one (or
-        more!) that that can serve as a building block for your solution.
+        Find the right construct for your problem set from a community that’s
+        already tackled it.
       </Text>
 
       <Wrap>
