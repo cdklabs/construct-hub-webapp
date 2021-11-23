@@ -23,6 +23,8 @@ export interface Packages {
   packages: CatalogPackage[];
 }
 
+const EMPTY_CATALOG = { packages: [] };
+
 /**
  * Fetch the catalog of all packages from the backend.
  */
@@ -31,8 +33,17 @@ export const fetchPackages = async (): Promise<Packages> => {
 
   if (!response.ok) {
     console.error(response.statusText);
-    throw new Error(`Failed fetching packages index: ${response.statusText}`);
+    console.warn(
+      "Failed to fetch package catalog. Falling back to empty package list."
+    );
+    return EMPTY_CATALOG;
   }
 
-  return response.json();
+  return response.json().catch((err) => {
+    console.error(err);
+    console.warn(
+      "Invalid package catalog response. Falling back to empty package list."
+    );
+    return EMPTY_CATALOG;
+  });
 };
