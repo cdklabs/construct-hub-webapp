@@ -4,6 +4,7 @@ export default createTestIds("package-page", [
   "page",
   "feedbackLinks",
   "reportLink",
+  "reportAbuseLink",
   "githubLink",
   "dependenciesTab",
   "dependenciesList",

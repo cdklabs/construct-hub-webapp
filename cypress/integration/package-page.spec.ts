@@ -5,6 +5,7 @@ import markdown from "components/Markdown/testIds";
 import assemblyFixture from "../fixtures/assembly-constructs@3.3.161.json";
 import { sanitizeVersion } from "api/package/util";
 import { Language } from "constants/languages";
+import { CONSTRUCT_HUB_REPO_URL } from "../../src/constants/links";
 
 describe("Package Page", () => {
   beforeEach(() => {
@@ -68,7 +69,7 @@ describe("Package Page", () => {
     cy.getByDataTest(packagePage.feedbackLinks)
       .should("be.visible")
       .within(() => {
-        cy.getByDataTest(packagePage.reportLink)
+        cy.getByDataTest(packagePage.reportAbuseLink)
           .should("be.visible")
           .should(
             "have.attr",
@@ -76,6 +77,14 @@ describe("Package Page", () => {
             `mailto:abuse@amazonaws.com?subject=${encodeURIComponent(
               `ConstructHub - Report of abusive package: constructs`
             )}`
+          );
+
+        cy.getByDataTest(packagePage.reportLink)
+          .should("be.visible")
+          .should(
+            "have.attr",
+            "href",
+            `${CONSTRUCT_HUB_REPO_URL}/issues/new`
           );
 
         cy.getByDataTest(packagePage.githubLink)
