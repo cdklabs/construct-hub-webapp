@@ -121,16 +121,16 @@ export const CDKTypeTabs: FunctionComponent = () => {
         lineHeight="lg"
         mb={2}
       >
-        Find constructs by publisher
+        Search by publisher
       </Heading>
       <Text
         data-testid={testIds.cdkTypeSectionDescription}
         lineHeight="md"
         mb={5}
       >
-        Find constructs published by the open-source community, AWS, and
-        HashiCorp in one location. You can also have your own construct
-        libraries listed on Construct Hub by publishing them on npm registry.
+        Find constructs published by the open-source community, AWS, and cloud
+        technology providers in one location. You can also include your own
+        construct libraries on Construct Hub by publishing them on npm registry.
         More concrete guidance can be found in the{" "}
         <NavLink color="blue.500" to={ROUTES.CONTRIBUTE}>
           Contribute

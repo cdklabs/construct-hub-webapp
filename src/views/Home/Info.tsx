@@ -90,8 +90,8 @@ export const Info: FunctionComponent = () => (
       templateRows={{ base: "1fr auto 1fr auto 1fr", xl: "auto" }}
     >
       <InfoSection
-        description=" For all three CDKs: AWS CDK, which generates CloudFormation templates, CDK for Terraform (CDKtf), which generates HashiCorp Terraform configuration, and CDK for Kubernetes (CDK8s), which generates Kubernetes manifests."
-        title="A single home for all CDKs"
+        description="Find libraries for AWS Cloud Development Kit (CDK), which generates AWS CloudFormation templates, CDK for Terraform (CDKtf), which generates HashiCorp Terraform configuration files, and CDK for Kubernetes (CDK8s), which generates Kubernetes manifests."
+        title="One home for all CDKs"
       >
         <Row>
           {Object.entries(CDKTYPE_RENDER_MAP).map(
@@ -113,7 +113,7 @@ export const Info: FunctionComponent = () => (
       <ResponsiveDivider />
 
       <InfoSection
-        description="Find documentation, API reference, and code samples in CDK-supported languages, such as Java, .NET, TypeScript, and Python. Define, test, and deploy cloud infrastructure using loops, conditionals, unit testing, and data structures."
+        description="Define, test, and deploy cloud infrastructure using high level programming languages such as such as Java, .NET, TypeScript, and Python. Find documentation, API reference and code samples to quickly build your application. "
         title="Support across languages"
       >
         <Row>
@@ -138,9 +138,8 @@ export const Info: FunctionComponent = () => (
       <ResponsiveDivider />
 
       <InfoSection
-        description="Find construct libraries for integration from the community and cloud services, including Datadog, MongoDB, Aqua Security, and more."
-        title="
-       Constructs from multiple publishers"
+        description="Find construct libraries published by the community and cloud service providers such as Datadog, MongoDB, Aqua Security, AWS services, and more."
+        title="Provision a range of cloud resources"
       >
         <Row>
           {publishers.map(({ url, name, imgsrc, Icon }) => (

@@ -17,7 +17,7 @@ export const InfoSection: FunctionComponent<InfoSectionProps> = ({
     color="blue.800"
     data-testid={testIds.infoSection}
     direction="column"
-    px={SECTION_PADDING.X.map((p) => p / 2)}
+    px={SECTION_PADDING.X}
     py={SECTION_PADDING.Y}
   >
     <Heading
