@@ -86,7 +86,7 @@ describe("Home (Redesign / WIP)", () => {
 
     it("has language icon links with search urls", () => {
       cy.getByDataTest(home.infoSection)
-        .last()
+        .eq(1)
         .within(() => {
           cy.getByDataTest(home.infoSectionIcon).each((el, index) => {
             const language = Object.keys(LANGUAGE_NAME_MAP).filter((l) =>
