@@ -1,5 +1,6 @@
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { forwardRef, Link, LinkProps } from "@chakra-ui/react";
+import type { ReactNode } from "react";
 import { useExternalLinkWarning } from "../../contexts/ExternalLinkWarning";
 
 export interface ExternalLinkProps extends LinkProps {
@@ -15,6 +16,10 @@ export interface ExternalLinkProps extends LinkProps {
    * Adds the nofollow annotation to the anchor's rel attribute
    */
   noFollow?: boolean;
+  /**
+   * Show a custom icon next to the link. `hasIcon` must be false
+   */
+  rightIcon?: ReactNode;
 }
 
 export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
@@ -26,6 +31,7 @@ export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
       href,
       onClick,
       noFollow,
+      rightIcon,
       ...props
     },
     ref
@@ -49,6 +55,7 @@ export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
         {...props}
       >
         {children} {hasIcon && <ExternalLinkIcon mb={1} ml={0} />}
+        {!hasIcon && rightIcon}
       </Link>
     );
   }
