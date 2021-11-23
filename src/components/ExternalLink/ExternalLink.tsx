@@ -17,7 +17,7 @@ export interface ExternalLinkProps extends LinkProps {
    */
   noFollow?: boolean;
   /**
-   * Show a custom icon next to the link. `hasIcon` must be false
+   * Show a custom icon next to the link.
    */
   rightIcon?: ReactNode;
 }
@@ -37,6 +37,10 @@ export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
     ref
   ) => {
     const withPrompt = useExternalLinkWarning();
+    hasIcon = hasIcon || Boolean(rightIcon);
+    const icon = hasIcon
+      ? rightIcon ?? <ExternalLinkIcon mb={1} ml={0} />
+      : null;
 
     let rel = "noopener noreferrer";
 
@@ -54,8 +58,7 @@ export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
         rel={rel}
         {...props}
       >
-        {children} {hasIcon && <ExternalLinkIcon mb={1} ml={0} />}
-        {!hasIcon && rightIcon}
+        {children} {hasIcon && icon}
       </Link>
     );
   }
