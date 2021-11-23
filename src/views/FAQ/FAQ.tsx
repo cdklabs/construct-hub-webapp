@@ -24,54 +24,15 @@ export const FAQPage: FunctionComponent = () => (
 
       <FAQSections defaultIndex={[0, 1]}>
         <FAQSection heading="General">
-          <FAQItem question="How can I add my construct to Construct Hub?">
-            <Text>
-              Constructs intended for Construct Hub must be published to the{" "}
-              <FAQLink href="https://www.npmjs.com/">npm Registry</FAQLink>{" "}
-              under Apache, BSD, EPL, MPL-2.0, ISC and CDDL or MIT open source
-              licenses and annotated with a keyword recognized by Construct Hub
-              (awscdk, cdk8s, or cdktf).
-            </Text>
-
-            <Text>
-              Additionally, since one of the main goals of Construct Hub is to
-              enable an ecosystem of constructs that can be consumed by all CDK
-              languages, your library <strong>must</strong> be compiled with{" "}
-              <FAQLink href="https://aws.github.io/jsii/">JSII</FAQLink>, a
-              TypeScript-based tool for building multi-language libraries.
-              Construct Hub leverages the type information produced by the JSII
-              compiler to render a rich multi-language API reference for each
-              construct.
-            </Text>
-
-            <Text>
-              Construct Hub continuously monitors the npm Registry. Packages
-              that meet the above requirements appear in Construct Hub in about
-              30 minutes. If your package does not appear in Construct Hub, but
-              meets these requirements, please file an issue against our{" "}
-              <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
-                GitHub repository.
-              </FAQLink>
-            </Text>
-
-            <Text>
-              The community has provided some great resources about publishing
-              construct libraries that meet Construct Hub requirements. For
-              example, see{" "}
-              <FAQLink href="https://dev.to/aws-builders/a-beginner-s-guide-to-create-aws-cdk-construct-library-with-projen-5eh4">
-                “A Beginner&apos;s Guide to Create AWS CDK ConstructLibrary with{" "}
-                projen”
-              </FAQLink>{" "}
-              by <FAQLink href="https://hayao-k.dev/">hayao-k</FAQLink>.
-            </Text>
-
-            <Text>
-              If you already have a library written in TypeScript and want to
-              migrate it to JSII so it can be included in Construct Hub, see the{" "}
-              <FAQLink href="https://aws.github.io/jsii/user-guides/#library-author-guide">
-                JSII library author guide.
-              </FAQLink>
-            </Text>
+          <FAQItem question="How can I contribute to Construct Hub?">
+            You are encouraged to contribute to the construct ecosystem by
+            publishing CDK libraries, contributing code to Construct Hub and
+            providing us and libraries’ publishers feedback. For more
+            information, go to{" "}
+            <FAQLink href="https://constructs.dev/contribute">
+              https://constructs.dev/contribute
+            </FAQLink>
+            .
           </FAQItem>
 
           <FAQItem question="What is Construct Hub?">
