@@ -1,6 +1,6 @@
 # Construct Hub Web App
 
-This project maintains the React web app for the [Construct Hub].
+This project maintains the React web app for [Construct Hub].
 
 [construct hub]: https://github.com/cdklabs/construct-hub
 ## :hammer_and_pick: Development
