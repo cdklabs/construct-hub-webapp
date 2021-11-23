@@ -265,7 +265,7 @@ project.release.addJobs({
     steps: [
       {
         name: "Trigger upgrade workflow",
-        run: 'gh api -X POST /repos/cdklabs/construct-hub/actions/workflows/upgrade-main.yml/dispatches --field ref="main"',
+        run: 'gh api -X POST /repos/cdklabs/construct-hub/actions/workflows/upgrade-dev.yml/dispatches --field ref="dev"',
         env: {
           GITHUB_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
         },
