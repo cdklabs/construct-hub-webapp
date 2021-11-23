@@ -17,7 +17,7 @@ const DEFAULT_CATEGORIES: Category[] = [
   { title: "Databases", url: getSearchPath({ keywords: ["databases"] }) },
   { title: "Utilities", url: getSearchPath({ keywords: ["utilities"] }) },
   { title: "Deployment", url: getSearchPath({ keywords: ["deployment"] }) },
-  { title: "Websites", url: getSearchPath({ keywords: ["web"] }) },
+  { title: "Websites", url: getSearchPath({ keywords: ["websites"] }) },
   { title: "Security", url: getSearchPath({ keywords: ["security"] }) },
   { title: "Compliance", url: getSearchPath({ keywords: ["compliance"] }) },
   { title: "Network", url: getSearchPath({ keywords: ["network"] }) },
