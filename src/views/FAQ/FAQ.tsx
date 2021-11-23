@@ -47,8 +47,8 @@ export const FAQPage: FunctionComponent = () => (
             <Text>
               Construct Hub continuously monitors the npm Registry. Packages
               that meet the above requirements appear in Construct Hub in about
-              5-10 minutes. If your package does not appear in Construct Hub,
-              but meets these requirements, please file an issue against our{" "}
+              30 minutes. If your package does not appear in Construct Hub, but
+              meets these requirements, please file an issue against our{" "}
               <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
                 GitHub repository.
               </FAQLink>
@@ -144,9 +144,11 @@ export const FAQPage: FunctionComponent = () => (
             <Text>
               Constructs are user-generated content owned by the publishers of
               the individual packages. Each is governed by its own license terms
-              chosen by its publisher (although only packages with permissive
-              licenses are included in Construct Hub). License information can
-              be accessed directly through the hyperlinked package page.
+              chosen by its publisher (although only packages that were
+              published to the NPM registry under Apache, BSD, EPL, MPL-2.0, ISC
+              and CDDL or MIT open source licenses are included in Construct
+              Hub). License information can be accessed directly through the
+              hyperlinked package page.
             </Text>
           </FAQItem>
 
@@ -158,7 +160,10 @@ export const FAQPage: FunctionComponent = () => (
               search engine or portal intended to surface third-party content
               from a public endpoint. We provide these results for your
               convenience AS-IS in accordance with our{" "}
-              <FAQLink href="https://constructs.dev/terms">Site Terms</FAQLink>.
+              <FAQLink href="https://constructs.dev/terms">
+                Construct Hub Site Terms
+              </FAQLink>
+              .
             </Text>
           </FAQItem>
 
@@ -243,16 +248,16 @@ export const FAQPage: FunctionComponent = () => (
             </Text>
           </FAQItem>
 
-          <FAQItem question="How can I report a package?">
+          <FAQItem question="How can I report abuse?">
             <Text>
               Your trust is vital to the success of Construct Hub. If you
               believe a package contains suspicious code, violates its
               dependencies’ licenses, or is otherwise not behaving as a good
-              citizen of the community, click &quot;Report this package&quot; at
-              the bottom of the package page and send us an email with
-              explanations and evidence to support your claims. If we can verify
-              the issue, we will take appropriate action, up to and including
-              removing the package from Construct Hub.
+              citizen of the community, click &quot;Report abuse&quot; at the
+              bottom of the package page and send us an email with explanations
+              and evidence to support your claims. If we can verify the issue,
+              we will take appropriate action, up to and including removing the
+              package from Construct Hub.
             </Text>
           </FAQItem>
 
@@ -285,7 +290,7 @@ export const FAQPage: FunctionComponent = () => (
             <Text>
               Yes, you can and should! After you publish a new valid version to
               the public npm Registry, it should appear on Construct Hub in
-              about 5-10 minutes.
+              about 30 minutes.
             </Text>
           </FAQItem>
 
