@@ -35,6 +35,9 @@ const project = new web.ReactTypeScriptProject({
 
   depsUpgradeOptions: {
     exclude: ["@chakra-ui/react"],
+    workflowOptions: {
+      branches: ["dev"],
+    },
   },
 
   deps: [
