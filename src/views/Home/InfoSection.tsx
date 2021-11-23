@@ -1,4 +1,4 @@
-import { Grid, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import type { FunctionComponent, ReactNode } from "react";
 import { SECTION_PADDING } from "./constants";
 import testIds from "./testIds";
@@ -13,13 +13,12 @@ export const InfoSection: FunctionComponent<InfoSectionProps> = ({
   description,
   children,
 }) => (
-  <Grid
+  <Flex
     color="blue.800"
     data-testid={testIds.infoSection}
-    px={SECTION_PADDING.X}
+    direction="column"
+    px={SECTION_PADDING.X.map((p) => p / 2)}
     py={SECTION_PADDING.Y}
-    templateColumns="1fr"
-    templateRows="auto 1fr auto"
   >
     <Heading
       as="h3"
@@ -31,9 +30,11 @@ export const InfoSection: FunctionComponent<InfoSectionProps> = ({
     >
       {title}
     </Heading>
-    <Text data-testid={testIds.infoSectionDescription} fontSize="lg" mb={4}>
-      {description}
-    </Text>
-    {children}
-  </Grid>
+    <Flex direction="column" h="full" justify="space-between">
+      <Text data-testid={testIds.infoSectionDescription} fontSize="lg" mb={4}>
+        {description}
+      </Text>
+      {children}
+    </Flex>
+  </Flex>
 );
