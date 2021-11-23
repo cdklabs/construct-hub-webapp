@@ -269,10 +269,11 @@ export const FAQPage: FunctionComponent = () => (
           <FAQItem question="Why isn’t my package displayed on Construct Hub?">
             <Text>
               Construct Hub includes publicly-available constructs that are
-              JSII-compatible and that were published to the npm Registry with a
-              permissive open-source license and a CDK keyword: aws-cdk, cdk8s,
-              or cdktf. If you believe your package qualifies, but it still does
-              not appear in Construct Hub, please raise an issue{" "}
+              JSII-compatible and that were published to the npm Registry under
+              Apache, BSD, EPL, MPL-2.0, ISC and CDDL or MIT open source
+              licenses and with a CDK keyword: aws-cdk, cdk8s, or cdktf. If you
+              believe your package qualifies, but it still does not appear in
+              Construct Hub, please raise an issue{" "}
               <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
                 here
               </FAQLink>
@@ -301,9 +302,10 @@ export const FAQPage: FunctionComponent = () => (
 
           <FAQItem question="Is there a cost for using third-party constructs from Construct Hub?">
             <Text>
-              All packages on Construct Hub have permissive open-source licenses
-              and can be freely used in your applications. For details, review
-              the package’s license via its repository link.
+              All packages on Construct Hub are published under Apache, BSD,
+              EPL, MPL-2.0, ISC and CDDL or MIT open source licenses and can be
+              freely used in your applications. For details, review the
+              package’s license via its repository link.
             </Text>
           </FAQItem>
 
