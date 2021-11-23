@@ -26,9 +26,9 @@ export const Contribute: FunctionComponent = () => (
           <Text>
             Constructs intended for Construct Hub must be published to the{" "}
             <FAQLink href="https://www.npmjs.com/">npm Registry</FAQLink> under
-            a permissive license (such as Apache, BSD, EPL, MPL-2.0, ISC and
-            CDDL or MIT) and annotated with a keyword recognized by Construct
-            Hub (awscdk, cdk8s, or cdktf).
+            Apache, BSD, EPL, MPL-2.0, ISC and CDDL or MIT open source licenses
+            and annotated with a keyword recognized by Construct Hub (awscdk,
+            cdk8s, or cdktf).
           </Text>
 
           <Text>
@@ -44,7 +44,7 @@ export const Contribute: FunctionComponent = () => (
 
           <Text>
             Construct Hub continuously monitors the npm Registry. Packages that
-            meet the above requirements appear in Construct Hub in about 5-10
+            meet the above requirements appear in Construct Hub in about 30
             minutes. If your package does not appear in Construct Hub, but meets
             these requirements, please file an issue against our{" "}
             <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
@@ -255,7 +255,7 @@ export const Contribute: FunctionComponent = () => (
           <Text>
             Yes, you can and should! After you publish a new valid version to
             the public npm Registry, it should appear on Construct Hub in about
-            5-10 minutes.
+            30 minutes.
           </Text>
         </FAQItem>
 
