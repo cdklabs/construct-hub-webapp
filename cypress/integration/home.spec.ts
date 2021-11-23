@@ -47,7 +47,7 @@ describe("Home (Redesign / WIP)", () => {
         .should("be.visible")
         .within(() => {
           cy.getByDataTest(home.infoSection)
-            .should("have.length", 2)
+            .should("have.length", 3)
             .each((el) => {
               cy.wrap(el).within(() => {
                 cy.getByDataTest(home.infoSectionHeading).should("be.visible");
