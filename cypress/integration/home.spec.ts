@@ -47,7 +47,7 @@ describe("Home (Redesign / WIP)", () => {
         .should("be.visible")
         .within(() => {
           cy.getByDataTest(home.infoSection)
-            .should("have.length", 2)
+            .should("have.length", 3)
             .each((el) => {
               cy.wrap(el).within(() => {
                 cy.getByDataTest(home.infoSectionHeading).should("be.visible");
@@ -86,7 +86,7 @@ describe("Home (Redesign / WIP)", () => {
 
     it("has language icon links with search urls", () => {
       cy.getByDataTest(home.infoSection)
-        .last()
+        .eq(1)
         .within(() => {
           cy.getByDataTest(home.infoSectionIcon).each((el, index) => {
             const language = Object.keys(LANGUAGE_NAME_MAP).filter((l) =>
