@@ -16,11 +16,13 @@ const iconProps = {
 export const FeedbackLinks: FunctionComponent = () => {
   const state = usePackageState();
 
-  // divider orientation doesn't currently support responsive values
-  const divider = useBreakpointValue({
-    base: <Divider borderColor="white" mr={6} orientation="horizontal" />,
-    md: <Divider borderColor="white" mr={6} orientation="vertical" />,
+  const orientation = useBreakpointValue<"vertical" | "horizontal">({
+    base: "horizontal",
+    md: "vertical",
   });
+  const divider = (
+    <Divider borderColor="white" mr={6} orientation={orientation} />
+  );
 
   const metadata = state.metadata.data;
   const assembly = state.assembly.data;
@@ -46,7 +48,7 @@ export const FeedbackLinks: FunctionComponent = () => {
   return (
     <Stack
       align="center"
-      backgroundColor="#1F50A1"
+      backgroundColor="blue.600"
       borderTop="1px solid"
       borderTopColor="blue.50"
       color="white"
