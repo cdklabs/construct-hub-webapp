@@ -1,5 +1,5 @@
 import { EmailIcon } from "@chakra-ui/icons";
-import { Divider, Stack } from "@chakra-ui/react";
+import { Divider, Stack, useBreakpointValue } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { ExternalLink } from "../../components/ExternalLink";
 import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
@@ -15,6 +15,13 @@ const iconProps = {
 
 export const FeedbackLinks: FunctionComponent = () => {
   const state = usePackageState();
+
+  // divider orientation doesn't currently support responsive values
+  const divider = useBreakpointValue({
+    base: <Divider borderColor="white" mr={6} orientation="horizontal" />,
+    md: <Divider borderColor="white" mr={6} orientation="vertical" />,
+  });
+
   const metadata = state.metadata.data;
   const assembly = state.assembly.data;
 
@@ -33,6 +40,8 @@ export const FeedbackLinks: FunctionComponent = () => {
       repoUrl = repoUrl.slice(0, repoUrl.length - 1);
     }
   }
+
+  // const orientation = { base: "horizontal", md: "vertical" };
 
   return (
     <Stack
@@ -62,7 +71,7 @@ export const FeedbackLinks: FunctionComponent = () => {
           >
             Provide feedback to publisher
           </ExternalLink>
-          <Divider borderColor="white" mr={6} orientation="vertical" />
+          {divider}
         </>
       )}
       <ExternalLink
@@ -76,7 +85,7 @@ export const FeedbackLinks: FunctionComponent = () => {
       >
         Provide feedback to Construct Hub
       </ExternalLink>
-      <Divider borderColor="white" mr={6} orientation="vertical" />
+      {divider}
       <ExternalLink
         color="currentcolor"
         data-testid={testIds.reportAbuseLink}
