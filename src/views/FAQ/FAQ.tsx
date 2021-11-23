@@ -24,52 +24,15 @@ export const FAQPage: FunctionComponent = () => (
 
       <FAQSections defaultIndex={[0, 1]}>
         <FAQSection heading="General">
-          <FAQItem question="How can I add my construct to Construct Hub?">
-            <Text>
-              Constructs intended for Construct Hub must be published to the{" "}
-              <FAQLink href="https://www.npmjs.com/">NPM registry</FAQLink>{" "}
-              under a permissive license (such as Apache, BSD, EPL, MPL-2.0, ISC
-              and CDDL or MIT) and annotated with a keyword recognized by
-              Construct Hub (awscdk, cdk8s, or cdktf).
-            </Text>
-
-            <Text>
-              Additionally, since one of the main goals of Construct Hub is to
-              enable an ecosystem of constructs that can be consumed by all CDK
-              languages, your library <strong>must</strong> be compiled with{" "}
-              <FAQLink href="https://aws.github.io/jsii/">JSII</FAQLink>, a
-              TypeScript-based tool for building multi-language libraries.
-              Construct Hub leverages the type information produced by the JSII
-              compiler to render a rich multi-language API reference for each
-              construct.
-            </Text>
-
-            <Text>
-              Construct Hub continuously monitors the NPM Registry. Packages
-              that meet the above requirements appear in Construct Hub within
-              5-10 minutes. If your package does not appear in Construct Hub,
-              but meets these requirements, please file an issue against our
-              GitHub repository.
-            </Text>
-
-            <Text>
-              The community has provided some great resources about publishing
-              construct libraries that meet Construct Hub requirements. For
-              example, see “A Beginner&apos;s Guide to Create AWS CDK Construct
-              Library with{" "}
-              <FAQLink href="https://dev.to/aws-builders/a-beginner-s-guide-to-create-aws-cdk-construct-library-with-projen-5eh4">
-                projen
-              </FAQLink>
-              ” by <FAQLink href="https://hayao-k.dev/">hayao-k</FAQLink>.
-            </Text>
-
-            <Text>
-              If you already have a library written in TypeScript and want to
-              migrate it to JSII so it can be included in Construct Hub, see the{" "}
-              <FAQLink href="https://aws.github.io/jsii/user-guides/#library-author-guide">
-                JSII library author guide.
-              </FAQLink>
-            </Text>
+          <FAQItem question="How can I contribute to Construct Hub?">
+            You are encouraged to contribute to the construct ecosystem by
+            publishing CDK libraries, contributing code to Construct Hub and
+            providing us and libraries’ publishers feedback. For more
+            information, go to{" "}
+            <FAQLink href="https://constructs.dev/contribute">
+              https://constructs.dev/contribute
+            </FAQLink>
+            .
           </FAQItem>
 
           <FAQItem question="What is Construct Hub?">
@@ -142,9 +105,11 @@ export const FAQPage: FunctionComponent = () => (
             <Text>
               Constructs are user-generated content owned by the publishers of
               the individual packages. Each is governed by its own license terms
-              chosen by its publisher (although only packages with permissive
-              licenses are included in Construct Hub). License information can
-              be accessed directly through the hyperlinked package page.
+              chosen by its publisher (although only packages that were
+              published to the NPM registry under Apache, BSD, EPL, MPL-2.0, ISC
+              and CDDL or MIT open source licenses are included in Construct
+              Hub). License information can be accessed directly through the
+              hyperlinked package page.
             </Text>
           </FAQItem>
 
@@ -156,7 +121,10 @@ export const FAQPage: FunctionComponent = () => (
               search engine or portal intended to surface third-party content
               from a public endpoint. We provide these results for your
               convenience AS-IS in accordance with our{" "}
-              <FAQLink href="https://constructs.dev/terms">Site Terms</FAQLink>.
+              <FAQLink href="https://constructs.dev/terms">
+                Construct Hub Site Terms
+              </FAQLink>
+              .
             </Text>
           </FAQItem>
 
@@ -241,16 +209,16 @@ export const FAQPage: FunctionComponent = () => (
             </Text>
           </FAQItem>
 
-          <FAQItem question="How can I report a package?">
+          <FAQItem question="How can I report abuse?">
             <Text>
               Your trust is vital to the success of Construct Hub. If you
               believe a package contains suspicious code, violates its
               dependencies’ licenses, or is otherwise not behaving as a good
-              citizen of the community, click &quot;Report this package&quot; at
-              the bottom of the package page and send us an email with
-              explanations and evidence to support your claims. If we can verify
-              the issue, we will take appropriate action, up to and including
-              removing the package from Construct Hub.
+              citizen of the community, click &quot;Report abuse&quot; at the
+              bottom of the package page and send us an email with explanations
+              and evidence to support your claims. If we can verify the issue,
+              we will take appropriate action, up to and including removing the
+              package from Construct Hub.
             </Text>
           </FAQItem>
 
@@ -267,10 +235,11 @@ export const FAQPage: FunctionComponent = () => (
           <FAQItem question="Why isn’t my package displayed on Construct Hub?">
             <Text>
               Construct Hub includes publicly-available constructs that are
-              JSII-compatible and that were published to the NPM registry with a
-              permissive open-source license and a CDK keyword: aws-cdk, cdk8s,
-              or cdktf. If you believe your package qualifies, but it still does
-              not appear in Construct Hub, please raise an issue{" "}
+              JSII-compatible and that were published to the npm Registry under
+              Apache, BSD, EPL, MPL-2.0, ISC and CDDL or MIT open source
+              licenses and with a CDK keyword: aws-cdk, cdk8s, or cdktf. If you
+              believe your package qualifies, but it still does not appear in
+              Construct Hub, please raise an issue{" "}
               <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
                 here
               </FAQLink>
@@ -281,8 +250,8 @@ export const FAQPage: FunctionComponent = () => (
           <FAQItem question="Can I update my package after it has been displayed?">
             <Text>
               Yes, you can and should! After you publish a new valid version to
-              the public NPM registry, it should appear on Construct Hub within
-              5-10 minutes.
+              the public npm Registry, it should appear on Construct Hub in
+              about 30 minutes.
             </Text>
           </FAQItem>
 
@@ -299,9 +268,10 @@ export const FAQPage: FunctionComponent = () => (
 
           <FAQItem question="Is there a cost for using third-party constructs from Construct Hub?">
             <Text>
-              All packages on Construct Hub have permissive open-source licenses
-              and can be freely used in your applications. For details, review
-              the package’s license via its repository link.
+              All packages on Construct Hub are published under Apache, BSD,
+              EPL, MPL-2.0, ISC and CDDL or MIT open source licenses and can be
+              freely used in your applications. For details, review the
+              package’s license via its repository link.
             </Text>
           </FAQItem>
 
