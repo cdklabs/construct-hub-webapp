@@ -1,14 +1,18 @@
-import { Flex, Grid, Heading } from "@chakra-ui/react";
+import { Button, Flex, Grid, Heading } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { DEFAULT_FEATURED_PACKAGES } from "../../api/config";
+import { NavLink } from "../../components/NavLink";
 import { PackageCard } from "../../components/PackageCard";
 import { useConfigValue } from "../../hooks/useConfigValue";
+import { getSearchPath } from "../../util/url";
 import { SECTION_PADDING } from "./constants";
 import testIds from "./testIds";
 import { useSection } from "./useSection";
 
 export const Featured: FunctionComponent = () => {
   const homePackages = useConfigValue("featuredPackages");
+
   const [featured = { name: "Recently Updated", showLastUpdated: 4 }] = (
     homePackages ?? DEFAULT_FEATURED_PACKAGES
   ).sections;
@@ -47,6 +51,17 @@ export const Featured: FunctionComponent = () => {
           <PackageCard key={pkg.name} pkg={pkg} />
         ))}
       </Grid>
+      <Button
+        as={NavLink}
+        boxShadow="md"
+        colorScheme="blue"
+        mx="auto"
+        my={8}
+        onClick={() => window.scrollTo(0, 0)}
+        to={getSearchPath({ sort: CatalogSearchSort.DownloadsDesc })}
+      >
+        See all constructs
+      </Button>
     </Flex>
   );
 };
