@@ -44,8 +44,8 @@ export const FilterHeading: FunctionComponent<FilterHeadingProps> = ({
             borderRadius="base"
             color="white"
             fontSize="sm"
-            shadow="whiteAlpha.300"
             mx={{ base: "1rem", md: "initial" }}
+            shadow="whiteAlpha.300"
           >
             <PopoverArrow bg="gray.700" />
             <PopoverBody>
