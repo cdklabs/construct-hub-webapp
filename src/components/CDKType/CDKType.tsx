@@ -61,7 +61,7 @@ const badgeColorMap = {
 };
 
 export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
-  ({ name, majorVersion, ...badgeProps }) => {
+  ({ name, majorVersion, ...badgeProps }, ref) => {
     if (!name) return null;
 
     const bg = badgeColorMap[name];
@@ -76,6 +76,7 @@ export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
         h="1.5rem"
         maxW="5.5rem"
         px={1.5}
+        ref={ref}
         textTransform="none"
         {...badgeProps}
       >
