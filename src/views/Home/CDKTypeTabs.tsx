@@ -65,18 +65,19 @@ const PackageTabPanel = forwardRef<PackageTabPanelProps, "div">(
         <PackageGrid packages={data.page} />
 
         <Flex justify="center" w="full">
-          <NavLink
+          <Button
+            as={NavLink}
+            colorScheme="blue"
             data-testid={testIds.cdkTypeSeeAllButton}
+            my={8}
             onClick={() => window.scrollTo(0, 0)}
             to={getSearchPath({
               tags: tag ? [tag] : undefined,
               sort: CatalogSearchSort.DownloadsDesc,
             })}
           >
-            <Button colorScheme="blue" my={8}>
-              See all {label} constructs
-            </Button>
-          </NavLink>
+            See all {label} constructs
+          </Button>
         </Flex>
       </TabPanel>
     );
