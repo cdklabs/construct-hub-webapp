@@ -90,7 +90,7 @@ export const Info: FunctionComponent = () => (
       templateRows={{ base: "1fr auto 1fr auto 1fr", xl: "auto" }}
     >
       <InfoSection
-        description="Find libraries for AWS Cloud Development Kit (CDK), which generates AWS CloudFormation templates, CDK for Terraform (CDKtf), which generates HashiCorp Terraform configuration files, and CDK for Kubernetes (CDK8s), which generates Kubernetes manifests."
+        description="Find libraries for AWS Cloud Development Kit (AWS CDK), which generates AWS CloudFormation templates, CDK for Terraform (CDKtf), which generates HashiCorp Terraform configuration files, and CDK for Kubernetes (CDK8s), which generates Kubernetes manifests."
         title="One home for all CDKs"
       >
         <Row>
