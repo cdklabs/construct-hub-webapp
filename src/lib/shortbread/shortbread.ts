@@ -40,26 +40,15 @@ let instance: Shortbread | undefined;
  * Call to initialize the shortbread instance. Must be called before all other methods
  */
 export const initialize = async () => {
-  return new Promise<void>((resolve, reject) => {
-    // Wait until page has loaded first
-    window.addEventListener("load", async () => {
-      try {
-        const options: ShortbreadOptions = {
-          domain: window.location.hostname,
-          language: navigator.language,
-          __storeWriter: getLocalStoreWriter(),
-        };
+  const options: ShortbreadOptions = {
+    domain: window.location.hostname,
+    language: navigator.language,
+    __storeWriter: getLocalStoreWriter(),
+  };
 
-        // Import the shortbread source
-        const { AWSCShortbread } = await import("./source");
-        instance = AWSCShortbread(options);
-
-        resolve();
-      } catch (e) {
-        reject(e);
-      }
-    });
-  });
+  // Import the shortbread source
+  const { AWSCShortbread } = await import("./source");
+  instance = AWSCShortbread(options);
 };
 
 // Shortbread wrappers
