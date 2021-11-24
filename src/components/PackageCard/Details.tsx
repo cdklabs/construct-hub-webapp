@@ -46,7 +46,7 @@ export const Details: FunctionComponent = () => {
       {downloads !== undefined && (
         <Detail
           data-testid={testIds.downloads}
-          tooltip="Download numbers are periodically sourced from the NPM registry"
+          tooltip="Download numbers are periodically sourced from the npm registry"
           value={`${downloads.toLocaleString()} weekly downloads`}
         />
       )}

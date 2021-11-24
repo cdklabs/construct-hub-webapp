@@ -54,7 +54,7 @@ const Downloads: FunctionComponent<{ downloads: number }> = ({ downloads }) => (
         {downloads.toLocaleString()}
       </>
     }
-    tooltip="Download numbers are periodically sourced from the NPM registry"
+    tooltip="Download numbers are periodically sourced from the npm registry"
   >
     Weekly downloads
   </WithLabel>

@@ -138,7 +138,7 @@ export const Info: FunctionComponent = () => (
       <ResponsiveDivider />
 
       <InfoSection
-        description="Find construct libraries published by the community and cloud service providers such as Datadog, MongoDB, Aqua Security, AWS services, and more."
+        description="Find construct libraries published by the community and cloud service providers such as Datadog, MongoDB, Aqua Security, AWS, and more."
         title="Provision a range of cloud resources"
       >
         <Row>

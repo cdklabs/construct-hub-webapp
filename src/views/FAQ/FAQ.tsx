@@ -106,7 +106,7 @@ export const FAQPage: FunctionComponent = () => (
               Constructs are user-generated content owned by the publishers of
               the individual packages. Each is governed by its own license terms
               chosen by its publisher (although only packages that were
-              published to the NPM registry under Apache, BSD, EPL, MPL-2.0, ISC
+              published to the npm registry under Apache, BSD, EPL, MPL-2.0, ISC
               and CDDL or MIT open source licenses are included in Construct
               Hub). License information can be accessed directly through the
               hyperlinked package page.
