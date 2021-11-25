@@ -119,7 +119,7 @@ export const Info: FunctionComponent = () => (
       <ResponsiveDivider />
 
       <InfoSection
-        description="Define, test, and deploy cloud infrastructure using high level programming languages such as such as TypeScript, Python, Java, and .NET. Find documentation, API references and code samples to quickly build your application."
+        description="Define, test, and deploy cloud infrastructure using high level programming languages such as TypeScript, Python, Java, and .NET. Find documentation, API references and code samples to quickly build your application."
         title="Support across languages"
       >
         <Row>
