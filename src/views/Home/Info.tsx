@@ -15,6 +15,7 @@ import {
   LANGUAGE_RENDER_MAP,
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
+import { AWSIcon } from "../../icons/AWSIcon";
 import { DatadogIcon } from "../../icons/DatadogIcon";
 import { MongoDBIcon } from "../../icons/MongoDBIcon";
 import { getSearchPath } from "../../util/url";
@@ -27,6 +28,11 @@ const publishers = [
     name: "Datadog",
     Icon: DatadogIcon,
     url: getSearchPath({ keywords: ["Datadog"] }),
+  },
+  {
+    name: "AWS",
+    Icon: AWSIcon,
+    url: getSearchPath({ query: "AWS" }),
   },
   {
     name: "MongoDB",
@@ -57,7 +63,7 @@ const IconLink = ({
     fontWeight="bold"
     to={url}
   >
-    <Stack align="center" spacing={2}>
+    <Stack align="center" spacing={2} textAlign="center">
       {imgsrc && <Image aria-label={label} h={8} src={imgsrc} />}
       {Icon && <Icon aria-label={label} h={8} w={8} />}
       <span>{label}</span>
@@ -113,7 +119,7 @@ export const Info: FunctionComponent = () => (
       <ResponsiveDivider />
 
       <InfoSection
-        description="Define, test, and deploy cloud infrastructure using high level programming languages such as such as Java, .NET, TypeScript, and Python. Find documentation, API reference and code samples to quickly build your application. "
+        description="Define, test, and deploy cloud infrastructure using high level programming languages such as TypeScript, Python, Java, and .NET. Find documentation, API references and code samples to quickly build your application."
         title="Support across languages"
       >
         <Row>
@@ -138,7 +144,7 @@ export const Info: FunctionComponent = () => (
       <ResponsiveDivider />
 
       <InfoSection
-        description="Find construct libraries published by the community and cloud service providers such as Datadog, MongoDB, Aqua Security, AWS, and more."
+        description="Find construct libraries published by the community and cloud service providers such as Datadog, Amazon Web Services (AWS), MongoDB, Aqua Security, and more."
         title="Provision a range of cloud resources"
       >
         <Row>
