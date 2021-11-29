@@ -16,25 +16,28 @@ const Em: FunctionComponent = ({ children }) => (
   </Text>
 );
 
-const Count: FunctionComponent<{ first: number; count: number; last: number }> =
-  ({ first, count, last }) => {
-    if (!first && last >= count) {
-      return (
-        <>
-          <Em>{count}</Em> of <Em>{count}</Em>
-        </>
-      );
-    }
-
+const Count: FunctionComponent<{
+  first: number;
+  count: number;
+  last: number;
+}> = ({ first, count, last }) => {
+  if (!first && last >= count) {
     return (
       <>
-        <Em>
-          {count ? first + 1 : count} - {last > count ? count : last}
-        </Em>{" "}
-        of <Em>{count}</Em>
+        <Em>{count}</Em> of <Em>{count}</Em>
       </>
     );
-  };
+  }
+
+  return (
+    <>
+      <Em>
+        {count ? first + 1 : count} - {last > count ? count : last}
+      </Em>{" "}
+      of <Em>{count}</Em>
+    </>
+  );
+};
 
 export const SearchDetails: FunctionComponent<SearchDetailsProps> = ({
   limit,

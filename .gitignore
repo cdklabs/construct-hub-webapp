@@ -35,6 +35,7 @@ jspm_packages/
 !/.github/workflows/build.yml
 /dist/changelog.md
 /dist/version.txt
+!/.github/workflows/release.yml
 !/.mergify.yml
 !/.github/pull_request_template.md
 !/test/
@@ -50,5 +51,4 @@ cypress/videos/
 cypress/screenshots/
 /public/config.json
 public/data
-!/.github/workflows/release.yml
 !/.github/workflows/upgrade-dev.yml
