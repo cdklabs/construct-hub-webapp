@@ -19,10 +19,6 @@ const INDEX_FIELDS = {
     name: "description",
     boost: 2,
   },
-  KEYWORDS: {
-    name: "keywords",
-    boost: 2,
-  },
   NAME: {
     name: "name",
     boost: 5,
@@ -47,7 +43,7 @@ export interface ExtendedCatalogPackage extends CatalogPackage {
   downloads: number;
   id: string;
   packageName?: string;
-  tagNames: string[];
+  tagNames: lunr.Token[];
   scope?: string;
 }
 
@@ -136,16 +132,19 @@ export class CatalogSearchAPI {
             authorEmail = author.email;
           }
         }
+
+        const keywords = renderAllKeywords(pkg);
+
         map.set(id, {
           ...pkg,
           authorName,
           authorEmail,
-          keywords: renderAllKeywords(pkg),
+          keywords,
           downloads,
           id,
           packageName,
           scope,
-          tagNames: (pkg.metadata.packageTags ?? []).map((t) => t.id),
+          tagNames: keywords.map(lunr.tokenizer).flat(),
         });
 
         return map;

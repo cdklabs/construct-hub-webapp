@@ -64,12 +64,11 @@ const getLanguagesFilter: FilterFunctionBuilder<
   };
 };
 
-const getCDKTypeFilter: FilterFunctionBuilder<
-  CatalogSearchFilters["cdkType"]
-> = (cdkType) => {
-  if (!cdkType) return undefined;
-  return (pkg) => pkg.metadata?.constructFramework?.name === cdkType;
-};
+const getCDKTypeFilter: FilterFunctionBuilder<CatalogSearchFilters["cdkType"]> =
+  (cdkType) => {
+    if (!cdkType) return undefined;
+    return (pkg) => pkg.metadata?.constructFramework?.name === cdkType;
+  };
 
 const getCDKMajorFilter: FilterFunctionBuilder<
   CatalogSearchFilters["cdkMajor"]
