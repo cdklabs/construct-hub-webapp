@@ -71,7 +71,13 @@ export const Install: FunctionComponent<FlexProps> = (props) => {
   if (!code || !language) return null;
 
   return (
-    <Flex align="start" direction="column" fontSize=".75rem" {...props}>
+    <Flex
+      align="start"
+      direction="column"
+      fontSize=".75rem"
+      w="full"
+      {...props}
+    >
       {language === Language.Java ? (
         <>
           <ToggleButton
@@ -101,6 +107,7 @@ export const Install: FunctionComponent<FlexProps> = (props) => {
           fontSize="inherit"
           language={language as PrismLanguage}
           lineHeight="2"
+          w="full"
         />
       )}
     </Flex>
