@@ -11,7 +11,9 @@ const CatalogContext = createContext<UseRequestResponse<Packages>>({
 export const useCatalog = () => useContext(CatalogContext);
 
 export const CatalogProvider: FunctionComponent = ({ children }) => {
-  const [requestPackages, catalogResponse] = useRequest(fetchPackages);
+  const [requestPackages, catalogResponse] = useRequest(fetchPackages, {
+    initialValue: { packages: [] },
+  });
 
   useEffect(() => {
     void requestPackages();
