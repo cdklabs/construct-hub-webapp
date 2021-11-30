@@ -130,15 +130,10 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
           )}
 
           <Input
-            _focus={{
-              boxShadow: "base",
-              borderColor: "inherit", // To avoid taking @chakra's border color on focus
-              outlineColor: "blue.500",
-              outlineOffset: 0,
-            }}
             bg="white"
             boxShadow={disclosure.isOpen ? "base" : "none"}
             data-testid={testIds.input}
+            focusBorderColor="blue.500"
             onChange={onChange ?? searchAPI.onQueryChange}
             onFocus={disclosure.onOpen}
             placeholder={placeholder}
