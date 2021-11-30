@@ -133,6 +133,8 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
             _focus={{
               boxShadow: "base",
               borderColor: "inherit", // To avoid taking @chakra's border color on focus
+              outlineColor: "blue.500",
+              outlineOffset: 0,
             }}
             bg="white"
             boxShadow={disclosure.isOpen ? "base" : "none"}
@@ -140,6 +142,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
             onChange={onChange ?? searchAPI.onQueryChange}
             onFocus={disclosure.onOpen}
             placeholder={placeholder}
+            pr={hasButton ? "9rem" : undefined}
             ref={inputRef}
             value={value ?? searchAPI.query}
             {...inputProps}
@@ -148,15 +151,17 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
           {hasButton ? (
             <InputRightElement
               display={{ base: "none", md: "initial" }}
-              w="9rem"
+              w="auto"
             >
               <Button
                 borderLeftRadius="0"
                 colorScheme="blue"
                 data-testid={testIds.searchButton}
+                fontSize="0.875rem"
                 type="submit"
+                w="9rem"
               >
-                Find Constructs
+                Find constructs
               </Button>
             </InputRightElement>
           ) : (
