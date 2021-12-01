@@ -43,6 +43,7 @@ export const makeTag = (config: PackageTagConfig[]) => {
     ...base,
     baseStyle: {
       container: {
+        border: "base",
         fontWeight: "normal",
       },
     },

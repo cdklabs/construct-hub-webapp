@@ -113,7 +113,6 @@ export const SearchResults: FunctionComponent = () => {
             filtered={!!query}
             limit={limit}
             offset={offset}
-            query={query}
           />
 
           <Box display={{ base: "none", md: "initial" }}>

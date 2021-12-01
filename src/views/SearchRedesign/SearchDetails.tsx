@@ -1,5 +1,6 @@
-import { Text } from "@chakra-ui/react";
+import { Flex, Text, Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
 
 export interface SearchDetailsProps {
@@ -7,7 +8,6 @@ export interface SearchDetailsProps {
   offset: number;
   count: number;
   filtered: boolean;
-  query?: string;
 }
 
 const Em: FunctionComponent = ({ children }) => (
@@ -44,11 +44,20 @@ export const SearchDetails: FunctionComponent<SearchDetailsProps> = ({
   offset,
   count,
   filtered,
-  query,
 }) => {
+  const { query, searchAPI } = useSearchState();
+
+  const { keywords, setKeywords } = searchAPI;
   const first = limit * offset;
   const last = first + limit;
   const hasResults = count > 0;
+  const hasQuery = Boolean(query);
+  const hasKeywords = Boolean(keywords?.length);
+  const keywordTerm = (keywords?.length ?? 0) > 1 ? "keywords" : "keyword";
+
+  const getOnKeywordClick = (kw: string) => () => {
+    setKeywords((currentKeywords) => currentKeywords.filter((k) => k !== kw));
+  };
 
   return (
     <Text data-testid={testIds.searchDetails}>
@@ -60,13 +69,34 @@ export const SearchDetails: FunctionComponent<SearchDetailsProps> = ({
       ) : (
         <>{filtered ? "There were no search results" : "No constructs found"}</>
       )}
-      {query && (
+      {hasQuery && (
         <>
           {" for "}
           <Em>{query}</Em>
         </>
       )}
-      .{!hasResults && filtered && <> Try a different term.</>}
+      {hasKeywords && (
+        <>
+          {" with "}
+          {keywordTerm}{" "}
+          <Flex
+            align="center"
+            display="inline-flex"
+            maxW="full"
+            overflow="hidden"
+            sx={{ gap: "0.5rem" }}
+            wrap="wrap"
+          >
+            {keywords!.map((kw) => (
+              <Tag key={kw}>
+                <TagLabel>{kw}</TagLabel>
+                <TagCloseButton onClick={getOnKeywordClick(kw)} />
+              </Tag>
+            ))}
+          </Flex>
+        </>
+      )}
+      {!hasResults && filtered && <> Try a different term.</>}
     </Text>
   );
 };
