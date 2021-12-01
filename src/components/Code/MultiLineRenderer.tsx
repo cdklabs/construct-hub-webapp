@@ -24,7 +24,13 @@ export const MultiLineRenderer: FunctionComponent<RendererProps> = ({
       {tokens.map((line, i) => (
         <div key={i} {...getLineProps({ line, key: i })}>
           {line.map((token, key) => (
-            <span key={key} {...getTokenProps({ token, key })} />
+            <Box
+              as="span"
+              key={key}
+              // wordWrap is not supported as a style prop for some reason
+              sx={{ wordWrap: "normal" }}
+              {...getTokenProps({ token, key })}
+            />
           ))}
         </div>
       ))}
