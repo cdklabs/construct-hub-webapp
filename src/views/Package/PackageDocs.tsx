@@ -48,7 +48,10 @@ export const PackageDocs: FunctionComponent = () => {
 
   useEffect(() => {
     if (hash) {
-      const target = document.querySelector(`${hash}`) as HTMLElement;
+      const target = document.querySelector(
+        `[data-heading-id="${hash}"]`
+      ) as HTMLElement;
+
       target?.scrollIntoView(true);
     } else if (isApiPath(pathname)) {
       const target = document.getElementById(DOCS_ROOT_ID) as HTMLElement;
