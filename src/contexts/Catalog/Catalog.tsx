@@ -9,7 +9,11 @@ const CatalogContext = createContext<CatalogQuery | undefined>(undefined);
 export const useCatalog = () => useContext(CatalogContext)!;
 
 export const CatalogProvider: FunctionComponent = ({ children }) => {
-  const catalogQuery: CatalogQuery = useQuery("catalog", fetchPackages);
+  const catalogQuery: CatalogQuery = useQuery("catalog", fetchPackages, {
+    initialData: {
+      packages: [],
+    },
+  });
 
   return (
     <CatalogContext.Provider value={catalogQuery}>
