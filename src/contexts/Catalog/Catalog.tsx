@@ -1,26 +1,18 @@
-import { createContext, FunctionComponent, useContext, useEffect } from "react";
+import { createContext, FunctionComponent, useContext } from "react";
+import { useQuery, UseQueryResult } from "react-query";
 import { fetchPackages, Packages } from "../../api/package/packages";
-import { useRequest, UseRequestResponse } from "../../hooks/useRequest";
 
-const CatalogContext = createContext<UseRequestResponse<Packages>>({
-  loading: false,
-  data: undefined,
-  error: undefined,
-});
+export type CatalogQuery = UseQueryResult<Packages, Error | undefined>;
 
-export const useCatalog = () => useContext(CatalogContext);
+const CatalogContext = createContext<CatalogQuery | undefined>(undefined);
+
+export const useCatalog = () => useContext(CatalogContext)!;
 
 export const CatalogProvider: FunctionComponent = ({ children }) => {
-  const [requestPackages, catalogResponse] = useRequest(fetchPackages, {
-    initialValue: { packages: [] },
-  });
-
-  useEffect(() => {
-    void requestPackages();
-  }, [requestPackages]);
+  const catalogQuery: CatalogQuery = useQuery("catalog", fetchPackages);
 
   return (
-    <CatalogContext.Provider value={catalogResponse}>
+    <CatalogContext.Provider value={catalogQuery}>
       {children}
     </CatalogContext.Provider>
   );

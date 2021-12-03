@@ -55,6 +55,7 @@ const project = new web.ReactTypeScriptProject({
     "lunr",
     "node-emoji",
     "prism-react-renderer",
+    "react-query",
     "react-helmet",
     "react-markdown",
     "react-router-dom",
