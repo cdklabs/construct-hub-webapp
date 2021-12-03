@@ -13,14 +13,14 @@ export const useSection = ({
   showLastUpdated?: number;
   showPackages?: FeaturedPackagesDetail[];
 }) => {
-  const { loading, error } = useCatalog();
+  const { isLoading, error } = useCatalog();
   const { results } = useCatalogResults({
     limit: 25,
     sort: CatalogSearchSort.PublishDateDesc,
   });
 
   return useMemo(() => {
-    if (loading || error || !results) return [];
+    if (isLoading || error || !results) return [];
 
     if (showLastUpdated) {
       return results.slice(0, showLastUpdated);
@@ -40,5 +40,5 @@ export const useSection = ({
     } else {
       return undefined;
     }
-  }, [results, error, loading, showLastUpdated, showPackages]);
+  }, [results, error, isLoading, showLastUpdated, showPackages]);
 };

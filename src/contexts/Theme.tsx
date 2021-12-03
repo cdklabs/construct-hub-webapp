@@ -5,8 +5,8 @@ import { makeTheme } from "../theme";
 import { useConfig } from "./Config";
 
 export const Theme: FunctionComponent = ({ children }) => {
-  const { loading, data } = useConfig();
-  return loading ? (
+  const { isLoading, data } = useConfig();
+  return isLoading ? (
     <PageLoader />
   ) : (
     <ChakraProvider resetCSS theme={makeTheme(data!)}>
