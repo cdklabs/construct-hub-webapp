@@ -1,11 +1,6 @@
 import type { Assembly } from "@jsii/spec";
-import {
-  createContext,
-  FunctionComponent,
-  useContext,
-  useEffect,
-  useMemo,
-} from "react";
+import { createContext, FunctionComponent, useContext, useMemo } from "react";
+import { useQuery, UseQueryResult } from "react-query";
 import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
 import { fetchMarkdown } from "../../api/package/docs";
@@ -14,7 +9,6 @@ import { Language, languageFilename } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
-import { useRequest, UseRequestResponse } from "../../hooks/useRequest";
 import { NotFound } from "../NotFound";
 import { Types, MenuItem, parseMarkdownStructure } from "./util";
 
@@ -26,14 +20,14 @@ interface PathParams {
 
 interface PackageState {
   apiReference?: Types;
-  assembly: UseRequestResponse<Assembly>;
+  assembly: UseQueryResult<Assembly>;
   hasDocs: boolean;
   hasError: boolean;
   isLoadingDocs: boolean;
   isSupported: boolean;
   language: Language;
-  markdown: UseRequestResponse<string>;
-  metadata: UseRequestResponse<Metadata>;
+  markdown: UseQueryResult<string>;
+  metadata: UseQueryResult<Metadata>;
   name: string;
   pageDescription: string;
   pageTitle: string;
@@ -65,83 +59,73 @@ export const usePackageState = () => {
  */
 export const PackageStateProvider: FunctionComponent = ({ children }) => {
   const { name, scope, version }: PathParams = useParams();
-  const [requestMarkdown, markdownResponse] = useRequest(fetchMarkdown);
-  const [requestAssembly, assemblyResponse] = useRequest(fetchAssembly);
-  const [requestMetadata, metadataResponse] = useRequest(fetchMetadata);
-
-  const q = useQueryParams();
+  const id = `${scope}/${name}/v${version}`;
   const [language] = useLanguage();
+  const q = useQueryParams();
   const submodule = q.get(QUERY_PARAMS.SUBMODULE) ?? "";
 
-  useEffect(() => {
-    void requestMetadata(name, version, scope);
-    void requestAssembly(name, version, scope);
-  }, [name, requestAssembly, requestMetadata, scope, version]);
+  const markdown = useQuery(`${id}-docs-${language}`, () =>
+    fetchMarkdown(name, version, languageFilename[language], scope, submodule)
+  );
 
-  useEffect(() => {
-    void requestMarkdown(
-      name,
-      version,
-      languageFilename[language],
-      scope,
-      submodule
-    );
-  }, [name, scope, version, language, submodule, requestMarkdown]);
+  const assembly = useQuery(`${id}-assembly`, () =>
+    fetchAssembly(name, version, scope)
+  );
+
+  const metadata = useQuery(`${id}-metadata`, () =>
+    fetchMetadata(name, version, scope)
+  );
 
   const pageTitle = `${scope ? `${scope}/${name}` : name} ${version}`;
 
-  const pageDescription = assemblyResponse.data?.description ?? "";
+  const pageDescription = assembly.data?.description ?? "";
 
-  const hasError = Boolean(markdownResponse.error || assemblyResponse.error);
+  const hasError = Boolean(markdown.error || assembly.error);
 
   const hasDocs = Boolean(
-    !markdownResponse.loading &&
-      !assemblyResponse.loading &&
-      markdownResponse.data &&
-      assemblyResponse.data
+    !markdown.isLoading && !assembly.isLoading && markdown.data && assembly.data
   );
 
   // This will also be true if it cannot be verified (assembly not there)
   const isSupported = Boolean(
     language === Language.TypeScript ||
-      assemblyResponse.loading ||
-      assemblyResponse.error ||
-      assemblyResponse.data?.targets?.[language.toString()] != null
+      assembly.isLoading ||
+      assembly.error ||
+      assembly.data?.targets?.[language.toString()] != null
   );
 
   const isLoadingDocs = Boolean(
-    !metadataResponse.loading &&
-      (assemblyResponse.loading || markdownResponse.loading)
+    !metadata.isLoading && (assembly.isLoading || markdown.isLoading)
   );
 
   const parsedMd = useMemo(() => {
-    if (!markdownResponse.data) return { menuItems: [] };
+    if (!markdown.data) return { menuItems: [] };
 
-    return parseMarkdownStructure(markdownResponse.data, {
+    return parseMarkdownStructure(markdown.data, {
       scope,
       name,
       version,
       language,
       submodule,
     });
-  }, [markdownResponse.data, name, scope, version, language, submodule]);
+  }, [markdown.data, name, scope, version, language, submodule]);
 
   // Handle missing JSON for assembly
-  if (assemblyResponse.error) {
+  if (assembly.error) {
     return <NotFound />;
   }
 
   return (
     <PackageStateContext.Provider
       value={{
-        assembly: assemblyResponse,
+        assembly: assembly,
         hasDocs,
         hasError,
         isLoadingDocs,
         isSupported,
         language,
-        markdown: markdownResponse,
-        metadata: metadataResponse,
+        markdown: markdown,
+        metadata: metadata,
         name,
         pageDescription,
         pageTitle,

@@ -1,73 +1,37 @@
-import {
-  createContext,
-  FunctionComponent,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, FunctionComponent, useContext } from "react";
+import { useQuery, UseQueryResult } from "react-query";
 import { useLocation } from "react-router-dom";
 import { fetchConfig, Config } from "../../api/config";
-import { useRequest, UseRequestResponse } from "../../hooks/useRequest";
 
-const ConfigContext = createContext<UseRequestResponse<Config>>({
-  loading: false,
-  data: undefined,
-  error: undefined,
-});
+export type ConfigQuery = UseQueryResult<Config>;
 
-const LOCAL_CONFIG = "construct-hub-config";
+const ConfigContext = createContext<ConfigQuery | undefined>(undefined);
 
-export const useConfig = () => useContext(ConfigContext);
+export const useConfig = () => useContext(ConfigContext)!;
 
 export const ConfigProvider: FunctionComponent = ({ children }) => {
   const { search } = useLocation();
-  const [configData, setConfigData] = useState<Config | undefined>(() => {
-    try {
-      const stored = localStorage.getItem(LOCAL_CONFIG);
-      const parsed = stored ? JSON.parse(stored) : undefined;
-      return parsed;
-    } catch (e) {
-      console.error(e);
-    }
+  const { data, ...config }: ConfigQuery = useQuery("config", fetchConfig);
 
-    return undefined;
-  });
-
-  const [requestConfig, configResponse] = useRequest(fetchConfig, {
-    onSuccess: (res) => {
-      setConfigData(res);
-
-      try {
-        localStorage.setItem(LOCAL_CONFIG, JSON.stringify(res));
-      } catch (e) {
-        console.error(e);
-      }
-    },
-  });
-
-  useEffect(() => {
-    void requestConfig();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const config = configData ?? {};
+  const configData = { ...data };
 
   // allow overriding feature flags using query params the query param name is
   // `ff-<flagName>`, for example,
   // `https://constructs.dev?ff-generalAvailability`.
   const params = new URLSearchParams(search);
-  const flags: any = config.featureFlags ?? {};
-  config.featureFlags = flags;
+  configData.featureFlags = configData.featureFlags ?? {};
 
   for (const key of params.keys()) {
     if (key.startsWith("ff-")) {
       const flagName = key.slice(3);
-      flags[flagName] = true;
+      (configData.featureFlags as Record<string, boolean>)[flagName] = true;
     }
   }
 
   return (
-    <ConfigContext.Provider value={{ ...configResponse, data: config }}>
+    <ConfigContext.Provider
+      value={{ ...config, data: configData } as ConfigQuery}
+    >
       {children}
     </ConfigContext.Provider>
   );

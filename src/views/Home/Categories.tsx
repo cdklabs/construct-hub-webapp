@@ -1,4 +1,12 @@
-import { Flex, Heading, Text, Button, Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Text,
+  Button,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Category } from "../../api/config";
 import { NavLink } from "../../components/NavLink";
@@ -67,17 +75,18 @@ export const Categories: FunctionComponent = () => {
       <Wrap>
         {categories.map((category) => (
           <WrapItem key={category.title}>
-            <Button
-              _hover={{ backgroundColor: "white" }}
-              as={NavLink}
-              color="blue.800"
-              colorScheme="gray"
-              size="md"
-              style={{ boxShadow: "0px 4px 4px rgba(73, 73, 73, 0.63)" }}
-              to={category.url}
-            >
-              {category.title}
-            </Button>
+            <NavLink to={category.url}>
+              <Button
+                _hover={{ backgroundColor: "white" }}
+                as={Box}
+                boxShadow="0px 4px 4px rgba(73, 73, 73, 0.63)"
+                color="blue.800"
+                colorScheme="gray"
+                size="md"
+              >
+                {category.title}
+              </Button>
+            </NavLink>
           </WrapItem>
         ))}
       </Wrap>
