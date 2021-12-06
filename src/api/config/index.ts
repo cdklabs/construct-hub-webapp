@@ -77,10 +77,7 @@ export interface FeaturedPackagesDetail {
   readonly comment?: string;
 }
 
-export interface FeatureFlags {
-  fullSite?: boolean;
-  searchRedesign?: boolean;
-}
+export interface FeatureFlags {}
 
 export interface Config {
   featureFlags?: FeatureFlags;
