@@ -1,6 +1,7 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Flex, IconButton, Text, useDisclosure } from "@chakra-ui/react";
 import { FunctionComponent, useMemo, ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 import { NavLink } from "../NavLink";
 
 export interface NavItemConfig {
@@ -68,9 +69,13 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   level,
   onOpen,
 }) => {
-  const linkIsActive = false;
   const defaultIsOpen = level < 2; // only show first two levels by default
   const disclosure = useDisclosure({ onOpen, defaultIsOpen });
+  const { hash, pathname } = useLocation();
+  const pathUrl = new URL(path ?? "", window.origin);
+  const linkIsActive = path?.includes("/api/")
+    ? pathUrl.pathname === pathname
+    : pathUrl.hash && hash && pathUrl.hash === hash;
 
   const showToggle = (children?.length ?? 0) > 0;
   const showChildren = disclosure.isOpen && showToggle;

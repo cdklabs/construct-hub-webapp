@@ -29,14 +29,17 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
     <Portal>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
-          <ModalContent data-testid={testIds.container}>
+          <ModalContent data-testid={testIds.container} mx={4}>
             <ModalCloseButton />
             <ModalHeader>Search</ModalHeader>
             <ModalBody>
               <Stack pb={4} spacing={4}>
                 <SearchBar
                   onChange={onQueryChange}
-                  onSubmit={onSubmit}
+                  onSubmit={(e) => {
+                    onClose();
+                    onSubmit(e);
+                  }}
                   value={query}
                 ></SearchBar>
                 <Button colorScheme="blue" onClick={() => onSearch()}>

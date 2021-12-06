@@ -78,6 +78,31 @@ describe("CatalogSearchAPI", () => {
     );
   });
 
+  it("Support partially matched keywords", () => {
+    const [p1, p2, p3] = [...catalogFixture.packages];
+    p1.keywords = ["dynamodb"];
+    p2.keywords = ["amazon dynamodb"];
+    p3.keywords = ["eks"];
+
+    const testInstance = new CatalogSearchAPI(
+      [p1, p2, p3] as CatalogPackage[],
+      statsFixture
+    );
+
+    const dynamodbResults = [
+      ...testInstance
+        .search({
+          query: "dynamodb",
+        })
+        .values(),
+    ];
+
+    const [extendedP1] = testInstance.findByName(p1.name);
+    const [extendedP2] = testInstance.findByName(p2.name);
+
+    expect([...dynamodbResults.values()]).toEqual([extendedP1, extendedP2]);
+  });
+
   it("Ignores cdkMajor filter if no cdkType is passed", () => {
     const cdkMajorFilterSpy = jest.spyOn(util.FILTER_FUNCTIONS, "cdkMajor");
 

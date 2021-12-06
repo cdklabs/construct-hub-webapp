@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { App } from "./App";
@@ -14,27 +15,31 @@ import { Theme } from "./contexts/Theme";
 import { unregister } from "./register-service-worker";
 import { reportWebVitals } from "./reportWebVitals";
 
+const queryClient = new QueryClient();
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <ShortbreadProvider>
-        <AnalyticsProvider>
-          <ConfigProvider>
-            <CatalogProvider>
-              <StatsProvider>
-                <SearchProvider>
-                  <Theme>
-                    <ExternalLinkWarningProvider>
-                      <App />
-                    </ExternalLinkWarningProvider>
-                  </Theme>
-                </SearchProvider>
-              </StatsProvider>
-            </CatalogProvider>
-          </ConfigProvider>
-        </AnalyticsProvider>
-      </ShortbreadProvider>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <ShortbreadProvider>
+          <AnalyticsProvider>
+            <ConfigProvider>
+              <CatalogProvider>
+                <StatsProvider>
+                  <SearchProvider>
+                    <Theme>
+                      <ExternalLinkWarningProvider>
+                        <App />
+                      </ExternalLinkWarningProvider>
+                    </Theme>
+                  </SearchProvider>
+                </StatsProvider>
+              </CatalogProvider>
+            </ConfigProvider>
+          </AnalyticsProvider>
+        </ShortbreadProvider>
+      </Router>
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

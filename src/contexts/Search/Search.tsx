@@ -9,16 +9,16 @@ const SearchContext = createContext<CatalogSearchAPI | undefined>(undefined);
 export const useSearchContext = () => useContext(SearchContext);
 
 export const SearchProvider: FunctionComponent = ({ children }) => {
-  const { data: catalogData, loading: catalogLoading } = useCatalog();
-  const { data: statsData, loading: statsLoading } = useStats();
+  const catalog = useCatalog();
+  const stats = useStats();
 
   const searchAPI = useMemo(() => {
-    if (catalogData?.packages === undefined || catalogLoading) return;
-    if (statsData === undefined || statsLoading) return;
+    if (catalog.data?.packages === undefined || catalog.isLoading) return;
+    if (stats.data === undefined || stats.isLoading) return;
 
-    const instance = new CatalogSearchAPI(catalogData.packages, statsData);
+    const instance = new CatalogSearchAPI(catalog.data.packages, stats.data);
     return instance;
-  }, [catalogData, catalogLoading, statsData, statsLoading]);
+  }, [catalog.data, catalog.isLoading, stats.data, stats.isLoading]);
 
   if (!searchAPI) {
     return <PageLoader />;

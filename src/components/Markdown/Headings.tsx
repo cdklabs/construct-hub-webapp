@@ -68,7 +68,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
         size={size}
       >
         <NavLink
-          data-heading-id={id}
+          data-heading-id={`#${id}`}
           data-heading-level={level}
           data-heading-title={title}
           id={id}
