@@ -29,7 +29,7 @@ export const PackageLatest: FunctionComponent = () => {
   const { name, scope }: RouteParams = useParams();
   const catalog = useCatalog();
 
-  if (catalog.loading || !catalog.data) {
+  if (catalog.isLoading || !catalog.data) {
     return (
       <Center minH="16rem">
         <Spinner size="xl" />

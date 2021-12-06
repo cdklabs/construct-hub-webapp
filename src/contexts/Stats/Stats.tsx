@@ -1,25 +1,17 @@
-import { createContext, FunctionComponent, useContext, useEffect } from "react";
+import { createContext, FunctionComponent, useContext } from "react";
+import { useQuery, UseQueryResult } from "react-query";
 import { fetchStats, PackageStats } from "../../api/stats";
-import { useRequest, UseRequestResponse } from "../../hooks/useRequest";
 
-const StatsContext = createContext<UseRequestResponse<PackageStats>>({
-  loading: false,
-  data: undefined,
-  error: undefined,
-});
+export type StatsQuery = UseQueryResult<PackageStats, Error | undefined>;
 
-export const useStats = () => useContext(StatsContext);
+const StatsContext = createContext<StatsQuery | undefined>(undefined);
+
+export const useStats = () => useContext(StatsContext)!;
 
 export const StatsProvider: FunctionComponent = ({ children }) => {
-  const [requestStats, statsResponse] = useRequest(fetchStats);
-
-  useEffect(() => {
-    void requestStats();
-  }, [requestStats]);
+  const stats: StatsQuery = useQuery("stats", fetchStats);
 
   return (
-    <StatsContext.Provider value={statsResponse}>
-      {children}
-    </StatsContext.Provider>
+    <StatsContext.Provider value={stats}>{children}</StatsContext.Provider>
   );
 };

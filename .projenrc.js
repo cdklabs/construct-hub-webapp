@@ -1,6 +1,8 @@
 const { web } = require("projen");
 const { workflows } = require("projen/lib/github");
 
+const PROXY_URL = "https://constructs.dev/";
+
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
   name: "construct-hub-webapp",
@@ -31,17 +33,10 @@ const project = new web.ReactTypeScriptProject({
     prettier: true,
   },
 
-  depsUpgradeOptions: {
-    exclude: ["@chakra-ui/react"],
-    workflowOptions: {
-      branches: ["dev"],
-    },
-  },
-
   deps: [
     "@chakra-ui/anatomy",
     "@chakra-ui/icons",
-    "@chakra-ui/react@1.6.10",
+    "@chakra-ui/react",
     "@chakra-ui/theme-tools",
     "@emotion/react@^11",
     "@emotion/styled@^11",
@@ -54,6 +49,7 @@ const project = new web.ReactTypeScriptProject({
     "lunr",
     "node-emoji",
     "prism-react-renderer",
+    "react-query",
     "react-helmet",
     "react-markdown",
     "react-router-dom",
@@ -209,7 +205,7 @@ project.npmignore.addPatterns("src/__fixtures__");
 project.gitignore.exclude("public/data");
 
 // Proxy requests to awscdk.io for local testing
-project.package.addField("proxy", "https://constructs.dev/");
+project.package.addField("proxy", PROXY_URL);
 
 // setup linting for create-react-app specific tools
 project.eslint.addRules({
