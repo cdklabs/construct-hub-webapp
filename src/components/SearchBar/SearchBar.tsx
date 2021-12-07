@@ -154,7 +154,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
               }
             }}
             placeholder={placeholder}
-            pr={hasButton ? "9rem" : undefined}
+            pr={hasButton ? { base: "none", md: "9rem" } : undefined}
             ref={inputRef}
             value={value ?? searchAPI.query}
             {...inputProps}

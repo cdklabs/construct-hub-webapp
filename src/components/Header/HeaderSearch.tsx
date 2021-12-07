@@ -33,6 +33,7 @@ export const HeaderSearch: FunctionComponent = () => {
           <IconButton
             aria-label="Search Icon"
             borderRadius="md"
+            data-event={HEADER_ANALYTICS.SEARCH_MODAL.OPEN}
             data-testid={testIds.searchIcon}
             icon={<SearchIcon color="gray.600" />}
             onClick={searchModal.onOpen}
