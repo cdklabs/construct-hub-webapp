@@ -1,7 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 import { FunctionComponent, lazy } from "react";
-import { Switch, useLocation } from "react-router-dom";
-import { DevPreviewBanner } from "./components/DevPreviewBanner";
+import { Switch } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { LazyRoute } from "./components/LazyRoute";
@@ -16,22 +15,17 @@ const SearchRedesign = lazy(() => import("./views/SearchRedesign"));
 const SiteTerms = lazy(() => import("./views/SiteTerms"));
 
 export const App: FunctionComponent = () => {
-  const { pathname } = useLocation();
-
-  const showBanner = pathname !== "/";
-
   return (
     <Grid
       as="main"
       bg="bgPrimary"
       gridTemplateColumns="1fr"
-      gridTemplateRows="auto auto 1fr auto"
+      gridTemplateRows="auto 1fr auto"
       h="100%"
       maxW="100%"
       minH="100vh"
     >
       <Header />
-      {showBanner ? <DevPreviewBanner /> : <div />}
       <Switch>
         <LazyRoute component={Contribute} exact path={ROUTES.CONTRIBUTE} />
         <LazyRoute component={FAQ} exact path={ROUTES.FAQ} />
