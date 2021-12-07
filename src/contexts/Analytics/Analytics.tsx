@@ -65,7 +65,7 @@ export const AnalyticsProvider: FunctionComponent = ({ children }) => {
 
         while (target && !eventName) {
           if (target.hasAttribute?.("data-event")) {
-            eventName = target.getAttribute?.("data-event");
+            eventName = target.getAttribute("data-event");
           } else if (target.parentElement) {
             target = target.parentElement;
           } else {
