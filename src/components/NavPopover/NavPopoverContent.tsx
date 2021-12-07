@@ -7,11 +7,13 @@ import {
   MenuListProps,
 } from "@chakra-ui/react";
 import { Fragment, FunctionComponent } from "react";
+import { eventName } from "../../contexts/Analytics/util";
 import { ExternalLink } from "../ExternalLink";
 import { NavLink } from "../NavLink";
 import type { IMenuItems, ILink } from "./types";
 
 export interface NavPopoverContentProps extends MenuListProps {
+  "data-event"?: string;
   items: IMenuItems;
 }
 
@@ -34,7 +36,7 @@ const Link: FunctionComponent<ILink> = ({ display, isNavLink, url }) =>
   );
 
 export const NavPopoverContent = forwardRef<NavPopoverContentProps, "div">(
-  ({ items, ...menuProps }, ref) => {
+  ({ "data-event": dataEvent, items, ...menuProps }, ref) => {
     return (
       <MenuList {...menuProps} ref={ref}>
         {items.map((item, idx) => {
@@ -43,7 +45,14 @@ export const NavPopoverContent = forwardRef<NavPopoverContentProps, "div">(
               <Fragment key={`${item.display}-${idx}`}>
                 <MenuGroup align="left" title={item.display}>
                   {item.links.map((link, linkIdx) => (
-                    <MenuItem key={`${link.display}-${linkIdx}`}>
+                    <MenuItem
+                      data-event={
+                        dataEvent
+                          ? eventName(dataEvent, link.display)
+                          : undefined
+                      }
+                      key={`${link.display}-${linkIdx}`}
+                    >
                       <Link {...link} />
                     </MenuItem>
                   ))}
@@ -54,7 +63,12 @@ export const NavPopoverContent = forwardRef<NavPopoverContentProps, "div">(
           }
 
           return (
-            <MenuItem key={`${item.display}-${idx}`}>
+            <MenuItem
+              data-event={
+                dataEvent ? eventName(dataEvent, item.display) : undefined
+              }
+              key={`${item.display}-${idx}`}
+            >
               <Link {...item} />
             </MenuItem>
           );

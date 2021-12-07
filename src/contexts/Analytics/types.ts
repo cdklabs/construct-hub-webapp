@@ -22,3 +22,11 @@ export interface PageViewOptions {
     description?: string;
   };
 }
+
+export interface ClickEventConfig {
+  event: {
+    type: "click";
+    name: string;
+    description?: string;
+  };
+}

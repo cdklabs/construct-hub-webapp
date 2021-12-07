@@ -10,6 +10,7 @@ import {
 import { FunctionComponent } from "react";
 import { useHistory } from "react-router-dom";
 import { ExtendedCatalogPackage } from "../../api/catalog-search";
+import { eventName } from "../../contexts/Analytics/util";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useDebounce } from "../../hooks/useDebounce";
 import { getPackagePath } from "../../util/url";
@@ -34,7 +35,7 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
   CardProps & ListProps,
   "ul"
 >((props, ref) => {
-  const { query, isOpen } = useSearchBarState();
+  const { dataEvent, query, isOpen } = useSearchBarState();
   const debouncedQuery = useDebounce(query);
 
   const { push } = useHistory();
@@ -72,6 +73,11 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
           <>
             {i > 0 && <Divider mx={4} w="auto" />}
             <SearchItem
+              data-event={
+                dataEvent
+                  ? eventName(dataEvent, "Suggestion", pkg.name)
+                  : undefined
+              }
               data-testid={testIds.suggestion}
               key={pkg.id}
               name={
