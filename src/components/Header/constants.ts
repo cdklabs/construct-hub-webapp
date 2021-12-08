@@ -1,4 +1,4 @@
-import { eventName } from "../../contexts/Analytics/util";
+import { eventName } from "../../contexts/Analytics";
 
 const headerEvent: typeof eventName = (...e) => eventName("Header", ...e);
 const searchModalEvent: typeof eventName = (...e) =>

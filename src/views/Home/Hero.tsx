@@ -5,7 +5,7 @@ import {
   SearchOverlay,
   SearchSuggestions,
 } from "../../components/SearchBar";
-import { SECTION_PADDING } from "./constants";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
 import testIds from "./testIds";
 
 export const Hero: FunctionComponent = () => {
@@ -34,7 +34,7 @@ export const Hero: FunctionComponent = () => {
         Find and use open-source Cloud Development Kit (CDK) libraries
       </Heading>
       <Box color="initial" maxW="36rem" mt={8} mx="auto" w="full">
-        <SearchBar hasButton>
+        <SearchBar data-event={HOME_ANALYTICS.SEARCH} hasButton>
           <SearchOverlay />
           <SearchSuggestions />
         </SearchBar>

@@ -12,7 +12,7 @@ import { Category } from "../../api/config";
 import { NavLink } from "../../components/NavLink";
 import { useConfigValue } from "../../hooks/useConfigValue";
 import { getSearchPath } from "../../util/url";
-import { SECTION_PADDING } from "./constants";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
 import testIds from "./testIds";
 
 /**
@@ -75,7 +75,10 @@ export const Categories: FunctionComponent = () => {
       <Wrap>
         {categories.map((category) => (
           <WrapItem key={category.title}>
-            <NavLink to={category.url}>
+            <NavLink
+              data-event={HOME_ANALYTICS.USE_CASE.eventName(category.title)}
+              to={category.url}
+            >
               <Button
                 _hover={{ backgroundColor: "white" }}
                 as={Box}
