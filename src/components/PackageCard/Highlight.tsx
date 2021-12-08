@@ -8,6 +8,8 @@ export const Highlight: FunctionComponent = () => {
   const { packageTags = [] } = usePackageCard()?.metadata ?? {};
   const [highlight] = highlightsFrom(packageTags);
 
+  if (!highlight) return null;
+
   return (
     <Box fontSize="xs">
       <HighlightComponent {...highlight} />
