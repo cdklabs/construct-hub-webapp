@@ -9,6 +9,7 @@ const listViews = {
 };
 
 export interface PackageListViewProps {
+  "data-event"?: string;
   items: CatalogPackage[];
 }
 
@@ -20,6 +21,7 @@ export interface PackageListProps extends Partial<PackageListViewProps> {
 
 export const PackageList: FunctionComponent<PackageListProps> = memo(
   ({
+    "data-event": dataEvent,
     cardView = PackageCardType.Wide,
     items,
     loading,
@@ -35,7 +37,7 @@ export const PackageList: FunctionComponent<PackageListProps> = memo(
 
     const View = listViews[cardView];
 
-    return <View items={items} />;
+    return <View data-event={dataEvent} items={items} />;
   }
 );
 
