@@ -1,11 +1,11 @@
 import packageCardIds from "components/PackageCard/testIds";
 import searchBar from "components/SearchBar/testIds";
-import searchRedesign from "views/SearchRedesign/testIds";
+import searchRedesign from "views/Search/testIds";
 import { checkHeaderAndFooter } from "../support/helpers";
 import { getSearchPath } from "util/url";
 import { CatalogSearchSort } from "api/catalog-search/constants";
 import { CDKType } from "constants/constructs";
-import { SORT_RENDER_MAP } from "views/SearchRedesign/constants";
+import { SORT_RENDER_MAP } from "views/Search/constants";
 import { Language, TEMP_SUPPORTED_LANGUAGES } from "constants/languages";
 
 const checkCard = (cardType: string) => {
