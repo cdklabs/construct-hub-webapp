@@ -97,16 +97,6 @@ export const Contribute: FunctionComponent = () => (
             </ListItem>
 
             <ListItem>
-              <strong>Helpful keywords.</strong> Publish your library with
-              helpful keywords, ones that can help potential users to find your
-              package. Helpful keywords can be technologies that are being used
-              by the library, use cases the library is useful for, service names
-              that are being used by the library etc. For example: ‘Monitoring’,
-              ‘Kubernetes’, ‘Cost Management’, ‘Websites’, ‘AI’, ‘Containers’
-              and more.
-            </ListItem>
-
-            <ListItem>
               <strong>Helpful README.</strong> Review your library’s README
               file. Is it developer-friendly? That is, can developers quickly
               understand the use case you’re trying to solve? Does your README
