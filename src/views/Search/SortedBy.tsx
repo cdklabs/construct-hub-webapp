@@ -10,7 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
-import { SORT_RENDER_MAP } from "./constants";
+import { eventName } from "../../contexts/Analytics";
+import { SEARCH_ANALYTICS, SORT_RENDER_MAP } from "./constants";
 import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
 
@@ -27,6 +28,7 @@ export const SortedBy: FunctionComponent = () => {
         <MenuButton
           as={Button}
           color="blue.500"
+          data-event={eventName(SEARCH_ANALYTICS.SORT, "Menu")}
           data-testid={testIds.sortButton}
           ml={2}
           pl={2} // For some reason, the px shorthand doesn't work on this Button
@@ -39,6 +41,7 @@ export const SortedBy: FunctionComponent = () => {
         </MenuButton>
         <MenuList data-testid={testIds.sortDropdown} minW="180" zIndex="sticky">
           <MenuItem
+            data-event={eventName(SEARCH_ANALYTICS.SORT, "Option", "Relevance")}
             data-testid={testIds.sortItem}
             data-value=""
             key="Relevance"
@@ -48,6 +51,7 @@ export const SortedBy: FunctionComponent = () => {
           </MenuItem>
           {Object.entries(SORT_RENDER_MAP).map(([value, display]) => (
             <MenuItem
+              data-event={eventName(SEARCH_ANALYTICS.SORT, "Option", display)}
               data-testid={testIds.sortItem}
               data-value={value}
               key={value}

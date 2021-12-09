@@ -7,8 +7,10 @@ import {
   useState,
 } from "react";
 import { useHistory } from "react-router-dom";
+import { clickEvent, useAnalytics } from "../../contexts/Analytics";
 
 export interface GoToPageProps {
+  "data-event"?: string;
   "data-testid"?: string;
   pageLimit: number;
   offset: number;
@@ -16,11 +18,13 @@ export interface GoToPageProps {
 }
 
 export const GoToPage: FunctionComponent<GoToPageProps> = ({
+  "data-event": dataEvent,
   "data-testid": dataTestid,
   pageLimit,
   offset,
   getPageUrl,
 }) => {
+  const { trackCustomEvent } = useAnalytics();
   const [inputValue, setInputValue] = useState((offset + 1).toString());
   const { push } = useHistory();
 
@@ -48,6 +52,11 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
         min={1}
         name="page"
         onChange={onInputChange}
+        onFocus={() => {
+          if (dataEvent) {
+            trackCustomEvent(clickEvent({ name: dataEvent }));
+          }
+        }}
         p={0}
         textAlign="center"
         type="number"

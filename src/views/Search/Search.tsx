@@ -6,7 +6,7 @@ import { SearchResults } from "./SearchResults";
 import { SearchStateProvider } from "./SearchState";
 import testIds from "./testIds";
 
-export const SearchRedesign: FunctionComponent = () => {
+export const Search: FunctionComponent = () => {
   return (
     <SearchStateProvider>
       <Page

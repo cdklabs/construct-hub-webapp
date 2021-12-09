@@ -6,7 +6,7 @@ import { Page } from "../../components/Page";
 import { SearchBar } from "../../components/SearchBar";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { getSearchPath } from "../../util/url";
-import { SearchQueryParam } from "../SearchRedesign/constants";
+import { SearchQueryParam, SEARCH_ANALYTICS } from "./constants";
 import { PageControls } from "./PageControls";
 import { SearchDetails } from "./SearchDetails";
 import { useSearchState } from "./SearchState";
@@ -94,6 +94,7 @@ export const SearchResults: FunctionComponent = () => {
       <Stack direction="column" maxW="100vw" pb={4} px={4} spacing={4}>
         <SearchBar
           bg="white"
+          data-event={SEARCH_ANALYTICS.SEARCH}
           onChange={searchAPI.onQueryChange}
           onSubmit={(e) => {
             searchAPI.setSort(undefined);
@@ -125,7 +126,7 @@ export const SearchResults: FunctionComponent = () => {
           </Box>
         </Stack>
 
-        <PackageList items={page} />
+        <PackageList data-event={SEARCH_ANALYTICS.RESULTS} items={page} />
 
         <Box w="full">
           <PageControls

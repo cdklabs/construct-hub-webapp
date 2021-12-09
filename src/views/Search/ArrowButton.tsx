@@ -3,6 +3,7 @@ import type { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
 export interface ArrowButtonProps {
+  "data-event"?: string;
   "data-testid"?: string;
   icon: FunctionComponent<IconProps>;
   offset?: number;
@@ -10,6 +11,7 @@ export interface ArrowButtonProps {
 }
 
 export const ArrowButton: FunctionComponent<ArrowButtonProps> = ({
+  "data-event": dataEvent,
   "data-testid": dataTestid,
   icon: Icon,
   offset,
@@ -22,6 +24,7 @@ export const ArrowButton: FunctionComponent<ArrowButtonProps> = ({
     borderRadius: "md",
     borderColor: "blue.500",
     colorScheme: "blue",
+    "data-event": dataEvent,
     "data-testid": dataTestid,
     icon: <Icon color="blue.500" h={5} w={5} />,
     mx: 2,
