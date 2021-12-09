@@ -19,7 +19,7 @@ import { AWSIcon } from "../../icons/AWSIcon";
 import { DatadogIcon } from "../../icons/DatadogIcon";
 import { MongoDBIcon } from "../../icons/MongoDBIcon";
 import { getSearchPath } from "../../util/url";
-import { SECTION_PADDING } from "./constants";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
 import { InfoSection } from "./InfoSection";
 import testIds from "./testIds";
 
@@ -59,6 +59,7 @@ const IconLink = ({
 }) => (
   <NavLink
     color="blue.500"
+    data-event={HOME_ANALYTICS.INFO.eventName(label)}
     data-testid={testIds.infoSectionIcon}
     fontWeight="bold"
     to={url}

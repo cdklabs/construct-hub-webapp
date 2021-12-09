@@ -4,9 +4,10 @@ import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { DEFAULT_FEATURED_PACKAGES } from "../../api/config";
 import { NavLink } from "../../components/NavLink";
 import { PackageCard } from "../../components/PackageCard";
+import { eventName } from "../../contexts/Analytics";
 import { useConfigValue } from "../../hooks/useConfigValue";
 import { getSearchPath } from "../../util/url";
-import { SECTION_PADDING } from "./constants";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
 import testIds from "./testIds";
 import { useSection } from "./useSection";
 
@@ -48,13 +49,18 @@ export const Featured: FunctionComponent = () => {
         templateColumns={{ base: "1fr", xl: "1fr 1fr" }}
       >
         {section?.slice(0, 4).map((pkg) => (
-          <PackageCard key={pkg.name} pkg={pkg} />
+          <PackageCard
+            data-event={HOME_ANALYTICS.FEATURED}
+            key={pkg.name}
+            pkg={pkg}
+          />
         ))}
       </Grid>
       <Button
         as={NavLink}
         boxShadow="md"
         colorScheme="blue"
+        data-event={eventName(HOME_ANALYTICS.FEATURED, "See All")}
         mx="auto"
         my={8}
         onClick={() => window.scrollTo(0, 0)}

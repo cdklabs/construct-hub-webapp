@@ -15,14 +15,16 @@ import type { FunctionComponent } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { NavLink } from "../../components/NavLink";
 import { ROUTES } from "../../constants/url";
+import { eventName } from "../../contexts/Analytics";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useHistoryState } from "../../hooks/useHistoryState";
 import { getSearchPath } from "../../util/url";
-import { SECTION_PADDING } from "./constants";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
 import { PackageGrid } from "./PackageGrid";
 import testIds from "./testIds";
 
 interface PackageTabProps {
+  "data-event": string;
   data: ReturnType<typeof useCatalogResults>;
   label: string;
 }
@@ -33,22 +35,30 @@ interface PackageTabPanelProps extends PackageTabProps, TabPanelProps {
 
 const tabs = {
   community: {
+    "data-event": HOME_ANALYTICS.PUBLISHER.eventName("Community"),
     label: "Community",
     tag: "community",
   },
   aws: {
+    "data-event": HOME_ANALYTICS.PUBLISHER.eventName("AWS"),
     label: "AWS",
     tag: "aws-official",
   },
   hashicorp: {
+    "data-event": HOME_ANALYTICS.PUBLISHER.eventName("HashiCorp"),
     label: "HashiCorp",
     tag: "hashicorp-official",
   },
 };
 
-const PackageTab: FunctionComponent<PackageTabProps> = ({ data, label }) => {
+const PackageTab: FunctionComponent<PackageTabProps> = ({
+  "data-event": dataEvent,
+  data,
+  label,
+}) => {
   return (
     <Tab
+      data-event={eventName(dataEvent, "Tab")}
       data-testid={testIds.cdkTypeTab}
       data-value={label}
       isDisabled={data.page.length < 1}
@@ -59,15 +69,16 @@ const PackageTab: FunctionComponent<PackageTabProps> = ({ data, label }) => {
 };
 
 const PackageTabPanel = forwardRef<PackageTabPanelProps, "div">(
-  ({ label, data, tag, ...props }, ref) => {
+  ({ "data-event": dataEvent, label, data, tag, ...props }, ref) => {
     return (
       <TabPanel data-testid={testIds.cdkTypeGrid} ref={ref} {...props} p={0}>
-        <PackageGrid packages={data.page} />
+        <PackageGrid data-event={dataEvent} packages={data.page} />
 
         <Flex justify="center" w="full">
           <Button
             as={NavLink}
             colorScheme="blue"
+            data-event={eventName(dataEvent, "See All")}
             data-testid={testIds.cdkTypeSeeAllButton}
             my={8}
             onClick={() => window.scrollTo(0, 0)}
@@ -144,30 +155,22 @@ export const CDKTypeTabs: FunctionComponent = () => {
         variant="line"
       >
         <TabList>
-          <PackageTab data={community} label={tabs.community.label} />
+          <PackageTab data={community} {...tabs.community} />
 
-          <PackageTab data={aws} label={tabs.aws.label} />
+          <PackageTab data={aws} {...tabs.aws} />
 
-          <PackageTab data={hashicorp} label={tabs.hashicorp.label} />
+          <PackageTab data={hashicorp} {...tabs.hashicorp} />
         </TabList>
         <TabPanels minH="28.5rem">
           <PackageTabPanel
             data={community}
+            {...tabs.community}
             label={tabs.community.label.toLowerCase()}
-            tag={tabs.community.tag}
           />
 
-          <PackageTabPanel
-            data={aws}
-            label={tabs.aws.label}
-            tag={tabs.aws.tag}
-          />
+          <PackageTabPanel data={aws} {...tabs.aws} />
 
-          <PackageTabPanel
-            data={hashicorp}
-            label={tabs.hashicorp.label}
-            tag={tabs.hashicorp.tag}
-          />
+          <PackageTabPanel data={hashicorp} {...tabs.hashicorp} />
         </TabPanels>
       </Tabs>
     </Flex>

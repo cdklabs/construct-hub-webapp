@@ -6,6 +6,7 @@ import {
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
+import { eventName } from "../../contexts/Analytics";
 import { useLanguage } from "../../hooks/useLanguage";
 import { getPackagePath } from "../../util/url";
 import { CDKTypeBadge } from "../CDKType";
@@ -16,6 +17,7 @@ import testIds from "./testIds";
 export const Heading: FunctionComponent = () => {
   const [currentLanguage] = useLanguage();
   const {
+    dataEvent,
     description,
     comment,
     metadata: { constructFramework },
@@ -30,6 +32,9 @@ export const Heading: FunctionComponent = () => {
     <>
       <LinkOverlay
         as={Link}
+        data-event={
+          dataEvent ? eventName(dataEvent, "Package Card", name) : undefined
+        }
         to={getPackagePath({
           name,
           version,
