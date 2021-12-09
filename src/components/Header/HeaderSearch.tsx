@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import { ROUTES } from "../../constants/url";
 import { SearchBar, SearchOverlay, SearchSuggestions } from "../SearchBar";
 import { SearchModal } from "../SearchModal";
+import { HEADER_ANALYTICS } from "./constants";
 import testIds from "./testIds";
 
 /**
@@ -22,7 +23,7 @@ export const HeaderSearch: FunctionComponent = () => {
           data-testid={testIds.searchInput}
           display={{ base: "none", lg: "initial" }}
         >
-          <SearchBar bg="gray.50">
+          <SearchBar bg="gray.50" data-event={HEADER_ANALYTICS.SEARCH}>
             <SearchOverlay />
             <SearchSuggestions />
           </SearchBar>
@@ -32,6 +33,7 @@ export const HeaderSearch: FunctionComponent = () => {
           <IconButton
             aria-label="Search Icon"
             borderRadius="md"
+            data-event={HEADER_ANALYTICS.SEARCH_MODAL.OPEN}
             data-testid={testIds.searchIcon}
             icon={<SearchIcon color="gray.600" />}
             onClick={searchModal.onOpen}

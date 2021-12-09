@@ -9,6 +9,8 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { Fragment, FunctionComponent } from "react";
+import { useAnalytics } from "../../contexts/Analytics";
+import { clickEvent, eventName } from "../../contexts/Analytics/util";
 import { ExternalLink } from "../ExternalLink";
 import { NavLink } from "../NavLink";
 import type { IMenuItems, ILink } from "../NavPopover";
@@ -19,14 +21,22 @@ const linkProps = {
   w: "full",
 };
 
-const Link: FunctionComponent<ILink> = ({ display, isNavLink, url }) =>
-  isNavLink ? (
-    <NavLink to={url} {...linkProps}>
+const Link: FunctionComponent<ILink & { "data-event"?: string }> = ({
+  "data-event": dataEvent,
+  display,
+  isNavLink,
+  url,
+}) => {
+  const event = dataEvent ? eventName(dataEvent, "Link", display) : undefined;
+
+  return isNavLink ? (
+    <NavLink data-event={event} to={url} {...linkProps}>
       {display}
     </NavLink>
   ) : (
     <ExternalLink
       alignItems="center"
+      data-event={event}
       display="flex"
       hasWarning={false}
       href={url}
@@ -36,8 +46,10 @@ const Link: FunctionComponent<ILink> = ({ display, isNavLink, url }) =>
       {display}
     </ExternalLink>
   );
+};
 
 interface MobileNavLinksContentProps {
+  dataEvent?: string;
   testId?: string;
   title: string;
   items: IMenuItems;
@@ -47,41 +59,65 @@ const MobileNavLinksContent: FunctionComponent<MobileNavLinksContentProps> = ({
   title,
   items,
   testId,
-}) => (
-  <AccordionItem data-testid={testId} w="full">
-    <AccordionButton px={0} py={4}>
-      <Box flex="1" textAlign="left">
-        <Heading as="h3" color="blue.800" size="sm">
-          {title}
-        </Heading>
-      </Box>
-
-      <AccordionIcon />
-    </AccordionButton>
-
-    <AccordionPanel p={0} w="full">
-      <Flex direction="column" w="full">
-        {items.map((item, itemIdx) => {
-          if ("links" in item) {
-            return (
-              <Fragment key={`${item.display}-${itemIdx}`}>
-                <Heading as="h4" borderBottom="base" pb={2} pt={4} size="xs">
-                  {item.display}
-                </Heading>
-
-                {item.links.map((link, linkIdx) => (
-                  <Link {...link} key={`${link.display}-${linkIdx}`} />
-                ))}
-              </Fragment>
+  dataEvent,
+}) => {
+  const { trackCustomEvent } = useAnalytics();
+  return (
+    <AccordionItem data-testid={testId} w="full">
+      <AccordionButton
+        onClick={() => {
+          if (dataEvent) {
+            trackCustomEvent(
+              clickEvent({ name: eventName(dataEvent, "Menu") })
             );
           }
+        }}
+        px={0}
+        py={4}
+      >
+        <Box flex="1" textAlign="left">
+          <Heading as="h3" color="blue.800" size="sm">
+            {title}
+          </Heading>
+        </Box>
 
-          return <Link {...item} key={`${item.display}-${itemIdx}`} />;
-        })}
-      </Flex>
-    </AccordionPanel>
-  </AccordionItem>
-);
+        <AccordionIcon />
+      </AccordionButton>
+
+      <AccordionPanel p={0} w="full">
+        <Flex direction="column" w="full">
+          {items.map((item, itemIdx) => {
+            if ("links" in item) {
+              return (
+                <Fragment key={`${item.display}-${itemIdx}`}>
+                  <Heading as="h4" borderBottom="base" pb={2} pt={4} size="xs">
+                    {item.display}
+                  </Heading>
+
+                  {item.links.map((link, linkIdx) => (
+                    <Link
+                      data-event={dataEvent}
+                      {...link}
+                      key={`${link.display}-${linkIdx}`}
+                    />
+                  ))}
+                </Fragment>
+              );
+            }
+
+            return (
+              <Link
+                data-event={dataEvent}
+                {...item}
+                key={`${item.display}-${itemIdx}`}
+              />
+            );
+          })}
+        </Flex>
+      </AccordionPanel>
+    </AccordionItem>
+  );
+};
 
 interface MobileNavLinksProps {
   sections: MobileNavLinksContentProps[];

@@ -1,11 +1,20 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { IconButton, useDisclosure } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { useAnalytics } from "../../contexts/Analytics";
+import { clickEvent } from "../../contexts/Analytics/util";
+import { HEADER_ANALYTICS } from "./constants";
 import { MobileNav } from "./MobileNav";
 import testIds from "./testIds";
 
 export const NavButton: FunctionComponent = () => {
-  const nav = useDisclosure();
+  const { trackCustomEvent } = useAnalytics();
+  const nav = useDisclosure({
+    onOpen: () =>
+      trackCustomEvent(clickEvent({ name: HEADER_ANALYTICS.MOBILE_NAV.OPEN })),
+    onClose: () =>
+      trackCustomEvent(clickEvent({ name: HEADER_ANALYTICS.MOBILE_NAV.CLOSE })),
+  });
 
   return (
     <>

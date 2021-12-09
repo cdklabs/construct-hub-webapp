@@ -1,4 +1,5 @@
 import { Box, BoxProps, forwardRef } from "@chakra-ui/react";
+import { eventName } from "../../contexts/Analytics/util";
 import { useSearchBarState } from "./SearchBar";
 import testIds from "./testIds";
 
@@ -13,11 +14,12 @@ import testIds from "./testIds";
  * ```
  */
 export const SearchOverlay = forwardRef<BoxProps, "div">((props, ref) => {
-  const { isOpen } = useSearchBarState();
+  const { dataEvent, isOpen } = useSearchBarState();
 
   return (
     <Box
       bg="gray.700"
+      data-event={dataEvent ? eventName(dataEvent, "Overlay") : undefined}
       data-testid={testIds.overlay}
       display={isOpen ? "initial" : "none"}
       inset="0"
