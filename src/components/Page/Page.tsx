@@ -12,6 +12,18 @@ export interface PageProps {
   };
 }
 
+// Should be the same as the "real" CSP, except most things come from HTTP
+// instead of HTTPS (because it is protocol-relative, and the dev site is
+// served over plain HTTP).
+const csp = [
+  "default-src 'self' 'unsafe-inline' http://*.awsstatic.com;",
+  "connect-src 'self' https://*.shortbread.aws.dev http://*.shortbread.aws.dev http://a0.awsstatic.com/ http://amazonwebservices.d2.sc.omtrdc.net http://aws.demdex.net http://dpm.demdex.net http://cm.everesttech.net;",
+  "frame-src http://aws.demdex.net http://dpm.demdex.net;",
+  "img-src 'self' https://* http://a0.awsstatic.com/ http://amazonwebservices.d2.sc.omtrdc.net http://aws.demdex.net http://dpm.demdex.net http://cm.everesttech.net;",
+  "object-src 'none';",
+  "style-src 'self' 'unsafe-inline';",
+].join(" ");
+
 export const Page: FunctionComponent<PageProps> = ({
   children,
   meta,
@@ -25,18 +37,6 @@ export const Page: FunctionComponent<PageProps> = ({
 
   const { suffix = true, title, description } = meta;
   const formattedTitle = suffix ? `${title} - Construct Hub` : title;
-
-  // Should be the same as the "real" CSP, except most things come from HTTP
-  // instead of HTTPS (because it is protocol-relative, and the dev site is
-  // served over plain HTTP).
-  const csp = [
-    "default-src 'self' 'unsafe-inline' http://*.awsstatic.com;",
-    "connect-src 'self' https://*.shortbread.aws.dev http://*.shortbread.aws.dev http://a0.awsstatic.com/ http://amazonwebservices.d2.sc.omtrdc.net http://aws.demdex.net http://dpm.demdex.net http://cm.everesttech.net;",
-    "frame-src http://aws.demdex.net http://dpm.demdex.net;",
-    "img-src 'self' https://* http://a0.awsstatic.com/ http://amazonwebservices.d2.sc.omtrdc.net http://aws.demdex.net http://dpm.demdex.net http://cm.everesttech.net;",
-    "object-src 'none';",
-    "style-src 'self' 'unsafe-inline';",
-  ].join(" ");
 
   return (
     <>

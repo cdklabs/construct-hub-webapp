@@ -2,6 +2,7 @@ import { Box, Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { ROUTES } from "../../constants/url";
 import { NavLink } from "../NavLink";
+import { HEADER_ANALYTICS } from "./constants";
 import { DocumentationDropdown } from "./DocumentationDropdown";
 import { GettingStartedDropdown } from "./GettingStartedDropdown";
 import { HeaderSearch } from "./HeaderSearch";
@@ -71,7 +72,12 @@ export const Header: FunctionComponent = () => {
             <DocumentationDropdown />
           </Box>
 
-          <NavLink color="blue.800" fontWeight="500" to={ROUTES.CONTRIBUTE}>
+          <NavLink
+            color="blue.800"
+            data-event={HEADER_ANALYTICS.CONTRIBUTE_LINK}
+            fontWeight="500"
+            to={ROUTES.CONTRIBUTE}
+          >
             Contribute
           </NavLink>
         </Grid>

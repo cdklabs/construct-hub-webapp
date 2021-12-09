@@ -12,6 +12,7 @@ import { FunctionComponent } from "react";
 import { GETTING_STARTED, DOCUMENTATION } from "../../constants/links";
 import { ROUTES } from "../../constants/url";
 import { NavLink } from "../NavLink";
+import { HEADER_ANALYTICS } from "./constants";
 import { MobileNavLinks } from "./MobileNavLinks";
 import testIds from "./testIds";
 import { Title } from "./Title";
@@ -41,11 +42,13 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
               <MobileNavLinks
                 sections={[
                   {
+                    dataEvent: HEADER_ANALYTICS.GETTING_STARTED,
                     title: "Getting Started",
                     items: GETTING_STARTED,
                     testId: testIds.gettingStartedMenu,
                   },
                   {
+                    dataEvent: HEADER_ANALYTICS.DOCUMENTATION,
                     title: "Documentation",
                     items: DOCUMENTATION,
                     testId: testIds.documentationMenu,

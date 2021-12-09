@@ -18,6 +18,8 @@ import {
   ChangeEventHandler,
   FormEventHandler,
 } from "react";
+import { useAnalytics } from "../../contexts/Analytics";
+import { clickEvent, eventName } from "../../contexts/Analytics/util";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { useSearch } from "../../hooks/useSearch";
 import { Form } from "../Form";
@@ -25,6 +27,7 @@ import testIds from "./testIds";
 
 export interface SearchBarProps
   extends Omit<InputProps, "onChange" | "value" | "onSubmit"> {
+  "data-event"?: string;
   defaultQuery?: string;
   hasButton?: boolean;
   value?: string;
@@ -33,7 +36,7 @@ export interface SearchBarProps
 }
 
 const SearchBarState = createContext<
-  { query: string; isOpen: boolean } | undefined
+  { dataEvent?: string; query: string; isOpen: boolean } | undefined
 >(undefined);
 
 export const useSearchBarState = () => {
@@ -65,6 +68,7 @@ export const useSearchBarState = () => {
  */
 export const SearchBar: FunctionComponent<SearchBarProps> = ({
   children,
+  "data-event": dataEvent,
   hasButton,
   onSubmit,
   value,
@@ -75,6 +79,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const searchAPI = useCatalogSearch();
   const catalog = useSearch();
+  const { trackCustomEvent } = useAnalytics();
 
   const roundedCatalogLength = Math.floor((catalog.length ?? 0) / 100) * 100;
 
@@ -115,7 +120,11 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
 
   return (
     <SearchBarState.Provider
-      value={{ query: value ?? searchAPI.query, isOpen: disclosure.isOpen }}
+      value={{
+        dataEvent,
+        query: value ?? searchAPI.query,
+        isOpen: disclosure.isOpen,
+      }}
     >
       <Form
         color="initial"
@@ -135,9 +144,17 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
             data-testid={testIds.input}
             focusBorderColor="blue.500"
             onChange={onChange ?? searchAPI.onQueryChange}
-            onFocus={disclosure.onOpen}
+            onFocus={() => {
+              disclosure.onOpen();
+
+              if (dataEvent) {
+                trackCustomEvent(
+                  clickEvent({ name: eventName(dataEvent, "Input") })
+                );
+              }
+            }}
             placeholder={placeholder}
-            pr={hasButton ? "9rem" : undefined}
+            pr={hasButton ? { base: "none", md: "9rem" } : undefined}
             ref={inputRef}
             value={value ?? searchAPI.query}
             {...inputProps}
@@ -151,6 +168,9 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
               <Button
                 borderLeftRadius="0"
                 colorScheme="blue"
+                data-event={
+                  dataEvent ? eventName(dataEvent, "Submit Button") : undefined
+                }
                 data-testid={testIds.searchButton}
                 fontSize="0.875rem"
                 type="submit"
@@ -163,6 +183,9 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
             <InputRightElement>
               <IconButton
                 aria-label="Run search"
+                data-event={
+                  dataEvent ? eventName(dataEvent, "Submit Icon") : undefined
+                }
                 data-testid={testIds.searchIcon}
                 icon={<SearchIcon />}
                 type="submit"
