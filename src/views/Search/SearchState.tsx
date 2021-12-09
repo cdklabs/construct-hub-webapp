@@ -87,7 +87,10 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
     if (query !== searchAPI.query) {
       searchAPI.setQuery(query);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
 
+  useEffect(() => {
     if (keywords.some((k) => !searchAPI.keywords.includes(k))) {
       searchAPI.setKeywords(keywords);
     }
@@ -104,7 +107,7 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
       searchAPI.setCdkMajor(cdkMajor);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cdkMajor, cdkType, keywords, query, tags]);
+  }, [cdkMajor, cdkType, keywords, tags]);
 
   return (
     <SearchStateContext.Provider
