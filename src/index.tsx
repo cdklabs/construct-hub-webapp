@@ -12,6 +12,7 @@ import { SearchProvider } from "./contexts/Search";
 import { ShortbreadProvider } from "./contexts/Shortbread";
 import { StatsProvider } from "./contexts/Stats";
 import { Theme } from "./contexts/Theme";
+import { VersionsProvider } from "./contexts/Versions";
 import { unregister } from "./register-service-worker";
 import { reportWebVitals } from "./reportWebVitals";
 
@@ -26,13 +27,15 @@ ReactDOM.render(
             <ConfigProvider>
               <CatalogProvider>
                 <StatsProvider>
-                  <SearchProvider>
-                    <Theme>
-                      <ExternalLinkWarningProvider>
-                        <App />
-                      </ExternalLinkWarningProvider>
-                    </Theme>
-                  </SearchProvider>
+                  <VersionsProvider>
+                    <SearchProvider>
+                      <Theme>
+                        <ExternalLinkWarningProvider>
+                          <App />
+                        </ExternalLinkWarningProvider>
+                      </Theme>
+                    </SearchProvider>
+                  </VersionsProvider>
                 </StatsProvider>
               </CatalogProvider>
             </ConfigProvider>
