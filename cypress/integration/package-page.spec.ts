@@ -3,9 +3,11 @@ import header from "components/Header/testIds";
 import packagePage from "views/Package/testIds";
 import markdown from "components/Markdown/testIds";
 import assemblyFixture from "../fixtures/assembly-constructs@3.3.161.json";
+import versionsFixture from "../fixtures/all-versions.json";
 import { sanitizeVersion } from "api/package/util";
 import { Language } from "constants/languages";
 import { CONSTRUCT_HUB_REPO_URL } from "../../src/constants/links";
+import semver from "semver";
 
 describe("Package Page", () => {
   beforeEach(() => {
@@ -51,6 +53,12 @@ describe("Package Page", () => {
       });
     }).as("getCatalog");
 
+    cy.intercept("**/all-versions.json", async (req) => {
+      req.reply({
+        fixture: "all-versions",
+      });
+    }).as("getVersions");
+
     cy.visit(
       getPackagePath({
         name: "constructs",
@@ -61,6 +69,7 @@ describe("Package Page", () => {
 
     cy.wait("@getDocs");
     cy.wait("@getCatalog");
+    cy.wait("@getVersions");
 
     cy.getByDataTest(header.container).should("be.visible");
   });
@@ -98,16 +107,22 @@ describe("Package Page", () => {
   });
 
   it("Can switch between versions of a package", () => {
+    const versions = [...versionsFixture.packages.constructs];
+    versions.sort(semver.rcompare);
+  
     cy.getByDataTest(markdown.container)
       .should("contain", "Fake README description for v3.3.161");
 
-    cy.getByDataTest(packagePage.selectVersionButton)
-      .click()
-      .getByDataTest(packagePage.selectVersionDropdown)
-      .should("be.visible")
-      .within(() => {
-        cy.getByDataTest(packagePage.selectVersionItem).last().invoke("click");
-      });
+    cy.getByDataTest(packagePage.selectVersionDropdown)
+      .children('option')
+      .then(options => {
+        const actual = [...options as any].map(o => o.value);
+        const expected = versions;
+        expect(actual).to.deep.eq(expected);
+      })
+
+    cy.getByDataTest(packagePage.selectVersionDropdown)
+      .select("v10.0.9");
 
     cy.url().should(
       "contain",
@@ -126,7 +141,7 @@ describe("Package Page", () => {
     cy.getByDataTest(markdown.container)
       .should("contain", "Fake README description for v10.0.9");
 
-    cy.getByDataTest(packagePage.selectVersionButton)
+    cy.getByDataTest(packagePage.selectVersionDropdown)
       .should("be.visible")
       .should("contain", "v10.0.9");
   });
