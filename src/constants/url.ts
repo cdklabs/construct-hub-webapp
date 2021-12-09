@@ -5,6 +5,7 @@ export const API_PATHS = {
   METADATA_SUFFIX: "/metadata.json",
   CONFIG: "/config.json",
   STATS: "/stats.json",
+  ALL_VERSIONS: "/all-versions.json",
 } as const;
 
 export const QUERY_PARAMS = {

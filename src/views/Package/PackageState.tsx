@@ -7,6 +7,7 @@ import { fetchMarkdown } from "../../api/package/docs";
 import { fetchMetadata, Metadata } from "../../api/package/metadata";
 import { Language, languageFilename } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
+import { useVersions } from "../../contexts/Versions";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { NotFound } from "../NotFound";
@@ -34,6 +35,7 @@ interface PackageState {
   readme?: string;
   scope?: string;
   version: string;
+  allVersions?: string[];
   menuItems: MenuItem[];
 }
 
@@ -63,6 +65,10 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
   const [language] = useLanguage();
   const q = useQueryParams();
   const submodule = q.get(QUERY_PARAMS.SUBMODULE) ?? "";
+
+  const { data: versionData } = useVersions();
+  const pkgName = scope ? `${scope}/${name}` : name;
+  const allVersions = versionData?.packages[pkgName];
 
   const markdown = useQuery(`${id}-docs-${language}`, () =>
     fetchMarkdown(name, version, languageFilename[language], scope, submodule)
@@ -131,6 +137,7 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
         pageTitle,
         scope,
         version,
+        allVersions,
         ...parsedMd,
       }}
     >
