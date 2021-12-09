@@ -8,6 +8,8 @@ import {
   TextProps,
 } from "@chakra-ui/react";
 import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
+import { getSearchPath } from "../../util/url";
+import { NavLink } from "../NavLink";
 
 interface CDKTypeIconProps extends ImageProps {
   name?: CDKType;
@@ -69,6 +71,7 @@ export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
     return (
       <Badge
         alignItems="center"
+        as={NavLink}
         bg={bg}
         borderRadius="md"
         color="white"
@@ -78,6 +81,7 @@ export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
         px={1.5}
         ref={ref}
         textTransform="none"
+        to={getSearchPath({ cdkType: name, cdkMajor: majorVersion })}
         {...badgeProps}
       >
         <CDKTypeText majorVersion={majorVersion} name={name} />

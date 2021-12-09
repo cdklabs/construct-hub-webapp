@@ -94,15 +94,20 @@ export const SearchStateProvider: FunctionComponent = ({ children }) => {
     if (keywords.some((k) => !searchAPI.keywords.includes(k))) {
       searchAPI.setKeywords(keywords);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keywords]);
 
-  useEffect(() => {
     if (tags.some((t) => !searchAPI.tags.includes(t))) {
       searchAPI.setTags(tags);
     }
+
+    if (cdkType !== searchAPI.cdkType) {
+      searchAPI.setCdkType(cdkType);
+    }
+
+    if (cdkMajor !== searchAPI.cdkMajor) {
+      searchAPI.setCdkMajor(cdkMajor);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tags]);
+  }, [cdkMajor, cdkType, keywords, tags]);
 
   return (
     <SearchStateContext.Provider
