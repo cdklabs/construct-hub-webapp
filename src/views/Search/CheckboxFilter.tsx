@@ -10,6 +10,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { clickEvent, eventName, useAnalytics } from "../../contexts/Analytics";
+import { SEARCH_ANALYTICS } from "./constants";
 import { FilterHeading, FilterHeadingProps } from "./FilterHeading";
 import testIds from "./testIds";
 
@@ -90,9 +92,15 @@ export const CheckboxFilter: FunctionComponent<CheckboxFilterProps> = ({
   onValueChange,
 }) => {
   const collapse = useDisclosure();
+  const { trackCustomEvent } = useAnalytics();
 
-  const getOnChange = (value: string) => () => {
-    onValueChange(value);
+  const getOnChange = (item: CheckboxOption) => () => {
+    trackCustomEvent(
+      clickEvent({
+        name: eventName(SEARCH_ANALYTICS.FILTERS, name, "Filter", item.display),
+      })
+    );
+    onValueChange(item.value);
   };
 
   let alwaysShow: typeof options = options;
@@ -114,7 +122,7 @@ export const CheckboxFilter: FunctionComponent<CheckboxFilterProps> = ({
             {...item}
             isChecked={checkedValues.includes(item.value)}
             key={item.value}
-            onChange={getOnChange(item.value)}
+            onChange={getOnChange(item)}
           />
         ))}
         {isExpandible && (
@@ -125,7 +133,7 @@ export const CheckboxFilter: FunctionComponent<CheckboxFilterProps> = ({
                   {...item}
                   isChecked={checkedValues.includes(item.value)}
                   key={item.value}
-                  onChange={getOnChange(item.value)}
+                  onChange={getOnChange(item)}
                 />
               ))}
             </Stack>
@@ -136,6 +144,7 @@ export const CheckboxFilter: FunctionComponent<CheckboxFilterProps> = ({
         <Flex align="start" mt={1}>
           <Button
             color="gray.600"
+            data-event={eventName(SEARCH_ANALYTICS.FILTERS, name, "Show More")}
             fontWeight="normal"
             leftIcon={collapse.isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
             onClick={collapse.onToggle}
