@@ -1,11 +1,12 @@
 import { FunctionComponent, useMemo } from "react";
+import { useRecoilState } from "recoil";
 import { useSearchContext } from "../../contexts/Search";
+import { keywordsState } from "../../state/search";
 import { CheckboxFilter } from "./CheckboxFilter";
-import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
 
 export const KeywordsFilter: FunctionComponent = () => {
-  const { keywords, setKeywords } = useSearchState().searchAPI;
+  const [keywords, setKeywords] = useRecoilState(keywordsState);
   const keywordMap = useSearchContext()!.keywords;
 
   const onKeywordChange = (keyword: string) => {

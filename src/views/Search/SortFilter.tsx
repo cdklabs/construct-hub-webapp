@@ -1,11 +1,12 @@
 import { FunctionComponent } from "react";
+import { useRecoilState } from "recoil";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
+import { sortState } from "../../state/search";
 import { SORT_RENDER_MAP } from "./constants";
 import { RadioFilter } from "./RadioFilter";
-import { useSearchState } from "./SearchState";
 
 export const SortFilter: FunctionComponent = () => {
-  const { sort, setSort } = useSearchState().searchAPI;
+  const [sort, setSort] = useRecoilState(sortState);
 
   const onSortChange = (newSort: string) => {
     setSort(newSort ? (newSort as CatalogSearchSort) : undefined);

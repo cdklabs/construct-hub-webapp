@@ -241,6 +241,10 @@
       "type": "runtime"
     },
     {
+      "name": "recoil",
+      "type": "runtime"
+    },
+    {
       "name": "rehype-raw",
       "type": "runtime"
     },

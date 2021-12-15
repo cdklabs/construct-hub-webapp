@@ -9,15 +9,15 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { useRecoilState } from "recoil";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { eventName } from "../../contexts/Analytics";
+import { sortState } from "../../state/search";
 import { SEARCH_ANALYTICS, SORT_RENDER_MAP } from "./constants";
-import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
 
 export const SortedBy: FunctionComponent = () => {
-  const { searchAPI } = useSearchState();
-  const { sort, setSort } = searchAPI;
+  const [sort, setSort] = useRecoilState(sortState);
 
   const selected = sort ? SORT_RENDER_MAP[sort] : "Relevance";
 

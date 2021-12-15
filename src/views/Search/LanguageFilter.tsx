@@ -1,11 +1,12 @@
 import { FunctionComponent } from "react";
+import { useRecoilState } from "recoil";
 import {
   Language,
   LANGUAGE_NAME_MAP,
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
+import { languagesState } from "../../state/search";
 import { CheckboxFilter } from "./CheckboxFilter";
-import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
 
 const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
@@ -27,7 +28,7 @@ const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
   });
 
 export const LanguageFilter: FunctionComponent = () => {
-  const { languages, setLanguages } = useSearchState().searchAPI;
+  const [languages, setLanguages] = useRecoilState(languagesState);
 
   const onLanguagesChange = (lang: string) => {
     const language = lang as Language;

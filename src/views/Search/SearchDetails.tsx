@@ -1,5 +1,8 @@
 import { Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { useRecoilValue } from "recoil";
+import { offsetState, queryState, resultsState } from "../../state/search";
+import { LIMIT } from "./constants";
 import testIds from "./testIds";
 
 export interface SearchDetailsProps {
@@ -39,15 +42,15 @@ const Count: FunctionComponent<{
   );
 };
 
-export const SearchDetails: FunctionComponent<SearchDetailsProps> = ({
-  limit,
-  offset,
-  count,
-  filtered,
-  query,
-}) => {
-  const first = limit * offset;
-  const last = first + limit;
+export const SearchDetails: FunctionComponent = () => {
+  const offset = useRecoilValue(offsetState);
+  const results = useRecoilValue(resultsState);
+  const query = useRecoilValue(queryState);
+
+  const isFiltered = Boolean(query);
+  const count = results.length;
+  const first = LIMIT * offset;
+  const last = first + LIMIT;
   const hasResults = count > 0;
 
   return (
@@ -55,10 +58,12 @@ export const SearchDetails: FunctionComponent<SearchDetailsProps> = ({
       {hasResults ? (
         <>
           Displaying <Count count={count} first={first} last={last} />{" "}
-          {filtered ? "search results" : "constructs"}
+          {isFiltered ? "search results" : "constructs"}
         </>
       ) : (
-        <>{filtered ? "There were no search results" : "No constructs found"}</>
+        <>
+          {isFiltered ? "There were no search results" : "No constructs found"}
+        </>
       )}
       {query && (
         <>
@@ -66,7 +71,7 @@ export const SearchDetails: FunctionComponent<SearchDetailsProps> = ({
           <Em>{query}</Em>
         </>
       )}
-      .{!hasResults && filtered && <> Try a different term.</>}
+      .{!hasResults && isFiltered && <> Try a different term.</>}
     </Text>
   );
 };

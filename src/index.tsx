@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import "./index.css";
 import { App } from "./App";
 import { AnalyticsProvider } from "./contexts/Analytics";
@@ -21,27 +22,29 @@ const queryClient = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <ShortbreadProvider>
-          <AnalyticsProvider>
-            <ConfigProvider>
-              <CatalogProvider>
-                <StatsProvider>
-                  <VersionsProvider>
-                    <SearchProvider>
-                      <Theme>
-                        <ExternalLinkWarningProvider>
-                          <App />
-                        </ExternalLinkWarningProvider>
-                      </Theme>
-                    </SearchProvider>
-                  </VersionsProvider>
-                </StatsProvider>
-              </CatalogProvider>
-            </ConfigProvider>
-          </AnalyticsProvider>
-        </ShortbreadProvider>
-      </Router>
+      <RecoilRoot>
+        <Router>
+          <ShortbreadProvider>
+            <AnalyticsProvider>
+              <ConfigProvider>
+                <CatalogProvider>
+                  <StatsProvider>
+                    <VersionsProvider>
+                      <SearchProvider>
+                        <Theme>
+                          <ExternalLinkWarningProvider>
+                            <App />
+                          </ExternalLinkWarningProvider>
+                        </Theme>
+                      </SearchProvider>
+                    </VersionsProvider>
+                  </StatsProvider>
+                </CatalogProvider>
+              </ConfigProvider>
+            </AnalyticsProvider>
+          </ShortbreadProvider>
+        </Router>
+      </RecoilRoot>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")

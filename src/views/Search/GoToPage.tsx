@@ -6,27 +6,23 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useHistory } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { clickEvent, useAnalytics } from "../../contexts/Analytics";
+import { offsetState, pageLimitState } from "../../state/search";
 
 export interface GoToPageProps {
   "data-event"?: string;
   "data-testid"?: string;
-  pageLimit: number;
-  offset: number;
-  getPageUrl: (params: { offset: number }) => string;
 }
 
 export const GoToPage: FunctionComponent<GoToPageProps> = ({
   "data-event": dataEvent,
   "data-testid": dataTestid,
-  pageLimit,
-  offset,
-  getPageUrl,
 }) => {
   const { trackCustomEvent } = useAnalytics();
+  const [offset, setOffset] = useRecoilState(offsetState);
   const [inputValue, setInputValue] = useState((offset + 1).toString());
-  const { push } = useHistory();
+  const pageLimit = useRecoilValue(pageLimitState);
 
   useEffect(() => {
     setInputValue((offset + 1).toString());
@@ -39,7 +35,15 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
 
   const onSubmit: FormEventHandler<HTMLInputElement> = (e) => {
     e.preventDefault();
-    push(getPageUrl({ offset: parseInt(inputValue) - 1 }));
+
+    // Handle submitting an empty input
+    if (!inputValue) {
+      setInputValue("1");
+      setOffset(0);
+      return;
+    }
+
+    setOffset(parseInt(inputValue) - 1);
   };
 
   return (

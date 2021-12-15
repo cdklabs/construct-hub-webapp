@@ -1,9 +1,10 @@
 import { FunctionComponent, useMemo } from "react";
+import { useRecoilState } from "recoil";
 import { CatalogConstructFrameworkMeta } from "../../api/catalog-search";
 import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
 import { useSearchContext } from "../../contexts/Search";
+import { cdkTypeState, cdkMajorState } from "../../state/search";
 import { RadioFilter } from "./RadioFilter";
-import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
 
 type CDKOptions = Partial<{
@@ -14,8 +15,8 @@ type CDKOptions = Partial<{
 }>;
 
 export const CDKFilter: FunctionComponent = () => {
-  const { cdkType, setCdkType, cdkMajor, setCdkMajor } =
-    useSearchState().searchAPI;
+  const [cdkType, setCdkType] = useRecoilState(cdkTypeState);
+  const [cdkMajor, setCdkMajor] = useRecoilState(cdkMajorState);
   const searchAPI = useSearchContext()!;
 
   // Options with less than one package will be omitted

@@ -1,5 +1,7 @@
 import { Tag, TagLabel, TagProps } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { useSetRecoilState } from "recoil";
+import { keywordsState } from "../../state/search";
 import { getSearchPath } from "../../util/url";
 import { NavLink } from "../NavLink";
 
@@ -16,9 +18,12 @@ export const PackageTag: FunctionComponent<PackageTagProps> = ({
   zIndex,
   ...tagProps
 }) => {
+  const setKeywords = useSetRecoilState(keywordsState);
+
   return (
     <NavLink
       aria-label={`Tag: ${label}`}
+      onClick={() => setKeywords([value])}
       to={getSearchPath({ keywords: [value] })}
       zIndex={zIndex}
     >

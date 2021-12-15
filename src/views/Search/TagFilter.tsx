@@ -1,8 +1,9 @@
 import { FunctionComponent } from "react";
+import { useRecoilState } from "recoil";
 import { PackageTagConfig } from "../../api/config";
 import { useConfigValue } from "../../hooks/useConfigValue";
+import { tagsState } from "../../state/search";
 import { CheckboxFilter } from "./CheckboxFilter";
-import { useSearchState } from "./SearchState";
 
 interface FilterGroups {
   [group: string]: PackageTagConfig[];
@@ -27,7 +28,7 @@ export const TagFilter: FunctionComponent = () => {
     {}
   );
 
-  const { tags, setTags } = useSearchState().searchAPI;
+  const [tags, setTags] = useRecoilState(tagsState);
 
   const onTagsChange = (tag: string) => {
     setTags(

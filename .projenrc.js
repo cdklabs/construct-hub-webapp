@@ -53,6 +53,7 @@ const project = new web.ReactTypeScriptProject({
     "react-helmet",
     "react-markdown",
     "react-router-dom",
+    "recoil",
     "rehype-raw",
     "rehype-sanitize",
     "remark-emoji",
@@ -240,6 +241,12 @@ project.eslint.addOverride({
     "react/jsx-sort-props": ["warn"],
     "react/prop-types": ["off"],
     "react/react-in-jsx-scope": ["off"],
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        additionalHooks: "(useRecoilCallback|useRecoilTransaction_UNSTABLE)",
+      },
+    ],
   },
 });
 

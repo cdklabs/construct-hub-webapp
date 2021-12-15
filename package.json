@@ -99,6 +99,7 @@
     "react-query": "^3.34.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.0",
+    "recoil": "^0.5.2",
     "rehype-raw": "^5.1.0",
     "rehype-sanitize": "^4.0.0",
     "remark-emoji": "*",

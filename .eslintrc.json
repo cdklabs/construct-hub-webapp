@@ -173,6 +173,12 @@
         ],
         "react/react-in-jsx-scope": [
           "off"
+        ],
+        "react-hooks/exhaustive-deps": [
+          "warn",
+          {
+            "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+          }
         ]
       }
     }
