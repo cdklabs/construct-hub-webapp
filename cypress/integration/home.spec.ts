@@ -253,7 +253,7 @@ describe("Home (Redesign / WIP)", () => {
           );
       };
 
-      ["community", "aws-official", "hashicorp-official"].forEach(testSeeAll);
+      ["community", "aws-published", "hashicorp-published"].forEach(testSeeAll);
     });
   });
 });

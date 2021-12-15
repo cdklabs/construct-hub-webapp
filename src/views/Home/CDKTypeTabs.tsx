@@ -42,12 +42,12 @@ const tabs = {
   aws: {
     "data-event": HOME_ANALYTICS.PUBLISHER.eventName("AWS"),
     label: "AWS",
-    tag: "aws-official",
+    tag: "aws-published",
   },
   hashicorp: {
     "data-event": HOME_ANALYTICS.PUBLISHER.eventName("HashiCorp"),
     label: "HashiCorp",
-    tag: "hashicorp-official",
+    tag: "hashicorp-published",
   },
 };
 

@@ -7,7 +7,11 @@ import {
   Text,
   TextProps,
 } from "@chakra-ui/react";
+import { useSetRecoilState } from "recoil";
 import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
+import { cdkMajorState, cdkTypeState } from "../../state/search";
+import { getSearchPath } from "../../util/url";
+import { NavLink } from "../NavLink";
 
 interface CDKTypeIconProps extends ImageProps {
   name?: CDKType;
@@ -62,6 +66,9 @@ const badgeColorMap = {
 
 export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
   ({ name, majorVersion, ...badgeProps }, ref) => {
+    const setCdkType = useSetRecoilState(cdkTypeState);
+    const setCdkMajor = useSetRecoilState(cdkMajorState);
+
     if (!name) return null;
 
     const bg = badgeColorMap[name];
@@ -69,15 +76,21 @@ export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
     return (
       <Badge
         alignItems="center"
+        as={NavLink}
         bg={bg}
         borderRadius="md"
         color="white"
         display="flex"
         h="1.5rem"
         maxW="5.5rem"
+        onClick={() => {
+          setCdkType(name);
+          setCdkMajor(majorVersion);
+        }}
         px={1.5}
         ref={ref}
         textTransform="none"
+        to={getSearchPath({ cdkType: name, cdkMajor: majorVersion })}
         {...badgeProps}
       >
         <CDKTypeText majorVersion={majorVersion} name={name} />
