@@ -3,9 +3,9 @@ import catalog from "../../__fixtures__/catalog.json";
 import stats from "../../__fixtures__/stats.json";
 import { Packages } from "../../api/package/packages";
 import { PackageStats } from "../../api/stats";
-import { useCatalog } from "../../contexts/Catalog";
 import { SearchProvider } from "../../contexts/Search";
-import { useStats } from "../../contexts/Stats";
+import { StatsQuery, useStats } from "../../hooks/useStats";
+import { CatalogQuery, useCatalog } from "../useCatalog";
 import {
   useCatalogResults,
   UseCatalogResultsOptions,
@@ -13,7 +13,6 @@ import {
 
 const catalogFixture = catalog as Packages;
 const statsFixture = stats as PackageStats;
-const numPackages = catalogFixture.packages.length;
 
 const defaultOptions: UseCatalogResultsOptions = {
   offset: 0,
@@ -23,22 +22,22 @@ const defaultOptions: UseCatalogResultsOptions = {
 };
 
 const defaultCatalogContext = {
-  loading: false,
+  isLoading: false,
   error: undefined,
   data: catalogFixture,
-};
+} as CatalogQuery;
 
 const defaultStatsContext = {
-  loading: false,
+  isLoading: false,
   error: undefined,
   data: statsFixture,
-};
+} as StatsQuery;
 
-jest.mock("../../contexts/Catalog", () => ({
+jest.mock("../../hooks/useCatalog", () => ({
   useCatalog: jest.fn(),
 }));
 
-jest.mock("../../contexts/Stats", () => ({
+jest.mock("../../hooks/useStats", () => ({
   useStats: jest.fn(),
 }));
 

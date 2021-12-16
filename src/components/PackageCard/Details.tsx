@@ -1,7 +1,7 @@
 import { Text, Tooltip } from "@chakra-ui/react";
 import { formatDistanceToNowStrict } from "date-fns";
 import { FunctionComponent, ReactChild } from "react";
-import { useStats } from "../../contexts/Stats";
+import { useStats } from "../../hooks/useStats";
 import { getSearchPath } from "../../util/url";
 import { NavLink } from "../NavLink";
 import { Time } from "../Time";
@@ -10,7 +10,6 @@ import testIds from "./testIds";
 
 interface DetailProps {
   "data-testid": string;
-
   tooltip?: string;
   value: ReactChild;
 }

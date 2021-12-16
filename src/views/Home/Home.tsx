@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Page } from "../../components/Page";
-import { useCatalog } from "../../contexts/Catalog";
+import { useCatalog } from "../../hooks/useCatalog";
 import { Categories } from "./Categories";
 import { CDKTypeTabs } from "./CDKTypeTabs";
 import { Featured } from "./Featured";

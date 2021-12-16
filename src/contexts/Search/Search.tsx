@@ -1,8 +1,8 @@
 import { createContext, FunctionComponent, useContext, useMemo } from "react";
 import { CatalogSearchAPI } from "../../api/catalog-search";
 import { PageLoader } from "../../components/PageLoader";
-import { useCatalog } from "../../contexts/Catalog";
-import { useStats } from "../Stats";
+import { useCatalog } from "../../hooks/useCatalog";
+import { useStats } from "../../hooks/useStats";
 
 const SearchContext = createContext<CatalogSearchAPI | undefined>(undefined);
 
