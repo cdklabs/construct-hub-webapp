@@ -1,13 +1,11 @@
 import { FunctionComponent, useMemo } from "react";
 import { CatalogConstructFrameworkMeta } from "../../api/catalog-search";
 import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
-import { QUERY_PARAMS } from "../../constants/url";
 import { useSearchContext } from "../../contexts/Search";
 import { RadioFilter } from "./RadioFilter";
 import testIds from "./testIds";
-import { useSearchParam } from "./useSearchParam";
+import { useCdkMajor, useCdkType } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
-import { toNum } from "./util";
 
 type CDKOptions = Partial<{
   [key in CDKType]: CatalogConstructFrameworkMeta & {
@@ -17,10 +15,8 @@ type CDKOptions = Partial<{
 }>;
 
 export const CDKFilter: FunctionComponent = () => {
-  const cdkType = useSearchParam(QUERY_PARAMS.CDK_TYPE) as CDKType | null;
-  const cdkMajor = useSearchParam(QUERY_PARAMS.CDK_MAJOR, (p) =>
-    p ? toNum(p) : undefined
-  );
+  const cdkType = useCdkType();
+  const cdkMajor = useCdkMajor();
 
   const updateSearch = useUpdateSearchParam();
 
@@ -67,7 +63,7 @@ export const CDKFilter: FunctionComponent = () => {
 
   const onCdkTypeChange = (type: string) => {
     const cdk = type as CDKType;
-    updateSearch({ cdkType: type ? cdk : undefined });
+    updateSearch({ cdkType: type ? cdk : undefined, cdkMajor: undefined });
   };
 
   const onCdkMajorChange = (major: string) => {

@@ -1,14 +1,12 @@
 import { FunctionComponent, useMemo } from "react";
-import { QUERY_PARAMS } from "../../constants/url";
 import { useSearchContext } from "../../contexts/Search";
 import { CheckboxFilter } from "./CheckboxFilter";
 import testIds from "./testIds";
-import { useSearchParam } from "./useSearchParam";
+import { useKeywords } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
-import { parseQueryArray } from "./util";
 
 export const KeywordsFilter: FunctionComponent = () => {
-  const keywords = useSearchParam(QUERY_PARAMS.KEYWORDS, parseQueryArray);
+  const keywords = useKeywords();
   const keywordMap = useSearchContext()!.keywords;
   const updateSearch = useUpdateSearchParam();
 

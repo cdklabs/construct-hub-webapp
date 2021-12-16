@@ -10,15 +10,14 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
-import { QUERY_PARAMS } from "../../constants/url";
 import { eventName } from "../../contexts/Analytics";
 import { SEARCH_ANALYTICS, SORT_RENDER_MAP } from "./constants";
 import testIds from "./testIds";
-import { useSearchParam } from "./useSearchParam";
+import { useSort } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
 export const SortedBy: FunctionComponent = () => {
-  const sort = useSearchParam(QUERY_PARAMS.SORT) as CatalogSearchSort;
+  const sort = useSort();
   const updateSearch = useUpdateSearchParam();
 
   const selected = sort ? SORT_RENDER_MAP[sort] : "Relevance";

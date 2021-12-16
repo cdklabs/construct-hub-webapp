@@ -1,11 +1,7 @@
 import { Box, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
-import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
-import { CDKType } from "../../constants/constructs";
-import { Language } from "../../constants/languages";
-import { QUERY_PARAMS } from "../../constants/url";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { LIMIT, SEARCH_ANALYTICS } from "./constants";
 import { PageControls } from "./PageControls";
@@ -13,33 +9,29 @@ import { SearchBar } from "./SearchBar";
 import { SearchDetails } from "./SearchDetails";
 import { SortAndFilterDrawer } from "./SortAndFilterDrawer";
 import { SortedBy } from "./SortedBy";
-import { useSearchParam } from "./useSearchParam";
+import {
+  useCdkType,
+  useCdkMajor,
+  useKeywords,
+  useLanguages,
+  useOffset,
+  useSearchQuery,
+  useSort,
+  useTags,
+} from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
-import { parseQueryArray, toNum } from "./util";
 
 export const SearchResults: FunctionComponent = () => {
   const updateSearch = useUpdateSearchParam();
 
-  const offset = useSearchParam(QUERY_PARAMS.OFFSET, (o) => toNum(o ?? ""));
-
-  const query = useSearchParam(QUERY_PARAMS.SEARCH_QUERY) ?? "";
-
-  const keywords = useSearchParam(QUERY_PARAMS.KEYWORDS, parseQueryArray);
-
-  const languages = useSearchParam(
-    QUERY_PARAMS.LANGUAGES,
-    parseQueryArray
-  ) as Language[];
-
-  const cdkMajor = useSearchParam(QUERY_PARAMS.CDK_MAJOR, (major) =>
-    major ? toNum(major) : undefined
-  );
-
-  const cdkType = useSearchParam(QUERY_PARAMS.CDK_TYPE) as CDKType;
-
-  const sort = useSearchParam(QUERY_PARAMS.SORT) as CatalogSearchSort;
-
-  const tags = useSearchParam(QUERY_PARAMS.TAGS, parseQueryArray);
+  const offset = useOffset();
+  const query = useSearchQuery();
+  const keywords = useKeywords();
+  const languages = useLanguages();
+  const cdkMajor = useCdkMajor();
+  const cdkType = useCdkType();
+  const sort = useSort();
+  const tags = useTags();
 
   const { page, pageLimit, results } = useCatalogResults({
     offset,
