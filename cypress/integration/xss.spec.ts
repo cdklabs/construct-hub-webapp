@@ -21,7 +21,7 @@ const withWindowAlertCheck = (assertion: () => Promise<unknown>) => {
 };
 
 const checkURL = (params: Parameters<typeof getSearchPath>[0]) => {
-  cy.url().should("eq", `http://localhost:3000${getSearchPath(params)}`);
+  cy.url().should("eq", `${Cypress.config().baseUrl}${getSearchPath(params)}`);
 };
 
 const testSearchURL = async (query: string) => {
