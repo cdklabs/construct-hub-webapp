@@ -1,19 +1,23 @@
 import { FunctionComponent, useMemo } from "react";
+import { QUERY_PARAMS } from "../../constants/url";
 import { useSearchContext } from "../../contexts/Search";
 import { CheckboxFilter } from "./CheckboxFilter";
-import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
+import { useSearchParam } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { parseQueryArray } from "./util";
 
 export const KeywordsFilter: FunctionComponent = () => {
-  const { keywords, setKeywords } = useSearchState().searchAPI;
+  const keywords = useSearchParam(QUERY_PARAMS.KEYWORDS, parseQueryArray);
   const keywordMap = useSearchContext()!.keywords;
+  const updateSearch = useUpdateSearchParam();
 
   const onKeywordChange = (keyword: string) => {
-    setKeywords(
-      keywords.includes(keyword)
+    updateSearch({
+      keywords: keywords.includes(keyword)
         ? keywords.filter((k) => k !== keyword)
-        : [...keywords, keyword]
-    );
+        : [...keywords, keyword],
+    });
   };
 
   const keywordOptions = useMemo(() => {

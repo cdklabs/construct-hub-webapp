@@ -6,15 +6,14 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useHistory } from "react-router-dom";
 import { clickEvent, useAnalytics } from "../../contexts/Analytics";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
 export interface GoToPageProps {
   "data-event"?: string;
   "data-testid"?: string;
   pageLimit: number;
   offset: number;
-  getPageUrl: (params: { offset: number }) => string;
 }
 
 export const GoToPage: FunctionComponent<GoToPageProps> = ({
@@ -22,11 +21,10 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
   "data-testid": dataTestid,
   pageLimit,
   offset,
-  getPageUrl,
 }) => {
+  const updateSearch = useUpdateSearchParam();
   const { trackCustomEvent } = useAnalytics();
   const [inputValue, setInputValue] = useState((offset + 1).toString());
-  const { push } = useHistory();
 
   useEffect(() => {
     setInputValue((offset + 1).toString());
@@ -39,7 +37,7 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
 
   const onSubmit: FormEventHandler<HTMLInputElement> = (e) => {
     e.preventDefault();
-    push(getPageUrl({ offset: parseInt(inputValue) - 1 }));
+    updateSearch({ offset: parseInt(inputValue) - 1 });
   };
 
   return (

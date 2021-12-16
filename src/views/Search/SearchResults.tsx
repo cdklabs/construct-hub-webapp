@@ -1,29 +1,49 @@
 import { Box, Stack } from "@chakra-ui/react";
-import { FunctionComponent, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { FunctionComponent, useEffect } from "react";
+import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { PackageList } from "../../components/PackageList";
 import { Page } from "../../components/Page";
-import { SearchBar } from "../../components/SearchBar";
+import { CDKType } from "../../constants/constructs";
+import { Language } from "../../constants/languages";
+import { QUERY_PARAMS } from "../../constants/url";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
-import { getSearchPath } from "../../util/url";
-import { SearchQueryParam, SEARCH_ANALYTICS } from "./constants";
+import { LIMIT, SEARCH_ANALYTICS } from "./constants";
 import { PageControls } from "./PageControls";
+import { SearchBar } from "./SearchBar";
 import { SearchDetails } from "./SearchDetails";
-import { useSearchState } from "./SearchState";
 import { SortAndFilterDrawer } from "./SortAndFilterDrawer";
 import { SortedBy } from "./SortedBy";
+import { useSearchParam } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { parseQueryArray, toNum } from "./util";
 
 export const SearchResults: FunctionComponent = () => {
-  const isFirstRender = useRef(true);
-  const { push } = useHistory();
+  const updateSearch = useUpdateSearchParam();
 
-  const { query, searchAPI, offset, limit } = useSearchState();
-  const { keywords, languages, sort, cdkType, cdkMajor, onSearch, tags } =
-    searchAPI;
+  const offset = useSearchParam(QUERY_PARAMS.OFFSET, (o) => toNum(o ?? ""));
+
+  const query = useSearchParam(QUERY_PARAMS.SEARCH_QUERY) ?? "";
+
+  const keywords = useSearchParam(QUERY_PARAMS.KEYWORDS, parseQueryArray);
+
+  const languages = useSearchParam(
+    QUERY_PARAMS.LANGUAGES,
+    parseQueryArray
+  ) as Language[];
+
+  const cdkMajor = useSearchParam(QUERY_PARAMS.CDK_MAJOR, (major) =>
+    major ? toNum(major) : undefined
+  );
+
+  const cdkType = useSearchParam(QUERY_PARAMS.CDK_TYPE) as CDKType;
+
+  const sort = useSearchParam(QUERY_PARAMS.SORT) as CatalogSearchSort;
+
+  const tags = useSearchParam(QUERY_PARAMS.TAGS, parseQueryArray);
 
   const { page, pageLimit, results } = useCatalogResults({
     offset,
-    limit,
+    limit: LIMIT,
     query,
     keywords,
     languages,
@@ -33,48 +53,20 @@ export const SearchResults: FunctionComponent = () => {
     tags,
   });
 
-  const getUrl = (
-    params: Partial<{ [key in SearchQueryParam]: number | string }>
-  ) => {
-    return getSearchPath({
-      cdkMajor,
-      cdkType,
-      keywords,
-      query: (params.q ?? query) as string,
-      languages,
-      sort,
-      offset: params.offset ?? offset,
-      tags,
-    });
-  };
-
   // Resets the page number to 1 if query param offset is below 0, or to the last page if offset is higher than page count
   useEffect(() => {
     // If the query has results but the page has nothing to show...
     if (results.length && (offset < 0 || offset > pageLimit)) {
       // Handle an out of bounds offset
       if (offset < 0) {
-        push(getUrl({ offset: 0 }));
+        updateSearch({ offset: 0 });
       } else {
         // Offset is too large, just take last page
-        push(getUrl({ offset: pageLimit }));
+        updateSearch({ offset: pageLimit });
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, offset, pageLimit]);
-
-  // Reset offset and update url when query, filters, or sort change
-  // We want to avoid doing this on first render / when a user directly navigates to a search URL
-  // so we keep a ref to prevent this
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-    } else {
-      // Trigger a history replace rather than push to avoid bloating browser history
-      onSearch({ replace: true });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sort, keywords, languages, cdkType, cdkMajor, tags]);
 
   // Scroll to top on page change
   useEffect(() => {
@@ -92,16 +84,7 @@ export const SearchResults: FunctionComponent = () => {
       pageName="search"
     >
       <Stack direction="column" maxW="100vw" pb={4} px={4} spacing={4}>
-        <SearchBar
-          bg="white"
-          data-event={SEARCH_ANALYTICS.SEARCH}
-          onChange={searchAPI.onQueryChange}
-          onSubmit={(e) => {
-            searchAPI.setSort(undefined);
-            searchAPI.onSubmit(e);
-          }}
-          value={searchAPI.query}
-        />
+        <SearchBar />
 
         <Stack
           align={{ base: "start", lg: "center" }}
@@ -112,7 +95,7 @@ export const SearchResults: FunctionComponent = () => {
           <SearchDetails
             count={results.length}
             filtered={!!query}
-            limit={limit}
+            limit={LIMIT}
             offset={offset}
             query={query}
           />
@@ -129,11 +112,7 @@ export const SearchResults: FunctionComponent = () => {
         <PackageList data-event={SEARCH_ANALYTICS.RESULTS} items={page} />
 
         <Box w="full">
-          <PageControls
-            getPageUrl={getUrl}
-            offset={offset}
-            pageLimit={pageLimit}
-          />
+          <PageControls offset={offset} pageLimit={pageLimit} />
         </Box>
       </Stack>
     </Page>
