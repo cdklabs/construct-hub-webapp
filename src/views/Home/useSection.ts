@@ -3,7 +3,7 @@ import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { FeaturedPackagesDetail } from "../../api/config";
 import { CatalogPackage } from "../../api/package/packages";
 import { findPackage } from "../../api/package/util";
-import { useCatalog } from "../../contexts/Catalog";
+import { useCatalog } from "../../hooks/useCatalog";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 
 export const useSection = ({

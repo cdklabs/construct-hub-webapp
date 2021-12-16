@@ -3,7 +3,7 @@ import type { FunctionComponent } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { Packages } from "../../api/package/packages";
 import { getFullPackageName, findPackage } from "../../api/package/util";
-import { useCatalog } from "../../contexts/Catalog";
+import { useCatalog } from "../../hooks/useCatalog";
 import NotFound from "../NotFound";
 
 interface RouteParams {

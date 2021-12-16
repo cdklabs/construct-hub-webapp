@@ -7,9 +7,9 @@ import { fetchMarkdown } from "../../api/package/docs";
 import { fetchMetadata, Metadata } from "../../api/package/metadata";
 import { Language, languageFilename } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
-import { useVersions } from "../../contexts/Versions";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
+import { useVersions } from "../../hooks/useVersions";
 import { NotFound } from "../NotFound";
 import { Types, MenuItem, parseMarkdownStructure } from "./util";
 
