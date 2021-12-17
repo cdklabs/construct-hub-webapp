@@ -33,6 +33,7 @@ export const WideCard: FunctionComponent = () => {
         <Flex
           direction="column"
           justify="space-between"
+          overflow="hidden"
           p={5}
           sx={{ gap: "0.5rem" }}
         >
