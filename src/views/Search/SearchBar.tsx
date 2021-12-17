@@ -1,0 +1,29 @@
+import { FunctionComponent, useState } from "react";
+import { SearchBar as SearchBarComponent } from "../../components/SearchBar";
+import { SEARCH_ANALYTICS } from "./constants";
+import { useSearchQuery } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
+
+export const SearchBar: FunctionComponent = () => {
+  const query = useSearchQuery();
+  const updateSearch = useUpdateSearchParam();
+
+  const [value, setValue] = useState(query ?? "");
+
+  return (
+    <SearchBarComponent
+      bg="white"
+      data-event={SEARCH_ANALYTICS.SEARCH}
+      onChange={(e) => setValue(e.target.value)}
+      onSubmit={(e) => {
+        e.preventDefault();
+
+        updateSearch({
+          query: value,
+          sort: undefined,
+        });
+      }}
+      value={value}
+    />
+  );
+};

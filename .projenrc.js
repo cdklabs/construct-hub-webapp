@@ -116,6 +116,37 @@ const project = new web.ReactTypeScriptProject({
     });
   })();
 
+  const cypressRunSteps = [
+    {
+      name: "Checkout",
+      uses: "actions/checkout@v2",
+    },
+    {
+      name: "Cypress Run",
+      uses: "cypress-io/github-action@v2",
+      with: {
+        start: "yarn proxy-server:ci",
+        "wait-on": "http://localhost:3000",
+        "wait-on-timeout": 150,
+      },
+    },
+    {
+      uses: "actions/upload-artifact@v2",
+      if: "failure()",
+      with: {
+        name: "cypress-screenshots",
+        path: "cypress/screenshots",
+      },
+    },
+    {
+      uses: "actions/upload-artifact@v2",
+      if: "always()",
+      with: {
+        name: "cypress-videos",
+        path: "cypress/videos",
+      },
+    },
+  ];
   project.buildWorkflow.addJobs({
     cypress: {
       name: "E2E Tests",
@@ -124,34 +155,47 @@ const project = new web.ReactTypeScriptProject({
         checks: "write",
         contents: "read",
       },
+      steps: cypressRunSteps,
+    },
+  });
+
+  // Set up a canary that tests that the latest code on our main branch
+  // works against data on https://constructs.dev.
+  //
+  // We need to use the version of the front-end from the main branch
+  // and not the version that is live, otherwise it's possible for newer
+  // tests to run against an older (incompatible) version of the frontend
+  // due to deployment delays and give us false positives.
+  const e2eCanary = project.github.addWorkflow("e2e-canary");
+  e2eCanary.on({
+    schedule: [
+      {
+        cron: "0 */3 * * *", // run every three hours
+      },
+    ],
+    workflowDispatch: {},
+  });
+  e2eCanary.addJobs({
+    test: {
+      name: "constructs.dev canary",
+      runsOn: "ubuntu-latest",
+      permissions: {
+        checks: "write",
+        contents: "read",
+      },
       steps: [
+        ...cypressRunSteps,
         {
-          name: "Checkout",
-          uses: "actions/checkout@v2",
-        },
-        {
-          name: "Cypress Run",
-          uses: "cypress-io/github-action@v2",
-          with: {
-            start: "yarn proxy-server:ci",
-            "wait-on": "http://localhost:3000",
-            "wait-on-timeout": 150,
-          },
-        },
-        {
-          uses: "actions/upload-artifact@v2",
+          name: "Create failure issue",
           if: "failure()",
+          uses: "imjohnbo/issue-bot@v3",
           with: {
-            name: "cypress-screenshots",
-            path: "cypress/screenshots",
+            labels: "failed-release",
+            title: `E2E Canary for https://constructs.dev failed.`,
+            body: "See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
           },
-        },
-        {
-          uses: "actions/upload-artifact@v2",
-          if: "always()",
-          with: {
-            name: "cypress-videos",
-            path: "cypress/videos",
+          env: {
+            GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
           },
         },
       ],

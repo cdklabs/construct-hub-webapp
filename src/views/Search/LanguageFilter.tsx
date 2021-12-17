@@ -5,8 +5,9 @@ import {
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
 import { CheckboxFilter } from "./CheckboxFilter";
-import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
+import { useLanguages } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
 const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
   .map(([key, value]) => ({
@@ -27,16 +28,18 @@ const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
   });
 
 export const LanguageFilter: FunctionComponent = () => {
-  const { languages, setLanguages } = useSearchState().searchAPI;
+  const languages = useLanguages();
+
+  const updateSearch = useUpdateSearchParam();
 
   const onLanguagesChange = (lang: string) => {
     const language = lang as Language;
 
-    setLanguages(
-      languages.includes(language)
+    updateSearch({
+      languages: languages.includes(language)
         ? languages.filter((l) => l !== language)
-        : [...languages, language]
-    );
+        : [...languages, language],
+    });
   };
 
   return (

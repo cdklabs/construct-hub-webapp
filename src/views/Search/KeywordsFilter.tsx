@@ -1,19 +1,21 @@
 import { FunctionComponent, useMemo } from "react";
 import { useSearchContext } from "../../contexts/Search";
 import { CheckboxFilter } from "./CheckboxFilter";
-import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
+import { useKeywords } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
 export const KeywordsFilter: FunctionComponent = () => {
-  const { keywords, setKeywords } = useSearchState().searchAPI;
+  const keywords = useKeywords();
   const keywordMap = useSearchContext()!.keywords;
+  const updateSearch = useUpdateSearchParam();
 
   const onKeywordChange = (keyword: string) => {
-    setKeywords(
-      keywords.includes(keyword)
+    updateSearch({
+      keywords: keywords.includes(keyword)
         ? keywords.filter((k) => k !== keyword)
-        : [...keywords, keyword]
-    );
+        : [...keywords, keyword],
+    });
   };
 
   const keywordOptions = useMemo(() => {

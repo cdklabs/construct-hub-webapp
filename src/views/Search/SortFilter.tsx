@@ -2,13 +2,17 @@ import { FunctionComponent } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { SORT_RENDER_MAP } from "./constants";
 import { RadioFilter } from "./RadioFilter";
-import { useSearchState } from "./SearchState";
+import { useSort } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
 export const SortFilter: FunctionComponent = () => {
-  const { sort, setSort } = useSearchState().searchAPI;
+  const sort = useSort();
+  const updateSearch = useUpdateSearchParam();
 
   const onSortChange = (newSort: string) => {
-    setSort(newSort ? (newSort as CatalogSearchSort) : undefined);
+    updateSearch({
+      sort: newSort ? (newSort as CatalogSearchSort) : undefined,
+    });
   };
 
   return (
