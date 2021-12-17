@@ -1,24 +1,21 @@
 import { IconButton, IconProps } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
 
 export interface ArrowButtonProps {
   "data-event"?: string;
   "data-testid"?: string;
   icon: FunctionComponent<IconProps>;
-  offset?: number;
-  getPageUrl: (params: { offset: number }) => string;
+  label: string;
+  onClick?: () => void;
 }
 
 export const ArrowButton: FunctionComponent<ArrowButtonProps> = ({
   "data-event": dataEvent,
   "data-testid": dataTestid,
   icon: Icon,
-  offset,
-  getPageUrl,
+  label,
+  onClick,
 }) => {
-  const label = `Page ${offset} link`;
-
   const props = {
     "aria-label": label,
     borderRadius: "md",
@@ -33,9 +30,5 @@ export const ArrowButton: FunctionComponent<ArrowButtonProps> = ({
     variant: "outline",
   };
 
-  if (offset !== undefined) {
-    return <IconButton {...props} as={Link} to={getPageUrl({ offset })} />;
-  }
-
-  return <IconButton {...props} disabled />;
+  return <IconButton {...props} disabled={!onClick} onClick={onClick} />;
 };

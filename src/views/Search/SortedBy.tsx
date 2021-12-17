@@ -12,12 +12,13 @@ import { FunctionComponent } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { eventName } from "../../contexts/Analytics";
 import { SEARCH_ANALYTICS, SORT_RENDER_MAP } from "./constants";
-import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
+import { useSort } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
 export const SortedBy: FunctionComponent = () => {
-  const { searchAPI } = useSearchState();
-  const { sort, setSort } = searchAPI;
+  const sort = useSort();
+  const updateSearch = useUpdateSearchParam();
 
   const selected = sort ? SORT_RENDER_MAP[sort] : "Relevance";
 
@@ -45,7 +46,7 @@ export const SortedBy: FunctionComponent = () => {
             data-testid={testIds.sortItem}
             data-value=""
             key="Relevance"
-            onClick={() => setSort(undefined)}
+            onClick={() => updateSearch({ sort: undefined })}
           >
             Relevance
           </MenuItem>
@@ -55,7 +56,7 @@ export const SortedBy: FunctionComponent = () => {
               data-testid={testIds.sortItem}
               data-value={value}
               key={value}
-              onClick={() => setSort(value as CatalogSearchSort)}
+              onClick={() => updateSearch({ sort: value as CatalogSearchSort })}
             >
               {display}
             </MenuItem>
