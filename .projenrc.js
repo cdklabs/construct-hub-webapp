@@ -116,6 +116,37 @@ const project = new web.ReactTypeScriptProject({
     });
   })();
 
+  const cypressRunSteps = [
+    {
+      name: "Checkout",
+      uses: "actions/checkout@v2",
+    },
+    {
+      name: "Cypress Run",
+      uses: "cypress-io/github-action@v2",
+      with: {
+        start: "yarn proxy-server:ci",
+        "wait-on": "http://localhost:3000",
+        "wait-on-timeout": 150,
+      },
+    },
+    {
+      uses: "actions/upload-artifact@v2",
+      if: "failure()",
+      with: {
+        name: "cypress-screenshots",
+        path: "cypress/screenshots",
+      },
+    },
+    {
+      uses: "actions/upload-artifact@v2",
+      if: "always()",
+      with: {
+        name: "cypress-videos",
+        path: "cypress/videos",
+      },
+    },
+  ];
   project.buildWorkflow.addJobs({
     cypress: {
       name: "E2E Tests",
@@ -124,37 +155,7 @@ const project = new web.ReactTypeScriptProject({
         checks: "write",
         contents: "read",
       },
-      steps: [
-        {
-          name: "Checkout",
-          uses: "actions/checkout@v2",
-        },
-        {
-          name: "Cypress Run",
-          uses: "cypress-io/github-action@v2",
-          with: {
-            start: "yarn proxy-server:ci",
-            "wait-on": "http://localhost:3000",
-            "wait-on-timeout": 150,
-          },
-        },
-        {
-          uses: "actions/upload-artifact@v2",
-          if: "failure()",
-          with: {
-            name: "cypress-screenshots",
-            path: "cypress/screenshots",
-          },
-        },
-        {
-          uses: "actions/upload-artifact@v2",
-          if: "always()",
-          with: {
-            name: "cypress-videos",
-            path: "cypress/videos",
-          },
-        },
-      ],
+      steps: cypressRunSteps,
     },
   });
 
@@ -183,37 +184,7 @@ const project = new web.ReactTypeScriptProject({
         contents: "read",
       },
       steps: [
-        {
-          name: "Checkout",
-          uses: "actions/checkout@v2",
-        },
-        {
-          name: "Cypress Run",
-          uses: "cypress-io/github-action@v2",
-          with: {
-            start: "yarn proxy-server:ci",
-            "wait-on": "http://localhost:3000",
-            "wait-on-timeout": 150,
-          },
-        },
-        {
-          name: "Upload screenshots on failure",
-          uses: "actions/upload-artifact@v2",
-          if: "failure()",
-          with: {
-            name: "cypress-screenshots",
-            path: "cypress/screenshots",
-          },
-        },
-        {
-          name: "Upload videos",
-          uses: "actions/upload-artifact@v2",
-          if: "always()",
-          with: {
-            name: "cypress-videos",
-            path: "cypress/videos",
-          },
-        },
+        ...cypressRunSteps,
         {
           name: "Create failure issue",
           if: "failure()",
