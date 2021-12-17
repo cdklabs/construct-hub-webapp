@@ -3,8 +3,9 @@ import { CatalogConstructFrameworkMeta } from "../../api/catalog-search";
 import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
 import { useSearchContext } from "../../contexts/Search";
 import { RadioFilter } from "./RadioFilter";
-import { useSearchState } from "./SearchState";
 import testIds from "./testIds";
+import { useCdkMajor, useCdkType } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
 type CDKOptions = Partial<{
   [key in CDKType]: CatalogConstructFrameworkMeta & {
@@ -14,8 +15,11 @@ type CDKOptions = Partial<{
 }>;
 
 export const CDKFilter: FunctionComponent = () => {
-  const { cdkType, setCdkType, cdkMajor, setCdkMajor } =
-    useSearchState().searchAPI;
+  const cdkType = useCdkType();
+  const cdkMajor = useCdkMajor();
+
+  const updateSearch = useUpdateSearchParam();
+
   const searchAPI = useSearchContext()!;
 
   // Options with less than one package will be omitted
@@ -59,19 +63,17 @@ export const CDKFilter: FunctionComponent = () => {
 
   const onCdkTypeChange = (type: string) => {
     const cdk = type as CDKType;
-    setCdkMajor(undefined);
-    setCdkType(type ? cdk : undefined);
+    updateSearch({ cdkType: type ? cdk : undefined, cdkMajor: undefined });
   };
 
   const onCdkMajorChange = (major: string) => {
-    if (!major) {
-      setCdkMajor(undefined);
-      return;
+    let majorNum: number | undefined = undefined;
+
+    if (major) {
+      majorNum = parseInt(major, 10);
     }
 
-    const majorNum = parseInt(major, 10);
-
-    setCdkMajor(majorNum);
+    updateSearch({ cdkMajor: majorNum });
   };
 
   return (

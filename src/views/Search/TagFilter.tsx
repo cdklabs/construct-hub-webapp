@@ -2,7 +2,8 @@ import { FunctionComponent } from "react";
 import { PackageTagConfig } from "../../api/config";
 import { useConfigValue } from "../../hooks/useConfigValue";
 import { CheckboxFilter } from "./CheckboxFilter";
-import { useSearchState } from "./SearchState";
+import { useTags } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
 interface FilterGroups {
   [group: string]: PackageTagConfig[];
@@ -27,12 +28,13 @@ export const TagFilter: FunctionComponent = () => {
     {}
   );
 
-  const { tags, setTags } = useSearchState().searchAPI;
+  const tags = useTags();
+  const updateSearch = useUpdateSearchParam();
 
   const onTagsChange = (tag: string) => {
-    setTags(
-      tags.includes(tag) ? tags.filter((t) => t !== tag) : [...tags, tag]
-    );
+    updateSearch({
+      tags: tags.includes(tag) ? tags.filter((t) => t !== tag) : [...tags, tag],
+    });
   };
 
   return (
