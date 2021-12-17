@@ -1,8 +1,8 @@
 import { FunctionComponent, useEffect } from "react";
-import { LanguageBar } from "../../../components/LanguageBar";
-import { Language, LANGUAGES } from "../../../constants/languages";
-import { useLanguage } from "../../../hooks/useLanguage";
-import { usePackageState } from "../PackageState";
+import { Language, LANGUAGES } from "../../constants/languages";
+import { useLanguage } from "../../hooks/useLanguage";
+import { LanguageBar } from "./LanguageBar";
+import { usePackageState } from "./PackageState";
 
 const languageSet = new Set(LANGUAGES);
 

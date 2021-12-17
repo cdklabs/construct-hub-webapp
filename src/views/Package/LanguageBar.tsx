@@ -2,15 +2,17 @@ import { IconButton, Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { useHistory } from "react-router-dom";
 import { getFullPackageName } from "../../api/package/util";
+import { LanguageSupportTooltip } from "../../components/LanguageSupportTooltip";
 import {
   Language,
   TEMP_SUPPORTED_LANGUAGES,
   LANGUAGE_RENDER_MAP,
   LANGUAGES,
 } from "../../constants/languages";
+import { clickEvent, useAnalytics } from "../../contexts/Analytics";
 import { getPackagePath } from "../../util/url";
-import { usePackageState } from "../../views/Package/PackageState";
-import { LanguageSupportTooltip } from "../LanguageSupportTooltip";
+import { PACKAGE_ANALYTICS } from "./constants";
+import { usePackageState } from "./PackageState";
 
 export interface LanguageBarProps {
   targetLanguages: readonly Language[];
@@ -22,6 +24,7 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
   targetLanguages,
   selectedLanguage,
 }) => {
+  const { trackCustomEvent } = useAnalytics();
   const { name, scope, version } = usePackageState();
   const { push } = useHistory();
   return (
@@ -43,6 +46,11 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
 
           const onClick = () => {
             if (isSelected) return;
+            trackCustomEvent(
+              clickEvent({
+                name: PACKAGE_ANALYTICS.LANGUAGE.eventName(language),
+              })
+            );
             // reset to package root since our URL scheme for APIs currently
             // differs between languages.
             push(

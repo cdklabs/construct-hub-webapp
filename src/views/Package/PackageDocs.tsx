@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { NavTree } from "../../components/NavTree";
 import { ChooseSubmodule } from "./ChooseSubmodule";
+import { PACKAGE_ANALYTICS } from "./constants";
 import { PackageReadme } from "./PackageReadme";
 import { usePackageState } from "./PackageState";
 import { PackageTypeDocs } from "./PackageTypeDocs";
@@ -84,7 +85,7 @@ export const PackageDocs: FunctionComponent = () => {
       >
         <SubmoduleSelector />
         <Box overflowY="auto" py={4}>
-          <NavTree items={menuItems} />
+          <NavTree data-event={PACKAGE_ANALYTICS.SCOPE} items={menuItems} />
         </Box>
       </Flex>
       <Box
