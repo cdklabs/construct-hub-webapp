@@ -4,6 +4,7 @@ import type { FunctionComponent } from "react";
 import { ExternalLink } from "../../components/ExternalLink";
 import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
 import { GithubIcon } from "../../icons/GithubIcon";
+import { PACKAGE_ANALYTICS } from "./constants";
 import { usePackageState } from "./PackageState";
 import testIds from "./testIds";
 
@@ -43,8 +44,6 @@ export const FeedbackLinks: FunctionComponent = () => {
     }
   }
 
-  // const orientation = { base: "horizontal", md: "vertical" };
-
   return (
     <Stack
       align="center"
@@ -63,6 +62,7 @@ export const FeedbackLinks: FunctionComponent = () => {
         <>
           <ExternalLink
             color="currentcolor"
+            data-event={PACKAGE_ANALYTICS.FEEDBACK.PUBLISHER}
             data-testid={testIds.githubLink}
             fontSize="lg"
             fontWeight="semibold"
@@ -78,6 +78,7 @@ export const FeedbackLinks: FunctionComponent = () => {
       )}
       <ExternalLink
         color="currentcolor"
+        data-event={PACKAGE_ANALYTICS.FEEDBACK.CONSTRUCT_HUB}
         data-testid={testIds.reportLink}
         fontSize="lg"
         fontWeight="semibold"
@@ -90,6 +91,7 @@ export const FeedbackLinks: FunctionComponent = () => {
       {divider}
       <ExternalLink
         color="currentcolor"
+        data-event={PACKAGE_ANALYTICS.FEEDBACK.ABUSE}
         data-testid={testIds.reportAbuseLink}
         fontSize="lg"
         fontWeight="semibold"

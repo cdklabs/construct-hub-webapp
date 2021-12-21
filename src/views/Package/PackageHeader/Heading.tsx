@@ -11,6 +11,7 @@ import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeBadge } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
 import { tagObjectsFrom } from "../../../util/package";
+import { PACKAGE_ANALYTICS } from "../constants";
 import testIds from "../testIds";
 import { SelectVersion } from "./SelectVersion";
 
@@ -70,9 +71,23 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         sx={{ gap: "0.5rem" }}
         wrap="wrap"
       >
-        <CDKTypeBadge {...cdkTypeProps} />
+        <CDKTypeBadge
+          data-event={PACKAGE_ANALYTICS.CDK_BADGE.eventName(
+            `${cdkTypeProps.name}${
+              cdkTypeProps.majorVersion !== undefined
+                ? ` v${cdkTypeProps.majorVersion}`
+                : ""
+            }`
+          )}
+          {...cdkTypeProps}
+        />
         {tags.map(({ id, keyword: { label, color } = {} }) => (
-          <PackageTag key={id} value={id} variant={color}>
+          <PackageTag
+            data-event={PACKAGE_ANALYTICS.KEYWORD.eventName(label!)}
+            key={id}
+            value={id}
+            variant={color}
+          >
             {label}
           </PackageTag>
         ))}

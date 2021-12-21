@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent, useState, useEffect } from "react";
 import { Page } from "../../components/Page";
+import { PACKAGE_ANALYTICS } from "./constants";
 import { DependenciesList } from "./DependenciesList";
 import { FeedbackLinks } from "./FeedbackLinks";
 import { PackageDocs } from "./PackageDocs";
@@ -40,8 +41,15 @@ export const PackageLayout: FunctionComponent = () => {
 
         <Tabs index={tabIndex} onChange={setTabIndex} pt={4} variant="line">
           <TabList borderBottom="base" mx={{ base: 0, lg: 6 }}>
-            <Tab>Documentation</Tab>
-            <Tab data-testid={testIds.dependenciesTab}>Dependencies</Tab>
+            <Tab data-event={PACKAGE_ANALYTICS.DOCUMENTATION.TAB}>
+              Documentation
+            </Tab>
+            <Tab
+              data-event={PACKAGE_ANALYTICS.DEPENDENCIES.TAB}
+              data-testid={testIds.dependenciesTab}
+            >
+              Dependencies
+            </Tab>
           </TabList>
           <TabPanels maxW="full">
             <TabPanel p={0}>

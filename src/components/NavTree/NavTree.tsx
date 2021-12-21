@@ -2,9 +2,14 @@ import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Flex, IconButton, Text, useDisclosure } from "@chakra-ui/react";
 import { FunctionComponent, useMemo, ReactNode } from "react";
 import { useLocation } from "react-router-dom";
+import { clickEvent, eventName, useAnalytics } from "../../contexts/Analytics";
 import { NavLink } from "../NavLink";
 
+const navTreeEvent = (scope: string, event: string) =>
+  eventName(scope, "NavTree", event);
+
 export interface NavItemConfig {
+  "data-event"?: string;
   children: NavItemConfig[];
   title: string;
   path?: string;
@@ -17,6 +22,7 @@ export interface NavItemProps extends NavItemConfig {
 }
 
 export interface NavTreeProps {
+  "data-event"?: string;
   /**
    * Items to render
    */
@@ -30,6 +36,7 @@ const iconProps = {
 };
 
 interface NavItemWrapperProps {
+  "data-event"?: string;
   path?: string;
   title: string;
   showToggle: boolean;
@@ -38,6 +45,7 @@ interface NavItemWrapperProps {
 
 const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
   children,
+  "data-event": dataEvent,
   path,
   title,
   showToggle,
@@ -54,7 +62,7 @@ const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
   };
 
   return path ? (
-    <NavLink title={title} to={path} {...sharedProps}>
+    <NavLink data-event={dataEvent} title={title} to={path} {...sharedProps}>
       {children}
     </NavLink>
   ) : (
@@ -64,11 +72,13 @@ const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
 
 export const NavItem: FunctionComponent<NavItemProps> = ({
   children,
+  "data-event": dataEvent,
   title,
   path,
   level,
   onOpen,
 }) => {
+  const { trackCustomEvent } = useAnalytics();
   const defaultIsOpen = level < 2; // only show first two levels by default
   const disclosure = useDisclosure({ onOpen, defaultIsOpen });
   const { hash, pathname } = useLocation();
@@ -85,6 +95,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
       children?.map((item, idx) => {
         return (
           <NavItem
+            data-event={dataEvent}
             {...item}
             key={idx}
             level={level + 1}
@@ -92,7 +103,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
           />
         );
       }),
-    [children, disclosure.onOpen, level]
+    [children, dataEvent, disclosure.onOpen, level]
   );
 
   return (
@@ -111,13 +122,28 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
               )
             }
             ml={-1}
-            onClick={disclosure.onToggle}
+            onClick={() => {
+              disclosure.onToggle();
+
+              if (dataEvent) {
+                trackCustomEvent(
+                  clickEvent({
+                    name: navTreeEvent(dataEvent, "Toggle"),
+                  })
+                );
+              }
+            }}
             size="xs"
             variant="link"
             w={0}
           />
         )}
-        <NavItemWrapper path={path} showToggle={showToggle} title={title}>
+        <NavItemWrapper
+          data-event={dataEvent ? navTreeEvent(dataEvent, "Link") : undefined}
+          path={path}
+          showToggle={showToggle}
+          title={title}
+        >
           {title}
         </NavItemWrapper>
       </Flex>
@@ -145,11 +171,22 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   );
 };
 
-export const NavTree: FunctionComponent<NavTreeProps> = ({ items }) => {
+export const NavTree: FunctionComponent<NavTreeProps> = ({
+  "data-event": dataEvent,
+  items,
+}) => {
   return (
     <Flex direction="column" maxWidth="100%">
       {items.map((item, idx) => {
-        return <NavItem {...item} key={idx} level={0} onOpen={undefined} />;
+        return (
+          <NavItem
+            {...item}
+            data-event={dataEvent}
+            key={idx}
+            level={0}
+            onOpen={undefined}
+          />
+        );
       })}
     </Flex>
   );

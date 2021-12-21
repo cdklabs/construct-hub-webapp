@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import semver from "semver";
 import { useSearchContext } from "../../../contexts/Search";
 import { getPackagePath } from "../../../util/url";
+import { PACKAGE_ANALYTICS } from "../constants";
 import { usePackageState } from "../PackageState";
 import testIds from "../testIds";
 
@@ -49,6 +50,7 @@ export const SelectVersion: FunctionComponent = () => {
 
   return (
     <Select
+      data-event={PACKAGE_ANALYTICS.SELECT_VERSION}
       data-testid={testIds.selectVersionDropdown}
       fontWeight="500"
       onChange={onChangeVersion}
