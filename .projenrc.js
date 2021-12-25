@@ -27,7 +27,7 @@ const project = new web.ReactTypeScriptProject({
   },
 
   minNodeVersion: "12.20.0",
-  workflowNodeVersion: '12.22.0',
+  workflowNodeVersion: "12.22.0",
 
   eslint: true,
   eslintOptions: {
