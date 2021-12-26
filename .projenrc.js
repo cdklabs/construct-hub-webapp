@@ -26,7 +26,7 @@ const project = new web.ReactTypeScriptProject({
     },
   },
 
-  minNodeVersion: "16.0.0",
+  minNodeVersion: "14.17.0",
 
   eslint: true,
   eslintOptions: {
