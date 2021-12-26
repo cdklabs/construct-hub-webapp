@@ -2,6 +2,7 @@
 !/.gitattributes
 !/.projen/tasks.json
 !/.projen/deps.json
+!/.projen/files.json
 !/.github/workflows/pull-request-lint.yml
 !/.github/workflows/auto-approve.yml
 !/.github/workflows/stale.yml
@@ -49,6 +50,7 @@ jspm_packages/
 !/react-app-env.d.ts
 cypress/videos/
 cypress/screenshots/
+!/.github/workflows/integ.yml
 !/.github/workflows/e2e-canary.yml
 /public/config.json
 public/data

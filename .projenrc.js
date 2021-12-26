@@ -26,8 +26,7 @@ const project = new web.ReactTypeScriptProject({
     },
   },
 
-  minNodeVersion: "12.20.0",
-  workflowNodeVersion: "12.22.0",
+  minNodeVersion: "16.0.0",
 
   eslint: true,
   eslintOptions: {
@@ -148,16 +147,17 @@ const project = new web.ReactTypeScriptProject({
       },
     },
   ];
-  project.buildWorkflow.addJobs({
-    cypress: {
-      name: "E2E Tests",
-      runsOn: "ubuntu-latest",
-      permissions: {
-        checks: "write",
-        contents: "read",
-      },
-      steps: cypressRunSteps,
+
+  const integWorkflow = project.github.addWorkflow("integ");
+  integWorkflow.on({ workflowDispatch: {}, pullRequest: {} });
+  integWorkflow.addJob("e2e", {
+    name: "e2e",
+    runsOn: "ubuntu-latest",
+    permissions: {
+      checks: "write",
+      contents: "read",
     },
+    steps: cypressRunSteps,
   });
 
   // Set up a canary that tests that the latest code on our main branch
