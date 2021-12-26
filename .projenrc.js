@@ -88,6 +88,11 @@ const project = new web.ReactTypeScriptProject({
   autoApproveUpgrades: true,
 });
 
+// addressing https://github.com/advisories/GHSA-rp65-9cf3-cjxr forcefully until
+// react-scripts fixes the dependency chain.
+// if test pass, we should be ok with this override, even though its a different major version.
+project.package.addField("resolutions", { "nth-check": "2.0.1" });
+
 (function addCypress() {
   project.addDevDeps("cypress");
 
