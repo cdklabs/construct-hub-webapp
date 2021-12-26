@@ -148,16 +148,14 @@ const project = new web.ReactTypeScriptProject({
       },
     },
   ];
-  project.buildWorkflow.addJobs({
-    cypress: {
-      name: "E2E Tests",
-      runsOn: "ubuntu-latest",
-      permissions: {
-        checks: "write",
-        contents: "read",
-      },
-      steps: cypressRunSteps,
+  project.buildWorkflow.addPostBuildJob("e2e", {
+    name: "E2E Tests",
+    runsOn: "ubuntu-latest",
+    permissions: {
+      checks: "write",
+      contents: "read",
     },
+    steps: cypressRunSteps,
   });
 
   // Set up a canary that tests that the latest code on our main branch
