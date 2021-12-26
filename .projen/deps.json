@@ -30,7 +30,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^12.20.0",
+      "version": "^12",
       "type": "build"
     },
     {
@@ -55,18 +55,16 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
+      "version": "^5",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
+      "version": "^5",
       "type": "build"
     },
     {
       "name": "cypress",
-      "type": "build"
-    },
-    {
-      "name": "eslint",
       "type": "build"
     },
     {
@@ -106,6 +104,11 @@
       "type": "build"
     },
     {
+      "name": "eslint",
+      "version": "^8",
+      "type": "build"
+    },
+    {
       "name": "express",
       "type": "build"
     },
@@ -119,7 +122,7 @@
     },
     {
       "name": "npm-check-updates",
-      "version": "^11",
+      "version": "^12",
       "type": "build"
     },
     {
@@ -237,7 +240,7 @@
     },
     {
       "name": "react-scripts",
-      "version": "^4.0.0",
+      "version": "^5",
       "type": "runtime"
     },
     {
