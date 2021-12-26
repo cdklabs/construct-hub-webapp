@@ -6,6 +6,7 @@
     ".github/workflows/auto-approve.yml",
     ".github/workflows/build.yml",
     ".github/workflows/e2e-canary.yml",
+    ".github/workflows/integ.yml",
     ".github/workflows/pull-request-lint.yml",
     ".github/workflows/release.yml",
     ".github/workflows/stale.yml",

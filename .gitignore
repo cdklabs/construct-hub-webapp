@@ -50,6 +50,7 @@ jspm_packages/
 !/react-app-env.d.ts
 cypress/videos/
 cypress/screenshots/
+!/.github/workflows/integ.yml
 !/.github/workflows/e2e-canary.yml
 /public/config.json
 public/data

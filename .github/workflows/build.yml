@@ -41,16 +41,9 @@ jobs:
             git push origin HEAD:${{ github.event.pull_request.head.ref }}
             echo "::set-output name=self_mutation_commit::$(git rev-parse HEAD)"
           fi
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2.1.1
-        if: always()
-        with:
-          name: build-artifact
-          path: dist
   update-status:
     needs:
       - build
-      - e2e
     runs-on: ubuntu-latest
     permissions:
       checks: write
@@ -69,34 +62,3 @@ jobs:
           }}/actions/runs/${{ github.run_id }}/cancel
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  e2e:
-    name: E2E Tests
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      checks: write
-      contents: read
-    steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifact
-          path: dist
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Cypress Run
-        uses: cypress-io/github-action@v2
-        with:
-          start: yarn proxy-server:ci
-          wait-on: http://localhost:3000
-          wait-on-timeout: 150
-      - uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos

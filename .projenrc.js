@@ -148,7 +148,10 @@ const project = new web.ReactTypeScriptProject({
       },
     },
   ];
-  project.buildWorkflow.addPostBuildJob("e2e", {
+
+  const integWorkflow = project.github.addWorkflow("integ");
+  integWorkflow.on({ workflowDispatch: {}, pullRequest: {} });
+  integWorkflow.addJob("e2e", {
     name: "E2E Tests",
     runsOn: "ubuntu-latest",
     permissions: {
