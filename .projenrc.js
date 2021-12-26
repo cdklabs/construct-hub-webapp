@@ -26,8 +26,7 @@ const project = new web.ReactTypeScriptProject({
     },
   },
 
-  minNodeVersion: "12.20.0",
-  workflowNodeVersion: "12.22.0",
+  minNodeVersion: "16.0.0",
 
   eslint: true,
   eslintOptions: {
@@ -152,7 +151,7 @@ const project = new web.ReactTypeScriptProject({
   const integWorkflow = project.github.addWorkflow("integ");
   integWorkflow.on({ workflowDispatch: {}, pullRequest: {} });
   integWorkflow.addJob("e2e", {
-    name: "E2E Tests",
+    name: "e2e",
     runsOn: "ubuntu-latest",
     permissions: {
       checks: "write",

@@ -6,7 +6,7 @@ on:
   pull_request: {}
 jobs:
   e2e:
-    name: E2E Tests
+    name: e2e
     runs-on: ubuntu-latest
     permissions:
       checks: write
