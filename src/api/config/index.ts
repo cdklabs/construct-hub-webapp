@@ -25,6 +25,13 @@ export interface PackageTagConfig {
   };
 }
 
+export interface TagGroupConfig {
+  id: string;
+  label?: string;
+  tooltip?: string;
+  filterType?: "checkbox" | "radio";
+}
+
 export interface Category {
   title: string;
   url: string;
@@ -84,6 +91,7 @@ export interface Config {
   packageLinks?: PackageLinkConfig[];
   featuredPackages?: FeaturedPackages;
   packageTags?: PackageTagConfig[];
+  packageTagGroups?: TagGroupConfig[];
   categories?: Category[];
 }
 
