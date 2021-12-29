@@ -89,7 +89,7 @@ const getDetailItemsFromPackage = ({
 
     if (username) {
       const author = (
-        <NavLink color="blue.500" to={getSearchPath({ query: username })}>
+        <NavLink color="link" to={getSearchPath({ query: username })}>
           {username}
         </NavLink>
       );

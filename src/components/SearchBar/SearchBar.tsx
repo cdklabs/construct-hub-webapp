@@ -134,13 +134,17 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
         <InputGroup pos="relative" zIndex={disclosure.isOpen ? 3 : "initial"}>
           {hasButton && (
             <InputLeftElement>
-              <SearchIcon data-testid={testIds.searchIcon} />
+              <SearchIcon
+                color="textTertiary"
+                data-testid={testIds.searchIcon}
+              />
             </InputLeftElement>
           )}
 
           <Input
-            bg="white"
+            bg="bgSecondary"
             boxShadow={disclosure.isOpen ? "base" : "none"}
+            color="textSecondary"
             data-testid={testIds.input}
             focusBorderColor="blue.500"
             onChange={onChange ?? searchAPI.onQueryChange}
@@ -166,8 +170,10 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
               w="auto"
             >
               <Button
+                _hover={{ bg: "brand.600" }}
+                bg="brand.500"
                 borderLeftRadius="0"
-                colorScheme="blue"
+                color="white"
                 data-event={
                   dataEvent ? eventName(dataEvent, "Submit Button") : undefined
                 }

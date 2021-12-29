@@ -6,6 +6,8 @@ import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
 import { FILTER_FUNCTIONS, renderAllKeywords, SORT_FUNCTIONS } from "./util";
 
+const QUERY_IGNORE_SET = new Set(["cdk", "aws"]);
+
 const INDEX_FIELDS = {
   AUTHOR_EMAIL: {
     name: "authorEmail",
@@ -207,7 +209,7 @@ export class CatalogSearchAPI {
         // A large number of libraries include the term cdk within the title - which will lead to an
         // inflated result count. TODO: determine if there are other terms to filter out
         tokenizedQuery = tokenizedQuery.filter(
-          (token) => token.toString() !== "cdk"
+          (token) => !QUERY_IGNORE_SET.has(token.toString())
         );
       }
 

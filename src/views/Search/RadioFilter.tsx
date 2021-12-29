@@ -38,7 +38,7 @@ export const RadioFilter: FunctionComponent<RadioFilterProps> = ({
             return (
               <Radio data-event={dataEvent} key={value} value={value}>
                 <Text
-                  color="gray.600"
+                  color="textTertiary"
                   data-event={dataEvent}
                   data-testid={testIds.filterItem}
                   data-value={value}

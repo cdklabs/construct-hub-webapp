@@ -17,3 +17,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* Dark-theme color resets */
+.chakra-ui-dark {
+  --chakra-colors-bgPrimary: var(--chakra-colors-gray-900);
+  --chakra-colors-bgSecondary: var(--chakra-colors-gray-800);
+
+  --chakra-colors-hoverPrimary: var(--chakra-colors-blackAlpha-700);
+
+  --chakra-colors-textPrimary: var(--chakra-colors-whiteAlpha-800);
+  --chakra-colors-textSecondary: var(--chakra-colors-whiteAlpha-900);
+  --chakra-colors-textTertiary: var(--chakra-colors-whiteAlpha-700);
+  --chakra-colors-link: var(--chakra-colors-blue-400);
+
+  --chakra-colors-borderColor: transparent;
+  --chakra-borders-base: 1px solid var(--chakra-colors-borderColor);
+
+  --chakra-colors-shadowColor: var(--chakra-colors-blackAlpha-900);
+  --chakra-shadows-base: 0px 4px 15px var(--chakra-colors-shadowColor);
+}

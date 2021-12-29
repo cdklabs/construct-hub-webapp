@@ -19,7 +19,7 @@ export interface NavPopoverContentProps extends MenuListProps {
 
 const Link: FunctionComponent<ILink> = ({ display, isNavLink, url }) =>
   isNavLink ? (
-    <NavLink color="blue.500" to={url} w="100%">
+    <NavLink color="link" to={url} w="100%">
       {display}
     </NavLink>
   ) : (

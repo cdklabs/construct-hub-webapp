@@ -15,7 +15,7 @@ export const Footer: FunctionComponent<FooterProps> = () => {
     <Flex
       align="center"
       as="footer"
-      bg="blue.800"
+      bg="brand.800"
       color="white"
       data-testid={testIds.container}
       direction="column"

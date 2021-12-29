@@ -108,7 +108,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
 
   return (
     <Flex direction="column">
-      <Flex align="center" color={linkIsActive ? "blue.500" : "gray.800"}>
+      <Flex align="center" color={linkIsActive ? "link" : "textPrimary"}>
         {showToggle && (
           <IconButton
             aria-label="expand-toggle"

@@ -13,7 +13,7 @@ export const makeTheme = (config: Config) => {
     components: makeComponents(componentsConfig),
     config: {
       initialColorMode: "light",
-      useSystemColorMode: false,
+      useSystemColorMode: true,
     },
   });
 };

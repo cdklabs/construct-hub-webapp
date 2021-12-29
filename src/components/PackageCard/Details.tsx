@@ -67,7 +67,7 @@ export const Details: FunctionComponent = () => {
           <>
             By{" "}
             <NavLink
-              color="blue.500"
+              color="link"
               to={getSearchPath({
                 query: authorName,
               })}

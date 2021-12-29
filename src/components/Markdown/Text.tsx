@@ -25,7 +25,7 @@ export const A: AnchorComponent = ({ children, href, ...linkProps }) => {
 
   return (
     <Component
-      color="blue.500"
+      color="link"
       href={href}
       // If we are rendering an img within the link (specifically stability banners),
       // do not display the external link Icon

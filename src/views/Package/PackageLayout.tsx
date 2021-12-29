@@ -31,7 +31,7 @@ export const PackageLayout: FunctionComponent = () => {
       pageName="packageProfile"
     >
       <Grid
-        bg="white"
+        bg="bgSecondary"
         data-testid={testIds.page}
         maxW="100vw"
         templateColumns="1fr"

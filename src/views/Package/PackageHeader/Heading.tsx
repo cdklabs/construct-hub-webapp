@@ -48,7 +48,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
     >
       <Flex align="center" wrap="wrap">
         <ChakraHeading
-          color="blue.800"
+          color="textPrimary"
           flexShrink={1}
           fontSize="1.5rem"
           isTruncated
