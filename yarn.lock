@@ -10068,10 +10068,10 @@ progress@^2.0.0, progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.46.3:
-  version "0.46.3"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.46.3.tgz#ccd7ab21cd57c2409bf9cad116aaec689daaa55e"
-  integrity sha512-Zo5emBAy9IAfz6EXlZqjLt5doYBQ71M350jCh2GkUbHCMgRnd7Vu/merWaWp75L1Zrba9yi6GZq8eoGh3jpt7A==
+projen@^0.46.9:
+  version "0.46.9"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.46.9.tgz#9acd723c56afcc865a141820dc76e0302eadbb91"
+  integrity sha512-tYTWrvvhXltZ/KhunuNquu75fM9nUfyH97V6Xo/payf8c14L0/B4e68TI59jOGYIONL7Uazk2l3buCk+ZgqCjw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
@@ -10269,10 +10269,10 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-app-rewired@^2.1.9:
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-2.1.9.tgz#20c432c6414d354547e232c4fa1ac1112615ca3e"
-  integrity sha512-eOIRsDXbRCA9x+vIABS+VFBXO78bUbZ1pIyOuAkbP0Y6NEfbr4v9lHAyGsix4DxNcKpPqKYtvDKKlbOxMUCxlw==
+react-app-rewired@^2.1.10:
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-2.1.10.tgz#9f90f8ba28052ec74726c60cd82acb87e8b52f85"
+  integrity sha512-eN+HYHNLW9Pi/hbam4I0uvYNpVmYTN5Xj0gqxbRM5F+kd7mtM6QGlksoobxc0pkgB6VVkF2QvED3uNyQpnH1YA==
   dependencies:
     semver "^5.6.0"
 
