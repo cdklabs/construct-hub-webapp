@@ -166,9 +166,7 @@ project.package.addField("resolutions", { "nth-check": "2.0.1" });
     steps: cypressRunSteps,
   });
 
-  project
-    .tryFindObjectFile(".mergify.yml")
-    .addOverride("pull_request_rules.0.conditions.3", `status-success=${e2e}`);
+  project.autoMerge.addConditions(`status-success=${e2e}`);
 
   // Set up a canary that tests that the latest code on our main branch
   // works against data on https://constructs.dev.
