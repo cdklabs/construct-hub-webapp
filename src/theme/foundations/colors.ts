@@ -20,9 +20,9 @@ export const colors = {
   ...theme.colors,
   blue,
   brand,
-  // Declares light-theme colors, overwritten via global styles in global.ts
+  // Declares light-theme colors, overwritten via index.css
   // Backgrounds
-  bgPrimary: "#F8F8F8",
+  bgPrimary: theme.colors.gray[50],
   bgSecondary: theme.colors.white,
   // Hovers
   hoverPrimary: theme.colors.gray[100],
@@ -32,6 +32,6 @@ export const colors = {
   textSecondary: theme.colors.gray[700],
   textTertiary: theme.colors.gray[600],
   // Accents
-  borderColor: "transparent",
+  borderColor: theme.colors.blackAlpha[200],
   shadowColor: theme.colors.blackAlpha[300],
 };

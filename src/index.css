@@ -30,7 +30,7 @@ code {
   --chakra-colors-textTertiary: var(--chakra-colors-whiteAlpha-700);
   --chakra-colors-link: var(--chakra-colors-blue-400);
 
-  --chakra-colors-borderColor: transparent;
+  --chakra-colors-borderColor: var(--chakra-colors-blackAlpha-900);
   --chakra-borders-base: 1px solid var(--chakra-colors-borderColor);
 
   --chakra-colors-shadowColor: var(--chakra-colors-blackAlpha-900);

@@ -49,8 +49,9 @@ export const makeTag = (config: PackageTagConfig[]) => {
     variants: {
       ...base.variants,
       subtle: createVariant(base.variants.subtle, {
-        background: "#F2F2F2",
-        color: "blue.800",
+        background: "bgPrimary",
+        border: "base",
+        color: "textPrimary",
       }),
       ...customVariants,
     },
