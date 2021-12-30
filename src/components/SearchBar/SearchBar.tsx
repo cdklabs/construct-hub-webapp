@@ -146,7 +146,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
             boxShadow={disclosure.isOpen ? "base" : "none"}
             color="textSecondary"
             data-testid={testIds.input}
-            focusBorderColor="blue.500"
+            focusBorderColor="brand.500"
             onChange={onChange ?? searchAPI.onQueryChange}
             onFocus={() => {
               disclosure.onOpen();
@@ -170,10 +170,8 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
               w="auto"
             >
               <Button
-                _hover={{ bg: "brand.600" }}
-                bg="brand.500"
                 borderLeftRadius="0"
-                color="white"
+                colorScheme="brand"
                 data-event={
                   dataEvent ? eventName(dataEvent, "Submit Button") : undefined
                 }

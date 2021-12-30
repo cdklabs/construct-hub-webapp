@@ -41,7 +41,7 @@ export const Blockquote: FunctionComponent = ({ children }) => (
   <Box
     as="blockquote"
     borderLeft="5px solid"
-    borderLeftColor="gray.100"
+    borderLeftColor="borderColor"
     marginX="2"
     px="2"
     wordBreak="break-word"

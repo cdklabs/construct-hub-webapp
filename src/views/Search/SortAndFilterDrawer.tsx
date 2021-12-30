@@ -25,7 +25,7 @@ export const SortAndFilterDrawer: FunctionComponent = () => {
   return (
     <>
       <Button
-        colorScheme="blue"
+        colorScheme="brand"
         display={{ md: "none" }}
         onClick={drawer.onOpen}
         rightIcon={<ChevronDownIcon />}

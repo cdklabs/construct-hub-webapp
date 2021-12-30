@@ -77,7 +77,7 @@ const PackageTabPanel = forwardRef<PackageTabPanelProps, "div">(
         <Flex justify="center" w="full">
           <Button
             as={NavLink}
-            colorScheme="blue"
+            colorScheme="brand"
             data-event={eventName(dataEvent, "See All")}
             data-testid={testIds.cdkTypeSeeAllButton}
             my={8}

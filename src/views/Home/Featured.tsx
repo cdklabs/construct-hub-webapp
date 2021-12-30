@@ -59,7 +59,7 @@ export const Featured: FunctionComponent = () => {
       <Button
         as={NavLink}
         boxShadow="md"
-        colorScheme="blue"
+        colorScheme="brand"
         data-event={eventName(HOME_ANALYTICS.FEATURED, "See All")}
         mx="auto"
         my={8}

@@ -23,14 +23,14 @@ code {
   --chakra-colors-bgPrimary: var(--chakra-colors-gray-900);
   --chakra-colors-bgSecondary: var(--chakra-colors-gray-800);
 
-  --chakra-colors-hoverPrimary: var(--chakra-colors-blackAlpha-700);
+  --chakra-colors-hoverPrimary: var(--chakra-colors-gray-700);
 
   --chakra-colors-textPrimary: var(--chakra-colors-whiteAlpha-800);
   --chakra-colors-textSecondary: var(--chakra-colors-whiteAlpha-900);
   --chakra-colors-textTertiary: var(--chakra-colors-whiteAlpha-700);
-  --chakra-colors-link: var(--chakra-colors-blue-400);
+  --chakra-colors-link: var(--chakra-colors-blue-300);
 
-  --chakra-colors-borderColor: var(--chakra-colors-blackAlpha-900);
+  --chakra-colors-borderColor: var(--chakra-colors-gray-600);
   --chakra-borders-base: 1px solid var(--chakra-colors-borderColor);
 
   --chakra-colors-shadowColor: var(--chakra-colors-blackAlpha-900);

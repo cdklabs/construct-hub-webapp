@@ -37,7 +37,7 @@ export const NotFound: FunctionComponent = () => {
             sources={[{ srcSet: "/assets/robot.webp" }]}
             src="/assets/robot.png"
           />
-          <Button as={Link} colorScheme="blue" to="/">
+          <Button as={Link} colorScheme="brand" to="/">
             Take Me Home
           </Button>
         </Flex>

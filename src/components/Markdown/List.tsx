@@ -15,13 +15,9 @@ export const Li: FunctionComponent = ({ children }) => (
   <ListItem
     lineHeight="tall"
     marginX={2}
-    // mb={0}
     sx={{
       "em:first-of-type": {
         fontSize: "small",
-      },
-      "&::marker": {
-        color: "gray.400",
       },
       code: {
         fontSize: "small",

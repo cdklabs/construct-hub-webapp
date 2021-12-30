@@ -54,7 +54,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
                   }}
                   value={query}
                 ></SearchBar>
-                <Button colorScheme="blue" onClick={() => onSearch()}>
+                <Button colorScheme="brand" onClick={() => onSearch()}>
                   Find Constructs
                 </Button>
               </Stack>

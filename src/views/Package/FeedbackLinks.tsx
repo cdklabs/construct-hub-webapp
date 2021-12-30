@@ -49,7 +49,7 @@ export const FeedbackLinks: FunctionComponent = () => {
       align="center"
       backgroundColor="blue.600"
       borderTop="1px solid"
-      borderTopColor="blue.50"
+      borderTopColor="borderColor"
       color="white"
       data-testid={testIds.feedbackLinks}
       direction={{ base: "column", md: "row" }}

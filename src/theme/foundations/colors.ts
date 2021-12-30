@@ -32,6 +32,6 @@ export const colors = {
   textSecondary: theme.colors.gray[700],
   textTertiary: theme.colors.gray[600],
   // Accents
-  borderColor: theme.colors.blackAlpha[200],
+  borderColor: theme.colors.blackAlpha[300],
   shadowColor: theme.colors.blackAlpha[300],
 };

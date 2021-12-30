@@ -102,7 +102,7 @@ export const ExternalLinkWarningModal: FunctionComponent<
                 onClick={onProceed}
               >
                 <Button
-                  colorScheme="blue"
+                  colorScheme="brand"
                   ml={4}
                   rightIcon={<ExternalLinkIcon />}
                   tabIndex={0}
