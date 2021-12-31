@@ -68,8 +68,8 @@
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
     "prettier": "^2.5.1",
-    "projen": "^0.47.6",
-    "react-app-rewired": "^2.1.10",
+    "projen": "^0.47.12",
+    "react-app-rewired": "^2.1.11",
     "standard-version": "^9",
     "ts-unused-exports": "^7.0.3",
     "typescript": "^4.0.3"
@@ -110,7 +110,6 @@
     "workbox-routing": "^6.4.2",
     "workbox-strategies": "^6.4.2"
   },
-  "bundledDependencies": [],
   "engines": {
     "node": ">= 14.17.0"
   },
