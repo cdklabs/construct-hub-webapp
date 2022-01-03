@@ -31,4 +31,4 @@ export const FOOTER_LINKS: Record<string, Link> = {
   },
 } as const;
 
-export const DISCLAIMER = "2021 Amazon Web Services, Inc. All rights reserved.";
+export const DISCLAIMER = "2022 Amazon Web Services, Inc. All rights reserved.";
