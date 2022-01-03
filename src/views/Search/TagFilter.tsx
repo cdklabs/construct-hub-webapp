@@ -14,64 +14,66 @@ interface FilterGroups {
   [group: string]: FilterGroup;
 }
 
+/**
+ * Creates a plain object map of FilterGroups keyed by group id
+ */
+export const mapTagsToFilterGroups = (
+  packageTags: PackageTagConfig[],
+  tagGroupsMap: Map<string, TagGroupConfig>
+): FilterGroups => {
+  return packageTags.reduce(
+    (accum: FilterGroups, tag: PackageTagConfig): FilterGroups => {
+      const groupIdOrName = tag.searchFilter?.groupBy;
+      const customGroup = groupIdOrName
+        ? tagGroupsMap.get(groupIdOrName)
+        : undefined;
+
+      if (groupIdOrName && customGroup) {
+        const entry = accum[groupIdOrName];
+        if (entry) {
+          entry.tags = [...entry.tags, tag];
+          return accum;
+        }
+
+        return {
+          ...accum,
+          [groupIdOrName]: {
+            ...customGroup,
+            tags: [tag],
+          },
+        };
+      }
+
+      if (groupIdOrName) {
+        return {
+          ...accum,
+          [groupIdOrName]: {
+            id: groupIdOrName,
+            tags: [...(accum?.[groupIdOrName]?.tags ?? []), tag],
+          },
+        };
+      }
+      return accum;
+    },
+    {}
+  );
+};
+
 export const TagFilter: FunctionComponent = () => {
   const packageTags = useConfigValue("packageTags");
   const packageTagGroups = useConfigValue("packageTagGroups");
 
-  const filterableTags = useMemo(
-    () => packageTags?.filter((tag) => Boolean(tag.searchFilter)) ?? [],
-    [packageTags]
-  );
-
-  const tagGroupsMap = useMemo(() => {
-    const map = new Map<string, TagGroupConfig>();
+  const tagFilterGroups: FilterGroups = useMemo(() => {
+    const tagGroupsMap = new Map<string, TagGroupConfig>();
     packageTagGroups?.forEach((group) => {
-      map.set(group.id, group);
+      tagGroupsMap.set(group.id, group);
     });
 
-    return map;
-  }, [packageTagGroups]);
+    const filterableTags =
+      packageTags?.filter((tag) => Boolean(tag.searchFilter)) ?? [];
 
-  const tagFilterGroups: FilterGroups = useMemo(
-    () =>
-      filterableTags.reduce(
-        (accum: FilterGroups, tag: PackageTagConfig): FilterGroups => {
-          const groupName = tag.searchFilter?.groupBy;
-          const customGroup = groupName
-            ? tagGroupsMap.get(groupName)
-            : undefined;
-
-          if (groupName && customGroup) {
-            const entry = accum[groupName];
-            if (entry) {
-              entry.tags = [...entry.tags, tag];
-              return accum;
-            }
-
-            return {
-              ...accum,
-              [groupName]: {
-                ...customGroup,
-                tags: [tag],
-              },
-            };
-          }
-
-          if (groupName) {
-            return {
-              ...accum,
-              [groupName]: {
-                id: groupName,
-                tags: [...(accum?.[groupName]?.tags ?? []), tag],
-              },
-            };
-          }
-          return accum;
-        },
-        {}
-      ),
-    [filterableTags, tagGroupsMap]
-  );
+    return mapTagsToFilterGroups(filterableTags, tagGroupsMap);
+  }, [packageTags, packageTagGroups]);
 
   const tags = useTags();
   const updateSearch = useUpdateSearchParam();

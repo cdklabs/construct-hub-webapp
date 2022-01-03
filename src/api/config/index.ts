@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Defines typings and fetch request for construct hub config
+ * @see https://github.com/cdklabs/construct-hub/blob/main/src/webapp/index.ts
+ */
 import { API_PATHS } from "../../constants/url";
 
 export interface PackageLinkConfig {
@@ -25,6 +29,9 @@ export interface PackageTagConfig {
   };
 }
 
+/**
+ * @see https://github.com/cdklabs/construct-hub/blob/main/src/package-tag-group/index.ts
+ */
 export interface TagGroupConfig {
   id: string;
   label?: string;
