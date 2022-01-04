@@ -1,8 +1,8 @@
 import type { PropsOf, Icon } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { DotNetIcon } from "../icons/DotNetIcon";
+import { DukeIcon } from "../icons/DukeIcon";
 import { GoIcon } from "../icons/GoIcon";
-import { JavaIcon } from "../icons/JavaIcon";
 import { PythonIcon } from "../icons/PythonIcon";
 import { TSIcon } from "../icons/TSIcon";
 
@@ -64,7 +64,7 @@ export const LANGUAGE_RENDER_MAP: {
   },
   [Language.Java]: {
     name: LANGUAGE_NAME_MAP.java,
-    icon: JavaIcon,
+    icon: DukeIcon,
   },
   [Language.Go]: {
     name: LANGUAGE_NAME_MAP.golang,
