@@ -1,32 +1,79 @@
-import { FunctionComponent } from "react";
-import { PackageTagConfig } from "../../api/config";
+import { FunctionComponent, useCallback, useMemo } from "react";
+import { PackageTagConfig, TagGroupConfig } from "../../api/config";
 import { useConfigValue } from "../../hooks/useConfigValue";
 import { CheckboxFilter } from "./CheckboxFilter";
+import { RadioFilter } from "./RadioFilter";
 import { useTags } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
+interface FilterGroup extends Partial<TagGroupConfig> {
+  id: string;
+  tags: PackageTagConfig[];
+}
 interface FilterGroups {
-  [group: string]: PackageTagConfig[];
+  [group: string]: FilterGroup;
 }
 
-export const TagFilter: FunctionComponent = () => {
-  const filterableTags =
-    useConfigValue("packageTags")?.filter((tag) => Boolean(tag.searchFilter)) ??
-    [];
-
-  const tagFilterGroups: FilterGroups = filterableTags.reduce(
+/**
+ * Creates a plain object map of FilterGroups keyed by group id
+ */
+export const mapTagsToFilterGroups = (
+  packageTags: PackageTagConfig[],
+  tagGroupsMap: Map<string, TagGroupConfig>
+): FilterGroups => {
+  return packageTags.reduce(
     (accum: FilterGroups, tag: PackageTagConfig): FilterGroups => {
-      const groupName = tag.searchFilter?.groupBy;
-      if (groupName) {
+      const groupIdOrName = tag.searchFilter?.groupBy;
+      const customGroup = groupIdOrName
+        ? tagGroupsMap.get(groupIdOrName)
+        : undefined;
+
+      if (groupIdOrName && customGroup) {
+        const entry = accum[groupIdOrName];
+        if (entry) {
+          entry.tags = [...entry.tags, tag];
+          return accum;
+        }
+
         return {
           ...accum,
-          [groupName]: [...(accum[groupName] ?? []), tag],
+          [groupIdOrName]: {
+            ...customGroup,
+            tags: [tag],
+          },
+        };
+      }
+
+      if (groupIdOrName) {
+        return {
+          ...accum,
+          [groupIdOrName]: {
+            id: groupIdOrName,
+            tags: [...(accum?.[groupIdOrName]?.tags ?? []), tag],
+          },
         };
       }
       return accum;
     },
     {}
   );
+};
+
+export const TagFilter: FunctionComponent = () => {
+  const packageTags = useConfigValue("packageTags");
+  const packageTagGroups = useConfigValue("packageTagGroups");
+
+  const tagFilterGroups: FilterGroups = useMemo(() => {
+    const tagGroupsMap = new Map<string, TagGroupConfig>();
+    packageTagGroups?.forEach((group) => {
+      tagGroupsMap.set(group.id, group);
+    });
+
+    const filterableTags =
+      packageTags?.filter((tag) => Boolean(tag.searchFilter)) ?? [];
+
+    return mapTagsToFilterGroups(filterableTags, tagGroupsMap);
+  }, [packageTags, packageTagGroups]);
 
   const tags = useTags();
   const updateSearch = useUpdateSearchParam();
@@ -37,24 +84,63 @@ export const TagFilter: FunctionComponent = () => {
     });
   };
 
+  const getOnRadioTagChange = useCallback(
+    (groupName: string) => {
+      const groupTags = new Set(
+        (tagFilterGroups[groupName]?.tags ?? []).map(({ id }) => id)
+      );
+
+      return (tag: string) => {
+        const filteredTags = tags.filter((t) => !groupTags.has(t));
+
+        updateSearch({
+          tags: tag ? [...filteredTags, tag] : filteredTags,
+        });
+      };
+    },
+    [tagFilterGroups, tags, updateSearch]
+  );
+
   return (
     <>
-      {Object.entries(tagFilterGroups).map(([title, tagItems]) => {
-        return (
-          <CheckboxFilter
-            key={title}
-            name={title}
-            onValueChange={onTagsChange}
-            options={tagItems.map((tag) => {
+      {Object.values(tagFilterGroups).map(
+        ({ filterType, id, label, tooltip, tags: tagItems }) => {
+          const sharedProps = {
+            hint: tooltip,
+            name: label ?? id,
+            options: tagItems.map((tag) => {
               return {
                 display: tag.searchFilter!.display,
                 value: tag.id,
               };
-            })}
-            values={tags}
-          />
-        );
-      })}
+            }),
+          };
+
+          if (filterType === "radio") {
+            return (
+              <RadioFilter
+                {...sharedProps}
+                key={id}
+                onValueChange={getOnRadioTagChange(id)}
+                options={[
+                  { display: `Any ${sharedProps.name}`, value: "" },
+                  ...sharedProps.options,
+                ]}
+                value={tagItems.find((t) => tags.includes(t.id))?.id ?? ""}
+              />
+            );
+          }
+
+          return (
+            <CheckboxFilter
+              {...sharedProps}
+              key={id}
+              onValueChange={onTagsChange}
+              values={tags}
+            />
+          );
+        }
+      )}
     </>
   );
 };

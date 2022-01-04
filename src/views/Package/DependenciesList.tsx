@@ -17,7 +17,9 @@ export const DependenciesList: FunctionComponent = () => {
   const depEntries = Object.entries(assembly.dependencies ?? {});
 
   if (!depEntries.length) {
-    return <Center>This library does not have any known dependencies</Center>;
+    return (
+      <Center>This library does not have any known CDK dependencies</Center>
+    );
   }
 
   return (

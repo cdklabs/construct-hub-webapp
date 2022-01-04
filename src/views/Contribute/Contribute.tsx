@@ -232,8 +232,33 @@ export const Contribute: FunctionComponent = () => (
             Construct Hub includes publicly-available constructs that are
             JSII-compatible and that were published to the npm Registry with a
             permissive open-source license and a CDK keyword: aws-cdk, cdk8s, or
-            cdktf. If you believe your package qualifies, but it still does not
-            appear in Construct Hub, please raise an issue{" "}
+            cdktf. If you believe your package qualifies, but it does not appear
+            in Construct Hub, please check the following:
+          </Text>
+          <UnorderedList sx={{ li: { my: 4 } }}>
+            <ListItem>
+              You are using JSII to compile your project. When you successfully
+              build your project with jsii, a <code>.jsii</code> file should get
+              created in the root of your project. See the{" "}
+              <FAQLink href="https://aws.github.io/jsii/user-guides/#library-author-guide">
+                JSII Library Author Guide
+              </FAQLink>{" "}
+              for more information about setting up JSII.
+            </ListItem>
+            <ListItem>
+              Your packaged library includes the <code>.jsii</code> file. If you
+              have a <code>.npmignore</code> file, make sure it does not ignore{" "}
+              <code>.jsii</code>. (You can add &quot;<code>!.jsii</code>
+              &quot; to specify it <em>should</em> be included in the packaged
+              library.) If you are using the <code>files</code> field in{" "}
+              <code>package.json</code>, make sure it includes &quot;
+              <code>.jsii</code>&quot; (this list takes precedence over{" "}
+              <code>.npmignore</code>).
+            </ListItem>
+          </UnorderedList>
+          <Text>
+            If your package still does not appear in Construct Hub, please raise
+            an issue{" "}
             <FAQLink href={`${CONSTRUCT_HUB_REPO_URL}/issues/new`}>
               here
             </FAQLink>
