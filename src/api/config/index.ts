@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Defines typings and fetch request for construct hub config
+ * @see https://github.com/cdklabs/construct-hub/blob/main/src/webapp/index.ts
+ */
 import { API_PATHS } from "../../constants/url";
 
 export interface PackageLinkConfig {
@@ -23,6 +27,16 @@ export interface PackageTagConfig {
     groupBy: string;
     display: string;
   };
+}
+
+/**
+ * @see https://github.com/cdklabs/construct-hub/blob/main/src/package-tag-group/index.ts
+ */
+export interface TagGroupConfig {
+  id: string;
+  label?: string;
+  tooltip?: string;
+  filterType?: "checkbox" | "radio";
 }
 
 export interface Category {
@@ -84,6 +98,7 @@ export interface Config {
   packageLinks?: PackageLinkConfig[];
   featuredPackages?: FeaturedPackages;
   packageTags?: PackageTagConfig[];
+  packageTagGroups?: TagGroupConfig[];
   categories?: Category[];
 }
 
