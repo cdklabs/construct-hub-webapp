@@ -70,7 +70,7 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
   const pkgName = scope ? `${scope}/${name}` : name;
   const allVersions = versionData?.packages[pkgName];
 
-  const markdown = useQuery(`${id}-docs-${language}`, () =>
+  const markdown = useQuery(`${id}-docs-${language}-${submodule}`, () =>
     fetchMarkdown(name, version, languageFilename[language], scope, submodule)
   );
 

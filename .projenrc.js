@@ -154,10 +154,9 @@ project.package.addField("resolutions", { "nth-check": "2.0.1" });
   ];
 
   const integWorkflow = project.github.addWorkflow("integ");
-  const e2e = "e2e";
   integWorkflow.on({ workflowDispatch: {}, pullRequest: {} });
-  integWorkflow.addJob(e2e, {
-    name: e2e,
+  integWorkflow.addJob("e2e", {
+    name: "e2e",
     runsOn: "ubuntu-latest",
     permissions: {
       checks: "write",
@@ -165,8 +164,6 @@ project.package.addField("resolutions", { "nth-check": "2.0.1" });
     },
     steps: cypressRunSteps,
   });
-
-  project.autoMerge.addConditions(`status-success=${e2e}`);
 
   // Set up a canary that tests that the latest code on our main branch
   // works against data on https://constructs.dev.

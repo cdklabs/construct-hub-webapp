@@ -31,7 +31,7 @@ const SubmoduleSelector: FunctionComponent = () => {
       justify="center"
       py={4}
     >
-      <ChooseSubmodule assembly={data} />
+      <ChooseSubmodule />
     </Flex>
   ) : null;
 };
