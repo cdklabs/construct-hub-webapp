@@ -1,24 +1,19 @@
 import { ArrowBackIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Divider, Stack, useDisclosure } from "@chakra-ui/react";
-import type { Assembly } from "@jsii/spec";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { QUERY_PARAMS } from "../../../constants/url";
 import { useQueryParams } from "../../../hooks/useQueryParams";
+import { getPackagePath } from "../../../util/url";
+import { usePackageState } from "../PackageState";
 import { SearchModal } from "./SearchModal";
 
-export interface ChooseSubmoduleProps {
-  assembly?: Assembly;
-}
-
-export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
-  assembly,
-}) => {
-  const { pathname } = useLocation();
+export const ChooseSubmodule: FunctionComponent = () => {
+  const { assembly, name, language, scope, version } = usePackageState();
   const { push } = useHistory();
   const query = useQueryParams();
 
-  const allSubmodules = Object.keys(assembly?.submodules ?? {});
+  const allSubmodules = Object.keys(assembly?.data?.submodules ?? {});
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const currentSubmodule = query.get(QUERY_PARAMS.SUBMODULE);
@@ -28,18 +23,28 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
 
   const [filter, setFilter] = useState("");
 
+  const packageName = scope ? `${scope}/${name}` : name;
+
   const onGoBack = () => {
-    const lang = query.get(QUERY_PARAMS.LANGUAGE);
-    push(`${pathname}${lang ? `?${QUERY_PARAMS.LANGUAGE}=${lang}` : ""}`);
+    push(
+      getPackagePath({
+        name: packageName,
+        version,
+        language,
+      })
+    );
   };
 
   const getUrl = useCallback(
     (submoduleName: string) => {
-      const params = new URLSearchParams(query.toString());
-      params.set("submodule", submoduleName);
-      return `${pathname}?${params}`;
+      return getPackagePath({
+        name: packageName,
+        version,
+        language,
+        submodule: submoduleName,
+      });
     },
-    [pathname, query]
+    [language, packageName, version]
   );
 
   const submodules = useMemo(() => {
@@ -52,10 +57,10 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
     }
 
     return results.map((fqn) => {
-      const name = fqn.split(".")[1];
+      const submoduleName = fqn.split(".")[1];
       return {
-        name,
-        to: getUrl(name),
+        name: submoduleName,
+        to: getUrl(submoduleName),
       };
     });
   }, [allSubmodules, filter, getUrl]);
@@ -76,7 +81,7 @@ export const ChooseSubmodule: FunctionComponent<ChooseSubmoduleProps> = ({
             title="Back to construct root"
             variant="link"
           >
-            {assembly?.name}
+            {assembly?.data?.name}
           </Button>
           <Divider />
         </>
