@@ -30,6 +30,7 @@ export const NavDrawer: FunctionComponent = () => {
     if (drawer.isOpen) {
       drawer.onClose();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   return (
