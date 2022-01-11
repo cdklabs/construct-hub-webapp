@@ -20,7 +20,9 @@ import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption } from "./Table";
 import testIds from "./testIds";
 import { A, Blockquote, Em, P, Pre, Sup } from "./Text";
 
-const components: ReactMarkdownOptions["components"] = {
+type Components = NonNullable<ReactMarkdownOptions["components"]>;
+
+const components: Components = {
   a: A,
   blockquote: Blockquote,
   caption: TableCaption,
@@ -37,7 +39,7 @@ const components: ReactMarkdownOptions["components"] = {
   li: Li,
   ol: Ol,
   p: P,
-  pre: Pre,
+  pre: Pre as Components["pre"],
   sup: Sup,
   table: Table,
   tbody: Tbody,
