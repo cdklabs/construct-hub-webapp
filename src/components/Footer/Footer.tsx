@@ -1,4 +1,13 @@
-import { Box, Button, Divider, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  ButtonProps,
+  Divider,
+  Flex,
+  SimpleGrid,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { useShortBread } from "../../contexts/Shortbread";
 import { ExternalLink } from "../ExternalLink";
@@ -8,8 +17,22 @@ import testIds from "./testIds";
 
 export interface FooterProps {}
 
+const LinkButton: FunctionComponent<
+  ButtonProps & { "data-testid"?: string }
+> = (props) => (
+  <Button
+    color="white"
+    fontSize="xs"
+    fontWeight="normal"
+    mt={4}
+    variant="link"
+    {...props}
+  />
+);
+
 export const Footer: FunctionComponent<FooterProps> = () => {
   const { customizeCookies } = useShortBread();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Flex
@@ -77,17 +100,15 @@ export const Footer: FunctionComponent<FooterProps> = () => {
       <Text data-testid={testIds.disclaimer} fontSize="xs" mt={4}>
         {DISCLAIMER}
       </Text>
-      <Button
-        color="white"
+      <LinkButton
         data-testid={testIds.manageCookies}
-        fontSize="xs"
-        fontWeight="normal"
-        mt={4}
         onClick={customizeCookies}
-        variant="link"
       >
         Manage Cookies
-      </Button>
+      </LinkButton>
+      <LinkButton onClick={toggleColorMode}>
+        View in {colorMode === "light" ? "dark" : "light"} mode
+      </LinkButton>
     </Flex>
   );
 };
