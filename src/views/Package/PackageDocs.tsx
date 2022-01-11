@@ -10,6 +10,7 @@ import {
 import { NavTree } from "../../components/NavTree";
 import { ChooseSubmodule } from "./ChooseSubmodule";
 import { PACKAGE_ANALYTICS } from "./constants";
+import { NavDrawer } from "./NavDrawer";
 import { PackageReadme } from "./PackageReadme";
 import { usePackageState } from "./PackageState";
 import { PackageTypeDocs } from "./PackageTypeDocs";
@@ -31,7 +32,7 @@ const SubmoduleSelector: FunctionComponent = () => {
       justify="center"
       py={4}
     >
-      <ChooseSubmodule assembly={data} />
+      <ChooseSubmodule />
     </Flex>
   ) : null;
 };
@@ -113,6 +114,7 @@ export const PackageDocs: FunctionComponent = () => {
           </Route>
         </Switch>
       </Box>
+      <NavDrawer />
     </Grid>
   );
 };
