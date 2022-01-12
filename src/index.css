@@ -20,10 +20,10 @@ code {
 
 /* Dark-theme color resets */
 .chakra-ui-dark {
-  --chakra-colors-bgPrimary: var(--chakra-colors-gray-900);
-  --chakra-colors-bgSecondary: var(--chakra-colors-gray-800);
+  --chakra-colors-bgPrimary: var(--chakra-colors-blackAlpha-900);
+  --chakra-colors-bgSecondary: var(--chakra-colors-gray-900);
 
-  --chakra-colors-hoverPrimary: var(--chakra-colors-gray-700);
+  --chakra-colors-hoverPrimary: var(--chakra-colors-gray-800);
 
   --chakra-colors-textPrimary: var(--chakra-colors-whiteAlpha-800);
   --chakra-colors-textSecondary: var(--chakra-colors-whiteAlpha-900);
