@@ -1,6 +1,8 @@
 import { Box, HTMLChakraProps, Link, Text } from "@chakra-ui/react";
+import { Language } from "prism-react-renderer";
 import type { FunctionComponent } from "react";
 import { ExternalLink } from "../ExternalLink";
+import { Code } from "./Code";
 
 type AnchorComponent = FunctionComponent<HTMLChakraProps<"a">>;
 
@@ -62,9 +64,16 @@ export const P: FunctionComponent = ({ children }) => (
   </Text>
 );
 
-export const Pre: FunctionComponent = ({ children }) => (
-  <Box as="pre">{children}</Box>
-);
+export const Pre: FunctionComponent<{ lang?: Language }> = ({
+  children,
+  lang,
+}) => {
+  if (lang) {
+    return <Code language={lang}>{children}</Code>;
+  }
+
+  return <Box as="pre">{children}</Box>;
+};
 
 export const Sup: FunctionComponent = ({ children }) => {
   let color: string | undefined = undefined;
