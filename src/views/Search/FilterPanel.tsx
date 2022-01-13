@@ -31,7 +31,7 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
       zIndex="docked"
     >
       <Stack color="textPrimary" h="max-content" spacing={4} top={4}>
-        <Heading as="h3" size="sm">
+        <Heading as="h2" size="sm">
           Filters
         </Heading>
 

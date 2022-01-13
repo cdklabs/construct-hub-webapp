@@ -142,6 +142,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
           )}
 
           <Input
+            _placeholder={{ color: "textTertiary" }}
             bg="bgSecondary"
             boxShadow={disclosure.isOpen ? "base" : "none"}
             color="textSecondary"

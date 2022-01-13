@@ -1,4 +1,4 @@
-import { Stack, Image, Text } from "@chakra-ui/react";
+import { Stack, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 
 interface HighlightProps {
@@ -12,8 +12,9 @@ export const Highlight: FunctionComponent<HighlightProps> = ({
   color,
   icon,
 }: HighlightProps) => {
+  const brightness = useColorModeValue("none", "brightness(1.75)");
   return (
-    <Stack align="center" direction="row" spacing={2}>
+    <Stack align="center" direction="row" filter={brightness} spacing={2}>
       <Image alt={`${label} icon`} src={icon} w={4} />
       <Text color={color} fontWeight="bold">
         {label}
