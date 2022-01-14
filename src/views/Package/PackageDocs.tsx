@@ -65,7 +65,6 @@ export const PackageDocs: FunctionComponent = () => {
 
   return (
     <Grid
-      bg="bgSecondary"
       columnGap={4}
       h="full"
       templateColumns={{ base: "1fr", md: "1fr 3fr" }}

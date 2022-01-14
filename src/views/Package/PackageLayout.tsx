@@ -51,7 +51,7 @@ export const PackageLayout: FunctionComponent = () => {
               Dependencies
             </Tab>
           </TabList>
-          <TabPanels h="full" maxW="full">
+          <TabPanels bg="bgPrimary" h="full" maxW="full">
             <TabPanel h="full" p={0}>
               <PackageDocs />
             </TabPanel>

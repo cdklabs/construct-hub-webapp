@@ -66,8 +66,9 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
             <LanguageSupportTooltip key={language} language={language}>
               <IconButton
                 aria-label={`Select ${language} icon`}
-                border={isSelected ? "1px solid" : "none"}
-                borderColor="link"
+                bg="bgSecondary"
+                border="base"
+                borderColor={isSelected ? "brand.500" : "borderColor"}
                 borderRadius="lg"
                 boxShadow="base"
                 colorScheme="brand"
