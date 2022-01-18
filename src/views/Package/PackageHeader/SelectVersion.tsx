@@ -19,7 +19,7 @@ export const SelectVersion: FunctionComponent = () => {
   const pkgName = scope ? `${scope}/${name}` : name;
 
   const searchAPI = useSearchContext()!;
-  const { push } = useHistory();
+  const { push, location } = useHistory();
 
   const packages = searchAPI.findByName(pkgName);
 
@@ -39,13 +39,27 @@ export const SelectVersion: FunctionComponent = () => {
   const onChangeVersion: React.ChangeEventHandler<HTMLSelectElement> = (
     evt
   ) => {
-    push(
-      getPackagePath({
-        name: pkgName,
-        version: evt.target.value,
-        language,
-      })
-    );
+    const { pathname, hash } = location;
+
+    // Need to include the api reference segment to persist the docs across version changes
+    let api = "";
+
+    if (pathname.includes("/api/")) {
+      // "packages/foo/v/1.2.3/api/bar" => ["packages/foo/v/1.2.3", "bar"]
+      [, api] = pathname.split("/api/");
+    }
+
+    const url = getPackagePath({
+      name: pkgName,
+      version: evt.target.value,
+      language,
+      api,
+    });
+
+    // Persist the hash if present
+    const urlWithHash = [url, hash].join("");
+
+    push(urlWithHash);
   };
 
   return (
