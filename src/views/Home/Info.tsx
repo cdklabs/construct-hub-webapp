@@ -58,7 +58,10 @@ const IconLink = ({
   imgsrc?: string;
   Icon?: typeof ChakraIcon;
 }) => {
-  const imgFilter = useColorModeValue(undefined, "invert(100%)");
+  const imgFilter = useColorModeValue(
+    undefined,
+    "invert(100%) brightness(1.5)"
+  );
 
   return (
     <NavLink

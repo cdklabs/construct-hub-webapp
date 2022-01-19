@@ -2,7 +2,7 @@ import { Icon, PropsOf, useColorModeValue } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 
 export const DotNetIcon: FunctionComponent<PropsOf<typeof Icon>> = (props) => {
-  const brightness = useColorModeValue("none", "brightness(2)");
+  const brightness = useColorModeValue("none", "brightness(3)");
 
   return (
     <Icon
