@@ -61,7 +61,7 @@ export const PackageDocs: FunctionComponent = () => {
     } else {
       window.scrollTo(0, 0);
     }
-  });
+  }, [hash, pathname]);
 
   return (
     <Grid

@@ -37,7 +37,6 @@ jobs:
         with:
           labels: failed-release
           title: E2E Canary for https://constructs.dev failed.
-          body: See https://github.com/${{ github.repository }}/actions/runs/${{
-            github.run_id }}
+          body: See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

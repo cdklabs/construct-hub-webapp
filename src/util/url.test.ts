@@ -86,17 +86,47 @@ describe("getSearchPath", () => {
 
 describe("getPackagePath", () => {
   it("creates a valid package url", () => {
-    const pkg = {
+    const basePkg = {
       name: "@example/construct",
       version: "1.0.0",
-      submodule: "foo",
-      language: Language.Go,
     };
 
-    const result = getPackagePath(pkg);
+    const basePath = getPackagePath(basePkg);
 
-    expect(result).toMatchInlineSnapshot(
-      `"/packages/@example/construct/v/1.0.0?submodule=foo&lang=golang"`
+    expect(basePath).toMatchInlineSnapshot(
+      `"/packages/@example/construct/v/1.0.0"`
+    );
+
+    const pathWithSubmodule = getPackagePath({ ...basePkg, submodule: "foo" });
+
+    expect(pathWithSubmodule).toMatchInlineSnapshot(
+      `"/packages/@example/construct/v/1.0.0?submodule=foo"`
+    );
+
+    const pathWithLanguage = getPackagePath({
+      ...basePkg,
+      language: Language.Go,
+    });
+
+    expect(pathWithLanguage).toMatchInlineSnapshot(
+      `"/packages/@example/construct/v/1.0.0?lang=golang"`
+    );
+
+    const pathWithApiRef = getPackagePath({ ...basePkg, api: "bar" });
+
+    expect(pathWithApiRef).toMatchInlineSnapshot(
+      `"/packages/@example/construct/v/1.0.0/api/bar"`
+    );
+
+    const pathWithAllParams = getPackagePath({
+      ...basePkg,
+      submodule: "foo",
+      api: "bar",
+      language: Language.Go,
+    });
+
+    expect(pathWithAllParams).toMatchInlineSnapshot(
+      `"/packages/@example/construct/v/1.0.0/api/bar?submodule=foo&lang=golang"`
     );
   });
 });

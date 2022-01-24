@@ -100,13 +100,18 @@ export const getPackagePath = ({
   version,
   language,
   submodule,
+  api,
 }: {
+  api?: string;
   name: string;
   version: string;
   language?: Language;
   submodule?: string;
-}) =>
-  createURL(`${ROUTES.PACKAGES}/${name}/v/${version}`, {
+}) => {
+  const apiSegment = api ? `/api/${api}` : "";
+
+  return createURL(`${ROUTES.PACKAGES}/${name}/v/${version}${apiSegment}`, {
     [QUERY_PARAMS.SUBMODULE]: submodule,
     [QUERY_PARAMS.LANGUAGE]: language,
   });
+};
