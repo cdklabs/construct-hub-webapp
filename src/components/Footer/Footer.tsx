@@ -42,7 +42,14 @@ export const Footer: FunctionComponent<FooterProps> = () => {
       px={SECTION_PADDING.X}
       py={4}
     >
-      <Flex align="center" gap={4} justify="space-between" w="full" wrap="wrap">
+      <Flex
+        align="center"
+        data-testid={testIds.links}
+        gap={4}
+        justify="space-between"
+        w="full"
+        wrap="wrap"
+      >
         {/* AWS Links */}
         <Flex align="center" gap={4}>
           {Object.entries(FOOTER_LINKS).map(

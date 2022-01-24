@@ -15,7 +15,7 @@ export const SiteTerms: FunctionComponent = () => (
     <Box bg="bgSecondary" h="100%" py={16} w="100%">
       <Box
         as="article"
-        color="gray.800"
+        color="textPrimary"
         fontSize="lg"
         maxW={{ base: "80%", md: "38rem" }}
         mx="auto"
