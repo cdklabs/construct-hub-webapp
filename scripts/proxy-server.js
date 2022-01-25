@@ -12,11 +12,13 @@ const port = process.env.PORT || 3000;
 
 const buildDir = path.join(__dirname, "..", "build");
 
+const PROXY_FILES = [".json", ".md", "preload.js"];
+
 app.use(express.static(buildDir));
 
 app.use(
   proxy(proxyUrl, {
-    filter: (req) => req.url.includes(".json") || req.url.includes(".md"),
+    filter: (req) => PROXY_FILES.some((file) => req.url.includes(file)),
   })
 );
 
