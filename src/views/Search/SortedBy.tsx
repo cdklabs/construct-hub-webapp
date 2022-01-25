@@ -28,7 +28,7 @@ export const SortedBy: FunctionComponent = () => {
       <Menu>
         <MenuButton
           as={Button}
-          color="blue.500"
+          color="link"
           data-event={eventName(SEARCH_ANALYTICS.SORT, "Menu")}
           data-testid={testIds.sortButton}
           ml={2}

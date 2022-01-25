@@ -14,7 +14,7 @@ export const InfoSection: FunctionComponent<InfoSectionProps> = ({
   children,
 }) => (
   <Flex
-    color="blue.800"
+    color="textPrimary"
     data-testid={testIds.infoSection}
     direction="column"
     px={SECTION_PADDING.X}

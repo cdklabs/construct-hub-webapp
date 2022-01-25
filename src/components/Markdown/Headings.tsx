@@ -55,10 +55,9 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
     <>
       <Heading
         as={elem}
-        backgroundColor={level === 5 ? "gray.50" : undefined}
-        borderBottom="1px solid"
-        borderBottomColor="gray.100"
-        color="gray.800"
+        // backgroundColor={level === 5 ? "gray.50" : undefined}
+        borderBottom="base"
+        color="textPrimary"
         level={level}
         marginBottom={4}
         marginTop={level >= 4 ? "1.5em" : 4}
@@ -73,7 +72,7 @@ export const Headings: FunctionComponent<HeadingResolverProps> = ({
           data-heading-title={title}
           id={id}
           replace
-          sx={{ "> code": { color: "blue.800", fontSize: "inherit" } }}
+          sx={{ "> code": { fontSize: "inherit" } }}
           to={`#${id}`}
         >
           {children}

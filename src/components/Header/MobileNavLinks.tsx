@@ -16,7 +16,7 @@ import { NavLink } from "../NavLink";
 import type { IMenuItems, ILink } from "../NavPopover";
 
 const linkProps = {
-  color: "blue.500",
+  color: "link",
   py: 2,
   w: "full",
 };
@@ -76,7 +76,7 @@ const MobileNavLinksContent: FunctionComponent<MobileNavLinksContentProps> = ({
         py={4}
       >
         <Box flex="1" textAlign="left">
-          <Heading as="h3" color="blue.800" size="sm">
+          <Heading as="h3" color="textPrimary" size="sm">
             {title}
           </Heading>
         </Box>

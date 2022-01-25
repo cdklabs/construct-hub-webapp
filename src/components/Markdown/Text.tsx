@@ -27,7 +27,7 @@ export const A: AnchorComponent = ({ children, href, ...linkProps }) => {
 
   return (
     <Component
-      color="blue.500"
+      color="link"
       href={href}
       // If we are rendering an img within the link (specifically stability banners),
       // do not display the external link Icon
@@ -43,7 +43,7 @@ export const Blockquote: FunctionComponent = ({ children }) => (
   <Box
     as="blockquote"
     borderLeft="5px solid"
-    borderLeftColor="gray.100"
+    borderLeftColor="borderColor"
     marginX="2"
     px="2"
     wordBreak="break-word"

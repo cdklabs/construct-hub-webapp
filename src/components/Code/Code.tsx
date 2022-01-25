@@ -1,5 +1,6 @@
-import { Box, BoxProps } from "@chakra-ui/react";
+import { Box, BoxProps, useColorModeValue } from "@chakra-ui/react";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import nightOwl from "prism-react-renderer/themes/nightOwl";
 import nightOwlLight from "prism-react-renderer/themes/nightOwlLight";
 import { FunctionComponent } from "react";
 import { MultiLineRenderer } from "./MultiLineRenderer";
@@ -15,12 +16,13 @@ export const Code: FunctionComponent<CodeProps> = ({
   language,
   ...boxProps
 }) => {
+  const codeTheme = useColorModeValue(nightOwlLight, nightOwl);
   return (
     <Highlight
       {...defaultProps}
       code={code}
       language={language}
-      theme={nightOwlLight}
+      theme={codeTheme}
     >
       {(props) => (
         <Box

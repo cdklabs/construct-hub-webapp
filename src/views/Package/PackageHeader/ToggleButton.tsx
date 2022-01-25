@@ -15,6 +15,7 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
   ...buttonProps
 }) => (
   <Button
+    color="link"
     colorScheme="blue"
     leftIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
     variant="link"

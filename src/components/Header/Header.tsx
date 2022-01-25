@@ -19,7 +19,7 @@ export const Header: FunctionComponent = () => {
     <Grid
       alignItems="center"
       as="header"
-      bg="white"
+      bg="bgSecondary"
       boxShadow="base"
       data-testid={testIds.container}
       gap={6}
@@ -73,7 +73,7 @@ export const Header: FunctionComponent = () => {
           </Box>
 
           <NavLink
-            color="blue.800"
+            color="textPrimary"
             data-event={HEADER_ANALYTICS.CONTRIBUTE_LINK}
             fontWeight="500"
             to={ROUTES.CONTRIBUTE}

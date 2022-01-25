@@ -12,17 +12,17 @@ export const SiteTerms: FunctionComponent = () => (
     }}
     pageName="siteTerms"
   >
-    <Box bg="white" h="100%" py={16} w="100%">
+    <Box bg="bgSecondary" h="100%" py={16} w="100%">
       <Box
         as="article"
-        color="gray.800"
+        color="textPrimary"
         fontSize="lg"
         maxW={{ base: "80%", md: "38rem" }}
         mx="auto"
         textAlign="justify"
         w="100%"
       >
-        <Heading as="h1" color="blue.800" mb={8} mx="auto" size="lg">
+        <Heading as="h1" color="textPrimary" mb={8} mx="auto" size="lg">
           AWS Site Terms for CDK Construct Hub
         </Heading>
         <Stack spacing={4}>

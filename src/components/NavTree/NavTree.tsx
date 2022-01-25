@@ -30,7 +30,7 @@ export interface NavTreeProps {
 }
 
 const iconProps = {
-  color: "gray.900",
+  color: "textTertiary",
   h: 4,
   w: 4,
 };
@@ -108,7 +108,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
 
   return (
     <Flex direction="column">
-      <Flex align="center" color={linkIsActive ? "blue.500" : "gray.800"}>
+      <Flex align="center" color={linkIsActive ? "link" : "textPrimary"}>
         {showToggle && (
           <IconButton
             aria-label="expand-toggle"
@@ -151,7 +151,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
         _before={{
           // Creates a border without taking up any box space
           // This is important to keep items perfectly aligned
-          bg: "gray.100",
+          bg: "borderColor",
           bottom: 0,
           content: `""`,
           left: 0,

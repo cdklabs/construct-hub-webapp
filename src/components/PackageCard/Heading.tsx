@@ -45,7 +45,7 @@ export const Heading: FunctionComponent = () => {
           <CDKTypeBadge majorVersion={cdkVersion} mr={2} name={cdkType} />
           <ChakraHeading
             as="h3"
-            color="blue.800"
+            color="textPrimary"
             data-testid={testIds.title}
             fontSize="md"
             fontWeight="bold"
@@ -59,7 +59,7 @@ export const Heading: FunctionComponent = () => {
         <EditorsNote comment={comment} />
       ) : (
         <Text
-          color="blue.800"
+          color="textPrimary"
           data-testid={testIds.description}
           fontSize="md"
           lineHeight="tall"

@@ -12,17 +12,17 @@ export const WideCard: FunctionComponent = () => {
     <LinkBox
       _hover={{
         "> article": {
-          bg: "gray.50",
+          bg: "hoverPrimary",
         },
       }}
     >
       <Grid
         as="article"
-        bg="white"
+        bg="bgSecondary"
         border="base"
         borderRadius="sm"
         boxShadow="base"
-        color="blue.800"
+        color="textPrimary"
         data-testid={testIds.wideContainer}
         h="full"
         minH="12.5rem"

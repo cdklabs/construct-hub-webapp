@@ -58,9 +58,8 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({
 
               <NavLink
                 _hover={{ bg: "blackAlpha.50" }}
-                borderBottom="1px solid"
-                borderBottomColor="gray.200"
-                color="blue.800"
+                borderBottom="base"
+                color="textPrimary"
                 fontSize="1rem"
                 fontWeight="bold"
                 h="3.25rem"

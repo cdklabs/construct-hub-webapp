@@ -80,10 +80,9 @@ export const Categories: FunctionComponent = () => {
               to={category.url}
             >
               <Button
-                _hover={{ backgroundColor: "white" }}
                 as={Box}
                 boxShadow="0px 4px 4px rgba(73, 73, 73, 0.63)"
-                color="blue.800"
+                color="textPrimary"
                 colorScheme="gray"
                 size="md"
               >

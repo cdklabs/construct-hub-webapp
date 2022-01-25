@@ -12,7 +12,7 @@ export const SearchBar: FunctionComponent = () => {
 
   return (
     <SearchBarComponent
-      bg="white"
+      bg="bgSecondary"
       data-event={SEARCH_ANALYTICS.SEARCH}
       onChange={(e) => setValue(e.target.value)}
       onSubmit={(e) => {

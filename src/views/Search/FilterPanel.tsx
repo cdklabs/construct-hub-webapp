@@ -18,8 +18,7 @@ const TOP_OFFSET = "5.75rem";
 export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
   return (
     <Card
-      borderRadius="none"
-      boxShadow="none"
+      borderRadius="sm"
       data-testid={testIds.filtersPanel}
       display={{ base: "none", md: "flex" }}
       maxH={`calc(100vh - ${TOP_OFFSET} - 1.25rem)`}
@@ -31,8 +30,8 @@ export const FilterPanel: FunctionComponent<FilterPanelProps> = () => {
       top={TOP_OFFSET}
       zIndex="docked"
     >
-      <Stack color="blue.800" h="max-content" spacing={4} top={4}>
-        <Heading as="h3" size="sm">
+      <Stack color="textPrimary" h="max-content" spacing={4} top={4}>
+        <Heading as="h2" size="sm">
           Filters
         </Heading>
 

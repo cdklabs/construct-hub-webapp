@@ -68,14 +68,14 @@ export const ExternalLinkWarningModal: FunctionComponent<
   return (
     <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay>
-        <ModalContent color="blue.800">
+        <ModalContent color="textPrimary">
           <ModalHeader>Confirm</ModalHeader>
           <ModalBody>
             <Text fontSize="lg" mb={2}>
               This link is taking you to an external site
             </Text>
             <Text
-              bg="gray.100"
+              bg="bgPrimary"
               borderRadius="sm"
               color="blue.500"
               fontSize="sm"
@@ -102,7 +102,7 @@ export const ExternalLinkWarningModal: FunctionComponent<
                 onClick={onProceed}
               >
                 <Button
-                  colorScheme="blue"
+                  colorScheme="brand"
                   ml={4}
                   rightIcon={<ExternalLinkIcon />}
                   tabIndex={0}

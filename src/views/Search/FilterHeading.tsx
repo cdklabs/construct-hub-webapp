@@ -31,7 +31,7 @@ export const FilterHeading: FunctionComponent<FilterHeadingProps> = ({
 
   return (
     <Flex align="center" mb={1}>
-      <Heading as="h4" size="sm" w="max-content">
+      <Heading as="h3" size="sm" w="max-content">
         {name}
       </Heading>
       {hint ? (

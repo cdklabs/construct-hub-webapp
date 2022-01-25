@@ -5,6 +5,7 @@ import {
   Icon as ChakraIcon,
   Image,
   Stack,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
@@ -56,21 +57,35 @@ const IconLink = ({
   label: string;
   imgsrc?: string;
   Icon?: typeof ChakraIcon;
-}) => (
-  <NavLink
-    color="blue.500"
-    data-event={HOME_ANALYTICS.INFO.eventName(label)}
-    data-testid={testIds.infoSectionIcon}
-    fontWeight="bold"
-    to={url}
-  >
-    <Stack align="center" spacing={2} textAlign="center">
-      {imgsrc && <Image aria-label={label} h={8} src={imgsrc} />}
-      {Icon && <Icon aria-label={label} h={8} w={8} />}
-      <span>{label}</span>
-    </Stack>
-  </NavLink>
-);
+}) => {
+  const imgFilter = useColorModeValue(
+    undefined,
+    "invert(100%) brightness(1.5)"
+  );
+
+  return (
+    <NavLink
+      color="link"
+      data-event={HOME_ANALYTICS.INFO.eventName(label)}
+      data-testid={testIds.infoSectionIcon}
+      fontWeight="bold"
+      to={url}
+    >
+      <Stack align="center" spacing={2} textAlign="center">
+        {imgsrc && (
+          <Image
+            aria-label={label}
+            filter={label === "AWS CDK" ? imgFilter : undefined}
+            h={8}
+            src={imgsrc}
+          />
+        )}
+        {Icon && <Icon aria-label={label} h={8} w={8} />}
+        <span>{label}</span>
+      </Stack>
+    </NavLink>
+  );
+};
 
 const ResponsiveDivider = () => (
   <>
@@ -91,7 +106,7 @@ const Row: FunctionComponent = ({ children }) => (
 );
 
 export const Info: FunctionComponent = () => (
-  <Flex bg="white" data-testid={testIds.infoContainer} direction="column">
+  <Flex bg="bgSecondary" data-testid={testIds.infoContainer} direction="column">
     <Grid
       templateColumns={{ base: "1fr", xl: "1fr auto 1fr auto 1fr" }}
       templateRows={{ base: "1fr auto 1fr auto 1fr", xl: "auto" }}

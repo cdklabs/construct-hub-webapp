@@ -8,7 +8,7 @@ export interface CardProps extends BoxProps {}
 export const Card = forwardRef<CardProps, "div">((props, ref) => {
   return (
     <Box
-      bg="white"
+      bg="bgSecondary"
       border="base"
       borderRadius="card"
       boxShadow="base"

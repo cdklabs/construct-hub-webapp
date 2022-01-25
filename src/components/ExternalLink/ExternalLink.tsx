@@ -50,7 +50,7 @@ export const ExternalLink = forwardRef<ExternalLinkProps, "a">(
 
     return (
       <Link
-        color="blue.500"
+        color="link"
         href={href}
         isExternal
         onClick={hasWarning ? withPrompt({ href, onClick }) : onClick}

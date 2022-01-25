@@ -85,7 +85,7 @@ export const SearchSuggestions: FunctionComponent = forwardRef<
                   <Box w="5.5rem">
                     <CDKTypeBadge w="min-content" {...constructFramework} />
                   </Box>
-                  <Text>{pkg.name}</Text>
+                  <Text color="textPrimary">{pkg.name}</Text>
                 </Stack>
               }
               onClick={navigate}

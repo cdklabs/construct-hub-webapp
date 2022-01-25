@@ -43,7 +43,8 @@ export const GoToPage: FunctionComponent<GoToPageProps> = ({
   return (
     <Flex align="center" as="form" mx={2} onSubmit={onSubmit}>
       <Input
-        colorScheme="blue"
+        aria-label="Jump to page"
+        colorScheme="brand"
         data-testid={dataTestid}
         h={10}
         max={pageLimit + 1}

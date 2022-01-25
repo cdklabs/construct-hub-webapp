@@ -11,7 +11,7 @@ export interface SearchDetailsProps {
 }
 
 const Em: FunctionComponent = ({ children }) => (
-  <Text as="strong" color="gray.700">
+  <Text as="strong" color="textSecondary">
     {children}
   </Text>
 );

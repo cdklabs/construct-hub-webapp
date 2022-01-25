@@ -77,7 +77,7 @@ const PackageTabPanel = forwardRef<PackageTabPanelProps, "div">(
         <Flex justify="center" w="full">
           <Button
             as={NavLink}
-            colorScheme="blue"
+            colorScheme="brand"
             data-event={eventName(dataEvent, "See All")}
             data-testid={testIds.cdkTypeSeeAllButton}
             my={8}
@@ -117,8 +117,8 @@ export const CDKTypeTabs: FunctionComponent = () => {
 
   return (
     <Flex
-      bg="white"
-      color="blue.800"
+      bg="bgSecondary"
+      color="textPrimary"
       data-testid={testIds.cdkTypeSection}
       direction="column"
       px={SECTION_PADDING.X}
@@ -144,7 +144,7 @@ export const CDKTypeTabs: FunctionComponent = () => {
         technology providers in one location. You can also include your own
         construct libraries on Construct Hub by publishing them on npm registry.
         More concrete guidance can be found in the{" "}
-        <NavLink color="blue.500" to={ROUTES.CONTRIBUTE}>
+        <NavLink color="link" to={ROUTES.CONTRIBUTE}>
           Contribute
         </NavLink>{" "}
         page.

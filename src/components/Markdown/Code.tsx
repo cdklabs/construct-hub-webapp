@@ -16,16 +16,7 @@ export const Code: FunctionComponent<CodeProps> = ({
 }) => {
   if (inline) {
     return (
-      <InlineCode
-        bg="gray.50"
-        border="1px solid"
-        borderColor="gray.50"
-        borderRadius="md"
-        marginTop="md"
-        mx={2}
-        px={2}
-        py={0}
-      >
+      <InlineCode border="base" marginTop="md" mx={2} px={2} py={0}>
         {children}
       </InlineCode>
     );

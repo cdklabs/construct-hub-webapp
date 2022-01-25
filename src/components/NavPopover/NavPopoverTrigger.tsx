@@ -11,7 +11,7 @@ export const NavPopoverTrigger = forwardRef<MenuButtonProps, "button">(
     return (
       <MenuButton
         as={Button}
-        color="blue.800"
+        color="textPrimary"
         fontWeight="500"
         ref={ref}
         rightIcon={<ChevronDownIcon h={6} w={6} />}

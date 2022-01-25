@@ -71,7 +71,7 @@ const CheckboxItem: FunctionComponent<CheckboxItemProps> = ({
       placement="right"
     >
       <Text
-        color="gray.600"
+        color="textTertiary"
         data-testid={testIds.filterItem}
         data-value={value}
         isTruncated
@@ -143,7 +143,7 @@ export const CheckboxFilter: FunctionComponent<CheckboxFilterProps> = ({
       {isExpandible && (
         <Flex align="start" mt={1}>
           <Button
-            color="gray.600"
+            color="textTertiary"
             data-event={eventName(SEARCH_ANALYTICS.FILTERS, name, "Show More")}
             fontWeight="normal"
             leftIcon={collapse.isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}

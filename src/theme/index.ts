@@ -5,14 +5,14 @@ import { foundations } from "./foundations";
 
 export const makeTheme = (config: Config) => {
   const componentsConfig = {
-    Tag: config.packageTags ?? [],
+    Tag: config?.packageTags ?? [],
   };
 
   return extendTheme({
     ...foundations,
     components: makeComponents(componentsConfig),
     config: {
-      initialColorMode: "light",
+      initialColorMode: "system",
       useSystemColorMode: false,
     },
   });

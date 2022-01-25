@@ -23,7 +23,7 @@ export const HeaderSearch: FunctionComponent = () => {
           data-testid={testIds.searchInput}
           display={{ base: "none", lg: "initial" }}
         >
-          <SearchBar bg="gray.50" data-event={HEADER_ANALYTICS.SEARCH}>
+          <SearchBar bg="bgPrimary" data-event={HEADER_ANALYTICS.SEARCH}>
             <SearchOverlay />
             <SearchSuggestions />
           </SearchBar>
@@ -35,7 +35,7 @@ export const HeaderSearch: FunctionComponent = () => {
             borderRadius="md"
             data-event={HEADER_ANALYTICS.SEARCH_MODAL.OPEN}
             data-testid={testIds.searchIcon}
-            icon={<SearchIcon color="gray.600" />}
+            icon={<SearchIcon color="textTertiary" />}
             onClick={searchModal.onOpen}
             variant="ghost"
           />

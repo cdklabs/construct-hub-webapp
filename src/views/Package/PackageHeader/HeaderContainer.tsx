@@ -23,6 +23,7 @@ const lgGridAreas = makeGridAreas(
 
 export const HeaderContainer: FunctionComponent = ({ children }) => (
   <Grid
+    bg="bgSecondary"
     columnGap={{ md: 6, lg: 10 }}
     pt={{ base: 3, lg: 6 }}
     px={{ base: 5, md: 6, lg: 10 }}

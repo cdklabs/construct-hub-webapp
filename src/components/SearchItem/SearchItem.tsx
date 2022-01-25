@@ -31,7 +31,7 @@ export const SearchItem = forwardRef<SearchItemProps, "li">(
         px={4}
         ref={ref}
         role="option"
-        sx={{ ":hover, :focus": { bg: "gray.100" } }}
+        sx={{ ":hover, :focus": { bg: "hoverPrimary" } }}
         tabIndex={0}
         {...props}
       >

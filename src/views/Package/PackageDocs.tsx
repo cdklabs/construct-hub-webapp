@@ -28,7 +28,7 @@ const SubmoduleSelector: FunctionComponent = () => {
   return Object.keys(data?.submodules ?? {}).length > 0 ? (
     <Flex
       borderBottom="1px solid"
-      borderColor="blue.50"
+      borderColor="borderColor"
       justify="center"
       py={4}
     >
@@ -65,16 +65,15 @@ export const PackageDocs: FunctionComponent = () => {
 
   return (
     <Grid
-      bg="white"
       columnGap={4}
-      h="100%"
+      h="full"
       templateColumns={{ base: "1fr", md: "1fr 3fr" }}
       width="100%"
     >
       <Flex
         alignSelf="stretch"
         borderRight="1px solid"
-        borderRightColor="blue.50"
+        borderRightColor="borderColor"
         direction="column"
         display={{ base: "none", md: "flex" }}
         maxHeight={`calc(100vh - ${TOP_OFFSET})`}

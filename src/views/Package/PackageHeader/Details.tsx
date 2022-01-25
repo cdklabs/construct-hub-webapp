@@ -89,7 +89,7 @@ const getDetailItemsFromPackage = ({
 
     if (username) {
       const author = (
-        <NavLink color="blue.500" to={getSearchPath({ query: username })}>
+        <NavLink color="link" to={getSearchPath({ query: username })}>
           {username}
         </NavLink>
       );
@@ -187,7 +187,7 @@ export const Details: FunctionComponent<DetailsProps> = (props) => {
   return (
     <Stack
       align="start"
-      color="gray.600"
+      color="textPrimary"
       fontSize=".75rem"
       mt={2}
       spacing={2}

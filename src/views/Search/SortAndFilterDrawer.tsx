@@ -25,7 +25,7 @@ export const SortAndFilterDrawer: FunctionComponent = () => {
   return (
     <>
       <Button
-        colorScheme="blue"
+        colorScheme="brand"
         display={{ md: "none" }}
         onClick={drawer.onOpen}
         rightIcon={<ChevronDownIcon />}
@@ -36,13 +36,13 @@ export const SortAndFilterDrawer: FunctionComponent = () => {
       <Drawer {...drawer} placement="bottom">
         <DrawerOverlay />
 
-        <DrawerContent color="blue.800" maxH="full">
+        <DrawerContent color="textPrimary" maxH="full">
           <DrawerHeader borderBottom="base">Sorting and Filters</DrawerHeader>
 
           <DrawerCloseButton />
 
           <DrawerBody>
-            <Stack color="blue.800" pb={4} spacing={4}>
+            <Stack color="textPrimary" pb={4} spacing={4}>
               <SortFilter />
 
               <CDKFilter />

@@ -1,11 +1,14 @@
-import { Icon, PropsOf } from "@chakra-ui/react";
+import { Icon, PropsOf, useColorModeValue } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 
 export const DotNetIcon: FunctionComponent<PropsOf<typeof Icon>> = (props) => {
+  const brightness = useColorModeValue("none", "brightness(3)");
+
   return (
     <Icon
       {...props}
       aria-hidden="true"
+      filter={brightness}
       transform="rotate(360)"
       viewBox="0 0 32 32"
     >
