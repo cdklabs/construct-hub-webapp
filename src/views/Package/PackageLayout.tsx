@@ -31,7 +31,7 @@ export const PackageLayout: FunctionComponent = () => {
       pageName="packageProfile"
     >
       <Grid
-        bg="bgSecondary"
+        bg="bgPrimary"
         data-testid={testIds.page}
         maxW="100vw"
         templateColumns="1fr"
@@ -39,8 +39,8 @@ export const PackageLayout: FunctionComponent = () => {
       >
         <PackageHeader />
 
-        <Tabs index={tabIndex} onChange={setTabIndex} pt={4} variant="line">
-          <TabList borderBottom="base" mx={{ base: 0, lg: 6 }}>
+        <Tabs index={tabIndex} onChange={setTabIndex} variant="line">
+          <TabList bg="bgSecondary" borderBottom="base" px={{ base: 0, lg: 6 }}>
             <Tab data-event={PACKAGE_ANALYTICS.DOCUMENTATION.TAB}>
               Documentation
             </Tab>
@@ -51,8 +51,8 @@ export const PackageLayout: FunctionComponent = () => {
               Dependencies
             </Tab>
           </TabList>
-          <TabPanels bg="bgPrimary" h="full" maxW="full">
-            <TabPanel h="full" p={0}>
+          <TabPanels maxW="full">
+            <TabPanel p={0}>
               <PackageDocs />
             </TabPanel>
 
