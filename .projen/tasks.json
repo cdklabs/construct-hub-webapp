@@ -130,10 +130,13 @@
     },
     "eject": {
       "name": "eject",
-      "description": "Ejects your React application from react-scripts",
+      "description": "Remove projen from the project",
+      "env": {
+        "PROJEN_EJECTING": "true"
+      },
       "steps": [
         {
-          "exec": "react-scripts eject"
+          "spawn": "default"
         }
       ]
     },
