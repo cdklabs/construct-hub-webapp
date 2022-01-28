@@ -67,7 +67,7 @@ export const PackageDocs: FunctionComponent = () => {
     <Grid
       columnGap={4}
       h="full"
-      templateColumns={{ base: "1fr", md: "1fr 3fr" }}
+      templateColumns={{ base: "1fr", md: "20rem 3fr" }}
       width="100%"
     >
       <Flex

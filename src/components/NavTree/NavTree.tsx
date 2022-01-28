@@ -58,6 +58,7 @@ const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
     marginLeft: showToggle ? 0 : 1,
     fontWeight: showToggle ? "bold" : undefined,
     textOverflow: "ellipsis",
+    whiteSpace: "nowrap" as any,
     w: "100%",
   };
 
