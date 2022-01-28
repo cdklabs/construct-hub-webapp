@@ -28,7 +28,8 @@ export const ROUTES = {
   PACKAGES: "/packages",
   SEARCH: "/search",
   SITE_TERMS: "/terms",
-};
+  RANDOM: "/random",
+} as const;
 
 type QueryParams = typeof QUERY_PARAMS;
 

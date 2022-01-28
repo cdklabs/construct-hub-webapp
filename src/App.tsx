@@ -11,6 +11,7 @@ const FAQ = lazy(() => import("./views/FAQ"));
 const Home = lazy(() => import("./views/Home"));
 const NotFound = lazy(() => import("./views/NotFound"));
 const Packages = lazy(() => import("./views/Packages"));
+const Random = lazy(() => import("./views/Random"));
 const Search = lazy(() => import("./views/Search"));
 const SiteTerms = lazy(() => import("./views/SiteTerms"));
 
@@ -33,6 +34,7 @@ export const App: FunctionComponent = () => {
         <LazyRoute component={SiteTerms} exact path={ROUTES.SITE_TERMS} />
         <LazyRoute component={Packages} path={ROUTES.PACKAGES} />
         <LazyRoute component={Search} exact path={ROUTES.SEARCH} />
+        <LazyRoute component={Random} exact path={ROUTES.RANDOM} />
         <LazyRoute component={NotFound} path="*" />
       </Switch>
       <Footer />
