@@ -1,7 +1,5 @@
 import { IconButton, Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { useHistory } from "react-router-dom";
-import { getFullPackageName } from "../../api/package/util";
 import { LanguageSupportTooltip } from "../../components/LanguageSupportTooltip";
 import {
   Language,
@@ -10,9 +8,7 @@ import {
   LANGUAGES,
 } from "../../constants/languages";
 import { clickEvent, useAnalytics } from "../../contexts/Analytics";
-import { getPackagePath } from "../../util/url";
 import { PACKAGE_ANALYTICS } from "./constants";
-import { usePackageState } from "./PackageState";
 
 export interface LanguageBarProps {
   targetLanguages: readonly Language[];
@@ -23,10 +19,9 @@ export interface LanguageBarProps {
 export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
   targetLanguages,
   selectedLanguage,
+  setSelectedLanguage,
 }) => {
   const { trackCustomEvent } = useAnalytics();
-  const { name, scope, version } = usePackageState();
-  const { push } = useHistory();
   return (
     <Stack
       align="center"
@@ -51,15 +46,7 @@ export const LanguageBar: FunctionComponent<LanguageBarProps> = ({
                 name: PACKAGE_ANALYTICS.LANGUAGE.eventName(language),
               })
             );
-            // reset to package root since our URL scheme for APIs currently
-            // differs between languages.
-            push(
-              getPackagePath({
-                name: getFullPackageName(name, scope),
-                version,
-                language,
-              })
-            );
+            setSelectedLanguage(language);
           };
 
           return (
