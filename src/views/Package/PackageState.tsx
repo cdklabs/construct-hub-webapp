@@ -1,9 +1,10 @@
 import type { Assembly } from "@jsii/spec";
+import type { Schema } from "jsii-docgen";
 import { createContext, FunctionComponent, useContext, useMemo } from "react";
 import { useQuery, UseQueryResult } from "react-query";
 import { useParams } from "react-router-dom";
 import { fetchAssembly } from "../../api/package/assembly";
-import { fetchMarkdown } from "../../api/package/docs";
+import { fetchJsonDocs, fetchMarkdownDocs } from "../../api/package/docs";
 import { fetchMetadata, Metadata } from "../../api/package/metadata";
 import { Language, languageFilename } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
@@ -27,7 +28,8 @@ interface PackageState {
   isLoadingDocs: boolean;
   isSupported: boolean;
   language: Language;
-  markdown: UseQueryResult<string>;
+  markdownDocs: UseQueryResult<string>;
+  jsonDocs: UseQueryResult<Schema>;
   metadata: UseQueryResult<Metadata>;
   name: string;
   pageDescription: string;
@@ -70,8 +72,18 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
   const pkgName = scope ? `${scope}/${name}` : name;
   const allVersions = versionData?.packages[pkgName];
 
-  const markdown = useQuery(`${id}-docs-${language}-${submodule}`, () =>
-    fetchMarkdown(name, version, languageFilename[language], scope, submodule)
+  const markdownDocs = useQuery(`${id}-docs-${language}-${submodule}-md`, () =>
+    fetchMarkdownDocs(
+      name,
+      version,
+      languageFilename[language],
+      scope,
+      submodule
+    )
+  );
+
+  const jsonDocs = useQuery(`${id}-docs-${language}-${submodule}-json`, () =>
+    fetchJsonDocs(name, version, languageFilename[language], scope, submodule)
   );
 
   const assembly = useQuery(`${id}-assembly`, () =>
@@ -86,10 +98,17 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
 
   const pageDescription = assembly.data?.description ?? "";
 
-  const hasError = Boolean(markdown.error || assembly.error);
+  const hasError = Boolean(
+    markdownDocs.error || jsonDocs.error || assembly.error
+  );
 
   const hasDocs = Boolean(
-    !markdown.isLoading && !assembly.isLoading && markdown.data && assembly.data
+    !markdownDocs.isLoading &&
+      !jsonDocs.isLoading &&
+      !assembly.isLoading &&
+      markdownDocs.data &&
+      jsonDocs.data &&
+      assembly.data
   );
 
   // This will also be true if it cannot be verified (assembly not there)
@@ -101,20 +120,21 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
   );
 
   const isLoadingDocs = Boolean(
-    !metadata.isLoading && (assembly.isLoading || markdown.isLoading)
+    !metadata.isLoading &&
+      (assembly.isLoading || markdownDocs.isLoading || jsonDocs.isLoading)
   );
 
   const parsedMd = useMemo(() => {
-    if (!markdown.data) return { menuItems: [] };
+    if (!markdownDocs.data) return { menuItems: [] };
 
-    return parseMarkdownStructure(markdown.data, {
+    return parseMarkdownStructure(markdownDocs.data, {
       scope,
       name,
       version,
       language,
       submodule,
     });
-  }, [markdown.data, name, scope, version, language, submodule]);
+  }, [markdownDocs.data, name, scope, version, language, submodule]);
 
   // Handle missing JSON for assembly
   if (assembly.error) {
@@ -130,7 +150,8 @@ export const PackageStateProvider: FunctionComponent = ({ children }) => {
         isLoadingDocs,
         isSupported,
         language,
-        markdown: markdown,
+        markdownDocs,
+        jsonDocs,
         metadata: metadata,
         name,
         pageDescription,

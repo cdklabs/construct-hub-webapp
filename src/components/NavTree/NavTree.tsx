@@ -19,6 +19,7 @@ export interface NavItemProps extends NavItemConfig {
   // The following props don't need to be explicitly defined - they are passed internally
   onOpen?: () => void;
   level: number;
+  styleProps?: any;
 }
 
 export interface NavTreeProps {
@@ -27,6 +28,7 @@ export interface NavTreeProps {
    * Items to render
    */
   items: NavItemConfig[];
+  styleProps?: any;
 }
 
 const iconProps = {
@@ -41,6 +43,7 @@ interface NavItemWrapperProps {
   title: string;
   showToggle: boolean;
   children: ReactNode;
+  styleProps?: any;
 }
 
 const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
@@ -49,6 +52,7 @@ const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
   path,
   title,
   showToggle,
+  styleProps,
 }) => {
   const sharedProps = {
     _hover: { bg: "rgba(0, 124, 253, 0.05)" },
@@ -60,6 +64,7 @@ const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
     textOverflow: "ellipsis",
     whiteSpace: "nowrap" as any,
     w: "100%",
+    ...styleProps,
   };
 
   return path ? (
@@ -78,6 +83,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   path,
   level,
   onOpen,
+  styleProps,
 }) => {
   const { trackCustomEvent } = useAnalytics();
   const defaultIsOpen = level < 2; // only show first two levels by default
@@ -101,10 +107,11 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
             key={idx}
             level={level + 1}
             onOpen={disclosure.onOpen}
+            styleProps={styleProps}
           />
         );
       }),
-    [children, dataEvent, disclosure.onOpen, level]
+    [children, dataEvent, disclosure.onOpen, styleProps, level]
   );
 
   return (
@@ -143,6 +150,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
           data-event={dataEvent ? navTreeEvent(dataEvent, "Link") : undefined}
           path={path}
           showToggle={showToggle}
+          styleProps={styleProps}
           title={title}
         >
           {title}
@@ -175,7 +183,9 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
 export const NavTree: FunctionComponent<NavTreeProps> = ({
   "data-event": dataEvent,
   items,
+  styleProps,
 }) => {
+  console.log(items);
   return (
     <Flex direction="column" maxWidth="100%">
       {items.map((item, idx) => {
@@ -186,6 +196,7 @@ export const NavTree: FunctionComponent<NavTreeProps> = ({
             key={idx}
             level={0}
             onOpen={undefined}
+            styleProps={styleProps}
           />
         );
       })}

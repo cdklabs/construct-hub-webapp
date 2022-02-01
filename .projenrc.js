@@ -78,6 +78,7 @@ const project = new web.ReactTypeScriptProject({
     "eslint-plugin-react-hooks",
     "eslint-plugin-react",
     "react-app-rewired",
+    "jsii-docgen",
   ],
 
   autoApproveOptions: {

@@ -34,7 +34,7 @@ export const NavDrawer: FunctionComponent = () => {
   }, [location]);
 
   return (
-    <Box bottom={0} display={{ md: "none" }} left={0} pos="fixed" right={0}>
+    <Box bottom={0} display={{ lg: "none" }} left={0} pos="fixed" right={0}>
       <Button
         bg="bgPrimary"
         borderTop="base"
