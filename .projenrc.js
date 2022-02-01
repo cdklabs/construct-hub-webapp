@@ -93,6 +93,9 @@ const project = new web.ReactTypeScriptProject({
 // if test pass, we should be ok with this override, even though its a different major version.
 project.package.addField("resolutions", { "nth-check": "2.0.1" });
 
+project.gitignore.addPatterns("/.vscode/");
+project.npmignore.addPatterns("/.vscode/");
+
 (function addCypress() {
   project.addDevDeps("cypress");
 
