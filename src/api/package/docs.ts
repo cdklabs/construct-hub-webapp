@@ -52,7 +52,6 @@ export const fetchJsonDocs = async (
   }${language}.json`;
 
   const jsonPath = `${getAssetsPath(name, version, scope)}${docsSuffix}`;
-  console.log("jsonPath", jsonPath);
   const response = await fetch(jsonPath);
   if (!response.ok) {
     throw new Error(

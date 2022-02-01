@@ -185,7 +185,6 @@ export const NavTree: FunctionComponent<NavTreeProps> = ({
   items,
   styleProps,
 }) => {
-  console.log(items);
   return (
     <Flex direction="column" maxWidth="100%">
       {items.map((item, idx) => {
