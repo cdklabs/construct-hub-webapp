@@ -1,41 +1,41 @@
-import { Box, HTMLChakraProps, Link, Text } from "@chakra-ui/react";
+import { Box, PropsOf, Text } from "@chakra-ui/react";
 import { Language } from "prism-react-renderer";
 import type { FunctionComponent } from "react";
 import { ExternalLink } from "../ExternalLink";
+import { NavLink } from "../NavLink";
 import { Code } from "./Code";
 
-type AnchorComponent = FunctionComponent<HTMLChakraProps<"a">>;
+type AnchorComponent = FunctionComponent<
+  PropsOf<typeof NavLink> | PropsOf<typeof ExternalLink>
+>;
 
 export const A: AnchorComponent = ({ children, href, ...linkProps }) => {
-  let Component: AnchorComponent = Link;
+  const sharedProps = {
+    color: "link",
+    // If we are rendering an img within the link (specifically stability banners),
+    // do not display the external link Icon
+    sx: { "> img + svg": { display: "none" } },
+  };
 
   try {
     if (href && href.startsWith("http")) {
+      // new URL() throws if the url is invalid
       const hostname = new URL(href).hostname;
 
       if (hostname !== window.location.hostname) {
-        const External: AnchorComponent = (props) => (
-          <ExternalLink {...props} />
+        return (
+          <ExternalLink href={href} {...sharedProps} {...linkProps}>
+            {children}
+          </ExternalLink>
         );
-
-        Component = External;
       }
     }
-  } catch {
-    Component = Link;
-  }
+  } catch {}
 
   return (
-    <Component
-      color="link"
-      href={href}
-      // If we are rendering an img within the link (specifically stability banners),
-      // do not display the external link Icon
-      sx={{ "> img + svg": { display: "none" } }}
-      {...linkProps}
-    >
+    <NavLink to={href} {...sharedProps} {...linkProps}>
       {children}
-    </Component>
+    </NavLink>
   );
 };
 
