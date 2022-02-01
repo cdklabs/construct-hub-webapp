@@ -48,6 +48,7 @@ jspm_packages/
 !/.eslintrc.json
 /build/
 !/react-app-env.d.ts
+/.vscode/
 cypress/videos/
 cypress/screenshots/
 !/.github/workflows/integ.yml

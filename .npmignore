@@ -12,12 +12,12 @@
 dist
 /tsconfig.json
 /.github/
-/.vscode/
 /.idea/
 /.projenrc.js
 tsconfig.tsbuildinfo
 /.eslintrc.json
 /build/
+/.vscode/
 !/build
 /public
 /build/config.json
