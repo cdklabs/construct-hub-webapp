@@ -44,7 +44,7 @@ const isApiPath = (path: string) => {
 
 export const PackageDocs: FunctionComponent = () => {
   const { path } = useRouteMatch();
-  const { menuItems } = usePackageState();
+  const { menuItems, markdown } = usePackageState();
 
   const { hash, pathname, search } = useLocation();
 
@@ -61,7 +61,8 @@ export const PackageDocs: FunctionComponent = () => {
     } else {
       window.scrollTo(0, 0);
     }
-  }, [hash, pathname]);
+    // Subscribe to doc loading state so that we run this effect after docs load as well
+  }, [hash, pathname, markdown.isLoading]);
 
   return (
     <Grid
