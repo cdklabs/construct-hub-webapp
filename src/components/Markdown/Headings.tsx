@@ -52,6 +52,8 @@ const HeadingLink: FunctionComponent<{
       lineHeight={1}
       opacity="hidden"
       replace
+      // Keep search query (or empty string if no query) in url to avoid breaking submodule navigation
+      // E.g: #some-page-element, ?submodule=foo#some-page-element
       to={`${search}#${id}`}
       visibility="hidden"
     >
