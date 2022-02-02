@@ -2,6 +2,7 @@ import { LinkIcon } from "@chakra-ui/icons";
 import { Flex, Heading, As } from "@chakra-ui/react";
 import { Children, FunctionComponent, ReactNode } from "react";
 import ReactDOMServer from "react-dom/server";
+import { useLocation } from "react-router-dom";
 import { sanitize } from "../../util/sanitize-anchor";
 import { NavLink } from "../NavLink";
 
@@ -35,25 +36,29 @@ const HeadingLink: FunctionComponent<{
   id: string;
   level: number;
   title: string;
-}> = ({ id, level, title }) => (
-  <NavLink
-    _active={{ visibility: "initial" }}
-    _focus={{ visibility: "initial" }}
-    alignItems="center"
-    data-heading-id={`#${id}`}
-    data-heading-level={level}
-    data-heading-title={title}
-    display="flex"
-    id={id}
-    lineHeight={1}
-    opacity="hidden"
-    replace
-    to={`#${id}`}
-    visibility="hidden"
-  >
-    <LinkIcon boxSize={4} />
-  </NavLink>
-);
+}> = ({ id, level, title }) => {
+  const { search } = useLocation();
+
+  return (
+    <NavLink
+      _active={{ visibility: "initial" }}
+      _focus={{ visibility: "initial" }}
+      alignItems="center"
+      data-heading-id={`#${id}`}
+      data-heading-level={level}
+      data-heading-title={title}
+      display="flex"
+      id={id}
+      lineHeight={1}
+      opacity="hidden"
+      replace
+      to={`${search}#${id}`}
+      visibility="hidden"
+    >
+      <LinkIcon boxSize={4} />
+    </NavLink>
+  );
+};
 
 export const Headings: FunctionComponent<HeadingResolverProps> = ({
   level,
