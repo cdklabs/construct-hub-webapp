@@ -50,6 +50,32 @@ const isApiPath = (path: string) => {
 };
 
 /**
+ * Generate the path of the API that should be linked to in the nav tree based
+ * on the ID of the type or method or property etc.
+ *
+ * This method slices from the end of the ID rather than the beginning since the
+ * number of segments at the beginning can vary -- for example, a class name
+ * could be the second segment:
+ *   @aws-cdk/aws-s3.Bucket
+ * or the third segment:
+ *   aws-cdk-lib.aws_s3.Bucket (within a jsii submodule)
+ * or a fourth or later segment:
+ *   aws-cdk-lib.aws_s3.CfnBucket.AbortIncompleteMultipartUploadProperty (class that is defined within another class / namespace)
+ *
+ * Instead we assume that the number of segments from the end is always the same
+ * for the particular type of field, so for example a class method is always
+ * of the form `(rest of path).ClassName.method`.
+ *
+ * @example
+ * // getPathFromId("@aws-cdk/aws-s3.Bucket.Initializer.parameter.scope", 4")
+ * // => "Bucket#Initializer.parameter.scope"
+ */
+const getPathHelper = (segments: number) => {
+  return (id: string) =>
+    id.split(".").slice(-segments).join(".").replace(".", "#");
+};
+
+/**
  * Map from fields of `jsii-docgen.Schema` to data needed to extract values and
  * render the right navigation sidebar. This is needed to make the information
  * in the JSON docs play well with the existing markdown docs, but this could be
@@ -60,44 +86,38 @@ const docsSectionsMap = {
     header: "Initializer Props",
     getValues: (e: ClassSchema) => e.initializer?.parameters ?? [],
     // @aws-cdk/aws-s3.Bucket.Initializer.parameter.scope => Bucket#Initializer.parameter.scope
-    getPath: (id: string) =>
-      id.split(".").slice(-4).join(".").replace(".", "#"),
+    getPath: getPathHelper(4),
   },
   instanceMethods: {
     header: "Instance Methods",
     getValues: (e: ClassSchema | InterfaceSchema) => e.instanceMethods,
     // @aws-cdk/aws-s3.Bucket.addCorsRule => Bucket#addCorsRule
-    getPath: (id: string) =>
-      id.split(".").slice(-2).join(".").replace(".", "#"),
+    getPath: getPathHelper(2),
   },
   staticMethods: {
     header: "Static Methods",
     getValues: (e: ClassSchema) => e.staticMethods,
     // @aws-cdk/aws-s3.Bucket.fromBucketArn => Bucket#fromBucketArn
-    getPath: (id: string) =>
-      id.split(".").slice(-2).join(".").replace(".", "#"),
+    getPath: getPathHelper(2),
   },
   properties: {
     header: "Properties",
     getValues: (e: ClassSchema | StructSchema | InterfaceSchema) =>
       e.properties,
     // @aws-cdk/aws-s3.Bucket.property.bucketArn => Bucket#property.bucketArn
-    getPath: (id: string) =>
-      id.split(".").slice(-3).join(".").replace(".", "#"),
+    getPath: getPathHelper(3),
   },
   constants: {
     header: "Constants",
     getValues: (e: ClassSchema) => e.constants,
     // @aws-cdk/aws-s3.CfnAccessPoint.property.CFN_RESOURCE_TYPE_NAME => CfnAccessPoint#property.CFN_RESOURCE_TYPE_NAME
-    getPath: (id: string) =>
-      id.split(".").slice(-3).join(".").replace(".", "#"),
+    getPath: getPathHelper(3),
   },
   members: {
     header: "Enum Members",
     getValues: (e: EnumSchema) => e.members,
-    // @aws-cdk/aws-s3.BucketAccessControl#PRIVATE =>  BucketAccessControl#PRIVATE
-    getPath: (id: string) =>
-      id.split(".").slice(-2).join(".").replace(".", "#"),
+    // @aws-cdk/aws-s3.BucketAccessControl#PRIVATE => BucketAccessControl#PRIVATE
+    getPath: getPathHelper(2),
   },
 };
 
