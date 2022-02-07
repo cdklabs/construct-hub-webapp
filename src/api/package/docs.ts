@@ -1,6 +1,14 @@
 import type { Schema } from "jsii-docgen";
 import { getAssetsPath } from "./util";
 
+const getDocsSuffix = (
+  language: string,
+  extension: string,
+  submodule?: string
+): string => {
+  return `/docs-${submodule ? `${submodule}-` : ""}${language}.${extension}`;
+};
+
 /**
  * Fetch markdown docs of a specific package from the backend.
  */
@@ -11,7 +19,7 @@ export const fetchMarkdownDocs = async (
   scope?: string,
   submodule?: string
 ): Promise<string> => {
-  const docsSuffix = `/docs-${submodule ? `${submodule}-` : ""}${language}.md`;
+  const docsSuffix = getDocsSuffix(language, "md", submodule);
 
   const markdownPath = `${getAssetsPath(name, version, scope)}${docsSuffix}`;
   const response = await fetch(markdownPath);
@@ -47,9 +55,7 @@ export const fetchJsonDocs = async (
   scope?: string,
   submodule?: string
 ): Promise<Schema> => {
-  const docsSuffix = `/docs-${
-    submodule ? `${submodule}-` : ""
-  }${language}.json`;
+  const docsSuffix = getDocsSuffix(language, "json", submodule);
 
   const jsonPath = `${getAssetsPath(name, version, scope)}${docsSuffix}`;
   const response = await fetch(jsonPath);
