@@ -14,6 +14,9 @@ import {
   Redirect,
 } from "react-router-dom";
 import { NavTree } from "../../components/NavTree";
+import { QUERY_PARAMS } from "../../constants/url";
+import { useLanguage } from "../../hooks/useLanguage";
+import { useQueryParams } from "../../hooks/useQueryParams";
 import { ChooseSubmodule } from "./ChooseSubmodule";
 import { PACKAGE_ANALYTICS } from "./constants";
 import { NavDrawer } from "./NavDrawer";
@@ -69,11 +72,13 @@ const isApiPath = (path: string) => {
  *
  * @example
  * // getPathFromId("@aws-cdk/aws-s3.Bucket.Initializer.parameter.scope", 4")
- * // => "Bucket#Initializer.parameter.scope"
+ * // => { path: "Bucket", hash: "#Initializer.parameter.scope" }
  */
 const getPathHelper = (segments: number) => {
-  return (id: string) =>
-    id.split(".").slice(-segments).join(".").replace(".", "#");
+  return (id: string): { path: string; hash: string } => {
+    const [path, ...rest] = id.split(".").slice(-segments);
+    return { path, hash: "#" + rest.join(".") };
+  };
 };
 
 /**
@@ -123,7 +128,9 @@ const docsSectionsMap = {
 };
 
 const schemaToSectionItems = (
-  type: ClassSchema | InterfaceSchema | StructSchema | EnumSchema
+  type: ClassSchema | InterfaceSchema | StructSchema | EnumSchema,
+  language: string,
+  submodule?: string
 ): MenuItem[] => {
   const items: MenuItem[] = [];
 
@@ -139,13 +146,20 @@ const schemaToSectionItems = (
       // We aren't using a discriminated union, so the
       // "if schemaKey in type" check doesn't give TypeScript enough
       // information to infer this by itself.
-      const childItems = getValues(type as any).map((value) => ({
-        level: 2,
-        id: value.id,
-        title: value.displayName,
-        path: getPath(value.id),
-        children: [],
-      }));
+      const childItems: MenuItem[] = getValues(type as any).map((value) => {
+        const { path, hash } = getPath(value.id);
+        let query = `?${QUERY_PARAMS.LANGUAGE}=${language}`;
+        if (submodule) {
+          query += `&${QUERY_PARAMS.SUBMODULE}=${submodule}`;
+        }
+        return {
+          level: 2,
+          id: value.id,
+          title: value.displayName,
+          path: `${path}${query}${hash}`,
+          children: [],
+        };
+      });
       if (childItems.length > 0) {
         parentItem.children.push(...childItems);
         items.push(parentItem);
@@ -163,6 +177,10 @@ export const useSectionItems = (): MenuItem[] => {
     `${path}/${API_URL_RESOURCE}/:typeId`
   );
   const typeId = match?.params.typeId;
+
+  const [language] = useLanguage();
+  const q = useQueryParams();
+  const submodule = q.get(QUERY_PARAMS.SUBMODULE) ?? "";
 
   const { types, metadata } = useMemo(() => {
     if (!jsonDocs.data) return { types: [] };
@@ -183,7 +201,9 @@ export const useSectionItems = (): MenuItem[] => {
   }, [jsonDocs]);
 
   const typeInfo = types.find((type) => type.displayName === typeId);
-  return typeInfo && metadata ? schemaToSectionItems(typeInfo) : [];
+  return typeInfo && metadata
+    ? schemaToSectionItems(typeInfo, language, submodule)
+    : [];
 };
 
 export const PackageDocs: FunctionComponent = () => {
