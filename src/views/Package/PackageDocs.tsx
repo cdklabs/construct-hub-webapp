@@ -20,6 +20,7 @@ import { NavDrawer } from "./NavDrawer";
 import { PackageReadme } from "./PackageReadme";
 import { usePackageState } from "./PackageState";
 import { PackageTypeDocs } from "./PackageTypeDocs";
+import { StickyNavContainer } from "./StickyNavContainer";
 import { MenuItem } from "./util";
 
 // We want the nav to be sticky, but it should account for the sticky heading as well, which is 72px
@@ -218,16 +219,11 @@ export const PackageDocs: FunctionComponent = () => {
       }}
       width="100%"
     >
-      <Flex
-        alignSelf="stretch"
+      <StickyNavContainer
         borderRight="1px solid"
         borderRightColor="borderColor"
-        direction="column"
-        display={{ base: "none", lg: "flex" }}
-        maxHeight={`calc(100vh - ${TOP_OFFSET})`}
-        overflow="hidden auto"
+        offset={TOP_OFFSET}
         pl={6}
-        position="sticky"
         pr={4}
         top={TOP_OFFSET}
       >
@@ -235,7 +231,7 @@ export const PackageDocs: FunctionComponent = () => {
         <Box overflowY="auto" py={4}>
           <NavTree data-event={PACKAGE_ANALYTICS.SCOPE} items={menuItems} />
         </Box>
-      </Flex>
+      </StickyNavContainer>
       <Box
         h="max-content"
         maxWidth="100%"
@@ -261,16 +257,11 @@ export const PackageDocs: FunctionComponent = () => {
           </Route>
         </Switch>
       </Box>
-      <Flex
-        alignSelf="stretch"
+      <StickyNavContainer
         borderLeft="1px solid"
         borderLeftColor="borderColor"
-        direction="column"
-        display={{ base: "none", lg: "flex" }}
-        maxHeight={`calc(100vh - ${TOP_OFFSET})`}
-        overflow="hidden auto"
+        offset={TOP_OFFSET}
         pl={6}
-        position="sticky"
         pr={4}
         top={TOP_OFFSET}
       >
@@ -281,7 +272,7 @@ export const PackageDocs: FunctionComponent = () => {
             variant="sm"
           />
         </Box>
-      </Flex>
+      </StickyNavContainer>
       <NavDrawer />
     </Grid>
   );
