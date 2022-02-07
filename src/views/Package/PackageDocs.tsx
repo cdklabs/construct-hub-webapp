@@ -258,7 +258,7 @@ export const PackageDocs: FunctionComponent = () => {
           <NavTree
             data-event={PACKAGE_ANALYTICS.SCOPE}
             items={sectionItems}
-            styleProps={{ fontSize: "sm" }}
+            variant="sm"
           />
         </Box>
       </Flex>
