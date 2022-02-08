@@ -214,18 +214,20 @@ export const PackageDocs: FunctionComponent = () => {
   const { hash, pathname, search } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      const target = document.querySelector(
-        `[data-heading-id="${hash}"]`
-      ) as HTMLElement;
+    window.requestAnimationFrame(() => {
+      if (hash) {
+        const target = document.querySelector(
+          `[data-heading-id="${hash}"]`
+        ) as HTMLElement;
 
-      target?.scrollIntoView(true);
-    } else if (isApiPath(pathname)) {
-      const target = document.getElementById(DOCS_ROOT_ID) as HTMLElement;
-      target?.scrollIntoView(true);
-    } else {
-      window.scrollTo(0, 0);
-    }
+        target?.scrollIntoView(true);
+      } else if (isApiPath(pathname)) {
+        const target = document.getElementById(DOCS_ROOT_ID) as HTMLElement;
+        target?.scrollIntoView(true);
+      } else {
+        window.scrollTo(0, 0);
+      }
+    });
     // Subscribe to doc loading state so that we run this effect after docs load as well
   }, [hash, pathname, markdownDocs.isLoading]);
 
