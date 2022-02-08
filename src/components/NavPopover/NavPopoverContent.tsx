@@ -43,7 +43,7 @@ export const NavPopoverContent = forwardRef<NavPopoverContentProps, "div">(
           if ("links" in item) {
             return (
               <Fragment key={`${item.display}-${idx}`}>
-                <MenuGroup align="left" title={item.display}>
+                <MenuGroup textAlign="left" title={item.display}>
                   {item.links.map((link, linkIdx) => (
                     <MenuItem
                       data-event={
