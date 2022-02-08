@@ -19,6 +19,7 @@ export interface NavItemProps extends NavItemConfig {
   // The following props don't need to be explicitly defined - they are passed internally
   onOpen?: () => void;
   level: number;
+  variant?: "sm" | "md";
 }
 
 export interface NavTreeProps {
@@ -27,6 +28,7 @@ export interface NavTreeProps {
    * Items to render
    */
   items: NavItemConfig[];
+  variant?: "sm" | "md";
 }
 
 const iconProps = {
@@ -41,6 +43,7 @@ interface NavItemWrapperProps {
   title: string;
   showToggle: boolean;
   children: ReactNode;
+  variant?: "sm" | "md";
 }
 
 const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
@@ -49,7 +52,15 @@ const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
   path,
   title,
   showToggle,
+  variant,
 }) => {
+  const smProps = {
+    fontSize: "sm",
+  };
+  const mdProps = {
+    fontSize: "md",
+  };
+
   const sharedProps = {
     _hover: { bg: "rgba(0, 124, 253, 0.05)" },
     overflow: "hidden",
@@ -60,6 +71,7 @@ const NavItemWrapper: FunctionComponent<NavItemWrapperProps> = ({
     textOverflow: "ellipsis",
     whiteSpace: "nowrap" as any,
     w: "100%",
+    ...(variant === "sm" ? smProps : mdProps),
   };
 
   return path ? (
@@ -78,6 +90,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
   path,
   level,
   onOpen,
+  variant,
 }) => {
   const { trackCustomEvent } = useAnalytics();
   const defaultIsOpen = level < 2; // only show first two levels by default
@@ -101,10 +114,11 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
             key={idx}
             level={level + 1}
             onOpen={disclosure.onOpen}
+            variant={variant}
           />
         );
       }),
-    [children, dataEvent, disclosure.onOpen, level]
+    [children, dataEvent, disclosure.onOpen, variant, level]
   );
 
   return (
@@ -144,6 +158,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
           path={path}
           showToggle={showToggle}
           title={title}
+          variant={variant}
         >
           {title}
         </NavItemWrapper>
@@ -175,6 +190,7 @@ export const NavItem: FunctionComponent<NavItemProps> = ({
 export const NavTree: FunctionComponent<NavTreeProps> = ({
   "data-event": dataEvent,
   items,
+  variant,
 }) => {
   return (
     <Flex direction="column" maxWidth="100%">
@@ -186,6 +202,7 @@ export const NavTree: FunctionComponent<NavTreeProps> = ({
             key={idx}
             level={0}
             onOpen={undefined}
+            variant={variant}
           />
         );
       })}

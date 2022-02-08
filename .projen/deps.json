@@ -117,6 +117,10 @@
       "type": "build"
     },
     {
+      "name": "jsii-docgen",
+      "type": "build"
+    },
+    {
       "name": "json-schema",
       "type": "build"
     },
