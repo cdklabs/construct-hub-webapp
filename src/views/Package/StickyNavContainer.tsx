@@ -1,6 +1,14 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, FlexProps } from "@chakra-ui/react";
+import { FunctionComponent } from "react";
 
-export const StickyNavContainer: typeof Flex = ({ offset, ...props }) => (
+export interface StickyNavContainerProps extends FlexProps {
+  offset: string | number;
+}
+
+export const StickyNavContainer: FunctionComponent<StickyNavContainerProps> = ({
+  offset,
+  ...props
+}) => (
   <Flex
     alignSelf="stretch"
     as="nav" // to be more semantic
