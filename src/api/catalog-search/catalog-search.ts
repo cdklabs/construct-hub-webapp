@@ -4,7 +4,12 @@ import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
-import { FILTER_FUNCTIONS, renderAllKeywords, SORT_FUNCTIONS } from "./util";
+import {
+  FILTER_FUNCTIONS,
+  mapConstructFrameworks,
+  renderAllKeywords,
+  SORT_FUNCTIONS,
+} from "./util";
 
 const INDEX_FIELDS = {
   AUTHOR_EMAIL: {
@@ -40,6 +45,7 @@ const INDEX_FIELDS = {
 export interface ExtendedCatalogPackage extends CatalogPackage {
   authorEmail?: string;
   authorName?: string;
+  constructFrameworks: Map<CDKType, number | null>;
   downloads: number;
   id: string;
   packageName?: string;
@@ -139,6 +145,7 @@ export class CatalogSearchAPI {
           ...pkg,
           authorName,
           authorEmail,
+          constructFrameworks: mapConstructFrameworks(pkg.metadata),
           keywords,
           downloads,
           id,
@@ -152,7 +159,7 @@ export class CatalogSearchAPI {
 
     this.map = this.sort(catalogMap, CatalogSearchSort.PublishDateDesc);
 
-    this.constructFrameworks = this.detectConstructFrameworks();
+    this.constructFrameworks = this.detectAllConstructFrameworks();
     this.keywords = this.detectKeywords();
 
     this.index = lunr(function () {
@@ -232,7 +239,10 @@ export class CatalogSearchAPI {
   /**
    * Performs a Search against the catalog and returns an array of all packages matching the query.
    */
-  public findByName(query: string): ExtendedCatalogPackage[] {
+  public findByName(
+    query: string,
+    opts?: { dedup?: boolean }
+  ): ExtendedCatalogPackage[] {
     const results = [...this.map.values()].filter((pkg) => pkg.name === query);
     const matches = new Array<ExtendedCatalogPackage>();
     for (const pkg of results.values()) {
@@ -240,6 +250,17 @@ export class CatalogSearchAPI {
         matches.push(pkg);
       }
     }
+
+    if (opts?.dedup) {
+      const map = new Map<string, ExtendedCatalogPackage>();
+
+      matches.forEach((pkg) => {
+        map.set(pkg.name, pkg);
+      });
+
+      return [...this.dedup(map).values()];
+    }
+
     return matches;
   }
 
@@ -255,8 +276,7 @@ export class CatalogSearchAPI {
 
     const filterFunctions = [
       FILTER_FUNCTIONS.cdkType(cdkType),
-      // Ignore major version filter if no CDK Type is defined
-      FILTER_FUNCTIONS.cdkMajor(cdkType ? cdkMajor : undefined),
+      FILTER_FUNCTIONS.cdkMajor({ cdkType, cdkMajor }),
       FILTER_FUNCTIONS.keywords(keywords),
       FILTER_FUNCTIONS.languages(languages),
       FILTER_FUNCTIONS.tags(tags),
@@ -342,26 +362,25 @@ export class CatalogSearchAPI {
    * They are indexed by the name of the construct framework and record the count
    * of packages for that framework as well as a list of major versions.
    */
-  private detectConstructFrameworks() {
+  private detectAllConstructFrameworks() {
     const results: CatalogConstructFrameworks = [...this.map.values()].reduce(
       (frameworks: CatalogConstructFrameworks, pkg: ExtendedCatalogPackage) => {
-        const { metadata } = pkg;
+        const { constructFrameworks } = pkg;
 
-        const frameworkName = metadata?.constructFramework?.name;
-        const majorVersion = metadata?.constructFramework?.majorVersion;
+        [...constructFrameworks.entries()]?.forEach(([name, majorVersion]) => {
+          if (majorVersion !== undefined) {
+            const entry = frameworks[name];
 
-        if (frameworkName) {
-          const entry = frameworks[frameworkName];
+            if (
+              majorVersion !== null &&
+              !entry.majorVersions.includes(majorVersion)
+            ) {
+              entry.majorVersions.push(majorVersion);
+            }
 
-          if (
-            majorVersion !== undefined &&
-            !entry.majorVersions.includes(majorVersion)
-          ) {
-            entry.majorVersions.push(majorVersion);
+            entry.pkgCount += 1;
           }
-
-          entry.pkgCount += 1;
-        }
+        });
 
         return frameworks;
       },

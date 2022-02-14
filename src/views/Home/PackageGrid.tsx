@@ -1,12 +1,12 @@
 import { Grid } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { CatalogPackage } from "../../api/package/packages";
+import { ExtendedCatalogPackage } from "../../api/catalog-search";
 import { PackageCard } from "../../components/PackageCard";
 import testIds from "./testIds";
 
 export const PackageGrid: FunctionComponent<{
   "data-event"?: string;
-  packages: CatalogPackage[];
+  packages: ExtendedCatalogPackage[];
 }> = ({ "data-event": dataEvent, packages }) => {
   return (
     <Grid

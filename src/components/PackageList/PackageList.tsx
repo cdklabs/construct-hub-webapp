@@ -1,6 +1,6 @@
 import { Center, Spinner } from "@chakra-ui/react";
 import { FunctionComponent, memo } from "react";
-import { CatalogPackage } from "../../api/package/packages";
+import { ExtendedCatalogPackage } from "../../api/catalog-search";
 import { PackageCardType } from "../PackageCard";
 import { WideCardList } from "./WideCardList";
 
@@ -10,7 +10,7 @@ const listViews = {
 
 export interface PackageListViewProps {
   "data-event"?: string;
-  items: CatalogPackage[];
+  items: ExtendedCatalogPackage[];
 }
 
 export interface PackageListProps extends Partial<PackageListViewProps> {
@@ -25,7 +25,6 @@ export const PackageList: FunctionComponent<PackageListProps> = memo(
     cardView = PackageCardType.Wide,
     items,
     loading,
-    // title,
   }) => {
     if (loading || !items) {
       return (

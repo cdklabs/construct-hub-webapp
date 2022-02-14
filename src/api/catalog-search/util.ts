@@ -1,6 +1,8 @@
 import { CatalogSearchFilters, ExtendedCatalogPackage } from ".";
+import { CDKType } from "../../constants/constructs";
 import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { Language } from "../../constants/languages";
+import { ConstructFramework, Metadata } from "../package/metadata";
 import { CatalogPackage } from "../package/packages";
 import { CatalogSearchSort } from "./constants";
 
@@ -68,14 +70,15 @@ const getCDKTypeFilter: FilterFunctionBuilder<
   CatalogSearchFilters["cdkType"]
 > = (cdkType) => {
   if (!cdkType) return undefined;
-  return (pkg) => pkg.metadata?.constructFramework?.name === cdkType;
+  return (pkg) => pkg.constructFrameworks.get(cdkType) !== undefined;
 };
 
-const getCDKMajorFilter: FilterFunctionBuilder<
-  CatalogSearchFilters["cdkMajor"]
-> = (cdkMajor) => {
-  if (typeof cdkMajor !== "number") return undefined;
-  return (pkg) => pkg.metadata?.constructFramework?.majorVersion === cdkMajor;
+const getCDKMajorFilter: FilterFunctionBuilder<{
+  cdkType: CatalogSearchFilters["cdkType"];
+  cdkMajor: CatalogSearchFilters["cdkMajor"];
+}> = ({ cdkType, cdkMajor }) => {
+  if (!cdkType || typeof cdkMajor !== "number") return undefined;
+  return (pkg) => pkg.constructFrameworks.get(cdkType) === cdkMajor;
 };
 
 const getKeywordsFilter: FilterFunctionBuilder<
@@ -132,11 +135,7 @@ export const SORT_FUNCTIONS: Record<CatalogSearchSort, SortFunction> = {
   [CatalogSearchSort.DownloadsDesc]: getDownloadsSort(false),
 };
 
-export const FILTER_FUNCTIONS: {
-  [key in keyof Required<CatalogSearchFilters>]: FilterFunctionBuilder<
-    CatalogSearchFilters[key]
-  >;
-} = {
+export const FILTER_FUNCTIONS = {
   cdkType: getCDKTypeFilter,
   cdkMajor: getCDKMajorFilter,
   keywords: getKeywordsFilter,
@@ -171,4 +170,32 @@ export const renderAllKeywords = (pkg: CatalogPackage) => {
   }
 
   return Array.from(allKeywords);
+};
+
+/**
+ * Creates a map of construct frameworks found in a construct's metadata
+ * If the metadata doesn't specify a majorVersion, the map will return null to distinguish
+ * from an undefined map.get()
+ */
+export const mapConstructFrameworks = ({
+  constructFramework,
+  constructFrameworks,
+}: Metadata): Map<CDKType, number | null> => {
+  const map = new Map<CDKType, number | null>();
+  let frameworks = constructFrameworks ?? [];
+
+  // To support the deprecated constructFramework property, re-map it to the new format
+  if (!frameworks.length && constructFramework?.name) {
+    frameworks = [constructFramework as ConstructFramework];
+  }
+
+  frameworks.forEach((framework) => {
+    const { name, majorVersion } = framework;
+
+    if (name) {
+      map.set(name, majorVersion ?? null);
+    }
+  });
+
+  return map;
 };

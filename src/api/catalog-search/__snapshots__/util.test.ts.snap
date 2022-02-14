@@ -252,9 +252,6 @@ Array [
     "name": "cdk-time-bomb",
   },
   Object {
-    "name": "cdk-time-bomb",
-  },
-  Object {
     "name": "cdk-tweet-queue",
   },
   Object {
@@ -262,9 +259,6 @@ Array [
   },
   Object {
     "name": "cdk-website",
-  },
-  Object {
-    "name": "cdk8s-aws-alb-ingress-controller",
   },
   Object {
     "name": "cdk8s-aws-alb-ingress-controller",
@@ -640,10 +634,6 @@ Array [
     "name": "cdk-time-bomb",
   },
   Object {
-    "date": "Thu, 14 May 2020 15:21:58 GMT",
-    "name": "cdk-time-bomb",
-  },
-  Object {
     "date": "Wed, 15 Sep 2021 00:19:48 GMT",
     "name": "cdk-tweet-queue",
   },
@@ -657,10 +647,6 @@ Array [
   },
   Object {
     "date": "Mon, 23 Nov 2020 09:47:27 GMT",
-    "name": "cdk8s-aws-alb-ingress-controller",
-  },
-  Object {
-    "date": "Mon, 23 Nov 2020 08:29:12 GMT",
     "name": "cdk8s-aws-alb-ingress-controller",
   },
   Object {
@@ -773,10 +759,6 @@ Array [
     "name": "cdk-sqs-monitored",
   },
   Object {
-    "date": "Thu, 14 May 2020 15:21:58 GMT",
-    "name": "cdk-time-bomb",
-  },
-  Object {
     "date": "Thu, 04 Jun 2020 19:50:33 GMT",
     "name": "aws-lambda-golang",
   },
@@ -855,10 +837,6 @@ Array [
   Object {
     "date": "Wed, 18 Nov 2020 05:29:35 GMT",
     "name": "cdk8s-op",
-  },
-  Object {
-    "date": "Mon, 23 Nov 2020 08:29:12 GMT",
-    "name": "cdk8s-aws-alb-ingress-controller",
   },
   Object {
     "date": "Mon, 23 Nov 2020 09:47:27 GMT",

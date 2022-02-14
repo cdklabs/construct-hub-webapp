@@ -2,58 +2,44 @@ import {
   Badge,
   BadgeProps,
   forwardRef,
-  Image,
-  ImageProps,
   Text,
   TextProps,
+  Tooltip,
 } from "@chakra-ui/react";
 import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
 import { getSearchPath } from "../../util/url";
 import { NavLink } from "../NavLink";
-
-interface CDKTypeIconProps extends ImageProps {
-  name?: CDKType;
-  majorVersion?: number;
-}
-
-export const CDKTypeIcon = forwardRef<CDKTypeIconProps, "img">(
-  ({ name, majorVersion, ...props }, ref) => {
-    if (!name) return null;
-
-    return (
-      <Image
-        alt={`${CDKTYPE_RENDER_MAP[name].name} Logo`}
-        h={5}
-        ref={ref}
-        src={CDKTYPE_RENDER_MAP[name].imgsrc}
-        w={5}
-        {...props}
-      />
-    );
-  }
-);
 
 interface CDKTypeTextProps extends TextProps {
   name?: CDKType;
   majorVersion?: number;
 }
 
-export const CDKTypeText = forwardRef<CDKTypeTextProps, "p">(
+const getText = ({
+  name,
+  majorVersion,
+}: {
+  name: CDKType;
+  majorVersion?: number;
+}) =>
+  `${CDKTYPE_RENDER_MAP[name].name}${
+    majorVersion !== undefined ? ` v${majorVersion}` : ""
+  }`;
+
+const CDKTypeText = forwardRef<CDKTypeTextProps, "p">(
   ({ name, majorVersion, ...props }, ref) => {
     if (!name) return null;
 
     return (
       <Text ref={ref} {...props}>
-        {CDKTYPE_RENDER_MAP[name].name}
-        {majorVersion !== undefined ? ` v${majorVersion}` : ""}
+        {getText({ name, majorVersion })}
       </Text>
     );
   }
 );
 
-interface CDKTypeBadgeProps extends BadgeProps {
-  name?: CDKType;
-  majorVersion?: number;
+export interface CDKTypeBadgeProps extends BadgeProps {
+  constructFrameworks?: Map<CDKType, number | null>;
 }
 
 const badgeColorMap = {
@@ -62,29 +48,57 @@ const badgeColorMap = {
   [CDKType.cdktf]: "#5C4EE5",
 };
 
-export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
-  ({ name, majorVersion, ...badgeProps }, ref) => {
-    if (!name) return null;
+const sharedProps = {
+  alignItems: "center",
+  borderRadius: "md",
+  display: "flex",
+  h: "1.5rem",
+  maxW: "5.5rem",
+  px: 1.5,
+  textTransform: "none" as const,
+};
 
+export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
+  ({ constructFrameworks, ...badgeProps }, ref) => {
+    if (!constructFrameworks?.size) return null;
+
+    // If "multi-cdk" library, show a Multi-CDK badge with tooltip which lists supported libraries
+    if (constructFrameworks.size > 1) {
+      const frameworks = [...constructFrameworks.entries()];
+      return (
+        <Tooltip
+          hasArrow
+          label={`Supports: ${frameworks
+            .map(([name, majorVersion]) =>
+              getText({ name, majorVersion: majorVersion ?? undefined })
+            )
+            .join(", ")}`}
+          placement="left-start"
+        >
+          <Badge {...sharedProps} colorScheme="brand" {...badgeProps}>
+            Multi-CDK
+          </Badge>
+        </Tooltip>
+      );
+    }
+
+    const [[name, majorVersion]] = constructFrameworks;
     const bg = badgeColorMap[name];
 
     return (
       <Badge
-        alignItems="center"
+        {...sharedProps}
         as={NavLink}
         bg={bg}
-        borderRadius="md"
         color="white"
-        display="flex"
-        h="1.5rem"
-        maxW="5.5rem"
-        px={1.5}
         ref={ref}
-        textTransform="none"
-        to={getSearchPath({ cdkType: name, cdkMajor: majorVersion })}
+        to={getSearchPath({
+          cdkType: name,
+          cdkMajor: majorVersion ?? undefined,
+        })}
         {...badgeProps}
       >
-        <CDKTypeText majorVersion={majorVersion} name={name} />
+        <CDKTypeText majorVersion={majorVersion ?? undefined} name={name} />
       </Badge>
     );
   }

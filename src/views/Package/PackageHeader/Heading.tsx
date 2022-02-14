@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
+import { mapConstructFrameworks } from "../../../api/catalog-search/util";
 import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeBadge } from "../../../components/CDKType";
 import { PackageTag } from "../../../components/PackageTag";
@@ -36,7 +37,16 @@ export const Heading: FunctionComponent<HeadingProps> = ({
     keywords: assembly?.keywords ?? [],
   });
 
-  const cdkTypeProps = metadata.constructFramework ?? {};
+  const constructFrameworks = mapConstructFrameworks(metadata);
+  const [constructFramework] = constructFrameworks;
+  const [cdkName, majorVersion] = constructFramework ?? [];
+
+  const dataEvent =
+    constructFrameworks.size === 1
+      ? PACKAGE_ANALYTICS.CDK_BADGE.eventName(
+          `${cdkName}${majorVersion !== undefined ? ` v${majorVersion}` : ""}`
+        )
+      : undefined;
 
   return (
     <Stack
@@ -72,14 +82,8 @@ export const Heading: FunctionComponent<HeadingProps> = ({
         wrap="wrap"
       >
         <CDKTypeBadge
-          data-event={PACKAGE_ANALYTICS.CDK_BADGE.eventName(
-            `${cdkTypeProps.name}${
-              cdkTypeProps.majorVersion !== undefined
-                ? ` v${cdkTypeProps.majorVersion}`
-                : ""
-            }`
-          )}
-          {...cdkTypeProps}
+          constructFrameworks={constructFrameworks}
+          data-event={dataEvent}
         />
         {tags.map(({ id, keyword: { label, color } = {} }) => (
           <PackageTag

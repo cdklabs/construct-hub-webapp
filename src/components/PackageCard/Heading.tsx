@@ -20,13 +20,10 @@ export const Heading: FunctionComponent = () => {
     dataEvent,
     description,
     comment,
-    metadata: { constructFramework },
+    constructFrameworks,
     name,
     version,
   } = usePackageCard();
-
-  const cdkType = constructFramework?.name;
-  const cdkVersion = constructFramework?.majorVersion;
 
   return (
     <>
@@ -42,7 +39,11 @@ export const Heading: FunctionComponent = () => {
         })}
       >
         <Flex align="center">
-          <CDKTypeBadge majorVersion={cdkVersion} mr={2} name={cdkType} />
+          <CDKTypeBadge
+            constructFrameworks={constructFrameworks}
+            mr={2}
+            zIndex={1}
+          />
           <ChakraHeading
             as="h3"
             color="textPrimary"

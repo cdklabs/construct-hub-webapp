@@ -1,13 +1,26 @@
 import catalogFixture from "../../__fixtures__/catalog.json";
 import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
-import { ExtendedCatalogPackage } from "./catalog-search";
+import { CatalogPackage } from "../package/packages";
+import { CatalogSearchAPI } from "./catalog-search";
 import { CatalogSearchSort } from "./constants";
-import { SORT_FUNCTIONS, FILTER_FUNCTIONS, renderAllKeywords } from "./util";
-
-const packages = catalogFixture.packages as any as ExtendedCatalogPackage[];
+import {
+  SORT_FUNCTIONS,
+  FILTER_FUNCTIONS,
+  renderAllKeywords,
+  mapConstructFrameworks,
+} from "./util";
 
 describe("Catalog Search Utils", () => {
+  const packages = [
+    ...new CatalogSearchAPI(catalogFixture.packages as CatalogPackage[], {
+      updated: "",
+      packages: {},
+    })
+      .search()
+      .values(),
+  ];
+
   describe("Sort Functions", () => {
     it("Sorts by Publish Date", () => {
       const resultsAscending = [...packages].sort(
@@ -55,34 +68,17 @@ describe("Catalog Search Utils", () => {
     it("Filters by CDK Type", () => {
       const filterByCdk8s = FILTER_FUNCTIONS.cdkType(CDKType.cdk8s)!;
       expect(packages.filter(filterByCdk8s)).toEqual(
-        packages.filter((p) => p.metadata.constructFramework?.name === "cdk8s")
+        packages.filter((p) => p.constructFrameworks.get(CDKType.cdk8s))
       );
     });
 
     it("Filters by CDK Version", () => {
-      const dataWithMoreVersions: ExtendedCatalogPackage[] = packages.map(
-        (p) => ({
-          ...p,
-          metadata: {
-            ...p.metadata,
-            ...(p.metadata.constructFramework
-              ? {
-                  constructFramework: {
-                    ...p.metadata.constructFramework,
-                    majorVersion: Math.round(Math.random()) + 1,
-                  },
-                }
-              : {}),
-          },
-        })
-      );
-
       expect(
-        dataWithMoreVersions.filter(FILTER_FUNCTIONS.cdkMajor(1)!)
-      ).toEqual(
-        dataWithMoreVersions.filter(
-          (p) => p.metadata.constructFramework?.majorVersion === 1
+        packages.filter(
+          FILTER_FUNCTIONS.cdkMajor({ cdkType: CDKType.awscdk, cdkMajor: 1 })!
         )
+      ).toEqual(
+        packages.filter((p) => p.constructFrameworks.get(CDKType.awscdk) === 1)
       );
     });
 
@@ -129,59 +125,119 @@ describe("Catalog Search Utils", () => {
           .map((r) => r.name);
 
       expect(query("databases")).toStrictEqual([
-        "aws-cdk-image-resize",
         "@aws-cdk/aws-lambda-nodejs",
+        "aws-cdk-image-resize",
       ]);
 
       expect(query("partners")).toStrictEqual(["aws-cdk-image-resize"]);
       expect(query("databases", "partners")).toStrictEqual([
-        "aws-cdk-image-resize",
         "@aws-cdk/aws-lambda-nodejs",
+        "aws-cdk-image-resize",
       ]);
 
       // only search in tags that are associated with keywords and not highlights.
       expect(query("non-keyword")).toStrictEqual([]);
     });
   });
-});
 
-describe("renderAllKeywords", () => {
-  it("returns a normalized set (all lowercase)", () => {
-    expect(
-      renderAllKeywords({
-        ...packages[0],
-        keywords: ["Foo", "foo", "FoO", "bar", "eh"],
-      })
-    ).toStrictEqual(["foo", "bar", "eh"]);
+  describe("renderAllKeywords", () => {
+    it("returns a normalized set (all lowercase)", () => {
+      expect(
+        renderAllKeywords({
+          ...packages[0],
+          keywords: ["Foo", "foo", "FoO", "bar", "eh"],
+        })
+      ).toStrictEqual(["foo", "bar", "eh"]);
+    });
+
+    it("includes both publisher keywords and tag keywords", () => {
+      expect(
+        renderAllKeywords({
+          ...packages[0],
+          keywords: ["Foo", "foo", "FoO", "bar", "eh"],
+          metadata: {
+            date: "DATE",
+            packageTags: [
+              { id: "id1", keyword: { label: "boom" } },
+              { id: "id2", keyword: { label: "bar" } },
+              { id: "id3", highlight: { label: "baz" } },
+            ],
+          },
+        })
+      ).toStrictEqual(["foo", "bar", "eh", "boom"]);
+    });
+
+    it("filters out certain keywords", () => {
+      expect(
+        renderAllKeywords({
+          ...packages[0],
+          keywords: ["cdk-construct", "foo"],
+          metadata: {
+            date: "DATE",
+            packageTags: [{ id: "id1", keyword: { label: "construct" } }],
+          },
+        })
+      ).toStrictEqual(["foo"]);
+    });
   });
 
-  it("includes both publisher keywords and tag keywords", () => {
-    expect(
-      renderAllKeywords({
-        ...packages[0],
-        keywords: ["Foo", "foo", "FoO", "bar", "eh"],
-        metadata: {
-          date: "DATE",
-          packageTags: [
-            { id: "id1", keyword: { label: "boom" } },
-            { id: "id2", keyword: { label: "bar" } },
-            { id: "id3", highlight: { label: "baz" } },
-          ],
-        },
-      })
-    ).toStrictEqual(["foo", "bar", "eh", "boom"]);
-  });
+  describe("mapConstructFrameworks", () => {
+    const {
+      constructFrameworks: _constructFrameworks,
+      constructFramework: _constructFramework,
+      ...baseMetadata
+    } = packages[0].metadata;
 
-  it("filters out certain keywords", () => {
-    expect(
-      renderAllKeywords({
-        ...packages[0],
-        keywords: ["cdk-construct", "foo"],
-        metadata: {
-          date: "DATE",
-          packageTags: [{ id: "id1", keyword: { label: "construct" } }],
-        },
-      })
-    ).toStrictEqual(["foo"]);
+    const constructFrameworks = [
+      { name: CDKType.awscdk, majorVersion: 1 },
+      { name: CDKType.cdk8s },
+    ];
+
+    const constructFramework = { name: CDKType.cdktf, majorVersion: 2 };
+
+    it("maps metadata.constructFrameworks to a Map", () => {
+      const metadata = {
+        ...baseMetadata,
+        constructFrameworks,
+      };
+
+      const result = mapConstructFrameworks(metadata);
+
+      // Metadata defines AWS CDK with majorVersion 1
+      expect(result.get(CDKType.awscdk)).toEqual(1);
+
+      // Metadata defines cdk8s with no majorVersion
+      expect(result.get(CDKType.cdk8s)).toEqual(null); // Returns null because there is no majorVersion
+
+      // Metadata does not define cdktf
+      expect(result.get(CDKType.cdktf)).toEqual(undefined);
+    });
+
+    // It should never have both properties
+    it("ignores deprecated constructFramework property if constructFrameworks is defined", () => {
+      const metadata = {
+        ...baseMetadata,
+        constructFramework,
+        constructFrameworks,
+      };
+
+      const result = mapConstructFrameworks(metadata);
+
+      // Metadata defines AWS CDK with majorVersion 1
+      expect(result.get(CDKType.awscdk)).toEqual(1);
+
+      // Metadata defines cdk8s with no majorVersion
+      expect(result.get(CDKType.cdk8s)).toEqual(null); // Returns null because there is no majorVersion
+
+      // constructFramework prop defines cdktf majorVersion 2, but should be ignored
+      expect(result.get(CDKType.cdktf)).toEqual(undefined);
+    });
+
+    it("supports deprecated constructFramework property", () => {
+      const metadata = { ...baseMetadata, constructFramework };
+      const result = mapConstructFrameworks(metadata);
+
+      expect(result.get(CDKType.cdktf)).toEqual(2);
+    });
   });
 });
