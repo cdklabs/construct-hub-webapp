@@ -1,12 +1,10 @@
 import catalogFixture from "../../__fixtures__/catalog.json";
 import statsFixture from "../../__fixtures__/stats.json";
-import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { PackageStats } from "../stats";
 import { CatalogSearchAPI } from "./catalog-search";
 import { CatalogSearchSort } from "./constants";
-import * as util from "./util";
 
 describe("CatalogSearchAPI", () => {
   const instance = new CatalogSearchAPI(
@@ -27,13 +25,10 @@ describe("CatalogSearchAPI", () => {
   }
 
   it("exposes a property which returns detected cdk frameworks", () => {
-    const cdkFrameWorkCount = catalogFixture.packages.reduce((sum, i) => {
-      if (i.metadata.constructFramework?.name) {
-        return sum + 1;
-      }
-
-      return sum;
-    }, 0);
+    const cdkFrameWorkCount = [...instance.search().values()].reduce(
+      (sum, { constructFrameworks }) => sum + constructFrameworks.size,
+      0
+    );
 
     const detectedCount = Object.values(instance.constructFrameworks).reduce(
       (sum, i) => sum + i.pkgCount,
@@ -101,27 +96,6 @@ describe("CatalogSearchAPI", () => {
     const [extendedP2] = testInstance.findByName(p2.name);
 
     expect([...dynamodbResults.values()]).toEqual([extendedP1, extendedP2]);
-  });
-
-  it("Ignores cdkMajor filter if no cdkType is passed", () => {
-    const cdkMajorFilterSpy = jest.spyOn(util.FILTER_FUNCTIONS, "cdkMajor");
-
-    instance.search({
-      filters: {
-        cdkType: CDKType.awscdk,
-        cdkMajor: 2,
-      },
-    });
-
-    expect(cdkMajorFilterSpy).toHaveBeenCalledWith(2);
-
-    instance.search({
-      filters: {
-        cdkMajor: 3,
-      },
-    });
-
-    expect(cdkMajorFilterSpy).toHaveBeenCalledWith(undefined);
   });
 
   it("Returns results ordered by Sort", () => {

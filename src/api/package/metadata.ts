@@ -3,11 +3,24 @@ import { API_PATHS } from "../../constants/url";
 import { PackageTagConfig } from "../config";
 import { getAssetsPath } from "./util";
 
+export interface ConstructFramework {
+  name: CDKType;
+  majorVersion?: number;
+}
+
 export interface Metadata {
-  constructFramework?: {
-    name?: CDKType;
-    majorVersion?: number;
-  };
+  /**
+   * Describes the associated Construct framework for a library.
+   * Back-end will introduce a new metadata.constructFrameworks property to replace metadata.constructFramework
+   * @deprecated Use constructFrameworks instead
+   */
+  constructFramework?: Partial<ConstructFramework>;
+  /**
+   * Describes the associated Construct frameworks for a library.
+   * Typically, libraries will be associated with a single framework, though some have no
+   * association or multiple associations.
+   */
+  constructFrameworks?: ConstructFramework[];
   date: string;
   links?: {
     npm: string;

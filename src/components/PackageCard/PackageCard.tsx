@@ -1,15 +1,15 @@
 import { createContext, FunctionComponent, useContext } from "react";
-import { CatalogPackage } from "../../api/package/packages";
+import { ExtendedCatalogPackage } from "../../api/catalog-search";
 import { PackageCardType } from "./constants";
 import { WideCard } from "./WideCard";
 
 export interface PackageCardProps {
   "data-event"?: string;
-  pkg: CatalogPackage;
+  pkg: ExtendedCatalogPackage;
   variant?: PackageCardType;
 }
 
-interface PackageCardState extends CatalogPackage {
+interface PackageCardState extends ExtendedCatalogPackage {
   comment?: string;
   dataEvent?: string;
 }

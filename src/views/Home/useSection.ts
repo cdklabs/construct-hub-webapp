@@ -1,8 +1,8 @@
 import { useMemo } from "react";
+import { ExtendedCatalogPackage } from "../../api/catalog-search";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { FeaturedPackagesDetail } from "../../api/config";
-import { CatalogPackage } from "../../api/package/packages";
-import { findPackage } from "../../api/package/util";
+import { useSearchContext } from "../../contexts/Search";
 import { useCatalog } from "../../hooks/useCatalog";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 
@@ -19,15 +19,18 @@ export const useSection = ({
     sort: CatalogSearchSort.PublishDateDesc,
   });
 
+  const searchInstance = useSearchContext();
+
   return useMemo(() => {
     if (isLoading || error || !results) return [];
 
     if (showLastUpdated) {
       return results.slice(0, showLastUpdated);
-    } else if (showPackages) {
+    } else if (showPackages && searchInstance) {
       return showPackages
         .map((p) => {
-          const pkg = findPackage({ packages: results }, p.name);
+          const [pkg] = searchInstance.findByName(p.name, { dedup: true });
+
           if (pkg) {
             return {
               ...pkg,
@@ -36,9 +39,16 @@ export const useSection = ({
           }
           return undefined;
         })
-        .filter((pkg) => pkg !== undefined) as CatalogPackage[];
+        .filter((pkg) => pkg !== undefined) as ExtendedCatalogPackage[];
     } else {
       return undefined;
     }
-  }, [results, error, isLoading, showLastUpdated, showPackages]);
+  }, [
+    isLoading,
+    error,
+    results,
+    showLastUpdated,
+    showPackages,
+    searchInstance,
+  ]);
 };
