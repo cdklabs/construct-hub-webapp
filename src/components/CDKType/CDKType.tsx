@@ -67,6 +67,7 @@ export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
       const frameworks = [...constructFrameworks.entries()];
       return (
         <Tooltip
+          hasArrow
           label={`Supports: ${frameworks
             .map(([name, majorVersion]) =>
               getText({ name, majorVersion: majorVersion ?? undefined })

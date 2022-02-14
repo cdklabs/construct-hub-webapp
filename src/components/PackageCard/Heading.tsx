@@ -39,7 +39,11 @@ export const Heading: FunctionComponent = () => {
         })}
       >
         <Flex align="center">
-          <CDKTypeBadge constructFrameworks={constructFrameworks} mr={2} />
+          <CDKTypeBadge
+            constructFrameworks={constructFrameworks}
+            mr={2}
+            zIndex={1}
+          />
           <ChakraHeading
             as="h3"
             color="textPrimary"
