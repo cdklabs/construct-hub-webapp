@@ -73,6 +73,7 @@ export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
               getText({ name, majorVersion: majorVersion ?? undefined })
             )
             .join(", ")}`}
+          placement="left-start"
         >
           <Badge {...sharedProps} colorScheme="brand" {...badgeProps}>
             Multi-CDK
@@ -85,22 +86,20 @@ export const CDKTypeBadge = forwardRef<CDKTypeBadgeProps, "span">(
     const bg = badgeColorMap[name];
 
     return (
-      <Tooltip hasArrow label="Hello world!" placement="left-start">
-        <Badge
-          {...sharedProps}
-          as={NavLink}
-          bg={bg}
-          color="white"
-          ref={ref}
-          to={getSearchPath({
-            cdkType: name,
-            cdkMajor: majorVersion ?? undefined,
-          })}
-          {...badgeProps}
-        >
-          <CDKTypeText majorVersion={majorVersion ?? undefined} name={name} />
-        </Badge>
-      </Tooltip>
+      <Badge
+        {...sharedProps}
+        as={NavLink}
+        bg={bg}
+        color="white"
+        ref={ref}
+        to={getSearchPath({
+          cdkType: name,
+          cdkMajor: majorVersion ?? undefined,
+        })}
+        {...badgeProps}
+      >
+        <CDKTypeText majorVersion={majorVersion ?? undefined} name={name} />
+      </Badge>
     );
   }
 );
