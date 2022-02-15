@@ -40,16 +40,18 @@ export const useSectionItems = (): MenuItem[] => {
     };
   }, [jsonDocs]);
 
-  if (!isApiPath(pathname)) {
-    const [readmeSection] = menuItems;
-    const readmeItems: MenuItem[] =
-      readmeSection?.id === README_ITEM_ID ? readmeSection.children : [];
+  return useMemo(() => {
+    if (!isApiPath(pathname)) {
+      const [readmeSection] = menuItems;
+      const readmeItems: MenuItem[] =
+        readmeSection?.id === README_ITEM_ID ? readmeSection.children : [];
 
-    return readmeItems;
-  }
+      return readmeItems;
+    }
 
-  const typeInfo = types.find((type) => type.displayName === typeId);
-  return typeInfo && metadata
-    ? schemaToSectionItems(typeInfo, language, submodule)
-    : [];
+    const typeInfo = types.find((type) => type.displayName === typeId);
+    return typeInfo && metadata
+      ? schemaToSectionItems(typeInfo, language, submodule)
+      : [];
+  }, [language, menuItems, metadata, pathname, submodule, typeId, types]);
 };
