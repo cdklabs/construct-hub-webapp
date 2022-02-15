@@ -1,5 +1,5 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useMemo } from "react";
 import {
   Route,
   Switch,
@@ -9,14 +9,18 @@ import {
 } from "react-router-dom";
 import { NavTree } from "../../components/NavTree";
 import { ChooseSubmodule } from "./ChooseSubmodule";
-import { API_URL_RESOURCE, PACKAGE_ANALYTICS } from "./constants";
+import {
+  API_URL_RESOURCE,
+  README_ITEM_ID,
+  PACKAGE_ANALYTICS,
+} from "./constants";
 import { NavDrawer } from "./NavDrawer";
 import { PackageReadme } from "./PackageReadme";
 import { usePackageState } from "./PackageState";
 import { PackageTypeDocs } from "./PackageTypeDocs";
 import { StickyNavContainer } from "./StickyNavContainer";
 import { useSectionItems } from "./useSectionItems";
-import { isApiPath } from "./util";
+import { isApiPath, MenuItem } from "./util";
 
 // We want the nav to be sticky, but it should account for the sticky heading as well, which is 72px
 const TOP_OFFSET = "4.5rem";
@@ -45,6 +49,21 @@ export const PackageDocs: FunctionComponent = () => {
   const sectionItems = useSectionItems();
 
   const { hash, pathname, search } = useLocation();
+
+  const primaryNavItems = useMemo(() => {
+    return menuItems.reduce((items, item, i) => {
+      // Omit README children which will be displayed on secondary nav
+      if (i === 0 && item?.id === README_ITEM_ID) {
+        const { children, ...readme } = item;
+
+        items.push({ ...readme, children: [] });
+      } else {
+        items.push(item);
+      }
+
+      return items;
+    }, [] as MenuItem[]);
+  }, [menuItems]);
 
   useEffect(() => {
     window.requestAnimationFrame(() => {
@@ -85,7 +104,10 @@ export const PackageDocs: FunctionComponent = () => {
       >
         <SubmoduleSelector />
         <Box overflowY="auto" py={4}>
-          <NavTree data-event={PACKAGE_ANALYTICS.SCOPE} items={menuItems} />
+          <NavTree
+            data-event={PACKAGE_ANALYTICS.SCOPE}
+            items={primaryNavItems}
+          />
         </Box>
       </StickyNavContainer>
 

@@ -1,16 +1,18 @@
 import { useMemo } from "react";
-import { useRouteMatch } from "react-router-dom";
+import { useLocation, useRouteMatch } from "react-router-dom";
 import { QUERY_PARAMS } from "../../../constants/url";
 import { useLanguage } from "../../../hooks/useLanguage";
 import { useQueryParams } from "../../../hooks/useQueryParams";
-import { API_URL_RESOURCE } from "../constants";
+import { API_URL_RESOURCE, README_ITEM_ID } from "../constants";
 import { usePackageState } from "../PackageState";
-import type { MenuItem } from "../util";
+import { isApiPath, MenuItem } from "../util";
 import { schemaToSectionItems } from "./util";
 
 export const useSectionItems = (): MenuItem[] => {
+  const { pathname } = useLocation();
   const { path } = useRouteMatch();
-  const { jsonDocs } = usePackageState();
+  const { menuItems, jsonDocs } = usePackageState();
+
   const match = useRouteMatch<{ typeId: string }>(
     `${path}/${API_URL_RESOURCE}/:typeId`
   );
@@ -37,6 +39,14 @@ export const useSectionItems = (): MenuItem[] => {
       metadata: jsonDocs.data.metadata,
     };
   }, [jsonDocs]);
+
+  if (!isApiPath(pathname)) {
+    const [readmeSection] = menuItems;
+    const readmeItems: MenuItem[] =
+      readmeSection?.id === README_ITEM_ID ? readmeSection.children : [];
+
+    return readmeItems;
+  }
 
   const typeInfo = types.find((type) => type.displayName === typeId);
   return typeInfo && metadata

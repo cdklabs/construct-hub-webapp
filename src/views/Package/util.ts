@@ -2,7 +2,7 @@ import emoji from "node-emoji";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { sanitize } from "../../util/sanitize-anchor";
-import { API_URL_RESOURCE } from "./constants";
+import { API_URL_RESOURCE, README_ITEM_ID } from "./constants";
 
 export interface MenuItem {
   id: string;
@@ -191,7 +191,7 @@ export const parseMarkdownStructure = (
   const readmeMenuItems = [
     {
       level: 1,
-      id: "Readme",
+      id: README_ITEM_ID,
       title: "Readme",
       path: baseReadmePath,
       children: readmeChildren,
