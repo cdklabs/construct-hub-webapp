@@ -2,6 +2,7 @@ import emoji from "node-emoji";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { sanitize } from "../../util/sanitize-anchor";
+import { API_URL_RESOURCE } from "./constants";
 
 export interface MenuItem {
   id: string;
@@ -235,4 +236,9 @@ export const parseMarkdownStructure = (
     apiReference: types,
     menuItems,
   };
+};
+
+export const isApiPath = (path: string) => {
+  const parts = path.split("/");
+  return parts[parts.length - 2] === API_URL_RESOURCE;
 };
