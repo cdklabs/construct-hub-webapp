@@ -34,3 +34,7 @@ export const PACKAGE_ANALYTICS = {
     ABUSE: packageEvent("Feedback", "Abuse"),
   },
 };
+
+export const API_URL_RESOURCE = "api";
+
+export const README_ITEM_ID = "Readme";
