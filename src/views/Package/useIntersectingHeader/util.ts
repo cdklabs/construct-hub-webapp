@@ -16,3 +16,6 @@ export const getItemIds = (item: MenuItem) => {
 
 export const getElementId = (el: Element): string =>
   normalizeId(el.getAttribute("data-heading-id") as string);
+
+export const getSectionIdSet = (items: MenuItem[]): Set<string> =>
+  new Set(items.map(getItemIds).flat());

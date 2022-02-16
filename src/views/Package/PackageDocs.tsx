@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import { ChooseSubmodule } from "./ChooseSubmodule";
-import { API_URL_RESOURCE } from "./constants";
+import { API_URL_RESOURCE, DOCS_CONTAINER_ID } from "./constants";
 import { NavDrawer } from "./NavDrawer";
 import { PackageReadme } from "./PackageReadme";
 import { usePackageState } from "./PackageState";
@@ -87,6 +87,7 @@ export const PackageDocs: FunctionComponent = () => {
       {/* Docs */}
       <Box
         h="max-content"
+        id={DOCS_CONTAINER_ID}
         maxWidth="100%"
         overflow="hidden"
         py={4}

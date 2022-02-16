@@ -36,5 +36,5 @@ export const PACKAGE_ANALYTICS = {
 };
 
 export const API_URL_RESOURCE = "api";
-
 export const README_ITEM_ID = "Readme";
+export const DOCS_CONTAINER_ID = "docs-container";
