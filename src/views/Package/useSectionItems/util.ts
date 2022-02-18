@@ -106,9 +106,10 @@ export const schemaToSectionItems = (
         if (submodule) {
           query += `&${QUERY_PARAMS.SUBMODULE}=${submodule}`;
         }
+
         return {
           level: 2,
-          id: value.id,
+          id: hash,
           title: value.displayName,
           path: `${path}${query}${hash}`,
           children: [],
