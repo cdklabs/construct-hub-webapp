@@ -21,14 +21,14 @@ export const SecondaryDocNavigation: FunctionComponent = () => {
   const allowIntersectTakeover = useRef(false);
 
   // Tracks the link which was clicked, is set to undefined when the intersectionObserver takes over
-  const [clickedItemPath, setClickedItemPath] = useState<string | undefined>(
-    hash
-  );
+  const [recentlyClickedItem, setRecentlyClickedItem] = useState<
+    string | undefined
+  >(hash);
 
   // When a user clicks a link, we give control of highlights to the clickItemPath state for 500ms
   // Afterwards, scrolling via intersection observer takes control of state
   useEffect(() => {
-    setClickedItemPath(hash);
+    setRecentlyClickedItem(hash);
     allowIntersectTakeover.current = false;
 
     setTimeout(() => {
@@ -37,24 +37,26 @@ export const SecondaryDocNavigation: FunctionComponent = () => {
   }, [hash]);
 
   // When intersectingHeader changes from scroll and allowIntersectTakeover is true,
-  // we set the clickedItemPath state to undefined so link highlight state will be dictated
+  // we set the recentlyClickedItem state to undefined so link highlight state will be dictated
   // by the intersectingHeader state
   useEffect(() => {
-    if (clickedItemPath && allowIntersectTakeover.current) {
-      setClickedItemPath(undefined);
+    if (recentlyClickedItem && allowIntersectTakeover.current) {
+      setRecentlyClickedItem(undefined);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [intersectingHeader]);
 
+  // If recentlyClickedItem is defined, use it to compare for highlight state
+  // Otherwise compare item id against intersectingHeader
   const getIsLinkActive: GetIsActiveItemFunction = useCallback(
     ({ path, id }) => {
-      if (clickedItemPath) {
-        return new URL(path ?? "", window.origin).hash === clickedItemPath;
+      if (recentlyClickedItem) {
+        return new URL(path ?? "", window.origin).hash === recentlyClickedItem;
       }
 
       return normalizeId(id) === intersectingHeader;
     },
-    [intersectingHeader, clickedItemPath]
+    [intersectingHeader, recentlyClickedItem]
   );
 
   return (
