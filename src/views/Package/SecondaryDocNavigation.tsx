@@ -17,16 +17,16 @@ export const SecondaryDocNavigation: FunctionComponent = () => {
   const { hash } = useLocation();
 
   // This ref is used to direct control over highlight state between
-  // item clicks and the intersection observer
+  // recentlyClickedItem and intersectingHeader
   const allowIntersectTakeover = useRef(false);
 
-  // Tracks the link which was clicked, is set to undefined when the intersectionObserver takes over
+  // Tracks the link which was clicked, is set to undefined when the intersectingHeader state takes over
   const [recentlyClickedItem, setRecentlyClickedItem] = useState<
     string | undefined
   >(hash);
 
-  // When a user clicks a link, we give control of highlights to the clickItemPath state for 500ms
-  // Afterwards, scrolling via intersection observer takes control of state
+  // When a user clicks a link, we give control of highlights to the recentlyClickedItem state for 500ms
+  // Afterwards, intersectingHeader state via intersection observer takes control of state
   useEffect(() => {
     setRecentlyClickedItem(hash);
     allowIntersectTakeover.current = false;
