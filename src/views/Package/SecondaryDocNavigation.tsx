@@ -1,4 +1,11 @@
-import { FunctionComponent, useCallback } from "react";
+import {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useLocation } from "react-router-dom";
 import { GetIsActiveItemFunction, NavTree } from "../../components/NavTree";
 import { PACKAGE_ANALYTICS } from "./constants";
 import { normalizeId, useIntersectingHeader } from "./useIntersectingHeader";
@@ -7,10 +14,47 @@ import { useSectionItems } from "./useSectionItems";
 export const SecondaryDocNavigation: FunctionComponent = () => {
   const intersectingHeader = useIntersectingHeader();
   const sectionItems = useSectionItems();
+  const { hash } = useLocation();
+
+  // This ref is used to direct control over highlight state between
+  // item clicks and the intersection observer
+  const allowIntersectTakeover = useRef(false);
+
+  // Tracks the link which was clicked, is set to undefined when the intersectionObserver takes over
+  const [clickedItemPath, setClickedItemPath] = useState<string | undefined>(
+    hash
+  );
+
+  // When a user clicks a link, we give control of highlights to the clickItemPath state for 500ms
+  // Afterwards, scrolling via intersection observer takes control of state
+  useEffect(() => {
+    setClickedItemPath(hash);
+    allowIntersectTakeover.current = false;
+
+    setTimeout(() => {
+      allowIntersectTakeover.current = true;
+    }, 500);
+  }, [hash]);
+
+  // When intersectingHeader changes from scroll and allowIntersectTakeover is true,
+  // we set the clickedItemPath state to undefined so link highlight state will be dictated
+  // by the intersectingHeader state
+  useEffect(() => {
+    if (clickedItemPath && allowIntersectTakeover.current) {
+      setClickedItemPath(undefined);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [intersectingHeader]);
 
   const getIsLinkActive: GetIsActiveItemFunction = useCallback(
-    ({ id }) => normalizeId(id) === intersectingHeader,
-    [intersectingHeader]
+    ({ path, id }) => {
+      if (clickedItemPath) {
+        return new URL(path ?? "", window.origin).hash === clickedItemPath;
+      }
+
+      return normalizeId(id) === intersectingHeader;
+    },
+    [intersectingHeader, clickedItemPath]
   );
 
   return (
