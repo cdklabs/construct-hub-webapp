@@ -5465,9 +5465,9 @@ ejs@^3.1.6:
     jake "^10.6.1"
 
 electron-to-chromium@^1.4.76:
-  version "1.4.77"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.77.tgz#c26e454cb8721d4ebdae3e276c57cd32e51c32ed"
-  integrity sha512-fiDxw8mO9Ph1Z0bjX2sFTPpi0J0QkOiwOJF+5Q0J0baNc/F9lLePAvDPlnoxvbUYYMizqrKPeotRRkJ9LtxAew==
+  version "1.4.79"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.79.tgz#02b504e1e6039b2e61edfc5f856895a0927925f5"
+  integrity sha512-nWfAxof87mGHkbORCwVRPst4FlSVdprOKS6dBMrcwn3sjwf8iHXEhsu1+FU5Psd7Ps3KKeBufAdfsPK5BmbSUg==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -8133,10 +8133,10 @@ jsesc@~0.5.0:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
   integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
 
-jsii-docgen@^6.1.25:
-  version "6.1.25"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-6.1.25.tgz#1b172e462f9c9c52cecfc3632c42bb046b236fd9"
-  integrity sha512-WBHphZOc8rw4XubL5YBQMEgkAhxvEW0xcRUVk/vnFPYt5A7wd1uyzYbxp1DaqHA5n7vDYJNxUWXS/pqurH/V9A==
+jsii-docgen@^6.1.27:
+  version "6.1.27"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-6.1.27.tgz#a403e698c3724fc41961a68ac314c2fcdb36ac67"
+  integrity sha512-4HBnTGLCKp6Q8eLHarjH/KCBBwEd/8WnaRrSTmf1E4ypi4XwLAAXBzPFNuSerztM48LOs1a1zBqzaQL4l2jUSw==
   dependencies:
     "@jsii/spec" "^1.54.0"
     case "^1.6.3"
@@ -8585,9 +8585,9 @@ lru-cache@^6.0.0:
     yallist "^4.0.0"
 
 lru-cache@^7.3.1, lru-cache@^7.4.1:
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.4.1.tgz#afe07e885ef0cd5bf99f62f4fa7545d48746d779"
-  integrity sha512-NCD7/WRlFmADccuHjsRUYqdluYBr//n/O0fesCb/n52FoGcgKh8o4Dpm7YIbZwVcDs8rPBQbCZLmWWsp6m+xGQ==
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.4.2.tgz#92f7b5afe82759f51b216a96fae3bc1828df9712"
+  integrity sha512-Xs3+hFPDSKQmL05Gs6NhvAADol1u9TmLoNoE03ZjszX6a5iYIO3rPUM4jIjoBUJeTaWEBMozjjmV70gvdRfIdw==
 
 lunr@^2.3.9:
   version "2.3.9"
@@ -10415,10 +10415,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.52.60:
-  version "0.52.60"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.52.60.tgz#b678780dcafd5da2260ed2b948f7576917f1edb1"
-  integrity sha512-BzsXsckBBh3Uie6kvEHpB5o4Gx/2nH5q9ws43zceJnbdZmGLYGFiihPB4y96uEig4fI3v7LLeAfrcpCWEUjVcw==
+projen@^0.52.61:
+  version "0.52.61"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.52.61.tgz#9a712a69e225e53b335f49d09672666ec37d8782"
+  integrity sha512-K9Kfa3kWOVkFQkSlzQQvddojRARMVNXdvVeKmi4o5G+g41aHMdOO3zGwa7mwI9Svk2bL6k79tXBXHzFJyzW49A==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
