@@ -9,6 +9,7 @@ const proxyUrl = require("../package.json").proxy;
 
 const app = express();
 const port = process.env.PORT || 3000;
+const isCI = process.env.CI;
 
 const buildDir = path.join(__dirname, "..", "build");
 
@@ -21,6 +22,15 @@ app.use(
     filter: (req) => PROXY_FILES.some((file) => req.url.includes(file)),
   })
 );
+
+// In CI runs, replace the preload script that contains analytics with a stub
+// Analytics can cause transient errors when the browser is automated
+if (isCI) {
+  app.get("/preload.js", (req, res) => {
+    res.set("Content-Type", "text/javascript");
+    res.send("// Empty file for CI test runs");
+  });
+}
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(buildDir, "index.html"));

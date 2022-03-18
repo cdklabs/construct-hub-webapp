@@ -121,7 +121,7 @@ project.npmignore.addPatterns("/.vscode/");
     });
 
     project.addTask("proxy-server:ci", {
-      exec: "npx react-app-rewired build && yarn proxy-server",
+      exec: "npx react-app-rewired build && CI=true yarn proxy-server",
     });
   })();
 
