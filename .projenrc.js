@@ -183,7 +183,7 @@ project.npmignore.addPatterns("/.vscode/");
   e2eCanary.on({
     schedule: [
       {
-        cron: "0 */3 * * *", // run every three hours
+        cron: "*/30 * * * *", // run every 30 minutes
       },
     ],
     workflowDispatch: {},
