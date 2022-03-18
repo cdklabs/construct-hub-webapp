@@ -133,6 +133,9 @@ project.npmignore.addPatterns("/.vscode/");
     {
       name: "Cypress Run",
       uses: "cypress-io/github-action@v2",
+      env: {
+        DEBUG: "@cypress/github-action",
+      },
       with: {
         start: "yarn proxy-server:ci",
         "wait-on": "http://localhost:3000",
