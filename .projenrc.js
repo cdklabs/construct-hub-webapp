@@ -133,6 +133,9 @@ project.npmignore.addPatterns("/.vscode/");
     {
       name: "Cypress Run",
       uses: "cypress-io/github-action@v2",
+      env: {
+        DEBUG: "@cypress/github-action",
+      },
       with: {
         start: "yarn proxy-server:ci",
         "wait-on": "http://localhost:3000",
@@ -183,7 +186,7 @@ project.npmignore.addPatterns("/.vscode/");
   e2eCanary.on({
     schedule: [
       {
-        cron: "0 */3 * * *", // run every three hours
+        cron: "*/30 * * * *", // run every 30 minutes
       },
     ],
     workflowDispatch: {},
