@@ -10,7 +10,7 @@ export enum Language {
   DotNet = "dotnet",
   TypeScript = "typescript",
   Python = "python",
-  Go = "golang",
+  Go = "go",
   Java = "java",
 }
 
@@ -46,6 +46,7 @@ export const TEMP_SUPPORTED_LANGUAGES: ReadonlySet<Language> = new Set([
   Language.TypeScript,
   Language.Java,
   Language.DotNet,
+  Language.Go,
 ]);
 
 export const LANGUAGE_RENDER_MAP: {
@@ -67,7 +68,7 @@ export const LANGUAGE_RENDER_MAP: {
     icon: DukeIcon,
   },
   [Language.Go]: {
-    name: LANGUAGE_NAME_MAP.golang,
+    name: LANGUAGE_NAME_MAP.go,
     icon: GoIcon,
   },
   [Language.DotNet]: {

@@ -79,7 +79,7 @@ describe("getSearchPath", () => {
     });
 
     expect(result).toMatchInlineSnapshot(
-      `"/search?q=%40aws%2Fcdk&cdk=aws-cdk&cdkver=1&langs=dotnet%2Cgolang&sort=newest&offset=1"`
+      `"/search?q=%40aws%2Fcdk&cdk=aws-cdk&cdkver=1&langs=dotnet%2Cgo&sort=newest&offset=1"`
     );
   });
 });
@@ -109,7 +109,7 @@ describe("getPackagePath", () => {
     });
 
     expect(pathWithLanguage).toMatchInlineSnapshot(
-      `"/packages/@example/construct/v/1.0.0?lang=golang"`
+      `"/packages/@example/construct/v/1.0.0?lang=go"`
     );
 
     const pathWithApiRef = getPackagePath({ ...basePkg, api: "bar" });
@@ -126,7 +126,7 @@ describe("getPackagePath", () => {
     });
 
     expect(pathWithAllParams).toMatchInlineSnapshot(
-      `"/packages/@example/construct/v/1.0.0/api/bar?submodule=foo&lang=golang"`
+      `"/packages/@example/construct/v/1.0.0/api/bar?submodule=foo&lang=go"`
     );
   });
 });

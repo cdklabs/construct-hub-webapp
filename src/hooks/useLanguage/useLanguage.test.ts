@@ -37,11 +37,11 @@ describe("useLanguage", () => {
   it("sets value to valid language from query params", () => {
     useLocation.mockReturnValue({
       ...baseLocation,
-      search: "lang=golang",
+      search: "lang=go",
     });
     const { result } = testRender();
 
-    expect(result.current[0]).toEqual("golang");
+    expect(result.current[0]).toEqual("go");
   });
 
   it("ignores invalid language from query params", () => {
