@@ -51,6 +51,12 @@ const getCodeSample = ({
     const packageId = assembly.targets?.dotnet?.packageId;
     if (!packageId) return undefined;
     return `dotnet add package ${packageId} --version ${version}`;
+  } else if (language === Language.Go) {
+    const repositoryUrl = assembly?.targets?.go?.moduleName;
+
+    if (!repositoryUrl) return undefined;
+
+    return `go get ${repositoryUrl}`;
   }
 
   return undefined;
