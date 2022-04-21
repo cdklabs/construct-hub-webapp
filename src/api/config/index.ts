@@ -93,6 +93,11 @@ export interface FeaturedPackagesDetail {
 
 export interface FeatureFlags {}
 
+export interface Feed {
+  type: string;
+  url: string;
+}
+
 export interface Config {
   featureFlags?: FeatureFlags;
   packageLinks?: PackageLinkConfig[];
@@ -100,6 +105,7 @@ export interface Config {
   packageTags?: PackageTagConfig[];
   packageTagGroups?: TagGroupConfig[];
   categories?: Category[];
+  feeds?: Feed[];
 }
 
 export const DEFAULT_FEATURED_PACKAGES = {
