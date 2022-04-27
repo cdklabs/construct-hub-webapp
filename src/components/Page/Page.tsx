@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { pageInfo } from "../../constants/pageInfo";
 import { usePageView } from "../../contexts/Analytics";
+import { useConfigValue } from "../../hooks/useConfigValue";
 
 export interface PageProps {
   pageName: keyof typeof pageInfo;
@@ -35,6 +36,7 @@ export const Page: FunctionComponent<PageProps> = ({
     trackPageView();
   }, [trackPageView]);
 
+  const feedUrls = useConfigValue("feeds") || [];
   const { suffix = true, title, description } = meta;
   const formattedTitle = suffix ? `${title} - Construct Hub` : title;
 
@@ -47,6 +49,9 @@ export const Page: FunctionComponent<PageProps> = ({
 
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta charSet="utf-8" />
+        {feedUrls.map(({ url, mimeType }) => (
+          <link href={url} key={url} rel="alternate" type={mimeType} />
+        ))}
 
         <title>{formattedTitle}</title>
         <meta content={formattedTitle} property="og:title" />
