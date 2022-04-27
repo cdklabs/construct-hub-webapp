@@ -49,8 +49,8 @@ export const Page: FunctionComponent<PageProps> = ({
 
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta charSet="utf-8" />
-        {feedUrls.map(({ url, type }) => (
-          <link href={url} key={url} rel="alternate" type={type} />
+        {feedUrls.map(({ url, mimeType }) => (
+          <link href={url} key={url} rel="alternate" type={mimeType} />
         ))}
 
         <title>{formattedTitle}</title>

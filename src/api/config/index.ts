@@ -94,7 +94,7 @@ export interface FeaturedPackagesDetail {
 export interface FeatureFlags {}
 
 export interface Feed {
-  type: string;
+  mimeType: string;
   url: string;
 }
 
