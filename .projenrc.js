@@ -132,11 +132,11 @@ project.npmignore.addPatterns("/.vscode/");
   const cypressRunSteps = [
     {
       name: "Checkout",
-      uses: "actions/checkout@v2",
+      uses: "actions/checkout@v3",
     },
     {
       name: "Cypress Run",
-      uses: "cypress-io/github-action@v2",
+      uses: "cypress-io/github-action@v3",
       env: {
         DEBUG: "@cypress/github-action",
       },
@@ -147,7 +147,7 @@ project.npmignore.addPatterns("/.vscode/");
       },
     },
     {
-      uses: "actions/upload-artifact@v2",
+      uses: "actions/upload-artifact@v3",
       if: "failure()",
       with: {
         name: "cypress-screenshots",
@@ -155,7 +155,7 @@ project.npmignore.addPatterns("/.vscode/");
       },
     },
     {
-      uses: "actions/upload-artifact@v2",
+      uses: "actions/upload-artifact@v3",
       if: "always()",
       with: {
         name: "cypress-videos",
