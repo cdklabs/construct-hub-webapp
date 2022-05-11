@@ -89,10 +89,14 @@ const project = new web.ReactTypeScriptProject({
   autoApproveUpgrades: true,
 });
 
-// addressing https://github.com/advisories/GHSA-rp65-9cf3-cjxr forcefully until
-// react-scripts fixes the dependency chain.
-// if test pass, we should be ok with this override, even though its a different major version.
-project.package.addField("resolutions", { "nth-check": "2.0.1" });
+project.package.addField("resolutions", {
+  // addressing https://github.com/advisories/GHSA-rp65-9cf3-cjxr forcefully until
+  // react-scripts fixes the dependency chain.
+  // if test pass, we should be ok with this override, even though its a different major version.
+  "nth-check": "2.0.1",
+  // addressing https://github.com/facebook/react/issues/24304
+  "@types/react": "17.0.45",
+});
 
 project.gitignore.addPatterns("/.vscode/");
 project.npmignore.addPatterns("/.vscode/");
