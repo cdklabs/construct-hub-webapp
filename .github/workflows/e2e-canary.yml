@@ -14,21 +14,21 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Cypress Run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v3
         env:
           DEBUG: "@cypress/github-action"
         with:
           start: yarn proxy-server:ci
           wait-on: http://localhost:3000
           wait-on-timeout: 150
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: cypress-videos
