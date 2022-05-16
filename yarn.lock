@@ -2807,7 +2807,7 @@
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
-  integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
+  integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
 "@types/lodash.mergewith@4.6.6":
   version "4.6.6"
@@ -3036,7 +3036,7 @@
 "@types/warning@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/warning/-/warning-3.0.0.tgz#0d2501268ad8f9962b740d387c4654f5f8e23e52"
-  integrity sha1-DSUBJorY+ZYrdA04fEZU9fjiPlI=
+  integrity sha512-t/Tvs5qR47OLOr+4E9ckN8AmP2Tf16gWq+/qA4iUGS/OOyHVO8wv2vjJuX8SNOUTJyWb+2t7wJm6cXILFnOROA==
 
 "@types/ws@^8.5.1":
   version "8.5.3"
@@ -3458,9 +3458,9 @@ ansi-align@^3.0.0:
     string-width "^4.1.0"
 
 ansi-colors@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
-  integrity sha512-JoX0apGbHaUJBNl6yF+p6JAFYZ666/hhCGKN5t9QFjbJQKUU/g8MNbFDbvfrgKXvI1QpZplPOnwIo99lX/AAmA==
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.2.tgz#e33debb85260fbe4ed8f00f1e0c282516109795e"
+  integrity sha512-cEG18jjLG0O74o/33eEfnmtXYDEY196ZjL0eQEISULF+Imi7vr25l6ntGYmqS5lIrQIEeze+CqUtPVItywE7ZQ==
 
 ansi-escapes@^4.2.1, ansi-escapes@^4.3.0, ansi-escapes@^4.3.1:
   version "4.3.2"
@@ -4601,16 +4601,7 @@ conventional-changelog-config-spec@2.1.0, conventional-changelog-config-spec@^2.
   resolved "https://registry.yarnpkg.com/conventional-changelog-config-spec/-/conventional-changelog-config-spec-2.1.0.tgz#874a635287ef8b581fd8558532bf655d4fb59f2d"
   integrity sha512-IpVePh16EbbB02V+UA+HQnnPIohgXvJRxHcS5+Uwk4AT5LjzCZJm5sp/yqs5C6KZJ1jMsV4paEV13BN1pvDuxQ==
 
-conventional-changelog-conventionalcommits@4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-conventionalcommits/-/conventional-changelog-conventionalcommits-4.6.1.tgz#f4c0921937050674e578dc7875f908351ccf4014"
-  integrity sha512-lzWJpPZhbM1R0PIzkwzGBCnAkH5RKJzJfFQZcl/D+2lsJxAwGnDKBqn/F4C1RD31GJNn8NuKWQzAZDAVXPp2Mw==
-  dependencies:
-    compare-func "^2.0.0"
-    lodash "^4.17.15"
-    q "^1.5.1"
-
-conventional-changelog-conventionalcommits@^4.5.0:
+conventional-changelog-conventionalcommits@4.6.3, conventional-changelog-conventionalcommits@^4.5.0:
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/conventional-changelog-conventionalcommits/-/conventional-changelog-conventionalcommits-4.6.3.tgz#0765490f56424b46f6cb4db9135902d6e5a36dc2"
   integrity sha512-LTTQV4fwOM4oLPad317V/QNQ1FY4Hju5qeBIM1uTHbrnCE+Eg4CdRZ3gO2pUeR+tzWdp80M2j3qFFEDWVqOV4g==
@@ -4695,10 +4686,10 @@ conventional-changelog-writer@^5.0.0:
     split "^1.0.0"
     through2 "^4.0.0"
 
-conventional-changelog@3.1.24:
-  version "3.1.24"
-  resolved "https://registry.yarnpkg.com/conventional-changelog/-/conventional-changelog-3.1.24.tgz#ebd180b0fd1b2e1f0095c4b04fd088698348a464"
-  integrity sha512-ed6k8PO00UVvhExYohroVPXcOJ/K1N0/drJHx/faTH37OIZthlecuLIRX/T6uOp682CAoVoFpu+sSEaeuH6Asg==
+conventional-changelog@3.1.25:
+  version "3.1.25"
+  resolved "https://registry.yarnpkg.com/conventional-changelog/-/conventional-changelog-3.1.25.tgz#3e227a37d15684f5aa1fb52222a6e9e2536ccaff"
+  integrity sha512-ryhi3fd1mKf3fSjbLXOfK2D06YwKNic1nC9mWqybBHdObPd8KJ2vjaXZfYj1U23t+V8T8n0d7gwnc9XbIdFbyQ==
   dependencies:
     conventional-changelog-angular "^5.0.12"
     conventional-changelog-atom "^2.0.8"
@@ -6444,13 +6435,6 @@ fresh@0.5.2:
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
 
-fs-access@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/fs-access/-/fs-access-1.0.1.tgz#d6a87f262271cefebec30c553407fb995da8777a"
-  integrity sha1-1qh/JiJxzv6+wwxVNAf7mV2od3o=
-  dependencies:
-    null-check "^1.0.0"
-
 fs-extra@^10.0.0, fs-extra@^10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
@@ -6682,9 +6666,9 @@ glob-to-regexp@^0.4.1:
   integrity sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==
 
 glob@^7, glob@^7.0.0, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.2.0:
-  version "7.2.2"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.2.tgz#29deb38e1ef90f132d5958abe9c3ee8e87f3c318"
-  integrity sha512-NzDgHDiJwKYByLrL5lONmQFpK/2G78SMMfo+E9CuGlX4IkvfKDsiQSNPwAYxEy+e6p7ZQ3uslSLlwlJcqezBmQ==
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.3.tgz#b8df0fb802bbfa8e89bd1d938b4e16578ed44f2b"
+  integrity sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
@@ -9362,9 +9346,9 @@ npm-bundled@^1.1.1, npm-bundled@^1.1.2:
     npm-normalize-package-bin "^1.0.1"
 
 npm-check-updates@^12:
-  version "12.5.11"
-  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-12.5.11.tgz#c594902b21af8c251a5ebf12686143b0d2f06356"
-  integrity sha512-uS3yYYK/F1VvZlJRymuCkq+MY2R7v/WlORo5WPUTYx+1OwkqeDMC/CEEGfCN7ATwT2M+JxVVKk9Gq/TGiZjJOw==
+  version "12.5.12"
+  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-12.5.12.tgz#fdcf746b352236dcf3d0885d4462af3abd6da9eb"
+  integrity sha512-JAFs+kKokZmYPRzhSHgIpKashX6vSGGXYo0VJXNaKV/nLnq3ZKI0nTVou9OwTix+PFfLAWTEJ6T/byGxkDlhWA==
   dependencies:
     chalk "^4.1.2"
     cint "^8.2.1"
@@ -9473,11 +9457,6 @@ nth-check@2.0.1, nth-check@^1.0.2, nth-check@^2.0.1:
   integrity sha512-it1vE95zF6dTT9lBsYbxvqh0Soy4SPowchj0UBGj/V6cTPnXXtQOPUbhZ6CmGzAD/rW22LQK6E96pcdJXk4A4w==
   dependencies:
     boolbase "^1.0.0"
-
-null-check@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/null-check/-/null-check-1.0.0.tgz#977dffd7176012b9ec30d2a39db5cf72a0439edd"
-  integrity sha1-l33/1xdgErnsMNKjnbXPcqBDnt0=
 
 nwsapi@^2.2.0:
   version "2.2.0"
@@ -11950,21 +11929,20 @@ stackframe@^1.1.1:
   integrity sha512-h88QkzREN/hy8eRdyNhhsO7RSJ5oyTqxxmmn0dzBIMUclZsjpfmrsg81vp8mjjAs2vAZ72nyWxRUwSwmh0e4xg==
 
 standard-version@^9:
-  version "9.3.2"
-  resolved "https://registry.yarnpkg.com/standard-version/-/standard-version-9.3.2.tgz#28db8c1be66fd2d736f28f7c5de7619e64cd6dab"
-  integrity sha512-u1rfKP4o4ew7Yjbfycv80aNMN2feTiqseAhUhrrx2XtdQGmu7gucpziXe68Z4YfHVqlxVEzo4aUA0Iu3VQOTgQ==
+  version "9.5.0"
+  resolved "https://registry.yarnpkg.com/standard-version/-/standard-version-9.5.0.tgz#851d6dcddf5320d5079601832aeb185dbf497949"
+  integrity sha512-3zWJ/mmZQsOaO+fOlsa0+QK90pwhNd042qEcw6hKFNoLFs7peGyvPffpEBbK/DSGPbyOvli0mUIFv5A4qTjh2Q==
   dependencies:
     chalk "^2.4.2"
-    conventional-changelog "3.1.24"
+    conventional-changelog "3.1.25"
     conventional-changelog-config-spec "2.1.0"
-    conventional-changelog-conventionalcommits "4.6.1"
+    conventional-changelog-conventionalcommits "4.6.3"
     conventional-recommended-bump "6.1.0"
     detect-indent "^6.0.0"
     detect-newline "^3.1.0"
     dotgitignore "^2.1.0"
     figures "^3.1.0"
     find-up "^5.0.0"
-    fs-access "^1.0.1"
     git-semver-tags "^4.0.0"
     semver "^7.1.1"
     stringify-package "^1.0.1"
