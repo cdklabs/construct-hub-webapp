@@ -17,7 +17,6 @@
     ".projen/files.json",
     ".projen/tasks.json",
     "LICENSE",
-    "src/react-app-env.d.ts",
     "tsconfig.dev.json",
     "tsconfig.json"
   ],
