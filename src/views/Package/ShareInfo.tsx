@@ -84,7 +84,7 @@ export const ShareInfo: FunctionComponent = () => {
         </TabPanels>
       </Tabs>
 
-      <Heading as="h2" color="textPrimary" fontSize="2xl" mx="auto" py={5}>
+      <Heading as="h2" color="textPrimary" fontSize="2xl" mx="auto" pb={5}>
         Dark Button
       </Heading>
       <Link to="/packages/constructs">
