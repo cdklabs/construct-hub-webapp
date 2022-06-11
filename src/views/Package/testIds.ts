@@ -9,6 +9,7 @@ export default createTestIds("package-page", [
   "dependenciesTab",
   "dependenciesList",
   "dependenciesLink",
+  "badgeTab",
   "description",
   "markdown",
   "selectVersionButton",

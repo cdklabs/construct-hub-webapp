@@ -14,6 +14,7 @@ import { FeedbackLinks } from "./FeedbackLinks";
 import { PackageDocs } from "./PackageDocs";
 import { PackageHeader } from "./PackageHeader";
 import { usePackageState } from "./PackageState";
+import { ShareInfo } from "./ShareInfo";
 import testIds from "./testIds";
 
 export const PackageLayout: FunctionComponent = () => {
@@ -50,6 +51,12 @@ export const PackageLayout: FunctionComponent = () => {
             >
               Dependencies
             </Tab>
+            <Tab
+              data-event={PACKAGE_ANALYTICS.GITHUB_BADGE.TAB}
+              data-testid={testIds.badgeTab}
+            >
+              Share
+            </Tab>
           </TabList>
           <TabPanels maxW="full">
             <TabPanel p={0}>
@@ -58,6 +65,10 @@ export const PackageLayout: FunctionComponent = () => {
 
             <TabPanel>
               <DependenciesList />
+            </TabPanel>
+
+            <TabPanel>
+              <ShareInfo />
             </TabPanel>
           </TabPanels>
         </Tabs>

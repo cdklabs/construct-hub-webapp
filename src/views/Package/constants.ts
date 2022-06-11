@@ -28,6 +28,10 @@ export const PACKAGE_ANALYTICS = {
     TAB: packageEvent("Dependencies", "Tab"),
   },
 
+  GITHUB_BADGE: {
+    TAB: packageEvent("Badge", "Tab"),
+  },
+
   FEEDBACK: {
     PUBLISHER: packageEvent("Feedback", "Publisher"),
     CONSTRUCT_HUB: packageEvent("Feedback", "Construct Hub"),
