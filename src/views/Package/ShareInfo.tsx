@@ -41,7 +41,7 @@ export const ShareInfo: FunctionComponent = () => {
         to light mode or dark mode based on whether the user&apos;s client has
         requested a light or dark theme.
       </Text>
-      <Link to="/packages/constructs">
+      <Link to={packagePath}>
         <Image src="/badge-dynamic.svg" />
       </Link>
 
