@@ -3,7 +3,6 @@
   <mask id="m"><rect width="1300" height="200" rx="50" fill="#FFF"/></mask>
   <g mask="url(#m)">
     <rect width="1300" height="200" fill="rgb(40, 43, 52)"/>
-    <rect width="1300" height="200" fill="url(#a)"/>
   </g>
   <g aria-hidden="true" fill="rgb(212, 213, 214)" text-anchor="start" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' font-size="100">
     <text x="110" y="138" textLength="360" font-weight="500">View on</text>
