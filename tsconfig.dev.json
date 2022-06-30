@@ -11,7 +11,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "module": "esnext",
+    "module": "commonjs",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
