@@ -2893,9 +2893,9 @@
   integrity sha512-0fRfA90FWm6KJfw6P9QGyo0HDTCmthZ7cWaBQndITlaWLTZ6njRyKwrwpzpg+n6kBXBIGKeUHEQuBx7bphGJkA==
 
 "@types/node@*":
-  version "18.0.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.2.tgz#a594e580c396c22dd6b1470be81737c79ec0b1b1"
-  integrity sha512-b947SdS4GH+g2W33wf5FzUu1KLj5FcSIiNWbU1ZyMvt/X7w48ZsVcsQoirIgE/Oq03WT5Qbn/dkY0hePi4ZXcQ==
+  version "18.0.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.3.tgz#463fc47f13ec0688a33aec75d078a0541a447199"
+  integrity sha512-HzNRZtp4eepNitP+BD6k2L6DROIDG4Q0fm4x+dwfsr6LGmROENnok75VGw40628xf+iR24WeMFcHuuBDUAzzsQ==
 
 "@types/node@^14", "@types/node@^14.14.31":
   version "14.18.21"
@@ -5168,7 +5168,7 @@ date-fns@^2.28.0:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.28.0.tgz#9570d656f5fc13143e50c975a3b6bbeb46cd08b2"
   integrity sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==
 
-date-format@^4.0.10:
+date-format@^4.0.10, date-format@^4.0.11:
   version "4.0.11"
   resolved "https://registry.yarnpkg.com/date-format/-/date-format-4.0.11.tgz#ae0d1e069d7f0687938fd06f98c12f3a6276e526"
   integrity sha512-VS20KRyorrbMCQmpdl2hg5KaOUsda1RbnsJg461FfrcyCUg+pkd0b40BSW4niQyTheww4DBXQnS7HwSrKkipLw==
@@ -5548,9 +5548,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.172:
-  version "1.4.180"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.180.tgz#380b06037836055d12c7de181ee90b8ed911c3e7"
-  integrity sha512-7at5ash3FD9U5gPa3/wPr6OdiZd/zBjvDZaaHBpcqFOFUhZiWnb7stkqk8xUFL9H9nk7Yok5vCCNK8wyC/+f8A==
+  version "1.4.181"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.181.tgz#4568379c1493ee95342b13bb2279cf4d207f2c3a"
+  integrity sha512-T6JzLj+9J6CdPgI7jXLcq5Ao2qyFhEBfWFUExxRRVFdVYAU86SfcLX3Zw6p1HzvngR+M8C4q6eDkQ5flEr1RnA==
 
 emittery@^0.10.2:
   version "0.10.2"
@@ -8429,9 +8429,9 @@ jsprim@^2.0.2:
     verror "1.10.0"
 
 "jsx-ast-utils@^2.4.1 || ^3.0.0", jsx-ast-utils@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-3.3.1.tgz#a3e0f1cb7e230954eab4dcbce9f6288a78f8ba44"
-  integrity sha512-pxrjmNpeRw5wwVeWyEAk7QJu2GnBO3uzPFmHCKJJFPKK2Cy0cWL23krGtLdnMmbIi6/FjlrQpPyfQI19ByPOhQ==
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-3.3.2.tgz#afe5efe4332cd3515c065072bd4d6b0aa22152bd"
+  integrity sha512-4ZCADZHRkno244xlNnn4AOG6sRQ7iBZ5BbgZ4vW4y5IZw7cVUD1PPeblm1xx/nfmMxPdt/LHsXZW8z/j58+l9Q==
   dependencies:
     array-includes "^3.1.5"
     object.assign "^4.1.2"
@@ -8659,11 +8659,11 @@ log-update@^4.0.0:
     wrap-ansi "^6.2.0"
 
 log4js@^6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.5.2.tgz#9ae371e5b3cb3a3a209c24686e5547f8670834e5"
-  integrity sha512-DXtpNtt+KDOMT7RHUDIur/WsSA3rntlUh9Zg4XCdV42wUuMmbFkl38+LZ92Z5QvQA7mD5kAVkLiBSEH/tvUB8A==
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.6.0.tgz#e8fd00143d1e0ecf1d10959bb69b90b1b30137f3"
+  integrity sha512-3v8R7fd45UB6THucSht6wN2/7AZEruQbXdjygPZcxt5TA/msO6si9CN5MefUuKXbYnJHTBnYcx4famwcyQd+sA==
   dependencies:
-    date-format "^4.0.10"
+    date-format "^4.0.11"
     debug "^4.3.4"
     flatted "^3.2.5"
     rfdc "^1.3.0"
