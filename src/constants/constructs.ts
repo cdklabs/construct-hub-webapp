@@ -6,7 +6,7 @@ export enum CDKType {
 
 export const CDKTYPE_NAME_MAP = {
   [CDKType.awscdk]: "AWS CDK",
-  [CDKType.cdktf]: "CDKtf",
+  [CDKType.cdktf]: "CDKTF",
   [CDKType.cdk8s]: "CDK8s",
 };
 
