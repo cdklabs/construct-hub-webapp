@@ -19,7 +19,7 @@ export const Home: FunctionComponent = () => {
       meta={{
         title: "Construct Hub",
         description:
-          "Construct Hub helps developers find open-source construct libraries for use with AWS CDK, CDK8s, CDKTf and other construct-based tools.",
+          "Construct Hub helps developers find open-source construct libraries for use with AWS CDK, CDK8s, CDKTF and other construct-based tools.",
         suffix: false,
       }}
       pageName="home"
