@@ -10,7 +10,7 @@ export const Search: FunctionComponent = () => {
     <Page
       meta={{
         title: "Search - Construct Hub",
-        description: "Search Construct Libraries for AWS CDK, CDK8s, and CDKtf",
+        description: "Search Construct Libraries for AWS CDK, CDK8s, and CDKTF",
       }}
       pageName="search"
     >

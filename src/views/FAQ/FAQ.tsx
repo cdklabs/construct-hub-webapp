@@ -40,7 +40,7 @@ export const FAQPage: FunctionComponent = () => (
               Construct Hub is a place to discover CDK constructs &mdash; a
               central destination for discovering and sharing cloud application
               design patterns and reference architectures defined for the AWS
-              CDK, CDK for Kubernetes (CDK8s), CDK for Terraform (CDKtf) and
+              CDK, CDK for Kubernetes (CDK8s), CDK for Terraform (CDKTF) and
               other construct-based tools.
             </p>
           </FAQItem>
@@ -81,9 +81,9 @@ export const FAQPage: FunctionComponent = () => (
               <FAQLink href="https://cdk8s.io/docs/latest/getting-started/">
                 CDK8s command-line tool
               </FAQLink>{" "}
-              and for CDKtf install the{" "}
+              and for CDKTF install the{" "}
               <FAQLink href="https://learn.hashicorp.com/tutorials/terraform/cdktf-install">
-                CDKtf command-line tool.
+                CDKTF command-line tool.
               </FAQLink>
             </Text>
             <Text>
@@ -92,7 +92,7 @@ export const FAQPage: FunctionComponent = () => (
               manifests.
             </Text>
             <Text>
-              The CDKtf CLI requires having Terraform, Node, Yarn and Docker
+              The CDKTF CLI requires having Terraform, Node, Yarn and Docker
               installed.
             </Text>
             <Text>
@@ -132,7 +132,7 @@ export const FAQPage: FunctionComponent = () => (
             <Text>
               Construct Hub currently has constructs for the CDK for
               CloudFormation (AWS CDK), CDK for Kubernetes (CDK8s) and CDK for
-              Terraform (CDKtf). We are open to adding other construct-based
+              Terraform (CDKTF). We are open to adding other construct-based
               tools as they evolve.
             </Text>
           </FAQItem>
@@ -165,10 +165,10 @@ export const FAQPage: FunctionComponent = () => (
             </Text>
           </FAQItem>
 
-          <FAQItem question="What is CDK for Terraform (CDKtf)?">
+          <FAQItem question="What is CDK for Terraform (CDKTF)?">
             <Text>
               The community preview of the Cloud Development Kit for Terraform
-              (CDKtf) allows you to define infrastructure using a familiar
+              (CDKTF) allows you to define infrastructure using a familiar
               programming language such as TypeScript, Python, or Go, while
               leveraging the hundreds of providers and thousands of module
               definitions provided by Terraform and the Terraform ecosystem. See{" "}
