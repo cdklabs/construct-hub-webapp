@@ -1651,9 +1651,9 @@
   integrity sha512-M0qqxAcwCsIVfpFQSlGN5XjXWu8l5JDZN+fPt1LeW5SZexQTgnaEvgXAY+CeygRw0EeppWHi12JxESWiWrB0Sg==
 
 "@csstools/postcss-cascade-layers@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@csstools/postcss-cascade-layers/-/postcss-cascade-layers-1.1.0.tgz#05a820357aac0de097b4acac43f85a55973220e7"
-  integrity sha512-XpA7g2KViA2ia23A5kZ/EQw+Sy308kLbvMlDPjFZmojwaJ9DYdJuwujFcDGK9v1QhHRmMEHbV2brVSQSLkN/7A==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@csstools/postcss-cascade-layers/-/postcss-cascade-layers-1.1.1.tgz#8a997edf97d34071dd2e37ea6022447dd9e795ad"
+  integrity sha512-+KdYrpKC5TgomQr2DlZF4lDEpHcoxnj5IGddYYfBWJAKfj1JtuHUIqMa+E1pJJ+z3kvDViWMqyqPlG4Ja7amQA==
   dependencies:
     "@csstools/selector-specificity" "^2.0.2"
     postcss-selector-parser "^6.0.10"
@@ -2522,9 +2522,9 @@
   integrity sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==
 
 "@sinclair/typebox@^0.24.1":
-  version "0.24.41"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.41.tgz#45470b8bae32a28f1e0501066d0bacbd8b772804"
-  integrity sha512-TJCgQurls4FipFvHeC+gfAzb+GGstL0TDwYJKQVtTeSvJIznWzP7g3bAd5gEBlr8+bIxqnWS9VGVWREDhmE8jA==
+  version "0.24.42"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.42.tgz#a74b608d494a1f4cc079738e050142a678813f52"
+  integrity sha512-d+2AtrHGyWek2u2ITF0lHRIv6Tt7X0dEHW+0rP+5aDCEjC3fiN2RBjrLD0yU0at52BcZbRGxLbAtXiR0hFCjYw==
 
 "@sindresorhus/is@^5.2.0":
   version "5.3.0"
@@ -10759,10 +10759,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.62.9:
-  version "0.62.9"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.62.9.tgz#e3619cded76cc874b4a2c6f2d31ad0418a2c987c"
-  integrity sha512-Q7nAOhR0sTTmiFlkk2hRi4NWPnC3x2bXvT9aFya7IrsmlodFXvnEiukCYgzshedKWwOFAZeyvEPdGE03gTX7Bw==
+projen@^0.62.10:
+  version "0.62.10"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.62.10.tgz#92477db10011b67ca5bb4eb7af26098527ce8174"
+  integrity sha512-EyvCNpzqlEX9oIXkx8JtF8YPkuM/j/bpIs8zfmH0El11UPorwJmRbLOMXTNb5mkfq07bdlGCXvrDbRCD11Ctvw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
