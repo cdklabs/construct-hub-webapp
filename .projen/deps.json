@@ -156,6 +156,26 @@
       "type": "build"
     },
     {
+      "name": "@types/express-serve-static-core",
+      "version": "4.17.30",
+      "type": "override"
+    },
+    {
+      "name": "@types/express",
+      "version": "4.17.13",
+      "type": "override"
+    },
+    {
+      "name": "@types/responselike",
+      "version": "1.0.0",
+      "type": "override"
+    },
+    {
+      "name": "got",
+      "version": "12.3.1",
+      "type": "override"
+    },
+    {
       "name": "@chakra-ui/anatomy",
       "type": "runtime"
     },
