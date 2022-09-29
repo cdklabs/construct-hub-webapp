@@ -89,7 +89,7 @@ const IconLink = ({
 
 const ResponsiveDivider = () => (
   <>
-    <Divider display={{ xl: "none" }} mx={SECTION_PADDING.X} w="auto" />
+    <Divider display={{ xl: "none" }} w="auto" />
     <Divider
       display={{ base: "none", xl: "initial" }}
       h="auto"
@@ -108,6 +108,8 @@ const Row: FunctionComponent = ({ children }) => (
 export const Info: FunctionComponent = () => (
   <Flex bg="bgSecondary" data-testid={testIds.infoContainer} direction="column">
     <Grid
+      gap={SECTION_PADDING.Y}
+      paddingX={SECTION_PADDING.X}
       templateColumns={{ base: "1fr", xl: "1fr auto 1fr auto 1fr" }}
       templateRows={{ base: "1fr auto 1fr auto 1fr", xl: "auto" }}
     >
