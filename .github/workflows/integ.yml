@@ -22,13 +22,13 @@ jobs:
           start: yarn proxy-server:ci
           wait-on: http://localhost:3000
           wait-on-timeout: 150
-      - uses: actions/upload-artifact@v3
-        if: failure()
+      - if: failure()
+        uses: actions/upload-artifact@v3
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-      - uses: actions/upload-artifact@v3
-        if: always()
+      - if: always()
+        uses: actions/upload-artifact@v3
         with:
           name: cypress-videos
           path: cypress/videos

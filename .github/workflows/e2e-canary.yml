@@ -23,22 +23,22 @@ jobs:
           start: yarn proxy-server:ci
           wait-on: http://localhost:3000
           wait-on-timeout: 150
-      - uses: actions/upload-artifact@v3
-        if: failure()
+      - if: failure()
+        uses: actions/upload-artifact@v3
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-      - uses: actions/upload-artifact@v3
-        if: always()
+      - if: always()
+        uses: actions/upload-artifact@v3
         with:
           name: cypress-videos
           path: cypress/videos
       - name: Create failure issue
         if: failure()
         uses: imjohnbo/issue-bot@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           labels: failed-release
           title: E2E Canary for https://constructs.dev failed.
           body: See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
