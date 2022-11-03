@@ -166,16 +166,6 @@
       "type": "override"
     },
     {
-      "name": "@types/responselike",
-      "version": "1.0.0",
-      "type": "override"
-    },
-    {
-      "name": "got",
-      "version": "12.3.1",
-      "type": "override"
-    },
-    {
       "name": "@chakra-ui/anatomy",
       "type": "runtime"
     },
