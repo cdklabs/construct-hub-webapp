@@ -70,7 +70,7 @@
     "json-schema": "^0.4.0",
     "npm-check-updates": "^16",
     "prettier": "^2.7.1",
-    "projen": "^0.65.13",
+    "projen": "^0.65.14",
     "react-app-rewired": "^2.2.1",
     "standard-version": "^9",
     "ts-unused-exports": "^7.0.3",
