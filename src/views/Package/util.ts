@@ -71,7 +71,8 @@ const splitOnHeaders = (md: string, maxLevel: number = 6): string[] => {
  * present.
  */
 const getHeaderAttributes = (hdr: string): { id: string; title: string } => {
-  const attrStrings = hdr.match(/(\S+)\s*=\s*(\"?)([^"]*)(\2|\s|$)/g) ?? [];
+  const attrStrings: string[] =
+    hdr.match(/(\S+)\s*=\s*(\"?)([^"]*)(\2|\s|$)/g) ?? [];
   const attrs: { [key: string]: string } = attrStrings.reduce((accum, str) => {
     const [key, value] = str.split("=");
     const [_, parsedValue] = /['"](.*?)['"]/.exec(value) ?? [];
