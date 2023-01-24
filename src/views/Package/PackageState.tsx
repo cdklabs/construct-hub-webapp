@@ -3,6 +3,7 @@ import type { Schema } from "jsii-docgen";
 import { createContext, FunctionComponent, useContext, useMemo } from "react";
 import { useQuery, UseQueryResult } from "react-query";
 import { useParams } from "react-router-dom";
+import { Types, MenuItem, parseMarkdownStructure } from "./util";
 import { fetchAssembly } from "../../api/package/assembly";
 import { fetchJsonDocs, fetchMarkdownDocs } from "../../api/package/docs";
 import { fetchMetadata, Metadata } from "../../api/package/metadata";
@@ -12,7 +13,6 @@ import { useLanguage } from "../../hooks/useLanguage";
 import { useQueryParams } from "../../hooks/useQueryParams";
 import { useVersions } from "../../hooks/useVersions";
 import { NotFound } from "../NotFound";
-import { Types, MenuItem, parseMarkdownStructure } from "./util";
 
 interface PathParams {
   name: string;

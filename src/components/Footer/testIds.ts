@@ -1,5 +1,5 @@
-import { createTestIds } from "../../util/createTestIds";
 import { FOOTER_LINKS } from "./constants";
+import { createTestIds } from "../../util/createTestIds";
 
 const testIds = createTestIds("footer", [
   "container",

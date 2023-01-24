@@ -9,6 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { useHistory } from "react-router-dom";
+import { useSearchBarState } from "./SearchBar";
+import testIds from "./testIds";
 import { ExtendedCatalogPackage } from "../../api/catalog-search";
 import { eventName } from "../../contexts/Analytics/util";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
@@ -17,8 +19,6 @@ import { getPackagePath } from "../../util/url";
 import { Card, CardProps } from "../Card";
 import { CDKTypeBadge } from "../CDKType";
 import { SearchItem } from "../SearchItem";
-import { useSearchBarState } from "./SearchBar";
-import testIds from "./testIds";
 
 /**
  * A suggestion component which can be used to extend the `<SearchBar />` behavior with a list of

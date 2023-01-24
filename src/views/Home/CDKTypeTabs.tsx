@@ -12,6 +12,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
+import { PackageGrid } from "./PackageGrid";
+import testIds from "./testIds";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { NavLink } from "../../components/NavLink";
 import { ROUTES } from "../../constants/url";
@@ -19,9 +22,6 @@ import { eventName } from "../../contexts/Analytics";
 import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { useHistoryState } from "../../hooks/useHistoryState";
 import { getSearchPath } from "../../util/url";
-import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
-import { PackageGrid } from "./PackageGrid";
-import testIds from "./testIds";
 
 interface PackageTabProps {
   "data-event": string;

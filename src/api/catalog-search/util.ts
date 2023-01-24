@@ -1,10 +1,10 @@
 import { CatalogSearchFilters, ExtendedCatalogPackage } from ".";
+import { CatalogSearchSort } from "./constants";
 import { CDKType } from "../../constants/constructs";
 import { KEYWORD_IGNORE_LIST } from "../../constants/keywords";
 import { Language } from "../../constants/languages";
 import { ConstructFramework, Metadata } from "../package/metadata";
 import { CatalogPackage } from "../package/packages";
-import { CatalogSearchSort } from "./constants";
 
 type SortFunction = (
   p1: ExtendedCatalogPackage,

@@ -1,9 +1,9 @@
 import { Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { eventName } from "../../contexts/Analytics";
 import { SEARCH_ANALYTICS } from "./constants";
 import { FilterHeading, FilterHeadingProps } from "./FilterHeading";
 import testIds from "./testIds";
+import { eventName } from "../../contexts/Analytics";
 
 export interface RadioFilterProps extends FilterHeadingProps {
   "data-testid"?: string;

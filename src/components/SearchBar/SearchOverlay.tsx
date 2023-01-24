@@ -1,7 +1,7 @@
 import { Box, BoxProps, forwardRef } from "@chakra-ui/react";
-import { eventName } from "../../contexts/Analytics/util";
 import { useSearchBarState } from "./SearchBar";
 import testIds from "./testIds";
+import { eventName } from "../../contexts/Analytics/util";
 
 /**
  * An overlay component which can be used to extend the `<SearchBar />` presentational behavior

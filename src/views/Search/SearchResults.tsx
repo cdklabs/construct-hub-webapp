@@ -1,8 +1,5 @@
 import { Box, Stack } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
-import { PackageList } from "../../components/PackageList";
-import { Page } from "../../components/Page";
-import { useCatalogResults } from "../../hooks/useCatalogResults";
 import { LIMIT, SEARCH_ANALYTICS } from "./constants";
 import { PageControls } from "./PageControls";
 import { SearchBar } from "./SearchBar";
@@ -20,6 +17,9 @@ import {
   useTags,
 } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { PackageList } from "../../components/PackageList";
+import { Page } from "../../components/Page";
+import { useCatalogResults } from "../../hooks/useCatalogResults";
 
 export const SearchResults: FunctionComponent = () => {
   const updateSearch = useUpdateSearchParam();

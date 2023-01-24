@@ -1,7 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
-import { Config } from "../api/config";
 import { makeComponents } from "./components";
 import { foundations } from "./foundations";
+import { Config } from "../api/config";
 
 export const makeTheme = (config: Config) => {
   const componentsConfig = {

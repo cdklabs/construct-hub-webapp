@@ -10,12 +10,12 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import testIds from "./testIds";
 import { useAnalytics } from "../../contexts/Analytics";
 import { clickEvent } from "../../contexts/Analytics/util";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { HEADER_ANALYTICS } from "../Header/constants";
 import { SearchBar } from "../SearchBar";
-import testIds from "./testIds";
 
 export interface SearchModalProps {
   isOpen: boolean;

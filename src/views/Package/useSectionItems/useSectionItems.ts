@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 import { useLocation, useRouteMatch } from "react-router-dom";
+import { schemaToSectionItems } from "./util";
 import { QUERY_PARAMS } from "../../../constants/url";
 import { useLanguage } from "../../../hooks/useLanguage";
 import { useQueryParams } from "../../../hooks/useQueryParams";
 import { API_URL_RESOURCE, README_ITEM_ID } from "../constants";
 import { usePackageState } from "../PackageState";
 import { isApiPath, MenuItem } from "../util";
-import { schemaToSectionItems } from "./util";
 
 export const useSectionItems = (): MenuItem[] => {
   const { pathname } = useLocation();

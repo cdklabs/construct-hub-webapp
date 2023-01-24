@@ -1,7 +1,7 @@
 import { Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { PackageCard, PackageCardType } from "../PackageCard";
 import { PackageListViewProps } from "./PackageList";
+import { PackageCard, PackageCardType } from "../PackageCard";
 
 export const WideCardList: FunctionComponent<PackageListViewProps> = ({
   "data-event": dataEvent,

@@ -2,11 +2,11 @@ import { ArrowBackIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Divider, Stack, useDisclosure } from "@chakra-ui/react";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { SearchModal } from "./SearchModal";
 import { QUERY_PARAMS } from "../../../constants/url";
 import { useQueryParams } from "../../../hooks/useQueryParams";
 import { getPackagePath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
-import { SearchModal } from "./SearchModal";
 
 export const ChooseSubmodule: FunctionComponent = () => {
   const { assembly, name, language, scope, version } = usePackageState();

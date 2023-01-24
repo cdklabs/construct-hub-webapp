@@ -1,12 +1,12 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
+import testIds from "./testIds";
 import {
   SearchBar,
   SearchOverlay,
   SearchSuggestions,
 } from "../../components/SearchBar";
-import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
-import testIds from "./testIds";
 
 export const Hero: FunctionComponent = () => {
   return (

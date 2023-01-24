@@ -9,12 +9,12 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { CatalogSearchSort } from "../../api/catalog-search/constants";
-import { eventName } from "../../contexts/Analytics";
 import { SEARCH_ANALYTICS, SORT_RENDER_MAP } from "./constants";
 import testIds from "./testIds";
 import { useSort } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { CatalogSearchSort } from "../../api/catalog-search/constants";
+import { eventName } from "../../contexts/Analytics";
 
 export const SortedBy: FunctionComponent = () => {
   const sort = useSort();

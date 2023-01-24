@@ -1,5 +1,8 @@
 import { Button, Flex, Grid, Heading } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
+import testIds from "./testIds";
+import { useSection } from "./useSection";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { DEFAULT_FEATURED_PACKAGES } from "../../api/config";
 import { NavLink } from "../../components/NavLink";
@@ -7,9 +10,6 @@ import { PackageCard } from "../../components/PackageCard";
 import { eventName } from "../../contexts/Analytics";
 import { useConfigValue } from "../../hooks/useConfigValue";
 import { getSearchPath } from "../../util/url";
-import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
-import testIds from "./testIds";
-import { useSection } from "./useSection";
 
 export const Featured: FunctionComponent = () => {
   const homePackages = useConfigValue("featuredPackages");

@@ -1,5 +1,5 @@
-import { Language } from "../../constants/languages";
 import { parseMarkdownStructure } from "./util";
+import { Language } from "../../constants/languages";
 
 jest.mock("remark-emoji");
 const README_MARKDOWN = `

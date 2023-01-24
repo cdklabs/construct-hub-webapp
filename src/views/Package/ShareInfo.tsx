@@ -10,9 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { usePackageState } from "./PackageState";
 import { Code } from "../../components/Code";
 import { getPackagePath } from "../../util/url";
-import { usePackageState } from "./PackageState";
 
 export const ShareInfo: FunctionComponent = () => {
   const [tabIndex, setTabIndex] = useState(0);

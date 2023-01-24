@@ -16,8 +16,8 @@ import {
   useRef,
 } from "react";
 import { useHistory } from "react-router-dom";
-import { SearchItem } from "../../../components/SearchItem";
 import { SearchInput } from "./SearchInput";
+import { SearchItem } from "../../../components/SearchItem";
 
 export interface SearchModalProps {
   inputValue: string;

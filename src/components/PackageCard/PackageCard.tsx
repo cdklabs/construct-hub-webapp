@@ -1,7 +1,7 @@
 import { createContext, FunctionComponent, useContext } from "react";
-import { ExtendedCatalogPackage } from "../../api/catalog-search";
 import { PackageCardType } from "./constants";
 import { WideCard } from "./WideCard";
+import { ExtendedCatalogPackage } from "../../api/catalog-search";
 
 export interface PackageCardProps {
   "data-event"?: string;

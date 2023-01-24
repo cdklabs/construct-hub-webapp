@@ -1,10 +1,10 @@
+import { CatalogSearchAPI } from "./catalog-search";
+import { CatalogSearchSort } from "./constants";
 import catalogFixture from "../../__fixtures__/catalog.json";
 import statsFixture from "../../__fixtures__/stats.json";
 import { Language } from "../../constants/languages";
 import { CatalogPackage } from "../package/packages";
 import { PackageStats } from "../stats";
-import { CatalogSearchAPI } from "./catalog-search";
-import { CatalogSearchSort } from "./constants";
 
 describe("CatalogSearchAPI", () => {
   const instance = new CatalogSearchAPI(

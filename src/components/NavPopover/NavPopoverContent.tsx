@@ -7,10 +7,10 @@ import {
   MenuListProps,
 } from "@chakra-ui/react";
 import { Fragment, FunctionComponent } from "react";
+import type { IMenuItems, ILink } from "./types";
 import { eventName } from "../../contexts/Analytics/util";
 import { ExternalLink } from "../ExternalLink";
 import { NavLink } from "../NavLink";
-import type { IMenuItems, ILink } from "./types";
 
 export interface NavPopoverContentProps extends MenuListProps {
   "data-event"?: string;

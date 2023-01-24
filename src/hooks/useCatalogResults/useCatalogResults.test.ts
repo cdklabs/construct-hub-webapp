@@ -1,4 +1,8 @@
 import { renderHook, cleanup } from "@testing-library/react-hooks";
+import {
+  useCatalogResults,
+  UseCatalogResultsOptions,
+} from "./useCatalogResults";
 import catalog from "../../__fixtures__/catalog.json";
 import stats from "../../__fixtures__/stats.json";
 import { Packages } from "../../api/package/packages";
@@ -6,10 +10,6 @@ import { PackageStats } from "../../api/stats";
 import { SearchProvider } from "../../contexts/Search";
 import { StatsQuery, useStats } from "../../hooks/useStats";
 import { CatalogQuery, useCatalog } from "../useCatalog";
-import {
-  useCatalogResults,
-  UseCatalogResultsOptions,
-} from "./useCatalogResults";
 
 const catalogFixture = catalog as Packages;
 const statsFixture = stats as PackageStats;

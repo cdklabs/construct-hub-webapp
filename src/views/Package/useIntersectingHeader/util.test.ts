@@ -1,5 +1,5 @@
-import { MenuItem } from "../util";
 import { getItemIds, normalizeId, getElementId, getSectionIdSet } from "./util";
+import { MenuItem } from "../util";
 
 const id = "#-FOO-bar-BaZ";
 

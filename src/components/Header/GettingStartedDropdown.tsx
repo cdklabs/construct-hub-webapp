@@ -1,12 +1,12 @@
 import type { FunctionComponent } from "react";
+import { HEADER_ANALYTICS } from "./constants";
+import testIds from "./testIds";
 import { GETTING_STARTED } from "../../constants/links";
 import {
   NavPopover,
   NavPopoverContent,
   NavPopoverTrigger,
 } from "../NavPopover";
-import { HEADER_ANALYTICS } from "./constants";
-import testIds from "./testIds";
 
 export const GettingStartedDropdown: FunctionComponent = () => (
   <NavPopover>

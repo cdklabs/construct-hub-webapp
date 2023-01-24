@@ -1,11 +1,11 @@
-import { PackageTagConfig } from "../api/config";
-import { KEYWORD_IGNORE_LIST } from "../constants/keywords";
 import {
   mapPackageKeywords,
   mapPackageTags,
   highlightsFrom,
   tagObjectsFrom,
 } from "./package";
+import { PackageTagConfig } from "../api/config";
+import { KEYWORD_IGNORE_LIST } from "../constants/keywords";
 
 const TAG1 = {
   id: "tag1",

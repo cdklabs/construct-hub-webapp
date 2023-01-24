@@ -1,11 +1,11 @@
 import { FunctionComponent, useMemo } from "react";
-import { CatalogConstructFrameworkMeta } from "../../api/catalog-search";
-import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
-import { useSearchContext } from "../../contexts/Search";
 import { RadioFilter } from "./RadioFilter";
 import testIds from "./testIds";
 import { useCdkMajor, useCdkType } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { CatalogConstructFrameworkMeta } from "../../api/catalog-search";
+import { CDKType, CDKTYPE_NAME_MAP } from "../../constants/constructs";
+import { useSearchContext } from "../../contexts/Search";
 
 type CDKOptions = Partial<{
   [key in CDKType]: CatalogConstructFrameworkMeta & {

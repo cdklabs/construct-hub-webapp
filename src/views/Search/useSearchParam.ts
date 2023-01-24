@@ -1,10 +1,10 @@
 import { useMemo } from "react";
+import { parseQueryArray, toNum } from "./util";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { CDKType } from "../../constants/constructs";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { useQueryParams } from "../../hooks/useQueryParams";
-import { parseQueryArray, toNum } from "./util";
 
 const useSearchParam = <T = string | null>(
   key: string,

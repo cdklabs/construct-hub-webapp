@@ -6,10 +6,10 @@ import {
   useState,
 } from "react";
 import { useLocation } from "react-router-dom";
-import { GetIsActiveItemFunction, NavTree } from "../../components/NavTree";
 import { PACKAGE_ANALYTICS } from "./constants";
 import { normalizeId, useIntersectingHeader } from "./useIntersectingHeader";
 import { useSectionItems } from "./useSectionItems";
+import { GetIsActiveItemFunction, NavTree } from "../../components/NavTree";
 
 export const SecondaryDocNavigation: FunctionComponent = () => {
   const intersectingHeader = useIntersectingHeader();

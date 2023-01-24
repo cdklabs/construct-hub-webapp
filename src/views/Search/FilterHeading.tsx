@@ -12,8 +12,8 @@ import {
   PlacementWithLogical,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { eventName } from "../../contexts/Analytics";
 import { SEARCH_ANALYTICS } from "./constants";
+import { eventName } from "../../contexts/Analytics";
 
 export interface FilterHeadingProps {
   name: string;

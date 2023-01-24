@@ -2,11 +2,11 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { Box, IconButton, useDisclosure } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Switch, Route } from "react-router-dom";
+import { HEADER_ANALYTICS } from "./constants";
+import testIds from "./testIds";
 import { ROUTES } from "../../constants/url";
 import { SearchBar, SearchOverlay, SearchSuggestions } from "../SearchBar";
 import { SearchModal } from "../SearchModal";
-import { HEADER_ANALYTICS } from "./constants";
-import testIds from "./testIds";
 
 /**
  * Renders a SearchBar at desktop resolutions and shows a search icon which opens a modal on mobile resolutions

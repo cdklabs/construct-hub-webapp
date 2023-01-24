@@ -10,10 +10,10 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { clickEvent, eventName, useAnalytics } from "../../contexts/Analytics";
 import { SEARCH_ANALYTICS } from "./constants";
 import { FilterHeading, FilterHeadingProps } from "./FilterHeading";
 import testIds from "./testIds";
+import { clickEvent, eventName, useAnalytics } from "../../contexts/Analytics";
 
 interface CheckboxOption {
   display: string;

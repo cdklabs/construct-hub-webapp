@@ -1,7 +1,5 @@
 import { Flex } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Page } from "../../components/Page";
-import { useCatalog } from "../../hooks/useCatalog";
 import { Categories } from "./Categories";
 import { CDKTypeTabs } from "./CDKTypeTabs";
 import { Featured } from "./Featured";
@@ -9,6 +7,8 @@ import { GradientContainer } from "./GradientContainer";
 import { Hero } from "./Hero";
 import { Info } from "./Info";
 import testIds from "./testIds";
+import { Page } from "../../components/Page";
+import { useCatalog } from "../../hooks/useCatalog";
 
 export const Home: FunctionComponent = () => {
   const { data: catalog } = useCatalog();

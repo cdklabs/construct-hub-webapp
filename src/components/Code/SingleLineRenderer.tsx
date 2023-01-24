@@ -1,7 +1,7 @@
 import { Box, Flex, Grid } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { CopyButton } from "../CopyButton";
 import type { RendererProps } from "./types";
+import { CopyButton } from "../CopyButton";
 
 export const SingleLineRenderer: FunctionComponent<RendererProps> = ({
   code,

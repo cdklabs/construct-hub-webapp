@@ -1,9 +1,9 @@
 import { Grid } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Page } from "../../components/Page";
 import { FilterPanel } from "./FilterPanel";
 import { SearchResults } from "./SearchResults";
 import testIds from "./testIds";
+import { Page } from "../../components/Page";
 
 export const Search: FunctionComponent = () => {
   return (

@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
-import { ExternalLink } from "../../components/ExternalLink";
-import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
 import { DocsError } from "./DocsError";
 import { usePackageState } from "./PackageState";
+import { ExternalLink } from "../../components/ExternalLink";
+import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
 
 export const PackageDocsError: FunctionComponent = () => {
   const { language } = usePackageState();

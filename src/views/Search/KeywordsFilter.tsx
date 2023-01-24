@@ -1,9 +1,9 @@
 import { FunctionComponent, useMemo } from "react";
-import { useSearchContext } from "../../contexts/Search";
 import { CheckboxFilter } from "./CheckboxFilter";
 import testIds from "./testIds";
 import { useKeywords } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { useSearchContext } from "../../contexts/Search";
 
 export const KeywordsFilter: FunctionComponent = () => {
   const keywords = useKeywords();

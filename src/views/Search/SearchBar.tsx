@@ -1,8 +1,8 @@
 import { FunctionComponent, useState } from "react";
-import { SearchBar as SearchBarComponent } from "../../components/SearchBar";
 import { SEARCH_ANALYTICS } from "./constants";
 import { useSearchQuery } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { SearchBar as SearchBarComponent } from "../../components/SearchBar";
 
 export const SearchBar: FunctionComponent = () => {
   const query = useSearchQuery();

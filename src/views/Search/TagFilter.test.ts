@@ -1,5 +1,5 @@
-import { TagGroupConfig } from "../../api/config";
 import { mapTagsToFilterGroups } from "./TagFilter";
+import { TagGroupConfig } from "../../api/config";
 
 const tagGroups = new Map<string, TagGroupConfig>();
 tagGroups.set("a", { id: "a", label: "A" });
