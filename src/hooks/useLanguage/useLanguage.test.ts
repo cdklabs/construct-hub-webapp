@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { useLocation as useLocationMock } from "react-router-dom";
-import * as languageConstants from "../../constants/languages";
 import { useLanguage } from "./useLanguage";
+import * as languageConstants from "../../constants/languages";
 
 jest.mock("react-router-dom", () => ({
   useLocation: jest.fn(),

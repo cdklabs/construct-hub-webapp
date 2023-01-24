@@ -1,9 +1,9 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Flex, IconButton, useDisclosure } from "@chakra-ui/react";
 import { FunctionComponent, useMemo } from "react";
-import { clickEvent, eventName, useAnalytics } from "../../contexts/Analytics";
 import { NavItemWrapper } from "./NavItemWrapper";
 import type { GetIsActiveItemFunction, NavItemConfig } from "./types";
+import { clickEvent, eventName, useAnalytics } from "../../contexts/Analytics";
 
 const navTreeEvent = (scope: string, event: string) =>
   eventName(scope, "NavTree", event);

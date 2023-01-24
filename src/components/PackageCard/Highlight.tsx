@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { usePackageCard } from "./PackageCard";
 import { highlightsFrom } from "../../util/package";
 import { Highlight as HighlightComponent } from "../Highlight";
-import { usePackageCard } from "./PackageCard";
 
 export const Highlight: FunctionComponent = () => {
   const { packageTags = [] } = usePackageCard()?.metadata ?? {};

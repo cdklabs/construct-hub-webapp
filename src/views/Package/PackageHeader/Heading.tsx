@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { Assembly } from "@jsii/spec";
 import type { FunctionComponent } from "react";
+import { SelectVersion } from "./SelectVersion";
 import { mapConstructFrameworks } from "../../../api/catalog-search/util";
 import { Metadata } from "../../../api/package/metadata";
 import { CDKTypeBadge } from "../../../components/CDKType";
@@ -14,7 +15,6 @@ import { PackageTag } from "../../../components/PackageTag";
 import { tagObjectsFrom } from "../../../util/package";
 import { PACKAGE_ANALYTICS } from "../constants";
 import testIds from "../testIds";
-import { SelectVersion } from "./SelectVersion";
 
 interface HeadingProps extends StackProps {
   assembly: Assembly;

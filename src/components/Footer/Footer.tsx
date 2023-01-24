@@ -6,12 +6,12 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { DISCLAIMER, FOOTER_LINKS } from "./constants";
+import testIds from "./testIds";
 import { useShortBread } from "../../contexts/Shortbread";
 import { SECTION_PADDING } from "../../views/Home/constants";
 import { ExternalLink } from "../ExternalLink";
 import { NavLink } from "../NavLink";
-import { DISCLAIMER, FOOTER_LINKS } from "./constants";
-import testIds from "./testIds";
 
 export interface FooterProps {}
 

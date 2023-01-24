@@ -1,9 +1,9 @@
 import { Heading } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
-import { Markdown } from "../../components/Markdown";
 import { PackageDocsError } from "./PackageDocsError";
 import { usePackageState } from "./PackageState";
+import { Markdown } from "../../components/Markdown";
 
 const usePackageTypeDocs = () => {
   const { typeId }: { typeId?: string } = useParams();

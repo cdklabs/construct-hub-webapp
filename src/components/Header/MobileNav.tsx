@@ -9,13 +9,13 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { GETTING_STARTED, DOCUMENTATION } from "../../constants/links";
-import { ROUTES } from "../../constants/url";
-import { NavLink } from "../NavLink";
 import { HEADER_ANALYTICS } from "./constants";
 import { MobileNavLinks } from "./MobileNavLinks";
 import testIds from "./testIds";
 import { Title } from "./Title";
+import { GETTING_STARTED, DOCUMENTATION } from "../../constants/links";
+import { ROUTES } from "../../constants/url";
+import { NavLink } from "../NavLink";
 export interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;

@@ -1,13 +1,13 @@
 import { FunctionComponent } from "react";
+import { CheckboxFilter } from "./CheckboxFilter";
+import testIds from "./testIds";
+import { useLanguages } from "./useSearchParam";
+import { useUpdateSearchParam } from "./useUpdateSearchParam";
 import {
   Language,
   LANGUAGE_NAME_MAP,
   TEMP_SUPPORTED_LANGUAGES,
 } from "../../constants/languages";
-import { CheckboxFilter } from "./CheckboxFilter";
-import testIds from "./testIds";
-import { useLanguages } from "./useSearchParam";
-import { useUpdateSearchParam } from "./useUpdateSearchParam";
 
 const languageOptions = Object.entries(LANGUAGE_NAME_MAP)
   .map(([key, value]) => ({

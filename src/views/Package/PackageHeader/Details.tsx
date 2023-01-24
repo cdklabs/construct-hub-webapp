@@ -11,6 +11,7 @@ import {
 import { Assembly } from "@jsii/spec";
 import { Fragment, FunctionComponent, ReactNode } from "react";
 import spdx from "spdx-license-list";
+import { ToggleButton } from "./ToggleButton";
 import { PackageLinkConfig } from "../../../api/config";
 import { Metadata } from "../../../api/package/metadata";
 import { PackageStats } from "../../../api/stats";
@@ -25,7 +26,6 @@ import { useStats } from "../../../hooks/useStats";
 import { highlightsFrom } from "../../../util/package";
 import { getRepoUrlAndHost, getSearchPath } from "../../../util/url";
 import { usePackageState } from "../PackageState";
-import { ToggleButton } from "./ToggleButton";
 
 interface DetailsProps extends StackProps {}
 

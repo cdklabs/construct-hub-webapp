@@ -1,11 +1,11 @@
 import { Heading, Stack } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Card } from "../../components/Card";
 import { CDKFilter } from "./CDKFilter";
 import { KeywordsFilter } from "./KeywordsFilter";
 import { LanguageFilter } from "./LanguageFilter";
 import { TagFilter } from "./TagFilter";
 import testIds from "./testIds";
+import { Card } from "../../components/Card";
 
 export interface FilterPanelProps {}
 

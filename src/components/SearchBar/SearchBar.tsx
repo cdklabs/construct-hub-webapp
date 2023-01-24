@@ -18,12 +18,12 @@ import {
   ChangeEventHandler,
   FormEventHandler,
 } from "react";
+import testIds from "./testIds";
 import { useAnalytics } from "../../contexts/Analytics";
 import { clickEvent, eventName } from "../../contexts/Analytics/util";
 import { useCatalogSearch } from "../../hooks/useCatalogSearch";
 import { useSearch } from "../../hooks/useSearch";
 import { Form } from "../Form";
-import testIds from "./testIds";
 
 export interface SearchBarProps
   extends Omit<InputProps, "onChange" | "value" | "onSubmit"> {

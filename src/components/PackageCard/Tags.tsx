@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
+import { usePackageCard } from "./PackageCard";
 import { tagObjectsFrom } from "../../util/package";
 import { PackageTag } from "../PackageTag";
-import { usePackageCard } from "./PackageCard";
 
 export const Tags: FunctionComponent = () => {
   const {

@@ -1,11 +1,11 @@
 import { Center, Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { usePackageState } from "./PackageState";
+import testIds from "./testIds";
 import { sanitizeVersion } from "../../api/package/util";
 import { NavLink } from "../../components/NavLink";
 import { PageLoader } from "../../components/PageLoader";
 import { getPackagePath } from "../../util/url";
-import { usePackageState } from "./PackageState";
-import testIds from "./testIds";
 
 export const DependenciesList: FunctionComponent = () => {
   const assembly = usePackageState().assembly.data;

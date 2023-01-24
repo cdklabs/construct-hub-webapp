@@ -1,10 +1,10 @@
 import { FunctionComponent, useCallback, useMemo } from "react";
-import { PackageTagConfig, TagGroupConfig } from "../../api/config";
-import { useConfigValue } from "../../hooks/useConfigValue";
 import { CheckboxFilter } from "./CheckboxFilter";
 import { RadioFilter } from "./RadioFilter";
 import { useTags } from "./useSearchParam";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { PackageTagConfig, TagGroupConfig } from "../../api/config";
+import { useConfigValue } from "../../hooks/useConfigValue";
 
 interface FilterGroup extends Partial<TagGroupConfig> {
   id: string;

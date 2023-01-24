@@ -1,6 +1,5 @@
 import { FunctionComponent, useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { GetIsActiveItemFunction, NavTree } from "../../components/NavTree";
 import {
   API_URL_RESOURCE,
   PACKAGE_ANALYTICS,
@@ -8,6 +7,7 @@ import {
 } from "./constants";
 import { usePackageState } from "./PackageState";
 import type { MenuItem } from "./util";
+import { GetIsActiveItemFunction, NavTree } from "../../components/NavTree";
 
 export const PrimaryDocNavigation: FunctionComponent = () => {
   const { menuItems } = usePackageState();

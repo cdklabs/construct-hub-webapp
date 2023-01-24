@@ -1,12 +1,12 @@
 import { EmailIcon } from "@chakra-ui/icons";
 import { Divider, Stack, useBreakpointValue } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { ExternalLink } from "../../components/ExternalLink";
-import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
-import { GithubIcon } from "../../icons/GithubIcon";
 import { PACKAGE_ANALYTICS } from "./constants";
 import { usePackageState } from "./PackageState";
 import testIds from "./testIds";
+import { ExternalLink } from "../../components/ExternalLink";
+import { CONSTRUCT_HUB_REPO_URL } from "../../constants/links";
+import { GithubIcon } from "../../icons/GithubIcon";
 
 const iconProps = {
   h: 6,

@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
-import { LANGUAGE_NAME_MAP } from "../../constants/languages";
 import { DocsError } from "./DocsError";
 import { usePackageState } from "./PackageState";
+import { LANGUAGE_NAME_MAP } from "../../constants/languages";
 
 export const PackageDocsUnsupported: FunctionComponent = () => {
   const { language } = usePackageState();

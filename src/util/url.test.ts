@@ -1,6 +1,3 @@
-import { CatalogSearchSort } from "../api/catalog-search/constants";
-import { CDKType } from "../constants/constructs";
-import { Language } from "../constants/languages";
 import {
   getRepoUrlAndHost,
   createURLSearchParams,
@@ -8,6 +5,9 @@ import {
   getSearchPath,
   getPackagePath,
 } from "./url";
+import { CatalogSearchSort } from "../api/catalog-search/constants";
+import { CDKType } from "../constants/constructs";
+import { Language } from "../constants/languages";
 
 describe("getRepoUrlAndHost", () => {
   it("returns hostname and url for non-ssh urls", () => {

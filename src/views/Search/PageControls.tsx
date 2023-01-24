@@ -1,12 +1,12 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
-import { eventName } from "../../contexts/Analytics";
 import { ArrowButton } from "./ArrowButton";
 import { SEARCH_ANALYTICS } from "./constants";
 import { GoToPage } from "./GoToPage";
 import testIds from "./testIds";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { eventName } from "../../contexts/Analytics";
 
 export interface PageControlsProps {
   offset: number;

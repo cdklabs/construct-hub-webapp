@@ -6,8 +6,8 @@ import {
   useEffect,
   useState,
 } from "react";
-import { clickEvent, useAnalytics } from "../../contexts/Analytics";
 import { useUpdateSearchParam } from "./useUpdateSearchParam";
+import { clickEvent, useAnalytics } from "../../contexts/Analytics";
 
 export interface GoToPageProps {
   "data-event"?: string;

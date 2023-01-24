@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getSectionIdSet } from ".";
+import { getElementId } from "./util";
 import { DOCS_CONTAINER_ID } from "../constants";
 import { useSectionItems } from "../useSectionItems";
-import { getElementId } from "./util";
 
 const intersectionObserverOptions: IntersectionObserverInit = {
   // Creates a margin for intersection boundary. For this margin, an entry will only be considered intersecting

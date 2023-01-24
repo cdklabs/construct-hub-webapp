@@ -1,6 +1,6 @@
 import type { FunctionComponent } from "react";
-import { PackageLanguages } from "../PackageLanguages";
 import { usePackageCard } from "./PackageCard";
+import { PackageLanguages } from "../PackageLanguages";
 
 export const Languages: FunctionComponent = () => {
   const pkg = usePackageCard();

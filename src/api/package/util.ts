@@ -1,5 +1,5 @@
-import { API_PATHS } from "../../constants/url";
 import { CatalogPackage, Packages } from "./packages";
+import { API_PATHS } from "../../constants/url";
 
 export const getFullPackageName = (name: string, scope?: string) => {
   return scope ? `${scope}/${name}` : name;

@@ -1,6 +1,6 @@
+import { Metadata } from "./metadata";
 import { Language } from "../../constants/languages";
 import { API_PATHS } from "../../constants/url";
-import { Metadata } from "./metadata";
 
 export interface Author {
   readonly name: string;

@@ -17,11 +17,11 @@ import {
   MouseEventHandler,
   useState,
 } from "react";
-import { ExternalLink } from "../../components/ExternalLink";
 import {
   ExternalLinkPromptOptions,
   PREFERS_WARN_ON_EXTERNAL_LINK_CLICK,
 } from "./constants";
+import { ExternalLink } from "../../components/ExternalLink";
 
 export interface ExternalLinkWarningModalProps
   extends ExternalLinkPromptOptions {

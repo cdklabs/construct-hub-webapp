@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
-import { Markdown } from "../../components/Markdown";
 import { DocsError } from "./DocsError";
 import { usePackageState } from "./PackageState";
+import { Markdown } from "../../components/Markdown";
 
 export const PackageReadme: FunctionComponent = () => {
   const {

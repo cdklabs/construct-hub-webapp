@@ -1,7 +1,5 @@
 import { Box, Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { ROUTES } from "../../constants/url";
-import { NavLink } from "../NavLink";
 import { HEADER_ANALYTICS } from "./constants";
 import { DocumentationDropdown } from "./DocumentationDropdown";
 import { GettingStartedDropdown } from "./GettingStartedDropdown";
@@ -9,6 +7,8 @@ import { HeaderSearch } from "./HeaderSearch";
 import { NavButton } from "./NavButton";
 import testIds from "./testIds";
 import { Title } from "./Title";
+import { ROUTES } from "../../constants/url";
+import { NavLink } from "../NavLink";
 
 const HeaderItem: FunctionComponent<GridItemProps> = (props) => (
   <GridItem align="center" justify="center" rowStart={1} {...props} />

@@ -1,8 +1,8 @@
 import emoji from "node-emoji";
+import { API_URL_RESOURCE, README_ITEM_ID } from "./constants";
 import { Language } from "../../constants/languages";
 import { QUERY_PARAMS } from "../../constants/url";
 import { sanitize } from "../../util/sanitize-anchor";
-import { API_URL_RESOURCE, README_ITEM_ID } from "./constants";
 
 export interface MenuItem {
   id: string;

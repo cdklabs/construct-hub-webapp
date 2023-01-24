@@ -8,12 +8,12 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
+import testIds from "./testIds";
 import { Category } from "../../api/config";
 import { NavLink } from "../../components/NavLink";
 import { useConfigValue } from "../../hooks/useConfigValue";
 import { getSearchPath } from "../../util/url";
-import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
-import testIds from "./testIds";
 
 /**
  * Categories used if config does not have specific categories

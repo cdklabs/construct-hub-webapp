@@ -14,9 +14,9 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { NavTree } from "../../components/NavTree";
 import { ChooseSubmodule } from "./ChooseSubmodule";
 import { usePackageState } from "./PackageState";
+import { NavTree } from "../../components/NavTree";
 
 export const NavDrawer: FunctionComponent = () => {
   const { assembly, menuItems } = usePackageState();

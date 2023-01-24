@@ -1,11 +1,11 @@
 import { Divider, Flex, Spinner } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { LanguageSelection } from "../LanguageSelection";
-import { usePackageState } from "../PackageState";
 import { Details } from "./Details";
 import { HeaderContainer, GRID_AREAS } from "./HeaderContainer";
 import { Heading } from "./Heading";
 import { Install } from "./Install";
+import { LanguageSelection } from "../LanguageSelection";
+import { usePackageState } from "../PackageState";
 
 export const PackageHeader: FunctionComponent = () => {
   const { assembly, metadata, version } = usePackageState();

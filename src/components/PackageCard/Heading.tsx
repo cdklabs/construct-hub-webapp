@@ -6,13 +6,13 @@ import {
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
+import { EditorsNote } from "./EditorsNote";
+import { usePackageCard } from "./PackageCard";
+import testIds from "./testIds";
 import { eventName } from "../../contexts/Analytics";
 import { useLanguage } from "../../hooks/useLanguage";
 import { getPackagePath } from "../../util/url";
 import { CDKTypeBadge } from "../CDKType";
-import { EditorsNote } from "./EditorsNote";
-import { usePackageCard } from "./PackageCard";
-import testIds from "./testIds";
 
 export const Heading: FunctionComponent = () => {
   const [currentLanguage] = useLanguage();

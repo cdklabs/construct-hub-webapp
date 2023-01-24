@@ -8,10 +8,10 @@ import {
 import type { Assembly } from "@jsii/spec";
 import type { Language as PrismLanguage } from "prism-react-renderer";
 import type { FunctionComponent } from "react";
+import { ToggleButton } from "./ToggleButton";
 import { Code } from "../../../components/Code";
 import { Language } from "../../../constants/languages";
 import { usePackageState } from "../PackageState";
-import { ToggleButton } from "./ToggleButton";
 
 const getCodeSample = ({
   language,

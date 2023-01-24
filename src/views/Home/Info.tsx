@@ -8,6 +8,9 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
+import { InfoSection } from "./InfoSection";
+import testIds from "./testIds";
 import { CatalogSearchSort } from "../../api/catalog-search/constants";
 import { NavLink } from "../../components/NavLink";
 import { CDKType, CDKTYPE_RENDER_MAP } from "../../constants/constructs";
@@ -20,9 +23,6 @@ import { AWSIcon } from "../../icons/AWSIcon";
 import { DatadogIcon } from "../../icons/DatadogIcon";
 import { MongoDBIcon } from "../../icons/MongoDBIcon";
 import { getSearchPath } from "../../util/url";
-import { HOME_ANALYTICS, SECTION_PADDING } from "./constants";
-import { InfoSection } from "./InfoSection";
-import testIds from "./testIds";
 
 const publishers = [
   {

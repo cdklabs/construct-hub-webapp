@@ -1,6 +1,6 @@
 import * as spec from "@jsii/spec";
-import { API_PATHS } from "../../constants/url";
 import { getAssetsPath } from "./util";
+import { API_PATHS } from "../../constants/url";
 
 // These fields are removed from assembly.json during processing to save space,
 // and we don't need them here in the client.

@@ -1,9 +1,9 @@
 import { Box, PropsOf, Text } from "@chakra-ui/react";
 import { Language } from "prism-react-renderer";
 import type { FunctionComponent } from "react";
+import { Code } from "./Code";
 import { ExternalLink } from "../ExternalLink";
 import { NavLink } from "../NavLink";
-import { Code } from "./Code";
 
 type AnchorComponent = FunctionComponent<
   PropsOf<typeof NavLink> | PropsOf<typeof ExternalLink>

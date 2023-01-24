@@ -1,8 +1,8 @@
 import { Center, Spinner } from "@chakra-ui/react";
 import { FunctionComponent, memo } from "react";
+import { WideCardList } from "./WideCardList";
 import { ExtendedCatalogPackage } from "../../api/catalog-search";
 import { PackageCardType } from "../PackageCard";
-import { WideCardList } from "./WideCardList";
 
 const listViews = {
   [PackageCardType.Wide]: WideCardList,

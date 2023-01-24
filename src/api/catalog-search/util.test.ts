@@ -1,7 +1,3 @@
-import catalogFixture from "../../__fixtures__/catalog.json";
-import { CDKType } from "../../constants/constructs";
-import { Language } from "../../constants/languages";
-import { CatalogPackage } from "../package/packages";
 import { CatalogSearchAPI } from "./catalog-search";
 import { CatalogSearchSort } from "./constants";
 import {
@@ -10,6 +6,10 @@ import {
   renderAllKeywords,
   mapConstructFrameworks,
 } from "./util";
+import catalogFixture from "../../__fixtures__/catalog.json";
+import { CDKType } from "../../constants/constructs";
+import { Language } from "../../constants/languages";
+import { CatalogPackage } from "../package/packages";
 
 describe("Catalog Search Utils", () => {
   const packages = [

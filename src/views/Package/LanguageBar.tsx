@@ -1,5 +1,6 @@
 import { IconButton, Stack } from "@chakra-ui/react";
 import type { FunctionComponent } from "react";
+import { PACKAGE_ANALYTICS } from "./constants";
 import { LanguageSupportTooltip } from "../../components/LanguageSupportTooltip";
 import {
   Language,
@@ -8,7 +9,6 @@ import {
   LANGUAGES,
 } from "../../constants/languages";
 import { clickEvent, useAnalytics } from "../../contexts/Analytics";
-import { PACKAGE_ANALYTICS } from "./constants";
 
 export interface LanguageBarProps {
   targetLanguages: readonly Language[];

@@ -7,7 +7,6 @@ import {
   Tabs,
 } from "@chakra-ui/react";
 import { FunctionComponent, useState, useEffect } from "react";
-import { Page } from "../../components/Page";
 import { PACKAGE_ANALYTICS } from "./constants";
 import { DependenciesList } from "./DependenciesList";
 import { FeedbackLinks } from "./FeedbackLinks";
@@ -16,6 +15,7 @@ import { PackageHeader } from "./PackageHeader";
 import { usePackageState } from "./PackageState";
 import { ShareInfo } from "./ShareInfo";
 import testIds from "./testIds";
+import { Page } from "../../components/Page";
 
 export const PackageLayout: FunctionComponent = () => {
   const { pageDescription, pageTitle } = usePackageState();

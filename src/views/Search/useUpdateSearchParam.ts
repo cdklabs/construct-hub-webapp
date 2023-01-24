@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useHistory } from "react-router-dom";
-import { getSearchPath } from "../../util/url";
 import { getSearchUrlParams } from "./util";
+import { getSearchPath } from "../../util/url";
 
 export const useUpdateSearchParam = () => {
   const { push } = useHistory();

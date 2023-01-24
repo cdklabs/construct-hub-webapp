@@ -1,8 +1,4 @@
 import lunr from "lunr";
-import { CDKType } from "../../constants/constructs";
-import { Language } from "../../constants/languages";
-import { CatalogPackage } from "../package/packages";
-import { PackageStats } from "../stats";
 import { CatalogSearchSort } from "./constants";
 import {
   FILTER_FUNCTIONS,
@@ -10,6 +6,10 @@ import {
   renderAllKeywords,
   SORT_FUNCTIONS,
 } from "./util";
+import { CDKType } from "../../constants/constructs";
+import { Language } from "../../constants/languages";
+import { CatalogPackage } from "../package/packages";
+import { PackageStats } from "../stats";
 
 const INDEX_FIELDS = {
   AUTHOR_EMAIL: {
