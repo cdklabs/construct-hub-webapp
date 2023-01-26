@@ -18,7 +18,7 @@ export const GETTING_STARTED: IMenuItems = [
     links: [
       {
         display: "Slack",
-        url: "https://join.slack.com/t/cdk-dev/shared_invite/zt-xtpfmrqt-6ormYTA0hLdpMSAtTkM_2A",
+        url: "https://join.slack.com/t/cdk-dev/shared_invite/zt-1mvwihbtu-DKhqC~KdwbO4rY837rAQRg",
       },
     ],
   },
@@ -45,11 +45,11 @@ export const DOCUMENTATION: IMenuItems = [
     links: [
       {
         display: "Getting Started",
-        url: "https://learn.hashicorp.com/tutorials/terraform/cdktf",
+        url: "https://developer.hashicorp.com/terraform/cdktf",
       },
       {
         display: "Tutorials",
-        url: "https://learn.hashicorp.com/collections/terraform/cdktf",
+        url: "https://developer.hashicorp.com/terraform/tutorials/cdktf",
       },
     ],
   },
