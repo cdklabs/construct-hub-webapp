@@ -2276,7 +2276,7 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz#add4c98d341472a289190b424efbdb096991bb24"
   integrity sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==
 
-"@jridgewell/trace-mapping@^0.3.14", "@jridgewell/trace-mapping@^0.3.17", "@jridgewell/trace-mapping@^0.3.9":
+"@jridgewell/trace-mapping@^0.3.17", "@jridgewell/trace-mapping@^0.3.9":
   version "0.3.17"
   resolved "https://registry.yarnpkg.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.17.tgz#793041277af9073b0951a7fe0f0d8c4c98c36985"
   integrity sha512-MCNzAp77qzKca9+W/+I0+sEpaUnZoeasnghNeVc41VZCEKaCH73Vq3BZZ/SzWIgrqE4H4ceI+p+b6C0mHf9T4g==
@@ -5748,9 +5748,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.284:
-  version "1.4.323"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.323.tgz#5f91cb03e6b88c0a208ff66c0203a24c6e689506"
-  integrity sha512-+a0hMEQxE8u1F1vOHcE0M18kQ2+4AwOXdRrU4avZ1LeR/sa9WAallYE3uES/PNcEGt/wCFcOgWcArSLx5C+WNQ==
+  version "1.4.325"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.325.tgz#7b97238a61192d85d055d97f3149832b3617d37b"
+  integrity sha512-K1C03NT4I7BuzsRdCU5RWkgZxtswnKDYM6/eMhkEXqKu4e5T+ck610x3FPzu1y7HVFSiQKZqP16gnJzPpji1TQ==
 
 emittery@^0.10.2:
   version "0.10.2"
@@ -9082,9 +9082,9 @@ log-update@^4.0.0:
     wrap-ansi "^6.2.0"
 
 log4js@^6.8.0:
-  version "6.9.0"
-  resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.9.0.tgz#2687c08b330f610054e79c492b35c677c9b183eb"
-  integrity sha512-sAGxJKqxXFlK+05OlMH6SIDAdvgQHj95EfSDOfkHW6BQUlkz+fZw8PWhydfRHq+0UuWYWR55mVnR+KTnWE2JDA==
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.9.1.tgz#aba5a3ff4e7872ae34f8b4c533706753709e38b6"
+  integrity sha512-1somDdy9sChrr9/f4UlzhdaGfDR2c/SaD2a4T7qEkG4jTS57/B3qmnjLYePwQ8cqWnUHZI0iAKxMBpCZICiZ2g==
   dependencies:
     date-format "^4.0.14"
     debug "^4.3.4"
@@ -11051,10 +11051,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.67.75:
-  version "0.67.75"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.67.75.tgz#64fc75d9e8aaea7ad56424bf78ba0c5d59a8f27e"
-  integrity sha512-cdCRjhyIumTPOlKIaNSl4FtJUV5QC6C11FqbdEXhOBsnLleppo62NoS/renS4IGkruyHyqliX0bXakBCskYiaQ==
+projen@^0.67.78:
+  version "0.67.78"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.67.78.tgz#8e3da966cc9a985f691eec532760347ab65179c6"
+  integrity sha512-JgFWbyK26aP4AjG/kS5Ag54+TAzldK7gBZ6UrMFUr4xEvXFmwNBLQYlamb/pmb3XothEKfNN5Qh6WkIqKY9mrg==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
@@ -11931,9 +11931,9 @@ rimraf@3.0.2, rimraf@^3.0.0, rimraf@^3.0.2:
     glob "^7.1.3"
 
 rimraf@^4.1.2:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-4.3.1.tgz#ccb3525e39100478acb334fae6d23029b87912ea"
-  integrity sha512-GfHJHBzFQra23IxDzIdBqhOWfbtdgS1/dCHrDy+yvhpoJY5TdwdT28oWaHWfRpKFDLd3GZnGTx6Mlt4+anbsxQ==
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-4.4.0.tgz#c7a9f45bb2ec058d2e60ef9aca5167974313d605"
+  integrity sha512-X36S+qpCUR0HjXlkDe4NAOhS//aHH0Z+h8Ckf2auGJk3PTnx5rLmrHkwNdbVQuCSUhOyFrlRvFEllZOYE+yZGQ==
   dependencies:
     glob "^9.2.0"
 
@@ -12136,7 +12136,7 @@ serialize-javascript@^4.0.0:
   dependencies:
     randombytes "^2.1.0"
 
-serialize-javascript@^6.0.0:
+serialize-javascript@^6.0.0, serialize-javascript@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-6.0.1.tgz#b206efb27c3da0b0ab6b52f48d170b7996458e5c"
   integrity sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==
@@ -12885,17 +12885,17 @@ terminal-link@^2.0.0:
     supports-hyperlinks "^2.0.0"
 
 terser-webpack-plugin@^5.1.3, terser-webpack-plugin@^5.2.5:
-  version "5.3.6"
-  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.3.6.tgz#5590aec31aa3c6f771ce1b1acca60639eab3195c"
-  integrity sha512-kfLFk+PoLUQIbLmB1+PZDMRSZS99Mp+/MHqDNmMA6tOItzRt+Npe3E+fsMs5mfcM0wCtrrdU387UnV+vnSffXQ==
+  version "5.3.7"
+  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.3.7.tgz#ef760632d24991760f339fe9290deb936ad1ffc7"
+  integrity sha512-AfKwIktyP7Cu50xNjXF/6Qb5lBNzYaWpU6YfoX3uZicTx0zTy0stDDCsvjDapKsSDvOeWo5MEq4TmdBy2cNoHw==
   dependencies:
-    "@jridgewell/trace-mapping" "^0.3.14"
+    "@jridgewell/trace-mapping" "^0.3.17"
     jest-worker "^27.4.5"
     schema-utils "^3.1.1"
-    serialize-javascript "^6.0.0"
-    terser "^5.14.1"
+    serialize-javascript "^6.0.1"
+    terser "^5.16.5"
 
-terser@^5.0.0, terser@^5.10.0, terser@^5.14.1:
+terser@^5.0.0, terser@^5.10.0, terser@^5.16.5:
   version "5.16.5"
   resolved "https://registry.yarnpkg.com/terser/-/terser-5.16.5.tgz#1c285ca0655f467f92af1bbab46ab72d1cb08e5a"
   integrity sha512-qcwfg4+RZa3YvlFh0qjifnzBHjKGNbtDo9yivMqMFDy9Q6FSaQWSB/j1xKhsoUFJIqDOM3TsN6D5xbrMrFcHbg==
@@ -13695,9 +13695,9 @@ webpack-sources@^3.2.3:
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
 webpack@^5.64.4:
-  version "5.75.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.75.0.tgz#1e440468647b2505860e94c9ff3e44d5b582c152"
-  integrity sha512-piaIaoVJlqMsPtX/+3KTTO6jfvrSYgauFVdt8cr9LTHKmcq/AMd4mhzsiP7ZF/PGRNPGA8336jldh9l2Kt2ogQ==
+  version "5.76.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.76.0.tgz#f9fb9fb8c4a7dbdcd0d56a98e56b8a942ee2692c"
+  integrity sha512-l5sOdYBDunyf72HW8dF23rFtWq/7Zgvt/9ftMof71E/yUb1YLOBmTgA2K4vQthB3kotMrSj609txVE0dnr2fjA==
   dependencies:
     "@types/eslint-scope" "^3.7.3"
     "@types/estree" "^0.0.51"
