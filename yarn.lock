@@ -2966,9 +2966,9 @@
     "@types/istanbul-lib-report" "*"
 
 "@types/jest@*":
-  version "29.4.1"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.4.1.tgz#d76cbd07e5a24c0f4e86c2c0f9ed9e4ed33af3c8"
-  integrity sha512-zDQSWXG+ZkEvs2zFFMszePhx4euKz+Yt3Gg1P+RHjfJBinTTr6L2DEyovO4V/WrKXuF0Dgn56GWGZPDa6TW9eQ==
+  version "29.4.4"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.4.4.tgz#ba257bd7b1876dec9e0b4fb82fa60eec5505e5f1"
+  integrity sha512-qezb65VIH7X1wobSnd6Lvdve7PXSyQRa3dljTkhTtDhi603RvHQCshSlJcuyMLHJpeHgY3NKwvDJWxMOOHxGDQ==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
@@ -11079,10 +11079,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.68.1:
-  version "0.68.1"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.68.1.tgz#294e8e1f9033a560d4f439bd6bf4ca4c4ad99528"
-  integrity sha512-1ewsrr1jG31ecQYEAFz8iEEskRmYdrMT+XN3hvcdGOWIvWKVqwMJzJyHhZinmj+81YNOOvbmzwSRpGqX3XqKMw==
+projen@^0.68.5:
+  version "0.68.5"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.68.5.tgz#543a50e9826f68a1d0d8a2c208239b7dead65a75"
+  integrity sha512-57LICn/A89xkVAgZ5p7ZcClJzF6A7vGdqShLf+kMaK22GFhs8PfCfOFvJKl6FZOoY0PZaxCtuCkHnwq1hCX0Mw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
@@ -13729,9 +13729,9 @@ webpack-sources@^3.2.3:
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
 webpack@^5.64.4:
-  version "5.76.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.76.1.tgz#7773de017e988bccb0f13c7d75ec245f377d295c"
-  integrity sha512-4+YIK4Abzv8172/SGqObnUjaIHjLEuUasz9EwQj/9xmPPkYJy2Mh03Q/lJfSD3YLzbxy5FeTq5Uw0323Oh6SJQ==
+  version "5.76.2"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.76.2.tgz#6f80d1c1d1e3bf704db571b2504a0461fac80230"
+  integrity sha512-Th05ggRm23rVzEOlX8y67NkYCHa9nTNcwHPBhdg+lKG+mtiW7XgggjAeeLnADAe7mLjJ6LUNfgHAuRRh+Z6J7w==
   dependencies:
     "@types/eslint-scope" "^3.7.3"
     "@types/estree" "^0.0.51"
