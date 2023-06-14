@@ -1,12 +1,12 @@
-const { web } = require("projen");
-const { workflows } = require("projen/lib/github");
+import { github, web } from "projen";
+import { workflows } from "projen/lib/github";
 
 const PROXY_URL = "https://constructs.dev/";
 
 const project = new web.ReactTypeScriptProject({
   defaultReleaseBranch: "main",
   name: "construct-hub-webapp",
-  projenUpgradeSecret: "PROJEN_GITHUB_TOKEN",
+  projenrcTs: true,
 
   // Author metadata
   authorEmail: "construct-ecosystem-team@amazon.com",
@@ -29,9 +29,7 @@ const project = new web.ReactTypeScriptProject({
   minNodeVersion: "16.16.0",
 
   eslint: true,
-  eslintOptions: {
-    prettier: true,
-  },
+  prettier: true,
 
   deps: [
     "@chakra-ui/anatomy",
@@ -104,7 +102,7 @@ project.package.addField("resolutions", {
 });
 
 project.gitignore.addPatterns("/.vscode/");
-project.npmignore.addPatterns("/.vscode/");
+project.npmignore?.addPatterns("/.vscode/");
 
 (function addCypress() {
   project.addDevDeps("cypress");
@@ -120,7 +118,7 @@ project.npmignore.addPatterns("/.vscode/");
   });
 
   project.gitignore.addPatterns("cypress/videos/", "cypress/screenshots/");
-  project.eslint.addIgnorePattern("cypress/");
+  project.eslint?.addIgnorePattern("cypress/");
 
   // Express is used to create a local proxy server used in CI + local build testing
   (function addExpress() {
@@ -169,20 +167,20 @@ project.npmignore.addPatterns("/.vscode/");
     },
   ];
 
-  const integWorkflow = project.github.addWorkflow("integ");
+  const integWorkflow = project.github?.addWorkflow("integ")!;
   const e2e = "e2e";
   integWorkflow.on({ workflowDispatch: {}, pullRequest: {} });
   integWorkflow.addJob(e2e, {
     name: e2e,
-    runsOn: "ubuntu-latest",
+    runsOn: ["ubuntu-latest"],
     permissions: {
-      checks: "write",
-      contents: "read",
+      checks: github.workflows.JobPermission.WRITE,
+      contents: github.workflows.JobPermission.READ,
     },
     steps: cypressRunSteps,
   });
 
-  project.autoMerge.addConditions(`status-success=${e2e}`);
+  project.autoMerge?.addConditions(`status-success=${e2e}`);
 
   // Set up a canary that tests that the latest code on our main branch
   // works against data on https://constructs.dev.
@@ -191,7 +189,7 @@ project.npmignore.addPatterns("/.vscode/");
   // and not the version that is live, otherwise it's possible for newer
   // tests to run against an older (incompatible) version of the frontend
   // due to deployment delays and give us false positives.
-  const e2eCanary = project.github.addWorkflow("e2e-canary");
+  const e2eCanary = project.github?.addWorkflow("e2e-canary")!;
   e2eCanary.on({
     schedule: [
       {
@@ -203,10 +201,10 @@ project.npmignore.addPatterns("/.vscode/");
   e2eCanary.addJobs({
     test: {
       name: "constructs.dev canary",
-      runsOn: "ubuntu-latest",
+      runsOn: ["ubuntu-latest"],
       permissions: {
-        checks: "write",
-        contents: "read",
+        checks: github.workflows.JobPermission.WRITE,
+        contents: github.workflows.JobPermission.READ,
       },
       steps: [
         ...cypressRunSteps,
@@ -248,7 +246,7 @@ project.npmignore.addPatterns("/.vscode/");
     exec: "npx react-app-rewired test -u",
   });
 
-  project.eslint.addIgnorePattern("jest.config.ts");
+  project.eslint?.addIgnorePattern("jest.config.ts");
 })();
 
 // This task is used to analyze dead code
@@ -259,15 +257,15 @@ project.npmignore.addPatterns("/.vscode/");
 
 // npm tarball will only include the contents of the "build"
 // directory, which is the output of our static website.
-project.npmignore.addPatterns("!/build");
-project.npmignore.addPatterns("/public");
+project.npmignore?.addPatterns("!/build");
+project.npmignore?.addPatterns("/public");
 
 // Ignore local config.json
-project.npmignore.addPatterns("/build/config.json");
+project.npmignore?.addPatterns("/build/config.json");
 project.gitignore.addPatterns("/public/config.json");
 
 // test fixtures
-project.npmignore.addPatterns("src/__fixtures__");
+project.npmignore?.addPatterns("src/__fixtures__");
 
 // these are development assemblies fetched specifically
 // by each developer.
@@ -277,7 +275,7 @@ project.gitignore.exclude("public/data");
 project.package.addField("proxy", PROXY_URL);
 
 // setup linting for create-react-app specific tools
-project.eslint.addRules({
+project.eslint?.addRules({
   "import/no-extraneous-dependencies": [
     "error",
     {
@@ -289,7 +287,7 @@ project.eslint.addRules({
 });
 
 // React specific overrides
-project.eslint.addOverride({
+project.eslint?.addOverride({
   files: ["src/**/*.tsx", "src/**/*.ts"],
   extends: [
     "plugin:react/recommended",
@@ -310,7 +308,7 @@ project.eslint.addOverride({
     "react/prop-types": ["off"],
     "react/react-in-jsx-scope": ["off"],
   },
-});
+} as any);
 
 // rewire cra tasks, all apart from eject.
 rewireCRA(project.tasks.tryFind("build"));
@@ -319,10 +317,10 @@ rewireCRA(project.tasks.tryFind("dev"));
 
 // trigger construct-hub to pick up changes from construct-hub-webapp
 // whenever a new release is made
-project.release.addJobs({
+project.release?.addJobs({
   upgrade_construct_hub: {
     name: "Upgrade construct-hub",
-    runsOn: "ubuntu-latest",
+    runsOn: ["ubuntu-latest"],
     permissions: {
       actions: workflows.JobPermission.WRITE,
     },
@@ -353,7 +351,7 @@ project.synth();
  *
  * @see https://www.npmjs.com/package/react-app-rewired
  */
-function rewireCRA(craTask) {
+function rewireCRA(craTask: any) {
   for (const step of craTask.steps) {
     if (step.exec && step.exec.startsWith("react-scripts")) {
       step.exec = step.exec.replace("react-scripts", "react-app-rewired");
