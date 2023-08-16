@@ -294,6 +294,11 @@ project.eslint?.addOverride({
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
   ],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
   plugins: ["jsx-a11y", "prefer-arrow"],
   rules: {
     "@typescript-eslint/no-use-before-define": ["error"],
