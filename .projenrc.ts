@@ -68,8 +68,10 @@ const project = new web.ReactTypeScriptProject({
   devDeps: [
     "@types/lunr",
     "@types/node-emoji",
-    "@types/react-helmet",
-    "@types/react-router-dom",
+    "@types/react@17.045",
+    "@types/react-dom@17.0.21",
+    "@types/react-helmet@6.1.7",
+    "@types/react-router-dom@5.3.3",
     "@types/semver",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-prefer-arrow",
