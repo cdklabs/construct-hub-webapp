@@ -3083,19 +3083,12 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.7.tgz#50ae4353eaaddc04044279812f52c8c65857dbcb"
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
-"@types/react-dom@17.0.25":
+"@types/react-dom@17.0.25", "@types/react-dom@>=16.9.0":
   version "17.0.25"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.25.tgz#e0e5b3571e1069625b3a3da2b279379aa33a0cb5"
   integrity sha512-urx7A7UxkZQmThYA4So0NelOVjx3V4rNFVJwp0WZlbIK5eM4rNJDiN3R/E9ix0MBh6kAEojk/9YL+Te6D9zHNA==
   dependencies:
     "@types/react" "^17"
-
-"@types/react-dom@>=16.9.0":
-  version "18.2.17"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.17.tgz#375c55fab4ae671bd98448dcfa153268d01d6f64"
-  integrity sha512-rvrT/M7Df5eykWFxn6MYt5Pem/Dbyc1N8Y0S9Mrkw2WFCRiqUgw9P7ul2NpwsXCSM1DVdENzdG9J5SreqfAIWg==
-  dependencies:
-    "@types/react" "*"
 
 "@types/react-helmet@6.1.7":
   version "6.1.7"
@@ -3128,16 +3121,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@17.0.45", "@types/react@>=16.9.0", "@types/react@^17", "@types/react@^17.0.15":
-  version "17.0.45"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.45.tgz#9b3d5b661fd26365fefef0e766a1c6c30ccf7b3f"
-  integrity sha512-YfhQ22Lah2e3CHPsb93tRwIGNiSwkuz1/blk4e6QrWS0jQzCSNbGLtOEYhPg02W0yGTTmpajp7dCTbBAMN3qsg==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@17.0.72":
+"@types/react@*", "@types/react@17.0.72", "@types/react@>=16.9.0", "@types/react@^17", "@types/react@^17.0.15":
   version "17.0.72"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.72.tgz#846876ddc2d92ba4787b6b970acc226f56b5c178"
   integrity sha512-iFqLaDdU/V/xU+rnii7KdMi4xU+Rz0ArNW6q1r0xauGv++hD1eUMCvYn3zqm5jSXTtyb6O5Tr0qmHJ2bnzAsVA==
