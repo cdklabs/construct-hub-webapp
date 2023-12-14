@@ -96,7 +96,7 @@ project.package.addField("resolutions", {
   // if test pass, we should be ok with this override, even though its a different major version.
   "nth-check": "2.0.1",
   // addressing https://github.com/facebook/react/issues/24304
-  "@types/react": "17.0.45",
+  "@types/react": "17.0.72",
   // not sure why this is needed, but some dependencies have a transient dependency
   // on wrap-ansi@8 which is an ESM module. When performing `yarn upgrade npm-check-updates`
   // yarn gets confused somehow and uses the @8 one which causes things to break
