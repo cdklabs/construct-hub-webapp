@@ -31,7 +31,6 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-!/.projenrc.js
 !/.github/workflows/build.yml
 /dist/changelog.md
 /dist/version.txt
@@ -56,3 +55,4 @@ cypress/screenshots/
 !/.github/workflows/e2e-canary.yml
 /public/config.json
 public/data
+!/.projenrc.ts
