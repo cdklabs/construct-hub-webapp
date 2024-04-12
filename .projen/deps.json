@@ -136,6 +136,11 @@
       "type": "build"
     },
     {
+      "name": "react-scripts",
+      "version": "^5",
+      "type": "build"
+    },
+    {
       "name": "standard-version",
       "version": "^9",
       "type": "build"
@@ -252,11 +257,6 @@
     },
     {
       "name": "react-router-dom",
-      "type": "runtime"
-    },
-    {
-      "name": "react-scripts",
-      "version": "^5",
       "type": "runtime"
     },
     {
