@@ -27,3 +27,4 @@ tsconfig.tsbuildinfo
 src/__fixtures__
 /.gitattributes
 /.projenrc.ts
+/projenrc
