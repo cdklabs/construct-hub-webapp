@@ -2993,9 +2993,9 @@
     "@types/lodash" "*"
 
 "@types/lodash@*":
-  version "4.17.3"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.3.tgz#b69884a018834d97e981f9f569ddc07668367e6f"
-  integrity sha512-zmNrEJaBvNskZXQWaUQq6bktF4IDGVfDS78M+YEk5aCn9M/b94/mB/6WCyfH2/MjwBdc6QuOor95CIlKWYRL3A==
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.4.tgz#0303b64958ee070059e3a7184048a55159fe20b7"
+  integrity sha512-wYCP26ZLxaT3R39kiN2+HcJ4kTd3U1waI/cY7ivWYqFP6pW3ZNpvi6Wd6PHZx7T/t8z0vlkXMg3QYLa7DZ/IJQ==
 
 "@types/lunr@^2.3.7":
   version "2.3.7"
@@ -5751,9 +5751,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.668:
-  version "1.4.773"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.773.tgz#49741af9bb4e712ad899e35d8344d8d59cdb7e12"
-  integrity sha512-87eHF+h3PlCRwbxVEAw9KtK3v7lWfc/sUDr0W76955AdYTG4bV/k0zrl585Qnj/skRMH2qOSiE+kqMeOQ+LOpw==
+  version "1.4.774"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.774.tgz#1017d1758aaeeefe5423aa9d67b4b1e5d1d0a856"
+  integrity sha512-132O1XCd7zcTkzS3FgkAzKmnBuNJjK8WjcTtNuoylj7MYbqw5eXehjQ5OK91g0zm7OTKIPeaAG4CPoRfD9M1Mg==
 
 emittery@^0.10.2:
   version "0.10.2"
@@ -5927,9 +5927,9 @@ es-iterator-helpers@^1.0.15, es-iterator-helpers@^1.0.17:
     safe-array-concat "^1.1.2"
 
 es-module-lexer@^1.2.1:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-1.5.2.tgz#00b423304f2500ac59359cc9b6844951f372d497"
-  integrity sha512-l60ETUTmLqbVbVHv1J4/qj+M8nq7AwMzEcg3kmJDt9dCNrTk+yHcYFf/Kw75pMDwd9mPcIGCG5LcS20SxYRzFA==
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-1.5.3.tgz#25969419de9c0b1fbe54279789023e8a9a788412"
+  integrity sha512-i1gCgmR9dCl6Vil6UKPI/trA69s08g/syhiDK9TG0Nf1RJjjFI+AzoWW7sPufzkgYAn861skuCwJa0pIIHYxvg==
 
 es-object-atoms@^1.0.0:
   version "1.0.0"
@@ -10662,10 +10662,10 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-projen@^0.81.13:
-  version "0.81.13"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.81.13.tgz#ea2cab002a00df46dc324515b4b47571cda2afd9"
-  integrity sha512-gmH+/lvhUitjrCNNvV2ZRmiQ6D4sbGVfOBHND5bsEUm/58b5zz5LUvjj3wn5O3/2dECNMlimaYTBAyNuzV1aCw==
+projen@^0.81.15:
+  version "0.81.15"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.81.15.tgz#6eca919899099fa7a74894a2a0e189c1769e1e00"
+  integrity sha512-Frr2bcYzqZqgk6yQarjHm+lOQRWW6qAP6LAB7ZgtoxqJUN74tzllbceoGTBY/QOG6DLHJORNlvFQ9xMnXM576A==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
