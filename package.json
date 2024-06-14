@@ -44,7 +44,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^26.0.24",
     "@types/lunr": "^2.3.7",
-    "@types/node": "^20",
+    "@types/node": "^18",
     "@types/node-emoji": "^1.8.2",
     "@types/react": "17.0.80",
     "@types/react-dom": "17.0.25",
@@ -118,7 +118,7 @@
     "wrap-ansi": "7.0.0"
   },
   "engines": {
-    "node": ">= 20.14.0"
+    "node": ">= 18.20.0"
   },
   "license": "Apache-2.0",
   "publishConfig": {
