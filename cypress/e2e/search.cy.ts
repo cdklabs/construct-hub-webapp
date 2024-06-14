@@ -9,7 +9,7 @@ import { SORT_RENDER_MAP } from "views/Search/constants";
 import { Language, TEMP_SUPPORTED_LANGUAGES } from "constants/languages";
 
 const checkCard = (cardType: string) => {
-  cy.getByDataTest(cardType).within(() => {
+  cy.getByDataTest(cardType).each(() => {
     cy.getByDataTest(packageCardIds.title).should("be.visible");
     cy.getByDataTest(packageCardIds.description).should("be.visible");
     cy.getByDataTest(packageCardIds.published).should("be.visible");
@@ -22,7 +22,7 @@ const checkCard = (cardType: string) => {
 };
 
 describe("Search", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/search");
   });
 
@@ -30,7 +30,7 @@ describe("Search", () => {
 });
 
 describe("Search (Redesign / WIP)", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visitWithConfig("/search", {
       featureFlags: {
         searchRedesign: true,
@@ -106,7 +106,7 @@ describe("Search (Redesign / WIP)", () => {
     it("has expected core filters", () => {
       cy.getByDataTest(searchRedesign.filtersPanel)
         .should("be.visible")
-        .within(() => {
+        .each(() => {
           [
             searchRedesign.cdkTypeFilter,
             searchRedesign.languagesFilter,
@@ -118,21 +118,21 @@ describe("Search (Redesign / WIP)", () => {
 
     // If this test fails, it may be an indication of data failure in catalog.json
     it("can filter by CDK Type", () => {
-      cy.getByDataTest(searchRedesign.filtersPanel).within(() => {
+      cy.getByDataTest(searchRedesign.filtersPanel).each(() => {
         [CDKType.awscdk, CDKType.cdk8s, CDKType.cdktf].forEach(filterByCDKType);
       });
     });
 
     // Only applies to CDKTypes with more than one version
     it("can filter by CDK Version for each CDK Type", () => {
-      cy.getByDataTest(searchRedesign.filtersPanel).within(() => {
+      cy.getByDataTest(searchRedesign.filtersPanel).each(() => {
         filterByCDKMajors(CDKType.awscdk, [0, 1, 2]);
         filterByCDKMajors(CDKType.cdk8s, [0, 1]);
       });
     });
 
     it("can filter by languages", () => {
-      cy.getByDataTest(searchRedesign.languagesFilter).within(() => {
+      cy.getByDataTest(searchRedesign.languagesFilter).each(() => {
         const languages = [];
 
         cy.getByDataTest(searchRedesign.filterItem).each((el) => {
@@ -174,7 +174,7 @@ describe("Search (Redesign / WIP)", () => {
           .click()
           .getByDataTest(searchRedesign.sortDropdown)
           .should("be.visible")
-          .within(() => {
+          .each(() => {
             // Not ideal, but for some reason .click() doesn't actually trigger the onClick for the buttons in cypress
             if (sort === undefined) {
               cy.getByDataTest(searchRedesign.sortItem).first().invoke("click");
@@ -198,7 +198,7 @@ describe("Search (Redesign / WIP)", () => {
 
   describe("Querying", () => {
     it("supports searching by a query", () => {
-      cy.getByDataTest(searchRedesign.page).within(() => {
+      cy.getByDataTest(searchRedesign.page).each(() => {
         cy.getByDataTest(searchBar.input)
           .type("@aws-cdk{enter}")
           .url()

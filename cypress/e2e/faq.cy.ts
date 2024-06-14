@@ -1,7 +1,7 @@
 import { checkHeaderAndFooter } from "../support/helpers";
 
 describe("FAQ", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/faq");
   });
 

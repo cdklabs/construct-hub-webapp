@@ -1,7 +1,7 @@
 import { checkHeaderAndFooter } from "../support/helpers";
 
 describe("Site Terms", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/terms");
   });
 

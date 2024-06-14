@@ -27,7 +27,7 @@ describe("Package Page", () => {
       req.reply({
         fixture: "docs-typescript-constructs@3.3.161.md",
       });
-    }).as("getDocs");
+    }).as("getDocs", { type: "static" });
 
     cy.intercept("**/constructs/v10.0.9/assembly.json", async (req) => {
       req.reply({
@@ -51,13 +51,13 @@ describe("Package Page", () => {
       req.reply({
         fixture: "catalog",
       });
-    }).as("getCatalog");
+    }).as("getCatalog", { type: "static" });
 
     cy.intercept("**/all-versions.json", async (req) => {
       req.reply({
         fixture: "all-versions",
       });
-    }).as("getVersions");
+    }).as("getVersions", { type: "static" });
 
     cy.visit(
       getPackagePath({
@@ -109,7 +109,7 @@ describe("Package Page", () => {
   it("Can switch between versions of a package", () => {
     const versions = [...versionsFixture.packages.constructs];
     versions.sort(semver.rcompare);
-  
+
     cy.getByDataTest(markdown.container)
       .should("contain", "Fake README description for v3.3.161");
 
