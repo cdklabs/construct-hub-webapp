@@ -44,7 +44,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^26.0.24",
     "@types/lunr": "^2.3.7",
-    "@types/node": "^16",
+    "@types/node": "^18",
     "@types/node-emoji": "^1.8.2",
     "@types/react": "17.0.80",
     "@types/react-dom": "17.0.25",
@@ -54,7 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "constructs": "^10.0.0",
-    "cypress": "9.7.0",
+    "cypress": "^13.11.0",
     "eslint": "^8",
     "eslint-config-prettier": "^8.10.0",
     "eslint-import-resolver-typescript": "^2.7.1",
@@ -118,7 +118,7 @@
     "wrap-ansi": "7.0.0"
   },
   "engines": {
-    "node": ">= 16.17.0"
+    "node": ">= 18.20.0"
   },
   "license": "Apache-2.0",
   "publishConfig": {

@@ -7,7 +7,7 @@ This project maintains the React web app for [Construct Hub].
 
 ### :clipboard: Prerequisites:
 
-- Node v12 or later
+- Node v18.20 or later
 - yarn v1
 
 ### :computer: Running the website
