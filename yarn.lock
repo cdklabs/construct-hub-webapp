@@ -2953,9 +2953,9 @@
     "@types/lodash" "*"
 
 "@types/lodash@*":
-  version "4.17.10"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.10.tgz#64f3edf656af2fe59e7278b73d3e62404144a6e6"
-  integrity sha512-YpS0zzoduEhuOWjAotS6A5AVCva7X4lVlYLF0FYHAY9sdraBfnatttHItlWeZdGhuEkf+OzMNg2ZYAx8t+52uQ==
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.11.tgz#8d01705ee14865015a0520e80b7ce95f3c2f7060"
+  integrity sha512-jzqWo/uQP/iqeGGTjhgFp2yaCrCYTauASQcpdzESNCkHjSprBJVcZP9KG9aQ0q+xcsXiKd/iuw/4dLjS3Odc7Q==
 
 "@types/lunr@^2.3.7":
   version "2.3.7"
@@ -10740,10 +10740,10 @@ process@^0.11.10:
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
 
-projen@^0.88.5:
-  version "0.88.5"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.88.5.tgz#93319093f41121de3a5ef2fe9f92ce80275d0bdc"
-  integrity sha512-eZdMr/gJBDQp5Dn7Tg4OwcGHT9xUU30BvPIgYDWlxJl3PG9fCizdxHc1d7XHEeQRjBujMm+qRVQ1Yqid8Ux6OA==
+projen@^0.88.6:
+  version "0.88.6"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.88.6.tgz#09c17b7e15a5db4a14fe85e0f8fc52924c066df3"
+  integrity sha512-USj+Bu7YoRyt98Zx53uUZi8mOTkHb/mo6ybbNKa9v4i6DsBp0oeLzO/8zI2NXoDvBE+NRo2ahH2P5V7ns+PbpA==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
