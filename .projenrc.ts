@@ -90,6 +90,10 @@ const project = new web.ReactTypeScriptProject({
   autoApproveUpgrades: true,
 });
 
+project.package.addField("jest", {
+  collectCoverage: true,
+});
+
 project.package.addField("resolutions", {
   // addressing https://github.com/advisories/GHSA-rp65-9cf3-cjxr forcefully until
   // react-scripts fixes the dependency chain.
