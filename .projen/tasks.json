@@ -256,7 +256,7 @@
           "spawn": "eslint"
         },
         {
-          "exec": "react-app-rewired test --watchAll=false"
+          "exec": "react-app-rewired test --watchAll=false --coverage=true"
         }
       ]
     },
