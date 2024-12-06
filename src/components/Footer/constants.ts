@@ -29,6 +29,11 @@ export const FOOTER_LINKS: Record<string, Link> = {
     url: "https://aws.amazon.com/legal/",
     testId: "legal",
   },
+  GITHUB: {
+    display: "GitHub",
+    url: "https://github.com/cdklabs/construct-hub",
+    testId: "github",
+  },
 } as const;
 
 export const DISCLAIMER = "2022 Amazon Web Services, Inc. All rights reserved.";
