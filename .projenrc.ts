@@ -141,7 +141,7 @@ project.npmignore?.addPatterns("/.vscode/");
   const cypressRunSteps = [
     {
       name: "Checkout",
-      uses: "actions/checkout@v3",
+      uses: "actions/checkout@v4",
     },
     {
       name: "Cypress Run",
@@ -156,7 +156,7 @@ project.npmignore?.addPatterns("/.vscode/");
       },
     },
     {
-      uses: "actions/upload-artifact@v3",
+      uses: "actions/upload-artifact@v4",
       if: "failure()",
       with: {
         name: "cypress-screenshots",
@@ -164,7 +164,7 @@ project.npmignore?.addPatterns("/.vscode/");
       },
     },
     {
-      uses: "actions/upload-artifact@v3",
+      uses: "actions/upload-artifact@v4",
       if: "always()",
       with: {
         name: "cypress-videos",
