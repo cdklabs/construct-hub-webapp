@@ -50,7 +50,7 @@
     "@types/react-dom": "17.0.26",
     "@types/react-helmet": "6.1.7",
     "@types/react-router-dom": "5.3.3",
-    "@types/semver": "^7.5.8",
+    "@types/semver": "^7.7.0",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "commit-and-tag-version": "^12",
