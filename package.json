@@ -46,7 +46,7 @@
     "@types/lunr": "^2.3.7",
     "@types/node": "^18",
     "@types/node-emoji": "^1.8.2",
-    "@types/react": "17.0.84",
+    "@types/react": "17.0.85",
     "@types/react-dom": "17.0.26",
     "@types/react-helmet": "6.1.7",
     "@types/react-router-dom": "5.3.3",
