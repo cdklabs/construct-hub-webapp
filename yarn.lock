@@ -3234,10 +3234,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@17.0.85":
-  version "17.0.85"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.85.tgz#1f1abf89083e731d82469a3a59ec57ea93cc476b"
-  integrity sha512-5oBDUsRDsrYq4DdyHaL99gE1AJCfuDhyxqF6/55fvvOIRkp1PpKuwJ+aMiGJR+GJt7YqMNclPROTHF20vY2cXA==
+"@types/react@17.0.86":
+  version "17.0.86"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.86.tgz#1486fb5ddef22ab4cbd3c5b3d033eb913c31d372"
+  integrity sha512-lPFuSjA85jecet6D4ZsPvCFuSrz6g2hkTSUw8MM0x5z2EndPV/itGnYQ39abjxd7F+cAcxLGtKQjnLn9cNUz3g==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "^0.16"
@@ -5880,9 +5880,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.5.149:
-  version "1.5.155"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.155.tgz#809dd0ae9ae1db87c358e0c0c17c09a2ffc432d1"
-  integrity sha512-ps5KcGGmwL8VaeJlvlDlu4fORQpv3+GIcF5I3f9tUKUlJ/wsysh6HU8P5L1XWRYeXfA0oJd4PyM8ds8zTFf6Ng==
+  version "1.5.157"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.157.tgz#553b122522ac7bba6f1a0dd7d50b14f297736f75"
+  integrity sha512-/0ybgsQd1muo8QlnuTpKwtl0oX5YMlUGbm8xyqgDU00motRkKFFbUJySAQBWcY79rVqNLWIWa87BGVGClwAB2w==
 
 emittery@^0.10.2:
   version "0.10.2"
@@ -5977,26 +5977,26 @@ error-stack-parser@^2.0.6:
     stackframe "^1.3.4"
 
 es-abstract@^1.17.2, es-abstract@^1.17.5, es-abstract@^1.23.2, es-abstract@^1.23.3, es-abstract@^1.23.5, es-abstract@^1.23.6, es-abstract@^1.23.9:
-  version "1.23.9"
-  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.23.9.tgz#5b45994b7de78dada5c1bebf1379646b32b9d606"
-  integrity sha512-py07lI0wjxAC/DcfK1S6G7iANonniZwTISvdPzk9hzeH0IZIshbuuFxLIU96OyF89Yb9hiqWn8M/bY83KY5vzA==
+  version "1.23.10"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.23.10.tgz#84792c152ff2898ec73efe33c1c1323a3dfd87f8"
+  integrity sha512-MtUbM072wlJNyeYAe0mhzrD+M6DIJa96CZAOBBrhDbgKnB4MApIKefcyAB1eOdYn8cUNZgvwBvEzdoAYsxgEIw==
   dependencies:
     array-buffer-byte-length "^1.0.2"
     arraybuffer.prototype.slice "^1.0.4"
     available-typed-arrays "^1.0.7"
     call-bind "^1.0.8"
-    call-bound "^1.0.3"
+    call-bound "^1.0.4"
     data-view-buffer "^1.0.2"
     data-view-byte-length "^1.0.2"
     data-view-byte-offset "^1.0.1"
     es-define-property "^1.0.1"
     es-errors "^1.3.0"
-    es-object-atoms "^1.0.0"
+    es-object-atoms "^1.1.1"
     es-set-tostringtag "^2.1.0"
     es-to-primitive "^1.3.0"
     function.prototype.name "^1.1.8"
-    get-intrinsic "^1.2.7"
-    get-proto "^1.0.0"
+    get-intrinsic "^1.3.0"
+    get-proto "^1.0.1"
     get-symbol-description "^1.1.0"
     globalthis "^1.0.4"
     gopd "^1.2.0"
@@ -6012,13 +6012,13 @@ es-abstract@^1.17.2, es-abstract@^1.17.5, es-abstract@^1.23.2, es-abstract@^1.23
     is-shared-array-buffer "^1.0.4"
     is-string "^1.1.1"
     is-typed-array "^1.1.15"
-    is-weakref "^1.1.0"
+    is-weakref "^1.1.1"
     math-intrinsics "^1.1.0"
-    object-inspect "^1.13.3"
+    object-inspect "^1.13.4"
     object-keys "^1.1.1"
     object.assign "^4.1.7"
     own-keys "^1.0.1"
-    regexp.prototype.flags "^1.5.3"
+    regexp.prototype.flags "^1.5.4"
     safe-array-concat "^1.1.3"
     safe-push-apply "^1.0.0"
     safe-regex-test "^1.1.0"
@@ -6031,7 +6031,7 @@ es-abstract@^1.17.2, es-abstract@^1.17.5, es-abstract@^1.23.2, es-abstract@^1.23
     typed-array-byte-offset "^1.0.4"
     typed-array-length "^1.0.7"
     unbox-primitive "^1.1.0"
-    which-typed-array "^1.1.18"
+    which-typed-array "^1.1.19"
 
 es-array-method-boxes-properly@^1.0.0:
   version "1.0.0"
@@ -8162,7 +8162,7 @@ is-weakmap@^2.0.2:
   resolved "https://registry.yarnpkg.com/is-weakmap/-/is-weakmap-2.0.2.tgz#bf72615d649dfe5f699079c54b83e47d1ae19cfd"
   integrity sha512-K5pXYOm9wqY1RgjpL3YTkF39tni1XajUIkawTLUo9EZEVUFga5gSQJF8nNS7ZwJQ02y+1YCNYcMh+HIf1ZqE+w==
 
-is-weakref@^1.0.2, is-weakref@^1.1.0:
+is-weakref@^1.0.2, is-weakref@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/is-weakref/-/is-weakref-1.1.1.tgz#eea430182be8d64174bd96bffbc46f21bf3f9293"
   integrity sha512-6i9mGWSlqzNMEqpCp93KwRS1uUOodk2OJ6b+sq7ZPDSy2WuI5NFIxp/254TytR8ftefexkWn5xNiHUNpPOfSew==
@@ -9970,7 +9970,7 @@ object-hash@^3.0.0:
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-3.0.0.tgz#73f97f753e7baffc0e2cc9d6e079079744ac82e9"
   integrity sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==
 
-object-inspect@^1.13.3:
+object-inspect@^1.13.3, object-inspect@^1.13.4:
   version "1.13.4"
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.13.4.tgz#8375265e21bc20d0fa582c22e1b13485d6e00213"
   integrity sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==
@@ -11074,10 +11074,10 @@ process@^0.11.10:
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
 
-projen@^0.92.6:
-  version "0.92.6"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.92.6.tgz#e9ccea136eb1a6237feec21a87eeb058c0f0f02d"
-  integrity sha512-lcF+PC+BJrRBD4Ynr91bN3340iyXJ8FzMvyiepUZs9gTXN04pyLbz/2qgq3EkJAUXwY5HqnXtvYl9j2jiwEgbA==
+projen@^0.92.7:
+  version "0.92.7"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.92.7.tgz#1062869ac97e8ae457739f139e3bfc39476fb457"
+  integrity sha512-VpF0tS1rOLY8wGz5kIsPShb6j/6te3M7EAJ13sXqOCt0LLYLEfxCYW2H+Afidv6hl1nuP6Zz0OYkQvvHdbcn6Q==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
@@ -11632,7 +11632,7 @@ regex-parser@^2.2.11:
   resolved "https://registry.yarnpkg.com/regex-parser/-/regex-parser-2.3.1.tgz#ee3f70e50bdd81a221d505242cb9a9c275a2ad91"
   integrity sha512-yXLRqatcCuKtVHsWrNg0JL3l1zGfdXeEvDa0bdu4tCDQw0RpMDZsqbkyRTUnKMR0tXF627V2oEWjBEaEdqTwtQ==
 
-regexp.prototype.flags@^1.5.3:
+regexp.prototype.flags@^1.5.3, regexp.prototype.flags@^1.5.4:
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.5.4.tgz#1ad6c62d44a259007e55b3970e00f746efbcaa19"
   integrity sha512-dYqgNSZbDwkaJ2ceRd9ojCGjBq+mOm9LmtXnAnEGyHhN/5R7iDW2TRw3h+o/jCFxus3P2LfWIIiwowAjANm7IA==
@@ -13612,9 +13612,9 @@ warning@^4.0.3:
     loose-envify "^1.0.0"
 
 watchpack@^2.4.1:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.4.3.tgz#110b3a600c525f6a39ab66cf354cf08b205c29dc"
-  integrity sha512-adBYQLivcg1jbdKEJeqScJJFvgm4qY9+3tXw+jdG6lkVeqRJEtiQmSWjmth8GKmDZuX7sYM4YFxQsf0AzMfGGw==
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.4.4.tgz#473bda72f0850453da6425081ea46fc0d7602947"
+  integrity sha512-c5EGNOiyxxV5qmTtAB7rbiXxi1ooX1pQKMLX/MIabJjRA0SJBQOjKF+KSVfHkr9U1cADPon0mRiVe/riyaiDUA==
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
@@ -13728,9 +13728,9 @@ webpack-sources@^2.2.0:
     source-map "^0.6.1"
 
 webpack-sources@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
-  integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.3.0.tgz#8d3449f1ed3f254e722a529a0a344a37d2d17048"
+  integrity sha512-77R0RDmJfj9dyv5p3bM5pOHa+X8/ZkO9c7kpDstigkC4nIDobadsfSGCwB4bKhMVxqAok8tajaoR8rirM7+VFQ==
 
 webpack@^5.64.4:
   version "5.99.9"
@@ -13871,7 +13871,7 @@ which-collection@^1.0.2:
     is-weakmap "^2.0.2"
     is-weakset "^2.0.3"
 
-which-typed-array@^1.1.16, which-typed-array@^1.1.18, which-typed-array@^1.1.2:
+which-typed-array@^1.1.16, which-typed-array@^1.1.19, which-typed-array@^1.1.2:
   version "1.1.19"
   resolved "https://registry.yarnpkg.com/which-typed-array/-/which-typed-array-1.1.19.tgz#df03842e870b6b88e117524a4b364b6fc689f956"
   integrity sha512-rEvr90Bck4WZt9HHFC4DJMsjvu7x+r6bImz0/BrbWb7A2djJ8hnZMrWnHo9F8ssv0OMErasDhftrfROTyqSDrw==
