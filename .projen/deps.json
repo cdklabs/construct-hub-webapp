@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@testing-library/dom",
+      "type": "build"
+    },
+    {
       "name": "@testing-library/jest-dom",
       "type": "build"
     },
