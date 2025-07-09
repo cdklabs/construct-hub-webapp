@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: 20.9.0
       - name: Install dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
@@ -47,6 +47,7 @@ jobs:
         run: |-
           echo "latest_commit=$(git ls-remote origin -h ${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
+        shell: bash
       - name: Backup artifact permissions
         if: ${{ steps.git_remote.outputs.latest_commit == github.sha }}
         run: cd dist && getfacl -R . > permissions-backup.acl
@@ -70,7 +71,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: 20.9.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -94,7 +95,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: 20.9.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
