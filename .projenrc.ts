@@ -88,6 +88,11 @@ const project = new web.ReactTypeScriptProject({
   },
 
   autoApproveUpgrades: true,
+
+  githubOptions: {
+    mergify: false,
+    mergeQueue: true,
+  },
 });
 
 project.package.addField("jest", {
