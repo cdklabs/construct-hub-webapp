@@ -4,6 +4,7 @@ name: integ
 on:
   workflow_dispatch: {}
   pull_request: {}
+  merge_group: {}
 jobs:
   e2e:
     name: e2e
