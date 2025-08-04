@@ -180,7 +180,7 @@ project.npmignore?.addPatterns("/.vscode/");
 
   const integWorkflow = project.github?.addWorkflow("integ")!;
   const e2e = "e2e";
-  integWorkflow.on({ workflowDispatch: {}, pullRequest: {} });
+  integWorkflow.on({ workflowDispatch: {}, pullRequest: {}, mergeGroup: {} });
   integWorkflow.addJob(e2e, {
     name: e2e,
     runsOn: ["ubuntu-latest"],
