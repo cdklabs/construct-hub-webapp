@@ -146,11 +146,11 @@ project.npmignore?.addPatterns("/.vscode/");
   const cypressRunSteps = [
     {
       name: "Checkout",
-      uses: "actions/checkout@v4",
+      uses: "actions/checkout@v5",
     },
     {
       name: "Cypress Run",
-      uses: "cypress-io/github-action@v3",
+      uses: "cypress-io/github-action@v6",
       env: {
         DEBUG: "@cypress/github-action",
       },
