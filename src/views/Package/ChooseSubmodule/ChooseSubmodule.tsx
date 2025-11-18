@@ -51,16 +51,21 @@ export const ChooseSubmodule: FunctionComponent = () => {
     let results = allSubmodules;
 
     if (filter) {
-      results = results.filter((fqn) =>
-        fqn.toLowerCase().includes(filter.toLowerCase())
+      results = results.filter((submodule) =>
+        submodule.toLowerCase().includes(filter.toLowerCase())
       );
     }
 
-    return results.map((fqn) => {
-      const submoduleName = fqn.split(".")[1];
+    return results.map((submodule) => {
+      // Extract submodule displayable name from the submodule by removing package prefix
+      // Examples: "aws-cdk-lib.aws_s3" → "aws_s3"
+      //           "aws-cdk-lib.interfaces.aws_s3" → "interfaces.aws_s3"
+      // Regex /^[^.]+\./ matches package name + first dot, replace with empty string
+      const submoduleDisplayName = submodule.replace(/^[^.]+\./, "");
+
       return {
-        name: submoduleName,
-        to: getUrl(submoduleName),
+        name: submoduleDisplayName,
+        to: getUrl(submoduleDisplayName),
       };
     });
   }, [allSubmodules, filter, getUrl]);
