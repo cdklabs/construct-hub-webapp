@@ -1,5 +1,4 @@
-import { github, web } from "projen";
-import { workflows } from "projen/lib/github";
+import { github, web, javascript } from "projen";
 
 const PROXY_URL = "https://constructs.dev/";
 
@@ -19,6 +18,9 @@ const project = new web.ReactTypeScriptProject({
   // in order to be able to publish this as an npm module.
   releaseToNpm: true,
   releaseWorkflow: true,
+  releaseEnvironment: "release",
+  npmTrustedPublishing: true,
+
   package: true,
   tsconfig: {
     compilerOptions: {
@@ -27,6 +29,7 @@ const project = new web.ReactTypeScriptProject({
   },
 
   minNodeVersion: "20.9.0",
+  workflowNodeVersion: "lts/*",
 
   eslint: true,
   prettier: true,
@@ -81,6 +84,12 @@ const project = new web.ReactTypeScriptProject({
     "jsii-docgen",
     "util",
   ],
+
+  depsUpgradeOptions: {
+    workflowOptions: {
+      schedule: javascript.UpgradeDependenciesSchedule.WEEKLY,
+    },
+  },
 
   autoApproveOptions: {
     allowedUsernames: ["cdklabs-automation"],
@@ -338,7 +347,7 @@ project.release?.addJobs({
     name: "Upgrade construct-hub",
     runsOn: ["ubuntu-latest"],
     permissions: {
-      actions: workflows.JobPermission.WRITE,
+      actions: github.workflows.JobPermission.WRITE,
     },
     needs: ["release", "release_github", "release_npm"],
     steps: [
