@@ -37,9 +37,7 @@
       "react-dom",
       "react-helmet",
       "react-router-dom",
-      "semver",
-      "express-serve-static-core",
-      "express"
+      "semver"
     ],
     "allowJs": true,
     "skipLibCheck": true,
