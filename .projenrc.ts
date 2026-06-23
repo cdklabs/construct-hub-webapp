@@ -17,7 +17,7 @@ const project = new web.ReactTypeScriptProject({
   // since this is an app project, we need to enable these explicitly
   // in order to be able to publish this as an npm module.
   releaseToNpm: true,
-  releaseWorkflow: true,
+  release: true,
   releaseEnvironment: "release",
   npmTrustedPublishing: true,
 
