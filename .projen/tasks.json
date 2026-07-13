@@ -1,4 +1,8 @@
 {
+  "manifestVersion": 3,
+  "env": {
+    "PATH": "$(npx -c \"node --print process.env.PATH\")"
+  },
   "tasks": {
     "analyze-exports": {
       "name": "analyze-exports",
@@ -87,7 +91,10 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "react-scripts build"
+          "execArgs": [
+            "react-scripts",
+            "build"
+          ]
         },
         {
           "spawn": "replace-worker"
@@ -117,7 +124,12 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
+          "execArgs": [
+            "ts-node",
+            "--project",
+            "projenrc/tsconfig.json",
+            ".projenrc.ts"
+          ]
         }
       ]
     },
@@ -126,7 +138,10 @@
       "description": "Starts the react application",
       "steps": [
         {
-          "exec": "react-app-rewired start"
+          "execArgs": [
+            "react-scripts",
+            "start"
+          ]
         }
       ]
     },
@@ -179,10 +194,19 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "mkdir -p dist/js"
+          "execArgs": [
+            "mkdir",
+            "-p",
+            "dist/js"
+          ]
         },
         {
-          "exec": "npm pack --pack-destination dist/js"
+          "execArgs": [
+            "npm",
+            "pack",
+            "--pack-destination",
+            "dist/js"
+          ]
         }
       ]
     },
@@ -257,7 +281,11 @@
           "spawn": "eslint"
         },
         {
-          "exec": "react-app-rewired test --watchAll=false"
+          "execArgs": [
+            "react-scripts",
+            "test",
+            "--watchAll=false"
+          ]
         }
       ]
     },
@@ -302,13 +330,97 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev,peer,prod,optional --filter=@testing-library/dom,@testing-library/jest-dom,@testing-library/react,@testing-library/react-hooks,@testing-library/user-event,@types/jest,@types/lunr,@types/node-emoji,@types/react,@types/react-dom,@types/semver,cypress,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-jsx-a11y,eslint-plugin-prefer-arrow,eslint-plugin-prettier,eslint-plugin-react,eslint-plugin-react-hooks,express,express-http-proxy,jsii-docgen,prettier,projen,react-app-rewired,ts-node,ts-unused-exports,util,@chakra-ui/anatomy,@chakra-ui/icons,@chakra-ui/react,@chakra-ui/theme-tools,@jsii/spec,copy-to-clipboard,date-fns,hast-util-sanitize,jsii-reflect,lunr,node-emoji,prism-react-renderer,react,react-dom,react-helmet,react-markdown,react-query,react-router-dom,rehype-raw,rehype-sanitize,remark-emoji,remark-gfm,semver,spdx-license-list,web-vitals,workbox-core,workbox-expiration,workbox-precaching,workbox-routing,workbox-strategies"
+          "execArgs": [
+            "npx",
+            "npm-check-updates@20",
+            "--upgrade",
+            "--target=minor",
+            "--peer",
+            "--no-deprecated",
+            "--dep=dev,prod,peer,optional",
+            "--filter=@testing-library/dom,@testing-library/jest-dom,@testing-library/react,@testing-library/react-hooks,@testing-library/user-event,@types/jest,@types/lunr,@types/node-emoji,@types/react,@types/react-dom,@types/semver,cypress,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-jsx-a11y,eslint-plugin-prefer-arrow,eslint-plugin-prettier,eslint-plugin-react,eslint-plugin-react-hooks,express,express-http-proxy,jsii-docgen,prettier,projen,react-app-rewired,ts-node,ts-unused-exports,util,@chakra-ui/anatomy,@chakra-ui/icons,@chakra-ui/react,@chakra-ui/theme-tools,@jsii/spec,copy-to-clipboard,date-fns,hast-util-sanitize,jsii-reflect,lunr,node-emoji,prism-react-renderer,react,react-dom,react-helmet,react-markdown,react-query,react-router-dom,rehype-raw,rehype-sanitize,remark-emoji,remark-gfm,semver,spdx-license-list,web-vitals,workbox-core,workbox-expiration,workbox-precaching,workbox-routing,workbox-strategies"
+          ]
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/react-hooks @testing-library/user-event @types/jest @types/lunr @types/node-emoji @types/node @types/react @types/react-dom @types/react-helmet @types/react-router-dom @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs cypress eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prefer-arrow eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint express express-http-proxy jsii-docgen prettier projen react-app-rewired react-scripts ts-node ts-unused-exports typescript util @chakra-ui/anatomy @chakra-ui/icons @chakra-ui/react @chakra-ui/theme-tools @emotion/react @emotion/styled @jsii/spec copy-to-clipboard date-fns framer-motion hast-util-sanitize jsii-reflect lunr node-emoji prism-react-renderer react react-dom react-helmet react-markdown react-query react-router-dom rehype-raw rehype-sanitize remark-emoji remark-gfm semver spdx-license-list web-vitals workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies"
+          "execArgs": [
+            "yarn",
+            "upgrade",
+            "@testing-library/dom",
+            "@testing-library/jest-dom",
+            "@testing-library/react",
+            "@testing-library/react-hooks",
+            "@testing-library/user-event",
+            "@types/jest",
+            "@types/lunr",
+            "@types/node-emoji",
+            "@types/node",
+            "@types/react",
+            "@types/react-dom",
+            "@types/react-helmet",
+            "@types/react-router-dom",
+            "@types/semver",
+            "@typescript-eslint/eslint-plugin",
+            "@typescript-eslint/parser",
+            "commit-and-tag-version",
+            "constructs",
+            "cypress",
+            "eslint-config-prettier",
+            "eslint-import-resolver-typescript",
+            "eslint-plugin-import",
+            "eslint-plugin-jsx-a11y",
+            "eslint-plugin-prefer-arrow",
+            "eslint-plugin-prettier",
+            "eslint-plugin-react",
+            "eslint-plugin-react-hooks",
+            "eslint",
+            "express",
+            "express-http-proxy",
+            "jsii-docgen",
+            "prettier",
+            "projen",
+            "react-app-rewired",
+            "react-scripts",
+            "ts-node",
+            "ts-unused-exports",
+            "typescript",
+            "util",
+            "@chakra-ui/anatomy",
+            "@chakra-ui/icons",
+            "@chakra-ui/react",
+            "@chakra-ui/theme-tools",
+            "@emotion/react",
+            "@emotion/styled",
+            "@jsii/spec",
+            "copy-to-clipboard",
+            "date-fns",
+            "framer-motion",
+            "hast-util-sanitize",
+            "jsii-reflect",
+            "lunr",
+            "node-emoji",
+            "prism-react-renderer",
+            "react",
+            "react-dom",
+            "react-helmet",
+            "react-markdown",
+            "react-query",
+            "react-router-dom",
+            "rehype-raw",
+            "rehype-sanitize",
+            "remark-emoji",
+            "remark-gfm",
+            "semver",
+            "spdx-license-list",
+            "web-vitals",
+            "workbox-core",
+            "workbox-expiration",
+            "workbox-precaching",
+            "workbox-routing",
+            "workbox-strategies"
+          ]
         },
         {
           "exec": "npx projen"
@@ -323,13 +435,14 @@
       "description": "Watch & compile in the background",
       "steps": [
         {
-          "exec": "tsc --build -w"
+          "execArgs": [
+            "tsc",
+            "--build",
+            "-w"
+          ]
         }
       ]
     }
-  },
-  "env": {
-    "PATH": "$(npx -c \"node --print process.env.PATH\")"
   },
   "//": "~~ Generated by projen. To modify, edit .projenrc.ts and run \"npx projen\"."
 }

@@ -52,5 +52,7 @@
     "src/**/*.ts",
     "src"
   ],
-  "exclude": []
+  "exclude": [
+    "node_modules"
+  ]
 }
