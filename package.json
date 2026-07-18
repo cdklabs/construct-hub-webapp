@@ -9,6 +9,7 @@
     "build": "projen build",
     "bump": "projen bump",
     "clobber": "projen clobber",
+    "compile": "projen compile",
     "cypress:open": "projen cypress:open",
     "cypress:run": "projen cypress:run",
     "default": "projen default",
