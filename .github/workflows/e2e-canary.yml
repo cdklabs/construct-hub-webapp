@@ -14,8 +14,10 @@ jobs:
       contents: read
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v5
       - name: Cypress Run
+        id: cypress_run
         uses: cypress-io/github-action@v6
         env:
           DEBUG: "@cypress/github-action"
@@ -23,17 +25,20 @@ jobs:
           start: yarn proxy-server:ci
           wait-on: http://localhost:3000
           wait-on-timeout: 150
-      - if: failure()
+      - id: auto_9c943d99
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-      - if: always()
+      - id: auto_9c943d99_2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos
       - name: Create failure issue
+        id: create_failure_issue
         if: failure()
         uses: imjohnbo/issue-bot@v3
         env:
