@@ -155,7 +155,7 @@ project.npmignore?.addPatterns("/.vscode/");
     },
     {
       name: "Cypress Run",
-      uses: "cypress-io/github-action@v6",
+      uses: "cypress-io/github-action@v7",
       env: {
         DEBUG: "@cypress/github-action",
       },
