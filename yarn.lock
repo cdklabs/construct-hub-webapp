@@ -1863,6 +1863,25 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
+"@dsherret/path@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@dsherret/path/-/path-0.3.4.tgz#aa351b24bd9850b6bbc43ca05847f6a7b4468d04"
+  integrity sha512-eQ4QXKedvwYFUeLhGSjDzJVuwaTlGNQzZ5S0n9YdRRc9TSRbx5BSNNPzVz+sJUKlm/69zpg7XfckukJz4JiKEQ==
+
+"@dsherret/shell@^0.7.2":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@dsherret/shell/-/shell-0.7.3.tgz#667ab5b796c55fd2402979802b8c61c992cb1424"
+  integrity sha512-hcNlFuxR6hmKbS3fH3Wjgqtcynrt2wz04Di4QcVVkfegEnx3I+yzMQDXjwP08isowTq+3EWjWK/YBhbkX/1HFw==
+  dependencies:
+    "@dsherret/path" "^0.3.4"
+    "@dsherret/which" "^0.8.0"
+    console-static-text "^0.3.5"
+
+"@dsherret/which@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@dsherret/which/-/which-0.8.0.tgz#6bffd64528afbdf4e947a60deff5b6414716a32d"
+  integrity sha512-Fsb8WeKBVvgMcMb2AlDe8EUpCwtB9eXySFHFteo4nvusV23NHpuwtbYDFx/xoJBxSqkoHq8Wn3C1DX2vJR7hRQ==
+
 "@emotion/babel-plugin@^11.13.5":
   version "11.13.5"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.13.5.tgz#eab8d65dbded74e0ecfd28dc218e75607c4e7bc0"
@@ -4980,6 +4999,11 @@ connect-history-api-fallback@^2.0.0:
   resolved "https://registry.yarnpkg.com/connect-history-api-fallback/-/connect-history-api-fallback-2.0.0.tgz#647264845251a0daf25b97ce87834cace0f5f1c8"
   integrity sha512-U73+6lQFmfiNPrYbXqr6kZ1i1wiRqXnp2nhMsINseWXO8lDau0LGEffJ8kQi4EjLZympVgRdvqjAgiZ1tgzDDA==
 
+console-static-text@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/console-static-text/-/console-static-text-0.3.5.tgz#a786e82c1b05607fa631582b7850d839517ec9a6"
+  integrity sha512-/iyYUmmAGDUQXbDA3drgIUmOEi0FB2TxfmcFt24YhWQaEsaWh3Cf+30vdS4lhQTX2713EdxQljRqoETLkzPk3w==
+
 constructs@^10.0.0, constructs@^10.5.0:
   version "10.8.1"
   resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.8.1.tgz#83877700caa85fdfee9eacd16fd4be16393a7aa6"
@@ -5476,11 +5500,13 @@ date-format@^4.0.14:
   resolved "https://registry.yarnpkg.com/date-format/-/date-format-4.0.14.tgz#7a8e584434fb169a521c8b7aa481f355810d9400"
   integrity sha512-39BOQLs9ZjKh0/patS9nrT8wc3ioX3/eA/zgbKNopnF2wCqJEoxywwwElATYvRsXdnOxA/OQeQoFZ3rFjVajhg==
 
-dax@^0.49.0:
-  version "0.49.0"
-  resolved "https://registry.yarnpkg.com/dax/-/dax-0.49.0.tgz#047872ddd9be94b8416c272c0e8181168b354260"
-  integrity sha512-KbODyOV8mRQiW7syK1mjlpNqTqliTMAzTZA1VA3VDdw7Q/ivlCzWXtMihXVo2Joxqjx9qkAvuCxYy2l4RrH1/Q==
+dax@^0.50.2:
+  version "0.50.2"
+  resolved "https://registry.yarnpkg.com/dax/-/dax-0.50.2.tgz#8cc47372f0d58f26bbd523ae9ba8fc127f23d4c8"
+  integrity sha512-I8dkTGtFAds0KLugSbI34CwBcrAfs0uchcm/RF/lC/T4Mg9W5/ceETZmxECfXoxyJostJSIhGsJ2vBB35zQJlw==
   dependencies:
+    "@dsherret/path" "^0.3.4"
+    "@dsherret/shell" "^0.7.2"
     undici-types "^5.26"
 
 dayjs@^1.10.4:
@@ -10678,10 +10704,10 @@ process@^0.11.10:
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
 
-projen@^0.104.27:
-  version "0.104.27"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.104.27.tgz#70b1d0b1421258e73af77df8ce765d8f23cdb415"
-  integrity sha512-L02IpJLrgNUTs06ssI256E+E0uaFQ5QZG3VaPntMqXVlvnuDaCVJHPx6JGt6pM/fxgvy0ZAKaLYxY3sSGXEOgg==
+projen@^0.105.6:
+  version "0.105.6"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.105.6.tgz#456ef6146f21b239411282f121a455ea829848ce"
+  integrity sha512-GChhH8h8xxNNfPKXlKJMhRiPpsJ9AyW4KYvQ21Z9R7VIKkvSU7SjaOz4X/qjq449sgwuXHWZoDAEQf0TgA9HNA==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
@@ -10689,13 +10715,13 @@ projen@^0.104.27:
     comment-json "4.2.2"
     constructs "^10.5.0"
     conventional-changelog-config-spec "^2.1.0"
-    dax "^0.49.0"
+    dax "^0.50.2"
     fast-glob "^3.3.3"
     fast-json-patch "^3.1.1"
     ini "^2.0.0"
     parse-conflict-json "^4.0.0"
-    properties-file "^5.0.6"
-    semver "^7.8.5"
+    properties-file "^5.0.7"
+    semver "^7.8.6"
     xmlbuilder2 "^4.0.3"
     yaml "^2.2.2"
     yargs "^17.7.3"
@@ -10724,7 +10750,7 @@ prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
     object-assign "^4.1.1"
     react-is "^16.13.1"
 
-properties-file@^5.0.6:
+properties-file@^5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/properties-file/-/properties-file-5.0.7.tgz#9e3ea91e9acc013120a477de76e92f9a948f7f28"
   integrity sha512-Hoae9SnNTJebHujv5gdOtb7stArj27GcKzWxerrQgjuHasE+VT7G10Q6rR2wRWTjaACkT4zRigAtqnkMOz9BIA==
